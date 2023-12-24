@@ -1,0 +1,27 @@
+configVersion: 1.0.0
+generation:
+  comments: {}
+  sdkClassName: Plex-API
+  repoURL: https://github.com/speakeasy-sdks/Personal-sample-sdk-9.git
+  maintainOpenAPIOrder: true
+  usageSnippets:
+    optionalPropertyRendering: withExample
+  useClassNamesForArrayFields: true
+  fixes:
+    nameResolutionDec2023: false
+csharp:
+  version: 0.0.1
+  author: LukeHagar
+  dotnetVersion: net5.0
+  imports:
+    option: openapi
+    paths:
+      callbacks: Models/Callbacks
+      errors: Models/Errors
+      operations: Models/Requests
+      shared: Models/Components
+      webhooks: Models/Webhooks
+  inputModelSuffix: input
+  maxMethodParams: 4
+  outputModelSuffix: output
+  packageName: Plex-API
