@@ -1,0 +1,16 @@
+# GetOnDeckPart
+
+
+## Fields
+
+| Field                                                    | Type                                                     | Required                                                 | Description                                              | Example                                                  |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `Id`                                                     | *double*                                                 | :heavy_minus_sign:                                       | N/A                                                      | 80994                                                    |
+| `Key`                                                    | *string*                                                 | :heavy_minus_sign:                                       | N/A                                                      | /library/parts/80994/1655007810/file.mkv                 |
+| `Duration`                                               | *double*                                                 | :heavy_minus_sign:                                       | N/A                                                      | 420080                                                   |
+| `File`                                                   | *string*                                                 | :heavy_minus_sign:                                       | N/A                                                      | /tvshows/Bluey (2018)/Bluey (2018) - S02E33 - Circus.mkv |
+| `Size`                                                   | *double*                                                 | :heavy_minus_sign:                                       | N/A                                                      | 55148931                                                 |
+| `AudioProfile`                                           | *string*                                                 | :heavy_minus_sign:                                       | N/A                                                      | lc                                                       |
+| `Container`                                              | *string*                                                 | :heavy_minus_sign:                                       | N/A                                                      | mkv                                                      |
+| `VideoProfile`                                           | *string*                                                 | :heavy_minus_sign:                                       | N/A                                                      | main                                                     |
+| `Stream`                                                 | List<[Stream](../../Models/Requests/Stream.md)>          | :heavy_minus_sign:                                       | N/A                                                      |                                                          |

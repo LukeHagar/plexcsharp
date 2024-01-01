@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+    <PackageId>Plex-API</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>LukeHagar</Authors>
+    <TargetFramework>net5.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>1591</NoWarn>
+    <RepositoryUrl>https://github.com/LukeHagar/plexcsharp</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../README.md" Pack="true" PackagePath="/"/>
+    <None Include="../docs/*" Pack="true" PackagePath="/docs"/>
+
+    <PackageReference Include="newtonsoft.json" Version="13.0.3" />
+    <PackageReference Include="nodatime" Version="3.1.9" />
+  </ItemGroup>
+</Project>

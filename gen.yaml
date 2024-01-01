@@ -1,16 +1,28 @@
 configVersion: 1.0.0
+management:
+  docChecksum: 550154cf1b4d0c237436fb18c418b5db
+  docVersion: 0.0.3
+  speakeasyVersion: 1.129.1
+  generationVersion: 2.223.3
 generation:
   comments: {}
   sdkClassName: Plex-API
-  repoURL: https://github.com/speakeasy-sdks/Personal-sample-sdk-9.git
+  repoURL: https://github.com/LukeHagar/plexcsharp.git
   maintainOpenAPIOrder: true
   usageSnippets:
     optionalPropertyRendering: withExample
-  useClassNamesForArrayFields: true
   fixes:
     nameResolutionDec2023: false
+  useClassNamesForArrayFields: true
+features:
+  csharp:
+    core: 3.2.1
+    flattening: 2.81.1
+    globalSecurity: 2.81.2
+    globalServerURLs: 2.82.2
+    nameOverrides: 2.81.1
 csharp:
-  version: 0.0.1
+  version: 0.1.0
   author: LukeHagar
   dotnetVersion: net5.0
   imports:
@@ -25,3 +37,5 @@ csharp:
   maxMethodParams: 4
   outputModelSuffix: output
   packageName: Plex-API
+  published: true
+  repoSubDirectory: .
