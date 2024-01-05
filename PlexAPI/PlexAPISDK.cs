@@ -63,6 +63,7 @@ namespace PlexAPI
             throw new Exception($"Unknown value {value} for enum ServerProtocol");
         }
     }
+
     /// <summary>
     /// Plex-API: A Plex Media Server API Map
     /// 
@@ -205,7 +206,6 @@ namespace PlexAPI
     {
         public static string[] ServerList = new string[]
         {
-            "http://10.10.10.47:32400",
             "{protocol}://{ip}:{port}",
         };
         /// Contains the list of servers available to the SDK
@@ -235,10 +235,10 @@ namespace PlexAPI
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.1.0";
-        private const string _sdkGenVersion = "2.225.2";
+        private const string _sdkVersion = "0.1.1";
+        private const string _sdkGenVersion = "2.228.1";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.1.0 2.225.2 0.0.3 Plex-API";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.1.1 2.228.1 0.0.3 Plex-API";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
         private ISpeakeasyHttpClient _securityClient;
@@ -266,9 +266,6 @@ namespace PlexAPI
             }
             List<Dictionary<string, string>> serverDefaults = new List<Dictionary<string, string>>()
             {
-                new Dictionary<string, string>()
-                {
-                },
                 new Dictionary<string, string>()
                 {
                     {"protocol", protocol == null ? "http" : ServerProtocolExtension.Value(protocol.Value)},

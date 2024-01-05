@@ -31,4 +31,5 @@ namespace PlexAPI.Models.Requests
         Three = 3,
         Four = 4,
     }
+
 }

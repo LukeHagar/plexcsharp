@@ -80,4 +80,5 @@ namespace PlexAPI.Models.Requests
             throw new Exception($"Unknown value {value} for enum PathParamTaskName");
         }
     }
+
 }

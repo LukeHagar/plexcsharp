@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 5a8dbcbc-e0ee-41f0-9d84-b8b50567d1e9
 management:
-  docChecksum: 550154cf1b4d0c237436fb18c418b5db
+  docChecksum: 34d22936f2456c2c461abdfc773e3fc4
   docVersion: 0.0.3
   speakeasyVersion: internal
-  generationVersion: 2.225.2
-  releaseVersion: 0.1.0
-  configChecksum: 59b865f444f644ba0d2f3cdf0cf3458c
+  generationVersion: 2.228.1
+  releaseVersion: 0.1.1
+  configChecksum: 6b9442beea2ea4ba03da6cae25bbe997
   repoURL: https://github.com/LukeHagar/plexcsharp.git
   repoSubDirectory: .
   published: true
