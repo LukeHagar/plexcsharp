@@ -11,14 +11,21 @@
 namespace PlexAPI.Models.Requests
 {
     using Newtonsoft.Json;
+    using System.Collections.Generic;
     
-    /// <summary>
-    /// The libraries available on the Server
-    /// </summary>
-    public class GetLibrariesResponseBody
+    public class GetLibrariesMediaContainer
     {
 
-        [JsonProperty("MediaContainer")]
-        public GetLibrariesMediaContainer? MediaContainer { get; set; }
+        [JsonProperty("size")]
+        public int? Size { get; set; }
+
+        [JsonProperty("allowSync")]
+        public bool? AllowSync { get; set; }
+
+        [JsonProperty("title1")]
+        public string? Title1 { get; set; }
+
+        [JsonProperty("Directory")]
+        public List<GetLibrariesDirectory>? Directory { get; set; }
     }
 }

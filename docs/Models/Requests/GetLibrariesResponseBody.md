@@ -1,10 +1,10 @@
 # GetLibrariesResponseBody
 
-Unauthorized - Returned if the X-Plex-Token is missing from the header or query.
+The libraries available on the Server
 
 
 ## Fields
 
-| Field                                                                   | Type                                                                    | Required                                                                | Description                                                             |
-| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `Errors`                                                                | List<[GetLibrariesErrors](../../Models/Requests/GetLibrariesErrors.md)> | :heavy_minus_sign:                                                      | N/A                                                                     |
+| Field                                                                             | Type                                                                              | Required                                                                          | Description                                                                       |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `MediaContainer`                                                                  | [GetLibrariesMediaContainer](../../Models/Requests/GetLibrariesMediaContainer.md) | :heavy_minus_sign:                                                                | N/A                                                                               |

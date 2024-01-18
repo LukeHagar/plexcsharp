@@ -1,20 +1,20 @@
 lockVersion: 2.0.0
 id: 5a8dbcbc-e0ee-41f0-9d84-b8b50567d1e9
 management:
-  docChecksum: 34d22936f2456c2c461abdfc773e3fc4
+  docChecksum: 45c73686e6dbe8c29b7e2857b6194ccf
   docVersion: 0.0.3
   speakeasyVersion: internal
-  generationVersion: 2.228.1
-  releaseVersion: 0.1.1
-  configChecksum: 6b9442beea2ea4ba03da6cae25bbe997
+  generationVersion: 2.237.2
+  releaseVersion: 0.1.2
+  configChecksum: 507f77da627cd2f7f1d5a580b89775fa
   repoURL: https://github.com/LukeHagar/plexcsharp.git
   repoSubDirectory: .
   published: true
 features:
   csharp:
-    core: 3.3.0
+    core: 3.3.1
     flattening: 2.81.1
-    globalSecurity: 2.81.2
+    globalSecurity: 2.81.3
     globalServerURLs: 2.82.2
     nameOverrides: 2.81.1
 generatedFiles:
@@ -185,6 +185,10 @@ generatedFiles:
   - PlexAPI/Models/Requests/GetRecentlyAddedResponseBody.cs
   - PlexAPI/Models/Requests/GetRecentlyAddedResponse.cs
   - PlexAPI/Models/Requests/GetLibrariesErrors.cs
+  - PlexAPI/Models/Requests/GetLibrariesLibraryResponseBody.cs
+  - PlexAPI/Models/Requests/Location.cs
+  - PlexAPI/Models/Requests/GetLibrariesDirectory.cs
+  - PlexAPI/Models/Requests/GetLibrariesMediaContainer.cs
   - PlexAPI/Models/Requests/GetLibrariesResponseBody.cs
   - PlexAPI/Models/Requests/GetLibrariesResponse.cs
   - PlexAPI/Models/Requests/IncludeDetails.cs
@@ -471,6 +475,10 @@ generatedFiles:
   - docs/Models/Requests/GetRecentlyAddedResponseBody.md
   - docs/Models/Requests/GetRecentlyAddedResponse.md
   - docs/Models/Requests/GetLibrariesErrors.md
+  - docs/Models/Requests/GetLibrariesLibraryResponseBody.md
+  - docs/Models/Requests/Location.md
+  - docs/Models/Requests/GetLibrariesDirectory.md
+  - docs/Models/Requests/GetLibrariesMediaContainer.md
   - docs/Models/Requests/GetLibrariesResponseBody.md
   - docs/Models/Requests/GetLibrariesResponse.md
   - docs/Models/Requests/IncludeDetails.md

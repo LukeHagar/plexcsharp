@@ -181,10 +181,10 @@ namespace PlexAPI
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.1.1";
-        private const string _sdkGenVersion = "2.228.1";
+        private const string _sdkVersion = "0.1.2";
+        private const string _sdkGenVersion = "2.237.2";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.1.1 2.228.1 0.0.3 Plex-API";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.1.2 2.237.2 0.0.3 Plex-API";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
         private ISpeakeasyHttpClient _securityClient;
@@ -314,7 +314,16 @@ namespace PlexAPI
                 RawResponse = httpResponse
             };
             
-            if((response.StatusCode == 200) || (response.StatusCode == 400))
+            if((response.StatusCode == 200))
+            {
+                if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
+                {
+                    response.TwoHundredApplicationJsonObject = JsonConvert.DeserializeObject<GetLibrariesResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
+                }
+                
+                return response;
+            }
+            if((response.StatusCode == 400))
             {
                 
                 return response;
@@ -323,7 +332,7 @@ namespace PlexAPI
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
-                    response.Object = JsonConvert.DeserializeObject<GetLibrariesResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
+                    response.FourHundredAndOneApplicationJsonObject = JsonConvert.DeserializeObject<GetLibrariesLibraryResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
                 
                 return response;
