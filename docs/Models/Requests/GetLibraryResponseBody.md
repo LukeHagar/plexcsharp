@@ -1,10 +1,10 @@
 # GetLibraryResponseBody
 
-Unauthorized - Returned if the X-Plex-Token is missing from the header or query.
+The details of the library
 
 
 ## Fields
 
-| Field                                                               | Type                                                                | Required                                                            | Description                                                         |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `Errors`                                                            | List<[GetLibraryErrors](../../Models/Requests/GetLibraryErrors.md)> | :heavy_minus_sign:                                                  | N/A                                                                 |
+| Field                                                                         | Type                                                                          | Required                                                                      | Description                                                                   |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `MediaContainer`                                                              | [GetLibraryMediaContainer](../../Models/Requests/GetLibraryMediaContainer.md) | :heavy_minus_sign:                                                            | N/A                                                                           |
