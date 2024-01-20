@@ -1,10 +1,10 @@
 # GetServerPreferencesResponseBody
 
-Unauthorized - Returned if the X-Plex-Token is missing from the header or query.
+Server Preferences
 
 
 ## Fields
 
-| Field                                                                                   | Type                                                                                    | Required                                                                                | Description                                                                             |
-| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `Errors`                                                                                | List<[GetServerPreferencesErrors](../../Models/Requests/GetServerPreferencesErrors.md)> | :heavy_minus_sign:                                                                      | N/A                                                                                     |
+| Field                                                                                             | Type                                                                                              | Required                                                                                          | Description                                                                                       |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `MediaContainer`                                                                                  | [GetServerPreferencesMediaContainer](../../Models/Requests/GetServerPreferencesMediaContainer.md) | :heavy_minus_sign:                                                                                | N/A                                                                                               |

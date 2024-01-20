@@ -12,8 +12,14 @@ namespace PlexAPI.Models.Requests
 {
     using Newtonsoft.Json;
     
-    public class GetLibraryDirectory
+    public class Filter
     {
+
+        [JsonProperty("filter")]
+        public string? FilterValue { get; set; }
+
+        [JsonProperty("filterType")]
+        public string? FilterType { get; set; }
 
         [JsonProperty("key")]
         public string? Key { get; set; }
@@ -21,13 +27,7 @@ namespace PlexAPI.Models.Requests
         [JsonProperty("title")]
         public string? Title { get; set; }
 
-        [JsonProperty("secondary")]
-        public bool? Secondary { get; set; }
-
-        [JsonProperty("prompt")]
-        public string? Prompt { get; set; }
-
-        [JsonProperty("search")]
-        public bool? Search { get; set; }
+        [JsonProperty("type")]
+        public string? Type { get; set; }
     }
 }

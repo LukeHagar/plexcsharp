@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 5a8dbcbc-e0ee-41f0-9d84-b8b50567d1e9
 management:
-  docChecksum: a14d0ae27d4f5bd83b80747112f74352
+  docChecksum: 1e8e82037a237e1d1467721fbd2c7ab0
   docVersion: 0.0.3
   speakeasyVersion: internal
-  generationVersion: 2.237.2
-  releaseVersion: 0.1.3
-  configChecksum: 118f41d4e58820369dd7cd8400642873
+  generationVersion: 2.237.3
+  releaseVersion: 0.1.4
+  configChecksum: 2355fec2a6caedf505c0100382e8bb81
   repoURL: https://github.com/LukeHagar/plexcsharp.git
   repoSubDirectory: .
   published: true
@@ -53,6 +53,8 @@ generatedFiles:
   - PlexAPI/Models/Requests/GetServerCapabilitiesResponseBody.cs
   - PlexAPI/Models/Requests/GetServerCapabilitiesResponse.cs
   - PlexAPI/Models/Requests/GetServerPreferencesErrors.cs
+  - PlexAPI/Models/Requests/GetServerPreferencesServerResponseBody.cs
+  - PlexAPI/Models/Requests/GetServerPreferencesMediaContainer.cs
   - PlexAPI/Models/Requests/GetServerPreferencesResponseBody.cs
   - PlexAPI/Models/Requests/GetServerPreferencesResponse.cs
   - PlexAPI/Models/Requests/GetAvailableClientsErrors.cs
@@ -196,6 +198,12 @@ generatedFiles:
   - PlexAPI/Models/Requests/GetLibraryErrors.cs
   - PlexAPI/Models/Requests/GetLibraryLibraryResponseBody.cs
   - PlexAPI/Models/Requests/GetLibraryDirectory.cs
+  - PlexAPI/Models/Requests/Filter.cs
+  - PlexAPI/Models/Requests/Sort.cs
+  - PlexAPI/Models/Requests/Field.cs
+  - PlexAPI/Models/Requests/GetLibraryType.cs
+  - PlexAPI/Models/Requests/Operator.cs
+  - PlexAPI/Models/Requests/FieldType.cs
   - PlexAPI/Models/Requests/GetLibraryMediaContainer.cs
   - PlexAPI/Models/Requests/GetLibraryResponseBody.cs
   - PlexAPI/Models/Requests/GetLibraryResponse.cs
@@ -346,6 +354,8 @@ generatedFiles:
   - docs/Models/Requests/GetServerCapabilitiesResponseBody.md
   - docs/Models/Requests/GetServerCapabilitiesResponse.md
   - docs/Models/Requests/GetServerPreferencesErrors.md
+  - docs/Models/Requests/GetServerPreferencesServerResponseBody.md
+  - docs/Models/Requests/GetServerPreferencesMediaContainer.md
   - docs/Models/Requests/GetServerPreferencesResponseBody.md
   - docs/Models/Requests/GetServerPreferencesResponse.md
   - docs/Models/Requests/GetAvailableClientsErrors.md
@@ -489,6 +499,12 @@ generatedFiles:
   - docs/Models/Requests/GetLibraryErrors.md
   - docs/Models/Requests/GetLibraryLibraryResponseBody.md
   - docs/Models/Requests/GetLibraryDirectory.md
+  - docs/Models/Requests/Filter.md
+  - docs/Models/Requests/Sort.md
+  - docs/Models/Requests/Field.md
+  - docs/Models/Requests/GetLibraryType.md
+  - docs/Models/Requests/Operator.md
+  - docs/Models/Requests/FieldType.md
   - docs/Models/Requests/GetLibraryMediaContainer.md
   - docs/Models/Requests/GetLibraryResponseBody.md
   - docs/Models/Requests/GetLibraryResponse.md

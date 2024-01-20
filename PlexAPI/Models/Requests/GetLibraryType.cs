@@ -11,23 +11,30 @@
 namespace PlexAPI.Models.Requests
 {
     using Newtonsoft.Json;
+    using System.Collections.Generic;
     
-    public class GetLibraryDirectory
+    public class GetLibraryType
     {
 
         [JsonProperty("key")]
         public string? Key { get; set; }
 
+        [JsonProperty("type")]
+        public string? Type { get; set; }
+
         [JsonProperty("title")]
         public string? Title { get; set; }
 
-        [JsonProperty("secondary")]
-        public bool? Secondary { get; set; }
+        [JsonProperty("active")]
+        public bool? Active { get; set; }
 
-        [JsonProperty("prompt")]
-        public string? Prompt { get; set; }
+        [JsonProperty("Filter")]
+        public List<Filter>? Filter { get; set; }
 
-        [JsonProperty("search")]
-        public bool? Search { get; set; }
+        [JsonProperty("Sort")]
+        public List<Sort>? Sort { get; set; }
+
+        [JsonProperty("Field")]
+        public List<Field>? Field { get; set; }
     }
 }

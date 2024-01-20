@@ -11,23 +11,15 @@
 namespace PlexAPI.Models.Requests
 {
     using Newtonsoft.Json;
+    using System.Collections.Generic;
     
-    public class GetLibraryDirectory
+    public class GetServerPreferencesMediaContainer
     {
 
-        [JsonProperty("key")]
-        public string? Key { get; set; }
+        [JsonProperty("size")]
+        public int? Size { get; set; }
 
-        [JsonProperty("title")]
-        public string? Title { get; set; }
-
-        [JsonProperty("secondary")]
-        public bool? Secondary { get; set; }
-
-        [JsonProperty("prompt")]
-        public string? Prompt { get; set; }
-
-        [JsonProperty("search")]
-        public bool? Search { get; set; }
+        [JsonProperty("Setting")]
+        public List<object>? Setting { get; set; }
     }
 }

@@ -54,5 +54,11 @@ namespace PlexAPI.Models.Requests
 
         [JsonProperty("Directory")]
         public List<GetLibraryDirectory>? Directory { get; set; }
+
+        [JsonProperty("Type")]
+        public List<GetLibraryType>? Type { get; set; }
+
+        [JsonProperty("FieldType")]
+        public List<FieldType>? FieldType { get; set; }
     }
 }

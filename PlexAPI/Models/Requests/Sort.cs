@@ -12,22 +12,25 @@ namespace PlexAPI.Models.Requests
 {
     using Newtonsoft.Json;
     
-    public class GetLibraryDirectory
+    public class Sort
     {
+
+        [JsonProperty("default")]
+        public string? Default { get; set; }
+
+        [JsonProperty("defaultDirection")]
+        public string? DefaultDirection { get; set; }
+
+        [JsonProperty("descKey")]
+        public string? DescKey { get; set; }
+
+        [JsonProperty("firstCharacterKey")]
+        public string? FirstCharacterKey { get; set; }
 
         [JsonProperty("key")]
         public string? Key { get; set; }
 
         [JsonProperty("title")]
         public string? Title { get; set; }
-
-        [JsonProperty("secondary")]
-        public bool? Secondary { get; set; }
-
-        [JsonProperty("prompt")]
-        public string? Prompt { get; set; }
-
-        [JsonProperty("search")]
-        public bool? Search { get; set; }
     }
 }
