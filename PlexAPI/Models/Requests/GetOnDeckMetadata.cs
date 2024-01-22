@@ -123,6 +123,6 @@ namespace PlexAPI.Models.Requests
         public List<GetOnDeckMedia>? Media { get; set; }
 
         [JsonProperty("Guid")]
-        public List<Guids>? Guids { get; set; }
+        public List<GetOnDeckGuids>? Guids { get; set; }
     }
 }

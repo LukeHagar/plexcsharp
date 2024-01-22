@@ -1,10 +1,10 @@
 # GetAvailableClientsResponseBody
 
-Unauthorized - Returned if the X-Plex-Token is missing from the header or query.
+Available Clients
 
 
 ## Fields
 
-| Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           |
-| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `Errors`                                                                              | List<[GetAvailableClientsErrors](../../Models/Requests/GetAvailableClientsErrors.md)> | :heavy_minus_sign:                                                                    | N/A                                                                                   |
+| Field                                                                                           | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `MediaContainer`                                                                                | [GetAvailableClientsMediaContainer](../../Models/Requests/GetAvailableClientsMediaContainer.md) | :heavy_minus_sign:                                                                              | N/A                                                                                             |

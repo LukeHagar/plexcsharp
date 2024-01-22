@@ -32,8 +32,13 @@ namespace PlexAPI.Models.Requests
         public HttpResponseMessage RawResponse { get; set; } = default!;
 
         /// <summary>
+        /// The Server Updates
+        /// </summary>
+        public GetUpdateStatusResponseBody? TwoHundredApplicationJsonObject { get; set; }
+
+        /// <summary>
         /// Unauthorized - Returned if the X-Plex-Token is missing from the header or query.
         /// </summary>
-        public GetUpdateStatusResponseBody? Object { get; set; }
+        public GetUpdateStatusUpdaterResponseBody? FourHundredAndOneApplicationJsonObject { get; set; }
     }
 }

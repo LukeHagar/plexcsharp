@@ -20,5 +20,17 @@ namespace PlexAPI.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=playlistID")]
         public double PlaylistID { get; set; } = default!;
+
+        /// <summary>
+        /// name of the playlist
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=title")]
+        public string? Title { get; set; }
+
+        /// <summary>
+        /// summary description of the playlist
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=summary")]
+        public string? Summary { get; set; }
     }
 }

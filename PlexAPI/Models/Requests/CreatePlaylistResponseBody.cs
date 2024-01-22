@@ -11,15 +11,14 @@
 namespace PlexAPI.Models.Requests
 {
     using Newtonsoft.Json;
-    using System.Collections.Generic;
     
     /// <summary>
-    /// Unauthorized - Returned if the X-Plex-Token is missing from the header or query.
+    /// returns all playlists
     /// </summary>
     public class CreatePlaylistResponseBody
     {
 
-        [JsonProperty("errors")]
-        public List<CreatePlaylistErrors>? Errors { get; set; }
+        [JsonProperty("MediaContainer")]
+        public CreatePlaylistMediaContainer? MediaContainer { get; set; }
     }
 }

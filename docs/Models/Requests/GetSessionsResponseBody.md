@@ -1,10 +1,10 @@
 # GetSessionsResponseBody
 
-Unauthorized - Returned if the X-Plex-Token is missing from the header or query.
+List of Active Plex Sessions
 
 
 ## Fields
 
-| Field                                                                 | Type                                                                  | Required                                                              | Description                                                           |
-| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| `Errors`                                                              | List<[GetSessionsErrors](../../Models/Requests/GetSessionsErrors.md)> | :heavy_minus_sign:                                                    | N/A                                                                   |
+| Field                                                                           | Type                                                                            | Required                                                                        | Description                                                                     |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `MediaContainer`                                                                | [GetSessionsMediaContainer](../../Models/Requests/GetSessionsMediaContainer.md) | :heavy_minus_sign:                                                              | N/A                                                                             |

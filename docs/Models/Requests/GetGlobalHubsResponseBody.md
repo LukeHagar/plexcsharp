@@ -1,10 +1,10 @@
 # GetGlobalHubsResponseBody
 
-Unauthorized - Returned if the X-Plex-Token is missing from the header or query.
+returns global hubs
 
 
 ## Fields
 
-| Field                                                                     | Type                                                                      | Required                                                                  | Description                                                               |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `Errors`                                                                  | List<[GetGlobalHubsErrors](../../Models/Requests/GetGlobalHubsErrors.md)> | :heavy_minus_sign:                                                        | N/A                                                                       |
+| Field                                                                               | Type                                                                                | Required                                                                            | Description                                                                         |
+| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `MediaContainer`                                                                    | [GetGlobalHubsMediaContainer](../../Models/Requests/GetGlobalHubsMediaContainer.md) | :heavy_minus_sign:                                                                  | N/A                                                                                 |

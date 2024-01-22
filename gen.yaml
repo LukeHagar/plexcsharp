@@ -8,7 +8,7 @@ generation:
   fixes:
     nameResolutionDec2023: false
 csharp:
-  version: 0.1.4
+  version: 0.1.5
   author: LukeHagar
   dotnetVersion: net5.0
   imports:

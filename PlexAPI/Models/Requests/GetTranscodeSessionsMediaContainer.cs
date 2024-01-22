@@ -17,7 +17,7 @@ namespace PlexAPI.Models.Requests
     {
 
         [JsonProperty("size")]
-        public double? Size { get; set; }
+        public int? Size { get; set; }
 
         [JsonProperty("TranscodeSession")]
         public List<TranscodeSession>? TranscodeSession { get; set; }

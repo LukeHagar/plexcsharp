@@ -1,10 +1,10 @@
 # CreatePlaylistResponseBody
 
-Unauthorized - Returned if the X-Plex-Token is missing from the header or query.
+returns all playlists
 
 
 ## Fields
 
-| Field                                                                       | Type                                                                        | Required                                                                    | Description                                                                 |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `Errors`                                                                    | List<[CreatePlaylistErrors](../../Models/Requests/CreatePlaylistErrors.md)> | :heavy_minus_sign:                                                          | N/A                                                                         |
+| Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `MediaContainer`                                                                      | [CreatePlaylistMediaContainer](../../Models/Requests/CreatePlaylistMediaContainer.md) | :heavy_minus_sign:                                                                    | N/A                                                                                   |

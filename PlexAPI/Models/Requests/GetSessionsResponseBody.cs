@@ -11,15 +11,14 @@
 namespace PlexAPI.Models.Requests
 {
     using Newtonsoft.Json;
-    using System.Collections.Generic;
     
     /// <summary>
-    /// Unauthorized - Returned if the X-Plex-Token is missing from the header or query.
+    /// List of Active Plex Sessions
     /// </summary>
     public class GetSessionsResponseBody
     {
 
-        [JsonProperty("errors")]
-        public List<GetSessionsErrors>? Errors { get; set; }
+        [JsonProperty("MediaContainer")]
+        public GetSessionsMediaContainer? MediaContainer { get; set; }
     }
 }

@@ -12,10 +12,12 @@ namespace PlexAPI.Models.Requests
 {
     
     /// <summary>
-    /// force overwriting of duplicate playlists. By default, a playlist file uploaded with the same path will overwrite the existing playlist. <br/>
+    /// Force overwriting of duplicate playlists.  <br/>
     /// 
     /// <remarks>
-    /// The `force` argument is used to disable overwriting. If the `force` argument is set to 0, a new playlist will be created suffixed with the date and time that the duplicate was uploaded.<br/>
+    /// By default, a playlist file uploaded with the same path will overwrite the existing playlist. <br/>
+    /// The `force` argument is used to disable overwriting.  <br/>
+    /// If the `force` argument is set to 0, a new playlist will be created suffixed with the date and time that the duplicate was uploaded.<br/>
     /// 
     /// </remarks>
     /// </summary>

@@ -13,7 +13,7 @@ namespace PlexAPI.Models.Requests
     using Newtonsoft.Json;
     
     /// <summary>
-    /// The Transcode Sessions
+    /// The Server Identity information
     /// </summary>
     public class GetServerIdentityResponseBody
     {

@@ -1,10 +1,10 @@
 # GetSessionHistoryResponseBody
 
-Unauthorized - Returned if the X-Plex-Token is missing from the header or query.
+List of Plex Sessions
 
 
 ## Fields
 
-| Field                                                                             | Type                                                                              | Required                                                                          | Description                                                                       |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `Errors`                                                                          | List<[GetSessionHistoryErrors](../../Models/Requests/GetSessionHistoryErrors.md)> | :heavy_minus_sign:                                                                | N/A                                                                               |
+| Field                                                                                       | Type                                                                                        | Required                                                                                    | Description                                                                                 |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `MediaContainer`                                                                            | [GetSessionHistoryMediaContainer](../../Models/Requests/GetSessionHistoryMediaContainer.md) | :heavy_minus_sign:                                                                          | N/A                                                                                         |

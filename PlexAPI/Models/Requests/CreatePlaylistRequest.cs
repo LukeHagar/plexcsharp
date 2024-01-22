@@ -37,7 +37,7 @@ namespace PlexAPI.Models.Requests
         /// the content URI for the playlist
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=uri")]
-        public string? Uri { get; set; }
+        public string Uri { get; set; } = default!;
 
         /// <summary>
         /// the play queue to copy to a playlist

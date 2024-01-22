@@ -19,18 +19,12 @@ namespace PlexAPI.Models.Requests
         /// the Id of the library to query
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=sectionId")]
-        public double SectionId { get; set; } = default!;
+        public long SectionId { get; set; } = default!;
 
         /// <summary>
-        /// item type
+        /// A key representing a specific tag within the section.
         /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=type")]
-        public double? Type { get; set; }
-
-        /// <summary>
-        /// the filter parameter
-        /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=filter")]
-        public string? Filter { get; set; }
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=tag")]
+        public Tag Tag { get; set; } = default!;
     }
 }

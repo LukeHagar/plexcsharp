@@ -41,6 +41,6 @@ namespace PlexAPI.Models.Requests
         public string? VideoProfile { get; set; }
 
         [JsonProperty("Stream")]
-        public List<Stream>? Stream { get; set; }
+        public List<GetOnDeckStream>? Stream { get; set; }
     }
 }

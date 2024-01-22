@@ -66,25 +66,45 @@ namespace PlexAPI
         /// Get Library Details
         /// 
         /// <remarks>
-        /// Returns details for the library. This can be thought of as an interstitial endpoint because it contains information about the library, rather than content itself. These details are:<br/>
+        /// ## Library Details Endpoint<br/>
         /// <br/>
-        /// - A list of `Directory` objects: These used to be used by clients to build a menuing system. There are four flavors of directory found here:<br/>
-        ///   - Primary: (e.g. all, On Deck) These are still used in some clients to provide &quot;shortcuts&quot; to subsets of media. However, with the exception of On Deck, all of them can be created by media queries, and the desire is to allow these to be customized by users.<br/>
-        ///   - Secondary: These are marked with `secondary=&quot;1&quot;` and were used by old clients to provide nested menus allowing for primative (but structured) navigation.<br/>
-        ///   - Special: There is a By Folder entry which allows browsing the media by the underlying filesystem structure, and there&apos;s a completely obsolete entry marked `search=&quot;1&quot;` which used to be used to allow clients to build search dialogs on the fly.<br/>
-        /// - A list of `Type` objects: These represent the types of things found in this library, and for each one, a list of `Filter` and `Sort` objects. These can be used to build rich controls around a grid of media to allow filtering and organizing. Note that these filters and sorts are optional, and without them, the client won&apos;t render any filtering controls. The `Type` object contains:<br/>
-        ///   - `key`: This provides the root endpoint returning the actual media list for the type.<br/>
-        ///   - `type`: This is the metadata type for the type (if a standard Plex type).<br/>
-        ///   - `title`: The title for for the content of this type (e.g. &quot;Movies&quot;).<br/>
-        /// - Each `Filter` object contains a description of the filter. Note that it is not an exhaustive list of the full media query language, but an inportant subset useful for top-level API.<br/>
-        ///   - `filter`: This represents the filter name used for the filter, which can be used to construct complex media queries with.<br/>
-        ///   - `filterType`: This is either `string`, `integer`, or `boolean`, and describes the type of values used for the filter.<br/>
-        ///   - `key`: This provides the endpoint where the possible range of values for the filter can be retrieved (e.g. for a &quot;Genre&quot; filter, it returns a list of all the genres in the library). This will include a `type` argument that matches the metadata type of the Type element.<br/>
-        ///   - `title`: The title for the filter.<br/>
-        /// - Each `Sort` object contains a description of the sort field.<br/>
-        ///   - `defaultDirection`: Can be either `asc` or `desc`, and specifies the default direction for the sort field (e.g. titles default to alphabetically ascending).<br/>
-        ///   - `descKey` and `key`: Contains the parameters passed to the `sort=...` media query for each direction of the sort.<br/>
-        ///   - `title`: The title of the field.<br/>
+        /// This endpoint provides comprehensive details about the library, focusing on organizational aspects rather than the content itself.   <br/>
+        /// <br/>
+        /// The details include:<br/>
+        /// <br/>
+        /// ### Directories<br/>
+        /// Organized into three categories:<br/>
+        /// <br/>
+        /// - **Primary Directories**: <br/>
+        ///   - Used in some clients for quick access to media subsets (e.g., &quot;All&quot;, &quot;On Deck&quot;).<br/>
+        ///   - Most can be replicated via media queries.<br/>
+        ///   - Customizable by users.<br/>
+        /// <br/>
+        /// - **Secondary Directories**:<br/>
+        ///   - Marked with `secondary=&quot;1&quot;`.<br/>
+        ///   - Used in older clients for structured navigation.<br/>
+        /// <br/>
+        /// - **Special Directories**:<br/>
+        ///   - Includes a &quot;By Folder&quot; entry for filesystem-based browsing.<br/>
+        ///   - Contains an obsolete `search=&quot;1&quot;` entry for on-the-fly search dialog creation.<br/>
+        /// <br/>
+        /// ### Types<br/>
+        /// Each type in the library comes with a set of filters and sorts, aiding in building dynamic media controls:<br/>
+        /// <br/>
+        /// - **Type Object Attributes**:<br/>
+        ///   - `key`: Endpoint for the media list of this type.<br/>
+        ///   - `type`: Metadata type (if standard Plex type).<br/>
+        ///   - `title`: Title for this content type (e.g., &quot;Movies&quot;).<br/>
+        /// <br/>
+        /// - **Filter Objects**:<br/>
+        ///   - Subset of the media query language.<br/>
+        ///   - Attributes include `filter` (name), `filterType` (data type), `key` (endpoint for value range), and `title`.<br/>
+        /// <br/>
+        /// - **Sort Objects**:<br/>
+        ///   - Description of sort fields.<br/>
+        ///   - Attributes include `defaultDirection` (asc/desc), `descKey` and `key` (sort parameters), and `title`.<br/>
+        /// <br/>
+        /// &gt; **Note**: Filters and sorts are optional; without them, no filtering controls are rendered.<br/>
         /// 
         /// </remarks>
         /// </summary>
@@ -103,11 +123,31 @@ namespace PlexAPI
         /// Get Library Items
         /// 
         /// <remarks>
-        /// This endpoint will return a list of library items filtered by the filter and type provided<br/>
+        /// Fetches details from a specific section of the library identified by a section key and a tag. The tag parameter accepts the following values:<br/>
+        /// - `all`: All items in the section.<br/>
+        /// - `unwatched`: Items that have not been played.<br/>
+        /// - `newest`: Items that are recently released.<br/>
+        /// - `recentlyAdded`: Items that are recently added to the library.<br/>
+        /// - `recentlyViewed`: Items that were recently viewed.<br/>
+        /// - `onDeck`: Items to continue watching.<br/>
+        /// - `collection`: Items categorized by collection.<br/>
+        /// - `edition`: Items categorized by edition.<br/>
+        /// - `genre`: Items categorized by genre.<br/>
+        /// - `year`: Items categorized by year of release.<br/>
+        /// - `decade`: Items categorized by decade.<br/>
+        /// - `director`: Items categorized by director.<br/>
+        /// - `actor`: Items categorized by starring actor.<br/>
+        /// - `country`: Items categorized by country of origin.<br/>
+        /// - `contentRating`: Items categorized by content rating.<br/>
+        /// - `rating`: Items categorized by rating.<br/>
+        /// - `resolution`: Items categorized by resolution.<br/>
+        /// - `firstCharacter`: Items categorized by the first letter.<br/>
+        /// - `folder`: Items categorized by folder.<br/>
+        /// - `search?type=1`: Search functionality within the section.<br/>
         /// 
         /// </remarks>
         /// </summary>
-        Task<GetLibraryItemsResponse> GetLibraryItemsAsync(double sectionId, double? type = null, string? filter = null);
+        Task<GetLibraryItemsResponse> GetLibraryItemsAsync(long sectionId, Tag tag);
 
         /// <summary>
         /// Refresh Library
@@ -118,26 +158,6 @@ namespace PlexAPI
         /// </remarks>
         /// </summary>
         Task<RefreshLibraryResponse> RefreshLibraryAsync(double sectionId);
-
-        /// <summary>
-        /// Get Latest Library Items
-        /// 
-        /// <remarks>
-        /// This endpoint will return a list of the latest library items filtered by the filter and type provided<br/>
-        /// 
-        /// </remarks>
-        /// </summary>
-        Task<GetLatestLibraryItemsResponse> GetLatestLibraryItemsAsync(double sectionId, double type, string? filter = null);
-
-        /// <summary>
-        /// Get Common Library Items
-        /// 
-        /// <remarks>
-        /// Represents a &quot;Common&quot; item. It contains only the common attributes of the items selected by the provided filter<br/>
-        /// 
-        /// </remarks>
-        /// </summary>
-        Task<GetCommonLibraryItemsResponse> GetCommonLibraryItemsAsync(double sectionId, double type, string? filter = null);
 
         /// <summary>
         /// Get Items Metadata
@@ -181,10 +201,10 @@ namespace PlexAPI
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.1.4";
+        private const string _sdkVersion = "0.1.5";
         private const string _sdkGenVersion = "2.237.3";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.1.4 2.237.3 0.0.3 Plex-API";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.1.5 2.237.3 0.0.3 Plex-API";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
         private ISpeakeasyHttpClient _securityClient;
@@ -439,16 +459,15 @@ namespace PlexAPI
         }
         
 
-        public async Task<GetLibraryItemsResponse> GetLibraryItemsAsync(double sectionId, double? type = null, string? filter = null)
+        public async Task<GetLibraryItemsResponse> GetLibraryItemsAsync(long sectionId, Tag tag)
         {
             var request = new GetLibraryItemsRequest()
             {
                 SectionId = sectionId,
-                Type = type,
-                Filter = filter,
+                Tag = tag,
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
-            var urlString = URLBuilder.Build(baseUrl, "/library/sections/{sectionId}/all", request);
+            var urlString = URLBuilder.Build(baseUrl, "/library/sections/{sectionId}/{tag}", request);
             
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
@@ -467,12 +486,7 @@ namespace PlexAPI
                 RawResponse = httpResponse
             };
             
-            if((response.StatusCode == 200) || (response.StatusCode == 400))
-            {
-                
-                return response;
-            }
-            if((response.StatusCode == 401))
+            if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
@@ -529,98 +543,6 @@ namespace PlexAPI
         }
         
 
-        public async Task<GetLatestLibraryItemsResponse> GetLatestLibraryItemsAsync(double sectionId, double type, string? filter = null)
-        {
-            var request = new GetLatestLibraryItemsRequest()
-            {
-                SectionId = sectionId,
-                Type = type,
-                Filter = filter,
-            };
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
-            var urlString = URLBuilder.Build(baseUrl, "/library/sections/{sectionId}/latest", request);
-            
-            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
-            var httpResponse = await client.SendAsync(httpRequest);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
-            var response = new GetLatestLibraryItemsResponse
-            {
-                StatusCode = (int)httpResponse.StatusCode,
-                ContentType = contentType,
-                RawResponse = httpResponse
-            };
-            
-            if((response.StatusCode == 200) || (response.StatusCode == 400))
-            {
-                
-                return response;
-            }
-            if((response.StatusCode == 401))
-            {
-                if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
-                {
-                    response.Object = JsonConvert.DeserializeObject<GetLatestLibraryItemsResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
-                }
-                
-                return response;
-            }
-            return response;
-        }
-        
-
-        public async Task<GetCommonLibraryItemsResponse> GetCommonLibraryItemsAsync(double sectionId, double type, string? filter = null)
-        {
-            var request = new GetCommonLibraryItemsRequest()
-            {
-                SectionId = sectionId,
-                Type = type,
-                Filter = filter,
-            };
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
-            var urlString = URLBuilder.Build(baseUrl, "/library/sections/{sectionId}/common", request);
-            
-            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
-            var httpResponse = await client.SendAsync(httpRequest);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
-            var response = new GetCommonLibraryItemsResponse
-            {
-                StatusCode = (int)httpResponse.StatusCode,
-                ContentType = contentType,
-                RawResponse = httpResponse
-            };
-            
-            if((response.StatusCode == 200) || (response.StatusCode == 400) || (response.StatusCode == 404))
-            {
-                
-                return response;
-            }
-            if((response.StatusCode == 401))
-            {
-                if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
-                {
-                    response.Object = JsonConvert.DeserializeObject<GetCommonLibraryItemsResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
-                }
-                
-                return response;
-            }
-            return response;
-        }
-        
-
         public async Task<GetMetadataResponse> GetMetadataAsync(double ratingKey)
         {
             var request = new GetMetadataRequest()
@@ -647,7 +569,16 @@ namespace PlexAPI
                 RawResponse = httpResponse
             };
             
-            if((response.StatusCode == 200) || (response.StatusCode == 400))
+            if((response.StatusCode == 200))
+            {
+                if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
+                {
+                    response.TwoHundredApplicationJsonObject = JsonConvert.DeserializeObject<GetMetadataResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
+                }
+                
+                return response;
+            }
+            if((response.StatusCode == 400))
             {
                 
                 return response;
@@ -656,7 +587,7 @@ namespace PlexAPI
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
-                    response.Object = JsonConvert.DeserializeObject<GetMetadataResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
+                    response.FourHundredAndOneApplicationJsonObject = JsonConvert.DeserializeObject<GetMetadataLibraryResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
                 
                 return response;
@@ -691,7 +622,16 @@ namespace PlexAPI
                 RawResponse = httpResponse
             };
             
-            if((response.StatusCode == 200) || (response.StatusCode == 400))
+            if((response.StatusCode == 200))
+            {
+                if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
+                {
+                    response.TwoHundredApplicationJsonObject = JsonConvert.DeserializeObject<GetMetadataChildrenResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
+                }
+                
+                return response;
+            }
+            if((response.StatusCode == 400))
             {
                 
                 return response;
@@ -700,7 +640,7 @@ namespace PlexAPI
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
-                    response.Object = JsonConvert.DeserializeObject<GetMetadataChildrenResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
+                    response.FourHundredAndOneApplicationJsonObject = JsonConvert.DeserializeObject<GetMetadataChildrenLibraryResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
                 
                 return response;

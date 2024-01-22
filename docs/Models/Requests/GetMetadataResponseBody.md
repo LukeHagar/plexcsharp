@@ -1,10 +1,10 @@
 # GetMetadataResponseBody
 
-Unauthorized - Returned if the X-Plex-Token is missing from the header or query.
+The metadata of the library item.
 
 
 ## Fields
 
-| Field                                                                 | Type                                                                  | Required                                                              | Description                                                           |
-| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| `Errors`                                                              | List<[GetMetadataErrors](../../Models/Requests/GetMetadataErrors.md)> | :heavy_minus_sign:                                                    | N/A                                                                   |
+| Field                                                                           | Type                                                                            | Required                                                                        | Description                                                                     |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `MediaContainer`                                                                | [GetMetadataMediaContainer](../../Models/Requests/GetMetadataMediaContainer.md) | :heavy_minus_sign:                                                              | N/A                                                                             |

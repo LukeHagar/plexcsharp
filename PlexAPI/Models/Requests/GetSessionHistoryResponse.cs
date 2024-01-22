@@ -32,8 +32,13 @@ namespace PlexAPI.Models.Requests
         public HttpResponseMessage RawResponse { get; set; } = default!;
 
         /// <summary>
+        /// List of Plex Sessions
+        /// </summary>
+        public GetSessionHistoryResponseBody? TwoHundredApplicationJsonObject { get; set; }
+
+        /// <summary>
         /// Unauthorized - Returned if the X-Plex-Token is missing from the header or query.
         /// </summary>
-        public GetSessionHistoryResponseBody? Object { get; set; }
+        public GetSessionHistorySessionsResponseBody? FourHundredAndOneApplicationJsonObject { get; set; }
     }
 }

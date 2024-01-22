@@ -11,15 +11,14 @@
 namespace PlexAPI.Models.Requests
 {
     using Newtonsoft.Json;
-    using System.Collections.Generic;
     
     /// <summary>
-    /// Unauthorized - Returned if the X-Plex-Token is missing from the header or query.
+    /// The hubs specific to the library
     /// </summary>
     public class GetLibraryHubsResponseBody
     {
 
-        [JsonProperty("errors")]
-        public List<GetLibraryHubsErrors>? Errors { get; set; }
+        [JsonProperty("MediaContainer")]
+        public GetLibraryHubsMediaContainer? MediaContainer { get; set; }
     }
 }

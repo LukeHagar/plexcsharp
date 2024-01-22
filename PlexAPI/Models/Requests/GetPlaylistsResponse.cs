@@ -32,8 +32,13 @@ namespace PlexAPI.Models.Requests
         public HttpResponseMessage RawResponse { get; set; } = default!;
 
         /// <summary>
+        /// returns all playlists
+        /// </summary>
+        public GetPlaylistsResponseBody? TwoHundredApplicationJsonObject { get; set; }
+
+        /// <summary>
         /// Unauthorized - Returned if the X-Plex-Token is missing from the header or query.
         /// </summary>
-        public GetPlaylistsResponseBody? Object { get; set; }
+        public GetPlaylistsPlaylistsResponseBody? FourHundredAndOneApplicationJsonObject { get; set; }
     }
 }

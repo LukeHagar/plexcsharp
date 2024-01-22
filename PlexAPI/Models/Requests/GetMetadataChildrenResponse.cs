@@ -32,8 +32,13 @@ namespace PlexAPI.Models.Requests
         public HttpResponseMessage RawResponse { get; set; } = default!;
 
         /// <summary>
+        /// The children of the library item.
+        /// </summary>
+        public GetMetadataChildrenResponseBody? TwoHundredApplicationJsonObject { get; set; }
+
+        /// <summary>
         /// Unauthorized - Returned if the X-Plex-Token is missing from the header or query.
         /// </summary>
-        public GetMetadataChildrenResponseBody? Object { get; set; }
+        public GetMetadataChildrenLibraryResponseBody? FourHundredAndOneApplicationJsonObject { get; set; }
     }
 }

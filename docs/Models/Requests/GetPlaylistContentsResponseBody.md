@@ -1,10 +1,10 @@
 # GetPlaylistContentsResponseBody
 
-Unauthorized - Returned if the X-Plex-Token is missing from the header or query.
+The playlist contents
 
 
 ## Fields
 
-| Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           |
-| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `Errors`                                                                              | List<[GetPlaylistContentsErrors](../../Models/Requests/GetPlaylistContentsErrors.md)> | :heavy_minus_sign:                                                                    | N/A                                                                                   |
+| Field                                                                                           | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `MediaContainer`                                                                                | [GetPlaylistContentsMediaContainer](../../Models/Requests/GetPlaylistContentsMediaContainer.md) | :heavy_minus_sign:                                                                              | N/A                                                                                             |

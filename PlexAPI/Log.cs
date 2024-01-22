@@ -42,11 +42,31 @@ namespace PlexAPI
         /// Logging a multi-line message
         /// 
         /// <remarks>
-        /// This endpoint will write multiple lines to the main Plex Media Server log in a single request. It takes a set of query strings as would normally sent to the above GET endpoint as a linefeed-separated block of POST data. The parameters for each query string match as above.<br/>
+        /// This endpoint allows for the batch addition of log entries to the main Plex Media Server log.  <br/>
+        /// It accepts a text/plain request body, where each line represents a distinct log entry.  <br/>
+        /// Each log entry consists of URL-encoded key-value pairs, specifying log attributes such as &apos;level&apos;, &apos;message&apos;, and &apos;source&apos;.  <br/>
+        /// <br/>
+        /// Log entries are separated by a newline character (`\n`).  <br/>
+        /// Each entry&apos;s parameters should be URL-encoded to ensure accurate parsing and handling of special characters.  <br/>
+        /// This method is efficient for logging multiple entries in a single API call, reducing the overhead of multiple individual requests.  <br/>
+        /// <br/>
+        /// The &apos;level&apos; parameter specifies the log entry&apos;s severity or importance, with the following integer values:<br/>
+        /// - `0`: Error - Critical issues that require immediate attention.<br/>
+        /// - `1`: Warning - Important events that are not critical but may indicate potential issues.<br/>
+        /// - `2`: Info - General informational messages about system operation.<br/>
+        /// - `3`: Debug - Detailed information useful for debugging purposes.<br/>
+        /// - `4`: Verbose - Highly detailed diagnostic information for in-depth analysis.<br/>
+        /// <br/>
+        /// The &apos;message&apos; parameter contains the log text, and &apos;source&apos; identifies the log message&apos;s origin (e.g., an application name or module).<br/>
+        /// <br/>
+        /// Example of a single log entry format:<br/>
+        /// `level=4&amp;message=Sample%20log%20entry&amp;source=applicationName`<br/>
+        /// <br/>
+        /// Ensure each parameter is properly URL-encoded to avoid interpretation issues.<br/>
         /// 
         /// </remarks>
         /// </summary>
-        Task<LogMultiLineResponse> LogMultiLineAsync();
+        Task<LogMultiLineResponse> LogMultiLineAsync(string request);
 
         /// <summary>
         /// Enabling Papertrail
@@ -70,10 +90,10 @@ namespace PlexAPI
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.1.4";
+        private const string _sdkVersion = "0.1.5";
         private const string _sdkGenVersion = "2.237.3";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.1.4 2.237.3 0.0.3 Plex-API";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.1.5 2.237.3 0.0.3 Plex-API";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
         private ISpeakeasyHttpClient _securityClient;
@@ -133,7 +153,7 @@ namespace PlexAPI
         }
         
 
-        public async Task<LogMultiLineResponse> LogMultiLineAsync()
+        public async Task<LogMultiLineResponse> LogMultiLineAsync(string request)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = baseUrl + "/log";
@@ -141,6 +161,15 @@ namespace PlexAPI
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
             
+            var serializedBody = RequestBodySerializer.Serialize(request, "Request", "string");
+            if (serializedBody == null) 
+            {
+                throw new ArgumentNullException("request body is required");
+            }
+            else
+            {
+                httpRequest.Content = serializedBody;
+            }
             
             var client = _securityClient;
             

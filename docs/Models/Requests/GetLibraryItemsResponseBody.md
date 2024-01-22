@@ -1,10 +1,10 @@
 # GetLibraryItemsResponseBody
 
-Unauthorized - Returned if the X-Plex-Token is missing from the header or query.
+The contents of the library by section and tag
 
 
 ## Fields
 
-| Field                                                                         | Type                                                                          | Required                                                                      | Description                                                                   |
-| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| `Errors`                                                                      | List<[GetLibraryItemsErrors](../../Models/Requests/GetLibraryItemsErrors.md)> | :heavy_minus_sign:                                                            | N/A                                                                           |
+| Field                                                                                   | Type                                                                                    | Required                                                                                | Description                                                                             |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `MediaContainer`                                                                        | [GetLibraryItemsMediaContainer](../../Models/Requests/GetLibraryItemsMediaContainer.md) | :heavy_minus_sign:                                                                      | N/A                                                                                     |

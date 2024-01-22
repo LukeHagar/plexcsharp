@@ -10,7 +10,6 @@
 #nullable enable
 namespace PlexAPI.Models.Requests
 {
-    using System.Collections.Generic;
     using System.Net.Http;
     using System;
     
@@ -35,11 +34,11 @@ namespace PlexAPI.Models.Requests
         /// <summary>
         /// Available Clients
         /// </summary>
-        public List<ResponseBody>? ResponseBodies { get; set; }
+        public GetAvailableClientsResponseBody? TwoHundredApplicationJsonObject { get; set; }
 
         /// <summary>
         /// Unauthorized - Returned if the X-Plex-Token is missing from the header or query.
         /// </summary>
-        public GetAvailableClientsResponseBody? Object { get; set; }
+        public GetAvailableClientsServerResponseBody? FourHundredAndOneApplicationJsonObject { get; set; }
     }
 }

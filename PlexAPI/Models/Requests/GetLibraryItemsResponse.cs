@@ -32,7 +32,7 @@ namespace PlexAPI.Models.Requests
         public HttpResponseMessage RawResponse { get; set; } = default!;
 
         /// <summary>
-        /// Unauthorized - Returned if the X-Plex-Token is missing from the header or query.
+        /// The contents of the library by section and tag
         /// </summary>
         public GetLibraryItemsResponseBody? Object { get; set; }
     }

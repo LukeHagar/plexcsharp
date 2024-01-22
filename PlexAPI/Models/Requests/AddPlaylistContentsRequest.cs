@@ -31,6 +31,6 @@ namespace PlexAPI.Models.Requests
         /// the play queue to add to a playlist
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=playQueueID")]
-        public double PlayQueueID { get; set; } = default!;
+        public double? PlayQueueID { get; set; }
     }
 }

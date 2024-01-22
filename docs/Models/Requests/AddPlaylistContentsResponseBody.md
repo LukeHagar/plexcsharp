@@ -1,10 +1,10 @@
 # AddPlaylistContentsResponseBody
 
-Unauthorized - Returned if the X-Plex-Token is missing from the header or query.
+Playlist Updated
 
 
 ## Fields
 
-| Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           |
-| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `Errors`                                                                              | List<[AddPlaylistContentsErrors](../../Models/Requests/AddPlaylistContentsErrors.md)> | :heavy_minus_sign:                                                                    | N/A                                                                                   |
+| Field                                                                                           | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `MediaContainer`                                                                                | [AddPlaylistContentsMediaContainer](../../Models/Requests/AddPlaylistContentsMediaContainer.md) | :heavy_minus_sign:                                                                              | N/A                                                                                             |

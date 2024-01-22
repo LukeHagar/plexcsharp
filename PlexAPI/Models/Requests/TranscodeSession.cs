@@ -28,7 +28,7 @@ namespace PlexAPI.Models.Requests
         public double? Progress { get; set; }
 
         [JsonProperty("size")]
-        public double? Size { get; set; }
+        public int? Size { get; set; }
 
         [JsonProperty("speed")]
         public double? Speed { get; set; }
@@ -37,7 +37,10 @@ namespace PlexAPI.Models.Requests
         public bool? Error { get; set; }
 
         [JsonProperty("duration")]
-        public double? Duration { get; set; }
+        public int? Duration { get; set; }
+
+        [JsonProperty("remaining")]
+        public int? Remaining { get; set; }
 
         [JsonProperty("context")]
         public string? Context { get; set; }
@@ -54,6 +57,9 @@ namespace PlexAPI.Models.Requests
         [JsonProperty("audioDecision")]
         public string? AudioDecision { get; set; }
 
+        [JsonProperty("subtitleDecision")]
+        public string? SubtitleDecision { get; set; }
+
         [JsonProperty("protocol")]
         public string? Protocol { get; set; }
 
@@ -67,7 +73,7 @@ namespace PlexAPI.Models.Requests
         public string? AudioCodec { get; set; }
 
         [JsonProperty("audioChannels")]
-        public double? AudioChannels { get; set; }
+        public int? AudioChannels { get; set; }
 
         [JsonProperty("transcodeHwRequested")]
         public bool? TranscodeHwRequested { get; set; }

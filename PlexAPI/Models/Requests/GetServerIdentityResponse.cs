@@ -32,7 +32,7 @@ namespace PlexAPI.Models.Requests
         public HttpResponseMessage RawResponse { get; set; } = default!;
 
         /// <summary>
-        /// The Transcode Sessions
+        /// The Server Identity information
         /// </summary>
         public GetServerIdentityResponseBody? TwoHundredApplicationJsonObject { get; set; }
 

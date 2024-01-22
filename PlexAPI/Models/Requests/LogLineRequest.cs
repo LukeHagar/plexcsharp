@@ -21,7 +21,7 @@ namespace PlexAPI.Models.Requests
         /// <remarks>
         /// 0: Error  <br/>
         /// 1: Warning  <br/>
-        /// 2: Info <br/>
+        /// 2: Info  <br/>
         /// 3: Debug  <br/>
         /// 4: Verbose<br/>
         /// 
