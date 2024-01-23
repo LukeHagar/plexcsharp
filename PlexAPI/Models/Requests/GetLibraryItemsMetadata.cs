@@ -83,6 +83,27 @@ namespace PlexAPI.Models.Requests
         [JsonProperty("ratingImage")]
         public string? RatingImage { get; set; }
 
+        [JsonProperty("grandparentRatingKey")]
+        public string? GrandparentRatingKey { get; set; }
+
+        [JsonProperty("grandparentGuid")]
+        public string? GrandparentGuid { get; set; }
+
+        [JsonProperty("grandparentKey")]
+        public string? GrandparentKey { get; set; }
+
+        [JsonProperty("grandparentTitle")]
+        public string? GrandparentTitle { get; set; }
+
+        [JsonProperty("grandparentThumb")]
+        public string? GrandparentThumb { get; set; }
+
+        [JsonProperty("grandparentArt")]
+        public string? GrandparentArt { get; set; }
+
+        [JsonProperty("grandparentTheme")]
+        public string? GrandparentTheme { get; set; }
+
         [JsonProperty("Media")]
         public List<GetLibraryItemsMedia>? Media { get; set; }
 
@@ -118,5 +139,53 @@ namespace PlexAPI.Models.Requests
 
         [JsonProperty("skipCount")]
         public int? SkipCount { get; set; }
+
+        [JsonProperty("index")]
+        public int? Index { get; set; }
+
+        [JsonProperty("theme")]
+        public string? Theme { get; set; }
+
+        [JsonProperty("leafCount")]
+        public int? LeafCount { get; set; }
+
+        [JsonProperty("viewedLeafCount")]
+        public int? ViewedLeafCount { get; set; }
+
+        [JsonProperty("childCount")]
+        public int? ChildCount { get; set; }
+
+        [JsonProperty("hasPremiumExtras")]
+        public string? HasPremiumExtras { get; set; }
+
+        [JsonProperty("hasPremiumPrimaryExtra")]
+        public string? HasPremiumPrimaryExtra { get; set; }
+
+        [JsonProperty("parentRatingKey")]
+        public string? ParentRatingKey { get; set; }
+
+        [JsonProperty("parentGuid")]
+        public string? ParentGuid { get; set; }
+
+        [JsonProperty("parentStudio")]
+        public string? ParentStudio { get; set; }
+
+        [JsonProperty("parentKey")]
+        public string? ParentKey { get; set; }
+
+        [JsonProperty("parentTitle")]
+        public string? ParentTitle { get; set; }
+
+        [JsonProperty("parentIndex")]
+        public int? ParentIndex { get; set; }
+
+        [JsonProperty("parentYear")]
+        public int? ParentYear { get; set; }
+
+        [JsonProperty("parentThumb")]
+        public string? ParentThumb { get; set; }
+
+        [JsonProperty("parentTheme")]
+        public string? ParentTheme { get; set; }
     }
 }
