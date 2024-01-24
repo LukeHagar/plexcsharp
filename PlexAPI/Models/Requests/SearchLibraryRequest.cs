@@ -12,19 +12,19 @@ namespace PlexAPI.Models.Requests
 {
     using PlexAPI.Utils;
     
-    public class GetTransientTokenRequest
+    public class SearchLibraryRequest
     {
 
         /// <summary>
-        /// `delegation` - This is the only supported `type` parameter.
+        /// the Id of the library to query
         /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=type")]
-        public GetTransientTokenQueryParamType Type { get; set; } = default!;
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=sectionId")]
+        public long SectionId { get; set; } = default!;
 
         /// <summary>
-        /// `all` - This is the only supported `scope` parameter.
+        /// Plex content type to search for
         /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=scope")]
-        public Scope Scope { get; set; } = default!;
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=type")]
+        public Type Type { get; set; } = default!;
     }
 }

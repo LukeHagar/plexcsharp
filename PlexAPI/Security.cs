@@ -36,7 +36,7 @@ namespace PlexAPI
         /// 
         /// </remarks>
         /// </summary>
-        Task<GetTransientTokenResponse> GetTransientTokenAsync(QueryParamType type, Scope scope);
+        Task<GetTransientTokenResponse> GetTransientTokenAsync(GetTransientTokenQueryParamType type, Scope scope);
 
         /// <summary>
         /// Get Source Connection Information
@@ -61,10 +61,10 @@ namespace PlexAPI
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.1.5";
-        private const string _sdkGenVersion = "2.237.3";
+        private const string _sdkVersion = "0.1.6";
+        private const string _sdkGenVersion = "2.239.0";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.1.5 2.237.3 0.0.3 Plex-API";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.1.6 2.239.0 0.0.3 Plex-API";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
         private ISpeakeasyHttpClient _securityClient;
@@ -78,7 +78,7 @@ namespace PlexAPI
         }
         
 
-        public async Task<GetTransientTokenResponse> GetTransientTokenAsync(QueryParamType type, Scope scope)
+        public async Task<GetTransientTokenResponse> GetTransientTokenAsync(GetTransientTokenQueryParamType type, Scope scope)
         {
             var request = new GetTransientTokenRequest()
             {
