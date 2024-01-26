@@ -28,17 +28,17 @@ var sdk = new PlexAPISDK(
         AccessToken = "<YOUR_API_KEY_HERE>",
     });
 
-var res = await sdk.Security.GetTransientTokenAsync(Type: QueryParamType.Delegation, Scope: Scope.All);
+var res = await sdk.Security.GetTransientTokenAsync(Type: GetTransientTokenQueryParamType.Delegation, Scope: Scope.All);
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                                                   | Type                                                        | Required                                                    | Description                                                 |
-| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
-| `Type`                                                      | [QueryParamType](../../Models/Requests/QueryParamType.md)   | :heavy_check_mark:                                          | `delegation` - This is the only supported `type` parameter. |
-| `Scope`                                                     | [Scope](../../Models/Requests/Scope.md)                     | :heavy_check_mark:                                          | `all` - This is the only supported `scope` parameter.       |
+| Parameter                                                                                   | Type                                                                                        | Required                                                                                    | Description                                                                                 |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `Type`                                                                                      | [GetTransientTokenQueryParamType](../../Models/Requests/GetTransientTokenQueryParamType.md) | :heavy_check_mark:                                                                          | `delegation` - This is the only supported `type` parameter.                                 |
+| `Scope`                                                                                     | [Scope](../../Models/Requests/Scope.md)                                                     | :heavy_check_mark:                                                                          | `all` - This is the only supported `scope` parameter.                                       |
 
 
 ### Response
