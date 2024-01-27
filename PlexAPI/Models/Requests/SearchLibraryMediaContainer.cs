@@ -13,7 +13,7 @@ namespace PlexAPI.Models.Requests
     using Newtonsoft.Json;
     using System.Collections.Generic;
     
-    public class GetLibraryItemsMediaContainer
+    public class SearchLibraryMediaContainer
     {
 
         [JsonProperty("size")]
@@ -28,20 +28,14 @@ namespace PlexAPI.Models.Requests
         [JsonProperty("identifier")]
         public string? Identifier { get; set; }
 
-        [JsonProperty("librarySectionID")]
-        public int? LibrarySectionID { get; set; }
-
-        [JsonProperty("librarySectionTitle")]
-        public string? LibrarySectionTitle { get; set; }
-
-        [JsonProperty("librarySectionUUID")]
-        public string? LibrarySectionUUID { get; set; }
-
         [JsonProperty("mediaTagPrefix")]
         public string? MediaTagPrefix { get; set; }
 
         [JsonProperty("mediaTagVersion")]
         public int? MediaTagVersion { get; set; }
+
+        [JsonProperty("nocache")]
+        public bool? Nocache { get; set; }
 
         [JsonProperty("thumb")]
         public string? Thumb { get; set; }
@@ -58,10 +52,7 @@ namespace PlexAPI.Models.Requests
         [JsonProperty("viewMode")]
         public int? ViewMode { get; set; }
 
-        [JsonProperty("mixedParents")]
-        public bool? MixedParents { get; set; }
-
         [JsonProperty("Metadata")]
-        public List<GetLibraryItemsMetadata>? Metadata { get; set; }
+        public List<SearchLibraryMetadata>? Metadata { get; set; }
     }
 }
