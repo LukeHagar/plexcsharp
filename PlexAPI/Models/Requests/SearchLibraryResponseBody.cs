@@ -10,16 +10,15 @@
 #nullable enable
 namespace PlexAPI.Models.Requests
 {
+    using Newtonsoft.Json;
     
     /// <summary>
-    /// Plex content type to search for
+    /// The contents of the library by section and type
     /// </summary>
-    public enum Type
+    public class SearchLibraryResponseBody
     {
-        One = 1,
-        Two = 2,
-        Three = 3,
-        Four = 4,
-    }
 
+        [JsonProperty("MediaContainer")]
+        public SearchLibraryMediaContainer? MediaContainer { get; set; }
+    }
 }
