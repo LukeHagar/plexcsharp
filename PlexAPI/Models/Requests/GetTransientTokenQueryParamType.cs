@@ -14,28 +14,24 @@ namespace PlexAPI.Models.Requests
     using System;
     
     /// <summary>
-    /// type of playlist to create
+    /// `delegation` - This is the only supported `type` parameter.
     /// </summary>
-    public enum QueryParamType
+    public enum GetTransientTokenQueryParamType
     {
-        [JsonProperty("audio")]
-        Audio,
-        [JsonProperty("video")]
-        Video,
-        [JsonProperty("photo")]
-        Photo,
+        [JsonProperty("delegation")]
+        Delegation,
     }
 
-    public static class QueryParamTypeExtension
+    public static class GetTransientTokenQueryParamTypeExtension
     {
-        public static string Value(this QueryParamType value)
+        public static string Value(this GetTransientTokenQueryParamType value)
         {
             return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
         }
 
-        public static QueryParamType ToEnum(this string value)
+        public static GetTransientTokenQueryParamType ToEnum(this string value)
         {
-            foreach(var field in typeof(QueryParamType).GetFields())
+            foreach(var field in typeof(GetTransientTokenQueryParamType).GetFields())
             {
                 var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
                 if (attributes.Length == 0)
@@ -48,14 +44,14 @@ namespace PlexAPI.Models.Requests
                 {
                     var enumVal = field.GetValue(null);
 
-                    if (enumVal is QueryParamType)
+                    if (enumVal is GetTransientTokenQueryParamType)
                     {
-                        return (QueryParamType)enumVal;
+                        return (GetTransientTokenQueryParamType)enumVal;
                     }
                 }
             }
 
-            throw new Exception($"Unknown value {value} for enum QueryParamType");
+            throw new Exception($"Unknown value {value} for enum GetTransientTokenQueryParamType");
         }
     }
 
