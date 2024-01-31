@@ -42,7 +42,7 @@ var sdk = new PlexAPISDK(
 
 CreatePlaylistRequest req = new CreatePlaylistRequest() {
     Title = "string",
-    Type = Type.Photo,
+    Type = QueryParamType.Photo,
     Smart = Smart.One,
     Uri = "https://inborn-brochure.biz",
 };

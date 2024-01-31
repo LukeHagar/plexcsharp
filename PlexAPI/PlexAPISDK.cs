@@ -151,6 +151,7 @@ namespace PlexAPI
         /// </remarks>
         /// </summary>
         public ILog Log { get; }
+        public IPlex Plex { get; }
 
         /// <summary>
         /// Playlists are ordered collections of media. They can be dumb (just a list of media) or smart (based on a media query, such as &quot;all albums from 2017&quot;). <br/>
@@ -235,10 +236,10 @@ namespace PlexAPI
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.1.5";
-        private const string _sdkGenVersion = "2.237.3";
+        private const string _sdkVersion = "0.2.0";
+        private const string _sdkGenVersion = "2.239.4";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.1.5 2.237.3 0.0.3 Plex-API";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.2.0 2.239.4 0.0.3 Plex-API";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
         private ISpeakeasyHttpClient _securityClient;
@@ -250,6 +251,7 @@ namespace PlexAPI
         public ISearch Search { get; private set; }
         public ILibrary Library { get; private set; }
         public ILog Log { get; private set; }
+        public IPlex Plex { get; private set; }
         public IPlaylists Playlists { get; private set; }
         public ISecurity Security { get; private set; }
         public ISessions Sessions { get; private set; }
@@ -296,6 +298,7 @@ namespace PlexAPI
             Search = new Search(_defaultClient, _securityClient, _serverUrl, SDKConfiguration);
             Library = new Library(_defaultClient, _securityClient, _serverUrl, SDKConfiguration);
             Log = new Log(_defaultClient, _securityClient, _serverUrl, SDKConfiguration);
+            Plex = new Plex(_defaultClient, _securityClient, _serverUrl, SDKConfiguration);
             Playlists = new Playlists(_defaultClient, _securityClient, _serverUrl, SDKConfiguration);
             Security = new Security(_defaultClient, _securityClient, _serverUrl, SDKConfiguration);
             Sessions = new Sessions(_defaultClient, _securityClient, _serverUrl, SDKConfiguration);
