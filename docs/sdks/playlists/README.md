@@ -35,14 +35,13 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
+var sdk = new PlexAPISDK(security: new Models.Components.Security() {
         AccessToken = "<YOUR_API_KEY_HERE>",
     });
 
 CreatePlaylistRequest req = new CreatePlaylistRequest() {
     Title = "string",
-    Type = Type.Photo,
+    Type = QueryParamType.Photo,
     Smart = Smart.One,
     Uri = "https://inborn-brochure.biz",
 };
@@ -75,12 +74,13 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
+var sdk = new PlexAPISDK(security: new Models.Components.Security() {
         AccessToken = "<YOUR_API_KEY_HERE>",
     });
 
-var res = await sdk.Playlists.GetPlaylistsAsync(PlaylistType: PlaylistType.Audio, Smart: QueryParamSmart.Zero);
+var res = await sdk.Playlists.GetPlaylistsAsync(
+    playlistType: PlaylistType.Audio,
+    smart: QueryParamSmart.Zero);
 
 // handle response
 ```
@@ -111,12 +111,11 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
+var sdk = new PlexAPISDK(security: new Models.Components.Security() {
         AccessToken = "<YOUR_API_KEY_HERE>",
     });
 
-var res = await sdk.Playlists.GetPlaylistAsync(PlaylistID: 4109.48D);
+var res = await sdk.Playlists.GetPlaylistAsync(playlistID: 4109.48D);
 
 // handle response
 ```
@@ -145,12 +144,11 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
+var sdk = new PlexAPISDK(security: new Models.Components.Security() {
         AccessToken = "<YOUR_API_KEY_HERE>",
     });
 
-var res = await sdk.Playlists.DeletePlaylistAsync(PlaylistID: 216.22D);
+var res = await sdk.Playlists.DeletePlaylistAsync(playlistID: 216.22D);
 
 // handle response
 ```
@@ -179,12 +177,14 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
+var sdk = new PlexAPISDK(security: new Models.Components.Security() {
         AccessToken = "<YOUR_API_KEY_HERE>",
     });
 
-var res = await sdk.Playlists.UpdatePlaylistAsync(PlaylistID: 3915D, Title: "string", Summary: "string");
+var res = await sdk.Playlists.UpdatePlaylistAsync(
+    playlistID: 3915D,
+    title: "string",
+    summary: "string");
 
 // handle response
 ```
@@ -218,12 +218,13 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
+var sdk = new PlexAPISDK(security: new Models.Components.Security() {
         AccessToken = "<YOUR_API_KEY_HERE>",
     });
 
-var res = await sdk.Playlists.GetPlaylistContentsAsync(PlaylistID: 5004.46D, Type: 9403.59D);
+var res = await sdk.Playlists.GetPlaylistContentsAsync(
+    playlistID: 5004.46D,
+    type: 9403.59D);
 
 // handle response
 ```
@@ -253,12 +254,11 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
+var sdk = new PlexAPISDK(security: new Models.Components.Security() {
         AccessToken = "<YOUR_API_KEY_HERE>",
     });
 
-var res = await sdk.Playlists.ClearPlaylistContentsAsync(PlaylistID: 1893.18D);
+var res = await sdk.Playlists.ClearPlaylistContentsAsync(playlistID: 1893.18D);
 
 // handle response
 ```
@@ -288,12 +288,14 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
+var sdk = new PlexAPISDK(security: new Models.Components.Security() {
         AccessToken = "<YOUR_API_KEY_HERE>",
     });
 
-var res = await sdk.Playlists.AddPlaylistContentsAsync(PlaylistID: 8502.01D, Uri: "server://12345/com.plexapp.plugins.library/library/metadata/1", PlayQueueID: 123D);
+var res = await sdk.Playlists.AddPlaylistContentsAsync(
+    playlistID: 8502.01D,
+    uri: "server://12345/com.plexapp.plugins.library/library/metadata/1",
+    playQueueID: 123D);
 
 // handle response
 ```
@@ -324,12 +326,13 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
+var sdk = new PlexAPISDK(security: new Models.Components.Security() {
         AccessToken = "<YOUR_API_KEY_HERE>",
     });
 
-var res = await sdk.Playlists.UploadPlaylistAsync(Path: "/home/barkley/playlist.m3u", Force: Force.Zero);
+var res = await sdk.Playlists.UploadPlaylistAsync(
+    path: "/home/barkley/playlist.m3u",
+    force: Force.Zero);
 
 // handle response
 ```
