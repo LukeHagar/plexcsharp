@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 5a8dbcbc-e0ee-41f0-9d84-b8b50567d1e9
 management:
-  docChecksum: 7aba498c024534142941d65a7c2e649c
+  docChecksum: 94439465ae5d544f0e52b00719af05ee
   docVersion: 0.0.3
   speakeasyVersion: internal
-  generationVersion: 2.237.3
-  releaseVersion: 0.1.5
-  configChecksum: 112f7d72fae8408e2dd1ef59ee88fb3a
+  generationVersion: 2.248.1
+  releaseVersion: 0.2.0
+  configChecksum: f8958faa630145f5a0a4562f1fc8eb84
   repoURL: https://github.com/LukeHagar/plexcsharp.git
   repoSubDirectory: .
   published: true
@@ -14,8 +14,9 @@ features:
   csharp:
     core: 3.3.1
     flattening: 2.81.1
-    globalSecurity: 2.81.3
+    globalSecurity: 2.82.0
     globalServerURLs: 2.82.2
+    methodServerURLs: 2.82.1
     nameOverrides: 2.81.1
 generatedFiles:
   - PlexAPI/Server.cs
@@ -26,6 +27,8 @@ generatedFiles:
   - PlexAPI/Search.cs
   - PlexAPI/Library.cs
   - PlexAPI/Log.cs
+  - PlexAPI/Tv.cs
+  - PlexAPI/Plex.cs
   - PlexAPI/Playlists.cs
   - PlexAPI/Security.cs
   - PlexAPI/Sessions.cs
@@ -203,7 +206,7 @@ generatedFiles:
   - PlexAPI/Models/Requests/GetRecentlyAddedResponse.cs
   - PlexAPI/Models/Requests/GetLibrariesErrors.cs
   - PlexAPI/Models/Requests/GetLibrariesLibraryResponseBody.cs
-  - PlexAPI/Models/Requests/Location.cs
+  - PlexAPI/Models/Requests/GetLibrariesLocation.cs
   - PlexAPI/Models/Requests/GetLibrariesDirectory.cs
   - PlexAPI/Models/Requests/GetLibrariesMediaContainer.cs
   - PlexAPI/Models/Requests/GetLibrariesResponseBody.cs
@@ -243,6 +246,12 @@ generatedFiles:
   - PlexAPI/Models/Requests/RefreshLibraryErrors.cs
   - PlexAPI/Models/Requests/RefreshLibraryResponseBody.cs
   - PlexAPI/Models/Requests/RefreshLibraryResponse.cs
+  - PlexAPI/Models/Requests/Type.cs
+  - PlexAPI/Models/Requests/SearchLibraryRequest.cs
+  - PlexAPI/Models/Requests/SearchLibraryMetadata.cs
+  - PlexAPI/Models/Requests/SearchLibraryMediaContainer.cs
+  - PlexAPI/Models/Requests/SearchLibraryResponseBody.cs
+  - PlexAPI/Models/Requests/SearchLibraryResponse.cs
   - PlexAPI/Models/Requests/GetMetadataRequest.cs
   - PlexAPI/Models/Requests/GetMetadataErrors.cs
   - PlexAPI/Models/Requests/GetMetadataLibraryResponseBody.cs
@@ -290,7 +299,17 @@ generatedFiles:
   - PlexAPI/Models/Requests/EnablePaperTrailErrors.cs
   - PlexAPI/Models/Requests/EnablePaperTrailResponseBody.cs
   - PlexAPI/Models/Requests/EnablePaperTrailResponse.cs
-  - PlexAPI/Models/Requests/Type.cs
+  - PlexAPI/Models/Requests/GetPinRequest.cs
+  - PlexAPI/Models/Requests/GetPinErrors.cs
+  - PlexAPI/Models/Requests/GetPinPlexTvResponseBody.cs
+  - PlexAPI/Models/Requests/Location.cs
+  - PlexAPI/Models/Requests/GetPinResponseBody.cs
+  - PlexAPI/Models/Requests/GetPinResponse.cs
+  - PlexAPI/Models/Requests/GetTokenRequest.cs
+  - PlexAPI/Models/Requests/GetTokenErrors.cs
+  - PlexAPI/Models/Requests/GetTokenResponseBody.cs
+  - PlexAPI/Models/Requests/GetTokenResponse.cs
+  - PlexAPI/Models/Requests/QueryParamType.cs
   - PlexAPI/Models/Requests/Smart.cs
   - PlexAPI/Models/Requests/CreatePlaylistRequest.cs
   - PlexAPI/Models/Requests/CreatePlaylistErrors.cs
@@ -353,7 +372,7 @@ generatedFiles:
   - PlexAPI/Models/Requests/UploadPlaylistErrors.cs
   - PlexAPI/Models/Requests/UploadPlaylistResponseBody.cs
   - PlexAPI/Models/Requests/UploadPlaylistResponse.cs
-  - PlexAPI/Models/Requests/QueryParamType.cs
+  - PlexAPI/Models/Requests/GetTransientTokenQueryParamType.cs
   - PlexAPI/Models/Requests/Scope.cs
   - PlexAPI/Models/Requests/GetTransientTokenRequest.cs
   - PlexAPI/Models/Requests/GetTransientTokenErrors.cs
@@ -575,7 +594,7 @@ generatedFiles:
   - docs/Models/Requests/GetRecentlyAddedResponse.md
   - docs/Models/Requests/GetLibrariesErrors.md
   - docs/Models/Requests/GetLibrariesLibraryResponseBody.md
-  - docs/Models/Requests/Location.md
+  - docs/Models/Requests/GetLibrariesLocation.md
   - docs/Models/Requests/GetLibrariesDirectory.md
   - docs/Models/Requests/GetLibrariesMediaContainer.md
   - docs/Models/Requests/GetLibrariesResponseBody.md
@@ -615,6 +634,12 @@ generatedFiles:
   - docs/Models/Requests/RefreshLibraryErrors.md
   - docs/Models/Requests/RefreshLibraryResponseBody.md
   - docs/Models/Requests/RefreshLibraryResponse.md
+  - docs/Models/Requests/Type.md
+  - docs/Models/Requests/SearchLibraryRequest.md
+  - docs/Models/Requests/SearchLibraryMetadata.md
+  - docs/Models/Requests/SearchLibraryMediaContainer.md
+  - docs/Models/Requests/SearchLibraryResponseBody.md
+  - docs/Models/Requests/SearchLibraryResponse.md
   - docs/Models/Requests/GetMetadataRequest.md
   - docs/Models/Requests/GetMetadataErrors.md
   - docs/Models/Requests/GetMetadataLibraryResponseBody.md
@@ -662,7 +687,17 @@ generatedFiles:
   - docs/Models/Requests/EnablePaperTrailErrors.md
   - docs/Models/Requests/EnablePaperTrailResponseBody.md
   - docs/Models/Requests/EnablePaperTrailResponse.md
-  - docs/Models/Requests/Type.md
+  - docs/Models/Requests/GetPinRequest.md
+  - docs/Models/Requests/GetPinErrors.md
+  - docs/Models/Requests/GetPinPlexTvResponseBody.md
+  - docs/Models/Requests/Location.md
+  - docs/Models/Requests/GetPinResponseBody.md
+  - docs/Models/Requests/GetPinResponse.md
+  - docs/Models/Requests/GetTokenRequest.md
+  - docs/Models/Requests/GetTokenErrors.md
+  - docs/Models/Requests/GetTokenResponseBody.md
+  - docs/Models/Requests/GetTokenResponse.md
+  - docs/Models/Requests/QueryParamType.md
   - docs/Models/Requests/Smart.md
   - docs/Models/Requests/CreatePlaylistRequest.md
   - docs/Models/Requests/CreatePlaylistErrors.md
@@ -725,7 +760,7 @@ generatedFiles:
   - docs/Models/Requests/UploadPlaylistErrors.md
   - docs/Models/Requests/UploadPlaylistResponseBody.md
   - docs/Models/Requests/UploadPlaylistResponse.md
-  - docs/Models/Requests/QueryParamType.md
+  - docs/Models/Requests/GetTransientTokenQueryParamType.md
   - docs/Models/Requests/Scope.md
   - docs/Models/Requests/GetTransientTokenRequest.md
   - docs/Models/Requests/GetTransientTokenErrors.md
@@ -799,6 +834,8 @@ generatedFiles:
   - docs/sdks/search/README.md
   - docs/sdks/library/README.md
   - docs/sdks/log/README.md
+  - docs/sdks/plex/README.md
+  - docs/sdks/tv/README.md
   - docs/sdks/playlists/README.md
   - docs/sdks/security/README.md
   - docs/sdks/sessions/README.md
