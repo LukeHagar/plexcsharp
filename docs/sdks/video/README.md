@@ -22,8 +22,7 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
+var sdk = new PlexAPISDK(security: new Models.Components.Security() {
         AccessToken = "<YOUR_API_KEY_HERE>",
     });
 
@@ -63,8 +62,7 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
+var sdk = new PlexAPISDK(security: new Models.Components.Security() {
         AccessToken = "<YOUR_API_KEY_HERE>",
     });
 
