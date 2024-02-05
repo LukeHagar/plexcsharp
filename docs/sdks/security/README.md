@@ -23,22 +23,23 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
+var sdk = new PlexAPISDK(security: new Models.Components.Security() {
         AccessToken = "<YOUR_API_KEY_HERE>",
     });
 
-var res = await sdk.Security.GetTransientTokenAsync(Type: QueryParamType.Delegation, Scope: Scope.All);
+var res = await sdk.Security.GetTransientTokenAsync(
+    type: GetTransientTokenQueryParamType.Delegation,
+    scope: Scope.All);
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                                                   | Type                                                        | Required                                                    | Description                                                 |
-| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
-| `Type`                                                      | [QueryParamType](../../Models/Requests/QueryParamType.md)   | :heavy_check_mark:                                          | `delegation` - This is the only supported `type` parameter. |
-| `Scope`                                                     | [Scope](../../Models/Requests/Scope.md)                     | :heavy_check_mark:                                          | `all` - This is the only supported `scope` parameter.       |
+| Parameter                                                                                   | Type                                                                                        | Required                                                                                    | Description                                                                                 |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `Type`                                                                                      | [GetTransientTokenQueryParamType](../../Models/Requests/GetTransientTokenQueryParamType.md) | :heavy_check_mark:                                                                          | `delegation` - This is the only supported `type` parameter.                                 |
+| `Scope`                                                                                     | [Scope](../../Models/Requests/Scope.md)                                                     | :heavy_check_mark:                                                                          | `all` - This is the only supported `scope` parameter.                                       |
 
 
 ### Response
@@ -59,12 +60,11 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
+var sdk = new PlexAPISDK(security: new Models.Components.Security() {
         AccessToken = "<YOUR_API_KEY_HERE>",
     });
 
-var res = await sdk.Security.GetSourceConnectionInformationAsync(Source: "server://client-identifier");
+var res = await sdk.Security.GetSourceConnectionInformationAsync(source: "server://client-identifier");
 
 // handle response
 ```

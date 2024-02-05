@@ -35,12 +35,14 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
+var sdk = new PlexAPISDK(security: new Models.Components.Security() {
         AccessToken = "<YOUR_API_KEY_HERE>",
     });
 
-var res = await sdk.Search.PerformSearchAsync(Query: "dylan", SectionId: 1516.53D, Limit: 5D);
+var res = await sdk.Search.PerformSearchAsync(
+    query: "dylan",
+    sectionId: 1516.53D,
+    limit: 5D);
 
 // handle response
 ```
@@ -74,12 +76,14 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
+var sdk = new PlexAPISDK(security: new Models.Components.Security() {
         AccessToken = "<YOUR_API_KEY_HERE>",
     });
 
-var res = await sdk.Search.PerformVoiceSearchAsync(Query: "dead+poop", SectionId: 4094.8D, Limit: 5D);
+var res = await sdk.Search.PerformVoiceSearchAsync(
+    query: "dead+poop",
+    sectionId: 4094.8D,
+    limit: 5D);
 
 // handle response
 ```
@@ -109,12 +113,11 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
+var sdk = new PlexAPISDK(security: new Models.Components.Security() {
         AccessToken = "<YOUR_API_KEY_HERE>",
     });
 
-var res = await sdk.Search.GetSearchResultsAsync(Query: "110");
+var res = await sdk.Search.GetSearchResultsAsync(query: "110");
 
 // handle response
 ```
