@@ -26,8 +26,7 @@ dotnet add package Plex-API
 using PlexAPI;
 using PlexAPI.Models.Components;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
+var sdk = new PlexAPISDK(security: new Models.Components.Security() {
         AccessToken = "<YOUR_API_KEY_HERE>",
     });
 
@@ -90,6 +89,7 @@ var res = await sdk.Server.GetServerCapabilitiesAsync();
 * [DeleteLibrary](docs/sdks/library/README.md#deletelibrary) - Delete Library Section
 * [GetLibraryItems](docs/sdks/library/README.md#getlibraryitems) - Get Library Items
 * [RefreshLibrary](docs/sdks/library/README.md#refreshlibrary) - Refresh Library
+* [SearchLibrary](docs/sdks/library/README.md#searchlibrary) - Search Library
 * [GetMetadata](docs/sdks/library/README.md#getmetadata) - Get Items Metadata
 * [GetMetadataChildren](docs/sdks/library/README.md#getmetadatachildren) - Get Items Children
 * [GetOnDeck](docs/sdks/library/README.md#getondeck) - Get On Deck
@@ -99,6 +99,12 @@ var res = await sdk.Server.GetServerCapabilitiesAsync();
 * [LogLine](docs/sdks/log/README.md#logline) - Logging a single line message.
 * [LogMultiLine](docs/sdks/log/README.md#logmultiline) - Logging a multi-line message
 * [EnablePaperTrail](docs/sdks/log/README.md#enablepapertrail) - Enabling Papertrail
+
+
+### [Plex.Tv](docs/sdks/tv/README.md)
+
+* [GetPin](docs/sdks/tv/README.md#getpin) - Get a Pin
+* [GetToken](docs/sdks/tv/README.md#gettoken) - Get Access Token
 
 ### [Playlists](docs/sdks/playlists/README.md)
 
@@ -161,7 +167,54 @@ Some of the server options above contain variables. If you want to set the value
 ### Override Server URL Per-Client
 
 The default server can also be overridden globally by passing a URL to the `serverUrl: str` optional parameter when initializing the SDK client instance. For example:
+
+
+### Override Server URL Per-Operation
+
+The server URL can also be overridden on a per-operation basis, provided a server list was specified for the operation. For example:
+```csharp
+using PlexAPI;
+using PlexAPI.Models.Components;
+using PlexAPI.Models.Requests;
+
+var sdk = new PlexAPISDK(security: new Models.Components.Security() {
+        AccessToken = "<YOUR_API_KEY_HERE>",
+    });
+
+var res = await sdk.Plex.Tv.GetPinAsync(
+    serverUrl: "https://plex.tv/api/v2",
+    xPlexClientIdentifier: "string",
+    strong: false);
+
+// handle response
+```
 <!-- End Server Selection [server] -->
+
+<!-- Start Authentication [security] -->
+## Authentication
+
+### Per-Client Security Schemes
+
+This SDK supports the following security scheme globally:
+
+| Name          | Type          | Scheme        |
+| ------------- | ------------- | ------------- |
+| `accessToken` | apiKey        | API key       |
+
+You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. For example:
+```csharp
+using PlexAPI;
+using PlexAPI.Models.Components;
+
+var sdk = new PlexAPISDK(security: new Models.Components.Security() {
+        AccessToken = "<YOUR_API_KEY_HERE>",
+    });
+
+var res = await sdk.Server.GetServerCapabilitiesAsync();
+
+// handle response
+```
+<!-- End Authentication [security] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
