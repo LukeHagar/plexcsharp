@@ -24,12 +24,14 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
+var sdk = new PlexAPISDK(security: new Models.Components.Security() {
         AccessToken = "<YOUR_API_KEY_HERE>",
     });
 
-var res = await sdk.Log.LogLineAsync(Level: Level.Three, Message: "Test log message", Source: "Postman");
+var res = await sdk.Log.LogLineAsync(
+    level: Level.Three,
+    message: "Test log message",
+    source: "Postman");
 
 // handle response
 ```
@@ -79,8 +81,7 @@ Ensure each parameter is properly URL-encoded to avoid interpretation issues.
 using PlexAPI;
 using PlexAPI.Models.Components;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
+var sdk = new PlexAPISDK(security: new Models.Components.Security() {
         AccessToken = "<YOUR_API_KEY_HERE>",
     });
 
@@ -116,8 +117,7 @@ This endpoint will enable all Plex Media Serverlogs to be sent to the Papertrail
 using PlexAPI;
 using PlexAPI.Models.Components;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
+var sdk = new PlexAPISDK(security: new Models.Components.Security() {
         AccessToken = "<YOUR_API_KEY_HERE>",
     });
 

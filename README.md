@@ -26,8 +26,7 @@ dotnet add package Plex-API
 using PlexAPI;
 using PlexAPI.Models.Components;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
+var sdk = new PlexAPISDK(security: new Models.Components.Security() {
         AccessToken = "<YOUR_API_KEY_HERE>",
     });
 
@@ -56,6 +55,11 @@ var res = await sdk.Server.GetServerCapabilitiesAsync();
 * [MarkPlayed](docs/sdks/media/README.md#markplayed) - Mark Media Played
 * [MarkUnplayed](docs/sdks/media/README.md#markunplayed) - Mark Media Unplayed
 * [UpdatePlayProgress](docs/sdks/media/README.md#updateplayprogress) - Update Media Play Progress
+
+### [Video](docs/sdks/video/README.md)
+
+* [GetTimeline](docs/sdks/video/README.md#gettimeline) - Get the timeline for a media item
+* [StartUniversalTranscode](docs/sdks/video/README.md#startuniversaltranscode) - Start Universal Transcode
 
 ### [Activities](docs/sdks/activities/README.md)
 
@@ -90,6 +94,7 @@ var res = await sdk.Server.GetServerCapabilitiesAsync();
 * [DeleteLibrary](docs/sdks/library/README.md#deletelibrary) - Delete Library Section
 * [GetLibraryItems](docs/sdks/library/README.md#getlibraryitems) - Get Library Items
 * [RefreshLibrary](docs/sdks/library/README.md#refreshlibrary) - Refresh Library
+* [SearchLibrary](docs/sdks/library/README.md#searchlibrary) - Search Library
 * [GetMetadata](docs/sdks/library/README.md#getmetadata) - Get Items Metadata
 * [GetMetadataChildren](docs/sdks/library/README.md#getmetadatachildren) - Get Items Children
 * [GetOnDeck](docs/sdks/library/README.md#getondeck) - Get On Deck
@@ -99,6 +104,11 @@ var res = await sdk.Server.GetServerCapabilitiesAsync();
 * [LogLine](docs/sdks/log/README.md#logline) - Logging a single line message.
 * [LogMultiLine](docs/sdks/log/README.md#logmultiline) - Logging a multi-line message
 * [EnablePaperTrail](docs/sdks/log/README.md#enablepapertrail) - Enabling Papertrail
+
+### [Plex](docs/sdks/plex/README.md)
+
+* [GetPin](docs/sdks/plex/README.md#getpin) - Get a Pin
+* [GetToken](docs/sdks/plex/README.md#gettoken) - Get Access Token
 
 ### [Playlists](docs/sdks/playlists/README.md)
 
@@ -117,6 +127,10 @@ var res = await sdk.Server.GetServerCapabilitiesAsync();
 * [GetTransientToken](docs/sdks/security/README.md#gettransienttoken) - Get a Transient Token.
 * [GetSourceConnectionInformation](docs/sdks/security/README.md#getsourceconnectioninformation) - Get Source Connection Information
 
+### [Statistics](docs/sdks/statistics/README.md)
+
+* [GetStatistics](docs/sdks/statistics/README.md#getstatistics) - Get Media Statistics
+
 ### [Sessions](docs/sdks/sessions/README.md)
 
 * [GetSessions](docs/sdks/sessions/README.md#getsessions) - Get Active Sessions
@@ -129,11 +143,6 @@ var res = await sdk.Server.GetServerCapabilitiesAsync();
 * [GetUpdateStatus](docs/sdks/updater/README.md#getupdatestatus) - Querying status of updates
 * [CheckForUpdates](docs/sdks/updater/README.md#checkforupdates) - Checking for updates
 * [ApplyUpdates](docs/sdks/updater/README.md#applyupdates) - Apply Updates
-
-### [Video](docs/sdks/video/README.md)
-
-* [StartUniversalTranscode](docs/sdks/video/README.md#startuniversaltranscode) - Start Universal Transcode
-* [GetTimeline](docs/sdks/video/README.md#gettimeline) - Get the timeline for a media item
 <!-- End Available Resources and Operations [operations] -->
 
 <!-- Start Server Selection [server] -->
@@ -161,7 +170,54 @@ Some of the server options above contain variables. If you want to set the value
 ### Override Server URL Per-Client
 
 The default server can also be overridden globally by passing a URL to the `serverUrl: str` optional parameter when initializing the SDK client instance. For example:
+
+
+### Override Server URL Per-Operation
+
+The server URL can also be overridden on a per-operation basis, provided a server list was specified for the operation. For example:
+```csharp
+using PlexAPI;
+using PlexAPI.Models.Components;
+using PlexAPI.Models.Requests;
+
+var sdk = new PlexAPISDK(security: new Models.Components.Security() {
+        AccessToken = "<YOUR_API_KEY_HERE>",
+    });
+
+var res = await sdk.Plex.GetPinAsync(
+    serverUrl: "https://plex.tv/api/v2",
+    xPlexClientIdentifier: "<value>",
+    strong: false);
+
+// handle response
+```
 <!-- End Server Selection [server] -->
+
+<!-- Start Authentication [security] -->
+## Authentication
+
+### Per-Client Security Schemes
+
+This SDK supports the following security scheme globally:
+
+| Name          | Type          | Scheme        |
+| ------------- | ------------- | ------------- |
+| `AccessToken` | apiKey        | API key       |
+
+You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. For example:
+```csharp
+using PlexAPI;
+using PlexAPI.Models.Components;
+
+var sdk = new PlexAPISDK(security: new Models.Components.Security() {
+        AccessToken = "<YOUR_API_KEY_HERE>",
+    });
+
+var res = await sdk.Server.GetServerCapabilitiesAsync();
+
+// handle response
+```
+<!-- End Authentication [security] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

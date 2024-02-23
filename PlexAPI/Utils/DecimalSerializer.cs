@@ -16,7 +16,16 @@ namespace PlexAPI.Utils
 
     internal class DecimalSerializer : JsonConverter
     {
-        public override bool CanConvert(Type objectType) => objectType == typeof(Decimal);
+        public override bool CanConvert(Type objectType)
+        {
+            var  nullableType = Nullable.GetUnderlyingType(objectType);
+            if (nullableType != null)
+            {
+                return nullableType == typeof(Decimal);
+            }
+
+            return objectType == typeof(Decimal);
+        }
 
         public override bool CanRead => true;
 

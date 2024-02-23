@@ -23,12 +23,11 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
+var sdk = new PlexAPISDK(security: new Models.Components.Security() {
         AccessToken = "<YOUR_API_KEY_HERE>",
     });
 
-var res = await sdk.Media.MarkPlayedAsync(Key: 59398D);
+var res = await sdk.Media.MarkPlayedAsync(key: 59398D);
 
 // handle response
 ```
@@ -56,12 +55,11 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
+var sdk = new PlexAPISDK(security: new Models.Components.Security() {
         AccessToken = "<YOUR_API_KEY_HERE>",
     });
 
-var res = await sdk.Media.MarkUnplayedAsync(Key: 59398D);
+var res = await sdk.Media.MarkUnplayedAsync(key: 59398D);
 
 // handle response
 ```
@@ -90,12 +88,14 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
+var sdk = new PlexAPISDK(security: new Models.Components.Security() {
         AccessToken = "<YOUR_API_KEY_HERE>",
     });
 
-var res = await sdk.Media.UpdatePlayProgressAsync(Key: "string", Time: 6900.91D, State: "string");
+var res = await sdk.Media.UpdatePlayProgressAsync(
+    key: "<value>",
+    time: 6900.91D,
+    state: "<value>");
 
 // handle response
 ```
