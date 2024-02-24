@@ -24,10 +24,7 @@ Returns a list of butler tasks
 using PlexAPI;
 using PlexAPI.Models.Components;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
-        AccessToken = "<YOUR_API_KEY_HERE>",
-    });
+var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Butler.GetButlerTasksAsync();
 
@@ -55,10 +52,7 @@ This endpoint will attempt to start all Butler tasks that are enabled in the set
 using PlexAPI;
 using PlexAPI.Models.Components;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
-        AccessToken = "<YOUR_API_KEY_HERE>",
-    });
+var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Butler.StartAllTasksAsync();
 
@@ -82,10 +76,7 @@ This endpoint will stop all currently running tasks and remove any scheduled tas
 using PlexAPI;
 using PlexAPI.Models.Components;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
-        AccessToken = "<YOUR_API_KEY_HERE>",
-    });
+var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Butler.StopAllTasksAsync();
 
@@ -114,12 +105,9 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
-        AccessToken = "<YOUR_API_KEY_HERE>",
-    });
+var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
 
-var res = await sdk.Butler.StartTaskAsync(TaskName: TaskName.CleanOldBundles);
+var res = await sdk.Butler.StartTaskAsync(taskName: TaskName.CleanOldBundles);
 
 // handle response
 ```
@@ -148,12 +136,9 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
-        AccessToken = "<YOUR_API_KEY_HERE>",
-    });
+var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
 
-var res = await sdk.Butler.StopTaskAsync(TaskName: PathParamTaskName.BackupDatabase);
+var res = await sdk.Butler.StopTaskAsync(taskName: PathParamTaskName.BackupDatabase);
 
 // handle response
 ```

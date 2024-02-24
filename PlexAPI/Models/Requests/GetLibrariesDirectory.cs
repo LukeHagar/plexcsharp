@@ -77,6 +77,6 @@ namespace PlexAPI.Models.Requests
         public int? Hidden { get; set; }
 
         [JsonProperty("Location")]
-        public List<Location>? Location { get; set; }
+        public List<GetLibrariesLocation>? Location { get; set; }
     }
 }
