@@ -93,6 +93,15 @@ namespace PlexAPI
         public IMedia Media { get; }
 
         /// <summary>
+        /// API Calls that perform operations with Plex Media Server Videos<br/>
+        /// 
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// </summary>
+        public IVideo Video { get; }
+
+        /// <summary>
         /// Activities are awesome. They provide a way to monitor and control asynchronous operations on the server. In order to receive real-time updates for activities, a client would normally subscribe via either EventSource or Websocket endpoints.<br/>
         /// 
         /// <remarks>
@@ -153,6 +162,15 @@ namespace PlexAPI
         public ILog Log { get; }
 
         /// <summary>
+        /// API Calls that perform operations directly against https://Plex.tv<br/>
+        /// 
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// </summary>
+        public IPlex Plex { get; }
+
+        /// <summary>
         /// Playlists are ordered collections of media. They can be dumb (just a list of media) or smart (based on a media query, such as &quot;all albums from 2017&quot;). <br/>
         /// 
         /// <remarks>
@@ -165,13 +183,22 @@ namespace PlexAPI
         public IPlaylists Playlists { get; }
 
         /// <summary>
-        /// API Calls against Security for Plex Media Server<br/>
+        /// API Calls regarding authentication for Plex Media Server<br/>
         /// 
         /// <remarks>
         /// 
         /// </remarks>
         /// </summary>
-        public ISecurity Security { get; }
+        public IAuthentication Authentication { get; }
+
+        /// <summary>
+        /// API Calls that perform operations with Plex Media Server Statistics<br/>
+        /// 
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// </summary>
+        public IStatistics Statistics { get; }
 
         /// <summary>
         /// API Calls that perform search operations with Plex Media Server Sessions<br/>
@@ -191,15 +218,6 @@ namespace PlexAPI
         /// </remarks>
         /// </summary>
         public IUpdater Updater { get; }
-
-        /// <summary>
-        /// API Calls that perform operations with Plex Media Server Videos<br/>
-        /// 
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// </summary>
-        public IVideo Video { get; }
     }
     
     public class SDKConfig
@@ -235,31 +253,41 @@ namespace PlexAPI
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.1.5";
-        private const string _sdkGenVersion = "2.237.3";
+        private const string _sdkVersion = "0.2.0";
+        private const string _sdkGenVersion = "2.272.4";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.1.5 2.237.3 0.0.3 Plex-API";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.2.0 2.272.4 0.0.3 Plex-API";
         private string _serverUrl = "";
+        private int _serverIndex = 0;
         private ISpeakeasyHttpClient _defaultClient;
-        private ISpeakeasyHttpClient _securityClient;
+        private Func<Security>? _securitySource;
         public IServer Server { get; private set; }
         public IMedia Media { get; private set; }
+        public IVideo Video { get; private set; }
         public IActivities Activities { get; private set; }
         public IButler Butler { get; private set; }
         public IHubs Hubs { get; private set; }
         public ISearch Search { get; private set; }
         public ILibrary Library { get; private set; }
         public ILog Log { get; private set; }
+        public IPlex Plex { get; private set; }
         public IPlaylists Playlists { get; private set; }
-        public ISecurity Security { get; private set; }
+        public IAuthentication Authentication { get; private set; }
+        public IStatistics Statistics { get; private set; }
         public ISessions Sessions { get; private set; }
         public IUpdater Updater { get; private set; }
-        public IVideo Video { get; private set; }
 
-        public PlexAPISDK(Security? security = null, int? serverIndex = null, ServerProtocol? protocol = null, string?  ip = null, string?  port = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null)
+        public PlexAPISDK(string? accessToken = null, Func<string>? accessTokenSource = null, int? serverIndex = null, ServerProtocol? protocol = null, string?  ip = null, string?  port = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null)
         {
-            if (serverUrl != null) {
-                if (urlParams != null) {
+            if (serverIndex != null)
+            {
+                _serverIndex = serverIndex.Value;
+            }
+
+            if (serverUrl != null)
+            {
+                if (urlParams != null)
+                {
                     serverUrl = Utilities.TemplateUrl(serverUrl, urlParams);
                 }
                 _serverUrl = serverUrl;
@@ -275,32 +303,42 @@ namespace PlexAPI
             };
 
             _defaultClient = new SpeakeasyHttpClient(client);
-            _securityClient = _defaultClient;
-            
-            if(security != null)
+
+            if(accessTokenSource != null)
             {
-                _securityClient = SecuritySerializer.Apply(_defaultClient, security);
+                _securitySource = () => new Security() { AccessToken = accessTokenSource() };
             }
-            
+            else if(accessToken != null)
+            {
+                _securitySource = () => new Security() { AccessToken = accessToken };
+            }
+            else
+            {
+                throw new Exception("accessToken and accessTokenSource cannot both be null");
+            }
+
             SDKConfiguration = new SDKConfig()
             {
                 ServerDefaults = serverDefaults,
+                serverIndex = _serverIndex,
                 serverUrl = _serverUrl
             };
 
-            Server = new Server(_defaultClient, _securityClient, _serverUrl, SDKConfiguration);
-            Media = new Media(_defaultClient, _securityClient, _serverUrl, SDKConfiguration);
-            Activities = new Activities(_defaultClient, _securityClient, _serverUrl, SDKConfiguration);
-            Butler = new Butler(_defaultClient, _securityClient, _serverUrl, SDKConfiguration);
-            Hubs = new Hubs(_defaultClient, _securityClient, _serverUrl, SDKConfiguration);
-            Search = new Search(_defaultClient, _securityClient, _serverUrl, SDKConfiguration);
-            Library = new Library(_defaultClient, _securityClient, _serverUrl, SDKConfiguration);
-            Log = new Log(_defaultClient, _securityClient, _serverUrl, SDKConfiguration);
-            Playlists = new Playlists(_defaultClient, _securityClient, _serverUrl, SDKConfiguration);
-            Security = new Security(_defaultClient, _securityClient, _serverUrl, SDKConfiguration);
-            Sessions = new Sessions(_defaultClient, _securityClient, _serverUrl, SDKConfiguration);
-            Updater = new Updater(_defaultClient, _securityClient, _serverUrl, SDKConfiguration);
-            Video = new Video(_defaultClient, _securityClient, _serverUrl, SDKConfiguration);
+            Server = new Server(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
+            Media = new Media(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
+            Video = new Video(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
+            Activities = new Activities(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
+            Butler = new Butler(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
+            Hubs = new Hubs(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
+            Search = new Search(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
+            Library = new Library(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
+            Log = new Log(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
+            Plex = new Plex(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
+            Playlists = new Playlists(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
+            Authentication = new Authentication(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
+            Statistics = new Statistics(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
+            Sessions = new Sessions(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
+            Updater = new Updater(_defaultClient, _securitySource, _serverUrl, SDKConfiguration);
         }
     }
 }
