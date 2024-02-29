@@ -56,8 +56,6 @@ namespace PlexAPI.Models.Requests
         FirstCharacter,
         [JsonProperty("folder")]
         Folder,
-        [JsonProperty("search?type=1")]
-        SearchTypeEqual1,
     }
 
     public static class TagExtension

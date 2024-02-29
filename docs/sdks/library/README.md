@@ -15,6 +15,7 @@ API Calls interacting with Plex Media Server Libraries
 * [DeleteLibrary](#deletelibrary) - Delete Library Section
 * [GetLibraryItems](#getlibraryitems) - Get Library Items
 * [RefreshLibrary](#refreshlibrary) - Refresh Library
+* [SearchLibrary](#searchlibrary) - Search Library
 * [GetMetadata](#getmetadata) - Get Items Metadata
 * [GetMetadataChildren](#getmetadatachildren) - Get Items Children
 * [GetOnDeck](#getondeck) - Get On Deck
@@ -30,12 +31,11 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
-        AccessToken = "<YOUR_API_KEY_HERE>",
-    });
+var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
 
-var res = await sdk.Library.GetFileHashAsync(Url: "file://C:\Image.png&type=13", Type: 4462.17D);
+var res = await sdk.Library.GetFileHashAsync(
+    url: "file://C:\Image.png&type=13",
+    type: 4462.17D);
 
 // handle response
 ```
@@ -64,10 +64,7 @@ This endpoint will return the recently added content.
 using PlexAPI;
 using PlexAPI.Models.Components;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
-        AccessToken = "<YOUR_API_KEY_HERE>",
-    });
+var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Library.GetRecentlyAddedAsync();
 
@@ -96,10 +93,7 @@ This allows a client to provide a rich interface around the media (e.g. allow so
 using PlexAPI;
 using PlexAPI.Models.Components;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
-        AccessToken = "<YOUR_API_KEY_HERE>",
-    });
+var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Library.GetLibrariesAsync();
 
@@ -162,12 +156,11 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
-        AccessToken = "<YOUR_API_KEY_HERE>",
-    });
+var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
 
-var res = await sdk.Library.GetLibraryAsync(SectionId: 1000D, IncludeDetails: IncludeDetails.Zero);
+var res = await sdk.Library.GetLibraryAsync(
+    sectionId: 1000D,
+    includeDetails: IncludeDetails.Zero);
 
 // handle response
 ```
@@ -196,12 +189,9 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
-        AccessToken = "<YOUR_API_KEY_HERE>",
-    });
+var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
 
-var res = await sdk.Library.DeleteLibraryAsync(SectionId: 1000D);
+var res = await sdk.Library.DeleteLibraryAsync(sectionId: 1000D);
 
 // handle response
 ```
@@ -240,7 +230,6 @@ Fetches details from a specific section of the library identified by a section k
 - `resolution`: Items categorized by resolution.
 - `firstCharacter`: Items categorized by the first letter.
 - `folder`: Items categorized by folder.
-- `search?type=1`: Search functionality within the section.
 
 
 ### Example Usage
@@ -250,12 +239,11 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
-        AccessToken = "<YOUR_API_KEY_HERE>",
-    });
+var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
 
-var res = await sdk.Library.GetLibraryItemsAsync(SectionId: 451092, Tag: Tag.Unwatched);
+var res = await sdk.Library.GetLibraryItemsAsync(
+    sectionId: 451092,
+    tag: Tag.Unwatched);
 
 // handle response
 ```
@@ -285,12 +273,9 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
-        AccessToken = "<YOUR_API_KEY_HERE>",
-    });
+var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
 
-var res = await sdk.Library.RefreshLibraryAsync(SectionId: 934.16D);
+var res = await sdk.Library.RefreshLibraryAsync(sectionId: 934.16D);
 
 // handle response
 ```
@@ -307,6 +292,57 @@ var res = await sdk.Library.RefreshLibraryAsync(SectionId: 934.16D);
 **[RefreshLibraryResponse](../../Models/Requests/RefreshLibraryResponse.md)**
 
 
+## SearchLibrary
+
+Search for content within a specific section of the library.
+
+### Types
+Each type in the library comes with a set of filters and sorts, aiding in building dynamic media controls:
+
+- **Type Object Attributes**:
+  - `type`: Metadata type (if standard Plex type).  
+  - `title`: Title for this content type (e.g., "Movies").
+
+- **Filter Objects**:
+  - Subset of the media query language.
+  - Attributes include `filter` (name), `filterType` (data type), `key` (endpoint for value range), and `title`.
+
+- **Sort Objects**:
+  - Description of sort fields.
+  - Attributes include `defaultDirection` (asc/desc), `descKey` and `key` (sort parameters), and `title`.
+
+> **Note**: Filters and sorts are optional; without them, no filtering controls are rendered.
+
+
+### Example Usage
+
+```csharp
+using PlexAPI;
+using PlexAPI.Models.Components;
+using PlexAPI.Models.Requests;
+
+var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
+
+var res = await sdk.Library.SearchLibraryAsync(
+    sectionId: 933505,
+    type: Type.Four);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                             | Type                                  | Required                              | Description                           |
+| ------------------------------------- | ------------------------------------- | ------------------------------------- | ------------------------------------- |
+| `SectionId`                           | *long*                                | :heavy_check_mark:                    | the Id of the library to query        |
+| `Type`                                | [Type](../../Models/Requests/Type.md) | :heavy_check_mark:                    | Plex content type to search for       |
+
+
+### Response
+
+**[SearchLibraryResponse](../../Models/Requests/SearchLibraryResponse.md)**
+
+
 ## GetMetadata
 
 This endpoint will return the metadata of a library item specified with the ratingKey.
@@ -319,12 +355,9 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
-        AccessToken = "<YOUR_API_KEY_HERE>",
-    });
+var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
 
-var res = await sdk.Library.GetMetadataAsync(RatingKey: 8382.31D);
+var res = await sdk.Library.GetMetadataAsync(ratingKey: 8382.31D);
 
 // handle response
 ```
@@ -353,12 +386,9 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
-        AccessToken = "<YOUR_API_KEY_HERE>",
-    });
+var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
 
-var res = await sdk.Library.GetMetadataChildrenAsync(RatingKey: 1539.14D);
+var res = await sdk.Library.GetMetadataChildrenAsync(ratingKey: 1539.14D);
 
 // handle response
 ```
@@ -386,10 +416,7 @@ This endpoint will return the on deck content.
 using PlexAPI;
 using PlexAPI.Models.Components;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
-        AccessToken = "<YOUR_API_KEY_HERE>",
-    });
+var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Library.GetOnDeckAsync();
 
