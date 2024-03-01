@@ -3,10 +3,7 @@
 using PlexAPI;
 using PlexAPI.Models.Components;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
-        AccessToken = "<YOUR_API_KEY_HERE>",
-    });
+var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Server.GetServerCapabilitiesAsync();
 

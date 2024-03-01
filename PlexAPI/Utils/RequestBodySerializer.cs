@@ -22,11 +22,23 @@ namespace PlexAPI.Utils
         public static HttpContent? Serialize(
             object? request,
             string requestFieldName,
-            string serializationMethod
+            string serializationMethod,
+            bool nullable = false,
+            bool optional = false,
+            string format = ""
         )
         {
             if (request == null)
             {
+                if (!nullable && !optional)
+                {
+                    throw new ArgumentNullException("request body is required");
+                }
+                else if (nullable && serializationMethod == "json")
+                {
+                    return new StringContent("null", Encoding.UTF8, "application/json");
+                }
+
                 return null;
             }
 
@@ -56,14 +68,15 @@ namespace PlexAPI.Utils
             }
 
             // Not an object or flattened request
-            return TrySerialize(request, requestFieldName, serializationMethod);
+            return TrySerialize(request, requestFieldName, serializationMethod, "", format);
         }
 
         private static HttpContent? TrySerialize(
             object request,
             string requestFieldName,
             string serializationMethod,
-            string mediaType = ""
+            string mediaType = "",
+            string format = ""
         )
         {
             if (mediaType == "")
@@ -81,7 +94,7 @@ namespace PlexAPI.Utils
             switch (serializationMethod)
             {
                 case "json":
-                    return SerializeJson(request, mediaType);
+                    return SerializeJson(request, mediaType, format);
                 case "form":
                     return SerializeForm(request, requestFieldName, mediaType);
                 case "multipart":
@@ -109,9 +122,9 @@ namespace PlexAPI.Utils
             }
         }
 
-        private static HttpContent SerializeJson(object request, string mediaType)
+        private static HttpContent SerializeJson(object request, string mediaType, string format = "")
         {
-            return new StringContent(Utilities.SerializeJSON(request), Encoding.UTF8, mediaType);
+            return new StringContent(Utilities.SerializeJSON(request, format), Encoding.UTF8, mediaType);
         }
 
         private static HttpContent SerializeForm(
@@ -482,7 +495,7 @@ namespace PlexAPI.Utils
                 {
                     form[fieldName] = new List<string>();
                 }
-                
+
                 form[fieldName].Add(Utilities.ValueToString(value));
             }
         }
