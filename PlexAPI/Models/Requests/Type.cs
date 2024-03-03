@@ -10,53 +10,16 @@
 #nullable enable
 namespace PlexAPI.Models.Requests
 {
-    using Newtonsoft.Json;
-    using System;
     
     /// <summary>
-    /// type of playlist to create
+    /// Plex content type to search for
     /// </summary>
     public enum Type
     {
-        [JsonProperty("audio")]
-        Audio,
-        [JsonProperty("video")]
-        Video,
-        [JsonProperty("photo")]
-        Photo,
-    }
-
-    public static class TypeExtension
-    {
-        public static string Value(this Type value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static Type ToEnum(this string value)
-        {
-            foreach(var field in typeof(Type).GetFields())
-            {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
-
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
-
-                    if (enumVal is Type)
-                    {
-                        return (Type)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum Type");
-        }
+        One = 1,
+        Two = 2,
+        Three = 3,
+        Four = 4,
     }
 
 }
