@@ -11,6 +11,7 @@
 namespace PlexAPI
 {
     using Newtonsoft.Json;
+    using PlexAPI.Models.Components;
     using PlexAPI.Models.Requests;
     using PlexAPI.Utils;
     using System.Net.Http.Headers;
@@ -143,7 +144,6 @@ namespace PlexAPI
         /// - `resolution`: Items categorized by resolution.<br/>
         /// - `firstCharacter`: Items categorized by the first letter.<br/>
         /// - `folder`: Items categorized by folder.<br/>
-        /// - `search?type=1`: Search functionality within the section.<br/>
         /// 
         /// </remarks>
         /// </summary>
@@ -158,6 +158,33 @@ namespace PlexAPI
         /// </remarks>
         /// </summary>
         Task<RefreshLibraryResponse> RefreshLibraryAsync(double sectionId);
+
+        /// <summary>
+        /// Search Library
+        /// 
+        /// <remarks>
+        /// Search for content within a specific section of the library.<br/>
+        /// <br/>
+        /// ### Types<br/>
+        /// Each type in the library comes with a set of filters and sorts, aiding in building dynamic media controls:<br/>
+        /// <br/>
+        /// - **Type Object Attributes**:<br/>
+        ///   - `type`: Metadata type (if standard Plex type).  <br/>
+        ///   - `title`: Title for this content type (e.g., &quot;Movies&quot;).<br/>
+        /// <br/>
+        /// - **Filter Objects**:<br/>
+        ///   - Subset of the media query language.<br/>
+        ///   - Attributes include `filter` (name), `filterType` (data type), `key` (endpoint for value range), and `title`.<br/>
+        /// <br/>
+        /// - **Sort Objects**:<br/>
+        ///   - Description of sort fields.<br/>
+        ///   - Attributes include `defaultDirection` (asc/desc), `descKey` and `key` (sort parameters), and `title`.<br/>
+        /// <br/>
+        /// &gt; **Note**: Filters and sorts are optional; without them, no filtering controls are rendered.<br/>
+        /// 
+        /// </remarks>
+        /// </summary>
+        Task<SearchLibraryResponse> SearchLibraryAsync(long sectionId, Type type);
 
         /// <summary>
         /// Get Items Metadata
@@ -201,18 +228,18 @@ namespace PlexAPI
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.1.5";
-        private const string _sdkGenVersion = "2.237.3";
+        private const string _sdkVersion = "0.2.0";
+        private const string _sdkGenVersion = "2.277.0";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.1.5 2.237.3 0.0.3 Plex-API";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.2.0 2.277.0 0.0.3 Plex-API";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
-        private ISpeakeasyHttpClient _securityClient;
+        private Func<Security>? _securitySource;
 
-        public Library(ISpeakeasyHttpClient defaultClient, ISpeakeasyHttpClient securityClient, string serverUrl, SDKConfig config)
+        public Library(ISpeakeasyHttpClient defaultClient, Func<Security>? securitySource, string serverUrl, SDKConfig config)
         {
             _defaultClient = defaultClient;
-            _securityClient = securityClient;
+            _securitySource = securitySource;
             _serverUrl = serverUrl;
             SDKConfiguration = config;
         }
@@ -227,138 +254,157 @@ namespace PlexAPI
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/library/hashes", request);
-            
+
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new GetFileHashResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200) || (response.StatusCode == 400))
             {
-                
+
                 return response;
             }
+
             if((response.StatusCode == 401))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.Object = JsonConvert.DeserializeObject<GetFileHashResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<GetRecentlyAddedResponse> GetRecentlyAddedAsync()
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
+
             var urlString = baseUrl + "/library/recentlyAdded";
-            
+
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new GetRecentlyAddedResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.TwoHundredApplicationJsonObject = JsonConvert.DeserializeObject<GetRecentlyAddedResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
+
             if((response.StatusCode == 400))
             {
-                
+
                 return response;
             }
+
             if((response.StatusCode == 401))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.FourHundredAndOneApplicationJsonObject = JsonConvert.DeserializeObject<GetRecentlyAddedLibraryResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<GetLibrariesResponse> GetLibrariesAsync()
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
+
             var urlString = baseUrl + "/library/sections";
-            
+
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new GetLibrariesResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.TwoHundredApplicationJsonObject = JsonConvert.DeserializeObject<GetLibrariesResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
+
             if((response.StatusCode == 400))
             {
-                
+
                 return response;
             }
+
             if((response.StatusCode == 401))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.FourHundredAndOneApplicationJsonObject = JsonConvert.DeserializeObject<GetLibrariesLibraryResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<GetLibraryResponse> GetLibraryAsync(double sectionId, IncludeDetails? includeDetails = null)
@@ -370,49 +416,55 @@ namespace PlexAPI
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/library/sections/{sectionId}", request);
-            
+
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new GetLibraryResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.TwoHundredApplicationJsonObject = JsonConvert.DeserializeObject<GetLibraryResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
+
             if((response.StatusCode == 400))
             {
-                
+
                 return response;
             }
+
             if((response.StatusCode == 401))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.FourHundredAndOneApplicationJsonObject = JsonConvert.DeserializeObject<GetLibraryLibraryResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<DeleteLibraryResponse> DeleteLibraryAsync(double sectionId)
@@ -423,40 +475,45 @@ namespace PlexAPI
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/library/sections/{sectionId}", request);
-            
+
             var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new DeleteLibraryResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200) || (response.StatusCode == 400))
             {
-                
+
                 return response;
             }
+
             if((response.StatusCode == 401))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.Object = JsonConvert.DeserializeObject<DeleteLibraryResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<GetLibraryItemsResponse> GetLibraryItemsAsync(long sectionId, Tag tag)
@@ -468,35 +525,39 @@ namespace PlexAPI
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/library/sections/{sectionId}/{tag}", request);
-            
+
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new GetLibraryItemsResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.Object = JsonConvert.DeserializeObject<GetLibraryItemsResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<RefreshLibraryResponse> RefreshLibraryAsync(double sectionId)
@@ -507,40 +568,89 @@ namespace PlexAPI
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/library/sections/{sectionId}/refresh", request);
-            
+
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new RefreshLibraryResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200) || (response.StatusCode == 400))
             {
-                
+
                 return response;
             }
+
             if((response.StatusCode == 401))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.Object = JsonConvert.DeserializeObject<RefreshLibraryResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
+        
+
+        public async Task<SearchLibraryResponse> SearchLibraryAsync(long sectionId, Type type)
+        {
+            var request = new SearchLibraryRequest()
+            {
+                SectionId = sectionId,
+                Type = type,
+            };
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
+            var urlString = URLBuilder.Build(baseUrl, "/library/sections/{sectionId}/search", request);
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
+            httpRequest.Headers.Add("user-agent", _userAgent);
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
+            var httpResponse = await client.SendAsync(httpRequest);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+
+            var response = new SearchLibraryResponse
+            {
+                StatusCode = (int)httpResponse.StatusCode,
+                ContentType = contentType,
+                RawResponse = httpResponse
+            };
+
+            if((response.StatusCode == 200))
+            {
+                if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
+                {
+                    response.Object = JsonConvert.DeserializeObject<SearchLibraryResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
+                }
+
+                return response;
+            }
+            return response;
+        }
+
         
 
         public async Task<GetMetadataResponse> GetMetadataAsync(double ratingKey)
@@ -551,49 +661,55 @@ namespace PlexAPI
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/library/metadata/{ratingKey}", request);
-            
+
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new GetMetadataResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.TwoHundredApplicationJsonObject = JsonConvert.DeserializeObject<GetMetadataResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
+
             if((response.StatusCode == 400))
             {
-                
+
                 return response;
             }
+
             if((response.StatusCode == 401))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.FourHundredAndOneApplicationJsonObject = JsonConvert.DeserializeObject<GetMetadataLibraryResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<GetMetadataChildrenResponse> GetMetadataChildrenAsync(double ratingKey)
@@ -604,98 +720,111 @@ namespace PlexAPI
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/library/metadata/{ratingKey}/children", request);
-            
+
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new GetMetadataChildrenResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.TwoHundredApplicationJsonObject = JsonConvert.DeserializeObject<GetMetadataChildrenResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
+
             if((response.StatusCode == 400))
             {
-                
+
                 return response;
             }
+
             if((response.StatusCode == 401))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.FourHundredAndOneApplicationJsonObject = JsonConvert.DeserializeObject<GetMetadataChildrenLibraryResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
 
         public async Task<GetOnDeckResponse> GetOnDeckAsync()
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
+
             var urlString = baseUrl + "/library/onDeck";
-            
+
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new GetOnDeckResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.TwoHundredApplicationJsonObject = JsonConvert.DeserializeObject<GetOnDeckResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
+
             if((response.StatusCode == 400))
             {
-                
+
                 return response;
             }
+
             if((response.StatusCode == 401))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.FourHundredAndOneApplicationJsonObject = JsonConvert.DeserializeObject<GetOnDeckLibraryResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
+
         
     }
 }
