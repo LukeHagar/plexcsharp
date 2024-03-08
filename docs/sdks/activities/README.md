@@ -27,10 +27,7 @@ Get Server Activities
 using PlexAPI;
 using PlexAPI.Models.Components;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
-        AccessToken = "<YOUR_API_KEY_HERE>",
-    });
+var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Activities.GetServerActivitiesAsync();
 
@@ -54,12 +51,9 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
-        AccessToken = "<YOUR_API_KEY_HERE>",
-    });
+var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
 
-var res = await sdk.Activities.CancelServerActivitiesAsync(ActivityUUID: "string");
+var res = await sdk.Activities.CancelServerActivitiesAsync(activityUUID: "<value>");
 
 // handle response
 ```
