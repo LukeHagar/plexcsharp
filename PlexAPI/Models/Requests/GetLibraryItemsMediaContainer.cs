@@ -58,6 +58,9 @@ namespace PlexAPI.Models.Requests
         [JsonProperty("viewMode")]
         public int? ViewMode { get; set; }
 
+        [JsonProperty("mixedParents")]
+        public bool? MixedParents { get; set; }
+
         [JsonProperty("Metadata")]
         public List<GetLibraryItemsMetadata>? Metadata { get; set; }
     }

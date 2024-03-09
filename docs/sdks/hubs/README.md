@@ -22,12 +22,11 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
-        AccessToken = "<YOUR_API_KEY_HERE>",
-    });
+var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
 
-var res = await sdk.Hubs.GetGlobalHubsAsync(Count: 1262.49D, OnlyTransient: OnlyTransient.One);
+var res = await sdk.Hubs.GetGlobalHubsAsync(
+    count: 1262.49D,
+    onlyTransient: OnlyTransient.One);
 
 // handle response
 ```
@@ -57,12 +56,12 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
-        AccessToken = "<YOUR_API_KEY_HERE>",
-    });
+var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
 
-var res = await sdk.Hubs.GetLibraryHubsAsync(SectionId: 6728.76D, Count: 9010.22D, OnlyTransient: QueryParamOnlyTransient.Zero);
+var res = await sdk.Hubs.GetLibraryHubsAsync(
+    sectionId: 6728.76D,
+    count: 9010.22D,
+    onlyTransient: QueryParamOnlyTransient.Zero);
 
 // handle response
 ```

@@ -9,8 +9,10 @@ generation:
     nameResolutionDec2023: false
     parameterOrderingFeb2024: false
     requestResponseComponentNamesFeb2024: false
+  auth:
+    oAuth2ClientCredentialsEnabled: false
 csharp:
-  version: 0.1.5
+  version: 0.2.0
   author: LukeHagar
   dotnetVersion: net5.0
   flattenGlobalSecurity: true
