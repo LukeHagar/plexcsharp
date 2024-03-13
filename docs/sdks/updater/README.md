@@ -23,10 +23,7 @@ Querying status of updates
 using PlexAPI;
 using PlexAPI.Models.Components;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
-        AccessToken = "<YOUR_API_KEY_HERE>",
-    });
+var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Updater.GetUpdateStatusAsync();
 
@@ -50,12 +47,9 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
-        AccessToken = "<YOUR_API_KEY_HERE>",
-    });
+var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
 
-var res = await sdk.Updater.CheckForUpdatesAsync(Download: Download.One);
+var res = await sdk.Updater.CheckForUpdatesAsync(download: Download.One);
 
 // handle response
 ```
@@ -84,12 +78,11 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
-        AccessToken = "<YOUR_API_KEY_HERE>",
-    });
+var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
 
-var res = await sdk.Updater.ApplyUpdatesAsync(Tonight: Tonight.One, Skip: Skip.Zero);
+var res = await sdk.Updater.ApplyUpdatesAsync(
+    tonight: Tonight.One,
+    skip: Skip.Zero);
 
 // handle response
 ```

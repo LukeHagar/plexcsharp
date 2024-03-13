@@ -11,6 +11,7 @@
 namespace PlexAPI
 {
     using Newtonsoft.Json;
+    using PlexAPI.Models.Components;
     using PlexAPI.Models.Requests;
     using PlexAPI.Utils;
     using System.Net.Http.Headers;
@@ -41,7 +42,7 @@ namespace PlexAPI
         /// 
         /// </remarks>
         /// </summary>
-        Task<CreatePlaylistResponse> CreatePlaylistAsync(CreatePlaylistRequest? request = null);
+        Task<CreatePlaylistResponse> CreatePlaylistAsync(CreatePlaylistRequest request);
 
         /// <summary>
         /// Get All Playlists
@@ -142,71 +143,75 @@ namespace PlexAPI
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.1.5";
-        private const string _sdkGenVersion = "2.237.3";
+        private const string _sdkVersion = "0.2.0";
+        private const string _sdkGenVersion = "2.280.6";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.1.5 2.237.3 0.0.3 Plex-API";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.2.0 2.280.6 0.0.3 Plex-API";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
-        private ISpeakeasyHttpClient _securityClient;
+        private Func<Security>? _securitySource;
 
-        public Playlists(ISpeakeasyHttpClient defaultClient, ISpeakeasyHttpClient securityClient, string serverUrl, SDKConfig config)
+        public Playlists(ISpeakeasyHttpClient defaultClient, Func<Security>? securitySource, string serverUrl, SDKConfig config)
         {
             _defaultClient = defaultClient;
-            _securityClient = securityClient;
+            _securitySource = securitySource;
             _serverUrl = serverUrl;
             SDKConfiguration = config;
         }
-        
 
-        public async Task<CreatePlaylistResponse> CreatePlaylistAsync(CreatePlaylistRequest? request = null)
+        public async Task<CreatePlaylistResponse> CreatePlaylistAsync(CreatePlaylistRequest request)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/playlists", request);
-            
+
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new CreatePlaylistResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.TwoHundredApplicationJsonObject = JsonConvert.DeserializeObject<CreatePlaylistResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
+
             if((response.StatusCode == 400))
             {
-                
+
                 return response;
             }
+
             if((response.StatusCode == 401))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.FourHundredAndOneApplicationJsonObject = JsonConvert.DeserializeObject<CreatePlaylistPlaylistsResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
-        
+
 
         public async Task<GetPlaylistsResponse> GetPlaylistsAsync(PlaylistType? playlistType = null, QueryParamSmart? smart = null)
         {
@@ -217,50 +222,55 @@ namespace PlexAPI
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/playlists", request);
-            
+
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new GetPlaylistsResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.TwoHundredApplicationJsonObject = JsonConvert.DeserializeObject<GetPlaylistsResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
+
             if((response.StatusCode == 400))
             {
-                
+
                 return response;
             }
+
             if((response.StatusCode == 401))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.FourHundredAndOneApplicationJsonObject = JsonConvert.DeserializeObject<GetPlaylistsPlaylistsResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
-        
+
 
         public async Task<GetPlaylistResponse> GetPlaylistAsync(double playlistID)
         {
@@ -270,50 +280,55 @@ namespace PlexAPI
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/playlists/{playlistID}", request);
-            
+
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new GetPlaylistResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.TwoHundredApplicationJsonObject = JsonConvert.DeserializeObject<GetPlaylistResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
+
             if((response.StatusCode == 400))
             {
-                
+
                 return response;
             }
+
             if((response.StatusCode == 401))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.FourHundredAndOneApplicationJsonObject = JsonConvert.DeserializeObject<GetPlaylistPlaylistsResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
-        
+
 
         public async Task<DeletePlaylistResponse> DeletePlaylistAsync(double playlistID)
         {
@@ -323,41 +338,45 @@ namespace PlexAPI
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/playlists/{playlistID}", request);
-            
+
             var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new DeletePlaylistResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200) || (response.StatusCode == 400))
             {
-                
+
                 return response;
             }
+
             if((response.StatusCode == 401))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.Object = JsonConvert.DeserializeObject<DeletePlaylistResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
-        
+
 
         public async Task<UpdatePlaylistResponse> UpdatePlaylistAsync(double playlistID, string? title = null, string? summary = null)
         {
@@ -369,41 +388,45 @@ namespace PlexAPI
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/playlists/{playlistID}", request);
-            
+
             var httpRequest = new HttpRequestMessage(HttpMethod.Put, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new UpdatePlaylistResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200) || (response.StatusCode == 400))
             {
-                
+
                 return response;
             }
+
             if((response.StatusCode == 401))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.Object = JsonConvert.DeserializeObject<UpdatePlaylistResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
-        
+
 
         public async Task<GetPlaylistContentsResponse> GetPlaylistContentsAsync(double playlistID, double type)
         {
@@ -414,50 +437,55 @@ namespace PlexAPI
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/playlists/{playlistID}/items", request);
-            
+
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new GetPlaylistContentsResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.TwoHundredApplicationJsonObject = JsonConvert.DeserializeObject<GetPlaylistContentsResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
+
             if((response.StatusCode == 400))
             {
-                
+
                 return response;
             }
+
             if((response.StatusCode == 401))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.FourHundredAndOneApplicationJsonObject = JsonConvert.DeserializeObject<GetPlaylistContentsPlaylistsResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
-        
+
 
         public async Task<ClearPlaylistContentsResponse> ClearPlaylistContentsAsync(double playlistID)
         {
@@ -467,41 +495,45 @@ namespace PlexAPI
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/playlists/{playlistID}/items", request);
-            
+
             var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new ClearPlaylistContentsResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200) || (response.StatusCode == 400))
             {
-                
+
                 return response;
             }
+
             if((response.StatusCode == 401))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.Object = JsonConvert.DeserializeObject<ClearPlaylistContentsResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
-        
+
 
         public async Task<AddPlaylistContentsResponse> AddPlaylistContentsAsync(double playlistID, string uri, double? playQueueID = null)
         {
@@ -513,50 +545,55 @@ namespace PlexAPI
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/playlists/{playlistID}/items", request);
-            
+
             var httpRequest = new HttpRequestMessage(HttpMethod.Put, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new AddPlaylistContentsResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.TwoHundredApplicationJsonObject = JsonConvert.DeserializeObject<AddPlaylistContentsResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
+
             if((response.StatusCode == 400))
             {
-                
+
                 return response;
             }
+
             if((response.StatusCode == 401))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.FourHundredAndOneApplicationJsonObject = JsonConvert.DeserializeObject<AddPlaylistContentsPlaylistsResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
-        
+
 
         public async Task<UploadPlaylistResponse> UploadPlaylistAsync(string path, Force force)
         {
@@ -567,40 +604,44 @@ namespace PlexAPI
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerDetails();
             var urlString = URLBuilder.Build(baseUrl, "/playlists/upload", request);
-            
+
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
-            
-            
-            var client = _securityClient;
-            
+
+            var client = _defaultClient;
+            if (_securitySource != null)
+            {
+                client = SecuritySerializer.Apply(_defaultClient, _securitySource);
+            }
+
             var httpResponse = await client.SendAsync(httpRequest);
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            
+
             var response = new UploadPlaylistResponse
             {
                 StatusCode = (int)httpResponse.StatusCode,
                 ContentType = contentType,
                 RawResponse = httpResponse
             };
-            
+
             if((response.StatusCode == 200) || (response.StatusCode == 400))
             {
-                
+
                 return response;
             }
+
             if((response.StatusCode == 401))
             {
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.Object = JsonConvert.DeserializeObject<UploadPlaylistResponseBody>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
-                
+
                 return response;
             }
             return response;
         }
-        
+
     }
 }
