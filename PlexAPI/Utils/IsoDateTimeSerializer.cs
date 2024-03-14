@@ -16,8 +16,16 @@ namespace PlexAPI.Utils
 
     internal class IsoDateTimeSerializer: JsonConverter
     {
-        public override bool CanConvert(Type objectType) =>
-            objectType == typeof(DateTime);
+        public override bool CanConvert(Type objectType)
+        {
+            var  nullableType = Nullable.GetUnderlyingType(objectType);
+            if (nullableType != null)
+            {
+                return nullableType == typeof(DateTime);
+            }
+
+            return objectType == typeof(DateTime);
+        }
 
         public override bool CanRead => false;
 
