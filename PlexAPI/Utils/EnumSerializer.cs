@@ -15,7 +15,16 @@ namespace PlexAPI.Utils
 {
     internal class EnumSerializer : JsonConverter
     {
-        public override bool CanConvert(System.Type objectType) => objectType.IsEnum;
+        public override bool CanConvert(System.Type objectType)
+        {
+            var  nullableType = Nullable.GetUnderlyingType(objectType);
+            if (nullableType != null)
+            {
+                return nullableType.IsEnum;
+            }
+
+            return objectType.IsEnum;
+        }
 
         public override bool CanRead => true;
 
