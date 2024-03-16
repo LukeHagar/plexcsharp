@@ -19,7 +19,7 @@ namespace PlexAPI.Models.Requests
         /// `delegation` - This is the only supported `type` parameter.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=type")]
-        public QueryParamType Type { get; set; } = default!;
+        public GetTransientTokenQueryParamType Type { get; set; } = default!;
 
         /// <summary>
         /// `all` - This is the only supported `scope` parameter.
