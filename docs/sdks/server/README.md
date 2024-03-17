@@ -27,10 +27,7 @@ Server Capabilities
 using PlexAPI;
 using PlexAPI.Models.Components;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
-        AccessToken = "<YOUR_API_KEY_HERE>",
-    });
+var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Server.GetServerCapabilitiesAsync();
 
@@ -53,10 +50,7 @@ Get Server Preferences
 using PlexAPI;
 using PlexAPI.Models.Components;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
-        AccessToken = "<YOUR_API_KEY_HERE>",
-    });
+var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Server.GetServerPreferencesAsync();
 
@@ -79,10 +73,7 @@ Get Available Clients
 using PlexAPI;
 using PlexAPI.Models.Components;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
-        AccessToken = "<YOUR_API_KEY_HERE>",
-    });
+var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Server.GetAvailableClientsAsync();
 
@@ -105,10 +96,7 @@ Get Devices
 using PlexAPI;
 using PlexAPI.Models.Components;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
-        AccessToken = "<YOUR_API_KEY_HERE>",
-    });
+var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Server.GetDevicesAsync();
 
@@ -131,10 +119,7 @@ Get Server Identity
 using PlexAPI;
 using PlexAPI.Models.Components;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
-        AccessToken = "<YOUR_API_KEY_HERE>",
-    });
+var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Server.GetServerIdentityAsync();
 
@@ -157,10 +142,7 @@ Returns MyPlex Account Information
 using PlexAPI;
 using PlexAPI.Models.Components;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
-        AccessToken = "<YOUR_API_KEY_HERE>",
-    });
+var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Server.GetMyPlexAccountAsync();
 
@@ -185,10 +167,7 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
-        AccessToken = "<YOUR_API_KEY_HERE>",
-    });
+var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
 
 GetResizedPhotoRequest req = new GetResizedPhotoRequest() {
     Width = 110D,
@@ -227,10 +206,7 @@ Get Server List
 using PlexAPI;
 using PlexAPI.Models.Components;
 
-var sdk = new PlexAPISDK(
-    security: new Models.Components.Security() {
-        AccessToken = "<YOUR_API_KEY_HERE>",
-    });
+var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Server.GetServerListAsync();
 
