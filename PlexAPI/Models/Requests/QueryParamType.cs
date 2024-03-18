@@ -14,12 +14,16 @@ namespace PlexAPI.Models.Requests
     using System;
     
     /// <summary>
-    /// `delegation` - This is the only supported `type` parameter.
+    /// type of playlist to create
     /// </summary>
     public enum QueryParamType
     {
-        [JsonProperty("delegation")]
-        Delegation,
+        [JsonProperty("audio")]
+        Audio,
+        [JsonProperty("video")]
+        Video,
+        [JsonProperty("photo")]
+        Photo,
     }
 
     public static class QueryParamTypeExtension
