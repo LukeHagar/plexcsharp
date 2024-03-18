@@ -20,6 +20,6 @@ namespace PlexAPI.Models.Requests
         public int? Size { get; set; }
 
         [JsonProperty("Setting")]
-        public List<object>? Setting { get; set; }
+        public List<Setting>? Setting { get; set; }
     }
 }

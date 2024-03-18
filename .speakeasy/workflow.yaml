@@ -1,0 +1,9 @@
+workflowVersion: 1.0.0
+sources:
+    my-source:
+        inputs:
+            - location: https://raw.githubusercontent.com/LukeHagar/plex-api-spec/main/plex-media-server-spec-dereferenced.yaml
+targets:
+    plexcsharp:
+        target: csharp
+        source: my-source
