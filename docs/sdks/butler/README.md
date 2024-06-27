@@ -24,7 +24,9 @@ Returns a list of butler tasks
 using PlexAPI;
 using PlexAPI.Models.Components;
 
-var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    xPlexClientIdentifier: "Postman");
 
 var res = await sdk.Butler.GetButlerTasksAsync();
 
@@ -35,7 +37,12 @@ var res = await sdk.Butler.GetButlerTasksAsync();
 ### Response
 
 **[GetButlerTasksResponse](../../Models/Requests/GetButlerTasksResponse.md)**
+### Errors
 
+| Error Object                                     | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| PlexAPI.Models.Errors.GetButlerTasksResponseBody | 401                                              | application/json                                 |
+| PlexAPI.Models.Errors.SDKException               | 4xx-5xx                                          | */*                                              |
 
 ## StartAllTasks
 
@@ -52,7 +59,9 @@ This endpoint will attempt to start all Butler tasks that are enabled in the set
 using PlexAPI;
 using PlexAPI.Models.Components;
 
-var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    xPlexClientIdentifier: "Postman");
 
 var res = await sdk.Butler.StartAllTasksAsync();
 
@@ -63,7 +72,12 @@ var res = await sdk.Butler.StartAllTasksAsync();
 ### Response
 
 **[StartAllTasksResponse](../../Models/Requests/StartAllTasksResponse.md)**
+### Errors
 
+| Error Object                                    | Status Code                                     | Content Type                                    |
+| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
+| PlexAPI.Models.Errors.StartAllTasksResponseBody | 401                                             | application/json                                |
+| PlexAPI.Models.Errors.SDKException              | 4xx-5xx                                         | */*                                             |
 
 ## StopAllTasks
 
@@ -76,7 +90,9 @@ This endpoint will stop all currently running tasks and remove any scheduled tas
 using PlexAPI;
 using PlexAPI.Models.Components;
 
-var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    xPlexClientIdentifier: "Postman");
 
 var res = await sdk.Butler.StopAllTasksAsync();
 
@@ -87,7 +103,12 @@ var res = await sdk.Butler.StopAllTasksAsync();
 ### Response
 
 **[StopAllTasksResponse](../../Models/Requests/StopAllTasksResponse.md)**
+### Errors
 
+| Error Object                                   | Status Code                                    | Content Type                                   |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| PlexAPI.Models.Errors.StopAllTasksResponseBody | 401                                            | application/json                               |
+| PlexAPI.Models.Errors.SDKException             | 4xx-5xx                                        | */*                                            |
 
 ## StartTask
 
@@ -105,9 +126,11 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    xPlexClientIdentifier: "Postman");
 
-var res = await sdk.Butler.StartTaskAsync(taskName: TaskName.CleanOldBundles);
+var res = await sdk.Butler.StartTaskAsync(taskName: PlexAPI.Models.Requests.TaskName.CleanOldBundles);
 
 // handle response
 ```
@@ -122,7 +145,12 @@ var res = await sdk.Butler.StartTaskAsync(taskName: TaskName.CleanOldBundles);
 ### Response
 
 **[StartTaskResponse](../../Models/Requests/StartTaskResponse.md)**
+### Errors
 
+| Error Object                                | Status Code                                 | Content Type                                |
+| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
+| PlexAPI.Models.Errors.StartTaskResponseBody | 401                                         | application/json                            |
+| PlexAPI.Models.Errors.SDKException          | 4xx-5xx                                     | */*                                         |
 
 ## StopTask
 
@@ -136,9 +164,11 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    xPlexClientIdentifier: "Postman");
 
-var res = await sdk.Butler.StopTaskAsync(taskName: PathParamTaskName.BackupDatabase);
+var res = await sdk.Butler.StopTaskAsync(taskName: PlexAPI.Models.Requests.PathParamTaskName.BackupDatabase);
 
 // handle response
 ```
@@ -153,4 +183,9 @@ var res = await sdk.Butler.StopTaskAsync(taskName: PathParamTaskName.BackupDatab
 ### Response
 
 **[StopTaskResponse](../../Models/Requests/StopTaskResponse.md)**
+### Errors
 
+| Error Object                               | Status Code                                | Content Type                               |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| PlexAPI.Models.Errors.StopTaskResponseBody | 401                                        | application/json                           |
+| PlexAPI.Models.Errors.SDKException         | 4xx-5xx                                    | */*                                        |

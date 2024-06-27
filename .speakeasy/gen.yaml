@@ -1,6 +1,6 @@
 configVersion: 2.0.0
 generation:
-  sdkClassName: Plex-API
+  sdkClassName: PlexAPI
   maintainOpenAPIOrder: true
   usageSnippets:
     optionalPropertyRendering: withExample
@@ -10,10 +10,13 @@ generation:
     parameterOrderingFeb2024: true
     requestResponseComponentNamesFeb2024: true
   auth:
-    oAuth2ClientCredentialsEnabled: false
+    oAuth2ClientCredentialsEnabled: true
 csharp:
-  version: 0.2.1
+  version: 0.3.0
+  additionalDependencies: []
   author: LukeHagar
+  clientServerStatusCodesAsErrors: true
+  disableNamespacePascalCasingApr2024: true
   dotnetVersion: net5.0
   flattenGlobalSecurity: true
   imports:
@@ -27,4 +30,5 @@ csharp:
   inputModelSuffix: input
   maxMethodParams: 4
   outputModelSuffix: output
-  packageName: Plex-API
+  packageName: PlexAPI
+  responseFormat: envelope

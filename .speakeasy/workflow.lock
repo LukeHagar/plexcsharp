@@ -1,0 +1,28 @@
+speakeasyVersion: 1.321.0
+sources:
+    my-source:
+        sourceNamespace: my-source
+        sourceRevisionDigest: sha256:8df2ed3829cded89c3ef312b1f830c20d48146f7fdf883137befd836432c9e6a
+        sourceBlobDigest: sha256:a4557b86024d2cd6fe1a00b5631730ed0fc81bebb9efc057af0b96c2fa389acf
+        tags:
+            - latest
+targets:
+    plexcsharp:
+        source: my-source
+        sourceNamespace: my-source
+        sourceRevisionDigest: sha256:8df2ed3829cded89c3ef312b1f830c20d48146f7fdf883137befd836432c9e6a
+        sourceBlobDigest: sha256:a4557b86024d2cd6fe1a00b5631730ed0fc81bebb9efc057af0b96c2fa389acf
+        outLocation: /home/luke/github/plexcsharp
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: latest
+    sources:
+        my-source:
+            inputs:
+                - location: https://raw.githubusercontent.com/LukeHagar/plex-api-spec/main/plex-media-server-spec-dereferenced.yaml
+            registry:
+                location: registry.speakeasyapi.dev/lukehagar/lukehagar/my-source
+    targets:
+        plexcsharp:
+            target: csharp
+            source: my-source

@@ -35,7 +35,9 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    xPlexClientIdentifier: "Postman");
 
 var res = await sdk.Search.PerformSearchAsync(
     query: "dylan",
@@ -57,7 +59,12 @@ var res = await sdk.Search.PerformSearchAsync(
 ### Response
 
 **[PerformSearchResponse](../../Models/Requests/PerformSearchResponse.md)**
+### Errors
 
+| Error Object                                    | Status Code                                     | Content Type                                    |
+| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
+| PlexAPI.Models.Errors.PerformSearchResponseBody | 401                                             | application/json                                |
+| PlexAPI.Models.Errors.SDKException              | 4xx-5xx                                         | */*                                             |
 
 ## PerformVoiceSearch
 
@@ -74,7 +81,9 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    xPlexClientIdentifier: "Postman");
 
 var res = await sdk.Search.PerformVoiceSearchAsync(
     query: "dead+poop",
@@ -96,7 +105,12 @@ var res = await sdk.Search.PerformVoiceSearchAsync(
 ### Response
 
 **[PerformVoiceSearchResponse](../../Models/Requests/PerformVoiceSearchResponse.md)**
+### Errors
 
+| Error Object                                         | Status Code                                          | Content Type                                         |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| PlexAPI.Models.Errors.PerformVoiceSearchResponseBody | 401                                                  | application/json                                     |
+| PlexAPI.Models.Errors.SDKException                   | 4xx-5xx                                              | */*                                                  |
 
 ## GetSearchResults
 
@@ -109,7 +123,9 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    xPlexClientIdentifier: "Postman");
 
 var res = await sdk.Search.GetSearchResultsAsync(query: "110");
 
@@ -126,4 +142,9 @@ var res = await sdk.Search.GetSearchResultsAsync(query: "110");
 ### Response
 
 **[GetSearchResultsResponse](../../Models/Requests/GetSearchResultsResponse.md)**
+### Errors
 
+| Error Object                                       | Status Code                                        | Content Type                                       |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| PlexAPI.Models.Errors.GetSearchResultsResponseBody | 401                                                | application/json                                   |
+| PlexAPI.Models.Errors.SDKException                 | 4xx-5xx                                            | */*                                                |

@@ -3,7 +3,9 @@
 using PlexAPI;
 using PlexAPI.Models.Components;
 
-var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    xPlexClientIdentifier: "Postman");
 
 var res = await sdk.Server.GetServerCapabilitiesAsync();
 

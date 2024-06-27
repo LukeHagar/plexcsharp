@@ -1,0 +1,11 @@
+# ApplyUpdatesResponseBody
+
+Unauthorized - Returned if the X-Plex-Token is missing from the header or query.
+
+
+## Fields
+
+| Field                                                                                                                | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `Errors`                                                                                                             | List<[ApplyUpdatesErrors](../../Models/Errors/ApplyUpdatesErrors.md)>                                                | :heavy_minus_sign:                                                                                                   | N/A                                                                                                                  |
+| `RawResponse`                                                                                                        | [HttpResponseMessage](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpresponsemessage?view=net-5.0) | :heavy_minus_sign:                                                                                                   | Raw HTTP response; suitable for custom response parsing                                                              |

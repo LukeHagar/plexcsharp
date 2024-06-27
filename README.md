@@ -10,10 +10,16 @@
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
-### Nuget
+### NuGet
 
 ```bash
-dotnet add package Plex-API
+dotnet add package PlexAPI
+```
+
+### Locally
+
+```bash
+dotnet add reference path/to/PlexAPI.csproj
 ```
 <!-- End SDK Installation [installation] -->
 
@@ -26,7 +32,9 @@ dotnet add package Plex-API
 using PlexAPI;
 using PlexAPI.Models.Components;
 
-var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    xPlexClientIdentifier: "Postman");
 
 var res = await sdk.Server.GetServerCapabilitiesAsync();
 
@@ -39,7 +47,7 @@ var res = await sdk.Server.GetServerCapabilitiesAsync();
 
 ### [Server](docs/sdks/server/README.md)
 
-* [GetServerCapabilities](docs/sdks/server/README.md#getservercapabilities) - Server Capabilities
+* [GetServerCapabilities](docs/sdks/server/README.md#getservercapabilities) - Get Server Capabilities
 * [GetServerPreferences](docs/sdks/server/README.md#getserverpreferences) - Get Server Preferences
 * [GetAvailableClients](docs/sdks/server/README.md#getavailableclients) - Get Available Clients
 * [GetDevices](docs/sdks/server/README.md#getdevices) - Get Devices
@@ -72,6 +80,12 @@ var res = await sdk.Server.GetServerCapabilitiesAsync();
 * [StartTask](docs/sdks/butler/README.md#starttask) - Start a single Butler task
 * [StopTask](docs/sdks/butler/README.md#stoptask) - Stop a single Butler task
 
+### [Plex](docs/sdks/plex/README.md)
+
+* [GetHomeData](docs/sdks/plex/README.md#gethomedata) - Get Plex Home Data
+* [GetPin](docs/sdks/plex/README.md#getpin) - Get a Pin
+* [GetToken](docs/sdks/plex/README.md#gettoken) - Get Access Token
+
 ### [Hubs](docs/sdks/hubs/README.md)
 
 * [GetGlobalHubs](docs/sdks/hubs/README.md#getglobalhubs) - Get Global Hubs
@@ -95,6 +109,7 @@ var res = await sdk.Server.GetServerCapabilitiesAsync();
 * [SearchLibrary](docs/sdks/library/README.md#searchlibrary) - Search Library
 * [GetMetadata](docs/sdks/library/README.md#getmetadata) - Get Items Metadata
 * [GetMetadataChildren](docs/sdks/library/README.md#getmetadatachildren) - Get Items Children
+* [GetTopWatchedContent](docs/sdks/library/README.md#gettopwatchedcontent) - Get Top Watched Content
 * [GetOnDeck](docs/sdks/library/README.md#getondeck) - Get On Deck
 
 ### [Log](docs/sdks/log/README.md)
@@ -102,11 +117,6 @@ var res = await sdk.Server.GetServerCapabilitiesAsync();
 * [LogLine](docs/sdks/log/README.md#logline) - Logging a single line message.
 * [LogMultiLine](docs/sdks/log/README.md#logmultiline) - Logging a multi-line message
 * [EnablePaperTrail](docs/sdks/log/README.md#enablepapertrail) - Enabling Papertrail
-
-### [Plex](docs/sdks/plex/README.md)
-
-* [GetPin](docs/sdks/plex/README.md#getpin) - Get a Pin
-* [GetToken](docs/sdks/plex/README.md#gettoken) - Get Access Token
 
 ### [Playlists](docs/sdks/playlists/README.md)
 
@@ -128,6 +138,8 @@ var res = await sdk.Server.GetServerCapabilitiesAsync();
 ### [Statistics](docs/sdks/statistics/README.md)
 
 * [GetStatistics](docs/sdks/statistics/README.md#getstatistics) - Get Media Statistics
+* [GetResourcesStatistics](docs/sdks/statistics/README.md#getresourcesstatistics) - Get Resources Statistics
+* [GetBandwidthStatistics](docs/sdks/statistics/README.md#getbandwidthstatistics) - Get Bandwidth Statistics
 
 ### [Sessions](docs/sdks/sessions/README.md)
 
@@ -141,11 +153,13 @@ var res = await sdk.Server.GetServerCapabilitiesAsync();
 * [GetUpdateStatus](docs/sdks/updater/README.md#getupdatestatus) - Querying status of updates
 * [CheckForUpdates](docs/sdks/updater/README.md#checkforupdates) - Checking for updates
 * [ApplyUpdates](docs/sdks/updater/README.md#applyupdates) - Apply Updates
+
+### [Watchlist](docs/sdks/watchlist/README.md)
+
+* [GetWatchlist](docs/sdks/watchlist/README.md#getwatchlist) - Get User Watchlist
 <!-- End Available Resources and Operations [operations] -->
 
 <!-- Start Server Selection [server] -->
-## Server Selection
-
 ## Server Selection
 
 ### Select Server by Index
@@ -178,12 +192,13 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK();
+var sdk = new PlexAPISDK(xPlexClientIdentifier: "Postman");
 
 var res = await sdk.Plex.GetPinAsync(
     serverUrl: "https://plex.tv/api/v2",
-    xPlexClientIdentifier: "<value>",
-    strong: false);
+    xPlexProduct: "Postman",
+    strong: false,
+    xPlexClientIdentifier: "Postman");
 
 // handle response
 ```
@@ -205,13 +220,97 @@ To authenticate with the API the `AccessToken` parameter must be set when initia
 using PlexAPI;
 using PlexAPI.Models.Components;
 
-var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    xPlexClientIdentifier: "Postman");
 
 var res = await sdk.Server.GetServerCapabilitiesAsync();
 
 // handle response
 ```
 <!-- End Authentication [security] -->
+
+<!-- Start Global Parameters [global-parameters] -->
+## Global Parameters
+
+## Global Parameters
+
+A parameter is configured globally. This parameter may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
+
+For example, you can set `X-Plex-Client-Identifier` to `"Postman"` at SDK initialization and then you do not have to pass the same value on calls to operations like `GetPin`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+
+
+### Available Globals
+
+The following global parameter is available.
+
+| Name | Type | Required | Description |
+| ---- | ---- |:--------:| ----------- |
+| xPlexClientIdentifier | string |  | The unique identifier for the client application
+This is used to track the client application and its usage
+(UUID, serial number, or other number unique per device)
+ |
+
+
+### Example
+
+```csharp
+using PlexAPI;
+using PlexAPI.Models.Components;
+using PlexAPI.Models.Requests;
+
+var sdk = new PlexAPISDK(xPlexClientIdentifier: "Postman");
+
+var res = await sdk.Plex.GetPinAsync(
+    xPlexProduct: "Postman",
+    strong: false,
+    xPlexClientIdentifier: "Postman");
+
+// handle response
+```
+<!-- End Global Parameters [global-parameters] -->
+
+<!-- Start Error Handling [errors] -->
+## Error Handling
+
+Handling errors in this SDK should largely match your expectations.  All operations return a response object or thow an exception.  If Error objects are specified in your OpenAPI Spec, the SDK will raise the appropriate type.
+
+| Error Object                                            | Status Code                                             | Content Type                                            |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| PlexAPI.Models.Errors.GetServerCapabilitiesResponseBody | 401                                                     | application/json                                        |
+| PlexAPI.Models.Errors.SDKException                      | 4xx-5xx                                                 | */*                                                     |
+
+### Example
+
+```csharp
+using PlexAPI;
+using PlexAPI.Models.Components;
+using System;
+using PlexAPI.Models.Errors;
+
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    xPlexClientIdentifier: "Postman");
+
+try
+{
+    var res = await sdk.Server.GetServerCapabilitiesAsync();
+    // handle response
+}
+catch (Exception ex)
+{
+    if (ex is Models.Errors.GetServerCapabilitiesResponseBody)
+    {
+        // handle exception
+    }
+    else if (ex is PlexAPI.Models.Errors.SDKException)
+    {
+        // handle exception
+    }
+}
+
+```
+<!-- End Error Handling [errors] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

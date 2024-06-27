@@ -22,7 +22,9 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    xPlexClientIdentifier: "Postman");
 
 var res = await sdk.Hubs.GetGlobalHubsAsync(
     count: 1262.49D,
@@ -42,7 +44,12 @@ var res = await sdk.Hubs.GetGlobalHubsAsync(
 ### Response
 
 **[GetGlobalHubsResponse](../../Models/Requests/GetGlobalHubsResponse.md)**
+### Errors
 
+| Error Object                                    | Status Code                                     | Content Type                                    |
+| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
+| PlexAPI.Models.Errors.GetGlobalHubsResponseBody | 401                                             | application/json                                |
+| PlexAPI.Models.Errors.SDKException              | 4xx-5xx                                         | */*                                             |
 
 ## GetLibraryHubs
 
@@ -56,7 +63,9 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    xPlexClientIdentifier: "Postman");
 
 var res = await sdk.Hubs.GetLibraryHubsAsync(
     sectionId: 6728.76D,
@@ -78,4 +87,9 @@ var res = await sdk.Hubs.GetLibraryHubsAsync(
 ### Response
 
 **[GetLibraryHubsResponse](../../Models/Requests/GetLibraryHubsResponse.md)**
+### Errors
 
+| Error Object                                     | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| PlexAPI.Models.Errors.GetLibraryHubsResponseBody | 401                                              | application/json                                 |
+| PlexAPI.Models.Errors.SDKException               | 4xx-5xx                                          | */*                                              |

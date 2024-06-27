@@ -24,10 +24,12 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    xPlexClientIdentifier: "Postman");
 
 var res = await sdk.Log.LogLineAsync(
-    level: Level.Three,
+    level: PlexAPI.Models.Requests.Level.Three,
     message: "Test log message",
     source: "Postman");
 
@@ -46,7 +48,12 @@ var res = await sdk.Log.LogLineAsync(
 ### Response
 
 **[LogLineResponse](../../Models/Requests/LogLineResponse.md)**
+### Errors
 
+| Error Object                              | Status Code                               | Content Type                              |
+| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
+| PlexAPI.Models.Errors.LogLineResponseBody | 401                                       | application/json                          |
+| PlexAPI.Models.Errors.SDKException        | 4xx-5xx                                   | */*                                       |
 
 ## LogMultiLine
 
@@ -79,7 +86,9 @@ Ensure each parameter is properly URL-encoded to avoid interpretation issues.
 using PlexAPI;
 using PlexAPI.Models.Components;
 
-var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    xPlexClientIdentifier: "Postman");
 
 string req = "level=4&message=Test%20message%201&source=postman
 level=3&message=Test%20message%202&source=postman
@@ -100,7 +109,12 @@ var res = await sdk.Log.LogMultiLineAsync(req);
 ### Response
 
 **[LogMultiLineResponse](../../Models/Requests/LogMultiLineResponse.md)**
+### Errors
 
+| Error Object                                   | Status Code                                    | Content Type                                   |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| PlexAPI.Models.Errors.LogMultiLineResponseBody | 401                                            | application/json                               |
+| PlexAPI.Models.Errors.SDKException             | 4xx-5xx                                        | */*                                            |
 
 ## EnablePaperTrail
 
@@ -113,7 +127,9 @@ This endpoint will enable all Plex Media Serverlogs to be sent to the Papertrail
 using PlexAPI;
 using PlexAPI.Models.Components;
 
-var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    xPlexClientIdentifier: "Postman");
 
 var res = await sdk.Log.EnablePaperTrailAsync();
 
@@ -124,4 +140,9 @@ var res = await sdk.Log.EnablePaperTrailAsync();
 ### Response
 
 **[EnablePaperTrailResponse](../../Models/Requests/EnablePaperTrailResponse.md)**
+### Errors
 
+| Error Object                                       | Status Code                                        | Content Type                                       |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| PlexAPI.Models.Errors.EnablePaperTrailResponseBody | 401                                                | application/json                                   |
+| PlexAPI.Models.Errors.SDKException                 | 4xx-5xx                                            | */*                                                |

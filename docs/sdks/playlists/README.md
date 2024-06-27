@@ -35,12 +35,14 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    xPlexClientIdentifier: "Postman");
 
 CreatePlaylistRequest req = new CreatePlaylistRequest() {
     Title = "<value>",
-    Type = QueryParamType.Photo,
-    Smart = Smart.One,
+    Type = PlexAPI.Models.Requests.QueryParamType.Photo,
+    Smart = PlexAPI.Models.Requests.Smart.One,
     Uri = "https://inborn-brochure.biz",
 };
 
@@ -59,7 +61,12 @@ var res = await sdk.Playlists.CreatePlaylistAsync(req);
 ### Response
 
 **[CreatePlaylistResponse](../../Models/Requests/CreatePlaylistResponse.md)**
+### Errors
 
+| Error Object                                     | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| PlexAPI.Models.Errors.CreatePlaylistResponseBody | 401                                              | application/json                                 |
+| PlexAPI.Models.Errors.SDKException               | 4xx-5xx                                          | */*                                              |
 
 ## GetPlaylists
 
@@ -72,7 +79,9 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    xPlexClientIdentifier: "Postman");
 
 var res = await sdk.Playlists.GetPlaylistsAsync(
     playlistType: PlaylistType.Audio,
@@ -92,7 +101,12 @@ var res = await sdk.Playlists.GetPlaylistsAsync(
 ### Response
 
 **[GetPlaylistsResponse](../../Models/Requests/GetPlaylistsResponse.md)**
+### Errors
 
+| Error Object                                   | Status Code                                    | Content Type                                   |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| PlexAPI.Models.Errors.GetPlaylistsResponseBody | 401                                            | application/json                               |
+| PlexAPI.Models.Errors.SDKException             | 4xx-5xx                                        | */*                                            |
 
 ## GetPlaylist
 
@@ -107,7 +121,9 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    xPlexClientIdentifier: "Postman");
 
 var res = await sdk.Playlists.GetPlaylistAsync(playlistID: 4109.48D);
 
@@ -124,7 +140,12 @@ var res = await sdk.Playlists.GetPlaylistAsync(playlistID: 4109.48D);
 ### Response
 
 **[GetPlaylistResponse](../../Models/Requests/GetPlaylistResponse.md)**
+### Errors
 
+| Error Object                                  | Status Code                                   | Content Type                                  |
+| --------------------------------------------- | --------------------------------------------- | --------------------------------------------- |
+| PlexAPI.Models.Errors.GetPlaylistResponseBody | 401                                           | application/json                              |
+| PlexAPI.Models.Errors.SDKException            | 4xx-5xx                                       | */*                                           |
 
 ## DeletePlaylist
 
@@ -138,7 +159,9 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    xPlexClientIdentifier: "Postman");
 
 var res = await sdk.Playlists.DeletePlaylistAsync(playlistID: 216.22D);
 
@@ -155,7 +178,12 @@ var res = await sdk.Playlists.DeletePlaylistAsync(playlistID: 216.22D);
 ### Response
 
 **[DeletePlaylistResponse](../../Models/Requests/DeletePlaylistResponse.md)**
+### Errors
 
+| Error Object                                     | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| PlexAPI.Models.Errors.DeletePlaylistResponseBody | 401                                              | application/json                                 |
+| PlexAPI.Models.Errors.SDKException               | 4xx-5xx                                          | */*                                              |
 
 ## UpdatePlaylist
 
@@ -169,7 +197,9 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    xPlexClientIdentifier: "Postman");
 
 var res = await sdk.Playlists.UpdatePlaylistAsync(
     playlistID: 3915D,
@@ -191,7 +221,12 @@ var res = await sdk.Playlists.UpdatePlaylistAsync(
 ### Response
 
 **[UpdatePlaylistResponse](../../Models/Requests/UpdatePlaylistResponse.md)**
+### Errors
 
+| Error Object                                     | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| PlexAPI.Models.Errors.UpdatePlaylistResponseBody | 401                                              | application/json                                 |
+| PlexAPI.Models.Errors.SDKException               | 4xx-5xx                                          | */*                                              |
 
 ## GetPlaylistContents
 
@@ -208,7 +243,9 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    xPlexClientIdentifier: "Postman");
 
 var res = await sdk.Playlists.GetPlaylistContentsAsync(
     playlistID: 5004.46D,
@@ -228,7 +265,12 @@ var res = await sdk.Playlists.GetPlaylistContentsAsync(
 ### Response
 
 **[GetPlaylistContentsResponse](../../Models/Requests/GetPlaylistContentsResponse.md)**
+### Errors
 
+| Error Object                                          | Status Code                                           | Content Type                                          |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| PlexAPI.Models.Errors.GetPlaylistContentsResponseBody | 401                                                   | application/json                                      |
+| PlexAPI.Models.Errors.SDKException                    | 4xx-5xx                                               | */*                                                   |
 
 ## ClearPlaylistContents
 
@@ -242,7 +284,9 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    xPlexClientIdentifier: "Postman");
 
 var res = await sdk.Playlists.ClearPlaylistContentsAsync(playlistID: 1893.18D);
 
@@ -259,7 +303,12 @@ var res = await sdk.Playlists.ClearPlaylistContentsAsync(playlistID: 1893.18D);
 ### Response
 
 **[ClearPlaylistContentsResponse](../../Models/Requests/ClearPlaylistContentsResponse.md)**
+### Errors
 
+| Error Object                                            | Status Code                                             | Content Type                                            |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| PlexAPI.Models.Errors.ClearPlaylistContentsResponseBody | 401                                                     | application/json                                        |
+| PlexAPI.Models.Errors.SDKException                      | 4xx-5xx                                                 | */*                                                     |
 
 ## AddPlaylistContents
 
@@ -274,7 +323,9 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    xPlexClientIdentifier: "Postman");
 
 var res = await sdk.Playlists.AddPlaylistContentsAsync(
     playlistID: 8502.01D,
@@ -296,7 +347,12 @@ var res = await sdk.Playlists.AddPlaylistContentsAsync(
 ### Response
 
 **[AddPlaylistContentsResponse](../../Models/Requests/AddPlaylistContentsResponse.md)**
+### Errors
 
+| Error Object                                          | Status Code                                           | Content Type                                          |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| PlexAPI.Models.Errors.AddPlaylistContentsResponseBody | 401                                                   | application/json                                      |
+| PlexAPI.Models.Errors.SDKException                    | 4xx-5xx                                               | */*                                                   |
 
 ## UploadPlaylist
 
@@ -310,11 +366,13 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    xPlexClientIdentifier: "Postman");
 
 var res = await sdk.Playlists.UploadPlaylistAsync(
     path: "/home/barkley/playlist.m3u",
-    force: Force.Zero);
+    force: PlexAPI.Models.Requests.Force.Zero);
 
 // handle response
 ```
@@ -330,4 +388,9 @@ var res = await sdk.Playlists.UploadPlaylistAsync(
 ### Response
 
 **[UploadPlaylistResponse](../../Models/Requests/UploadPlaylistResponse.md)**
+### Errors
 
+| Error Object                                     | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| PlexAPI.Models.Errors.UploadPlaylistResponseBody | 401                                              | application/json                                 |
+| PlexAPI.Models.Errors.SDKException               | 4xx-5xx                                          | */*                                              |

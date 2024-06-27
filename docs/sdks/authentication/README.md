@@ -23,11 +23,13 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    xPlexClientIdentifier: "Postman");
 
 var res = await sdk.Authentication.GetTransientTokenAsync(
-    type: GetTransientTokenQueryParamType.Delegation,
-    scope: Scope.All);
+    type: PlexAPI.Models.Requests.GetTransientTokenQueryParamType.Delegation,
+    scope: PlexAPI.Models.Requests.Scope.All);
 
 // handle response
 ```
@@ -43,7 +45,12 @@ var res = await sdk.Authentication.GetTransientTokenAsync(
 ### Response
 
 **[GetTransientTokenResponse](../../Models/Requests/GetTransientTokenResponse.md)**
+### Errors
 
+| Error Object                                        | Status Code                                         | Content Type                                        |
+| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| PlexAPI.Models.Errors.GetTransientTokenResponseBody | 401                                                 | application/json                                    |
+| PlexAPI.Models.Errors.SDKException                  | 4xx-5xx                                             | */*                                                 |
 
 ## GetSourceConnectionInformation
 
@@ -58,7 +65,9 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    xPlexClientIdentifier: "Postman");
 
 var res = await sdk.Authentication.GetSourceConnectionInformationAsync(source: "server://client-identifier");
 
@@ -75,4 +84,9 @@ var res = await sdk.Authentication.GetSourceConnectionInformationAsync(source: "
 ### Response
 
 **[GetSourceConnectionInformationResponse](../../Models/Requests/GetSourceConnectionInformationResponse.md)**
+### Errors
 
+| Error Object                                                     | Status Code                                                      | Content Type                                                     |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| PlexAPI.Models.Errors.GetSourceConnectionInformationResponseBody | 401                                                              | application/json                                                 |
+| PlexAPI.Models.Errors.SDKException                               | 4xx-5xx                                                          | */*                                                              |

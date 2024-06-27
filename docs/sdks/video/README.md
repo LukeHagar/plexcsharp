@@ -22,19 +22,21 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    xPlexClientIdentifier: "Postman");
 
 GetTimelineRequest req = new GetTimelineRequest() {
-    RatingKey = 716.56D,
-    Key = "<key>",
-    State = State.Paused,
-    HasMDE = 7574.33D,
-    Time = 3327.51D,
-    Duration = 7585.39D,
-    Context = "<value>",
-    PlayQueueItemID = 1406.21D,
-    PlayBackTime = 2699.34D,
-    Row = 3536.42D,
+    RatingKey = 23409D,
+    Key = "/library/metadata/23409",
+    State = PlexAPI.Models.Requests.State.Playing,
+    HasMDE = 1D,
+    Time = 2000D,
+    Duration = 10000D,
+    Context = "home:hub.continueWatching",
+    PlayQueueItemID = 1D,
+    PlayBackTime = 2000D,
+    Row = 1D,
 };
 
 var res = await sdk.Video.GetTimelineAsync(req);
@@ -52,7 +54,12 @@ var res = await sdk.Video.GetTimelineAsync(req);
 ### Response
 
 **[GetTimelineResponse](../../Models/Requests/GetTimelineResponse.md)**
+### Errors
 
+| Error Object                                  | Status Code                                   | Content Type                                  |
+| --------------------------------------------- | --------------------------------------------- | --------------------------------------------- |
+| PlexAPI.Models.Errors.GetTimelineResponseBody | 401                                           | application/json                              |
+| PlexAPI.Models.Errors.SDKException            | 4xx-5xx                                       | */*                                           |
 
 ## StartUniversalTranscode
 
@@ -65,14 +72,27 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    xPlexClientIdentifier: "Postman");
 
 StartUniversalTranscodeRequest req = new StartUniversalTranscodeRequest() {
-    HasMDE = 8924.99D,
-    Path = "/etc/mail",
-    MediaIndex = 9962.95D,
-    PartIndex = 1232.82D,
-    Protocol = "<value>",
+    HasMDE = 1D,
+    Path = "/library/metadata/23409",
+    MediaIndex = 0D,
+    PartIndex = 0D,
+    Protocol = "hls",
+    FastSeek = 0D,
+    DirectPlay = 0D,
+    DirectStream = 0D,
+    SubtitleSize = 100D,
+    Subtites = "burn",
+    AudioBoost = 100D,
+    Location = "lan",
+    MediaBufferSize = 102400D,
+    Session = "zvcage8b7rkioqcm8f4uns4c",
+    AddDebugOverlay = 0D,
+    AutoAdjustQuality = 0D,
 };
 
 var res = await sdk.Video.StartUniversalTranscodeAsync(req);
@@ -90,4 +110,9 @@ var res = await sdk.Video.StartUniversalTranscodeAsync(req);
 ### Response
 
 **[StartUniversalTranscodeResponse](../../Models/Requests/StartUniversalTranscodeResponse.md)**
+### Errors
 
+| Error Object                                              | Status Code                                               | Content Type                                              |
+| --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
+| PlexAPI.Models.Errors.StartUniversalTranscodeResponseBody | 401                                                       | application/json                                          |
+| PlexAPI.Models.Errors.SDKException                        | 4xx-5xx                                                   | */*                                                       |

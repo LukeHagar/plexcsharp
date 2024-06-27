@@ -23,7 +23,9 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    xPlexClientIdentifier: "Postman");
 
 var res = await sdk.Media.MarkPlayedAsync(key: 59398D);
 
@@ -40,7 +42,12 @@ var res = await sdk.Media.MarkPlayedAsync(key: 59398D);
 ### Response
 
 **[MarkPlayedResponse](../../Models/Requests/MarkPlayedResponse.md)**
+### Errors
 
+| Error Object                                 | Status Code                                  | Content Type                                 |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| PlexAPI.Models.Errors.MarkPlayedResponseBody | 401                                          | application/json                             |
+| PlexAPI.Models.Errors.SDKException           | 4xx-5xx                                      | */*                                          |
 
 ## MarkUnplayed
 
@@ -53,7 +60,9 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    xPlexClientIdentifier: "Postman");
 
 var res = await sdk.Media.MarkUnplayedAsync(key: 59398D);
 
@@ -70,7 +79,12 @@ var res = await sdk.Media.MarkUnplayedAsync(key: 59398D);
 ### Response
 
 **[MarkUnplayedResponse](../../Models/Requests/MarkUnplayedResponse.md)**
+### Errors
 
+| Error Object                                   | Status Code                                    | Content Type                                   |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| PlexAPI.Models.Errors.MarkUnplayedResponseBody | 401                                            | application/json                               |
+| PlexAPI.Models.Errors.SDKException             | 4xx-5xx                                        | */*                                            |
 
 ## UpdatePlayProgress
 
@@ -84,26 +98,33 @@ using PlexAPI;
 using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(AccessToken: "<YOUR_API_KEY_HERE>");
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    xPlexClientIdentifier: "Postman");
 
 var res = await sdk.Media.UpdatePlayProgressAsync(
     key: "<value>",
-    time: 6900.91D,
-    state: "<value>");
+    time: 90000D,
+    state: "played");
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `Key`                                                               | *string*                                                            | :heavy_check_mark:                                                  | the media key                                                       |
-| `Time`                                                              | *double*                                                            | :heavy_check_mark:                                                  | The time, in milliseconds, used to set the media playback progress. |
-| `State`                                                             | *string*                                                            | :heavy_check_mark:                                                  | The playback state of the media item.                               |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `Key`                                                               | *string*                                                            | :heavy_check_mark:                                                  | the media key                                                       |                                                                     |
+| `Time`                                                              | *double*                                                            | :heavy_check_mark:                                                  | The time, in milliseconds, used to set the media playback progress. | 90000                                                               |
+| `State`                                                             | *string*                                                            | :heavy_check_mark:                                                  | The playback state of the media item.                               | played                                                              |
 
 
 ### Response
 
 **[UpdatePlayProgressResponse](../../Models/Requests/UpdatePlayProgressResponse.md)**
+### Errors
 
+| Error Object                                         | Status Code                                          | Content Type                                         |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| PlexAPI.Models.Errors.UpdatePlayProgressResponseBody | 401                                                  | application/json                                     |
+| PlexAPI.Models.Errors.SDKException                   | 4xx-5xx                                              | */*                                                  |
