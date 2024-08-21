@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    env:
+      DOTNET_NOLOGO: 'true'
+      DOTNET_CLI_TELEMETRY_OPTOUT: 'true'
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: |
+            5.x
+            6.x
+            7.x
+          source-url: https://nuget.pkg.github.com/jasonlandbridge/index.json
+        env:
+          NUGET_AUTH_TOKEN: ${{secrets.NUGET_API_KEY}}
+
+      - name: Run tests
+        run: dotnet test /p:Configuration=Release --no-restore --no-build --verbosity normal
+
+      - name: Create the package
+        run: dotnet pack --configuration Release ./src/Serilog.Sinks.Console.LogThemes/Serilog.Sinks.Console.LogThemes.csproj
+
+      - name: Publish the package to nuget.org
+        run: dotnet nuget push ./src/Serilog.Sinks.Console.LogThemes/bin/Release/*.nupkg -k $NUGET_AUTH_TOKEN --skip-duplicate -s https://api.nuget.org/v3/index.json
+        env:
+          NUGET_AUTH_TOKEN: ${{ secrets.NUGET_API_KEY }}
