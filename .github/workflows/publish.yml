@@ -1,10 +1,10 @@
-name: CI
+name: Publish NuGet Package
 
 on:
   workflow_dispatch:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build:
