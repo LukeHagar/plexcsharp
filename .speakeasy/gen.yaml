@@ -17,7 +17,7 @@ csharp:
   author: LukeHagar
   clientServerStatusCodesAsErrors: true
   disableNamespacePascalCasingApr2024: true
-  dotnetVersion: net5.0
+  dotnetVersion: net8.0
   flattenGlobalSecurity: true
   imports:
     option: openapi
