@@ -24,9 +24,9 @@ namespace PlexAPI
 
     /// <summary>
     /// API Calls interacting with Plex Media Server Libraries<br/>
-    /// 
+    ///
     /// <remarks>
-    /// 
+    ///
     /// </remarks>
     /// </summary>
     public interface ILibrary
@@ -34,7 +34,7 @@ namespace PlexAPI
 
         /// <summary>
         /// Get Hash Value
-        /// 
+        ///
         /// <remarks>
         /// This resource returns hash values for local files
         /// </remarks>
@@ -43,17 +43,17 @@ namespace PlexAPI
 
         /// <summary>
         /// Get Recently Added
-        /// 
+        ///
         /// <remarks>
         /// This endpoint will return the recently added content.<br/>
-        /// 
+        ///
         /// </remarks>
         /// </summary>
         Task<GetRecentlyAddedResponse> GetRecentlyAddedAsync();
 
         /// <summary>
         /// Get All Libraries
-        /// 
+        ///
         /// <remarks>
         /// A library section (commonly referred to as just a library) is a collection of media. <br/>
         /// Libraries are typed, and depending on their type provide either a flat or a hierarchical view of the media. <br/>
@@ -61,14 +61,14 @@ namespace PlexAPI
         /// <br/>
         /// Libraries have features beyond just being a collection of media; for starters, they include information about supported types, filters and sorts. <br/>
         /// This allows a client to provide a rich interface around the media (e.g. allow sorting movies by release year).<br/>
-        /// 
+        ///
         /// </remarks>
         /// </summary>
         Task<GetLibrariesResponse> GetLibrariesAsync();
 
         /// <summary>
         /// Get Library Details
-        /// 
+        ///
         /// <remarks>
         /// ## Library Details Endpoint<br/>
         /// <br/>
@@ -109,14 +109,14 @@ namespace PlexAPI
         ///   - Attributes include `defaultDirection` (asc/desc), `descKey` and `key` (sort parameters), and `title`.<br/>
         /// <br/>
         /// &gt; **Note**: Filters and sorts are optional; without them, no filtering controls are rendered.<br/>
-        /// 
+        ///
         /// </remarks>
         /// </summary>
         Task<GetLibraryResponse> GetLibraryAsync(double sectionId, IncludeDetails? includeDetails = null);
 
         /// <summary>
         /// Delete Library Section
-        /// 
+        ///
         /// <remarks>
         /// Delate a library using a specific section
         /// </remarks>
@@ -125,7 +125,7 @@ namespace PlexAPI
 
         /// <summary>
         /// Get Library Items
-        /// 
+        ///
         /// <remarks>
         /// Fetches details from a specific section of the library identified by a section key and a tag. The tag parameter accepts the following values:<br/>
         /// - `all`: All items in the section.<br/>
@@ -147,24 +147,24 @@ namespace PlexAPI
         /// - `resolution`: Items categorized by resolution.<br/>
         /// - `firstCharacter`: Items categorized by the first letter.<br/>
         /// - `folder`: Items categorized by folder.<br/>
-        /// 
+        ///
         /// </remarks>
         /// </summary>
         Task<GetLibraryItemsResponse> GetLibraryItemsAsync(object sectionId, Tag tag, long? includeGuids = null);
 
         /// <summary>
         /// Refresh Library
-        /// 
+        ///
         /// <remarks>
         /// This endpoint Refreshes the library.<br/>
-        /// 
+        ///
         /// </remarks>
         /// </summary>
         Task<RefreshLibraryResponse> RefreshLibraryAsync(double sectionId);
 
         /// <summary>
         /// Search Library
-        /// 
+        ///
         /// <remarks>
         /// Search for content within a specific section of the library.<br/>
         /// <br/>
@@ -184,47 +184,47 @@ namespace PlexAPI
         ///   - Attributes include `defaultDirection` (asc/desc), `descKey` and `key` (sort parameters), and `title`.<br/>
         /// <br/>
         /// &gt; **Note**: Filters and sorts are optional; without them, no filtering controls are rendered.<br/>
-        /// 
+        ///
         /// </remarks>
         /// </summary>
-        Task<SearchLibraryResponse> SearchLibraryAsync(long sectionId, Type type);
+        Task<SearchLibraryResponse> SearchLibraryAsync(long sectionId, Models.Requests.Type type);
 
         /// <summary>
         /// Get Items Metadata
-        /// 
+        ///
         /// <remarks>
         /// This endpoint will return the metadata of a library item specified with the ratingKey.<br/>
-        /// 
+        ///
         /// </remarks>
         /// </summary>
         Task<GetMetadataResponse> GetMetadataAsync(double ratingKey);
 
         /// <summary>
         /// Get Items Children
-        /// 
+        ///
         /// <remarks>
         /// This endpoint will return the children of of a library item specified with the ratingKey.<br/>
-        /// 
+        ///
         /// </remarks>
         /// </summary>
         Task<GetMetadataChildrenResponse> GetMetadataChildrenAsync(double ratingKey, string? includeElements = null);
 
         /// <summary>
         /// Get Top Watched Content
-        /// 
+        ///
         /// <remarks>
         /// This endpoint will return the top watched content from libraries of a certain type<br/>
-        /// 
+        ///
         /// </remarks>
         /// </summary>
         Task<GetTopWatchedContentResponse> GetTopWatchedContentAsync(long type, long? includeGuids = null);
 
         /// <summary>
         /// Get On Deck
-        /// 
+        ///
         /// <remarks>
         /// This endpoint will return the on deck content.<br/>
-        /// 
+        ///
         /// </remarks>
         /// </summary>
         Task<GetOnDeckResponse> GetOnDeckAsync();
@@ -232,9 +232,9 @@ namespace PlexAPI
 
     /// <summary>
     /// API Calls interacting with Plex Media Server Libraries<br/>
-    /// 
+    ///
     /// <remarks>
-    /// 
+    ///
     /// </remarks>
     /// </summary>
     public class Library: ILibrary
@@ -312,7 +312,7 @@ namespace PlexAPI
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
             int responseStatusCode = (int)httpResponse.StatusCode;
             if(responseStatusCode == 200)
-            {                
+            {
                 return new GetFileHashResponse()
                 {
                     StatusCode = responseStatusCode,
@@ -677,7 +677,7 @@ namespace PlexAPI
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
             int responseStatusCode = (int)httpResponse.StatusCode;
             if(responseStatusCode == 200)
-            {                
+            {
                 return new DeleteLibraryResponse()
                 {
                     StatusCode = responseStatusCode,
@@ -859,7 +859,7 @@ namespace PlexAPI
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
             int responseStatusCode = (int)httpResponse.StatusCode;
             if(responseStatusCode == 200)
-            {                
+            {
                 return new RefreshLibraryResponse()
                 {
                     StatusCode = responseStatusCode,
@@ -890,7 +890,7 @@ namespace PlexAPI
             }
         }
 
-        public async Task<SearchLibraryResponse> SearchLibraryAsync(long sectionId, Type type)
+        public async Task<SearchLibraryResponse> SearchLibraryAsync(long sectionId, Models.Requests.Type type)
         {
             var request = new SearchLibraryRequest()
             {
