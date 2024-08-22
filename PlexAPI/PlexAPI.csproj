@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <IsPackable>true</IsPackable>
-    <PackageId>PlexAPI</PackageId>
+    <PackageId>JasonLandbridge.PlexAPI.SDK</PackageId>
     <Version>0.3.0</Version>
     <Authors>LukeHagar</Authors>
     <TargetFramework>net8.0</TargetFramework>
