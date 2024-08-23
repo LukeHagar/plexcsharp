@@ -36,16 +36,17 @@ var res = await sdk.Activities.GetServerActivitiesAsync();
 // handle response
 ```
 
-
 ### Response
 
 **[GetServerActivitiesResponse](../../Models/Requests/GetServerActivitiesResponse.md)**
+
 ### Errors
 
 | Error Object                                          | Status Code                                           | Content Type                                          |
 | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
 | PlexAPI.Models.Errors.GetServerActivitiesResponseBody | 401                                                   | application/json                                      |
 | PlexAPI.Models.Errors.SDKException                    | 4xx-5xx                                               | */*                                                   |
+
 
 ## CancelServerActivities
 
@@ -55,8 +56,8 @@ Cancel Server Activities
 
 ```csharp
 using PlexAPI;
-using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
+using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
@@ -73,10 +74,10 @@ var res = await sdk.Activities.CancelServerActivitiesAsync(activityUUID: "25b71e
 | ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
 | `ActivityUUID`                       | *string*                             | :heavy_check_mark:                   | The UUID of the activity to cancel.  | 25b71ed5-0f9d-461c-baa7-d404e9e10d3e |
 
-
 ### Response
 
 **[CancelServerActivitiesResponse](../../Models/Requests/CancelServerActivitiesResponse.md)**
+
 ### Errors
 
 | Error Object                                             | Status Code                                              | Content Type                                             |

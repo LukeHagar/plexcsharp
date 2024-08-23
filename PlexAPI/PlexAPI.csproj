@@ -1,24 +1,37 @@
 <Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
     <IsPackable>true</IsPackable>
     <PackageId>PlexAPI</PackageId>
-    <Version>0.3.0</Version>
-    <Authors>LukeHagar</Authors>
+    <Version>0.4.0</Version>
     <TargetFramework>net5.0</TargetFramework>
+    <Authors>LukeHagar</Authors>
+    <Copyright>Copyright (c) LukeHagar 2024</Copyright>
+    <RepositoryUrl>https://github.com/LukeHagar/plexcsharp.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Description>Plex-API: An Open API Spec for interacting with Plex.tv</Description>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <Nullable>enable</Nullable>
+    <NoWarn>1591</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <NoWarn>1591</NoWarn>
-    <RepositoryUrl>https://github.com/LukeHagar/plexcsharp</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
     <None Include="..\NUGET.md" Pack="true" PackagePath="README.md"/>
     <None Include="..\LICENSE.md" Pack="true" PackagePath="\"/>
     <None Include="..\docs\**\*" Pack="true" PackagePath="\docs"  CopyToOutputDirectory="PreserveNewest"/>
+  </ItemGroup>
 
+  <ItemGroup>
     <PackageReference Include="newtonsoft.json" Version="13.0.3" />
     <PackageReference Include="nodatime" Version="3.1.9" />
   </ItemGroup>
+
 </Project>

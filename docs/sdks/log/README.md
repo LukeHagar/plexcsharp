@@ -21,8 +21,8 @@ This endpoint will write a single-line log message, including a level and source
 
 ```csharp
 using PlexAPI;
-using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
+using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
@@ -44,16 +44,17 @@ var res = await sdk.Log.LogLineAsync(
 | `Message`                                                                                                     | *string*                                                                                                      | :heavy_check_mark:                                                                                            | The text of the message to write to the log.                                                                  | Test log message                                                                                              |
 | `Source`                                                                                                      | *string*                                                                                                      | :heavy_check_mark:                                                                                            | a string indicating the source of the message.                                                                | Postman                                                                                                       |
 
-
 ### Response
 
 **[LogLineResponse](../../Models/Requests/LogLineResponse.md)**
+
 ### Errors
 
 | Error Object                              | Status Code                               | Content Type                              |
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
 | PlexAPI.Models.Errors.LogLineResponseBody | 401                                       | application/json                          |
 | PlexAPI.Models.Errors.SDKException        | 4xx-5xx                                   | */*                                       |
+
 
 ## LogMultiLine
 
@@ -105,16 +106,17 @@ var res = await sdk.Log.LogMultiLineAsync(req);
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
 | `request`                                  | *string*                                   | :heavy_check_mark:                         | The request object to use for the request. |
 
-
 ### Response
 
 **[LogMultiLineResponse](../../Models/Requests/LogMultiLineResponse.md)**
+
 ### Errors
 
 | Error Object                                   | Status Code                                    | Content Type                                   |
 | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
 | PlexAPI.Models.Errors.LogMultiLineResponseBody | 401                                            | application/json                               |
 | PlexAPI.Models.Errors.SDKException             | 4xx-5xx                                        | */*                                            |
+
 
 ## EnablePaperTrail
 
@@ -136,10 +138,10 @@ var res = await sdk.Log.EnablePaperTrailAsync();
 // handle response
 ```
 
-
 ### Response
 
 **[EnablePaperTrailResponse](../../Models/Requests/EnablePaperTrailResponse.md)**
+
 ### Errors
 
 | Error Object                                       | Status Code                                        | Content Type                                       |

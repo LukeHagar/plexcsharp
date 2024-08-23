@@ -55,3 +55,13 @@ Based on:
 - Speakeasy CLI 1.148.0 (2.237.3) https://github.com/speakeasy-api/speakeasy
 ### Generated
 - [csharp v0.1.5] .
+
+## 2024-08-23 00:08:54
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.377.3 (2.404.2) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [csharp v0.4.0] .
+### Releases
+- [NuGet v0.4.0] https://www.nuget.org/packages/PlexAPI/0.4.0 - .

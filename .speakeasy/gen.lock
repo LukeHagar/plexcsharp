@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 5a8dbcbc-e0ee-41f0-9d84-b8b50567d1e9
 management:
-  docChecksum: e73920abd3a55e8d249592f2e3090574
+  docChecksum: 2ad2b4c59994082e04faa0c3e7675f3e
   docVersion: 0.0.3
-  speakeasyVersion: 1.321.0
-  generationVersion: 2.354.2
-  releaseVersion: 0.3.0
-  configChecksum: e0690e8b3b6a949dd45f9b48b94f2e14
+  speakeasyVersion: 1.377.3
+  generationVersion: 2.404.2
+  releaseVersion: 0.4.0
+  configChecksum: 0e72845e7bb366c3b8a4e13005a8fcfe
   repoURL: https://github.com/LukeHagar/plexcsharp.git
   repoSubDirectory: .
   published: true
@@ -14,9 +14,10 @@ features:
   csharp:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.0.1
-    core: 3.9.8
+    core: 3.9.14
+    deprecations: 2.81.2
     flattening: 2.81.2
-    globalSecurity: 2.83.4
+    globalSecurity: 2.83.6
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.3
@@ -28,7 +29,7 @@ features:
     responseFormat: 0.0.4
     sdkHooks: 0.1.0
     typeOverrides: 2.81.1
-    unions: 0.1.1
+    unions: 0.2.1
 generatedFiles:
   - PlexAPI/Server.cs
   - PlexAPI/Media.cs
@@ -45,6 +46,7 @@ generatedFiles:
   - PlexAPI/Statistics.cs
   - PlexAPI/Sessions.cs
   - PlexAPI/Updater.cs
+  - PlexAPI/User.cs
   - PlexAPI/Watchlist.cs
   - PlexAPI/PlexAPISDK.cs
   - global.json
@@ -128,16 +130,44 @@ generatedFiles:
   - PlexAPI/Models/Requests/PathParamTaskName.cs
   - PlexAPI/Models/Requests/StopTaskRequest.cs
   - PlexAPI/Models/Requests/StopTaskResponse.cs
+  - PlexAPI/Models/Requests/ResponseBody.cs
+  - PlexAPI/Models/Requests/GetCompanionsDataResponse.cs
+  - PlexAPI/Models/Requests/SharedServers.cs
+  - PlexAPI/Models/Requests/SharedSources.cs
+  - PlexAPI/Models/Requests/Status.cs
+  - PlexAPI/Models/Requests/Friend.cs
+  - PlexAPI/Models/Requests/GetUserFriendsResponse.cs
+  - PlexAPI/Models/Requests/GetGeoDataGeoData.cs
+  - PlexAPI/Models/Requests/GetGeoDataResponse.cs
   - PlexAPI/Models/Requests/GetHomeDataResponseBody.cs
   - PlexAPI/Models/Requests/GetHomeDataResponse.cs
+  - PlexAPI/Models/Requests/IncludeHttps.cs
+  - PlexAPI/Models/Requests/IncludeRelay.cs
+  - PlexAPI/Models/Requests/IncludeIPv6.cs
+  - PlexAPI/Models/Requests/GetResourcesRequest.cs
+  - PlexAPI/Models/Requests/Connections.cs
+  - PlexAPI/Models/Requests/PlexDevice.cs
+  - PlexAPI/Models/Requests/GetResourcesResponse.cs
   - PlexAPI/Models/Requests/GetPinRequest.cs
-  - PlexAPI/Models/Requests/Location.cs
-  - PlexAPI/Models/Requests/GetPinResponseBody.cs
+  - PlexAPI/Models/Requests/GeoData.cs
+  - PlexAPI/Models/Requests/GetPinAuthPinContainer.cs
   - PlexAPI/Models/Requests/GetPinResponse.cs
-  - PlexAPI/Models/Requests/GetTokenRequest.cs
-  - PlexAPI/Models/Requests/GetTokenLocation.cs
-  - PlexAPI/Models/Requests/GetTokenResponseBody.cs
-  - PlexAPI/Models/Requests/GetTokenResponse.cs
+  - PlexAPI/Models/Requests/GetTokenByPinIdRequest.cs
+  - PlexAPI/Models/Requests/GetTokenByPinIdGeoData.cs
+  - PlexAPI/Models/Requests/GetTokenByPinIdAuthPinContainer.cs
+  - PlexAPI/Models/Requests/GetTokenByPinIdResponse.cs
+  - PlexAPI/Models/Requests/MailingListStatus.cs
+  - PlexAPI/Models/Requests/UserProfile.cs
+  - PlexAPI/Models/Requests/GetUserDetailsStatus.cs
+  - PlexAPI/Models/Requests/Services.cs
+  - PlexAPI/Models/Requests/Features.cs
+  - PlexAPI/Models/Requests/GetUserDetailsPlexStatus.cs
+  - PlexAPI/Models/Requests/Subscription.cs
+  - PlexAPI/Models/Requests/GetUserDetailsFeatures.cs
+  - PlexAPI/Models/Requests/GetUserDetailsPlexResponseStatus.cs
+  - PlexAPI/Models/Requests/GetUserDetailsSubscription.cs
+  - PlexAPI/Models/Requests/GetUserDetailsUserPlexAccount.cs
+  - PlexAPI/Models/Requests/GetUserDetailsResponse.cs
   - PlexAPI/Models/Requests/OnlyTransient.cs
   - PlexAPI/Models/Requests/GetGlobalHubsRequest.cs
   - PlexAPI/Models/Requests/GetGlobalHubsMetadata.cs
@@ -189,7 +219,7 @@ generatedFiles:
   - PlexAPI/Models/Requests/GetRecentlyAddedMediaContainer.cs
   - PlexAPI/Models/Requests/GetRecentlyAddedResponseBody.cs
   - PlexAPI/Models/Requests/GetRecentlyAddedResponse.cs
-  - PlexAPI/Models/Requests/GetLibrariesLocation.cs
+  - PlexAPI/Models/Requests/Location.cs
   - PlexAPI/Models/Requests/GetLibrariesDirectory.cs
   - PlexAPI/Models/Requests/GetLibrariesMediaContainer.cs
   - PlexAPI/Models/Requests/GetLibrariesResponseBody.cs
@@ -378,6 +408,25 @@ generatedFiles:
   - PlexAPI/Models/Requests/Skip.cs
   - PlexAPI/Models/Requests/ApplyUpdatesRequest.cs
   - PlexAPI/Models/Requests/ApplyUpdatesResponse.cs
+  - PlexAPI/Models/Requests/PostUsersSigninDataRequestBody.cs
+  - PlexAPI/Models/Requests/PostUsersSigninDataRequest.cs
+  - PlexAPI/Models/Requests/PostUsersSigninDataMailingListStatus.cs
+  - PlexAPI/Models/Requests/PostUsersSigninDataUserProfile.cs
+  - PlexAPI/Models/Requests/PostUsersSigninDataStatus.cs
+  - PlexAPI/Models/Requests/PostUsersSigninDataServices.cs
+  - PlexAPI/Models/Requests/PostUsersSigninDataFeatures.cs
+  - PlexAPI/Models/Requests/PostUsersSigninDataUserStatus.cs
+  - PlexAPI/Models/Requests/PostUsersSigninDataSubscription.cs
+  - PlexAPI/Models/Requests/PostUsersSigninDataUserFeatures.cs
+  - PlexAPI/Models/Requests/PostUsersSigninDataUserResponseStatus.cs
+  - PlexAPI/Models/Requests/PostUsersSigninDataUserSubscription.cs
+  - PlexAPI/Models/Requests/PostUsersSigninDataState.cs
+  - PlexAPI/Models/Requests/InternalPaymentMethod.cs
+  - PlexAPI/Models/Requests/Billing.cs
+  - PlexAPI/Models/Requests/PastSubscription.cs
+  - PlexAPI/Models/Requests/Trials.cs
+  - PlexAPI/Models/Requests/PostUsersSigninDataUserPlexAccount.cs
+  - PlexAPI/Models/Requests/PostUsersSigninDataResponse.cs
   - PlexAPI/Models/Requests/PathParamFilter.cs
   - PlexAPI/Models/Requests/Libtype.cs
   - PlexAPI/Models/Requests/IncludeCollections.cs
@@ -427,12 +476,22 @@ generatedFiles:
   - PlexAPI/Models/Errors/StartTaskResponseBody.cs
   - PlexAPI/Models/Errors/StopTaskErrors.cs
   - PlexAPI/Models/Errors/StopTaskResponseBody.cs
+  - PlexAPI/Models/Errors/GetCompanionsDataErrors.cs
+  - PlexAPI/Models/Errors/GetCompanionsDataResponseBody.cs
+  - PlexAPI/Models/Errors/GetUserFriendsErrors.cs
+  - PlexAPI/Models/Errors/GetUserFriendsResponseBody.cs
+  - PlexAPI/Models/Errors/GetGeoDataErrors.cs
+  - PlexAPI/Models/Errors/GetGeoDataResponseBody.cs
   - PlexAPI/Models/Errors/GetHomeDataErrors.cs
   - PlexAPI/Models/Errors/GetHomeDataResponseBody.cs
+  - PlexAPI/Models/Errors/GetResourcesErrors.cs
+  - PlexAPI/Models/Errors/GetResourcesResponseBody.cs
   - PlexAPI/Models/Errors/GetPinErrors.cs
   - PlexAPI/Models/Errors/GetPinResponseBody.cs
-  - PlexAPI/Models/Errors/GetTokenErrors.cs
-  - PlexAPI/Models/Errors/GetTokenResponseBody.cs
+  - PlexAPI/Models/Errors/GetTokenByPinIdErrors.cs
+  - PlexAPI/Models/Errors/GetTokenByPinIdResponseBody.cs
+  - PlexAPI/Models/Errors/GetUserDetailsErrors.cs
+  - PlexAPI/Models/Errors/GetUserDetailsResponseBody.cs
   - PlexAPI/Models/Errors/GetGlobalHubsErrors.cs
   - PlexAPI/Models/Errors/GetGlobalHubsResponseBody.cs
   - PlexAPI/Models/Errors/GetLibraryHubsErrors.cs
@@ -513,6 +572,8 @@ generatedFiles:
   - PlexAPI/Models/Errors/CheckForUpdatesResponseBody.cs
   - PlexAPI/Models/Errors/ApplyUpdatesErrors.cs
   - PlexAPI/Models/Errors/ApplyUpdatesResponseBody.cs
+  - PlexAPI/Models/Errors/PostUsersSigninDataErrors.cs
+  - PlexAPI/Models/Errors/PostUsersSigninDataResponseBody.cs
   - PlexAPI/Models/Errors/GetWatchlistErrors.cs
   - PlexAPI/Models/Errors/GetWatchlistResponseBody.cs
   - PlexAPI/Models/Components/Security.cs
@@ -576,16 +637,44 @@ generatedFiles:
   - docs/Models/Requests/PathParamTaskName.md
   - docs/Models/Requests/StopTaskRequest.md
   - docs/Models/Requests/StopTaskResponse.md
+  - docs/Models/Requests/ResponseBody.md
+  - docs/Models/Requests/GetCompanionsDataResponse.md
+  - docs/Models/Requests/SharedServers.md
+  - docs/Models/Requests/SharedSources.md
+  - docs/Models/Requests/Status.md
+  - docs/Models/Requests/Friend.md
+  - docs/Models/Requests/GetUserFriendsResponse.md
+  - docs/Models/Requests/GetGeoDataGeoData.md
+  - docs/Models/Requests/GetGeoDataResponse.md
   - docs/Models/Requests/GetHomeDataResponseBody.md
   - docs/Models/Requests/GetHomeDataResponse.md
+  - docs/Models/Requests/IncludeHttps.md
+  - docs/Models/Requests/IncludeRelay.md
+  - docs/Models/Requests/IncludeIPv6.md
+  - docs/Models/Requests/GetResourcesRequest.md
+  - docs/Models/Requests/Connections.md
+  - docs/Models/Requests/PlexDevice.md
+  - docs/Models/Requests/GetResourcesResponse.md
   - docs/Models/Requests/GetPinRequest.md
-  - docs/Models/Requests/Location.md
-  - docs/Models/Requests/GetPinResponseBody.md
+  - docs/Models/Requests/GeoData.md
+  - docs/Models/Requests/GetPinAuthPinContainer.md
   - docs/Models/Requests/GetPinResponse.md
-  - docs/Models/Requests/GetTokenRequest.md
-  - docs/Models/Requests/GetTokenLocation.md
-  - docs/Models/Requests/GetTokenResponseBody.md
-  - docs/Models/Requests/GetTokenResponse.md
+  - docs/Models/Requests/GetTokenByPinIdRequest.md
+  - docs/Models/Requests/GetTokenByPinIdGeoData.md
+  - docs/Models/Requests/GetTokenByPinIdAuthPinContainer.md
+  - docs/Models/Requests/GetTokenByPinIdResponse.md
+  - docs/Models/Requests/MailingListStatus.md
+  - docs/Models/Requests/UserProfile.md
+  - docs/Models/Requests/GetUserDetailsStatus.md
+  - docs/Models/Requests/Services.md
+  - docs/Models/Requests/Features.md
+  - docs/Models/Requests/GetUserDetailsPlexStatus.md
+  - docs/Models/Requests/Subscription.md
+  - docs/Models/Requests/GetUserDetailsFeatures.md
+  - docs/Models/Requests/GetUserDetailsPlexResponseStatus.md
+  - docs/Models/Requests/GetUserDetailsSubscription.md
+  - docs/Models/Requests/GetUserDetailsUserPlexAccount.md
+  - docs/Models/Requests/GetUserDetailsResponse.md
   - docs/Models/Requests/OnlyTransient.md
   - docs/Models/Requests/GetGlobalHubsRequest.md
   - docs/Models/Requests/GetGlobalHubsMetadata.md
@@ -637,7 +726,7 @@ generatedFiles:
   - docs/Models/Requests/GetRecentlyAddedMediaContainer.md
   - docs/Models/Requests/GetRecentlyAddedResponseBody.md
   - docs/Models/Requests/GetRecentlyAddedResponse.md
-  - docs/Models/Requests/GetLibrariesLocation.md
+  - docs/Models/Requests/Location.md
   - docs/Models/Requests/GetLibrariesDirectory.md
   - docs/Models/Requests/GetLibrariesMediaContainer.md
   - docs/Models/Requests/GetLibrariesResponseBody.md
@@ -826,6 +915,25 @@ generatedFiles:
   - docs/Models/Requests/Skip.md
   - docs/Models/Requests/ApplyUpdatesRequest.md
   - docs/Models/Requests/ApplyUpdatesResponse.md
+  - docs/Models/Requests/PostUsersSigninDataRequestBody.md
+  - docs/Models/Requests/PostUsersSigninDataRequest.md
+  - docs/Models/Requests/PostUsersSigninDataMailingListStatus.md
+  - docs/Models/Requests/PostUsersSigninDataUserProfile.md
+  - docs/Models/Requests/PostUsersSigninDataStatus.md
+  - docs/Models/Requests/PostUsersSigninDataServices.md
+  - docs/Models/Requests/PostUsersSigninDataFeatures.md
+  - docs/Models/Requests/PostUsersSigninDataUserStatus.md
+  - docs/Models/Requests/PostUsersSigninDataSubscription.md
+  - docs/Models/Requests/PostUsersSigninDataUserFeatures.md
+  - docs/Models/Requests/PostUsersSigninDataUserResponseStatus.md
+  - docs/Models/Requests/PostUsersSigninDataUserSubscription.md
+  - docs/Models/Requests/PostUsersSigninDataState.md
+  - docs/Models/Requests/InternalPaymentMethod.md
+  - docs/Models/Requests/Billing.md
+  - docs/Models/Requests/PastSubscription.md
+  - docs/Models/Requests/Trials.md
+  - docs/Models/Requests/PostUsersSigninDataUserPlexAccount.md
+  - docs/Models/Requests/PostUsersSigninDataResponse.md
   - docs/Models/Requests/PathParamFilter.md
   - docs/Models/Requests/Libtype.md
   - docs/Models/Requests/IncludeCollections.md
@@ -875,12 +983,22 @@ generatedFiles:
   - docs/Models/Errors/StartTaskResponseBody.md
   - docs/Models/Errors/StopTaskErrors.md
   - docs/Models/Errors/StopTaskResponseBody.md
+  - docs/Models/Errors/GetCompanionsDataErrors.md
+  - docs/Models/Errors/GetCompanionsDataResponseBody.md
+  - docs/Models/Errors/GetUserFriendsErrors.md
+  - docs/Models/Errors/GetUserFriendsResponseBody.md
+  - docs/Models/Errors/GetGeoDataErrors.md
+  - docs/Models/Errors/GetGeoDataResponseBody.md
   - docs/Models/Errors/GetHomeDataErrors.md
   - docs/Models/Errors/GetHomeDataResponseBody.md
+  - docs/Models/Errors/GetResourcesErrors.md
+  - docs/Models/Errors/GetResourcesResponseBody.md
   - docs/Models/Errors/GetPinErrors.md
   - docs/Models/Errors/GetPinResponseBody.md
-  - docs/Models/Errors/GetTokenErrors.md
-  - docs/Models/Errors/GetTokenResponseBody.md
+  - docs/Models/Errors/GetTokenByPinIdErrors.md
+  - docs/Models/Errors/GetTokenByPinIdResponseBody.md
+  - docs/Models/Errors/GetUserDetailsErrors.md
+  - docs/Models/Errors/GetUserDetailsResponseBody.md
   - docs/Models/Errors/GetGlobalHubsErrors.md
   - docs/Models/Errors/GetGlobalHubsResponseBody.md
   - docs/Models/Errors/GetLibraryHubsErrors.md
@@ -961,6 +1079,8 @@ generatedFiles:
   - docs/Models/Errors/CheckForUpdatesResponseBody.md
   - docs/Models/Errors/ApplyUpdatesErrors.md
   - docs/Models/Errors/ApplyUpdatesResponseBody.md
+  - docs/Models/Errors/PostUsersSigninDataErrors.md
+  - docs/Models/Errors/PostUsersSigninDataResponseBody.md
   - docs/Models/Errors/GetWatchlistErrors.md
   - docs/Models/Errors/GetWatchlistResponseBody.md
   - docs/Models/Components/Security.md
@@ -980,9 +1100,11 @@ generatedFiles:
   - docs/sdks/statistics/README.md
   - docs/sdks/sessions/README.md
   - docs/sdks/updater/README.md
+  - docs/sdks/user/README.md
   - docs/sdks/watchlist/README.md
   - NUGET.md
   - USAGE.md
   - .gitattributes
   - PlexAPI/Hooks/SDKHooks.cs
   - PlexAPI/Hooks/HookTypes.cs
+  - CONTRIBUTING.md

@@ -12,12 +12,13 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: true
 csharp:
-  version: 0.3.0
+  version: 0.4.0
   additionalDependencies: []
   author: LukeHagar
   clientServerStatusCodesAsErrors: true
   disableNamespacePascalCasingApr2024: true
   dotnetVersion: net5.0
+  enableSourceLink: false
   flattenGlobalSecurity: true
   imports:
     option: openapi
@@ -27,8 +28,10 @@ csharp:
       operations: Models/Requests
       shared: Models/Components
       webhooks: Models/Webhooks
+  includeDebugSymbols: false
   inputModelSuffix: input
   maxMethodParams: 4
   outputModelSuffix: output
   packageName: PlexAPI
+  packageTags: ""
   responseFormat: envelope

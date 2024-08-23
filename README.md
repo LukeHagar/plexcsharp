@@ -82,9 +82,14 @@ var res = await sdk.Server.GetServerCapabilitiesAsync();
 
 ### [Plex](docs/sdks/plex/README.md)
 
+* [GetCompanionsData](docs/sdks/plex/README.md#getcompanionsdata) - Get Companions Data
+* [GetUserFriends](docs/sdks/plex/README.md#getuserfriends) - Get list of friends of the user logged in
+* [GetGeoData](docs/sdks/plex/README.md#getgeodata) - Get Geo Data
 * [GetHomeData](docs/sdks/plex/README.md#gethomedata) - Get Plex Home Data
+* [GetResources](docs/sdks/plex/README.md#getresources) - Get Resources
 * [GetPin](docs/sdks/plex/README.md#getpin) - Get a Pin
-* [GetToken](docs/sdks/plex/README.md#gettoken) - Get Access Token
+* [GetTokenByPinId](docs/sdks/plex/README.md#gettokenbypinid) - Get Access Token by PinId
+* [GetUserDetails](docs/sdks/plex/README.md#getuserdetails) - Get UserData By Token
 
 ### [Hubs](docs/sdks/hubs/README.md)
 
@@ -154,6 +159,10 @@ var res = await sdk.Server.GetServerCapabilitiesAsync();
 * [CheckForUpdates](docs/sdks/updater/README.md#checkforupdates) - Checking for updates
 * [ApplyUpdates](docs/sdks/updater/README.md#applyupdates) - Apply Updates
 
+### [User](docs/sdks/user/README.md)
+
+* [PostUsersSigninData](docs/sdks/user/README.md#postuserssignindata) - Get User SignIn Data
+
 ### [Watchlist](docs/sdks/watchlist/README.md)
 
 * [GetWatchlist](docs/sdks/watchlist/README.md#getwatchlist) - Get User Watchlist
@@ -190,15 +199,12 @@ The server URL can also be overridden on a per-operation basis, provided a serve
 ```csharp
 using PlexAPI;
 using PlexAPI.Models.Components;
-using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(xPlexClientIdentifier: "Postman");
-
-var res = await sdk.Plex.GetPinAsync(
-    serverUrl: "https://plex.tv/api/v2",
-    xPlexProduct: "Postman",
-    strong: false,
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "Postman");
+
+var res = await sdk.Plex.GetCompanionsDataAsync(serverUrl: "https://plex.tv/api/v2");
 
 // handle response
 ```
@@ -229,46 +235,6 @@ var res = await sdk.Server.GetServerCapabilitiesAsync();
 // handle response
 ```
 <!-- End Authentication [security] -->
-
-<!-- Start Global Parameters [global-parameters] -->
-## Global Parameters
-
-## Global Parameters
-
-A parameter is configured globally. This parameter may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
-
-For example, you can set `X-Plex-Client-Identifier` to `"Postman"` at SDK initialization and then you do not have to pass the same value on calls to operations like `GetPin`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
-
-
-### Available Globals
-
-The following global parameter is available.
-
-| Name | Type | Required | Description |
-| ---- | ---- |:--------:| ----------- |
-| xPlexClientIdentifier | string |  | The unique identifier for the client application
-This is used to track the client application and its usage
-(UUID, serial number, or other number unique per device)
- |
-
-
-### Example
-
-```csharp
-using PlexAPI;
-using PlexAPI.Models.Components;
-using PlexAPI.Models.Requests;
-
-var sdk = new PlexAPISDK(xPlexClientIdentifier: "Postman");
-
-var res = await sdk.Plex.GetPinAsync(
-    xPlexProduct: "Postman",
-    strong: false,
-    xPlexClientIdentifier: "Postman");
-
-// handle response
-```
-<!-- End Global Parameters [global-parameters] -->
 
 <!-- Start Error Handling [errors] -->
 ## Error Handling

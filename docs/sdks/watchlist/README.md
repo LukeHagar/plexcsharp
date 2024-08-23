@@ -18,8 +18,8 @@ Get User Watchlist
 
 ```csharp
 using PlexAPI;
-using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
+using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
@@ -42,10 +42,10 @@ var res = await sdk.Watchlist.GetWatchlistAsync(req);
 | `request`                                                           | [GetWatchlistRequest](../../Models/Requests/GetWatchlistRequest.md) | :heavy_check_mark:                                                  | The request object to use for the request.                          |
 | `serverURL`                                                         | *string*                                                            | :heavy_minus_sign:                                                  | An optional server URL to use.                                      |
 
-
 ### Response
 
 **[GetWatchlistResponse](../../Models/Requests/GetWatchlistResponse.md)**
+
 ### Errors
 
 | Error Object                                   | Status Code                                    | Content Type                                   |
