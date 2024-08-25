@@ -161,7 +161,7 @@ var res = await sdk.Server.GetServerCapabilitiesAsync();
 
 ### [User](docs/sdks/user/README.md)
 
-* [PostUsersSigninData](docs/sdks/user/README.md#postuserssignindata) - Get User SignIn Data
+* [PostSignIn](docs/sdks/user/README.md#postsignin) - Get User SignIn Data
 
 ### [Watchlist](docs/sdks/watchlist/README.md)
 

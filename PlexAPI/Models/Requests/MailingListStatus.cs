@@ -18,8 +18,8 @@ namespace PlexAPI.Models.Requests
     /// </summary>
     public enum MailingListStatus
     {
-        [JsonProperty("subscribed")]
-        Subscribed,
+        [JsonProperty("active")]
+        Active,
         [JsonProperty("unsubscribed")]
         Unsubscribed,
     }

@@ -7,5 +7,5 @@ Your current mailing list status
 
 | Name           | Value          |
 | -------------- | -------------- |
-| `Subscribed`   | subscribed     |
+| `Active`       | active         |
 | `Unsubscribed` | unsubscribed   |

@@ -12,7 +12,6 @@ namespace PlexAPI.Models.Requests
     using Newtonsoft.Json;
     using PlexAPI.Models.Requests;
     using PlexAPI.Utils;
-    using System.Collections.Generic;
     
     public class PastSubscription
     {
@@ -63,9 +62,9 @@ namespace PlexAPI.Models.Requests
         public string? Transfer { get; set; }
 
         [JsonProperty("state")]
-        public PostUsersSigninDataState State { get; set; } = default!;
+        public PostSignInState State { get; set; } = default!;
 
         [JsonProperty("billing")]
-        public List<Billing> Billing { get; set; } = default!;
+        public Billing Billing { get; set; } = default!;
     }
 }

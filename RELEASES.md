@@ -65,3 +65,13 @@ Based on:
 - [csharp v0.4.0] .
 ### Releases
 - [NuGet v0.4.0] https://www.nuget.org/packages/PlexAPI/0.4.0 - .
+
+## 2024-08-25 00:09:48
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.378.1 (2.404.3) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [csharp v0.4.1] .
+### Releases
+- [NuGet v0.4.1] https://www.nuget.org/packages/PlexAPI/0.4.1 - .

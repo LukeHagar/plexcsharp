@@ -39,7 +39,7 @@ namespace PlexAPI
         /// Sign in user with username and password and return user data with Plex authentication token
         /// </remarks>
         /// </summary>
-        Task<PostUsersSigninDataResponse> PostUsersSigninDataAsync(string? xPlexClientIdentifier = null, PostUsersSigninDataRequestBody? requestBody = null, string? serverUrl = null);
+        Task<PostSignInResponse> PostSignInAsync(string? xPlexClientIdentifier = null, PostSignInRequestBody? requestBody = null, string? serverUrl = null);
     }
 
     /// <summary>
@@ -52,17 +52,17 @@ namespace PlexAPI
     public class User: IUser
     {
         /// <summary>
-        /// List of server URLs available for the post-users-signin-data operation.
+        /// List of server URLs available for the post-sign-in operation.
         /// </summary>
-        public static readonly string[] PostUsersSigninDataServerList = {
+        public static readonly string[] PostSignInServerList = {
             "https://plex.tv/api/v2",
         };
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.4.0";
-        private const string _sdkGenVersion = "2.404.2";
+        private const string _sdkVersion = "0.4.1";
+        private const string _sdkGenVersion = "2.404.3";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.4.0 2.404.2 0.0.3 PlexAPI";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.4.1 2.404.3 0.0.3 PlexAPI";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<PlexAPI.Models.Components.Security>? _securitySource;
@@ -75,16 +75,16 @@ namespace PlexAPI
             SDKConfiguration = config;
         }
 
-        public async Task<PostUsersSigninDataResponse> PostUsersSigninDataAsync(string? xPlexClientIdentifier = null, PostUsersSigninDataRequestBody? requestBody = null, string? serverUrl = null)
+        public async Task<PostSignInResponse> PostSignInAsync(string? xPlexClientIdentifier = null, PostSignInRequestBody? requestBody = null, string? serverUrl = null)
         {
-            var request = new PostUsersSigninDataRequest()
+            var request = new PostSignInRequest()
             {
                 XPlexClientIdentifier = xPlexClientIdentifier,
                 RequestBody = requestBody,
             };
             request.XPlexClientIdentifier ??= SDKConfiguration.XPlexClientIdentifier;
             
-            string baseUrl = Utilities.TemplateUrl(PostUsersSigninDataServerList[0], new Dictionary<string, string>(){
+            string baseUrl = Utilities.TemplateUrl(PostSignInServerList[0], new Dictionary<string, string>(){
             });
             if (serverUrl != null)
             {
@@ -103,7 +103,7 @@ namespace PlexAPI
                 httpRequest.Content = serializedBody;
             }
 
-            var hookCtx = new HookContext("post-users-signin-data", null, null);
+            var hookCtx = new HookContext("post-sign-in", null, null);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -143,8 +143,8 @@ namespace PlexAPI
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<PostUsersSigninDataUserPlexAccount>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new PostUsersSigninDataResponse()
+                    var obj = ResponseBodyDeserializer.Deserialize<PostSignInUserPlexAccount>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new PostSignInResponse()
                     {
                         StatusCode = responseStatusCode,
                         ContentType = contentType,
@@ -166,7 +166,7 @@ namespace PlexAPI
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<PostUsersSigninDataResponseBody>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<PostSignInResponseBody>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     obj!.RawResponse = httpResponse;
                     throw obj!;
                 }

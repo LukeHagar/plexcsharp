@@ -173,7 +173,7 @@ namespace PlexAPI.Models.Requests
         public string? Pin { get; set; }
 
         [JsonProperty("profile")]
-        public List<UserProfile> Profile { get; set; } = default!;
+        public UserProfile Profile { get; set; } = default!;
 
         /// <summary>
         /// If the account has a Plex Home PIN enabled

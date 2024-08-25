@@ -13,7 +13,6 @@ namespace PlexAPI.Models.Requests
     using PlexAPI.Models.Requests;
     using PlexAPI.Utils;
     using System.Collections.Generic;
-    using System;
     
     public class GetUserDetailsSubscription
     {
@@ -34,7 +33,7 @@ namespace PlexAPI.Models.Requests
         /// Date the account subscribed to Plex Pass
         /// </summary>
         [JsonProperty("subscribedAt")]
-        public DateTime? SubscribedAt { get; set; }
+        public string? SubscribedAt { get; set; } = null;
 
         /// <summary>
         /// String representation of subscriptionActive

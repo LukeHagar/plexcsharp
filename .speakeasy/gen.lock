@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 5a8dbcbc-e0ee-41f0-9d84-b8b50567d1e9
 management:
-  docChecksum: 2ad2b4c59994082e04faa0c3e7675f3e
+  docChecksum: 5ae5b1296191bd5cc5d4f6cd38df8bff
   docVersion: 0.0.3
-  speakeasyVersion: 1.377.3
-  generationVersion: 2.404.2
-  releaseVersion: 0.4.0
-  configChecksum: 0e72845e7bb366c3b8a4e13005a8fcfe
+  speakeasyVersion: 1.378.1
+  generationVersion: 2.404.3
+  releaseVersion: 0.4.1
+  configChecksum: c11547fd2dc431993d988a8717e7bfe9
   repoURL: https://github.com/LukeHagar/plexcsharp.git
   repoSubDirectory: .
   published: true
@@ -157,6 +157,11 @@ generatedFiles:
   - PlexAPI/Models/Requests/GetTokenByPinIdAuthPinContainer.cs
   - PlexAPI/Models/Requests/GetTokenByPinIdResponse.cs
   - PlexAPI/Models/Requests/MailingListStatus.cs
+  - PlexAPI/Models/Requests/AutoSelectSubtitle.cs
+  - PlexAPI/Models/Requests/DefaultSubtitleAccessibility.cs
+  - PlexAPI/Models/Requests/DefaultSubtitleForced.cs
+  - PlexAPI/Models/Requests/WatchedIndicator.cs
+  - PlexAPI/Models/Requests/MediaReviewsVisibility.cs
   - PlexAPI/Models/Requests/UserProfile.cs
   - PlexAPI/Models/Requests/GetUserDetailsStatus.cs
   - PlexAPI/Models/Requests/Services.cs
@@ -408,25 +413,30 @@ generatedFiles:
   - PlexAPI/Models/Requests/Skip.cs
   - PlexAPI/Models/Requests/ApplyUpdatesRequest.cs
   - PlexAPI/Models/Requests/ApplyUpdatesResponse.cs
-  - PlexAPI/Models/Requests/PostUsersSigninDataRequestBody.cs
-  - PlexAPI/Models/Requests/PostUsersSigninDataRequest.cs
-  - PlexAPI/Models/Requests/PostUsersSigninDataMailingListStatus.cs
-  - PlexAPI/Models/Requests/PostUsersSigninDataUserProfile.cs
-  - PlexAPI/Models/Requests/PostUsersSigninDataStatus.cs
-  - PlexAPI/Models/Requests/PostUsersSigninDataServices.cs
-  - PlexAPI/Models/Requests/PostUsersSigninDataFeatures.cs
-  - PlexAPI/Models/Requests/PostUsersSigninDataUserStatus.cs
-  - PlexAPI/Models/Requests/PostUsersSigninDataSubscription.cs
-  - PlexAPI/Models/Requests/PostUsersSigninDataUserFeatures.cs
-  - PlexAPI/Models/Requests/PostUsersSigninDataUserResponseStatus.cs
-  - PlexAPI/Models/Requests/PostUsersSigninDataUserSubscription.cs
-  - PlexAPI/Models/Requests/PostUsersSigninDataState.cs
+  - PlexAPI/Models/Requests/PostSignInRequestBody.cs
+  - PlexAPI/Models/Requests/PostSignInRequest.cs
+  - PlexAPI/Models/Requests/PostSignInMailingListStatus.cs
+  - PlexAPI/Models/Requests/PostSignInAutoSelectSubtitle.cs
+  - PlexAPI/Models/Requests/PostSignInDefaultSubtitleAccessibility.cs
+  - PlexAPI/Models/Requests/PostSignInDefaultSubtitleForced.cs
+  - PlexAPI/Models/Requests/PostSignInWatchedIndicator.cs
+  - PlexAPI/Models/Requests/PostSignInMediaReviewsVisibility.cs
+  - PlexAPI/Models/Requests/PostSignInUserProfile.cs
+  - PlexAPI/Models/Requests/PostSignInStatus.cs
+  - PlexAPI/Models/Requests/PostSignInServices.cs
+  - PlexAPI/Models/Requests/PostSignInFeatures.cs
+  - PlexAPI/Models/Requests/PostSignInUserStatus.cs
+  - PlexAPI/Models/Requests/PostSignInSubscription.cs
+  - PlexAPI/Models/Requests/PostSignInUserFeatures.cs
+  - PlexAPI/Models/Requests/PostSignInUserResponseStatus.cs
+  - PlexAPI/Models/Requests/PostSignInUserSubscription.cs
+  - PlexAPI/Models/Requests/PostSignInState.cs
   - PlexAPI/Models/Requests/InternalPaymentMethod.cs
   - PlexAPI/Models/Requests/Billing.cs
   - PlexAPI/Models/Requests/PastSubscription.cs
   - PlexAPI/Models/Requests/Trials.cs
-  - PlexAPI/Models/Requests/PostUsersSigninDataUserPlexAccount.cs
-  - PlexAPI/Models/Requests/PostUsersSigninDataResponse.cs
+  - PlexAPI/Models/Requests/PostSignInUserPlexAccount.cs
+  - PlexAPI/Models/Requests/PostSignInResponse.cs
   - PlexAPI/Models/Requests/PathParamFilter.cs
   - PlexAPI/Models/Requests/Libtype.cs
   - PlexAPI/Models/Requests/IncludeCollections.cs
@@ -572,8 +582,8 @@ generatedFiles:
   - PlexAPI/Models/Errors/CheckForUpdatesResponseBody.cs
   - PlexAPI/Models/Errors/ApplyUpdatesErrors.cs
   - PlexAPI/Models/Errors/ApplyUpdatesResponseBody.cs
-  - PlexAPI/Models/Errors/PostUsersSigninDataErrors.cs
-  - PlexAPI/Models/Errors/PostUsersSigninDataResponseBody.cs
+  - PlexAPI/Models/Errors/PostSignInErrors.cs
+  - PlexAPI/Models/Errors/PostSignInResponseBody.cs
   - PlexAPI/Models/Errors/GetWatchlistErrors.cs
   - PlexAPI/Models/Errors/GetWatchlistResponseBody.cs
   - PlexAPI/Models/Components/Security.cs
@@ -664,6 +674,11 @@ generatedFiles:
   - docs/Models/Requests/GetTokenByPinIdAuthPinContainer.md
   - docs/Models/Requests/GetTokenByPinIdResponse.md
   - docs/Models/Requests/MailingListStatus.md
+  - docs/Models/Requests/AutoSelectSubtitle.md
+  - docs/Models/Requests/DefaultSubtitleAccessibility.md
+  - docs/Models/Requests/DefaultSubtitleForced.md
+  - docs/Models/Requests/WatchedIndicator.md
+  - docs/Models/Requests/MediaReviewsVisibility.md
   - docs/Models/Requests/UserProfile.md
   - docs/Models/Requests/GetUserDetailsStatus.md
   - docs/Models/Requests/Services.md
@@ -915,25 +930,30 @@ generatedFiles:
   - docs/Models/Requests/Skip.md
   - docs/Models/Requests/ApplyUpdatesRequest.md
   - docs/Models/Requests/ApplyUpdatesResponse.md
-  - docs/Models/Requests/PostUsersSigninDataRequestBody.md
-  - docs/Models/Requests/PostUsersSigninDataRequest.md
-  - docs/Models/Requests/PostUsersSigninDataMailingListStatus.md
-  - docs/Models/Requests/PostUsersSigninDataUserProfile.md
-  - docs/Models/Requests/PostUsersSigninDataStatus.md
-  - docs/Models/Requests/PostUsersSigninDataServices.md
-  - docs/Models/Requests/PostUsersSigninDataFeatures.md
-  - docs/Models/Requests/PostUsersSigninDataUserStatus.md
-  - docs/Models/Requests/PostUsersSigninDataSubscription.md
-  - docs/Models/Requests/PostUsersSigninDataUserFeatures.md
-  - docs/Models/Requests/PostUsersSigninDataUserResponseStatus.md
-  - docs/Models/Requests/PostUsersSigninDataUserSubscription.md
-  - docs/Models/Requests/PostUsersSigninDataState.md
+  - docs/Models/Requests/PostSignInRequestBody.md
+  - docs/Models/Requests/PostSignInRequest.md
+  - docs/Models/Requests/PostSignInMailingListStatus.md
+  - docs/Models/Requests/PostSignInAutoSelectSubtitle.md
+  - docs/Models/Requests/PostSignInDefaultSubtitleAccessibility.md
+  - docs/Models/Requests/PostSignInDefaultSubtitleForced.md
+  - docs/Models/Requests/PostSignInWatchedIndicator.md
+  - docs/Models/Requests/PostSignInMediaReviewsVisibility.md
+  - docs/Models/Requests/PostSignInUserProfile.md
+  - docs/Models/Requests/PostSignInStatus.md
+  - docs/Models/Requests/PostSignInServices.md
+  - docs/Models/Requests/PostSignInFeatures.md
+  - docs/Models/Requests/PostSignInUserStatus.md
+  - docs/Models/Requests/PostSignInSubscription.md
+  - docs/Models/Requests/PostSignInUserFeatures.md
+  - docs/Models/Requests/PostSignInUserResponseStatus.md
+  - docs/Models/Requests/PostSignInUserSubscription.md
+  - docs/Models/Requests/PostSignInState.md
   - docs/Models/Requests/InternalPaymentMethod.md
   - docs/Models/Requests/Billing.md
   - docs/Models/Requests/PastSubscription.md
   - docs/Models/Requests/Trials.md
-  - docs/Models/Requests/PostUsersSigninDataUserPlexAccount.md
-  - docs/Models/Requests/PostUsersSigninDataResponse.md
+  - docs/Models/Requests/PostSignInUserPlexAccount.md
+  - docs/Models/Requests/PostSignInResponse.md
   - docs/Models/Requests/PathParamFilter.md
   - docs/Models/Requests/Libtype.md
   - docs/Models/Requests/IncludeCollections.md
@@ -1079,8 +1099,8 @@ generatedFiles:
   - docs/Models/Errors/CheckForUpdatesResponseBody.md
   - docs/Models/Errors/ApplyUpdatesErrors.md
   - docs/Models/Errors/ApplyUpdatesResponseBody.md
-  - docs/Models/Errors/PostUsersSigninDataErrors.md
-  - docs/Models/Errors/PostUsersSigninDataResponseBody.md
+  - docs/Models/Errors/PostSignInErrors.md
+  - docs/Models/Errors/PostSignInResponseBody.md
   - docs/Models/Errors/GetWatchlistErrors.md
   - docs/Models/Errors/GetWatchlistResponseBody.md
   - docs/Models/Components/Security.md
