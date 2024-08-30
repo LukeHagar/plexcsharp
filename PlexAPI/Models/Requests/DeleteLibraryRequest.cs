@@ -15,7 +15,7 @@ namespace PlexAPI.Models.Requests
     {
 
         /// <summary>
-        /// the Id of the library to query
+        /// The id of the library
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=sectionId")]
         public double SectionId { get; set; } = default!;

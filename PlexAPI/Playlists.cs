@@ -129,7 +129,7 @@ namespace PlexAPI
         /// 
         /// </remarks>
         /// </summary>
-        Task<UploadPlaylistResponse> UploadPlaylistAsync(string path, Force force);
+        Task<UploadPlaylistResponse> UploadPlaylistAsync(string path, QueryParamForce force);
     }
 
     /// <summary>
@@ -146,10 +146,10 @@ namespace PlexAPI
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.4.1";
-        private const string _sdkGenVersion = "2.404.3";
+        private const string _sdkVersion = "0.4.2";
+        private const string _sdkGenVersion = "2.407.0";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.4.1 2.404.3 0.0.3 PlexAPI";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.4.2 2.407.0 0.0.3 PlexAPI";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<PlexAPI.Models.Components.Security>? _securitySource;
@@ -894,7 +894,7 @@ namespace PlexAPI
             }
         }
 
-        public async Task<UploadPlaylistResponse> UploadPlaylistAsync(string path, Force force)
+        public async Task<UploadPlaylistResponse> UploadPlaylistAsync(string path, QueryParamForce force)
         {
             var request = new UploadPlaylistRequest()
             {

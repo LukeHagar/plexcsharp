@@ -25,7 +25,8 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 var res = await sdk.Updater.GetUpdateStatusAsync();
 
@@ -57,7 +58,8 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 var res = await sdk.Updater.CheckForUpdatesAsync(download: PlexAPI.Models.Requests.Download.One);
 
@@ -96,11 +98,13 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 var res = await sdk.Updater.ApplyUpdatesAsync(
     tonight: PlexAPI.Models.Requests.Tonight.One,
-    skip: PlexAPI.Models.Requests.Skip.One);
+    skip: PlexAPI.Models.Requests.Skip.One
+);
 
 // handle response
 ```

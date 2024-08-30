@@ -112,6 +112,6 @@ namespace PlexAPI.Models.Requests
         public List<GetTopWatchedContentRole>? Role { get; set; }
 
         [JsonProperty("User")]
-        public List<Models.Requests.User>? User { get; set; }
+        public List<User>? User { get; set; }
     }
 }

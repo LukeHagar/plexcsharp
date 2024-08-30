@@ -52,6 +52,15 @@ namespace PlexAPI
         /// </remarks>
         /// </summary>
         Task<GetSourceConnectionInformationResponse> GetSourceConnectionInformationAsync(string source);
+
+        /// <summary>
+        /// Get User SignIn Data
+        /// 
+        /// <remarks>
+        /// Sign in user with username and password and return user data with Plex authentication token
+        /// </remarks>
+        /// </summary>
+        Task<PostUsersSignInDataResponse> PostUsersSignInDataAsync(string? xPlexClientIdentifier = null, PostUsersSignInDataRequestBody? requestBody = null, string? serverUrl = null);
     }
 
     /// <summary>
@@ -63,12 +72,18 @@ namespace PlexAPI
     /// </summary>
     public class Authentication: IAuthentication
     {
+        /// <summary>
+        /// List of server URLs available for the post-users-sign-in-data operation.
+        /// </summary>
+        public static readonly string[] PostUsersSignInDataServerList = {
+            "https://plex.tv/api/v2",
+        };
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.4.1";
-        private const string _sdkGenVersion = "2.404.3";
+        private const string _sdkVersion = "0.4.2";
+        private const string _sdkGenVersion = "2.407.0";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.4.1 2.404.3 0.0.3 PlexAPI";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.4.2 2.407.0 0.0.3 PlexAPI";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<PlexAPI.Models.Components.Security>? _securitySource;
@@ -238,6 +253,112 @@ namespace PlexAPI
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var obj = ResponseBodyDeserializer.Deserialize<GetSourceConnectionInformationResponseBody>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    obj!.RawResponse = httpResponse;
+                    throw obj!;
+                }
+                else
+                {
+                    throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+                }
+            }
+            else
+            {
+                throw new SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+            }
+        }
+
+        public async Task<PostUsersSignInDataResponse> PostUsersSignInDataAsync(string? xPlexClientIdentifier = null, PostUsersSignInDataRequestBody? requestBody = null, string? serverUrl = null)
+        {
+            var request = new PostUsersSignInDataRequest()
+            {
+                XPlexClientIdentifier = xPlexClientIdentifier,
+                RequestBody = requestBody,
+            };
+            request.XPlexClientIdentifier ??= SDKConfiguration.XPlexClientIdentifier;
+            
+            string baseUrl = Utilities.TemplateUrl(PostUsersSignInDataServerList[0], new Dictionary<string, string>(){
+            });
+            if (serverUrl != null)
+            {
+                baseUrl = serverUrl;
+            }
+
+            var urlString = baseUrl + "/users/signin";
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
+            httpRequest.Headers.Add("user-agent", _userAgent);
+            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            var serializedBody = RequestBodySerializer.Serialize(request, "RequestBody", "form", false, true);
+            if (serializedBody != null)
+            {
+                httpRequest.Content = serializedBody;
+            }
+
+            var hookCtx = new HookContext("post-users-sign-in-data", null, null);
+
+            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+
+            HttpResponseMessage httpResponse;
+            try
+            {
+                httpResponse = await _client.SendAsync(httpRequest);
+                int _statusCode = (int)httpResponse.StatusCode;
+
+                if (_statusCode == 400 || _statusCode == 401 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                {
+                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
+                    if (_httpResponse != null)
+                    {
+                        httpResponse = _httpResponse;
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                if (_httpResponse != null)
+                {
+                    httpResponse = _httpResponse;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            int responseStatusCode = (int)httpResponse.StatusCode;
+            if(responseStatusCode == 201)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<PostUsersSignInDataUserPlexAccount>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new PostUsersSignInDataResponse()
+                    {
+                        StatusCode = responseStatusCode,
+                        ContentType = contentType,
+                        RawResponse = httpResponse
+                    };
+                    response.UserPlexAccount = obj;
+                    return response;
+                }
+                else
+                {
+                    throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+                }
+            }
+            else if(responseStatusCode == 400 || responseStatusCode >= 400 && responseStatusCode < 500 || responseStatusCode >= 500 && responseStatusCode < 600)
+            {
+                throw new SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+            }
+            else if(responseStatusCode == 401)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<PostUsersSignInDataResponseBody>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     obj!.RawResponse = httpResponse;
                     throw obj!;
                 }

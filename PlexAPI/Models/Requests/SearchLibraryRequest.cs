@@ -25,6 +25,6 @@ namespace PlexAPI.Models.Requests
         /// Plex content type to search for
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=type")]
-        public Type Type { get; set; } = default!;
+        public Models.Requests.Type Type { get; set; } = default!;
     }
 }

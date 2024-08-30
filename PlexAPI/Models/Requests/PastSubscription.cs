@@ -22,15 +22,9 @@ namespace PlexAPI.Models.Requests
         [JsonProperty("mode", NullValueHandling = NullValueHandling.Include)]
         public string? Mode { get; set; }
 
-        /// <summary>
-        /// Unix epoch datetime
-        /// </summary>
         [JsonProperty("renewsAt", NullValueHandling = NullValueHandling.Include)]
         public int? RenewsAt { get; set; }
 
-        /// <summary>
-        /// Unix epoch datetime
-        /// </summary>
         [JsonProperty("endsAt", NullValueHandling = NullValueHandling.Include)]
         public int? EndsAt { get; set; }
 
@@ -62,7 +56,7 @@ namespace PlexAPI.Models.Requests
         public string? Transfer { get; set; }
 
         [JsonProperty("state")]
-        public PostSignInState State { get; set; } = default!;
+        public PostUsersSignInDataState State { get; set; } = default!;
 
         [JsonProperty("billing")]
         public Billing Billing { get; set; } = default!;

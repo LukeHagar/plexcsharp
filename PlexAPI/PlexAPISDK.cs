@@ -214,15 +214,6 @@ namespace PlexAPI
         public IUpdater Updater { get; }
 
         /// <summary>
-        /// API Calls that perform operations with Plex Media Server Users<br/>
-        /// 
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// </summary>
-        public IUser User { get; }
-
-        /// <summary>
         /// API Calls that perform operations with Plex Media Server Watchlists<br/>
         /// 
         /// <remarks>
@@ -277,10 +268,10 @@ namespace PlexAPI
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.4.1";
-        private const string _sdkGenVersion = "2.404.3";
+        private const string _sdkVersion = "0.4.2";
+        private const string _sdkGenVersion = "2.407.0";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.4.1 2.404.3 0.0.3 PlexAPI";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.4.2 2.407.0 0.0.3 PlexAPI";
         private string _serverUrl = "";
         private int _serverIndex = 0;
         private ISpeakeasyHttpClient _client;
@@ -300,7 +291,6 @@ namespace PlexAPI
         public IStatistics Statistics { get; private set; }
         public ISessions Sessions { get; private set; }
         public IUpdater Updater { get; private set; }
-        public IUser User { get; private set; }
         public IWatchlist Watchlist { get; private set; }
 
         public PlexAPISDK(string? accessToken = null, Func<string>? accessTokenSource = null, string? xPlexClientIdentifier = null, int? serverIndex = null, ServerProtocol? protocol = null, string?  ip = null, string?  port = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null, RetryConfig? retryConfig = null)
@@ -398,9 +388,6 @@ namespace PlexAPI
 
 
             Updater = new Updater(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
-            User = new User(_client, _securitySource, _serverUrl, SDKConfiguration);
 
 
             Watchlist = new Watchlist(_client, _securitySource, _serverUrl, SDKConfiguration);

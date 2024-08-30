@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 5a8dbcbc-e0ee-41f0-9d84-b8b50567d1e9
 management:
-  docChecksum: 5ae5b1296191bd5cc5d4f6cd38df8bff
+  docChecksum: cd46763b91ada69afbe49fa20517839a
   docVersion: 0.0.3
-  speakeasyVersion: 1.378.1
-  generationVersion: 2.404.3
-  releaseVersion: 0.4.1
-  configChecksum: c11547fd2dc431993d988a8717e7bfe9
+  speakeasyVersion: 1.383.2
+  generationVersion: 2.407.0
+  releaseVersion: 0.4.2
+  configChecksum: 74b77ec64d814262085e1afc1ea50fbb
   repoURL: https://github.com/LukeHagar/plexcsharp.git
   repoSubDirectory: .
   published: true
@@ -14,7 +14,7 @@ features:
   csharp:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.0.1
-    core: 3.9.14
+    core: 3.9.16
     deprecations: 2.81.2
     flattening: 2.81.2
     globalSecurity: 2.83.6
@@ -46,7 +46,6 @@ generatedFiles:
   - PlexAPI/Statistics.cs
   - PlexAPI/Sessions.cs
   - PlexAPI/Updater.cs
-  - PlexAPI/User.cs
   - PlexAPI/Watchlist.cs
   - PlexAPI/PlexAPISDK.cs
   - global.json
@@ -225,22 +224,22 @@ generatedFiles:
   - PlexAPI/Models/Requests/GetRecentlyAddedResponseBody.cs
   - PlexAPI/Models/Requests/GetRecentlyAddedResponse.cs
   - PlexAPI/Models/Requests/Location.cs
-  - PlexAPI/Models/Requests/GetLibrariesDirectory.cs
-  - PlexAPI/Models/Requests/GetLibrariesMediaContainer.cs
-  - PlexAPI/Models/Requests/GetLibrariesResponseBody.cs
-  - PlexAPI/Models/Requests/GetLibrariesResponse.cs
+  - PlexAPI/Models/Requests/GetAllLibrariesDirectory.cs
+  - PlexAPI/Models/Requests/GetAllLibrariesMediaContainer.cs
+  - PlexAPI/Models/Requests/GetAllLibrariesResponseBody.cs
+  - PlexAPI/Models/Requests/GetAllLibrariesResponse.cs
   - PlexAPI/Models/Requests/IncludeDetails.cs
-  - PlexAPI/Models/Requests/GetLibraryRequest.cs
-  - PlexAPI/Models/Requests/GetLibraryDirectory.cs
-  - PlexAPI/Models/Requests/GetLibraryFilter.cs
+  - PlexAPI/Models/Requests/GetLibraryDetailsRequest.cs
+  - PlexAPI/Models/Requests/GetLibraryDetailsDirectory.cs
+  - PlexAPI/Models/Requests/GetLibraryDetailsFilter.cs
   - PlexAPI/Models/Requests/Sort.cs
   - PlexAPI/Models/Requests/Field.cs
-  - PlexAPI/Models/Requests/GetLibraryType.cs
+  - PlexAPI/Models/Requests/GetLibraryDetailsType.cs
   - PlexAPI/Models/Requests/Operator.cs
   - PlexAPI/Models/Requests/FieldType.cs
-  - PlexAPI/Models/Requests/GetLibraryMediaContainer.cs
-  - PlexAPI/Models/Requests/GetLibraryResponseBody.cs
-  - PlexAPI/Models/Requests/GetLibraryResponse.cs
+  - PlexAPI/Models/Requests/GetLibraryDetailsMediaContainer.cs
+  - PlexAPI/Models/Requests/GetLibraryDetailsResponseBody.cs
+  - PlexAPI/Models/Requests/GetLibraryDetailsResponse.cs
   - PlexAPI/Models/Requests/DeleteLibraryRequest.cs
   - PlexAPI/Models/Requests/DeleteLibraryResponse.cs
   - PlexAPI/Models/Requests/Tag.cs
@@ -257,8 +256,9 @@ generatedFiles:
   - PlexAPI/Models/Requests/GetLibraryItemsMediaContainer.cs
   - PlexAPI/Models/Requests/GetLibraryItemsResponseBody.cs
   - PlexAPI/Models/Requests/GetLibraryItemsResponse.cs
-  - PlexAPI/Models/Requests/RefreshLibraryRequest.cs
-  - PlexAPI/Models/Requests/RefreshLibraryResponse.cs
+  - PlexAPI/Models/Requests/Force.cs
+  - PlexAPI/Models/Requests/GetRefreshLibraryMetadataRequest.cs
+  - PlexAPI/Models/Requests/GetRefreshLibraryMetadataResponse.cs
   - PlexAPI/Models/Requests/Type.cs
   - PlexAPI/Models/Requests/SearchLibraryRequest.cs
   - PlexAPI/Models/Requests/SearchLibraryMetadata.cs
@@ -352,7 +352,7 @@ generatedFiles:
   - PlexAPI/Models/Requests/AddPlaylistContentsMediaContainer.cs
   - PlexAPI/Models/Requests/AddPlaylistContentsResponseBody.cs
   - PlexAPI/Models/Requests/AddPlaylistContentsResponse.cs
-  - PlexAPI/Models/Requests/Force.cs
+  - PlexAPI/Models/Requests/QueryParamForce.cs
   - PlexAPI/Models/Requests/UploadPlaylistRequest.cs
   - PlexAPI/Models/Requests/UploadPlaylistResponse.cs
   - PlexAPI/Models/Requests/GetTransientTokenQueryParamType.cs
@@ -361,6 +361,30 @@ generatedFiles:
   - PlexAPI/Models/Requests/GetTransientTokenResponse.cs
   - PlexAPI/Models/Requests/GetSourceConnectionInformationRequest.cs
   - PlexAPI/Models/Requests/GetSourceConnectionInformationResponse.cs
+  - PlexAPI/Models/Requests/PostUsersSignInDataRequestBody.cs
+  - PlexAPI/Models/Requests/PostUsersSignInDataRequest.cs
+  - PlexAPI/Models/Requests/PostUsersSignInDataMailingListStatus.cs
+  - PlexAPI/Models/Requests/PostUsersSignInDataAutoSelectSubtitle.cs
+  - PlexAPI/Models/Requests/PostUsersSignInDataDefaultSubtitleAccessibility.cs
+  - PlexAPI/Models/Requests/PostUsersSignInDataDefaultSubtitleForced.cs
+  - PlexAPI/Models/Requests/PostUsersSignInDataWatchedIndicator.cs
+  - PlexAPI/Models/Requests/PostUsersSignInDataMediaReviewsVisibility.cs
+  - PlexAPI/Models/Requests/PostUsersSignInDataUserProfile.cs
+  - PlexAPI/Models/Requests/PostUsersSignInDataStatus.cs
+  - PlexAPI/Models/Requests/PostUsersSignInDataServices.cs
+  - PlexAPI/Models/Requests/PostUsersSignInDataFeatures.cs
+  - PlexAPI/Models/Requests/PostUsersSignInDataAuthenticationStatus.cs
+  - PlexAPI/Models/Requests/PostUsersSignInDataSubscription.cs
+  - PlexAPI/Models/Requests/PostUsersSignInDataAuthenticationFeatures.cs
+  - PlexAPI/Models/Requests/PostUsersSignInDataAuthenticationResponseStatus.cs
+  - PlexAPI/Models/Requests/PostUsersSignInDataAuthenticationSubscription.cs
+  - PlexAPI/Models/Requests/PostUsersSignInDataState.cs
+  - PlexAPI/Models/Requests/InternalPaymentMethod.cs
+  - PlexAPI/Models/Requests/Billing.cs
+  - PlexAPI/Models/Requests/PastSubscription.cs
+  - PlexAPI/Models/Requests/Trials.cs
+  - PlexAPI/Models/Requests/PostUsersSignInDataUserPlexAccount.cs
+  - PlexAPI/Models/Requests/PostUsersSignInDataResponse.cs
   - PlexAPI/Models/Requests/GetStatisticsRequest.cs
   - PlexAPI/Models/Requests/GetStatisticsDevice.cs
   - PlexAPI/Models/Requests/Account.cs
@@ -413,30 +437,6 @@ generatedFiles:
   - PlexAPI/Models/Requests/Skip.cs
   - PlexAPI/Models/Requests/ApplyUpdatesRequest.cs
   - PlexAPI/Models/Requests/ApplyUpdatesResponse.cs
-  - PlexAPI/Models/Requests/PostSignInRequestBody.cs
-  - PlexAPI/Models/Requests/PostSignInRequest.cs
-  - PlexAPI/Models/Requests/PostSignInMailingListStatus.cs
-  - PlexAPI/Models/Requests/PostSignInAutoSelectSubtitle.cs
-  - PlexAPI/Models/Requests/PostSignInDefaultSubtitleAccessibility.cs
-  - PlexAPI/Models/Requests/PostSignInDefaultSubtitleForced.cs
-  - PlexAPI/Models/Requests/PostSignInWatchedIndicator.cs
-  - PlexAPI/Models/Requests/PostSignInMediaReviewsVisibility.cs
-  - PlexAPI/Models/Requests/PostSignInUserProfile.cs
-  - PlexAPI/Models/Requests/PostSignInStatus.cs
-  - PlexAPI/Models/Requests/PostSignInServices.cs
-  - PlexAPI/Models/Requests/PostSignInFeatures.cs
-  - PlexAPI/Models/Requests/PostSignInUserStatus.cs
-  - PlexAPI/Models/Requests/PostSignInSubscription.cs
-  - PlexAPI/Models/Requests/PostSignInUserFeatures.cs
-  - PlexAPI/Models/Requests/PostSignInUserResponseStatus.cs
-  - PlexAPI/Models/Requests/PostSignInUserSubscription.cs
-  - PlexAPI/Models/Requests/PostSignInState.cs
-  - PlexAPI/Models/Requests/InternalPaymentMethod.cs
-  - PlexAPI/Models/Requests/Billing.cs
-  - PlexAPI/Models/Requests/PastSubscription.cs
-  - PlexAPI/Models/Requests/Trials.cs
-  - PlexAPI/Models/Requests/PostSignInUserPlexAccount.cs
-  - PlexAPI/Models/Requests/PostSignInResponse.cs
   - PlexAPI/Models/Requests/PathParamFilter.cs
   - PlexAPI/Models/Requests/Libtype.cs
   - PlexAPI/Models/Requests/IncludeCollections.cs
@@ -516,16 +516,16 @@ generatedFiles:
   - PlexAPI/Models/Errors/GetFileHashResponseBody.cs
   - PlexAPI/Models/Errors/GetRecentlyAddedErrors.cs
   - PlexAPI/Models/Errors/GetRecentlyAddedResponseBody.cs
-  - PlexAPI/Models/Errors/GetLibrariesErrors.cs
-  - PlexAPI/Models/Errors/GetLibrariesResponseBody.cs
-  - PlexAPI/Models/Errors/GetLibraryErrors.cs
-  - PlexAPI/Models/Errors/GetLibraryResponseBody.cs
+  - PlexAPI/Models/Errors/GetAllLibrariesErrors.cs
+  - PlexAPI/Models/Errors/GetAllLibrariesResponseBody.cs
+  - PlexAPI/Models/Errors/GetLibraryDetailsErrors.cs
+  - PlexAPI/Models/Errors/GetLibraryDetailsResponseBody.cs
   - PlexAPI/Models/Errors/DeleteLibraryErrors.cs
   - PlexAPI/Models/Errors/DeleteLibraryResponseBody.cs
   - PlexAPI/Models/Errors/GetLibraryItemsErrors.cs
   - PlexAPI/Models/Errors/GetLibraryItemsResponseBody.cs
-  - PlexAPI/Models/Errors/RefreshLibraryErrors.cs
-  - PlexAPI/Models/Errors/RefreshLibraryResponseBody.cs
+  - PlexAPI/Models/Errors/GetRefreshLibraryMetadataErrors.cs
+  - PlexAPI/Models/Errors/GetRefreshLibraryMetadataResponseBody.cs
   - PlexAPI/Models/Errors/SearchLibraryErrors.cs
   - PlexAPI/Models/Errors/SearchLibraryResponseBody.cs
   - PlexAPI/Models/Errors/GetMetadataErrors.cs
@@ -562,6 +562,8 @@ generatedFiles:
   - PlexAPI/Models/Errors/GetTransientTokenResponseBody.cs
   - PlexAPI/Models/Errors/GetSourceConnectionInformationErrors.cs
   - PlexAPI/Models/Errors/GetSourceConnectionInformationResponseBody.cs
+  - PlexAPI/Models/Errors/PostUsersSignInDataErrors.cs
+  - PlexAPI/Models/Errors/PostUsersSignInDataResponseBody.cs
   - PlexAPI/Models/Errors/GetStatisticsErrors.cs
   - PlexAPI/Models/Errors/GetStatisticsResponseBody.cs
   - PlexAPI/Models/Errors/GetResourcesStatisticsErrors.cs
@@ -582,8 +584,6 @@ generatedFiles:
   - PlexAPI/Models/Errors/CheckForUpdatesResponseBody.cs
   - PlexAPI/Models/Errors/ApplyUpdatesErrors.cs
   - PlexAPI/Models/Errors/ApplyUpdatesResponseBody.cs
-  - PlexAPI/Models/Errors/PostSignInErrors.cs
-  - PlexAPI/Models/Errors/PostSignInResponseBody.cs
   - PlexAPI/Models/Errors/GetWatchlistErrors.cs
   - PlexAPI/Models/Errors/GetWatchlistResponseBody.cs
   - PlexAPI/Models/Components/Security.cs
@@ -742,22 +742,22 @@ generatedFiles:
   - docs/Models/Requests/GetRecentlyAddedResponseBody.md
   - docs/Models/Requests/GetRecentlyAddedResponse.md
   - docs/Models/Requests/Location.md
-  - docs/Models/Requests/GetLibrariesDirectory.md
-  - docs/Models/Requests/GetLibrariesMediaContainer.md
-  - docs/Models/Requests/GetLibrariesResponseBody.md
-  - docs/Models/Requests/GetLibrariesResponse.md
+  - docs/Models/Requests/GetAllLibrariesDirectory.md
+  - docs/Models/Requests/GetAllLibrariesMediaContainer.md
+  - docs/Models/Requests/GetAllLibrariesResponseBody.md
+  - docs/Models/Requests/GetAllLibrariesResponse.md
   - docs/Models/Requests/IncludeDetails.md
-  - docs/Models/Requests/GetLibraryRequest.md
-  - docs/Models/Requests/GetLibraryDirectory.md
-  - docs/Models/Requests/GetLibraryFilter.md
+  - docs/Models/Requests/GetLibraryDetailsRequest.md
+  - docs/Models/Requests/GetLibraryDetailsDirectory.md
+  - docs/Models/Requests/GetLibraryDetailsFilter.md
   - docs/Models/Requests/Sort.md
   - docs/Models/Requests/Field.md
-  - docs/Models/Requests/GetLibraryType.md
+  - docs/Models/Requests/GetLibraryDetailsType.md
   - docs/Models/Requests/Operator.md
   - docs/Models/Requests/FieldType.md
-  - docs/Models/Requests/GetLibraryMediaContainer.md
-  - docs/Models/Requests/GetLibraryResponseBody.md
-  - docs/Models/Requests/GetLibraryResponse.md
+  - docs/Models/Requests/GetLibraryDetailsMediaContainer.md
+  - docs/Models/Requests/GetLibraryDetailsResponseBody.md
+  - docs/Models/Requests/GetLibraryDetailsResponse.md
   - docs/Models/Requests/DeleteLibraryRequest.md
   - docs/Models/Requests/DeleteLibraryResponse.md
   - docs/Models/Requests/Tag.md
@@ -774,8 +774,9 @@ generatedFiles:
   - docs/Models/Requests/GetLibraryItemsMediaContainer.md
   - docs/Models/Requests/GetLibraryItemsResponseBody.md
   - docs/Models/Requests/GetLibraryItemsResponse.md
-  - docs/Models/Requests/RefreshLibraryRequest.md
-  - docs/Models/Requests/RefreshLibraryResponse.md
+  - docs/Models/Requests/Force.md
+  - docs/Models/Requests/GetRefreshLibraryMetadataRequest.md
+  - docs/Models/Requests/GetRefreshLibraryMetadataResponse.md
   - docs/Models/Requests/Type.md
   - docs/Models/Requests/SearchLibraryRequest.md
   - docs/Models/Requests/SearchLibraryMetadata.md
@@ -869,7 +870,7 @@ generatedFiles:
   - docs/Models/Requests/AddPlaylistContentsMediaContainer.md
   - docs/Models/Requests/AddPlaylistContentsResponseBody.md
   - docs/Models/Requests/AddPlaylistContentsResponse.md
-  - docs/Models/Requests/Force.md
+  - docs/Models/Requests/QueryParamForce.md
   - docs/Models/Requests/UploadPlaylistRequest.md
   - docs/Models/Requests/UploadPlaylistResponse.md
   - docs/Models/Requests/GetTransientTokenQueryParamType.md
@@ -878,6 +879,30 @@ generatedFiles:
   - docs/Models/Requests/GetTransientTokenResponse.md
   - docs/Models/Requests/GetSourceConnectionInformationRequest.md
   - docs/Models/Requests/GetSourceConnectionInformationResponse.md
+  - docs/Models/Requests/PostUsersSignInDataRequestBody.md
+  - docs/Models/Requests/PostUsersSignInDataRequest.md
+  - docs/Models/Requests/PostUsersSignInDataMailingListStatus.md
+  - docs/Models/Requests/PostUsersSignInDataAutoSelectSubtitle.md
+  - docs/Models/Requests/PostUsersSignInDataDefaultSubtitleAccessibility.md
+  - docs/Models/Requests/PostUsersSignInDataDefaultSubtitleForced.md
+  - docs/Models/Requests/PostUsersSignInDataWatchedIndicator.md
+  - docs/Models/Requests/PostUsersSignInDataMediaReviewsVisibility.md
+  - docs/Models/Requests/PostUsersSignInDataUserProfile.md
+  - docs/Models/Requests/PostUsersSignInDataStatus.md
+  - docs/Models/Requests/PostUsersSignInDataServices.md
+  - docs/Models/Requests/PostUsersSignInDataFeatures.md
+  - docs/Models/Requests/PostUsersSignInDataAuthenticationStatus.md
+  - docs/Models/Requests/PostUsersSignInDataSubscription.md
+  - docs/Models/Requests/PostUsersSignInDataAuthenticationFeatures.md
+  - docs/Models/Requests/PostUsersSignInDataAuthenticationResponseStatus.md
+  - docs/Models/Requests/PostUsersSignInDataAuthenticationSubscription.md
+  - docs/Models/Requests/PostUsersSignInDataState.md
+  - docs/Models/Requests/InternalPaymentMethod.md
+  - docs/Models/Requests/Billing.md
+  - docs/Models/Requests/PastSubscription.md
+  - docs/Models/Requests/Trials.md
+  - docs/Models/Requests/PostUsersSignInDataUserPlexAccount.md
+  - docs/Models/Requests/PostUsersSignInDataResponse.md
   - docs/Models/Requests/GetStatisticsRequest.md
   - docs/Models/Requests/GetStatisticsDevice.md
   - docs/Models/Requests/Account.md
@@ -930,30 +955,6 @@ generatedFiles:
   - docs/Models/Requests/Skip.md
   - docs/Models/Requests/ApplyUpdatesRequest.md
   - docs/Models/Requests/ApplyUpdatesResponse.md
-  - docs/Models/Requests/PostSignInRequestBody.md
-  - docs/Models/Requests/PostSignInRequest.md
-  - docs/Models/Requests/PostSignInMailingListStatus.md
-  - docs/Models/Requests/PostSignInAutoSelectSubtitle.md
-  - docs/Models/Requests/PostSignInDefaultSubtitleAccessibility.md
-  - docs/Models/Requests/PostSignInDefaultSubtitleForced.md
-  - docs/Models/Requests/PostSignInWatchedIndicator.md
-  - docs/Models/Requests/PostSignInMediaReviewsVisibility.md
-  - docs/Models/Requests/PostSignInUserProfile.md
-  - docs/Models/Requests/PostSignInStatus.md
-  - docs/Models/Requests/PostSignInServices.md
-  - docs/Models/Requests/PostSignInFeatures.md
-  - docs/Models/Requests/PostSignInUserStatus.md
-  - docs/Models/Requests/PostSignInSubscription.md
-  - docs/Models/Requests/PostSignInUserFeatures.md
-  - docs/Models/Requests/PostSignInUserResponseStatus.md
-  - docs/Models/Requests/PostSignInUserSubscription.md
-  - docs/Models/Requests/PostSignInState.md
-  - docs/Models/Requests/InternalPaymentMethod.md
-  - docs/Models/Requests/Billing.md
-  - docs/Models/Requests/PastSubscription.md
-  - docs/Models/Requests/Trials.md
-  - docs/Models/Requests/PostSignInUserPlexAccount.md
-  - docs/Models/Requests/PostSignInResponse.md
   - docs/Models/Requests/PathParamFilter.md
   - docs/Models/Requests/Libtype.md
   - docs/Models/Requests/IncludeCollections.md
@@ -1033,16 +1034,16 @@ generatedFiles:
   - docs/Models/Errors/GetFileHashResponseBody.md
   - docs/Models/Errors/GetRecentlyAddedErrors.md
   - docs/Models/Errors/GetRecentlyAddedResponseBody.md
-  - docs/Models/Errors/GetLibrariesErrors.md
-  - docs/Models/Errors/GetLibrariesResponseBody.md
-  - docs/Models/Errors/GetLibraryErrors.md
-  - docs/Models/Errors/GetLibraryResponseBody.md
+  - docs/Models/Errors/GetAllLibrariesErrors.md
+  - docs/Models/Errors/GetAllLibrariesResponseBody.md
+  - docs/Models/Errors/GetLibraryDetailsErrors.md
+  - docs/Models/Errors/GetLibraryDetailsResponseBody.md
   - docs/Models/Errors/DeleteLibraryErrors.md
   - docs/Models/Errors/DeleteLibraryResponseBody.md
   - docs/Models/Errors/GetLibraryItemsErrors.md
   - docs/Models/Errors/GetLibraryItemsResponseBody.md
-  - docs/Models/Errors/RefreshLibraryErrors.md
-  - docs/Models/Errors/RefreshLibraryResponseBody.md
+  - docs/Models/Errors/GetRefreshLibraryMetadataErrors.md
+  - docs/Models/Errors/GetRefreshLibraryMetadataResponseBody.md
   - docs/Models/Errors/SearchLibraryErrors.md
   - docs/Models/Errors/SearchLibraryResponseBody.md
   - docs/Models/Errors/GetMetadataErrors.md
@@ -1079,6 +1080,8 @@ generatedFiles:
   - docs/Models/Errors/GetTransientTokenResponseBody.md
   - docs/Models/Errors/GetSourceConnectionInformationErrors.md
   - docs/Models/Errors/GetSourceConnectionInformationResponseBody.md
+  - docs/Models/Errors/PostUsersSignInDataErrors.md
+  - docs/Models/Errors/PostUsersSignInDataResponseBody.md
   - docs/Models/Errors/GetStatisticsErrors.md
   - docs/Models/Errors/GetStatisticsResponseBody.md
   - docs/Models/Errors/GetResourcesStatisticsErrors.md
@@ -1099,8 +1102,6 @@ generatedFiles:
   - docs/Models/Errors/CheckForUpdatesResponseBody.md
   - docs/Models/Errors/ApplyUpdatesErrors.md
   - docs/Models/Errors/ApplyUpdatesResponseBody.md
-  - docs/Models/Errors/PostSignInErrors.md
-  - docs/Models/Errors/PostSignInResponseBody.md
   - docs/Models/Errors/GetWatchlistErrors.md
   - docs/Models/Errors/GetWatchlistResponseBody.md
   - docs/Models/Components/Security.md
@@ -1120,7 +1121,6 @@ generatedFiles:
   - docs/sdks/statistics/README.md
   - docs/sdks/sessions/README.md
   - docs/sdks/updater/README.md
-  - docs/sdks/user/README.md
   - docs/sdks/watchlist/README.md
   - NUGET.md
   - USAGE.md

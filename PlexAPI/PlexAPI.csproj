@@ -3,7 +3,7 @@
   <PropertyGroup>
     <IsPackable>true</IsPackable>
     <PackageId>PlexAPI</PackageId>
-    <Version>0.4.1</Version>
+    <Version>0.4.2</Version>
     <TargetFramework>net5.0</TargetFramework>
     <Authors>LukeHagar</Authors>
     <Copyright>Copyright (c) LukeHagar 2024</Copyright>

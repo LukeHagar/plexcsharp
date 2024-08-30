@@ -3,6 +3,6 @@
 
 ## Fields
 
-| Field                          | Type                           | Required                       | Description                    | Example                        |
-| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-| `SectionId`                    | *double*                       | :heavy_check_mark:             | the Id of the library to query | 1000                           |
+| Field                 | Type                  | Required              | Description           | Example               |
+| --------------------- | --------------------- | --------------------- | --------------------- | --------------------- |
+| `SectionId`           | *double*              | :heavy_check_mark:    | The id of the library | 15                    |

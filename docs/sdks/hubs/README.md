@@ -24,11 +24,13 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 var res = await sdk.Hubs.GetGlobalHubsAsync(
     count: 1262.49D,
-    onlyTransient: PlexAPI.Models.Requests.OnlyTransient.One);
+    onlyTransient: PlexAPI.Models.Requests.OnlyTransient.One
+);
 
 // handle response
 ```
@@ -66,12 +68,14 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 var res = await sdk.Hubs.GetLibraryHubsAsync(
     sectionId: 6728.76D,
     count: 9010.22D,
-    onlyTransient: PlexAPI.Models.Requests.QueryParamOnlyTransient.Zero);
+    onlyTransient: PlexAPI.Models.Requests.QueryParamOnlyTransient.Zero
+);
 
 // handle response
 ```

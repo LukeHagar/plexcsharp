@@ -41,6 +41,6 @@ namespace PlexAPI.Models.Requests
         /// </remarks>
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=force")]
-        public Force Force { get; set; } = default!;
+        public QueryParamForce Force { get; set; } = default!;
     }
 }

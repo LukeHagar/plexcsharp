@@ -29,7 +29,8 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 var res = await sdk.Plex.GetCompanionsDataAsync();
 
@@ -66,7 +67,8 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 var res = await sdk.Plex.GetUserFriendsAsync();
 
@@ -138,7 +140,8 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 var res = await sdk.Plex.GetHomeDataAsync();
 
@@ -174,7 +177,8 @@ var res = await sdk.Plex.GetResourcesAsync(
     xPlexClientIdentifier: "Postman",
     includeHttps: PlexAPI.Models.Requests.IncludeHttps.Zero,
     includeRelay: PlexAPI.Models.Requests.IncludeRelay.Zero,
-    includeIPv6: PlexAPI.Models.Requests.IncludeIPv6.One);
+    includeIPv6: PlexAPI.Models.Requests.IncludeIPv6.One
+);
 
 // handle response
 ```
@@ -217,7 +221,8 @@ var sdk = new PlexAPISDK(xPlexClientIdentifier: "Postman");
 var res = await sdk.Plex.GetPinAsync(
     xPlexProduct: "Postman",
     strong: false,
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 // handle response
 ```
@@ -258,7 +263,8 @@ var sdk = new PlexAPISDK(xPlexClientIdentifier: "Postman");
 
 var res = await sdk.Plex.GetTokenByPinIdAsync(
     pinID: 408895,
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 // handle response
 ```
@@ -295,7 +301,8 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 var res = await sdk.Plex.GetUserDetailsAsync();
 

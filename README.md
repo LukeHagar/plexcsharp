@@ -12,14 +12,16 @@
 
 ### NuGet
 
+To add the [NuGet](https://www.nuget.org/) package to a .NET project:
 ```bash
 dotnet add package PlexAPI
 ```
 
 ### Locally
 
+To add a reference to a local instance of the SDK in a .NET project:
 ```bash
-dotnet add reference path/to/PlexAPI.csproj
+dotnet add reference PlexAPI/PlexAPI.csproj
 ```
 <!-- End SDK Installation [installation] -->
 
@@ -34,7 +36,8 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 var res = await sdk.Server.GetServerCapabilitiesAsync();
 
@@ -106,11 +109,11 @@ var res = await sdk.Server.GetServerCapabilitiesAsync();
 
 * [GetFileHash](docs/sdks/library/README.md#getfilehash) - Get Hash Value
 * [GetRecentlyAdded](docs/sdks/library/README.md#getrecentlyadded) - Get Recently Added
-* [GetLibraries](docs/sdks/library/README.md#getlibraries) - Get All Libraries
-* [GetLibrary](docs/sdks/library/README.md#getlibrary) - Get Library Details
+* [GetAllLibraries](docs/sdks/library/README.md#getalllibraries) - Get All Libraries
+* [GetLibraryDetails](docs/sdks/library/README.md#getlibrarydetails) - Get Library Details
 * [DeleteLibrary](docs/sdks/library/README.md#deletelibrary) - Delete Library Section
 * [GetLibraryItems](docs/sdks/library/README.md#getlibraryitems) - Get Library Items
-* [RefreshLibrary](docs/sdks/library/README.md#refreshlibrary) - Refresh Library
+* [GetRefreshLibraryMetadata](docs/sdks/library/README.md#getrefreshlibrarymetadata) - Refresh Metadata Of The Library
 * [SearchLibrary](docs/sdks/library/README.md#searchlibrary) - Search Library
 * [GetMetadata](docs/sdks/library/README.md#getmetadata) - Get Items Metadata
 * [GetMetadataChildren](docs/sdks/library/README.md#getmetadatachildren) - Get Items Children
@@ -139,6 +142,7 @@ var res = await sdk.Server.GetServerCapabilitiesAsync();
 
 * [GetTransientToken](docs/sdks/authentication/README.md#gettransienttoken) - Get a Transient Token.
 * [GetSourceConnectionInformation](docs/sdks/authentication/README.md#getsourceconnectioninformation) - Get Source Connection Information
+* [PostUsersSignInData](docs/sdks/authentication/README.md#postuserssignindata) - Get User SignIn Data
 
 ### [Statistics](docs/sdks/statistics/README.md)
 
@@ -158,10 +162,6 @@ var res = await sdk.Server.GetServerCapabilitiesAsync();
 * [GetUpdateStatus](docs/sdks/updater/README.md#getupdatestatus) - Querying status of updates
 * [CheckForUpdates](docs/sdks/updater/README.md#checkforupdates) - Checking for updates
 * [ApplyUpdates](docs/sdks/updater/README.md#applyupdates) - Apply Updates
-
-### [User](docs/sdks/user/README.md)
-
-* [PostSignIn](docs/sdks/user/README.md#postsignin) - Get User SignIn Data
 
 ### [Watchlist](docs/sdks/watchlist/README.md)
 
@@ -202,7 +202,8 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 var res = await sdk.Plex.GetCompanionsDataAsync(serverUrl: "https://plex.tv/api/v2");
 
@@ -228,7 +229,8 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 var res = await sdk.Server.GetServerCapabilitiesAsync();
 
@@ -256,11 +258,13 @@ using PlexAPI.Models.Errors;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 try
 {
     var res = await sdk.Server.GetServerCapabilitiesAsync();
+
     // handle response
 }
 catch (Exception ex)
@@ -274,9 +278,25 @@ catch (Exception ex)
         // handle exception
     }
 }
-
 ```
 <!-- End Error Handling [errors] -->
+
+<!-- Start Summary [summary] -->
+## Summary
+
+Plex-API: An Open API Spec for interacting with Plex.tv
+<!-- End Summary [summary] -->
+
+<!-- Start Table of Contents [toc] -->
+## Table of Contents
+
+* [SDK Installation](#sdk-installation)
+* [SDK Example Usage](#sdk-example-usage)
+* [Available Resources and Operations](#available-resources-and-operations)
+* [Error Handling](#error-handling)
+* [Server Selection](#server-selection)
+* [Authentication](#authentication)
+<!-- End Table of Contents [toc] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
