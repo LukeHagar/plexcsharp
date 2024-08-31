@@ -22,7 +22,7 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.x
-          source-url: https://nuget.pkg.github.com/jasonlandbridge/index.json
+          source-url: https://nuget.pkg.github.com/lukehagar/index.json
         env:
           NUGET_AUTH_TOKEN: ${{secrets.NUGET_API_KEY}}
 
