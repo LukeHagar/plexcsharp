@@ -20,12 +20,13 @@ This will mark the provided media key as Played.
 
 ```csharp
 using PlexAPI;
-using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
+using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 var res = await sdk.Media.MarkPlayedAsync(key: 59398D);
 
@@ -38,16 +39,17 @@ var res = await sdk.Media.MarkPlayedAsync(key: 59398D);
 | ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
 | `Key`                           | *double*                        | :heavy_check_mark:              | The media key to mark as played | 59398                           |
 
-
 ### Response
 
 **[MarkPlayedResponse](../../Models/Requests/MarkPlayedResponse.md)**
+
 ### Errors
 
 | Error Object                                 | Status Code                                  | Content Type                                 |
 | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
 | PlexAPI.Models.Errors.MarkPlayedResponseBody | 401                                          | application/json                             |
 | PlexAPI.Models.Errors.SDKException           | 4xx-5xx                                      | */*                                          |
+
 
 ## MarkUnplayed
 
@@ -57,12 +59,13 @@ This will mark the provided media key as Unplayed.
 
 ```csharp
 using PlexAPI;
-using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
+using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 var res = await sdk.Media.MarkUnplayedAsync(key: 59398D);
 
@@ -75,16 +78,17 @@ var res = await sdk.Media.MarkUnplayedAsync(key: 59398D);
 | --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
 | `Key`                             | *double*                          | :heavy_check_mark:                | The media key to mark as Unplayed | 59398                             |
 
-
 ### Response
 
 **[MarkUnplayedResponse](../../Models/Requests/MarkUnplayedResponse.md)**
+
 ### Errors
 
 | Error Object                                   | Status Code                                    | Content Type                                   |
 | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
 | PlexAPI.Models.Errors.MarkUnplayedResponseBody | 401                                            | application/json                               |
 | PlexAPI.Models.Errors.SDKException             | 4xx-5xx                                        | */*                                            |
+
 
 ## UpdatePlayProgress
 
@@ -95,17 +99,19 @@ This API command can be used to update the play progress of a media item.
 
 ```csharp
 using PlexAPI;
-using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
+using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 var res = await sdk.Media.UpdatePlayProgressAsync(
     key: "<value>",
     time: 90000D,
-    state: "played");
+    state: "played"
+);
 
 // handle response
 ```
@@ -118,10 +124,10 @@ var res = await sdk.Media.UpdatePlayProgressAsync(
 | `Time`                                                              | *double*                                                            | :heavy_check_mark:                                                  | The time, in milliseconds, used to set the media playback progress. | 90000                                                               |
 | `State`                                                             | *string*                                                            | :heavy_check_mark:                                                  | The playback state of the media item.                               | played                                                              |
 
-
 ### Response
 
 **[UpdatePlayProgressResponse](../../Models/Requests/UpdatePlayProgressResponse.md)**
+
 ### Errors
 
 | Error Object                                         | Status Code                                          | Content Type                                         |

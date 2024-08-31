@@ -32,17 +32,19 @@ This request is intended to be very fast, and called as the user types.
 
 ```csharp
 using PlexAPI;
-using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
+using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 var res = await sdk.Search.PerformSearchAsync(
     query: "dylan",
     sectionId: 1516.53D,
-    limit: 5D);
+    limit: 5D
+);
 
 // handle response
 ```
@@ -55,16 +57,17 @@ var res = await sdk.Search.PerformSearchAsync(
 | `SectionId`                                                                           | *double*                                                                              | :heavy_minus_sign:                                                                    | This gives context to the search, and can result in re-ordering of search result hubs |                                                                                       |
 | `Limit`                                                                               | *double*                                                                              | :heavy_minus_sign:                                                                    | The number of items to return per hub                                                 | 5                                                                                     |
 
-
 ### Response
 
 **[PerformSearchResponse](../../Models/Requests/PerformSearchResponse.md)**
+
 ### Errors
 
 | Error Object                                    | Status Code                                     | Content Type                                    |
 | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
 | PlexAPI.Models.Errors.PerformSearchResponseBody | 401                                             | application/json                                |
 | PlexAPI.Models.Errors.SDKException              | 4xx-5xx                                         | */*                                             |
+
 
 ## PerformVoiceSearch
 
@@ -78,17 +81,19 @@ Results, as well as their containing per-type hubs, contain a `distance` attribu
 
 ```csharp
 using PlexAPI;
-using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
+using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 var res = await sdk.Search.PerformVoiceSearchAsync(
     query: "dead+poop",
     sectionId: 4094.8D,
-    limit: 5D);
+    limit: 5D
+);
 
 // handle response
 ```
@@ -101,16 +106,17 @@ var res = await sdk.Search.PerformVoiceSearchAsync(
 | `SectionId`                                                                           | *double*                                                                              | :heavy_minus_sign:                                                                    | This gives context to the search, and can result in re-ordering of search result hubs |                                                                                       |
 | `Limit`                                                                               | *double*                                                                              | :heavy_minus_sign:                                                                    | The number of items to return per hub                                                 | 5                                                                                     |
 
-
 ### Response
 
 **[PerformVoiceSearchResponse](../../Models/Requests/PerformVoiceSearchResponse.md)**
+
 ### Errors
 
 | Error Object                                         | Status Code                                          | Content Type                                         |
 | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
 | PlexAPI.Models.Errors.PerformVoiceSearchResponseBody | 401                                                  | application/json                                     |
 | PlexAPI.Models.Errors.SDKException                   | 4xx-5xx                                              | */*                                                  |
+
 
 ## GetSearchResults
 
@@ -120,12 +126,13 @@ This will search the database for the string provided.
 
 ```csharp
 using PlexAPI;
-using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
+using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 var res = await sdk.Search.GetSearchResultsAsync(query: "110");
 
@@ -138,10 +145,10 @@ var res = await sdk.Search.GetSearchResultsAsync(query: "110");
 | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
 | `Query`                        | *string*                       | :heavy_check_mark:             | The search query string to use | 110                            |
 
-
 ### Response
 
 **[GetSearchResultsResponse](../../Models/Requests/GetSearchResultsResponse.md)**
+
 ### Errors
 
 | Error Object                                       | Status Code                                        | Content Type                                       |

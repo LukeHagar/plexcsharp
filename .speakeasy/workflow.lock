@@ -1,18 +1,19 @@
-speakeasyVersion: 1.321.0
+speakeasyVersion: 1.383.2
 sources:
     my-source:
         sourceNamespace: my-source
-        sourceRevisionDigest: sha256:8df2ed3829cded89c3ef312b1f830c20d48146f7fdf883137befd836432c9e6a
-        sourceBlobDigest: sha256:a4557b86024d2cd6fe1a00b5631730ed0fc81bebb9efc057af0b96c2fa389acf
+        sourceRevisionDigest: sha256:c6e5a38f9c953eb820ac1b5cb6d5aade8ee11a7bdb5b568147fd677d61b3a3c5
+        sourceBlobDigest: sha256:730391fe626304e22e265f9470902fc083d5e6110d20d87cdc3ac7da6b4982de
         tags:
             - latest
+            - main
 targets:
     plexcsharp:
         source: my-source
         sourceNamespace: my-source
-        sourceRevisionDigest: sha256:8df2ed3829cded89c3ef312b1f830c20d48146f7fdf883137befd836432c9e6a
-        sourceBlobDigest: sha256:a4557b86024d2cd6fe1a00b5631730ed0fc81bebb9efc057af0b96c2fa389acf
-        outLocation: /home/luke/github/plexcsharp
+        sourceRevisionDigest: sha256:c6e5a38f9c953eb820ac1b5cb6d5aade8ee11a7bdb5b568147fd677d61b3a3c5
+        sourceBlobDigest: sha256:730391fe626304e22e265f9470902fc083d5e6110d20d87cdc3ac7da6b4982de
+        outLocation: /github/workspace/repo
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

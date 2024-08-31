@@ -19,16 +19,18 @@ Get Global Hubs filtered by the parameters provided.
 
 ```csharp
 using PlexAPI;
-using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
+using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 var res = await sdk.Hubs.GetGlobalHubsAsync(
     count: 1262.49D,
-    onlyTransient: OnlyTransient.One);
+    onlyTransient: PlexAPI.Models.Requests.OnlyTransient.One
+);
 
 // handle response
 ```
@@ -40,16 +42,17 @@ var res = await sdk.Hubs.GetGlobalHubsAsync(
 | `Count`                                                                                                                                               | *double*                                                                                                                                              | :heavy_minus_sign:                                                                                                                                    | The number of items to return with each hub.                                                                                                          |
 | `OnlyTransient`                                                                                                                                       | [OnlyTransient](../../Models/Requests/OnlyTransient.md)                                                                                               | :heavy_minus_sign:                                                                                                                                    | Only return hubs which are "transient", meaning those which are prone to changing after media playback or addition (e.g. On Deck, or Recently Added). |
 
-
 ### Response
 
 **[GetGlobalHubsResponse](../../Models/Requests/GetGlobalHubsResponse.md)**
+
 ### Errors
 
 | Error Object                                    | Status Code                                     | Content Type                                    |
 | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
 | PlexAPI.Models.Errors.GetGlobalHubsResponseBody | 401                                             | application/json                                |
 | PlexAPI.Models.Errors.SDKException              | 4xx-5xx                                         | */*                                             |
+
 
 ## GetLibraryHubs
 
@@ -60,17 +63,19 @@ This endpoint will return a list of library specific hubs
 
 ```csharp
 using PlexAPI;
-using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
+using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 var res = await sdk.Hubs.GetLibraryHubsAsync(
     sectionId: 6728.76D,
     count: 9010.22D,
-    onlyTransient: QueryParamOnlyTransient.Zero);
+    onlyTransient: PlexAPI.Models.Requests.QueryParamOnlyTransient.Zero
+);
 
 // handle response
 ```
@@ -83,10 +88,10 @@ var res = await sdk.Hubs.GetLibraryHubsAsync(
 | `Count`                                                                                                                                               | *double*                                                                                                                                              | :heavy_minus_sign:                                                                                                                                    | The number of items to return with each hub.                                                                                                          |
 | `OnlyTransient`                                                                                                                                       | [QueryParamOnlyTransient](../../Models/Requests/QueryParamOnlyTransient.md)                                                                           | :heavy_minus_sign:                                                                                                                                    | Only return hubs which are "transient", meaning those which are prone to changing after media playback or addition (e.g. On Deck, or Recently Added). |
 
-
 ### Response
 
 **[GetLibraryHubsResponse](../../Models/Requests/GetLibraryHubsResponse.md)**
+
 ### Errors
 
 | Error Object                                     | Status Code                                      | Content Type                                     |

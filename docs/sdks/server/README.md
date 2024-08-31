@@ -29,23 +29,25 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 var res = await sdk.Server.GetServerCapabilitiesAsync();
 
 // handle response
 ```
 
-
 ### Response
 
 **[GetServerCapabilitiesResponse](../../Models/Requests/GetServerCapabilitiesResponse.md)**
+
 ### Errors
 
 | Error Object                                            | Status Code                                             | Content Type                                            |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | PlexAPI.Models.Errors.GetServerCapabilitiesResponseBody | 401                                                     | application/json                                        |
 | PlexAPI.Models.Errors.SDKException                      | 4xx-5xx                                                 | */*                                                     |
+
 
 ## GetServerPreferences
 
@@ -59,23 +61,25 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 var res = await sdk.Server.GetServerPreferencesAsync();
 
 // handle response
 ```
 
-
 ### Response
 
 **[GetServerPreferencesResponse](../../Models/Requests/GetServerPreferencesResponse.md)**
+
 ### Errors
 
 | Error Object                                           | Status Code                                            | Content Type                                           |
 | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
 | PlexAPI.Models.Errors.GetServerPreferencesResponseBody | 401                                                    | application/json                                       |
 | PlexAPI.Models.Errors.SDKException                     | 4xx-5xx                                                | */*                                                    |
+
 
 ## GetAvailableClients
 
@@ -89,23 +93,25 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 var res = await sdk.Server.GetAvailableClientsAsync();
 
 // handle response
 ```
 
-
 ### Response
 
 **[GetAvailableClientsResponse](../../Models/Requests/GetAvailableClientsResponse.md)**
+
 ### Errors
 
 | Error Object                                          | Status Code                                           | Content Type                                          |
 | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
 | PlexAPI.Models.Errors.GetAvailableClientsResponseBody | 401                                                   | application/json                                      |
 | PlexAPI.Models.Errors.SDKException                    | 4xx-5xx                                               | */*                                                   |
+
 
 ## GetDevices
 
@@ -119,23 +125,25 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 var res = await sdk.Server.GetDevicesAsync();
 
 // handle response
 ```
 
-
 ### Response
 
 **[GetDevicesResponse](../../Models/Requests/GetDevicesResponse.md)**
+
 ### Errors
 
 | Error Object                                 | Status Code                                  | Content Type                                 |
 | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
 | PlexAPI.Models.Errors.GetDevicesResponseBody | 401                                          | application/json                             |
 | PlexAPI.Models.Errors.SDKException           | 4xx-5xx                                      | */*                                          |
+
 
 ## GetServerIdentity
 
@@ -149,23 +157,25 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 var res = await sdk.Server.GetServerIdentityAsync();
 
 // handle response
 ```
 
-
 ### Response
 
 **[GetServerIdentityResponse](../../Models/Requests/GetServerIdentityResponse.md)**
+
 ### Errors
 
 | Error Object                                        | Status Code                                         | Content Type                                        |
 | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
 | PlexAPI.Models.Errors.GetServerIdentityResponseBody | 401                                                 | application/json                                    |
 | PlexAPI.Models.Errors.SDKException                  | 4xx-5xx                                             | */*                                                 |
+
 
 ## GetMyPlexAccount
 
@@ -179,23 +189,25 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 var res = await sdk.Server.GetMyPlexAccountAsync();
 
 // handle response
 ```
 
-
 ### Response
 
 **[GetMyPlexAccountResponse](../../Models/Requests/GetMyPlexAccountResponse.md)**
+
 ### Errors
 
 | Error Object                                       | Status Code                                        | Content Type                                       |
 | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
 | PlexAPI.Models.Errors.GetMyPlexAccountResponseBody | 401                                                | application/json                                   |
 | PlexAPI.Models.Errors.SDKException                 | 4xx-5xx                                            | */*                                                |
+
 
 ## GetResizedPhoto
 
@@ -206,12 +218,13 @@ Plex's Photo transcoder is used throughout the service to serve images at specif
 
 ```csharp
 using PlexAPI;
-using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
+using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 GetResizedPhotoRequest req = new GetResizedPhotoRequest() {
     Width = 110D,
@@ -234,16 +247,17 @@ var res = await sdk.Server.GetResizedPhotoAsync(req);
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
 | `request`                                                                 | [GetResizedPhotoRequest](../../Models/Requests/GetResizedPhotoRequest.md) | :heavy_check_mark:                                                        | The request object to use for the request.                                |
 
-
 ### Response
 
 **[GetResizedPhotoResponse](../../Models/Requests/GetResizedPhotoResponse.md)**
+
 ### Errors
 
 | Error Object                                      | Status Code                                       | Content Type                                      |
 | ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
 | PlexAPI.Models.Errors.GetResizedPhotoResponseBody | 401                                               | application/json                                  |
 | PlexAPI.Models.Errors.SDKException                | 4xx-5xx                                           | */*                                               |
+
 
 ## GetServerList
 
@@ -257,17 +271,18 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 var res = await sdk.Server.GetServerListAsync();
 
 // handle response
 ```
 
-
 ### Response
 
 **[GetServerListResponse](../../Models/Requests/GetServerListResponse.md)**
+
 ### Errors
 
 | Error Object                                    | Status Code                                     | Content Type                                    |

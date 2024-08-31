@@ -19,12 +19,13 @@ Get the timeline for a media item
 
 ```csharp
 using PlexAPI;
-using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
+using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 GetTimelineRequest req = new GetTimelineRequest() {
     RatingKey = 23409D,
@@ -50,16 +51,17 @@ var res = await sdk.Video.GetTimelineAsync(req);
 | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
 | `request`                                                         | [GetTimelineRequest](../../Models/Requests/GetTimelineRequest.md) | :heavy_check_mark:                                                | The request object to use for the request.                        |
 
-
 ### Response
 
 **[GetTimelineResponse](../../Models/Requests/GetTimelineResponse.md)**
+
 ### Errors
 
 | Error Object                                  | Status Code                                   | Content Type                                  |
 | --------------------------------------------- | --------------------------------------------- | --------------------------------------------- |
 | PlexAPI.Models.Errors.GetTimelineResponseBody | 401                                           | application/json                              |
 | PlexAPI.Models.Errors.SDKException            | 4xx-5xx                                       | */*                                           |
+
 
 ## StartUniversalTranscode
 
@@ -69,12 +71,13 @@ Begin a Universal Transcode Session
 
 ```csharp
 using PlexAPI;
-using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
+using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 StartUniversalTranscodeRequest req = new StartUniversalTranscodeRequest() {
     HasMDE = 1D,
@@ -106,10 +109,10 @@ var res = await sdk.Video.StartUniversalTranscodeAsync(req);
 | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
 | `request`                                                                                 | [StartUniversalTranscodeRequest](../../Models/Requests/StartUniversalTranscodeRequest.md) | :heavy_check_mark:                                                                        | The request object to use for the request.                                                |
 
-
 ### Response
 
 **[StartUniversalTranscodeResponse](../../Models/Requests/StartUniversalTranscodeResponse.md)**
+
 ### Errors
 
 | Error Object                                              | Status Code                                               | Content Type                                              |

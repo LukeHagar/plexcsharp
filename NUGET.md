@@ -12,53 +12,14 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 var res = await sdk.Server.GetServerCapabilitiesAsync();
 
 // handle response
 ```
 <!-- End SDK Example Usage [usage] -->
-
-<!-- Start Global Parameters [global-parameters] -->
-## Global Parameters
-
-## Global Parameters
-
-A parameter is configured globally. This parameter may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
-
-For example, you can set `X-Plex-Client-Identifier` to `"Postman"` at SDK initialization and then you do not have to pass the same value on calls to operations like `GetPin`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
-
-
-### Available Globals
-
-The following global parameter is available.
-
-| Name | Type | Required | Description |
-| ---- | ---- |:--------:| ----------- |
-| xPlexClientIdentifier | string |  | The unique identifier for the client application
-This is used to track the client application and its usage
-(UUID, serial number, or other number unique per device)
- |
-
-
-### Example
-
-```csharp
-using PlexAPI;
-using PlexAPI.Models.Components;
-using PlexAPI.Models.Requests;
-
-var sdk = new PlexAPISDK(xPlexClientIdentifier: "Postman");
-
-var res = await sdk.Plex.GetPinAsync(
-    xPlexProduct: "Postman",
-    strong: false,
-    xPlexClientIdentifier: "Postman");
-
-// handle response
-```
-<!-- End Global Parameters [global-parameters] -->
 
 <!-- Start Error Handling [errors] -->
 ## Error Handling
@@ -80,11 +41,13 @@ using PlexAPI.Models.Errors;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 try
 {
     var res = await sdk.Server.GetServerCapabilitiesAsync();
+
     // handle response
 }
 catch (Exception ex)
@@ -98,7 +61,6 @@ catch (Exception ex)
         // handle exception
     }
 }
-
 ```
 <!-- End Error Handling [errors] -->
 
@@ -133,15 +95,13 @@ The server URL can also be overridden on a per-operation basis, provided a serve
 ```csharp
 using PlexAPI;
 using PlexAPI.Models.Components;
-using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(xPlexClientIdentifier: "Postman");
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    xPlexClientIdentifier: "Postman"
+);
 
-var res = await sdk.Plex.GetPinAsync(
-    serverUrl: "https://plex.tv/api/v2",
-    xPlexProduct: "Postman",
-    strong: false,
-    xPlexClientIdentifier: "Postman");
+var res = await sdk.Plex.GetCompanionsDataAsync(serverUrl: "https://plex.tv/api/v2");
 
 // handle response
 ```
@@ -165,7 +125,8 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 var res = await sdk.Server.GetServerCapabilitiesAsync();
 

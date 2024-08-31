@@ -10,11 +10,11 @@ API Calls interacting with Plex Media Server Libraries
 
 * [GetFileHash](#getfilehash) - Get Hash Value
 * [GetRecentlyAdded](#getrecentlyadded) - Get Recently Added
-* [GetLibraries](#getlibraries) - Get All Libraries
-* [GetLibrary](#getlibrary) - Get Library Details
+* [GetAllLibraries](#getalllibraries) - Get All Libraries
+* [GetLibraryDetails](#getlibrarydetails) - Get Library Details
 * [DeleteLibrary](#deletelibrary) - Delete Library Section
 * [GetLibraryItems](#getlibraryitems) - Get Library Items
-* [RefreshLibrary](#refreshlibrary) - Refresh Library
+* [GetRefreshLibraryMetadata](#getrefreshlibrarymetadata) - Refresh Metadata Of The Library
 * [SearchLibrary](#searchlibrary) - Search Library
 * [GetMetadata](#getmetadata) - Get Items Metadata
 * [GetMetadataChildren](#getmetadatachildren) - Get Items Children
@@ -29,16 +29,18 @@ This resource returns hash values for local files
 
 ```csharp
 using PlexAPI;
-using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
+using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 var res = await sdk.Library.GetFileHashAsync(
     url: "file://C:\Image.png&type=13",
-    type: 4462.17D);
+    type: 4462.17D
+);
 
 // handle response
 ```
@@ -50,16 +52,17 @@ var res = await sdk.Library.GetFileHashAsync(
 | `Url`                                                             | *string*                                                          | :heavy_check_mark:                                                | This is the path to the local file, must be prefixed by `file://` | file://C:\Image.png&type=13                                       |
 | `Type`                                                            | *double*                                                          | :heavy_minus_sign:                                                | Item type                                                         |                                                                   |
 
-
 ### Response
 
 **[GetFileHashResponse](../../Models/Requests/GetFileHashResponse.md)**
+
 ### Errors
 
 | Error Object                                  | Status Code                                   | Content Type                                  |
 | --------------------------------------------- | --------------------------------------------- | --------------------------------------------- |
 | PlexAPI.Models.Errors.GetFileHashResponseBody | 401                                           | application/json                              |
 | PlexAPI.Models.Errors.SDKException            | 4xx-5xx                                       | */*                                           |
+
 
 ## GetRecentlyAdded
 
@@ -74,17 +77,18 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 var res = await sdk.Library.GetRecentlyAddedAsync();
 
 // handle response
 ```
 
-
 ### Response
 
 **[GetRecentlyAddedResponse](../../Models/Requests/GetRecentlyAddedResponse.md)**
+
 ### Errors
 
 | Error Object                                       | Status Code                                        | Content Type                                       |
@@ -92,7 +96,8 @@ var res = await sdk.Library.GetRecentlyAddedAsync();
 | PlexAPI.Models.Errors.GetRecentlyAddedResponseBody | 401                                                | application/json                                   |
 | PlexAPI.Models.Errors.SDKException                 | 4xx-5xx                                            | */*                                                |
 
-## GetLibraries
+
+## GetAllLibraries
 
 A library section (commonly referred to as just a library) is a collection of media. 
 Libraries are typed, and depending on their type provide either a flat or a hierarchical view of the media. 
@@ -110,25 +115,27 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
-var res = await sdk.Library.GetLibrariesAsync();
+var res = await sdk.Library.GetAllLibrariesAsync();
 
 // handle response
 ```
 
-
 ### Response
 
-**[GetLibrariesResponse](../../Models/Requests/GetLibrariesResponse.md)**
+**[GetAllLibrariesResponse](../../Models/Requests/GetAllLibrariesResponse.md)**
+
 ### Errors
 
-| Error Object                                   | Status Code                                    | Content Type                                   |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| PlexAPI.Models.Errors.GetLibrariesResponseBody | 401                                            | application/json                               |
-| PlexAPI.Models.Errors.SDKException             | 4xx-5xx                                        | */*                                            |
+| Error Object                                      | Status Code                                       | Content Type                                      |
+| ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
+| PlexAPI.Models.Errors.GetAllLibrariesResponseBody | 401                                               | application/json                                  |
+| PlexAPI.Models.Errors.SDKException                | 4xx-5xx                                           | */*                                               |
 
-## GetLibrary
+
+## GetLibraryDetails
 
 ## Library Details Endpoint
 
@@ -175,16 +182,18 @@ Each type in the library comes with a set of filters and sorts, aiding in buildi
 
 ```csharp
 using PlexAPI;
-using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
+using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
-var res = await sdk.Library.GetLibraryAsync(
-    sectionId: 1000D,
-    includeDetails: IncludeDetails.Zero);
+var res = await sdk.Library.GetLibraryDetailsAsync(
+    sectionId: 15D,
+    includeDetails: PlexAPI.Models.Requests.IncludeDetails.Zero
+);
 
 // handle response
 ```
@@ -193,56 +202,59 @@ var res = await sdk.Library.GetLibraryAsync(
 
 | Parameter                                                                                                                                                                                  | Type                                                                                                                                                                                       | Required                                                                                                                                                                                   | Description                                                                                                                                                                                | Example                                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `SectionId`                                                                                                                                                                                | *double*                                                                                                                                                                                   | :heavy_check_mark:                                                                                                                                                                         | the Id of the library to query                                                                                                                                                             | 1000                                                                                                                                                                                       |
+| `SectionId`                                                                                                                                                                                | *double*                                                                                                                                                                                   | :heavy_check_mark:                                                                                                                                                                         | The id of the library                                                                                                                                                                      | 15                                                                                                                                                                                         |
 | `IncludeDetails`                                                                                                                                                                           | [IncludeDetails](../../Models/Requests/IncludeDetails.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                                         | Whether or not to include details for a section (types, filters, and sorts). <br/>Only exists for backwards compatibility, media providers other than the server libraries have it on always.<br/> |                                                                                                                                                                                            |
-
 
 ### Response
 
-**[GetLibraryResponse](../../Models/Requests/GetLibraryResponse.md)**
+**[GetLibraryDetailsResponse](../../Models/Requests/GetLibraryDetailsResponse.md)**
+
 ### Errors
 
-| Error Object                                 | Status Code                                  | Content Type                                 |
-| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| PlexAPI.Models.Errors.GetLibraryResponseBody | 401                                          | application/json                             |
-| PlexAPI.Models.Errors.SDKException           | 4xx-5xx                                      | */*                                          |
+| Error Object                                        | Status Code                                         | Content Type                                        |
+| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| PlexAPI.Models.Errors.GetLibraryDetailsResponseBody | 401                                                 | application/json                                    |
+| PlexAPI.Models.Errors.SDKException                  | 4xx-5xx                                             | */*                                                 |
+
 
 ## DeleteLibrary
 
-Delate a library using a specific section
+Delete a library using a specific section id
 
 ### Example Usage
 
 ```csharp
 using PlexAPI;
-using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
+using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
-var res = await sdk.Library.DeleteLibraryAsync(sectionId: 1000D);
+var res = await sdk.Library.DeleteLibraryAsync(sectionId: 15D);
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                      | Type                           | Required                       | Description                    | Example                        |
-| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-| `SectionId`                    | *double*                       | :heavy_check_mark:             | the Id of the library to query | 1000                           |
-
+| Parameter             | Type                  | Required              | Description           | Example               |
+| --------------------- | --------------------- | --------------------- | --------------------- | --------------------- |
+| `SectionId`           | *double*              | :heavy_check_mark:    | The id of the library | 15                    |
 
 ### Response
 
 **[DeleteLibraryResponse](../../Models/Requests/DeleteLibraryResponse.md)**
+
 ### Errors
 
 | Error Object                                    | Status Code                                     | Content Type                                    |
 | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
 | PlexAPI.Models.Errors.DeleteLibraryResponseBody | 401                                             | application/json                                |
 | PlexAPI.Models.Errors.SDKException              | 4xx-5xx                                         | */*                                             |
+
 
 ## GetLibraryItems
 
@@ -272,17 +284,19 @@ Fetches details from a specific section of the library identified by a section k
 
 ```csharp
 using PlexAPI;
-using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
+using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 var res = await sdk.Library.GetLibraryItemsAsync(
     sectionId: "<value>",
     tag: PlexAPI.Models.Requests.Tag.Genre,
-    includeGuids: 1);
+    includeGuids: 1
+);
 
 // handle response
 ```
@@ -295,10 +309,10 @@ var res = await sdk.Library.GetLibraryItemsAsync(
 | `Tag`                                                 | [Tag](../../Models/Requests/Tag.md)                   | :heavy_check_mark:                                    | A key representing a specific tag within the section. |                                                       |
 | `IncludeGuids`                                        | *long*                                                | :heavy_minus_sign:                                    | Adds the Guids object to the response<br/>            | 1                                                     |
 
-
 ### Response
 
 **[GetLibraryItemsResponse](../../Models/Requests/GetLibraryItemsResponse.md)**
+
 ### Errors
 
 | Error Object                                      | Status Code                                       | Content Type                                      |
@@ -306,43 +320,50 @@ var res = await sdk.Library.GetLibraryItemsAsync(
 | PlexAPI.Models.Errors.GetLibraryItemsResponseBody | 401                                               | application/json                                  |
 | PlexAPI.Models.Errors.SDKException                | 4xx-5xx                                           | */*                                               |
 
-## RefreshLibrary
 
-This endpoint Refreshes the library.
+## GetRefreshLibraryMetadata
+
+This endpoint Refreshes all the Metadata of the library.
 
 
 ### Example Usage
 
 ```csharp
 using PlexAPI;
-using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
+using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
-var res = await sdk.Library.RefreshLibraryAsync(sectionId: 934.16D);
+var res = await sdk.Library.GetRefreshLibraryMetadataAsync(
+    sectionId: 15D,
+    force: PlexAPI.Models.Requests.Force.One
+);
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                        | Type                             | Required                         | Description                      |
-| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
-| `SectionId`                      | *double*                         | :heavy_check_mark:               | the Id of the library to refresh |
-
+| Parameter                                                         | Type                                                              | Required                                                          | Description                                                       | Example                                                           |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `SectionId`                                                       | *double*                                                          | :heavy_check_mark:                                                | The id of the library                                             | 15                                                                |
+| `Force`                                                           | [Force](../../Models/Requests/Force.md)                           | :heavy_minus_sign:                                                | Force the refresh even if the library is already being refreshed. | 0                                                                 |
 
 ### Response
 
-**[RefreshLibraryResponse](../../Models/Requests/RefreshLibraryResponse.md)**
+**[GetRefreshLibraryMetadataResponse](../../Models/Requests/GetRefreshLibraryMetadataResponse.md)**
+
 ### Errors
 
-| Error Object                                     | Status Code                                      | Content Type                                     |
-| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| PlexAPI.Models.Errors.RefreshLibraryResponseBody | 401                                              | application/json                                 |
-| PlexAPI.Models.Errors.SDKException               | 4xx-5xx                                          | */*                                              |
+| Error Object                                                | Status Code                                                 | Content Type                                                |
+| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
+| PlexAPI.Models.Errors.GetRefreshLibraryMetadataResponseBody | 401                                                         | application/json                                            |
+| PlexAPI.Models.Errors.SDKException                          | 4xx-5xx                                                     | */*                                                         |
+
 
 ## SearchLibrary
 
@@ -370,37 +391,40 @@ Each type in the library comes with a set of filters and sorts, aiding in buildi
 
 ```csharp
 using PlexAPI;
-using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
+using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 var res = await sdk.Library.SearchLibraryAsync(
     sectionId: 933505,
-    type: PlexAPI.Models.Requests.Type.Four);
+    type: PlexAPI.Models.Requests.Type.Four
+);
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                             | Type                                  | Required                              | Description                           |
-| ------------------------------------- | ------------------------------------- | ------------------------------------- | ------------------------------------- |
-| `SectionId`                           | *long*                                | :heavy_check_mark:                    | the Id of the library to query        |
-| `Type`                                | [Type](../../Models/Requests/Type.md) | :heavy_check_mark:                    | Plex content type to search for       |
-
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `SectionId`                                           | *long*                                                | :heavy_check_mark:                                    | the Id of the library to query                        |
+| `Type`                                                | [Models.Requests.Type](../../Models/Requests/Type.md) | :heavy_check_mark:                                    | Plex content type to search for                       |
 
 ### Response
 
 **[SearchLibraryResponse](../../Models/Requests/SearchLibraryResponse.md)**
+
 ### Errors
 
 | Error Object                                    | Status Code                                     | Content Type                                    |
 | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
 | PlexAPI.Models.Errors.SearchLibraryResponseBody | 401                                             | application/json                                |
 | PlexAPI.Models.Errors.SDKException              | 4xx-5xx                                         | */*                                             |
+
 
 ## GetMetadata
 
@@ -411,12 +435,13 @@ This endpoint will return the metadata of a library item specified with the rati
 
 ```csharp
 using PlexAPI;
-using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
+using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 var res = await sdk.Library.GetMetadataAsync(ratingKey: 8382.31D);
 
@@ -429,16 +454,17 @@ var res = await sdk.Library.GetMetadataAsync(ratingKey: 8382.31D);
 | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
 | `RatingKey`                                           | *double*                                              | :heavy_check_mark:                                    | the id of the library item to return the children of. |
 
-
 ### Response
 
 **[GetMetadataResponse](../../Models/Requests/GetMetadataResponse.md)**
+
 ### Errors
 
 | Error Object                                  | Status Code                                   | Content Type                                  |
 | --------------------------------------------- | --------------------------------------------- | --------------------------------------------- |
 | PlexAPI.Models.Errors.GetMetadataResponseBody | 401                                           | application/json                              |
 | PlexAPI.Models.Errors.SDKException            | 4xx-5xx                                       | */*                                           |
+
 
 ## GetMetadataChildren
 
@@ -449,16 +475,18 @@ This endpoint will return the children of of a library item specified with the r
 
 ```csharp
 using PlexAPI;
-using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
+using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 var res = await sdk.Library.GetMetadataChildrenAsync(
     ratingKey: 1539.14D,
-    includeElements: "<value>");
+    includeElements: "<value>"
+);
 
 // handle response
 ```
@@ -470,16 +498,17 @@ var res = await sdk.Library.GetMetadataChildrenAsync(
 | `RatingKey`                                                             | *double*                                                                | :heavy_check_mark:                                                      | the id of the library item to return the children of.                   |
 | `IncludeElements`                                                       | *string*                                                                | :heavy_minus_sign:                                                      | Adds additional elements to the response. Supported types are (Stream)<br/> |
 
-
 ### Response
 
 **[GetMetadataChildrenResponse](../../Models/Requests/GetMetadataChildrenResponse.md)**
+
 ### Errors
 
 | Error Object                                          | Status Code                                           | Content Type                                          |
 | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
 | PlexAPI.Models.Errors.GetMetadataChildrenResponseBody | 401                                                   | application/json                                      |
 | PlexAPI.Models.Errors.SDKException                    | 4xx-5xx                                               | */*                                                   |
+
 
 ## GetTopWatchedContent
 
@@ -490,16 +519,18 @@ This endpoint will return the top watched content from libraries of a certain ty
 
 ```csharp
 using PlexAPI;
-using PlexAPI.Models.Components;
 using PlexAPI.Models.Requests;
+using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 var res = await sdk.Library.GetTopWatchedContentAsync(
     type: 505531,
-    includeGuids: 1);
+    includeGuids: 1
+);
 
 // handle response
 ```
@@ -511,15 +542,16 @@ var res = await sdk.Library.GetTopWatchedContentAsync(
 | `Type`                                              | *long*                                              | :heavy_check_mark:                                  | the library type (1 - movies, 2 - shows, 3 - music) |                                                     |
 | `IncludeGuids`                                      | *long*                                              | :heavy_minus_sign:                                  | Adds the Guids object to the response<br/>          | 1                                                   |
 
-
 ### Response
 
 **[GetTopWatchedContentResponse](../../Models/Requests/GetTopWatchedContentResponse.md)**
+
 ### Errors
 
 | Error Object                       | Status Code                        | Content Type                       |
 | ---------------------------------- | ---------------------------------- | ---------------------------------- |
 | PlexAPI.Models.Errors.SDKException | 4xx-5xx                            | */*                                |
+
 
 ## GetOnDeck
 
@@ -534,17 +566,18 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 var res = await sdk.Library.GetOnDeckAsync();
 
 // handle response
 ```
 
-
 ### Response
 
 **[GetOnDeckResponse](../../Models/Requests/GetOnDeckResponse.md)**
+
 ### Errors
 
 | Error Object                                | Status Code                                 | Content Type                                |

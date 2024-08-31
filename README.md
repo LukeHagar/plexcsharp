@@ -12,14 +12,16 @@
 
 ### NuGet
 
+To add the [NuGet](https://www.nuget.org/) package to a .NET project:
 ```bash
 dotnet add package PlexAPI
 ```
 
 ### Locally
 
+To add a reference to a local instance of the SDK in a .NET project:
 ```bash
-dotnet add reference path/to/PlexAPI.csproj
+dotnet add reference PlexAPI/PlexAPI.csproj
 ```
 <!-- End SDK Installation [installation] -->
 
@@ -34,7 +36,8 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 var res = await sdk.Server.GetServerCapabilitiesAsync();
 
@@ -82,9 +85,14 @@ var res = await sdk.Server.GetServerCapabilitiesAsync();
 
 ### [Plex](docs/sdks/plex/README.md)
 
+* [GetCompanionsData](docs/sdks/plex/README.md#getcompanionsdata) - Get Companions Data
+* [GetUserFriends](docs/sdks/plex/README.md#getuserfriends) - Get list of friends of the user logged in
+* [GetGeoData](docs/sdks/plex/README.md#getgeodata) - Get Geo Data
 * [GetHomeData](docs/sdks/plex/README.md#gethomedata) - Get Plex Home Data
+* [GetResources](docs/sdks/plex/README.md#getresources) - Get Resources
 * [GetPin](docs/sdks/plex/README.md#getpin) - Get a Pin
-* [GetToken](docs/sdks/plex/README.md#gettoken) - Get Access Token
+* [GetTokenByPinId](docs/sdks/plex/README.md#gettokenbypinid) - Get Access Token by PinId
+* [GetUserDetails](docs/sdks/plex/README.md#getuserdetails) - Get UserData By Token
 
 ### [Hubs](docs/sdks/hubs/README.md)
 
@@ -101,11 +109,11 @@ var res = await sdk.Server.GetServerCapabilitiesAsync();
 
 * [GetFileHash](docs/sdks/library/README.md#getfilehash) - Get Hash Value
 * [GetRecentlyAdded](docs/sdks/library/README.md#getrecentlyadded) - Get Recently Added
-* [GetLibraries](docs/sdks/library/README.md#getlibraries) - Get All Libraries
-* [GetLibrary](docs/sdks/library/README.md#getlibrary) - Get Library Details
+* [GetAllLibraries](docs/sdks/library/README.md#getalllibraries) - Get All Libraries
+* [GetLibraryDetails](docs/sdks/library/README.md#getlibrarydetails) - Get Library Details
 * [DeleteLibrary](docs/sdks/library/README.md#deletelibrary) - Delete Library Section
 * [GetLibraryItems](docs/sdks/library/README.md#getlibraryitems) - Get Library Items
-* [RefreshLibrary](docs/sdks/library/README.md#refreshlibrary) - Refresh Library
+* [GetRefreshLibraryMetadata](docs/sdks/library/README.md#getrefreshlibrarymetadata) - Refresh Metadata Of The Library
 * [SearchLibrary](docs/sdks/library/README.md#searchlibrary) - Search Library
 * [GetMetadata](docs/sdks/library/README.md#getmetadata) - Get Items Metadata
 * [GetMetadataChildren](docs/sdks/library/README.md#getmetadatachildren) - Get Items Children
@@ -134,6 +142,7 @@ var res = await sdk.Server.GetServerCapabilitiesAsync();
 
 * [GetTransientToken](docs/sdks/authentication/README.md#gettransienttoken) - Get a Transient Token.
 * [GetSourceConnectionInformation](docs/sdks/authentication/README.md#getsourceconnectioninformation) - Get Source Connection Information
+* [PostUsersSignInData](docs/sdks/authentication/README.md#postuserssignindata) - Get User SignIn Data
 
 ### [Statistics](docs/sdks/statistics/README.md)
 
@@ -190,15 +199,13 @@ The server URL can also be overridden on a per-operation basis, provided a serve
 ```csharp
 using PlexAPI;
 using PlexAPI.Models.Components;
-using PlexAPI.Models.Requests;
 
-var sdk = new PlexAPISDK(xPlexClientIdentifier: "Postman");
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    xPlexClientIdentifier: "Postman"
+);
 
-var res = await sdk.Plex.GetPinAsync(
-    serverUrl: "https://plex.tv/api/v2",
-    xPlexProduct: "Postman",
-    strong: false,
-    xPlexClientIdentifier: "Postman");
+var res = await sdk.Plex.GetCompanionsDataAsync(serverUrl: "https://plex.tv/api/v2");
 
 // handle response
 ```
@@ -222,53 +229,14 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 var res = await sdk.Server.GetServerCapabilitiesAsync();
 
 // handle response
 ```
 <!-- End Authentication [security] -->
-
-<!-- Start Global Parameters [global-parameters] -->
-## Global Parameters
-
-## Global Parameters
-
-A parameter is configured globally. This parameter may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
-
-For example, you can set `X-Plex-Client-Identifier` to `"Postman"` at SDK initialization and then you do not have to pass the same value on calls to operations like `GetPin`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
-
-
-### Available Globals
-
-The following global parameter is available.
-
-| Name | Type | Required | Description |
-| ---- | ---- |:--------:| ----------- |
-| xPlexClientIdentifier | string |  | The unique identifier for the client application
-This is used to track the client application and its usage
-(UUID, serial number, or other number unique per device)
- |
-
-
-### Example
-
-```csharp
-using PlexAPI;
-using PlexAPI.Models.Components;
-using PlexAPI.Models.Requests;
-
-var sdk = new PlexAPISDK(xPlexClientIdentifier: "Postman");
-
-var res = await sdk.Plex.GetPinAsync(
-    xPlexProduct: "Postman",
-    strong: false,
-    xPlexClientIdentifier: "Postman");
-
-// handle response
-```
-<!-- End Global Parameters [global-parameters] -->
 
 <!-- Start Error Handling [errors] -->
 ## Error Handling
@@ -290,11 +258,13 @@ using PlexAPI.Models.Errors;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman");
+    xPlexClientIdentifier: "Postman"
+);
 
 try
 {
     var res = await sdk.Server.GetServerCapabilitiesAsync();
+
     // handle response
 }
 catch (Exception ex)
@@ -308,9 +278,25 @@ catch (Exception ex)
         // handle exception
     }
 }
-
 ```
 <!-- End Error Handling [errors] -->
+
+<!-- Start Summary [summary] -->
+## Summary
+
+Plex-API: An Open API Spec for interacting with Plex.tv
+<!-- End Summary [summary] -->
+
+<!-- Start Table of Contents [toc] -->
+## Table of Contents
+
+* [SDK Installation](#sdk-installation)
+* [SDK Example Usage](#sdk-example-usage)
+* [Available Resources and Operations](#available-resources-and-operations)
+* [Error Handling](#error-handling)
+* [Server Selection](#server-selection)
+* [Authentication](#authentication)
+<!-- End Table of Contents [toc] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
