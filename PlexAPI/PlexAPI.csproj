@@ -3,11 +3,14 @@
   <PropertyGroup>
     <IsPackable>true</IsPackable>
     <PackageId>LukeHagar.PlexAPI.SDK</PackageId>
-    <Version>0.3.0</Version>
-    <Authors>LukeHagar</Authors>
+    <Version>0.4.2</Version>
     <TargetFramework>net8.0</TargetFramework>
+    <Authors>LukeHagar</Authors>
     <Nullable>enable</Nullable>
-    <NoWarn>1591</NoWarn>
+    <Copyright>Copyright (c) LukeHagar 2024</Copyright>
+    <RepositoryUrl>https://github.com/LukeHagar/plexcsharp.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Description>Plex-API: An Open API Spec for interacting with Plex.tv</Description>
   </PropertyGroup>
 
   <PropertyGroup>
