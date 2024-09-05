@@ -20,7 +20,7 @@ workflow:
     sources:
         my-source:
             inputs:
-                - location: https://raw.githubusercontent.com/LukeHagar/plex-api-spec/main/plex-media-server-spec-dereferenced.yaml
+                - location: https://raw.githubusercontent.com/LukeHagar/plex-api-spec/main/output/plex-media-server-spec-dereferenced.yaml
             registry:
                 location: registry.speakeasyapi.dev/lukehagar/lukehagar/my-source
     targets:
