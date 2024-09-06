@@ -11,6 +11,8 @@ API Calls interacting with Plex Media Server Media
 * [MarkPlayed](#markplayed) - Mark Media Played
 * [MarkUnplayed](#markunplayed) - Mark Media Unplayed
 * [UpdatePlayProgress](#updateplayprogress) - Update Media Play Progress
+* [GetBannerImage](#getbannerimage) - Get Banner Image
+* [GetThumbImage](#getthumbimage) - Get Thumb Image
 
 ## MarkPlayed
 
@@ -25,7 +27,7 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Media.MarkPlayedAsync(key: 59398D);
@@ -64,7 +66,7 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Media.MarkUnplayedAsync(key: 59398D);
@@ -104,11 +106,11 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Media.UpdatePlayProgressAsync(
-    key: "<value>",
+    key: "<key>",
     time: 90000D,
     state: "played"
 );
@@ -134,3 +136,99 @@ var res = await sdk.Media.UpdatePlayProgressAsync(
 | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
 | PlexAPI.Models.Errors.UpdatePlayProgressResponseBody | 401                                                  | application/json                                     |
 | PlexAPI.Models.Errors.SDKException                   | 4xx-5xx                                              | */*                                                  |
+
+
+## GetBannerImage
+
+Gets the banner image of the media item
+
+### Example Usage
+
+```csharp
+using PlexAPI;
+using PlexAPI.Models.Requests;
+using PlexAPI.Models.Components;
+
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+);
+
+GetBannerImageRequest req = new GetBannerImageRequest() {
+    RatingKey = 9518,
+    Width = 396,
+    Height = 396,
+    MinSize = 1,
+    Upscale = 1,
+    XPlexToken = "CV5xoxjTpFKUzBTShsaf",
+};
+
+var res = await sdk.Media.GetBannerImageAsync(req);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `request`                                                               | [GetBannerImageRequest](../../Models/Requests/GetBannerImageRequest.md) | :heavy_check_mark:                                                      | The request object to use for the request.                              |
+
+### Response
+
+**[GetBannerImageResponse](../../Models/Requests/GetBannerImageResponse.md)**
+
+### Errors
+
+| Error Object                                     | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| PlexAPI.Models.Errors.GetBannerImageResponseBody | 401                                              | application/json                                 |
+| PlexAPI.Models.Errors.SDKException               | 4xx-5xx                                          | */*                                              |
+
+
+## GetThumbImage
+
+Gets the thumbnail image of the media item
+
+### Example Usage
+
+```csharp
+using PlexAPI;
+using PlexAPI.Models.Requests;
+using PlexAPI.Models.Components;
+
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+);
+
+GetThumbImageRequest req = new GetThumbImageRequest() {
+    RatingKey = 9518,
+    Width = 396,
+    Height = 396,
+    MinSize = 1,
+    Upscale = 1,
+    XPlexToken = "CV5xoxjTpFKUzBTShsaf",
+};
+
+var res = await sdk.Media.GetThumbImageAsync(req);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `request`                                                             | [GetThumbImageRequest](../../Models/Requests/GetThumbImageRequest.md) | :heavy_check_mark:                                                    | The request object to use for the request.                            |
+
+### Response
+
+**[GetThumbImageResponse](../../Models/Requests/GetThumbImageResponse.md)**
+
+### Errors
+
+| Error Object                                    | Status Code                                     | Content Type                                    |
+| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
+| PlexAPI.Models.Errors.GetThumbImageResponseBody | 401                                             | application/json                                |
+| PlexAPI.Models.Errors.SDKException              | 4xx-5xx                                         | */*                                             |

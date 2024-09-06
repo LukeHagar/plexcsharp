@@ -9,17 +9,54 @@
 #nullable enable
 namespace PlexAPI.Models.Requests
 {
+    using Newtonsoft.Json;
     using PlexAPI.Utils;
+    using System;
     
     /// <summary>
-    /// Filters content by field and direction/equality<br/>
-    /// 
-    /// <remarks>
-    /// (Unknown if viewedAt is the only supported column)<br/>
-    /// 
-    /// </remarks>
+    /// Filter
     /// </summary>
-    public class Filter
+    public enum Filter
     {
+        [JsonProperty("all")]
+        All,
+        [JsonProperty("available")]
+        Available,
+        [JsonProperty("released")]
+        Released,
     }
+
+    public static class FilterExtension
+    {
+        public static string Value(this Filter value)
+        {
+            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
+        }
+
+        public static Filter ToEnum(this string value)
+        {
+            foreach(var field in typeof(Filter).GetFields())
+            {
+                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
+                if (attributes.Length == 0)
+                {
+                    continue;
+                }
+
+                var attribute = attributes[0] as JsonPropertyAttribute;
+                if (attribute != null && attribute.PropertyName == value)
+                {
+                    var enumVal = field.GetValue(null);
+
+                    if (enumVal is Filter)
+                    {
+                        return (Filter)enumVal;
+                    }
+                }
+            }
+
+            throw new Exception($"Unknown value {value} for enum Filter");
+        }
+    }
+
 }

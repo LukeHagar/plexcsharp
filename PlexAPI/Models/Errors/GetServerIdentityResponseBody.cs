@@ -10,20 +10,22 @@
 namespace PlexAPI.Models.Errors
 {
     using Newtonsoft.Json;
-    using PlexAPI.Models.Errors;
     using PlexAPI.Utils;
-    using System.Collections.Generic;
     using System.Net.Http;
     using System;
     
     /// <summary>
-    /// Unauthorized - Returned if the X-Plex-Token is missing from the header or query.
+    /// Request Timeout
     /// </summary>
     public class GetServerIdentityResponseBody : Exception
     {
 
-        [JsonProperty("errors")]
-        public List<GetServerIdentityErrors>? Errors { get; set; }
+        [JsonProperty("code")]
+        public long? Code { get; set; }
+
+        [JsonProperty("message")]
+        private string? _message { get; set; }
+        public override string Message { get {return _message ?? "";} }
 
         /// <summary>
         /// Raw HTTP response; suitable for custom response parsing

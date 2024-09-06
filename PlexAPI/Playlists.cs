@@ -98,7 +98,7 @@ namespace PlexAPI
         /// 
         /// </remarks>
         /// </summary>
-        Task<GetPlaylistContentsResponse> GetPlaylistContentsAsync(double playlistID, double type);
+        Task<GetPlaylistContentsResponse> GetPlaylistContentsAsync(double playlistID, GetPlaylistContentsQueryParamType type);
 
         /// <summary>
         /// Delete Playlist Contents
@@ -146,10 +146,10 @@ namespace PlexAPI
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.4.2";
-        private const string _sdkGenVersion = "2.407.0";
+        private const string _sdkVersion = "0.5.0";
+        private const string _sdkGenVersion = "2.409.8";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.4.2 2.407.0 0.0.3 PlexAPI";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.5.0 2.409.8 0.0.3 PlexAPI";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<PlexAPI.Models.Components.Security>? _securitySource;
@@ -616,7 +616,7 @@ namespace PlexAPI
             }
         }
 
-        public async Task<GetPlaylistContentsResponse> GetPlaylistContentsAsync(double playlistID, double type)
+        public async Task<GetPlaylistContentsResponse> GetPlaylistContentsAsync(double playlistID, GetPlaylistContentsQueryParamType type)
         {
             var request = new GetPlaylistContentsRequest()
             {

@@ -9,54 +9,26 @@
 #nullable enable
 namespace PlexAPI.Models.Requests
 {
-    using Newtonsoft.Json;
     using PlexAPI.Utils;
-    using System;
     
     /// <summary>
-    /// type of playlist to create
+    /// The type of media to retrieve.<br/>
+    /// 
+    /// <remarks>
+    /// 1 = movie<br/>
+    /// 2 = show<br/>
+    /// 3 = season<br/>
+    /// 4 = episode<br/>
+    /// E.g. A movie library will not return anything with type 3 as there are no seasons for movie libraries<br/>
+    /// 
+    /// </remarks>
     /// </summary>
     public enum QueryParamType
     {
-        [JsonProperty("audio")]
-        Audio,
-        [JsonProperty("video")]
-        Video,
-        [JsonProperty("photo")]
-        Photo,
-    }
-
-    public static class QueryParamTypeExtension
-    {
-        public static string Value(this QueryParamType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static QueryParamType ToEnum(this string value)
-        {
-            foreach(var field in typeof(QueryParamType).GetFields())
-            {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
-
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
-
-                    if (enumVal is QueryParamType)
-                    {
-                        return (QueryParamType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum QueryParamType");
-        }
+        One = 1,
+        Two = 2,
+        Three = 3,
+        Four = 4,
     }
 
 }

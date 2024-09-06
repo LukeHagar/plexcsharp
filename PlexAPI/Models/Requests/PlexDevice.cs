@@ -27,14 +27,14 @@ namespace PlexAPI.Models.Requests
         [JsonProperty("productVersion")]
         public string ProductVersion { get; set; } = default!;
 
-        [JsonProperty("platform")]
-        public string Platform { get; set; } = default!;
+        [JsonProperty("platform", NullValueHandling = NullValueHandling.Include)]
+        public string? Platform { get; set; }
 
-        [JsonProperty("platformVersion")]
-        public string PlatformVersion { get; set; } = default!;
+        [JsonProperty("platformVersion", NullValueHandling = NullValueHandling.Include)]
+        public string? PlatformVersion { get; set; }
 
-        [JsonProperty("device")]
-        public string Device { get; set; } = default!;
+        [JsonProperty("device", NullValueHandling = NullValueHandling.Include)]
+        public string? Device { get; set; }
 
         [JsonProperty("clientIdentifier")]
         public string ClientIdentifier { get; set; } = default!;
@@ -48,46 +48,49 @@ namespace PlexAPI.Models.Requests
         [JsonProperty("provides")]
         public string Provides { get; set; } = default!;
 
-        [JsonProperty("ownerId")]
-        public string? OwnerId { get; set; }
+        /// <summary>
+        /// ownerId is null when the device is owned by the token used to send the request
+        /// </summary>
+        [JsonProperty("ownerId", NullValueHandling = NullValueHandling.Include)]
+        public long? OwnerId { get; set; }
 
-        [JsonProperty("sourceTitle")]
+        [JsonProperty("sourceTitle", NullValueHandling = NullValueHandling.Include)]
         public string? SourceTitle { get; set; }
 
         [JsonProperty("publicAddress")]
-        public string? PublicAddress { get; set; }
+        public string PublicAddress { get; set; } = default!;
 
         [JsonProperty("accessToken")]
-        public string? AccessToken { get; set; }
+        public string AccessToken { get; set; } = default!;
 
         [JsonProperty("owned")]
-        public bool? Owned { get; set; }
+        public bool Owned { get; set; } = default!;
 
         [JsonProperty("home")]
-        public bool? Home { get; set; }
+        public bool Home { get; set; } = default!;
 
         [JsonProperty("synced")]
-        public bool? Synced { get; set; }
+        public bool Synced { get; set; } = default!;
 
         [JsonProperty("relay")]
-        public bool? Relay { get; set; }
+        public bool Relay { get; set; } = default!;
 
         [JsonProperty("presence")]
-        public bool? Presence { get; set; }
+        public bool Presence { get; set; } = default!;
 
         [JsonProperty("httpsRequired")]
-        public bool? HttpsRequired { get; set; }
+        public bool HttpsRequired { get; set; } = default!;
 
         [JsonProperty("publicAddressMatches")]
-        public bool? PublicAddressMatches { get; set; }
+        public bool PublicAddressMatches { get; set; } = default!;
 
         [JsonProperty("dnsRebindingProtection")]
-        public bool? DnsRebindingProtection { get; set; }
+        public bool DnsRebindingProtection { get; set; } = default!;
 
         [JsonProperty("natLoopbackSupported")]
-        public bool? NatLoopbackSupported { get; set; }
+        public bool NatLoopbackSupported { get; set; } = default!;
 
         [JsonProperty("connections")]
-        public List<Connections>? Connections { get; set; }
+        public List<Connections> Connections { get; set; } = default!;
     }
 }

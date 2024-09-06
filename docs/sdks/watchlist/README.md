@@ -8,9 +8,9 @@ API Calls that perform operations with Plex Media Server Watchlists
 
 ### Available Operations
 
-* [GetWatchlist](#getwatchlist) - Get User Watchlist
+* [GetWatchList](#getwatchlist) - Get User Watchlist
 
-## GetWatchlist
+## GetWatchList
 
 Get User Watchlist
 
@@ -23,15 +23,17 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
-GetWatchlistRequest req = new GetWatchlistRequest() {
-    Filter = PlexAPI.Models.Requests.PathParamFilter.Released,
-    XPlexToken = "<value>",
+GetWatchListRequest req = new GetWatchListRequest() {
+    Filter = PlexAPI.Models.Requests.Filter.Available,
+    XPlexToken = "CV5xoxjTpFKUzBTShsaf",
+    XPlexContainerStart = 0,
+    XPlexContainerSize = 50,
 };
 
-var res = await sdk.Watchlist.GetWatchlistAsync(req);
+var res = await sdk.Watchlist.GetWatchListAsync(req);
 
 // handle response
 ```
@@ -40,16 +42,16 @@ var res = await sdk.Watchlist.GetWatchlistAsync(req);
 
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `request`                                                           | [GetWatchlistRequest](../../Models/Requests/GetWatchlistRequest.md) | :heavy_check_mark:                                                  | The request object to use for the request.                          |
+| `request`                                                           | [GetWatchListRequest](../../Models/Requests/GetWatchListRequest.md) | :heavy_check_mark:                                                  | The request object to use for the request.                          |
 | `serverURL`                                                         | *string*                                                            | :heavy_minus_sign:                                                  | An optional server URL to use.                                      |
 
 ### Response
 
-**[GetWatchlistResponse](../../Models/Requests/GetWatchlistResponse.md)**
+**[GetWatchListResponse](../../Models/Requests/GetWatchListResponse.md)**
 
 ### Errors
 
 | Error Object                                   | Status Code                                    | Content Type                                   |
 | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| PlexAPI.Models.Errors.GetWatchlistResponseBody | 401                                            | application/json                               |
+| PlexAPI.Models.Errors.GetWatchListResponseBody | 401                                            | application/json                               |
 | PlexAPI.Models.Errors.SDKException             | 4xx-5xx                                        | */*                                            |

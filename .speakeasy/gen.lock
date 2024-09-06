@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 5a8dbcbc-e0ee-41f0-9d84-b8b50567d1e9
 management:
-  docChecksum: cd46763b91ada69afbe49fa20517839a
+  docChecksum: f627107f2ac6c53325be4f291ae2dea7
   docVersion: 0.0.3
-  speakeasyVersion: 1.383.2
-  generationVersion: 2.407.0
-  releaseVersion: 0.4.2
-  configChecksum: 74b77ec64d814262085e1afc1ea50fbb
+  speakeasyVersion: 1.390.7
+  generationVersion: 2.409.8
+  releaseVersion: 0.5.0
+  configChecksum: 4bb12ec49dacd5ee7587cdd901280ff9
   repoURL: https://github.com/LukeHagar/plexcsharp.git
   repoSubDirectory: .
   published: true
@@ -28,7 +28,6 @@ features:
     nullables: 0.1.0
     responseFormat: 0.0.4
     sdkHooks: 0.1.0
-    typeOverrides: 2.81.1
     unions: 0.2.1
 generatedFiles:
   - PlexAPI/Server.cs
@@ -40,13 +39,13 @@ generatedFiles:
   - PlexAPI/Hubs.cs
   - PlexAPI/Search.cs
   - PlexAPI/Library.cs
+  - PlexAPI/Watchlist.cs
   - PlexAPI/Log.cs
   - PlexAPI/Playlists.cs
   - PlexAPI/Authentication.cs
   - PlexAPI/Statistics.cs
   - PlexAPI/Sessions.cs
   - PlexAPI/Updater.cs
-  - PlexAPI/Watchlist.cs
   - PlexAPI/PlexAPISDK.cs
   - global.json
   - PlexAPI.sln
@@ -95,6 +94,14 @@ generatedFiles:
   - PlexAPI/Models/Requests/Upscale.cs
   - PlexAPI/Models/Requests/GetResizedPhotoRequest.cs
   - PlexAPI/Models/Requests/GetResizedPhotoResponse.cs
+  - PlexAPI/Models/Requests/GetMediaProvidersRequest.cs
+  - PlexAPI/Models/Requests/Pivot.cs
+  - PlexAPI/Models/Requests/GetMediaProvidersDirectory.cs
+  - PlexAPI/Models/Requests/Feature.cs
+  - PlexAPI/Models/Requests/MediaProvider.cs
+  - PlexAPI/Models/Requests/GetMediaProvidersMediaContainer.cs
+  - PlexAPI/Models/Requests/GetMediaProvidersResponseBody.cs
+  - PlexAPI/Models/Requests/GetMediaProvidersResponse.cs
   - PlexAPI/Models/Requests/GetServerListServer.cs
   - PlexAPI/Models/Requests/GetServerListMediaContainer.cs
   - PlexAPI/Models/Requests/GetServerListResponseBody.cs
@@ -105,6 +112,10 @@ generatedFiles:
   - PlexAPI/Models/Requests/MarkUnplayedResponse.cs
   - PlexAPI/Models/Requests/UpdatePlayProgressRequest.cs
   - PlexAPI/Models/Requests/UpdatePlayProgressResponse.cs
+  - PlexAPI/Models/Requests/GetBannerImageRequest.cs
+  - PlexAPI/Models/Requests/GetBannerImageResponse.cs
+  - PlexAPI/Models/Requests/GetThumbImageRequest.cs
+  - PlexAPI/Models/Requests/GetThumbImageResponse.cs
   - PlexAPI/Models/Requests/State.cs
   - PlexAPI/Models/Requests/GetTimelineRequest.cs
   - PlexAPI/Models/Requests/GetTimelineResponse.cs
@@ -143,10 +154,10 @@ generatedFiles:
   - PlexAPI/Models/Requests/IncludeHttps.cs
   - PlexAPI/Models/Requests/IncludeRelay.cs
   - PlexAPI/Models/Requests/IncludeIPv6.cs
-  - PlexAPI/Models/Requests/GetResourcesRequest.cs
+  - PlexAPI/Models/Requests/GetServerResourcesRequest.cs
   - PlexAPI/Models/Requests/Connections.cs
   - PlexAPI/Models/Requests/PlexDevice.cs
-  - PlexAPI/Models/Requests/GetResourcesResponse.cs
+  - PlexAPI/Models/Requests/GetServerResourcesResponse.cs
   - PlexAPI/Models/Requests/GetPinRequest.cs
   - PlexAPI/Models/Requests/GeoData.cs
   - PlexAPI/Models/Requests/GetPinAuthPinContainer.cs
@@ -155,23 +166,6 @@ generatedFiles:
   - PlexAPI/Models/Requests/GetTokenByPinIdGeoData.cs
   - PlexAPI/Models/Requests/GetTokenByPinIdAuthPinContainer.cs
   - PlexAPI/Models/Requests/GetTokenByPinIdResponse.cs
-  - PlexAPI/Models/Requests/MailingListStatus.cs
-  - PlexAPI/Models/Requests/AutoSelectSubtitle.cs
-  - PlexAPI/Models/Requests/DefaultSubtitleAccessibility.cs
-  - PlexAPI/Models/Requests/DefaultSubtitleForced.cs
-  - PlexAPI/Models/Requests/WatchedIndicator.cs
-  - PlexAPI/Models/Requests/MediaReviewsVisibility.cs
-  - PlexAPI/Models/Requests/UserProfile.cs
-  - PlexAPI/Models/Requests/GetUserDetailsStatus.cs
-  - PlexAPI/Models/Requests/Services.cs
-  - PlexAPI/Models/Requests/Features.cs
-  - PlexAPI/Models/Requests/GetUserDetailsPlexStatus.cs
-  - PlexAPI/Models/Requests/Subscription.cs
-  - PlexAPI/Models/Requests/GetUserDetailsFeatures.cs
-  - PlexAPI/Models/Requests/GetUserDetailsPlexResponseStatus.cs
-  - PlexAPI/Models/Requests/GetUserDetailsSubscription.cs
-  - PlexAPI/Models/Requests/GetUserDetailsUserPlexAccount.cs
-  - PlexAPI/Models/Requests/GetUserDetailsResponse.cs
   - PlexAPI/Models/Requests/OnlyTransient.cs
   - PlexAPI/Models/Requests/GetGlobalHubsRequest.cs
   - PlexAPI/Models/Requests/GetGlobalHubsMetadata.cs
@@ -212,6 +206,7 @@ generatedFiles:
   - PlexAPI/Models/Requests/GetSearchResultsResponse.cs
   - PlexAPI/Models/Requests/GetFileHashRequest.cs
   - PlexAPI/Models/Requests/GetFileHashResponse.cs
+  - PlexAPI/Models/Requests/GetRecentlyAddedRequest.cs
   - PlexAPI/Models/Requests/Part.cs
   - PlexAPI/Models/Requests/Media.cs
   - PlexAPI/Models/Requests/Genre.cs
@@ -243,6 +238,9 @@ generatedFiles:
   - PlexAPI/Models/Requests/DeleteLibraryRequest.cs
   - PlexAPI/Models/Requests/DeleteLibraryResponse.cs
   - PlexAPI/Models/Requests/Tag.cs
+  - PlexAPI/Models/Requests/IncludeGuids.cs
+  - PlexAPI/Models/Requests/IncludeMeta.cs
+  - PlexAPI/Models/Requests/Type.cs
   - PlexAPI/Models/Requests/GetLibraryItemsRequest.cs
   - PlexAPI/Models/Requests/LibrarySectionID.cs
   - PlexAPI/Models/Requests/GetLibraryItemsPart.cs
@@ -259,34 +257,35 @@ generatedFiles:
   - PlexAPI/Models/Requests/Force.cs
   - PlexAPI/Models/Requests/GetRefreshLibraryMetadataRequest.cs
   - PlexAPI/Models/Requests/GetRefreshLibraryMetadataResponse.cs
-  - PlexAPI/Models/Requests/Type.cs
-  - PlexAPI/Models/Requests/SearchLibraryRequest.cs
-  - PlexAPI/Models/Requests/SearchLibraryMetadata.cs
-  - PlexAPI/Models/Requests/SearchLibraryMediaContainer.cs
-  - PlexAPI/Models/Requests/SearchLibraryResponseBody.cs
-  - PlexAPI/Models/Requests/SearchLibraryResponse.cs
-  - PlexAPI/Models/Requests/GetMetadataRequest.cs
+  - PlexAPI/Models/Requests/QueryParamType.cs
+  - PlexAPI/Models/Requests/GetSearchLibraryRequest.cs
+  - PlexAPI/Models/Requests/GetSearchLibraryMetadata.cs
+  - PlexAPI/Models/Requests/GetSearchLibraryMediaContainer.cs
+  - PlexAPI/Models/Requests/GetSearchLibraryResponseBody.cs
+  - PlexAPI/Models/Requests/GetSearchLibraryResponse.cs
+  - PlexAPI/Models/Requests/GetMetaDataByRatingKeyRequest.cs
   - PlexAPI/Models/Requests/Stream.cs
-  - PlexAPI/Models/Requests/GetMetadataPart.cs
-  - PlexAPI/Models/Requests/GetMetadataMedia.cs
-  - PlexAPI/Models/Requests/GetMetadataGenre.cs
-  - PlexAPI/Models/Requests/GetMetadataCountry.cs
+  - PlexAPI/Models/Requests/GetMetaDataByRatingKeyPart.cs
+  - PlexAPI/Models/Requests/GetMetaDataByRatingKeyMedia.cs
+  - PlexAPI/Models/Requests/GetMetaDataByRatingKeyGenre.cs
+  - PlexAPI/Models/Requests/GetMetaDataByRatingKeyCountry.cs
   - PlexAPI/Models/Requests/Guids.cs
   - PlexAPI/Models/Requests/Ratings.cs
-  - PlexAPI/Models/Requests/GetMetadataDirector.cs
-  - PlexAPI/Models/Requests/GetMetadataWriter.cs
-  - PlexAPI/Models/Requests/GetMetadataRole.cs
+  - PlexAPI/Models/Requests/GetMetaDataByRatingKeyDirector.cs
+  - PlexAPI/Models/Requests/GetMetaDataByRatingKeyWriter.cs
+  - PlexAPI/Models/Requests/GetMetaDataByRatingKeyRole.cs
   - PlexAPI/Models/Requests/Producer.cs
-  - PlexAPI/Models/Requests/GetMetadataMetadata.cs
-  - PlexAPI/Models/Requests/GetMetadataMediaContainer.cs
-  - PlexAPI/Models/Requests/GetMetadataResponseBody.cs
-  - PlexAPI/Models/Requests/GetMetadataResponse.cs
+  - PlexAPI/Models/Requests/GetMetaDataByRatingKeyMetadata.cs
+  - PlexAPI/Models/Requests/GetMetaDataByRatingKeyMediaContainer.cs
+  - PlexAPI/Models/Requests/GetMetaDataByRatingKeyResponseBody.cs
+  - PlexAPI/Models/Requests/GetMetaDataByRatingKeyResponse.cs
   - PlexAPI/Models/Requests/GetMetadataChildrenRequest.cs
   - PlexAPI/Models/Requests/GetMetadataChildrenDirectory.cs
   - PlexAPI/Models/Requests/GetMetadataChildrenMetadata.cs
   - PlexAPI/Models/Requests/GetMetadataChildrenMediaContainer.cs
   - PlexAPI/Models/Requests/GetMetadataChildrenResponseBody.cs
   - PlexAPI/Models/Requests/GetMetadataChildrenResponse.cs
+  - PlexAPI/Models/Requests/GetTopWatchedContentQueryParamType.cs
   - PlexAPI/Models/Requests/GetTopWatchedContentRequest.cs
   - PlexAPI/Models/Requests/GetTopWatchedContentGenre.cs
   - PlexAPI/Models/Requests/GetTopWatchedContentCountry.cs
@@ -305,12 +304,21 @@ generatedFiles:
   - PlexAPI/Models/Requests/GetOnDeckMediaContainer.cs
   - PlexAPI/Models/Requests/GetOnDeckResponseBody.cs
   - PlexAPI/Models/Requests/GetOnDeckResponse.cs
+  - PlexAPI/Models/Requests/Filter.cs
+  - PlexAPI/Models/Requests/Libtype.cs
+  - PlexAPI/Models/Requests/IncludeCollections.cs
+  - PlexAPI/Models/Requests/IncludeExternalMedia.cs
+  - PlexAPI/Models/Requests/GetWatchListRequest.cs
+  - PlexAPI/Models/Requests/Image.cs
+  - PlexAPI/Models/Requests/Metadata.cs
+  - PlexAPI/Models/Requests/GetWatchListResponseBody.cs
+  - PlexAPI/Models/Requests/GetWatchListResponse.cs
   - PlexAPI/Models/Requests/Level.cs
   - PlexAPI/Models/Requests/LogLineRequest.cs
   - PlexAPI/Models/Requests/LogLineResponse.cs
   - PlexAPI/Models/Requests/LogMultiLineResponse.cs
   - PlexAPI/Models/Requests/EnablePaperTrailResponse.cs
-  - PlexAPI/Models/Requests/QueryParamType.cs
+  - PlexAPI/Models/Requests/CreatePlaylistQueryParamType.cs
   - PlexAPI/Models/Requests/Smart.cs
   - PlexAPI/Models/Requests/CreatePlaylistRequest.cs
   - PlexAPI/Models/Requests/CreatePlaylistMetadata.cs
@@ -333,6 +341,7 @@ generatedFiles:
   - PlexAPI/Models/Requests/DeletePlaylistResponse.cs
   - PlexAPI/Models/Requests/UpdatePlaylistRequest.cs
   - PlexAPI/Models/Requests/UpdatePlaylistResponse.cs
+  - PlexAPI/Models/Requests/GetPlaylistContentsQueryParamType.cs
   - PlexAPI/Models/Requests/GetPlaylistContentsRequest.cs
   - PlexAPI/Models/Requests/GetPlaylistContentsPart.cs
   - PlexAPI/Models/Requests/GetPlaylistContentsMedia.cs
@@ -361,6 +370,24 @@ generatedFiles:
   - PlexAPI/Models/Requests/GetTransientTokenResponse.cs
   - PlexAPI/Models/Requests/GetSourceConnectionInformationRequest.cs
   - PlexAPI/Models/Requests/GetSourceConnectionInformationResponse.cs
+  - PlexAPI/Models/Requests/GetUserDetailsRequest.cs
+  - PlexAPI/Models/Requests/MailingListStatus.cs
+  - PlexAPI/Models/Requests/AutoSelectSubtitle.cs
+  - PlexAPI/Models/Requests/DefaultSubtitleAccessibility.cs
+  - PlexAPI/Models/Requests/DefaultSubtitleForced.cs
+  - PlexAPI/Models/Requests/WatchedIndicator.cs
+  - PlexAPI/Models/Requests/MediaReviewsVisibility.cs
+  - PlexAPI/Models/Requests/UserProfile.cs
+  - PlexAPI/Models/Requests/GetUserDetailsStatus.cs
+  - PlexAPI/Models/Requests/Services.cs
+  - PlexAPI/Models/Requests/Features.cs
+  - PlexAPI/Models/Requests/GetUserDetailsAuthenticationStatus.cs
+  - PlexAPI/Models/Requests/Subscription.cs
+  - PlexAPI/Models/Requests/GetUserDetailsFeatures.cs
+  - PlexAPI/Models/Requests/GetUserDetailsAuthenticationResponseStatus.cs
+  - PlexAPI/Models/Requests/GetUserDetailsSubscription.cs
+  - PlexAPI/Models/Requests/GetUserDetailsUserPlexAccount.cs
+  - PlexAPI/Models/Requests/GetUserDetailsResponse.cs
   - PlexAPI/Models/Requests/PostUsersSignInDataRequestBody.cs
   - PlexAPI/Models/Requests/PostUsersSignInDataRequest.cs
   - PlexAPI/Models/Requests/PostUsersSignInDataMailingListStatus.cs
@@ -414,7 +441,7 @@ generatedFiles:
   - PlexAPI/Models/Requests/GetSessionsMediaContainer.cs
   - PlexAPI/Models/Requests/GetSessionsResponseBody.cs
   - PlexAPI/Models/Requests/GetSessionsResponse.cs
-  - PlexAPI/Models/Requests/Filter.cs
+  - PlexAPI/Models/Requests/QueryParamFilter.cs
   - PlexAPI/Models/Requests/GetSessionHistoryRequest.cs
   - PlexAPI/Models/Requests/GetSessionHistoryMetadata.cs
   - PlexAPI/Models/Requests/GetSessionHistoryMediaContainer.cs
@@ -437,15 +464,6 @@ generatedFiles:
   - PlexAPI/Models/Requests/Skip.cs
   - PlexAPI/Models/Requests/ApplyUpdatesRequest.cs
   - PlexAPI/Models/Requests/ApplyUpdatesResponse.cs
-  - PlexAPI/Models/Requests/PathParamFilter.cs
-  - PlexAPI/Models/Requests/Libtype.cs
-  - PlexAPI/Models/Requests/IncludeCollections.cs
-  - PlexAPI/Models/Requests/IncludeExternalMedia.cs
-  - PlexAPI/Models/Requests/GetWatchlistRequest.cs
-  - PlexAPI/Models/Requests/Image.cs
-  - PlexAPI/Models/Requests/Metadata.cs
-  - PlexAPI/Models/Requests/GetWatchlistResponseBody.cs
-  - PlexAPI/Models/Requests/GetWatchlistResponse.cs
   - PlexAPI/Models/Errors/Errors.cs
   - PlexAPI/Models/Errors/GetServerCapabilitiesResponseBody.cs
   - PlexAPI/Models/Errors/GetServerPreferencesErrors.cs
@@ -454,12 +472,13 @@ generatedFiles:
   - PlexAPI/Models/Errors/GetAvailableClientsResponseBody.cs
   - PlexAPI/Models/Errors/GetDevicesErrors.cs
   - PlexAPI/Models/Errors/GetDevicesResponseBody.cs
-  - PlexAPI/Models/Errors/GetServerIdentityErrors.cs
   - PlexAPI/Models/Errors/GetServerIdentityResponseBody.cs
   - PlexAPI/Models/Errors/GetMyPlexAccountErrors.cs
   - PlexAPI/Models/Errors/GetMyPlexAccountResponseBody.cs
   - PlexAPI/Models/Errors/GetResizedPhotoErrors.cs
   - PlexAPI/Models/Errors/GetResizedPhotoResponseBody.cs
+  - PlexAPI/Models/Errors/GetMediaProvidersErrors.cs
+  - PlexAPI/Models/Errors/GetMediaProvidersResponseBody.cs
   - PlexAPI/Models/Errors/GetServerListErrors.cs
   - PlexAPI/Models/Errors/GetServerListResponseBody.cs
   - PlexAPI/Models/Errors/MarkPlayedErrors.cs
@@ -468,6 +487,10 @@ generatedFiles:
   - PlexAPI/Models/Errors/MarkUnplayedResponseBody.cs
   - PlexAPI/Models/Errors/UpdatePlayProgressErrors.cs
   - PlexAPI/Models/Errors/UpdatePlayProgressResponseBody.cs
+  - PlexAPI/Models/Errors/GetBannerImageErrors.cs
+  - PlexAPI/Models/Errors/GetBannerImageResponseBody.cs
+  - PlexAPI/Models/Errors/GetThumbImageErrors.cs
+  - PlexAPI/Models/Errors/GetThumbImageResponseBody.cs
   - PlexAPI/Models/Errors/GetTimelineErrors.cs
   - PlexAPI/Models/Errors/GetTimelineResponseBody.cs
   - PlexAPI/Models/Errors/StartUniversalTranscodeErrors.cs
@@ -494,14 +517,14 @@ generatedFiles:
   - PlexAPI/Models/Errors/GetGeoDataResponseBody.cs
   - PlexAPI/Models/Errors/GetHomeDataErrors.cs
   - PlexAPI/Models/Errors/GetHomeDataResponseBody.cs
-  - PlexAPI/Models/Errors/GetResourcesErrors.cs
-  - PlexAPI/Models/Errors/GetResourcesResponseBody.cs
+  - PlexAPI/Models/Errors/GetServerResourcesErrors.cs
+  - PlexAPI/Models/Errors/GetServerResourcesResponseBody.cs
   - PlexAPI/Models/Errors/GetPinErrors.cs
   - PlexAPI/Models/Errors/GetPinResponseBody.cs
+  - PlexAPI/Models/Errors/GetTokenByPinIdPlexErrors.cs
+  - PlexAPI/Models/Errors/GetTokenByPinIdPlexResponseBody.cs
   - PlexAPI/Models/Errors/GetTokenByPinIdErrors.cs
   - PlexAPI/Models/Errors/GetTokenByPinIdResponseBody.cs
-  - PlexAPI/Models/Errors/GetUserDetailsErrors.cs
-  - PlexAPI/Models/Errors/GetUserDetailsResponseBody.cs
   - PlexAPI/Models/Errors/GetGlobalHubsErrors.cs
   - PlexAPI/Models/Errors/GetGlobalHubsResponseBody.cs
   - PlexAPI/Models/Errors/GetLibraryHubsErrors.cs
@@ -526,14 +549,18 @@ generatedFiles:
   - PlexAPI/Models/Errors/GetLibraryItemsResponseBody.cs
   - PlexAPI/Models/Errors/GetRefreshLibraryMetadataErrors.cs
   - PlexAPI/Models/Errors/GetRefreshLibraryMetadataResponseBody.cs
-  - PlexAPI/Models/Errors/SearchLibraryErrors.cs
-  - PlexAPI/Models/Errors/SearchLibraryResponseBody.cs
-  - PlexAPI/Models/Errors/GetMetadataErrors.cs
-  - PlexAPI/Models/Errors/GetMetadataResponseBody.cs
+  - PlexAPI/Models/Errors/GetSearchLibraryErrors.cs
+  - PlexAPI/Models/Errors/GetSearchLibraryResponseBody.cs
+  - PlexAPI/Models/Errors/GetMetaDataByRatingKeyErrors.cs
+  - PlexAPI/Models/Errors/GetMetaDataByRatingKeyResponseBody.cs
   - PlexAPI/Models/Errors/GetMetadataChildrenErrors.cs
   - PlexAPI/Models/Errors/GetMetadataChildrenResponseBody.cs
+  - PlexAPI/Models/Errors/GetTopWatchedContentErrors.cs
+  - PlexAPI/Models/Errors/GetTopWatchedContentResponseBody.cs
   - PlexAPI/Models/Errors/GetOnDeckErrors.cs
   - PlexAPI/Models/Errors/GetOnDeckResponseBody.cs
+  - PlexAPI/Models/Errors/GetWatchListErrors.cs
+  - PlexAPI/Models/Errors/GetWatchListResponseBody.cs
   - PlexAPI/Models/Errors/LogLineErrors.cs
   - PlexAPI/Models/Errors/LogLineResponseBody.cs
   - PlexAPI/Models/Errors/LogMultiLineErrors.cs
@@ -562,6 +589,8 @@ generatedFiles:
   - PlexAPI/Models/Errors/GetTransientTokenResponseBody.cs
   - PlexAPI/Models/Errors/GetSourceConnectionInformationErrors.cs
   - PlexAPI/Models/Errors/GetSourceConnectionInformationResponseBody.cs
+  - PlexAPI/Models/Errors/GetUserDetailsErrors.cs
+  - PlexAPI/Models/Errors/GetUserDetailsResponseBody.cs
   - PlexAPI/Models/Errors/PostUsersSignInDataErrors.cs
   - PlexAPI/Models/Errors/PostUsersSignInDataResponseBody.cs
   - PlexAPI/Models/Errors/GetStatisticsErrors.cs
@@ -584,8 +613,6 @@ generatedFiles:
   - PlexAPI/Models/Errors/CheckForUpdatesResponseBody.cs
   - PlexAPI/Models/Errors/ApplyUpdatesErrors.cs
   - PlexAPI/Models/Errors/ApplyUpdatesResponseBody.cs
-  - PlexAPI/Models/Errors/GetWatchlistErrors.cs
-  - PlexAPI/Models/Errors/GetWatchlistResponseBody.cs
   - PlexAPI/Models/Components/Security.cs
   - docs/Models/Requests/Directory.md
   - docs/Models/Requests/MediaContainer.md
@@ -613,6 +640,14 @@ generatedFiles:
   - docs/Models/Requests/Upscale.md
   - docs/Models/Requests/GetResizedPhotoRequest.md
   - docs/Models/Requests/GetResizedPhotoResponse.md
+  - docs/Models/Requests/GetMediaProvidersRequest.md
+  - docs/Models/Requests/Pivot.md
+  - docs/Models/Requests/GetMediaProvidersDirectory.md
+  - docs/Models/Requests/Feature.md
+  - docs/Models/Requests/MediaProvider.md
+  - docs/Models/Requests/GetMediaProvidersMediaContainer.md
+  - docs/Models/Requests/GetMediaProvidersResponseBody.md
+  - docs/Models/Requests/GetMediaProvidersResponse.md
   - docs/Models/Requests/GetServerListServer.md
   - docs/Models/Requests/GetServerListMediaContainer.md
   - docs/Models/Requests/GetServerListResponseBody.md
@@ -623,6 +658,10 @@ generatedFiles:
   - docs/Models/Requests/MarkUnplayedResponse.md
   - docs/Models/Requests/UpdatePlayProgressRequest.md
   - docs/Models/Requests/UpdatePlayProgressResponse.md
+  - docs/Models/Requests/GetBannerImageRequest.md
+  - docs/Models/Requests/GetBannerImageResponse.md
+  - docs/Models/Requests/GetThumbImageRequest.md
+  - docs/Models/Requests/GetThumbImageResponse.md
   - docs/Models/Requests/State.md
   - docs/Models/Requests/GetTimelineRequest.md
   - docs/Models/Requests/GetTimelineResponse.md
@@ -661,10 +700,10 @@ generatedFiles:
   - docs/Models/Requests/IncludeHttps.md
   - docs/Models/Requests/IncludeRelay.md
   - docs/Models/Requests/IncludeIPv6.md
-  - docs/Models/Requests/GetResourcesRequest.md
+  - docs/Models/Requests/GetServerResourcesRequest.md
   - docs/Models/Requests/Connections.md
   - docs/Models/Requests/PlexDevice.md
-  - docs/Models/Requests/GetResourcesResponse.md
+  - docs/Models/Requests/GetServerResourcesResponse.md
   - docs/Models/Requests/GetPinRequest.md
   - docs/Models/Requests/GeoData.md
   - docs/Models/Requests/GetPinAuthPinContainer.md
@@ -673,23 +712,6 @@ generatedFiles:
   - docs/Models/Requests/GetTokenByPinIdGeoData.md
   - docs/Models/Requests/GetTokenByPinIdAuthPinContainer.md
   - docs/Models/Requests/GetTokenByPinIdResponse.md
-  - docs/Models/Requests/MailingListStatus.md
-  - docs/Models/Requests/AutoSelectSubtitle.md
-  - docs/Models/Requests/DefaultSubtitleAccessibility.md
-  - docs/Models/Requests/DefaultSubtitleForced.md
-  - docs/Models/Requests/WatchedIndicator.md
-  - docs/Models/Requests/MediaReviewsVisibility.md
-  - docs/Models/Requests/UserProfile.md
-  - docs/Models/Requests/GetUserDetailsStatus.md
-  - docs/Models/Requests/Services.md
-  - docs/Models/Requests/Features.md
-  - docs/Models/Requests/GetUserDetailsPlexStatus.md
-  - docs/Models/Requests/Subscription.md
-  - docs/Models/Requests/GetUserDetailsFeatures.md
-  - docs/Models/Requests/GetUserDetailsPlexResponseStatus.md
-  - docs/Models/Requests/GetUserDetailsSubscription.md
-  - docs/Models/Requests/GetUserDetailsUserPlexAccount.md
-  - docs/Models/Requests/GetUserDetailsResponse.md
   - docs/Models/Requests/OnlyTransient.md
   - docs/Models/Requests/GetGlobalHubsRequest.md
   - docs/Models/Requests/GetGlobalHubsMetadata.md
@@ -730,6 +752,7 @@ generatedFiles:
   - docs/Models/Requests/GetSearchResultsResponse.md
   - docs/Models/Requests/GetFileHashRequest.md
   - docs/Models/Requests/GetFileHashResponse.md
+  - docs/Models/Requests/GetRecentlyAddedRequest.md
   - docs/Models/Requests/Part.md
   - docs/Models/Requests/Media.md
   - docs/Models/Requests/Genre.md
@@ -761,6 +784,9 @@ generatedFiles:
   - docs/Models/Requests/DeleteLibraryRequest.md
   - docs/Models/Requests/DeleteLibraryResponse.md
   - docs/Models/Requests/Tag.md
+  - docs/Models/Requests/IncludeGuids.md
+  - docs/Models/Requests/IncludeMeta.md
+  - docs/Models/Requests/Type.md
   - docs/Models/Requests/GetLibraryItemsRequest.md
   - docs/Models/Requests/LibrarySectionID.md
   - docs/Models/Requests/GetLibraryItemsPart.md
@@ -777,34 +803,35 @@ generatedFiles:
   - docs/Models/Requests/Force.md
   - docs/Models/Requests/GetRefreshLibraryMetadataRequest.md
   - docs/Models/Requests/GetRefreshLibraryMetadataResponse.md
-  - docs/Models/Requests/Type.md
-  - docs/Models/Requests/SearchLibraryRequest.md
-  - docs/Models/Requests/SearchLibraryMetadata.md
-  - docs/Models/Requests/SearchLibraryMediaContainer.md
-  - docs/Models/Requests/SearchLibraryResponseBody.md
-  - docs/Models/Requests/SearchLibraryResponse.md
-  - docs/Models/Requests/GetMetadataRequest.md
+  - docs/Models/Requests/QueryParamType.md
+  - docs/Models/Requests/GetSearchLibraryRequest.md
+  - docs/Models/Requests/GetSearchLibraryMetadata.md
+  - docs/Models/Requests/GetSearchLibraryMediaContainer.md
+  - docs/Models/Requests/GetSearchLibraryResponseBody.md
+  - docs/Models/Requests/GetSearchLibraryResponse.md
+  - docs/Models/Requests/GetMetaDataByRatingKeyRequest.md
   - docs/Models/Requests/Stream.md
-  - docs/Models/Requests/GetMetadataPart.md
-  - docs/Models/Requests/GetMetadataMedia.md
-  - docs/Models/Requests/GetMetadataGenre.md
-  - docs/Models/Requests/GetMetadataCountry.md
+  - docs/Models/Requests/GetMetaDataByRatingKeyPart.md
+  - docs/Models/Requests/GetMetaDataByRatingKeyMedia.md
+  - docs/Models/Requests/GetMetaDataByRatingKeyGenre.md
+  - docs/Models/Requests/GetMetaDataByRatingKeyCountry.md
   - docs/Models/Requests/Guids.md
   - docs/Models/Requests/Ratings.md
-  - docs/Models/Requests/GetMetadataDirector.md
-  - docs/Models/Requests/GetMetadataWriter.md
-  - docs/Models/Requests/GetMetadataRole.md
+  - docs/Models/Requests/GetMetaDataByRatingKeyDirector.md
+  - docs/Models/Requests/GetMetaDataByRatingKeyWriter.md
+  - docs/Models/Requests/GetMetaDataByRatingKeyRole.md
   - docs/Models/Requests/Producer.md
-  - docs/Models/Requests/GetMetadataMetadata.md
-  - docs/Models/Requests/GetMetadataMediaContainer.md
-  - docs/Models/Requests/GetMetadataResponseBody.md
-  - docs/Models/Requests/GetMetadataResponse.md
+  - docs/Models/Requests/GetMetaDataByRatingKeyMetadata.md
+  - docs/Models/Requests/GetMetaDataByRatingKeyMediaContainer.md
+  - docs/Models/Requests/GetMetaDataByRatingKeyResponseBody.md
+  - docs/Models/Requests/GetMetaDataByRatingKeyResponse.md
   - docs/Models/Requests/GetMetadataChildrenRequest.md
   - docs/Models/Requests/GetMetadataChildrenDirectory.md
   - docs/Models/Requests/GetMetadataChildrenMetadata.md
   - docs/Models/Requests/GetMetadataChildrenMediaContainer.md
   - docs/Models/Requests/GetMetadataChildrenResponseBody.md
   - docs/Models/Requests/GetMetadataChildrenResponse.md
+  - docs/Models/Requests/GetTopWatchedContentQueryParamType.md
   - docs/Models/Requests/GetTopWatchedContentRequest.md
   - docs/Models/Requests/GetTopWatchedContentGenre.md
   - docs/Models/Requests/GetTopWatchedContentCountry.md
@@ -823,12 +850,21 @@ generatedFiles:
   - docs/Models/Requests/GetOnDeckMediaContainer.md
   - docs/Models/Requests/GetOnDeckResponseBody.md
   - docs/Models/Requests/GetOnDeckResponse.md
+  - docs/Models/Requests/Filter.md
+  - docs/Models/Requests/Libtype.md
+  - docs/Models/Requests/IncludeCollections.md
+  - docs/Models/Requests/IncludeExternalMedia.md
+  - docs/Models/Requests/GetWatchListRequest.md
+  - docs/Models/Requests/Image.md
+  - docs/Models/Requests/Metadata.md
+  - docs/Models/Requests/GetWatchListResponseBody.md
+  - docs/Models/Requests/GetWatchListResponse.md
   - docs/Models/Requests/Level.md
   - docs/Models/Requests/LogLineRequest.md
   - docs/Models/Requests/LogLineResponse.md
   - docs/Models/Requests/LogMultiLineResponse.md
   - docs/Models/Requests/EnablePaperTrailResponse.md
-  - docs/Models/Requests/QueryParamType.md
+  - docs/Models/Requests/CreatePlaylistQueryParamType.md
   - docs/Models/Requests/Smart.md
   - docs/Models/Requests/CreatePlaylistRequest.md
   - docs/Models/Requests/CreatePlaylistMetadata.md
@@ -851,6 +887,7 @@ generatedFiles:
   - docs/Models/Requests/DeletePlaylistResponse.md
   - docs/Models/Requests/UpdatePlaylistRequest.md
   - docs/Models/Requests/UpdatePlaylistResponse.md
+  - docs/Models/Requests/GetPlaylistContentsQueryParamType.md
   - docs/Models/Requests/GetPlaylistContentsRequest.md
   - docs/Models/Requests/GetPlaylistContentsPart.md
   - docs/Models/Requests/GetPlaylistContentsMedia.md
@@ -879,6 +916,24 @@ generatedFiles:
   - docs/Models/Requests/GetTransientTokenResponse.md
   - docs/Models/Requests/GetSourceConnectionInformationRequest.md
   - docs/Models/Requests/GetSourceConnectionInformationResponse.md
+  - docs/Models/Requests/GetUserDetailsRequest.md
+  - docs/Models/Requests/MailingListStatus.md
+  - docs/Models/Requests/AutoSelectSubtitle.md
+  - docs/Models/Requests/DefaultSubtitleAccessibility.md
+  - docs/Models/Requests/DefaultSubtitleForced.md
+  - docs/Models/Requests/WatchedIndicator.md
+  - docs/Models/Requests/MediaReviewsVisibility.md
+  - docs/Models/Requests/UserProfile.md
+  - docs/Models/Requests/GetUserDetailsStatus.md
+  - docs/Models/Requests/Services.md
+  - docs/Models/Requests/Features.md
+  - docs/Models/Requests/GetUserDetailsAuthenticationStatus.md
+  - docs/Models/Requests/Subscription.md
+  - docs/Models/Requests/GetUserDetailsFeatures.md
+  - docs/Models/Requests/GetUserDetailsAuthenticationResponseStatus.md
+  - docs/Models/Requests/GetUserDetailsSubscription.md
+  - docs/Models/Requests/GetUserDetailsUserPlexAccount.md
+  - docs/Models/Requests/GetUserDetailsResponse.md
   - docs/Models/Requests/PostUsersSignInDataRequestBody.md
   - docs/Models/Requests/PostUsersSignInDataRequest.md
   - docs/Models/Requests/PostUsersSignInDataMailingListStatus.md
@@ -932,7 +987,7 @@ generatedFiles:
   - docs/Models/Requests/GetSessionsMediaContainer.md
   - docs/Models/Requests/GetSessionsResponseBody.md
   - docs/Models/Requests/GetSessionsResponse.md
-  - docs/Models/Requests/Filter.md
+  - docs/Models/Requests/QueryParamFilter.md
   - docs/Models/Requests/GetSessionHistoryRequest.md
   - docs/Models/Requests/GetSessionHistoryMetadata.md
   - docs/Models/Requests/GetSessionHistoryMediaContainer.md
@@ -955,15 +1010,6 @@ generatedFiles:
   - docs/Models/Requests/Skip.md
   - docs/Models/Requests/ApplyUpdatesRequest.md
   - docs/Models/Requests/ApplyUpdatesResponse.md
-  - docs/Models/Requests/PathParamFilter.md
-  - docs/Models/Requests/Libtype.md
-  - docs/Models/Requests/IncludeCollections.md
-  - docs/Models/Requests/IncludeExternalMedia.md
-  - docs/Models/Requests/GetWatchlistRequest.md
-  - docs/Models/Requests/Image.md
-  - docs/Models/Requests/Metadata.md
-  - docs/Models/Requests/GetWatchlistResponseBody.md
-  - docs/Models/Requests/GetWatchlistResponse.md
   - docs/Models/Errors/Errors.md
   - docs/Models/Errors/GetServerCapabilitiesResponseBody.md
   - docs/Models/Errors/GetServerPreferencesErrors.md
@@ -972,12 +1018,13 @@ generatedFiles:
   - docs/Models/Errors/GetAvailableClientsResponseBody.md
   - docs/Models/Errors/GetDevicesErrors.md
   - docs/Models/Errors/GetDevicesResponseBody.md
-  - docs/Models/Errors/GetServerIdentityErrors.md
   - docs/Models/Errors/GetServerIdentityResponseBody.md
   - docs/Models/Errors/GetMyPlexAccountErrors.md
   - docs/Models/Errors/GetMyPlexAccountResponseBody.md
   - docs/Models/Errors/GetResizedPhotoErrors.md
   - docs/Models/Errors/GetResizedPhotoResponseBody.md
+  - docs/Models/Errors/GetMediaProvidersErrors.md
+  - docs/Models/Errors/GetMediaProvidersResponseBody.md
   - docs/Models/Errors/GetServerListErrors.md
   - docs/Models/Errors/GetServerListResponseBody.md
   - docs/Models/Errors/MarkPlayedErrors.md
@@ -986,6 +1033,10 @@ generatedFiles:
   - docs/Models/Errors/MarkUnplayedResponseBody.md
   - docs/Models/Errors/UpdatePlayProgressErrors.md
   - docs/Models/Errors/UpdatePlayProgressResponseBody.md
+  - docs/Models/Errors/GetBannerImageErrors.md
+  - docs/Models/Errors/GetBannerImageResponseBody.md
+  - docs/Models/Errors/GetThumbImageErrors.md
+  - docs/Models/Errors/GetThumbImageResponseBody.md
   - docs/Models/Errors/GetTimelineErrors.md
   - docs/Models/Errors/GetTimelineResponseBody.md
   - docs/Models/Errors/StartUniversalTranscodeErrors.md
@@ -1012,14 +1063,14 @@ generatedFiles:
   - docs/Models/Errors/GetGeoDataResponseBody.md
   - docs/Models/Errors/GetHomeDataErrors.md
   - docs/Models/Errors/GetHomeDataResponseBody.md
-  - docs/Models/Errors/GetResourcesErrors.md
-  - docs/Models/Errors/GetResourcesResponseBody.md
+  - docs/Models/Errors/GetServerResourcesErrors.md
+  - docs/Models/Errors/GetServerResourcesResponseBody.md
   - docs/Models/Errors/GetPinErrors.md
   - docs/Models/Errors/GetPinResponseBody.md
+  - docs/Models/Errors/GetTokenByPinIdPlexErrors.md
+  - docs/Models/Errors/GetTokenByPinIdPlexResponseBody.md
   - docs/Models/Errors/GetTokenByPinIdErrors.md
   - docs/Models/Errors/GetTokenByPinIdResponseBody.md
-  - docs/Models/Errors/GetUserDetailsErrors.md
-  - docs/Models/Errors/GetUserDetailsResponseBody.md
   - docs/Models/Errors/GetGlobalHubsErrors.md
   - docs/Models/Errors/GetGlobalHubsResponseBody.md
   - docs/Models/Errors/GetLibraryHubsErrors.md
@@ -1044,14 +1095,18 @@ generatedFiles:
   - docs/Models/Errors/GetLibraryItemsResponseBody.md
   - docs/Models/Errors/GetRefreshLibraryMetadataErrors.md
   - docs/Models/Errors/GetRefreshLibraryMetadataResponseBody.md
-  - docs/Models/Errors/SearchLibraryErrors.md
-  - docs/Models/Errors/SearchLibraryResponseBody.md
-  - docs/Models/Errors/GetMetadataErrors.md
-  - docs/Models/Errors/GetMetadataResponseBody.md
+  - docs/Models/Errors/GetSearchLibraryErrors.md
+  - docs/Models/Errors/GetSearchLibraryResponseBody.md
+  - docs/Models/Errors/GetMetaDataByRatingKeyErrors.md
+  - docs/Models/Errors/GetMetaDataByRatingKeyResponseBody.md
   - docs/Models/Errors/GetMetadataChildrenErrors.md
   - docs/Models/Errors/GetMetadataChildrenResponseBody.md
+  - docs/Models/Errors/GetTopWatchedContentErrors.md
+  - docs/Models/Errors/GetTopWatchedContentResponseBody.md
   - docs/Models/Errors/GetOnDeckErrors.md
   - docs/Models/Errors/GetOnDeckResponseBody.md
+  - docs/Models/Errors/GetWatchListErrors.md
+  - docs/Models/Errors/GetWatchListResponseBody.md
   - docs/Models/Errors/LogLineErrors.md
   - docs/Models/Errors/LogLineResponseBody.md
   - docs/Models/Errors/LogMultiLineErrors.md
@@ -1080,6 +1135,8 @@ generatedFiles:
   - docs/Models/Errors/GetTransientTokenResponseBody.md
   - docs/Models/Errors/GetSourceConnectionInformationErrors.md
   - docs/Models/Errors/GetSourceConnectionInformationResponseBody.md
+  - docs/Models/Errors/GetUserDetailsErrors.md
+  - docs/Models/Errors/GetUserDetailsResponseBody.md
   - docs/Models/Errors/PostUsersSignInDataErrors.md
   - docs/Models/Errors/PostUsersSignInDataResponseBody.md
   - docs/Models/Errors/GetStatisticsErrors.md
@@ -1102,8 +1159,6 @@ generatedFiles:
   - docs/Models/Errors/CheckForUpdatesResponseBody.md
   - docs/Models/Errors/ApplyUpdatesErrors.md
   - docs/Models/Errors/ApplyUpdatesResponseBody.md
-  - docs/Models/Errors/GetWatchlistErrors.md
-  - docs/Models/Errors/GetWatchlistResponseBody.md
   - docs/Models/Components/Security.md
   - docs/sdks/plexapi/README.md
   - docs/sdks/server/README.md
@@ -1115,13 +1170,13 @@ generatedFiles:
   - docs/sdks/hubs/README.md
   - docs/sdks/search/README.md
   - docs/sdks/library/README.md
+  - docs/sdks/watchlist/README.md
   - docs/sdks/log/README.md
   - docs/sdks/playlists/README.md
   - docs/sdks/authentication/README.md
   - docs/sdks/statistics/README.md
   - docs/sdks/sessions/README.md
   - docs/sdks/updater/README.md
-  - docs/sdks/watchlist/README.md
   - NUGET.md
   - USAGE.md
   - .gitattributes

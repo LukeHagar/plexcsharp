@@ -1,12 +1,19 @@
 # QueryParamType
 
-type of playlist to create
+The type of media to retrieve.
+1 = movie
+2 = show
+3 = season
+4 = episode
+E.g. A movie library will not return anything with type 3 as there are no seasons for movie libraries
+
 
 
 ## Values
 
 | Name    | Value   |
 | ------- | ------- |
-| `Audio` | audio   |
-| `Video` | video   |
-| `Photo` | photo   |
+| `One`   | 1       |
+| `Two`   | 2       |
+| `Three` | 3       |
+| `Four`  | 4       |

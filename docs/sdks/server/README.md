@@ -15,6 +15,7 @@ Operations against the Plex Media Server System.
 * [GetServerIdentity](#getserveridentity) - Get Server Identity
 * [GetMyPlexAccount](#getmyplexaccount) - Get MyPlex Account
 * [GetResizedPhoto](#getresizedphoto) - Get a Resized Photo
+* [GetMediaProviders](#getmediaproviders) - Get Media Providers
 * [GetServerList](#getserverlist) - Get Server List
 
 ## GetServerCapabilities
@@ -29,7 +30,7 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Server.GetServerCapabilitiesAsync();
@@ -61,7 +62,7 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Server.GetServerPreferencesAsync();
@@ -93,7 +94,7 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Server.GetAvailableClientsAsync();
@@ -125,7 +126,7 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Server.GetDevicesAsync();
@@ -147,7 +148,7 @@ var res = await sdk.Server.GetDevicesAsync();
 
 ## GetServerIdentity
 
-Get Server Identity
+This request is useful to determine if the server is online or offline
 
 ### Example Usage
 
@@ -155,10 +156,7 @@ Get Server Identity
 using PlexAPI;
 using PlexAPI.Models.Components;
 
-var sdk = new PlexAPISDK(
-    accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
-);
+var sdk = new PlexAPISDK(xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40");
 
 var res = await sdk.Server.GetServerIdentityAsync();
 
@@ -173,7 +171,7 @@ var res = await sdk.Server.GetServerIdentityAsync();
 
 | Error Object                                        | Status Code                                         | Content Type                                        |
 | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
-| PlexAPI.Models.Errors.GetServerIdentityResponseBody | 401                                                 | application/json                                    |
+| PlexAPI.Models.Errors.GetServerIdentityResponseBody | 408                                                 | application/json                                    |
 | PlexAPI.Models.Errors.SDKException                  | 4xx-5xx                                             | */*                                                 |
 
 
@@ -189,7 +187,7 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Server.GetMyPlexAccountAsync();
@@ -223,7 +221,7 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 GetResizedPhotoRequest req = new GetResizedPhotoRequest() {
@@ -259,6 +257,45 @@ var res = await sdk.Server.GetResizedPhotoAsync(req);
 | PlexAPI.Models.Errors.SDKException                | 4xx-5xx                                           | */*                                               |
 
 
+## GetMediaProviders
+
+Retrieves media providers and their features from the Plex server.
+
+### Example Usage
+
+```csharp
+using PlexAPI;
+using PlexAPI.Models.Requests;
+using PlexAPI.Models.Components;
+
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+);
+
+var res = await sdk.Server.GetMediaProvidersAsync(xPlexToken: "CV5xoxjTpFKUzBTShsaf");
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                 | Type                      | Required                  | Description               | Example                   |
+| ------------------------- | ------------------------- | ------------------------- | ------------------------- | ------------------------- |
+| `XPlexToken`              | *string*                  | :heavy_check_mark:        | Plex Authentication Token | CV5xoxjTpFKUzBTShsaf      |
+
+### Response
+
+**[GetMediaProvidersResponse](../../Models/Requests/GetMediaProvidersResponse.md)**
+
+### Errors
+
+| Error Object                                        | Status Code                                         | Content Type                                        |
+| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| PlexAPI.Models.Errors.GetMediaProvidersResponseBody | 401                                                 | application/json                                    |
+| PlexAPI.Models.Errors.SDKException                  | 4xx-5xx                                             | */*                                                 |
+
+
 ## GetServerList
 
 Get Server List
@@ -271,7 +308,7 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Server.GetServerListAsync();

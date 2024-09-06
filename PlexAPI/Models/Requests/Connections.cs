@@ -16,24 +16,24 @@ namespace PlexAPI.Models.Requests
     {
 
         [JsonProperty("protocol")]
-        public string? Protocol { get; set; }
+        public string Protocol { get; set; } = default!;
 
         [JsonProperty("address")]
-        public string? Address { get; set; }
+        public string Address { get; set; } = default!;
 
         [JsonProperty("port")]
-        public double? Port { get; set; }
+        public double Port { get; set; } = default!;
 
         [JsonProperty("uri")]
-        public string? Uri { get; set; }
+        public string Uri { get; set; } = default!;
 
         [JsonProperty("local")]
-        public bool? Local { get; set; }
+        public bool Local { get; set; } = default!;
 
         [JsonProperty("relay")]
-        public bool? Relay { get; set; }
+        public bool Relay { get; set; } = default!;
 
         [JsonProperty("IPv6")]
-        public bool? IPv6 { get; set; }
+        public bool IPv6 { get; set; } = default!;
     }
 }

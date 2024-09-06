@@ -16,10 +16,15 @@ namespace PlexAPI.Models.Requests
     {
 
         /// <summary>
-        /// The id of the library
+        /// The unique key of the Plex library. <br/>
+        /// 
+        /// <remarks>
+        /// Note: This is unique in the context of the Plex server.<br/>
+        /// 
+        /// </remarks>
         /// </summary>
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=sectionId")]
-        public double SectionId { get; set; } = default!;
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=sectionKey")]
+        public int SectionKey { get; set; } = default!;
 
         /// <summary>
         /// Force the refresh even if the library is already being refreshed.

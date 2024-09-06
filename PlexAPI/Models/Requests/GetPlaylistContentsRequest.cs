@@ -9,6 +9,7 @@
 #nullable enable
 namespace PlexAPI.Models.Requests
 {
+    using PlexAPI.Models.Requests;
     using PlexAPI.Utils;
     
     public class GetPlaylistContentsRequest
@@ -21,9 +22,18 @@ namespace PlexAPI.Models.Requests
         public double PlaylistID { get; set; } = default!;
 
         /// <summary>
-        /// the metadata type of the item to return
+        /// The type of media to retrieve.<br/>
+        /// 
+        /// <remarks>
+        /// 1 = movie<br/>
+        /// 2 = show<br/>
+        /// 3 = season<br/>
+        /// 4 = episode<br/>
+        /// E.g. A movie library will not return anything with type 3 as there are no seasons for movie libraries<br/>
+        /// 
+        /// </remarks>
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=type")]
-        public double Type { get; set; } = default!;
+        public GetPlaylistContentsQueryParamType Type { get; set; } = default!;
     }
 }

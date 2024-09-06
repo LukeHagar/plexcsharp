@@ -29,7 +29,7 @@ namespace PlexAPI.Models.Requests
         /// 
         /// </remarks>
         /// </summary>
-        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Client-Identifier")]
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=X-Plex-Client-Identifier")]
         public string? XPlexClientIdentifier { get; set; }
     }
 }

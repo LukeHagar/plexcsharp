@@ -44,7 +44,7 @@ namespace PlexAPI.Models.Requests
         /// </remarks>
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=filter")]
-        public Filter? Filter { get; set; }
+        public QueryParamFilter? Filter { get; set; }
 
         /// <summary>
         /// Filters the results based on the id of a valid library section<br/>

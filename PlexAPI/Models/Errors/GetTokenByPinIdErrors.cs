@@ -20,5 +20,8 @@ namespace PlexAPI.Models.Errors
 
         [JsonProperty("message")]
         public string? Message { get; set; }
+
+        [JsonProperty("status")]
+        public long? Status { get; set; }
     }
 }

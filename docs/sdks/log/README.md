@@ -26,7 +26,7 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Log.LogLineAsync(
@@ -91,7 +91,7 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 string req = "level=4&message=Test%20message%201&source=postman
@@ -134,7 +134,7 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Log.EnablePaperTrailAsync();

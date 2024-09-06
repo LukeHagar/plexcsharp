@@ -14,7 +14,7 @@ namespace PlexAPI.Models.Components
     public class Security
     {
 
-        [SpeakeasyMetadata("security:scheme=true,type=apiKey,subType=header,name=X-Plex-Token")]
+        [SpeakeasyMetadata("security:scheme=true,type=apiKey,subType=query,name=X-Plex-Token")]
         public string? AccessToken { get; set; }
     }
 }

@@ -26,7 +26,7 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Butler.GetButlerTasksAsync();
@@ -63,7 +63,7 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Butler.StartAllTasksAsync();
@@ -96,7 +96,7 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Butler.StopAllTasksAsync();
@@ -134,7 +134,7 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Butler.StartTaskAsync(taskName: PlexAPI.Models.Requests.TaskName.CleanOldBundles);
@@ -174,7 +174,7 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Butler.StopTaskAsync(taskName: PlexAPI.Models.Requests.PathParamTaskName.BackupDatabase);

@@ -25,7 +25,7 @@ namespace PlexAPI.Models.Requests
         /// type of playlist to create
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=type")]
-        public QueryParamType Type { get; set; } = default!;
+        public CreatePlaylistQueryParamType Type { get; set; } = default!;
 
         /// <summary>
         /// whether the playlist is smart or not

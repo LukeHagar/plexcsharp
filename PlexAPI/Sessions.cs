@@ -48,7 +48,7 @@ namespace PlexAPI
         /// This will Retrieve a listing of all history views.
         /// </remarks>
         /// </summary>
-        Task<GetSessionHistoryResponse> GetSessionHistoryAsync(string? sort = null, long? accountId = null, Filter? filter = null, long? librarySectionID = null);
+        Task<GetSessionHistoryResponse> GetSessionHistoryAsync(string? sort = null, long? accountId = null, QueryParamFilter? filter = null, long? librarySectionID = null);
 
         /// <summary>
         /// Get Transcode Sessions
@@ -80,10 +80,10 @@ namespace PlexAPI
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.4.2";
-        private const string _sdkGenVersion = "2.407.0";
+        private const string _sdkVersion = "0.5.0";
+        private const string _sdkGenVersion = "2.409.8";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.4.2 2.407.0 0.0.3 PlexAPI";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.5.0 2.409.8 0.0.3 PlexAPI";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<PlexAPI.Models.Components.Security>? _securitySource;
@@ -188,7 +188,7 @@ namespace PlexAPI
             }
         }
 
-        public async Task<GetSessionHistoryResponse> GetSessionHistoryAsync(string? sort = null, long? accountId = null, Filter? filter = null, long? librarySectionID = null)
+        public async Task<GetSessionHistoryResponse> GetSessionHistoryAsync(string? sort = null, long? accountId = null, QueryParamFilter? filter = null, long? librarySectionID = null)
         {
             var request = new GetSessionHistoryRequest()
             {

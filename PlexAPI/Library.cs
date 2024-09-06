@@ -49,7 +49,7 @@ namespace PlexAPI
         /// 
         /// </remarks>
         /// </summary>
-        Task<GetRecentlyAddedResponse> GetRecentlyAddedAsync();
+        Task<GetRecentlyAddedResponse> GetRecentlyAddedAsync(int? xPlexContainerStart = null, int? xPlexContainerSize = null);
 
         /// <summary>
         /// Get All Libraries
@@ -112,7 +112,7 @@ namespace PlexAPI
         /// 
         /// </remarks>
         /// </summary>
-        Task<GetLibraryDetailsResponse> GetLibraryDetailsAsync(double sectionId, IncludeDetails? includeDetails = null);
+        Task<GetLibraryDetailsResponse> GetLibraryDetailsAsync(int sectionKey, IncludeDetails? includeDetails = null);
 
         /// <summary>
         /// Delete Library Section
@@ -121,7 +121,7 @@ namespace PlexAPI
         /// Delete a library using a specific section id
         /// </remarks>
         /// </summary>
-        Task<DeleteLibraryResponse> DeleteLibraryAsync(double sectionId);
+        Task<DeleteLibraryResponse> DeleteLibraryAsync(int sectionKey);
 
         /// <summary>
         /// Get Library Items
@@ -150,7 +150,7 @@ namespace PlexAPI
         /// 
         /// </remarks>
         /// </summary>
-        Task<GetLibraryItemsResponse> GetLibraryItemsAsync(object sectionId, Tag tag, long? includeGuids = null);
+        Task<GetLibraryItemsResponse> GetLibraryItemsAsync(GetLibraryItemsRequest request);
 
         /// <summary>
         /// Refresh Metadata Of The Library
@@ -160,7 +160,7 @@ namespace PlexAPI
         /// 
         /// </remarks>
         /// </summary>
-        Task<GetRefreshLibraryMetadataResponse> GetRefreshLibraryMetadataAsync(double sectionId, Force? force = null);
+        Task<GetRefreshLibraryMetadataResponse> GetRefreshLibraryMetadataAsync(int sectionKey, Force? force = null);
 
         /// <summary>
         /// Search Library
@@ -187,17 +187,17 @@ namespace PlexAPI
         /// 
         /// </remarks>
         /// </summary>
-        Task<SearchLibraryResponse> SearchLibraryAsync(long sectionId, Models.Requests.Type type);
+        Task<GetSearchLibraryResponse> GetSearchLibraryAsync(int sectionKey, QueryParamType type);
 
         /// <summary>
-        /// Get Items Metadata
+        /// Get Metadata by RatingKey
         /// 
         /// <remarks>
         /// This endpoint will return the metadata of a library item specified with the ratingKey.<br/>
         /// 
         /// </remarks>
         /// </summary>
-        Task<GetMetadataResponse> GetMetadataAsync(double ratingKey);
+        Task<GetMetaDataByRatingKeyResponse> GetMetaDataByRatingKeyAsync(long ratingKey);
 
         /// <summary>
         /// Get Items Children
@@ -217,7 +217,7 @@ namespace PlexAPI
         /// 
         /// </remarks>
         /// </summary>
-        Task<GetTopWatchedContentResponse> GetTopWatchedContentAsync(long type, long? includeGuids = null);
+        Task<GetTopWatchedContentResponse> GetTopWatchedContentAsync(GetTopWatchedContentQueryParamType type, long? includeGuids = null);
 
         /// <summary>
         /// Get On Deck
@@ -241,10 +241,10 @@ namespace PlexAPI
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.4.2";
-        private const string _sdkGenVersion = "2.407.0";
+        private const string _sdkVersion = "0.5.0";
+        private const string _sdkGenVersion = "2.409.8";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.4.2 2.407.0 0.0.3 PlexAPI";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.5.0 2.409.8 0.0.3 PlexAPI";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<PlexAPI.Models.Components.Security>? _securitySource;
@@ -343,11 +343,15 @@ namespace PlexAPI
             }
         }
 
-        public async Task<GetRecentlyAddedResponse> GetRecentlyAddedAsync()
+        public async Task<GetRecentlyAddedResponse> GetRecentlyAddedAsync(int? xPlexContainerStart = null, int? xPlexContainerSize = null)
         {
+            var request = new GetRecentlyAddedRequest()
+            {
+                XPlexContainerStart = xPlexContainerStart,
+                XPlexContainerSize = xPlexContainerSize,
+            };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
-            var urlString = baseUrl + "/library/recentlyAdded";
+            var urlString = URLBuilder.Build(baseUrl, "/library/recentlyAdded", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
@@ -527,15 +531,15 @@ namespace PlexAPI
             }
         }
 
-        public async Task<GetLibraryDetailsResponse> GetLibraryDetailsAsync(double sectionId, IncludeDetails? includeDetails = null)
+        public async Task<GetLibraryDetailsResponse> GetLibraryDetailsAsync(int sectionKey, IncludeDetails? includeDetails = null)
         {
             var request = new GetLibraryDetailsRequest()
             {
-                SectionId = sectionId,
+                SectionKey = sectionKey,
                 IncludeDetails = includeDetails,
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/library/sections/{sectionId}", request);
+            var urlString = URLBuilder.Build(baseUrl, "/library/sections/{sectionKey}", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
@@ -623,14 +627,14 @@ namespace PlexAPI
             }
         }
 
-        public async Task<DeleteLibraryResponse> DeleteLibraryAsync(double sectionId)
+        public async Task<DeleteLibraryResponse> DeleteLibraryAsync(int sectionKey)
         {
             var request = new DeleteLibraryRequest()
             {
-                SectionId = sectionId,
+                SectionKey = sectionKey,
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/library/sections/{sectionId}", request);
+            var urlString = URLBuilder.Build(baseUrl, "/library/sections/{sectionKey}", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
@@ -708,16 +712,10 @@ namespace PlexAPI
             }
         }
 
-        public async Task<GetLibraryItemsResponse> GetLibraryItemsAsync(object sectionId, Tag tag, long? includeGuids = null)
+        public async Task<GetLibraryItemsResponse> GetLibraryItemsAsync(GetLibraryItemsRequest request)
         {
-            var request = new GetLibraryItemsRequest()
-            {
-                SectionId = sectionId,
-                Tag = tag,
-                IncludeGuids = includeGuids,
-            };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/library/sections/{sectionId}/{tag}", request);
+            var urlString = URLBuilder.Build(baseUrl, "/library/sections/{sectionKey}/{tag}", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
@@ -727,7 +725,7 @@ namespace PlexAPI
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("getLibraryItems", null, _securitySource);
+            var hookCtx = new HookContext("get-library-items", null, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -805,15 +803,15 @@ namespace PlexAPI
             }
         }
 
-        public async Task<GetRefreshLibraryMetadataResponse> GetRefreshLibraryMetadataAsync(double sectionId, Force? force = null)
+        public async Task<GetRefreshLibraryMetadataResponse> GetRefreshLibraryMetadataAsync(int sectionKey, Force? force = null)
         {
             var request = new GetRefreshLibraryMetadataRequest()
             {
-                SectionId = sectionId,
+                SectionKey = sectionKey,
                 Force = force,
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/library/sections/{sectionId}/refresh", request);
+            var urlString = URLBuilder.Build(baseUrl, "/library/sections/{sectionKey}/refresh", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
@@ -891,15 +889,15 @@ namespace PlexAPI
             }
         }
 
-        public async Task<SearchLibraryResponse> SearchLibraryAsync(long sectionId, Models.Requests.Type type)
+        public async Task<GetSearchLibraryResponse> GetSearchLibraryAsync(int sectionKey, QueryParamType type)
         {
-            var request = new SearchLibraryRequest()
+            var request = new GetSearchLibraryRequest()
             {
-                SectionId = sectionId,
+                SectionKey = sectionKey,
                 Type = type,
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/library/sections/{sectionId}/search", request);
+            var urlString = URLBuilder.Build(baseUrl, "/library/sections/{sectionKey}/search", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
@@ -909,7 +907,7 @@ namespace PlexAPI
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("searchLibrary", null, _securitySource);
+            var hookCtx = new HookContext("get-search-library", null, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -949,8 +947,8 @@ namespace PlexAPI
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Models.Requests.SearchLibraryResponseBody>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new SearchLibraryResponse()
+                    var obj = ResponseBodyDeserializer.Deserialize<Models.Requests.GetSearchLibraryResponseBody>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new GetSearchLibraryResponse()
                     {
                         StatusCode = responseStatusCode,
                         ContentType = contentType,
@@ -972,7 +970,7 @@ namespace PlexAPI
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Models.Errors.SearchLibraryResponseBody>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<Models.Errors.GetSearchLibraryResponseBody>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     obj!.RawResponse = httpResponse;
                     throw obj!;
                 }
@@ -987,9 +985,9 @@ namespace PlexAPI
             }
         }
 
-        public async Task<GetMetadataResponse> GetMetadataAsync(double ratingKey)
+        public async Task<GetMetaDataByRatingKeyResponse> GetMetaDataByRatingKeyAsync(long ratingKey)
         {
-            var request = new GetMetadataRequest()
+            var request = new GetMetaDataByRatingKeyRequest()
             {
                 RatingKey = ratingKey,
             };
@@ -1004,7 +1002,7 @@ namespace PlexAPI
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("getMetadata", null, _securitySource);
+            var hookCtx = new HookContext("get-meta-data-by-rating-key", null, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -1044,8 +1042,8 @@ namespace PlexAPI
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Models.Requests.GetMetadataResponseBody>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new GetMetadataResponse()
+                    var obj = ResponseBodyDeserializer.Deserialize<Models.Requests.GetMetaDataByRatingKeyResponseBody>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new GetMetaDataByRatingKeyResponse()
                     {
                         StatusCode = responseStatusCode,
                         ContentType = contentType,
@@ -1067,7 +1065,7 @@ namespace PlexAPI
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Models.Errors.GetMetadataResponseBody>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<Models.Errors.GetMetaDataByRatingKeyResponseBody>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     obj!.RawResponse = httpResponse;
                     throw obj!;
                 }
@@ -1178,7 +1176,7 @@ namespace PlexAPI
             }
         }
 
-        public async Task<GetTopWatchedContentResponse> GetTopWatchedContentAsync(long type, long? includeGuids = null)
+        public async Task<GetTopWatchedContentResponse> GetTopWatchedContentAsync(GetTopWatchedContentQueryParamType type, long? includeGuids = null)
         {
             var request = new GetTopWatchedContentRequest()
             {
@@ -1206,7 +1204,7 @@ namespace PlexAPI
                 httpResponse = await _client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode == 400 || _statusCode == 401 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1236,7 +1234,7 @@ namespace PlexAPI
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<GetTopWatchedContentResponseBody>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<Models.Requests.GetTopWatchedContentResponseBody>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     var response = new GetTopWatchedContentResponse()
                     {
                         StatusCode = responseStatusCode,
@@ -1251,9 +1249,22 @@ namespace PlexAPI
                     throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
                 }
             }
-            else if(responseStatusCode >= 400 && responseStatusCode < 500 || responseStatusCode >= 500 && responseStatusCode < 600)
+            else if(responseStatusCode == 400 || responseStatusCode >= 400 && responseStatusCode < 500 || responseStatusCode >= 500 && responseStatusCode < 600)
             {
                 throw new SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+            }
+            else if(responseStatusCode == 401)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<Models.Errors.GetTopWatchedContentResponseBody>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    obj!.RawResponse = httpResponse;
+                    throw obj!;
+                }
+                else
+                {
+                    throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+                }
             }
             else
             {

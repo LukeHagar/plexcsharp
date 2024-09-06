@@ -37,12 +37,12 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Search.PerformSearchAsync(
-    query: "dylan",
-    sectionId: 1516.53D,
+    query: "arnold",
+    sectionId: 9372.7D,
     limit: 5D
 );
 
@@ -86,7 +86,7 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Search.PerformVoiceSearchAsync(
@@ -131,7 +131,7 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Search.GetSearchResultsAsync(query: "110");

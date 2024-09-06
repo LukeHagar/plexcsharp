@@ -72,7 +72,7 @@ namespace PlexAPI
         /// Get Server Identity
         /// 
         /// <remarks>
-        /// Get Server Identity
+        /// This request is useful to determine if the server is online or offline
         /// </remarks>
         /// </summary>
         Task<GetServerIdentityResponse> GetServerIdentityAsync();
@@ -97,6 +97,15 @@ namespace PlexAPI
         Task<GetResizedPhotoResponse> GetResizedPhotoAsync(GetResizedPhotoRequest request);
 
         /// <summary>
+        /// Get Media Providers
+        /// 
+        /// <remarks>
+        /// Retrieves media providers and their features from the Plex server.
+        /// </remarks>
+        /// </summary>
+        Task<GetMediaProvidersResponse> GetMediaProvidersAsync(string xPlexToken);
+
+        /// <summary>
         /// Get Server List
         /// 
         /// <remarks>
@@ -117,10 +126,10 @@ namespace PlexAPI
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.4.2";
-        private const string _sdkGenVersion = "2.407.0";
+        private const string _sdkVersion = "0.5.0";
+        private const string _sdkGenVersion = "2.409.8";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.4.2 2.407.0 0.0.3 PlexAPI";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.5.0 2.409.8 0.0.3 PlexAPI";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<PlexAPI.Models.Components.Security>? _securitySource;
@@ -510,12 +519,7 @@ namespace PlexAPI
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
 
-            if (_securitySource != null)
-            {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
-            }
-
-            var hookCtx = new HookContext("getServerIdentity", null, _securitySource);
+            var hookCtx = new HookContext("get-server-identity", null, null);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -525,7 +529,7 @@ namespace PlexAPI
                 httpResponse = await _client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode == 408 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -570,11 +574,7 @@ namespace PlexAPI
                     throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
                 }
             }
-            else if(responseStatusCode == 400 || responseStatusCode >= 400 && responseStatusCode < 500 || responseStatusCode >= 500 && responseStatusCode < 600)
-            {
-                throw new SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-            }
-            else if(responseStatusCode == 401)
+            else if(responseStatusCode == 408)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
@@ -586,6 +586,10 @@ namespace PlexAPI
                 {
                     throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
                 }
+            }
+            else if(responseStatusCode >= 400 && responseStatusCode < 500 || responseStatusCode >= 500 && responseStatusCode < 600)
+            {
+                throw new SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else
             {
@@ -752,6 +756,101 @@ namespace PlexAPI
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var obj = ResponseBodyDeserializer.Deserialize<GetResizedPhotoResponseBody>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    obj!.RawResponse = httpResponse;
+                    throw obj!;
+                }
+                else
+                {
+                    throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+                }
+            }
+            else
+            {
+                throw new SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+            }
+        }
+
+        public async Task<GetMediaProvidersResponse> GetMediaProvidersAsync(string xPlexToken)
+        {
+            var request = new GetMediaProvidersRequest()
+            {
+                XPlexToken = xPlexToken,
+            };
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+            var urlString = URLBuilder.Build(baseUrl, "/media/providers", request);
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
+            httpRequest.Headers.Add("user-agent", _userAgent);
+
+            if (_securitySource != null)
+            {
+                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext("get-media-providers", null, _securitySource);
+
+            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+
+            HttpResponseMessage httpResponse;
+            try
+            {
+                httpResponse = await _client.SendAsync(httpRequest);
+                int _statusCode = (int)httpResponse.StatusCode;
+
+                if (_statusCode == 400 || _statusCode == 401 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                {
+                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
+                    if (_httpResponse != null)
+                    {
+                        httpResponse = _httpResponse;
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                if (_httpResponse != null)
+                {
+                    httpResponse = _httpResponse;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            int responseStatusCode = (int)httpResponse.StatusCode;
+            if(responseStatusCode == 200)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<Models.Requests.GetMediaProvidersResponseBody>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new GetMediaProvidersResponse()
+                    {
+                        StatusCode = responseStatusCode,
+                        ContentType = contentType,
+                        RawResponse = httpResponse
+                    };
+                    response.Object = obj;
+                    return response;
+                }
+                else
+                {
+                    throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+                }
+            }
+            else if(responseStatusCode == 400 || responseStatusCode >= 400 && responseStatusCode < 500 || responseStatusCode >= 500 && responseStatusCode < 600)
+            {
+                throw new SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+            }
+            else if(responseStatusCode == 401)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<Models.Errors.GetMediaProvidersResponseBody>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     obj!.RawResponse = httpResponse;
                     throw obj!;
                 }

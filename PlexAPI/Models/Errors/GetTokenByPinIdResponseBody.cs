@@ -17,7 +17,7 @@ namespace PlexAPI.Models.Errors
     using System;
     
     /// <summary>
-    /// Not Found or Expired
+    /// Bad Request response when the X-Plex-Client-Identifier is missing
     /// </summary>
     public class GetTokenByPinIdResponseBody : Exception
     {

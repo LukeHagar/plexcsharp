@@ -35,6 +35,6 @@ namespace PlexAPI.Models.Requests
         /// <summary>
         /// The metadata of the library item.
         /// </summary>
-        public GetTopWatchedContentResponseBody? Object { get; set; }
+        public Models.Requests.GetTopWatchedContentResponseBody? Object { get; set; }
     }
 }

@@ -54,6 +54,15 @@ namespace PlexAPI
         Task<GetSourceConnectionInformationResponse> GetSourceConnectionInformationAsync(string source);
 
         /// <summary>
+        /// Get User Data By Token
+        /// 
+        /// <remarks>
+        /// Get the User data from the provided X-Plex-Token
+        /// </remarks>
+        /// </summary>
+        Task<GetUserDetailsResponse> GetUserDetailsAsync(string xPlexToken, string? serverUrl = null);
+
+        /// <summary>
         /// Get User SignIn Data
         /// 
         /// <remarks>
@@ -73,6 +82,12 @@ namespace PlexAPI
     public class Authentication: IAuthentication
     {
         /// <summary>
+        /// List of server URLs available for the getUserDetails operation.
+        /// </summary>
+        public static readonly string[] GetUserDetailsServerList = {
+            "https://plex.tv/api/v2",
+        };
+        /// <summary>
         /// List of server URLs available for the post-users-sign-in-data operation.
         /// </summary>
         public static readonly string[] PostUsersSignInDataServerList = {
@@ -80,10 +95,10 @@ namespace PlexAPI
         };
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.4.2";
-        private const string _sdkGenVersion = "2.407.0";
+        private const string _sdkVersion = "0.5.0";
+        private const string _sdkGenVersion = "2.409.8";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.4.2 2.407.0 0.0.3 PlexAPI";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.5.0 2.409.8 0.0.3 PlexAPI";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<PlexAPI.Models.Components.Security>? _securitySource;
@@ -267,6 +282,106 @@ namespace PlexAPI
             }
         }
 
+        public async Task<GetUserDetailsResponse> GetUserDetailsAsync(string xPlexToken, string? serverUrl = null)
+        {
+            var request = new GetUserDetailsRequest()
+            {
+                XPlexToken = xPlexToken,
+            };
+            string baseUrl = Utilities.TemplateUrl(GetUserDetailsServerList[0], new Dictionary<string, string>(){
+            });
+            if (serverUrl != null)
+            {
+                baseUrl = serverUrl;
+            }
+            var urlString = URLBuilder.Build(baseUrl, "/user", request);
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
+            httpRequest.Headers.Add("user-agent", _userAgent);
+
+            if (_securitySource != null)
+            {
+                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext("getUserDetails", null, _securitySource);
+
+            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+
+            HttpResponseMessage httpResponse;
+            try
+            {
+                httpResponse = await _client.SendAsync(httpRequest);
+                int _statusCode = (int)httpResponse.StatusCode;
+
+                if (_statusCode == 400 || _statusCode == 401 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                {
+                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
+                    if (_httpResponse != null)
+                    {
+                        httpResponse = _httpResponse;
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                if (_httpResponse != null)
+                {
+                    httpResponse = _httpResponse;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            int responseStatusCode = (int)httpResponse.StatusCode;
+            if(responseStatusCode == 200)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<GetUserDetailsUserPlexAccount>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new GetUserDetailsResponse()
+                    {
+                        StatusCode = responseStatusCode,
+                        ContentType = contentType,
+                        RawResponse = httpResponse
+                    };
+                    response.UserPlexAccount = obj;
+                    return response;
+                }
+                else
+                {
+                    throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+                }
+            }
+            else if(responseStatusCode == 400 || responseStatusCode >= 400 && responseStatusCode < 500 || responseStatusCode >= 500 && responseStatusCode < 600)
+            {
+                throw new SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+            }
+            else if(responseStatusCode == 401)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<GetUserDetailsResponseBody>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    obj!.RawResponse = httpResponse;
+                    throw obj!;
+                }
+                else
+                {
+                    throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+                }
+            }
+            else
+            {
+                throw new SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+            }
+        }
+
         public async Task<PostUsersSignInDataResponse> PostUsersSignInDataAsync(string? xPlexClientIdentifier = null, PostUsersSignInDataRequestBody? requestBody = null, string? serverUrl = null)
         {
             var request = new PostUsersSignInDataRequest()
@@ -282,12 +397,10 @@ namespace PlexAPI
             {
                 baseUrl = serverUrl;
             }
-
-            var urlString = baseUrl + "/users/signin";
+            var urlString = URLBuilder.Build(baseUrl, "/users/signin", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
-            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
             var serializedBody = RequestBodySerializer.Serialize(request, "RequestBody", "form", false, true);
             if (serializedBody != null)

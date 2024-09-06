@@ -22,7 +22,7 @@ namespace PlexAPI.Models.Requests
         public Tonight? Tonight { get; set; }
 
         /// <summary>
-        /// Indicate that the latest version should be marked as skipped. The &lt;Release&gt; entry for this version will have the `state` set to `skipped`.
+        /// Indicate that the latest version should be marked as skipped. The [Release] entry for this version will have the `state` set to `skipped`.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=skip")]
         public Skip? Skip { get; set; }

@@ -12,10 +12,9 @@ API Calls that perform operations directly against https://Plex.tv
 * [GetUserFriends](#getuserfriends) - Get list of friends of the user logged in
 * [GetGeoData](#getgeodata) - Get Geo Data
 * [GetHomeData](#gethomedata) - Get Plex Home Data
-* [GetResources](#getresources) - Get Resources
+* [GetServerResources](#getserverresources) - Get Server Resources
 * [GetPin](#getpin) - Get a Pin
 * [GetTokenByPinId](#gettokenbypinid) - Get Access Token by PinId
-* [GetUserDetails](#getuserdetails) - Get UserData By Token
 
 ## GetCompanionsData
 
@@ -29,7 +28,7 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Plex.GetCompanionsDataAsync();
@@ -67,7 +66,7 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Plex.GetUserFriendsAsync();
@@ -103,7 +102,7 @@ Returns the geolocation and locale data of the caller
 using PlexAPI;
 using PlexAPI.Models.Components;
 
-var sdk = new PlexAPISDK(xPlexClientIdentifier: "Postman");
+var sdk = new PlexAPISDK(xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40");
 
 var res = await sdk.Plex.GetGeoDataAsync();
 
@@ -140,7 +139,7 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Plex.GetHomeDataAsync();
@@ -160,9 +159,9 @@ var res = await sdk.Plex.GetHomeDataAsync();
 | PlexAPI.Models.Errors.SDKException            | 4xx-5xx                                       | */*                                           |
 
 
-## GetResources
+## GetServerResources
 
-Get Resources
+Get Plex server access tokens and server connections
 
 ### Example Usage
 
@@ -171,38 +170,40 @@ using PlexAPI;
 using PlexAPI.Models.Requests;
 using PlexAPI.Models.Components;
 
-var sdk = new PlexAPISDK(xPlexClientIdentifier: "Postman");
-
-var res = await sdk.Plex.GetResourcesAsync(
-    xPlexClientIdentifier: "Postman",
-    includeHttps: PlexAPI.Models.Requests.IncludeHttps.Zero,
-    includeRelay: PlexAPI.Models.Requests.IncludeRelay.Zero,
-    includeIPv6: PlexAPI.Models.Requests.IncludeIPv6.One
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
+
+GetServerResourcesRequest req = new GetServerResourcesRequest() {
+    XPlexToken = "CV5xoxjTpFKUzBTShsaf",
+    IncludeHttps = PlexAPI.Models.Requests.IncludeHttps.One,
+    IncludeRelay = PlexAPI.Models.Requests.IncludeRelay.One,
+    IncludeIPv6 = PlexAPI.Models.Requests.IncludeIPv6.One,
+};
+
+var res = await sdk.Plex.GetServerResourcesAsync(req);
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                                                                                                                                                             | Type                                                                                                                                                                  | Required                                                                                                                                                              | Description                                                                                                                                                           | Example                                                                                                                                                               |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `XPlexClientIdentifier`                                                                                                                                               | *string*                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                    | The unique identifier for the client application<br/>This is used to track the client application and its usage<br/>(UUID, serial number, or other number unique per device)<br/> | Postman                                                                                                                                                               |
-| `IncludeHttps`                                                                                                                                                        | [IncludeHttps](../../Models/Requests/IncludeHttps.md)                                                                                                                 | :heavy_minus_sign:                                                                                                                                                    | Include Https entries in the results                                                                                                                                  |                                                                                                                                                                       |
-| `IncludeRelay`                                                                                                                                                        | [IncludeRelay](../../Models/Requests/IncludeRelay.md)                                                                                                                 | :heavy_minus_sign:                                                                                                                                                    | Include Relay addresses in the results                                                                                                                                |                                                                                                                                                                       |
-| `IncludeIPv6`                                                                                                                                                         | [IncludeIPv6](../../Models/Requests/IncludeIPv6.md)                                                                                                                   | :heavy_minus_sign:                                                                                                                                                    | Include IPv6 entries in the results                                                                                                                                   |                                                                                                                                                                       |
-| `serverURL`                                                                                                                                                           | *string*                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                    | An optional server URL to use.                                                                                                                                        | http://localhost:8080                                                                                                                                                 |
+| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `request`                                                                       | [GetServerResourcesRequest](../../Models/Requests/GetServerResourcesRequest.md) | :heavy_check_mark:                                                              | The request object to use for the request.                                      |
+| `serverURL`                                                                     | *string*                                                                        | :heavy_minus_sign:                                                              | An optional server URL to use.                                                  |
 
 ### Response
 
-**[GetResourcesResponse](../../Models/Requests/GetResourcesResponse.md)**
+**[GetServerResourcesResponse](../../Models/Requests/GetServerResourcesResponse.md)**
 
 ### Errors
 
-| Error Object                                   | Status Code                                    | Content Type                                   |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| PlexAPI.Models.Errors.GetResourcesResponseBody | 401                                            | application/json                               |
-| PlexAPI.Models.Errors.SDKException             | 4xx-5xx                                        | */*                                            |
+| Error Object                                         | Status Code                                          | Content Type                                         |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| PlexAPI.Models.Errors.GetServerResourcesResponseBody | 401                                                  | application/json                                     |
+| PlexAPI.Models.Errors.SDKException                   | 4xx-5xx                                              | */*                                                  |
 
 
 ## GetPin
@@ -216,12 +217,12 @@ using PlexAPI;
 using PlexAPI.Models.Requests;
 using PlexAPI.Models.Components;
 
-var sdk = new PlexAPISDK(xPlexClientIdentifier: "Postman");
+var sdk = new PlexAPISDK(xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40");
 
 var res = await sdk.Plex.GetPinAsync(
-    xPlexProduct: "Postman",
     strong: false,
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40",
+    xPlexProduct: "Plex Web"
 );
 
 // handle response
@@ -231,9 +232,9 @@ var res = await sdk.Plex.GetPinAsync(
 
 | Parameter                                                                                                                                                             | Type                                                                                                                                                                  | Required                                                                                                                                                              | Description                                                                                                                                                           | Example                                                                                                                                                               |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `XPlexProduct`                                                                                                                                                        | *string*                                                                                                                                                              | :heavy_check_mark:                                                                                                                                                    | Product name of the application shown in the list of devices<br/>                                                                                                     | Postman                                                                                                                                                               |
 | `Strong`                                                                                                                                                              | *bool*                                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                    | Determines the kind of code returned by the API call<br/>Strong codes are used for Pin authentication flows<br/>Non-Strong codes are used for `Plex.tv/link`<br/>     |                                                                                                                                                                       |
-| `XPlexClientIdentifier`                                                                                                                                               | *string*                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                    | The unique identifier for the client application<br/>This is used to track the client application and its usage<br/>(UUID, serial number, or other number unique per device)<br/> | Postman                                                                                                                                                               |
+| `XPlexClientIdentifier`                                                                                                                                               | *string*                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                    | The unique identifier for the client application<br/>This is used to track the client application and its usage<br/>(UUID, serial number, or other number unique per device)<br/> | gcgzw5rz2xovp84b4vha3a40                                                                                                                                              |
+| `XPlexProduct`                                                                                                                                                        | *string*                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                    | N/A                                                                                                                                                                   | Plex Web                                                                                                                                                              |
 | `serverURL`                                                                                                                                                           | *string*                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                    | An optional server URL to use.                                                                                                                                        | http://localhost:8080                                                                                                                                                 |
 
 ### Response
@@ -259,11 +260,11 @@ using PlexAPI;
 using PlexAPI.Models.Requests;
 using PlexAPI.Models.Components;
 
-var sdk = new PlexAPISDK(xPlexClientIdentifier: "Postman");
+var sdk = new PlexAPISDK(xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40");
 
 var res = await sdk.Plex.GetTokenByPinIdAsync(
     pinID: 408895,
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 // handle response
@@ -274,7 +275,7 @@ var res = await sdk.Plex.GetTokenByPinIdAsync(
 | Parameter                                                                                                                                                             | Type                                                                                                                                                                  | Required                                                                                                                                                              | Description                                                                                                                                                           | Example                                                                                                                                                               |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `PinID`                                                                                                                                                               | *long*                                                                                                                                                                | :heavy_check_mark:                                                                                                                                                    | The PinID to retrieve an access token for                                                                                                                             |                                                                                                                                                                       |
-| `XPlexClientIdentifier`                                                                                                                                               | *string*                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                    | The unique identifier for the client application<br/>This is used to track the client application and its usage<br/>(UUID, serial number, or other number unique per device)<br/> | Postman                                                                                                                                                               |
+| `XPlexClientIdentifier`                                                                                                                                               | *string*                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                    | The unique identifier for the client application<br/>This is used to track the client application and its usage<br/>(UUID, serial number, or other number unique per device)<br/> | gcgzw5rz2xovp84b4vha3a40                                                                                                                                              |
 | `serverURL`                                                                                                                                                           | *string*                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                    | An optional server URL to use.                                                                                                                                        | http://localhost:8080                                                                                                                                                 |
 
 ### Response
@@ -283,45 +284,8 @@ var res = await sdk.Plex.GetTokenByPinIdAsync(
 
 ### Errors
 
-| Error Object                                      | Status Code                                       | Content Type                                      |
-| ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
-| PlexAPI.Models.Errors.GetTokenByPinIdResponseBody | 404                                               | application/json                                  |
-| PlexAPI.Models.Errors.SDKException                | 4xx-5xx                                           | */*                                               |
-
-
-## GetUserDetails
-
-Get the User data from the provided X-Plex-Token
-
-### Example Usage
-
-```csharp
-using PlexAPI;
-using PlexAPI.Models.Components;
-
-var sdk = new PlexAPISDK(
-    accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
-);
-
-var res = await sdk.Plex.GetUserDetailsAsync();
-
-// handle response
-```
-
-### Parameters
-
-| Parameter                      | Type                           | Required                       | Description                    |
-| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-| `serverURL`                    | *string*                       | :heavy_minus_sign:             | An optional server URL to use. |
-
-### Response
-
-**[GetUserDetailsResponse](../../Models/Requests/GetUserDetailsResponse.md)**
-
-### Errors
-
-| Error Object                                     | Status Code                                      | Content Type                                     |
-| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| PlexAPI.Models.Errors.GetUserDetailsResponseBody | 401                                              | application/json                                 |
-| PlexAPI.Models.Errors.SDKException               | 4xx-5xx                                          | */*                                              |
+| Error Object                                          | Status Code                                           | Content Type                                          |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| PlexAPI.Models.Errors.GetTokenByPinIdResponseBody     | 400                                                   | application/json                                      |
+| PlexAPI.Models.Errors.GetTokenByPinIdPlexResponseBody | 404                                                   | application/json                                      |
+| PlexAPI.Models.Errors.SDKException                    | 4xx-5xx                                               | */*                                                   |

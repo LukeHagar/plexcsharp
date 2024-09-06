@@ -12,7 +12,7 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Server.GetServerCapabilitiesAsync();
@@ -20,6 +20,53 @@ var res = await sdk.Server.GetServerCapabilitiesAsync();
 // handle response
 ```
 <!-- End SDK Example Usage [usage] -->
+
+<!-- Start Global Parameters [global-parameters] -->
+## Global Parameters
+
+## Global Parameters
+
+A parameter is configured globally. This parameter may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
+
+For example, you can set `X-Plex-Client-Identifier` to `"gcgzw5rz2xovp84b4vha3a40"` at SDK initialization and then you do not have to pass the same value on calls to operations like `GetServerResources`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+
+
+### Available Globals
+
+The following global parameter is available.
+
+| Name | Type | Required | Description |
+| ---- | ---- |:--------:| ----------- |
+| xPlexClientIdentifier | string |  | The unique identifier for the client application
+This is used to track the client application and its usage
+(UUID, serial number, or other number unique per device)
+ |
+
+
+### Example
+
+```csharp
+using PlexAPI;
+using PlexAPI.Models.Requests;
+using PlexAPI.Models.Components;
+
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+);
+
+GetServerResourcesRequest req = new GetServerResourcesRequest() {
+    XPlexToken = "CV5xoxjTpFKUzBTShsaf",
+    IncludeHttps = PlexAPI.Models.Requests.IncludeHttps.One,
+    IncludeRelay = PlexAPI.Models.Requests.IncludeRelay.One,
+    IncludeIPv6 = PlexAPI.Models.Requests.IncludeIPv6.One,
+};
+
+var res = await sdk.Plex.GetServerResourcesAsync(req);
+
+// handle response
+```
+<!-- End Global Parameters [global-parameters] -->
 
 <!-- Start Error Handling [errors] -->
 ## Error Handling
@@ -41,7 +88,7 @@ using PlexAPI.Models.Errors;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 try
@@ -73,7 +120,7 @@ You can override the default server globally by passing a server index to the `s
 
 | # | Server | Variables |
 | - | ------ | --------- |
-| 0 | `{protocol}://{ip}:{port}` | `protocol` (default is `http`), `ip` (default is `10.10.10.47`), `port` (default is `32400`) |
+| 0 | `{protocol}://{ip}:{port}` | `protocol` (default is `https`), `ip` (default is `10.10.10.47`), `port` (default is `32400`) |
 
 
 
@@ -98,7 +145,7 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Plex.GetCompanionsDataAsync(serverUrl: "https://plex.tv/api/v2");
@@ -125,7 +172,7 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Server.GetServerCapabilitiesAsync();

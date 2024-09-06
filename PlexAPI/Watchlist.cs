@@ -39,7 +39,7 @@ namespace PlexAPI
         /// Get User Watchlist
         /// </remarks>
         /// </summary>
-        Task<GetWatchlistResponse> GetWatchlistAsync(GetWatchlistRequest request, string? serverUrl = null);
+        Task<GetWatchListResponse> GetWatchListAsync(GetWatchListRequest request, string? serverUrl = null);
     }
 
     /// <summary>
@@ -52,17 +52,17 @@ namespace PlexAPI
     public class Watchlist: IWatchlist
     {
         /// <summary>
-        /// List of server URLs available for the getWatchlist operation.
+        /// List of server URLs available for the get-watch-list operation.
         /// </summary>
-        public static readonly string[] GetWatchlistServerList = {
+        public static readonly string[] GetWatchListServerList = {
             "https://metadata.provider.plex.tv",
         };
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.4.2";
-        private const string _sdkGenVersion = "2.407.0";
+        private const string _sdkVersion = "0.5.0";
+        private const string _sdkGenVersion = "2.409.8";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.4.2 2.407.0 0.0.3 PlexAPI";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.5.0 2.409.8 0.0.3 PlexAPI";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<PlexAPI.Models.Components.Security>? _securitySource;
@@ -75,9 +75,9 @@ namespace PlexAPI
             SDKConfiguration = config;
         }
 
-        public async Task<GetWatchlistResponse> GetWatchlistAsync(GetWatchlistRequest request, string? serverUrl = null)
+        public async Task<GetWatchListResponse> GetWatchListAsync(GetWatchListRequest request, string? serverUrl = null)
         {
-            string baseUrl = Utilities.TemplateUrl(GetWatchlistServerList[0], new Dictionary<string, string>(){
+            string baseUrl = Utilities.TemplateUrl(GetWatchListServerList[0], new Dictionary<string, string>(){
             });
             if (serverUrl != null)
             {
@@ -93,7 +93,7 @@ namespace PlexAPI
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("getWatchlist", null, _securitySource);
+            var hookCtx = new HookContext("get-watch-list", null, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -133,8 +133,8 @@ namespace PlexAPI
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Models.Requests.GetWatchlistResponseBody>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new GetWatchlistResponse()
+                    var obj = ResponseBodyDeserializer.Deserialize<Models.Requests.GetWatchListResponseBody>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new GetWatchListResponse()
                     {
                         StatusCode = responseStatusCode,
                         ContentType = contentType,
@@ -156,7 +156,7 @@ namespace PlexAPI
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Models.Errors.GetWatchlistResponseBody>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<Models.Errors.GetWatchListResponseBody>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     obj!.RawResponse = httpResponse;
                     throw obj!;
                 }

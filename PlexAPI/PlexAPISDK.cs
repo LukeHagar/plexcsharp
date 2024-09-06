@@ -63,7 +63,7 @@ namespace PlexAPI
     }
 
     /// <summary>
-    /// Plex-API: An Open API Spec for interacting with Plex.tv
+    /// Plex-API: An Open API Spec for interacting with Plex.tv and Plex Media Server
     /// </summary>
     public interface IPlexAPISDK
     {
@@ -156,6 +156,15 @@ namespace PlexAPI
         public ILibrary Library { get; }
 
         /// <summary>
+        /// API Calls that perform operations with Plex Media Server Watchlists<br/>
+        /// 
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// </summary>
+        public IWatchlist Watchlist { get; }
+
+        /// <summary>
         /// Submit logs to the Log Handler for Plex Media Server<br/>
         /// 
         /// <remarks>
@@ -212,15 +221,6 @@ namespace PlexAPI
         /// </remarks>
         /// </summary>
         public IUpdater Updater { get; }
-
-        /// <summary>
-        /// API Calls that perform operations with Plex Media Server Watchlists<br/>
-        /// 
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// </summary>
-        public IWatchlist Watchlist { get; }
     }
 
     public class SDKConfig
@@ -261,17 +261,17 @@ namespace PlexAPI
     }
 
     /// <summary>
-    /// Plex-API: An Open API Spec for interacting with Plex.tv
+    /// Plex-API: An Open API Spec for interacting with Plex.tv and Plex Media Server
     /// </summary>
     public class PlexAPISDK: IPlexAPISDK
     {
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.4.2";
-        private const string _sdkGenVersion = "2.407.0";
+        private const string _sdkVersion = "0.5.0";
+        private const string _sdkGenVersion = "2.409.8";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.4.2 2.407.0 0.0.3 PlexAPI";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.5.0 2.409.8 0.0.3 PlexAPI";
         private string _serverUrl = "";
         private int _serverIndex = 0;
         private ISpeakeasyHttpClient _client;
@@ -285,13 +285,13 @@ namespace PlexAPI
         public IHubs Hubs { get; private set; }
         public ISearch Search { get; private set; }
         public ILibrary Library { get; private set; }
+        public IWatchlist Watchlist { get; private set; }
         public ILog Log { get; private set; }
         public IPlaylists Playlists { get; private set; }
         public IAuthentication Authentication { get; private set; }
         public IStatistics Statistics { get; private set; }
         public ISessions Sessions { get; private set; }
         public IUpdater Updater { get; private set; }
-        public IWatchlist Watchlist { get; private set; }
 
         public PlexAPISDK(string? accessToken = null, Func<string>? accessTokenSource = null, string? xPlexClientIdentifier = null, int? serverIndex = null, ServerProtocol? protocol = null, string?  ip = null, string?  port = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null, RetryConfig? retryConfig = null)
         {
@@ -316,7 +316,7 @@ namespace PlexAPI
             {
                 new Dictionary<string, string>()
                 {
-                    {"protocol", protocol == null ? "http" : ServerProtocolExtension.Value(protocol.Value)},
+                    {"protocol", protocol == null ? "https" : ServerProtocolExtension.Value(protocol.Value)},
                     {"ip", ip == null ? "10.10.10.47" : ip},
                     {"port", port == null ? "32400" : port},
                 },
@@ -372,6 +372,9 @@ namespace PlexAPI
             Library = new Library(_client, _securitySource, _serverUrl, SDKConfiguration);
 
 
+            Watchlist = new Watchlist(_client, _securitySource, _serverUrl, SDKConfiguration);
+
+
             Log = new Log(_client, _securitySource, _serverUrl, SDKConfiguration);
 
 
@@ -388,9 +391,6 @@ namespace PlexAPI
 
 
             Updater = new Updater(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
-            Watchlist = new Watchlist(_client, _securitySource, _serverUrl, SDKConfiguration);
         }
     }
 }

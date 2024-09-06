@@ -15,16 +15,6 @@ namespace PlexAPI.Models.Requests
     {
 
         /// <summary>
-        /// Product name of the application shown in the list of devices<br/>
-        /// 
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// </summary>
-        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Product")]
-        public string XPlexProduct { get; set; } = default!;
-
-        /// <summary>
         /// Determines the kind of code returned by the API call<br/>
         /// 
         /// <remarks>
@@ -45,7 +35,10 @@ namespace PlexAPI.Models.Requests
         /// 
         /// </remarks>
         /// </summary>
-        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Client-Identifier")]
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=X-Plex-Client-Identifier")]
         public string? XPlexClientIdentifier { get; set; }
+
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=X-Plex-Product")]
+        public string? XPlexProduct { get; set; }
     }
 }

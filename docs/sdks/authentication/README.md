@@ -10,6 +10,7 @@ API Calls regarding authentication for Plex Media Server
 
 * [GetTransientToken](#gettransienttoken) - Get a Transient Token.
 * [GetSourceConnectionInformation](#getsourceconnectioninformation) - Get Source Connection Information
+* [GetUserDetails](#getuserdetails) - Get User Data By Token
 * [PostUsersSignInData](#postuserssignindata) - Get User SignIn Data
 
 ## GetTransientToken
@@ -26,7 +27,7 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Authentication.GetTransientTokenAsync(
@@ -71,7 +72,7 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Authentication.GetSourceConnectionInformationAsync(source: "server://client-identifier");
@@ -97,6 +98,46 @@ var res = await sdk.Authentication.GetSourceConnectionInformationAsync(source: "
 | PlexAPI.Models.Errors.SDKException                               | 4xx-5xx                                                          | */*                                                              |
 
 
+## GetUserDetails
+
+Get the User data from the provided X-Plex-Token
+
+### Example Usage
+
+```csharp
+using PlexAPI;
+using PlexAPI.Models.Requests;
+using PlexAPI.Models.Components;
+
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+);
+
+var res = await sdk.Authentication.GetUserDetailsAsync(xPlexToken: "CV5xoxjTpFKUzBTShsaf");
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                      | Type                           | Required                       | Description                    | Example                        |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
+| `XPlexToken`                   | *string*                       | :heavy_check_mark:             | Plex Authentication Token      | CV5xoxjTpFKUzBTShsaf           |
+| `serverURL`                    | *string*                       | :heavy_minus_sign:             | An optional server URL to use. | http://localhost:8080          |
+
+### Response
+
+**[GetUserDetailsResponse](../../Models/Requests/GetUserDetailsResponse.md)**
+
+### Errors
+
+| Error Object                                     | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| PlexAPI.Models.Errors.GetUserDetailsResponseBody | 401                                              | application/json                                 |
+| PlexAPI.Models.Errors.SDKException               | 4xx-5xx                                          | */*                                              |
+
+
 ## PostUsersSignInData
 
 Sign in user with username and password and return user data with Plex authentication token
@@ -108,10 +149,10 @@ using PlexAPI;
 using PlexAPI.Models.Requests;
 using PlexAPI.Models.Components;
 
-var sdk = new PlexAPISDK(xPlexClientIdentifier: "Postman");
+var sdk = new PlexAPISDK(xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40");
 
 var res = await sdk.Authentication.PostUsersSignInDataAsync(
-    xPlexClientIdentifier: "Postman",
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40",
     requestBody: new PostUsersSignInDataRequestBody() {
         Login = "username@email.com",
         Password = "password123",
@@ -125,7 +166,7 @@ var res = await sdk.Authentication.PostUsersSignInDataAsync(
 
 | Parameter                                                                                                                                                             | Type                                                                                                                                                                  | Required                                                                                                                                                              | Description                                                                                                                                                           | Example                                                                                                                                                               |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `XPlexClientIdentifier`                                                                                                                                               | *string*                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                    | The unique identifier for the client application<br/>This is used to track the client application and its usage<br/>(UUID, serial number, or other number unique per device)<br/> | Postman                                                                                                                                                               |
+| `XPlexClientIdentifier`                                                                                                                                               | *string*                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                    | The unique identifier for the client application<br/>This is used to track the client application and its usage<br/>(UUID, serial number, or other number unique per device)<br/> | gcgzw5rz2xovp84b4vha3a40                                                                                                                                              |
 | `RequestBody`                                                                                                                                                         | [PostUsersSignInDataRequestBody](../../Models/Requests/PostUsersSignInDataRequestBody.md)                                                                             | :heavy_minus_sign:                                                                                                                                                    | Login credentials                                                                                                                                                     |                                                                                                                                                                       |
 | `serverURL`                                                                                                                                                           | *string*                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                    | An optional server URL to use.                                                                                                                                        | http://localhost:8080                                                                                                                                                 |
 

@@ -39,7 +39,7 @@ namespace PlexAPI.Models.Requests
         /// String representation of subscriptionActive
         /// </summary>
         [JsonProperty("status")]
-        public GetUserDetailsPlexResponseStatus? Status { get; set; }
+        public GetUserDetailsAuthenticationResponseStatus? Status { get; set; }
 
         /// <summary>
         /// Payment service used for your Plex Pass subscription

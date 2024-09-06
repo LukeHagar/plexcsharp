@@ -12,7 +12,16 @@ namespace PlexAPI.Models.Requests
     using PlexAPI.Utils;
     
     /// <summary>
-    /// Plex content type to search for
+    /// The type of media to retrieve.<br/>
+    /// 
+    /// <remarks>
+    /// 1 = movie<br/>
+    /// 2 = show<br/>
+    /// 3 = season<br/>
+    /// 4 = episode<br/>
+    /// E.g. A movie library will not return anything with type 3 as there are no seasons for movie libraries<br/>
+    /// 
+    /// </remarks>
     /// </summary>
     public enum Type
     {

@@ -9,16 +9,26 @@
 #nullable enable
 namespace PlexAPI.Models.Requests
 {
+    using PlexAPI.Models.Requests;
     using PlexAPI.Utils;
     
     public class GetTopWatchedContentRequest
     {
 
         /// <summary>
-        /// the library type (1 - movies, 2 - shows, 3 - music)
+        /// The type of media to retrieve.<br/>
+        /// 
+        /// <remarks>
+        /// 1 = movie<br/>
+        /// 2 = show<br/>
+        /// 3 = season<br/>
+        /// 4 = episode<br/>
+        /// E.g. A movie library will not return anything with type 3 as there are no seasons for movie libraries<br/>
+        /// 
+        /// </remarks>
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=type")]
-        public long Type { get; set; } = default!;
+        public GetTopWatchedContentQueryParamType Type { get; set; } = default!;
 
         /// <summary>
         /// Adds the Guids object to the response<br/>

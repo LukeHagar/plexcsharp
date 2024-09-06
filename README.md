@@ -36,7 +36,7 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Server.GetServerCapabilitiesAsync();
@@ -57,6 +57,7 @@ var res = await sdk.Server.GetServerCapabilitiesAsync();
 * [GetServerIdentity](docs/sdks/server/README.md#getserveridentity) - Get Server Identity
 * [GetMyPlexAccount](docs/sdks/server/README.md#getmyplexaccount) - Get MyPlex Account
 * [GetResizedPhoto](docs/sdks/server/README.md#getresizedphoto) - Get a Resized Photo
+* [GetMediaProviders](docs/sdks/server/README.md#getmediaproviders) - Get Media Providers
 * [GetServerList](docs/sdks/server/README.md#getserverlist) - Get Server List
 
 ### [Media](docs/sdks/media/README.md)
@@ -64,6 +65,8 @@ var res = await sdk.Server.GetServerCapabilitiesAsync();
 * [MarkPlayed](docs/sdks/media/README.md#markplayed) - Mark Media Played
 * [MarkUnplayed](docs/sdks/media/README.md#markunplayed) - Mark Media Unplayed
 * [UpdatePlayProgress](docs/sdks/media/README.md#updateplayprogress) - Update Media Play Progress
+* [GetBannerImage](docs/sdks/media/README.md#getbannerimage) - Get Banner Image
+* [GetThumbImage](docs/sdks/media/README.md#getthumbimage) - Get Thumb Image
 
 ### [Video](docs/sdks/video/README.md)
 
@@ -89,10 +92,9 @@ var res = await sdk.Server.GetServerCapabilitiesAsync();
 * [GetUserFriends](docs/sdks/plex/README.md#getuserfriends) - Get list of friends of the user logged in
 * [GetGeoData](docs/sdks/plex/README.md#getgeodata) - Get Geo Data
 * [GetHomeData](docs/sdks/plex/README.md#gethomedata) - Get Plex Home Data
-* [GetResources](docs/sdks/plex/README.md#getresources) - Get Resources
+* [GetServerResources](docs/sdks/plex/README.md#getserverresources) - Get Server Resources
 * [GetPin](docs/sdks/plex/README.md#getpin) - Get a Pin
 * [GetTokenByPinId](docs/sdks/plex/README.md#gettokenbypinid) - Get Access Token by PinId
-* [GetUserDetails](docs/sdks/plex/README.md#getuserdetails) - Get UserData By Token
 
 ### [Hubs](docs/sdks/hubs/README.md)
 
@@ -114,11 +116,15 @@ var res = await sdk.Server.GetServerCapabilitiesAsync();
 * [DeleteLibrary](docs/sdks/library/README.md#deletelibrary) - Delete Library Section
 * [GetLibraryItems](docs/sdks/library/README.md#getlibraryitems) - Get Library Items
 * [GetRefreshLibraryMetadata](docs/sdks/library/README.md#getrefreshlibrarymetadata) - Refresh Metadata Of The Library
-* [SearchLibrary](docs/sdks/library/README.md#searchlibrary) - Search Library
-* [GetMetadata](docs/sdks/library/README.md#getmetadata) - Get Items Metadata
+* [GetSearchLibrary](docs/sdks/library/README.md#getsearchlibrary) - Search Library
+* [GetMetaDataByRatingKey](docs/sdks/library/README.md#getmetadatabyratingkey) - Get Metadata by RatingKey
 * [GetMetadataChildren](docs/sdks/library/README.md#getmetadatachildren) - Get Items Children
 * [GetTopWatchedContent](docs/sdks/library/README.md#gettopwatchedcontent) - Get Top Watched Content
 * [GetOnDeck](docs/sdks/library/README.md#getondeck) - Get On Deck
+
+### [Watchlist](docs/sdks/watchlist/README.md)
+
+* [GetWatchList](docs/sdks/watchlist/README.md#getwatchlist) - Get User Watchlist
 
 ### [Log](docs/sdks/log/README.md)
 
@@ -142,6 +148,7 @@ var res = await sdk.Server.GetServerCapabilitiesAsync();
 
 * [GetTransientToken](docs/sdks/authentication/README.md#gettransienttoken) - Get a Transient Token.
 * [GetSourceConnectionInformation](docs/sdks/authentication/README.md#getsourceconnectioninformation) - Get Source Connection Information
+* [GetUserDetails](docs/sdks/authentication/README.md#getuserdetails) - Get User Data By Token
 * [PostUsersSignInData](docs/sdks/authentication/README.md#postuserssignindata) - Get User SignIn Data
 
 ### [Statistics](docs/sdks/statistics/README.md)
@@ -162,10 +169,6 @@ var res = await sdk.Server.GetServerCapabilitiesAsync();
 * [GetUpdateStatus](docs/sdks/updater/README.md#getupdatestatus) - Querying status of updates
 * [CheckForUpdates](docs/sdks/updater/README.md#checkforupdates) - Checking for updates
 * [ApplyUpdates](docs/sdks/updater/README.md#applyupdates) - Apply Updates
-
-### [Watchlist](docs/sdks/watchlist/README.md)
-
-* [GetWatchlist](docs/sdks/watchlist/README.md#getwatchlist) - Get User Watchlist
 <!-- End Available Resources and Operations [operations] -->
 
 <!-- Start Server Selection [server] -->
@@ -177,7 +180,7 @@ You can override the default server globally by passing a server index to the `s
 
 | # | Server | Variables |
 | - | ------ | --------- |
-| 0 | `{protocol}://{ip}:{port}` | `protocol` (default is `http`), `ip` (default is `10.10.10.47`), `port` (default is `32400`) |
+| 0 | `{protocol}://{ip}:{port}` | `protocol` (default is `https`), `ip` (default is `10.10.10.47`), `port` (default is `32400`) |
 
 
 
@@ -202,7 +205,7 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Plex.GetCompanionsDataAsync(serverUrl: "https://plex.tv/api/v2");
@@ -229,7 +232,7 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Server.GetServerCapabilitiesAsync();
@@ -237,6 +240,53 @@ var res = await sdk.Server.GetServerCapabilitiesAsync();
 // handle response
 ```
 <!-- End Authentication [security] -->
+
+<!-- Start Global Parameters [global-parameters] -->
+## Global Parameters
+
+## Global Parameters
+
+A parameter is configured globally. This parameter may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
+
+For example, you can set `X-Plex-Client-Identifier` to `"gcgzw5rz2xovp84b4vha3a40"` at SDK initialization and then you do not have to pass the same value on calls to operations like `GetServerResources`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+
+
+### Available Globals
+
+The following global parameter is available.
+
+| Name | Type | Required | Description |
+| ---- | ---- |:--------:| ----------- |
+| xPlexClientIdentifier | string |  | The unique identifier for the client application
+This is used to track the client application and its usage
+(UUID, serial number, or other number unique per device)
+ |
+
+
+### Example
+
+```csharp
+using PlexAPI;
+using PlexAPI.Models.Requests;
+using PlexAPI.Models.Components;
+
+var sdk = new PlexAPISDK(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+);
+
+GetServerResourcesRequest req = new GetServerResourcesRequest() {
+    XPlexToken = "CV5xoxjTpFKUzBTShsaf",
+    IncludeHttps = PlexAPI.Models.Requests.IncludeHttps.One,
+    IncludeRelay = PlexAPI.Models.Requests.IncludeRelay.One,
+    IncludeIPv6 = PlexAPI.Models.Requests.IncludeIPv6.One,
+};
+
+var res = await sdk.Plex.GetServerResourcesAsync(req);
+
+// handle response
+```
+<!-- End Global Parameters [global-parameters] -->
 
 <!-- Start Error Handling [errors] -->
 ## Error Handling
@@ -258,7 +308,7 @@ using PlexAPI.Models.Errors;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 try
@@ -284,7 +334,7 @@ catch (Exception ex)
 <!-- Start Summary [summary] -->
 ## Summary
 
-Plex-API: An Open API Spec for interacting with Plex.tv
+Plex-API: An Open API Spec for interacting with Plex.tv and Plex Media Server
 <!-- End Summary [summary] -->
 
 <!-- Start Table of Contents [toc] -->
@@ -293,6 +343,7 @@ Plex-API: An Open API Spec for interacting with Plex.tv
 * [SDK Installation](#sdk-installation)
 * [SDK Example Usage](#sdk-example-usage)
 * [Available Resources and Operations](#available-resources-and-operations)
+* [Global Parameters](#global-parameters)
 * [Error Handling](#error-handling)
 * [Server Selection](#server-selection)
 * [Authentication](#authentication)

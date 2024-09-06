@@ -12,7 +12,12 @@ namespace PlexAPI.Models.Requests
     using PlexAPI.Utils;
     
     /// <summary>
-    /// Include Relay addresses in the results
+    /// Include Relay addresses in the results <br/>
+    /// 
+    /// <remarks>
+    /// E.g: https://10-0-0-25.bbf8e10c7fa20447cacee74cd9914cde.plex.direct:32400<br/>
+    /// 
+    /// </remarks>
     /// </summary>
     public enum IncludeRelay
     {

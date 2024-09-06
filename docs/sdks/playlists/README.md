@@ -37,12 +37,12 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 CreatePlaylistRequest req = new CreatePlaylistRequest() {
     Title = "<value>",
-    Type = PlexAPI.Models.Requests.QueryParamType.Photo,
+    Type = PlexAPI.Models.Requests.CreatePlaylistQueryParamType.Photo,
     Smart = PlexAPI.Models.Requests.Smart.One,
     Uri = "https://inborn-brochure.biz",
 };
@@ -83,7 +83,7 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Playlists.GetPlaylistsAsync(
@@ -128,7 +128,7 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Playlists.GetPlaylistAsync(playlistID: 4109.48D);
@@ -168,7 +168,7 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Playlists.DeletePlaylistAsync(playlistID: 216.22D);
@@ -208,7 +208,7 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Playlists.UpdatePlaylistAsync(
@@ -257,12 +257,12 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Playlists.GetPlaylistContentsAsync(
     playlistID: 5004.46D,
-    type: 9403.59D
+    type: PlexAPI.Models.Requests.GetPlaylistContentsQueryParamType.Two
 );
 
 // handle response
@@ -270,10 +270,10 @@ var res = await sdk.Playlists.GetPlaylistContentsAsync(
 
 ### Parameters
 
-| Parameter                               | Type                                    | Required                                | Description                             |
-| --------------------------------------- | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| `PlaylistID`                            | *double*                                | :heavy_check_mark:                      | the ID of the playlist                  |
-| `Type`                                  | *double*                                | :heavy_check_mark:                      | the metadata type of the item to return |
+| Parameter                                                                                                                                                                       | Type                                                                                                                                                                            | Required                                                                                                                                                                        | Description                                                                                                                                                                     | Example                                                                                                                                                                         |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `PlaylistID`                                                                                                                                                                    | *double*                                                                                                                                                                        | :heavy_check_mark:                                                                                                                                                              | the ID of the playlist                                                                                                                                                          |                                                                                                                                                                                 |
+| `Type`                                                                                                                                                                          | [GetPlaylistContentsQueryParamType](../../Models/Requests/GetPlaylistContentsQueryParamType.md)                                                                                 | :heavy_check_mark:                                                                                                                                                              | The type of media to retrieve.<br/>1 = movie<br/>2 = show<br/>3 = season<br/>4 = episode<br/>E.g. A movie library will not return anything with type 3 as there are no seasons for movie libraries<br/> | 2                                                                                                                                                                               |
 
 ### Response
 
@@ -301,7 +301,7 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Playlists.ClearPlaylistContentsAsync(playlistID: 1893.18D);
@@ -342,7 +342,7 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Playlists.AddPlaylistContentsAsync(
@@ -388,7 +388,7 @@ using PlexAPI.Models.Components;
 
 var sdk = new PlexAPISDK(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "Postman"
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Playlists.UploadPlaylistAsync(

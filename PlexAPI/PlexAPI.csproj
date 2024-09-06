@@ -3,13 +3,13 @@
   <PropertyGroup>
     <IsPackable>true</IsPackable>
     <PackageId>PlexAPI</PackageId>
-    <Version>0.4.2</Version>
+    <Version>0.5.0</Version>
     <TargetFramework>net5.0</TargetFramework>
     <Authors>LukeHagar</Authors>
     <Copyright>Copyright (c) LukeHagar 2024</Copyright>
     <RepositoryUrl>https://github.com/LukeHagar/plexcsharp.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <Description>Plex-API: An Open API Spec for interacting with Plex.tv</Description>
+    <Description>Plex-API: An Open API Spec for interacting with Plex.tv and Plex Media Server</Description>
   </PropertyGroup>
 
   <PropertyGroup>
