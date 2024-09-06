@@ -31,19 +31,19 @@ Create a new playlist. By default the playlist is blank. To create a playlist al
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 CreatePlaylistRequest req = new CreatePlaylistRequest() {
     Title = "<value>",
-    Type = PlexAPI.Models.Requests.CreatePlaylistQueryParamType.Photo,
-    Smart = PlexAPI.Models.Requests.Smart.One,
+    Type = LukeHagar.PlexAPI.SDK.Models.Requests.CreatePlaylistQueryParamType.Photo,
+    Smart = LukeHagar.PlexAPI.SDK.Models.Requests.Smart.One,
     Uri = "https://inborn-brochure.biz",
 };
 
@@ -64,10 +64,10 @@ var res = await sdk.Playlists.CreatePlaylistAsync(req);
 
 ### Errors
 
-| Error Object                                     | Status Code                                      | Content Type                                     |
-| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| PlexAPI.Models.Errors.CreatePlaylistResponseBody | 401                                              | application/json                                 |
-| PlexAPI.Models.Errors.SDKException               | 4xx-5xx                                          | */*                                              |
+| Error Object                                                   | Status Code                                                    | Content Type                                                   |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.CreatePlaylistResponseBody | 401                                                            | application/json                                               |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException               | 4xx-5xx                                                        | */*                                                            |
 
 
 ## GetPlaylists
@@ -77,18 +77,18 @@ Get All Playlists given the specified filters.
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Playlists.GetPlaylistsAsync(
-    playlistType: PlexAPI.Models.Requests.PlaylistType.Audio,
-    smart: PlexAPI.Models.Requests.QueryParamSmart.Zero
+    playlistType: LukeHagar.PlexAPI.SDK.Models.Requests.PlaylistType.Audio,
+    smart: LukeHagar.PlexAPI.SDK.Models.Requests.QueryParamSmart.Zero
 );
 
 // handle response
@@ -107,10 +107,10 @@ var res = await sdk.Playlists.GetPlaylistsAsync(
 
 ### Errors
 
-| Error Object                                   | Status Code                                    | Content Type                                   |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| PlexAPI.Models.Errors.GetPlaylistsResponseBody | 401                                            | application/json                               |
-| PlexAPI.Models.Errors.SDKException             | 4xx-5xx                                        | */*                                            |
+| Error Object                                                 | Status Code                                                  | Content Type                                                 |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetPlaylistsResponseBody | 401                                                          | application/json                                             |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException             | 4xx-5xx                                                      | */*                                                          |
 
 
 ## GetPlaylist
@@ -122,11 +122,11 @@ Smart playlist details contain the `content` attribute. This is the content URI 
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -148,10 +148,10 @@ var res = await sdk.Playlists.GetPlaylistAsync(playlistID: 4109.48D);
 
 ### Errors
 
-| Error Object                                  | Status Code                                   | Content Type                                  |
-| --------------------------------------------- | --------------------------------------------- | --------------------------------------------- |
-| PlexAPI.Models.Errors.GetPlaylistResponseBody | 401                                           | application/json                              |
-| PlexAPI.Models.Errors.SDKException            | 4xx-5xx                                       | */*                                           |
+| Error Object                                                | Status Code                                                 | Content Type                                                |
+| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetPlaylistResponseBody | 401                                                         | application/json                                            |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException            | 4xx-5xx                                                     | */*                                                         |
 
 
 ## DeletePlaylist
@@ -162,11 +162,11 @@ This endpoint will delete a playlist
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -188,10 +188,10 @@ var res = await sdk.Playlists.DeletePlaylistAsync(playlistID: 216.22D);
 
 ### Errors
 
-| Error Object                                     | Status Code                                      | Content Type                                     |
-| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| PlexAPI.Models.Errors.DeletePlaylistResponseBody | 401                                              | application/json                                 |
-| PlexAPI.Models.Errors.SDKException               | 4xx-5xx                                          | */*                                              |
+| Error Object                                                   | Status Code                                                    | Content Type                                                   |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.DeletePlaylistResponseBody | 401                                                            | application/json                                               |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException               | 4xx-5xx                                                        | */*                                                            |
 
 
 ## UpdatePlaylist
@@ -202,11 +202,11 @@ From PMS version 1.9.1 clients can also edit playlist metadata using this endpoi
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -234,10 +234,10 @@ var res = await sdk.Playlists.UpdatePlaylistAsync(
 
 ### Errors
 
-| Error Object                                     | Status Code                                      | Content Type                                     |
-| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| PlexAPI.Models.Errors.UpdatePlaylistResponseBody | 401                                              | application/json                                 |
-| PlexAPI.Models.Errors.SDKException               | 4xx-5xx                                          | */*                                              |
+| Error Object                                                   | Status Code                                                    | Content Type                                                   |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.UpdatePlaylistResponseBody | 401                                                            | application/json                                               |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException               | 4xx-5xx                                                        | */*                                                            |
 
 
 ## GetPlaylistContents
@@ -251,18 +251,18 @@ Note that for dumb playlists, items have a `playlistItemID` attribute which is u
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Playlists.GetPlaylistContentsAsync(
     playlistID: 5004.46D,
-    type: PlexAPI.Models.Requests.GetPlaylistContentsQueryParamType.Two
+    type: LukeHagar.PlexAPI.SDK.Models.Requests.GetPlaylistContentsQueryParamType.Two
 );
 
 // handle response
@@ -281,10 +281,10 @@ var res = await sdk.Playlists.GetPlaylistContentsAsync(
 
 ### Errors
 
-| Error Object                                          | Status Code                                           | Content Type                                          |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| PlexAPI.Models.Errors.GetPlaylistContentsResponseBody | 401                                                   | application/json                                      |
-| PlexAPI.Models.Errors.SDKException                    | 4xx-5xx                                               | */*                                                   |
+| Error Object                                                        | Status Code                                                         | Content Type                                                        |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetPlaylistContentsResponseBody | 401                                                                 | application/json                                                    |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                    | 4xx-5xx                                                             | */*                                                                 |
 
 
 ## ClearPlaylistContents
@@ -295,11 +295,11 @@ Clears a playlist, only works with dumb playlists. Returns the playlist.
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -321,10 +321,10 @@ var res = await sdk.Playlists.ClearPlaylistContentsAsync(playlistID: 1893.18D);
 
 ### Errors
 
-| Error Object                                            | Status Code                                             | Content Type                                            |
-| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| PlexAPI.Models.Errors.ClearPlaylistContentsResponseBody | 401                                                     | application/json                                        |
-| PlexAPI.Models.Errors.SDKException                      | 4xx-5xx                                                 | */*                                                     |
+| Error Object                                                          | Status Code                                                           | Content Type                                                          |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.ClearPlaylistContentsResponseBody | 401                                                                   | application/json                                                      |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                      | 4xx-5xx                                                               | */*                                                                   |
 
 
 ## AddPlaylistContents
@@ -336,11 +336,11 @@ With a smart playlist, passing a new `uri` parameter replaces the rules for the 
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -368,10 +368,10 @@ var res = await sdk.Playlists.AddPlaylistContentsAsync(
 
 ### Errors
 
-| Error Object                                          | Status Code                                           | Content Type                                          |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| PlexAPI.Models.Errors.AddPlaylistContentsResponseBody | 401                                                   | application/json                                      |
-| PlexAPI.Models.Errors.SDKException                    | 4xx-5xx                                               | */*                                                   |
+| Error Object                                                        | Status Code                                                         | Content Type                                                        |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.AddPlaylistContentsResponseBody | 401                                                                 | application/json                                                    |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                    | 4xx-5xx                                                             | */*                                                                 |
 
 
 ## UploadPlaylist
@@ -382,18 +382,18 @@ Imports m3u playlists by passing a path on the server to scan for m3u-formatted 
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Playlists.UploadPlaylistAsync(
     path: "/home/barkley/playlist.m3u",
-    force: PlexAPI.Models.Requests.QueryParamForce.Zero
+    force: LukeHagar.PlexAPI.SDK.Models.Requests.QueryParamForce.Zero
 );
 
 // handle response
@@ -412,7 +412,7 @@ var res = await sdk.Playlists.UploadPlaylistAsync(
 
 ### Errors
 
-| Error Object                                     | Status Code                                      | Content Type                                     |
-| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| PlexAPI.Models.Errors.UploadPlaylistResponseBody | 401                                              | application/json                                 |
-| PlexAPI.Models.Errors.SDKException               | 4xx-5xx                                          | */*                                              |
+| Error Object                                                   | Status Code                                                    | Content Type                                                   |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.UploadPlaylistResponseBody | 401                                                            | application/json                                               |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException               | 4xx-5xx                                                        | */*                                                            |

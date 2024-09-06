@@ -31,11 +31,11 @@ This request is intended to be very fast, and called as the user types.
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -63,10 +63,10 @@ var res = await sdk.Search.PerformSearchAsync(
 
 ### Errors
 
-| Error Object                                    | Status Code                                     | Content Type                                    |
-| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| PlexAPI.Models.Errors.PerformSearchResponseBody | 401                                             | application/json                                |
-| PlexAPI.Models.Errors.SDKException              | 4xx-5xx                                         | */*                                             |
+| Error Object                                                  | Status Code                                                   | Content Type                                                  |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.PerformSearchResponseBody | 401                                                           | application/json                                              |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException              | 4xx-5xx                                                       | */*                                                           |
 
 
 ## PerformVoiceSearch
@@ -80,11 +80,11 @@ Results, as well as their containing per-type hubs, contain a `distance` attribu
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -112,10 +112,10 @@ var res = await sdk.Search.PerformVoiceSearchAsync(
 
 ### Errors
 
-| Error Object                                         | Status Code                                          | Content Type                                         |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| PlexAPI.Models.Errors.PerformVoiceSearchResponseBody | 401                                                  | application/json                                     |
-| PlexAPI.Models.Errors.SDKException                   | 4xx-5xx                                              | */*                                                  |
+| Error Object                                                       | Status Code                                                        | Content Type                                                       |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| LukeHagar.PlexAPI.SDK.Models.Errors.PerformVoiceSearchResponseBody | 401                                                                | application/json                                                   |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                   | 4xx-5xx                                                            | */*                                                                |
 
 
 ## GetSearchResults
@@ -125,11 +125,11 @@ This will search the database for the string provided.
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -151,7 +151,7 @@ var res = await sdk.Search.GetSearchResultsAsync(query: "110");
 
 ### Errors
 
-| Error Object                                       | Status Code                                        | Content Type                                       |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| PlexAPI.Models.Errors.GetSearchResultsResponseBody | 401                                                | application/json                                   |
-| PlexAPI.Models.Errors.SDKException                 | 4xx-5xx                                            | */*                                                |
+| Error Object                                                     | Status Code                                                      | Content Type                                                     |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetSearchResultsResponseBody | 401                                                              | application/json                                                 |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                 | 4xx-5xx                                                          | */*                                                              |

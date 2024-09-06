@@ -21,18 +21,18 @@ This endpoint provides the caller with a temporary token with the same access le
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Authentication.GetTransientTokenAsync(
-    type: PlexAPI.Models.Requests.GetTransientTokenQueryParamType.Delegation,
-    scope: PlexAPI.Models.Requests.Scope.All
+    type: LukeHagar.PlexAPI.SDK.Models.Requests.GetTransientTokenQueryParamType.Delegation,
+    scope: LukeHagar.PlexAPI.SDK.Models.Requests.Scope.All
 );
 
 // handle response
@@ -51,10 +51,10 @@ var res = await sdk.Authentication.GetTransientTokenAsync(
 
 ### Errors
 
-| Error Object                                        | Status Code                                         | Content Type                                        |
-| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
-| PlexAPI.Models.Errors.GetTransientTokenResponseBody | 401                                                 | application/json                                    |
-| PlexAPI.Models.Errors.SDKException                  | 4xx-5xx                                             | */*                                                 |
+| Error Object                                                      | Status Code                                                       | Content Type                                                      |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetTransientTokenResponseBody | 401                                                               | application/json                                                  |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                  | 4xx-5xx                                                           | */*                                                               |
 
 
 ## GetSourceConnectionInformation
@@ -66,11 +66,11 @@ Note: requires Plex Media Server >= 1.15.4.
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -92,10 +92,10 @@ var res = await sdk.Authentication.GetSourceConnectionInformationAsync(source: "
 
 ### Errors
 
-| Error Object                                                     | Status Code                                                      | Content Type                                                     |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| PlexAPI.Models.Errors.GetSourceConnectionInformationResponseBody | 401                                                              | application/json                                                 |
-| PlexAPI.Models.Errors.SDKException                               | 4xx-5xx                                                          | */*                                                              |
+| Error Object                                                                   | Status Code                                                                    | Content Type                                                                   |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetSourceConnectionInformationResponseBody | 401                                                                            | application/json                                                               |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                               | 4xx-5xx                                                                        | */*                                                                            |
 
 
 ## GetUserDetails
@@ -105,11 +105,11 @@ Get the User data from the provided X-Plex-Token
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -132,10 +132,10 @@ var res = await sdk.Authentication.GetUserDetailsAsync(xPlexToken: "CV5xoxjTpFKU
 
 ### Errors
 
-| Error Object                                     | Status Code                                      | Content Type                                     |
-| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| PlexAPI.Models.Errors.GetUserDetailsResponseBody | 401                                              | application/json                                 |
-| PlexAPI.Models.Errors.SDKException               | 4xx-5xx                                          | */*                                              |
+| Error Object                                                   | Status Code                                                    | Content Type                                                   |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetUserDetailsResponseBody | 401                                                            | application/json                                               |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException               | 4xx-5xx                                                        | */*                                                            |
 
 
 ## PostUsersSignInData
@@ -145,11 +145,11 @@ Sign in user with username and password and return user data with Plex authentic
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40");
+var sdk = new PlexAPI(xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40");
 
 var res = await sdk.Authentication.PostUsersSignInDataAsync(
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40",
@@ -176,7 +176,7 @@ var res = await sdk.Authentication.PostUsersSignInDataAsync(
 
 ### Errors
 
-| Error Object                                          | Status Code                                           | Content Type                                          |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| PlexAPI.Models.Errors.PostUsersSignInDataResponseBody | 401                                                   | application/json                                      |
-| PlexAPI.Models.Errors.SDKException                    | 4xx-5xx                                               | */*                                                   |
+| Error Object                                                        | Status Code                                                         | Content Type                                                        |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.PostUsersSignInDataResponseBody | 401                                                                 | application/json                                                    |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                    | 4xx-5xx                                                             | */*                                                                 |

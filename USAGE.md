@@ -1,9 +1,9 @@
 <!-- Start SDK Example Usage [usage] -->
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );

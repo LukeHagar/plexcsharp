@@ -1,4 +1,4 @@
-# PlexAPI
+# LukeHagar.PlexAPI.SDK
 
 
 <!-- Start SDK Example Usage [usage] -->
@@ -7,10 +7,10 @@
 ### Example
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -46,20 +46,20 @@ This is used to track the client application and its usage
 ### Example
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 GetServerResourcesRequest req = new GetServerResourcesRequest() {
     XPlexToken = "CV5xoxjTpFKUzBTShsaf",
-    IncludeHttps = PlexAPI.Models.Requests.IncludeHttps.One,
-    IncludeRelay = PlexAPI.Models.Requests.IncludeRelay.One,
-    IncludeIPv6 = PlexAPI.Models.Requests.IncludeIPv6.One,
+    IncludeHttps = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeHttps.One,
+    IncludeRelay = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeRelay.One,
+    IncludeIPv6 = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeIPv6.One,
 };
 
 var res = await sdk.Plex.GetServerResourcesAsync(req);
@@ -73,20 +73,20 @@ var res = await sdk.Plex.GetServerResourcesAsync(req);
 
 Handling errors in this SDK should largely match your expectations.  All operations return a response object or thow an exception.  If Error objects are specified in your OpenAPI Spec, the SDK will raise the appropriate type.
 
-| Error Object                                            | Status Code                                             | Content Type                                            |
-| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| PlexAPI.Models.Errors.GetServerCapabilitiesResponseBody | 401                                                     | application/json                                        |
-| PlexAPI.Models.Errors.SDKException                      | 4xx-5xx                                                 | */*                                                     |
+| Error Object                                                          | Status Code                                                           | Content Type                                                          |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetServerCapabilitiesResponseBody | 401                                                                   | application/json                                                      |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                      | 4xx-5xx                                                               | */*                                                                   |
 
 ### Example
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 using System;
-using PlexAPI.Models.Errors;
+using LukeHagar.PlexAPI.SDK.Models.Errors;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -103,7 +103,7 @@ catch (Exception ex)
     {
         // handle exception
     }
-    else if (ex is PlexAPI.Models.Errors.SDKException)
+    else if (ex is LukeHagar.PlexAPI.SDK.Models.Errors.SDKException)
     {
         // handle exception
     }
@@ -140,10 +140,10 @@ The default server can also be overridden globally by passing a URL to the `serv
 
 The server URL can also be overridden on a per-operation basis, provided a server list was specified for the operation. For example:
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -167,10 +167,10 @@ This SDK supports the following security scheme globally:
 
 To authenticate with the API the `AccessToken` parameter must be set when initializing the SDK client instance. For example:
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );

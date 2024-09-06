@@ -17,17 +17,17 @@ Get User Watchlist
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 GetWatchListRequest req = new GetWatchListRequest() {
-    Filter = PlexAPI.Models.Requests.Filter.Available,
+    Filter = LukeHagar.PlexAPI.SDK.Models.Requests.Filter.Available,
     XPlexToken = "CV5xoxjTpFKUzBTShsaf",
     XPlexContainerStart = 0,
     XPlexContainerSize = 50,
@@ -51,7 +51,7 @@ var res = await sdk.Watchlist.GetWatchListAsync(req);
 
 ### Errors
 
-| Error Object                                   | Status Code                                    | Content Type                                   |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| PlexAPI.Models.Errors.GetWatchListResponseBody | 401                                            | application/json                               |
-| PlexAPI.Models.Errors.SDKException             | 4xx-5xx                                        | */*                                            |
+| Error Object                                                 | Status Code                                                  | Content Type                                                 |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetWatchListResponseBody | 401                                                          | application/json                                             |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException             | 4xx-5xx                                                      | */*                                                          |

@@ -19,11 +19,11 @@ This will return the media statistics for the server
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -45,10 +45,10 @@ var res = await sdk.Statistics.GetStatisticsAsync(timespan: 4);
 
 ### Errors
 
-| Error Object                                    | Status Code                                     | Content Type                                    |
-| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| PlexAPI.Models.Errors.GetStatisticsResponseBody | 401                                             | application/json                                |
-| PlexAPI.Models.Errors.SDKException              | 4xx-5xx                                         | */*                                             |
+| Error Object                                                  | Status Code                                                   | Content Type                                                  |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetStatisticsResponseBody | 401                                                           | application/json                                              |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException              | 4xx-5xx                                                       | */*                                                           |
 
 
 ## GetResourcesStatistics
@@ -58,11 +58,11 @@ This will return the resources for the server
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -84,10 +84,10 @@ var res = await sdk.Statistics.GetResourcesStatisticsAsync(timespan: 4);
 
 ### Errors
 
-| Error Object                                             | Status Code                                              | Content Type                                             |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| PlexAPI.Models.Errors.GetResourcesStatisticsResponseBody | 401                                                      | application/json                                         |
-| PlexAPI.Models.Errors.SDKException                       | 4xx-5xx                                                  | */*                                                      |
+| Error Object                                                           | Status Code                                                            | Content Type                                                           |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetResourcesStatisticsResponseBody | 401                                                                    | application/json                                                       |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                       | 4xx-5xx                                                                | */*                                                                    |
 
 
 ## GetBandwidthStatistics
@@ -97,11 +97,11 @@ This will return the bandwidth statistics for the server
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -123,7 +123,7 @@ var res = await sdk.Statistics.GetBandwidthStatisticsAsync(timespan: 4);
 
 ### Errors
 
-| Error Object                                             | Status Code                                              | Content Type                                             |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| PlexAPI.Models.Errors.GetBandwidthStatisticsResponseBody | 401                                                      | application/json                                         |
-| PlexAPI.Models.Errors.SDKException                       | 4xx-5xx                                                  | */*                                                      |
+| Error Object                                                           | Status Code                                                            | Content Type                                                           |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetBandwidthStatisticsResponseBody | 401                                                                    | application/json                                                       |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                       | 4xx-5xx                                                                | */*                                                                    |

@@ -20,10 +20,10 @@ This will retrieve the "Now Playing" Information of the PMS.
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -39,10 +39,10 @@ var res = await sdk.Sessions.GetSessionsAsync();
 
 ### Errors
 
-| Error Object                                  | Status Code                                   | Content Type                                  |
-| --------------------------------------------- | --------------------------------------------- | --------------------------------------------- |
-| PlexAPI.Models.Errors.GetSessionsResponseBody | 401                                           | application/json                              |
-| PlexAPI.Models.Errors.SDKException            | 4xx-5xx                                       | */*                                           |
+| Error Object                                                | Status Code                                                 | Content Type                                                |
+| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetSessionsResponseBody | 401                                                         | application/json                                            |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException            | 4xx-5xx                                                     | */*                                                         |
 
 
 ## GetSessionHistory
@@ -52,11 +52,11 @@ This will Retrieve a listing of all history views.
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -86,10 +86,10 @@ var res = await sdk.Sessions.GetSessionHistoryAsync(
 
 ### Errors
 
-| Error Object                                        | Status Code                                         | Content Type                                        |
-| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
-| PlexAPI.Models.Errors.GetSessionHistoryResponseBody | 401                                                 | application/json                                    |
-| PlexAPI.Models.Errors.SDKException                  | 4xx-5xx                                             | */*                                                 |
+| Error Object                                                      | Status Code                                                       | Content Type                                                      |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetSessionHistoryResponseBody | 401                                                               | application/json                                                  |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                  | 4xx-5xx                                                           | */*                                                               |
 
 
 ## GetTranscodeSessions
@@ -99,10 +99,10 @@ Get Transcode Sessions
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -118,10 +118,10 @@ var res = await sdk.Sessions.GetTranscodeSessionsAsync();
 
 ### Errors
 
-| Error Object                                           | Status Code                                            | Content Type                                           |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| PlexAPI.Models.Errors.GetTranscodeSessionsResponseBody | 401                                                    | application/json                                       |
-| PlexAPI.Models.Errors.SDKException                     | 4xx-5xx                                                | */*                                                    |
+| Error Object                                                         | Status Code                                                          | Content Type                                                         |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetTranscodeSessionsResponseBody | 401                                                                  | application/json                                                     |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                     | 4xx-5xx                                                              | */*                                                                  |
 
 
 ## StopTranscodeSession
@@ -131,11 +131,11 @@ Stop a Transcode Session
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -157,7 +157,7 @@ var res = await sdk.Sessions.StopTranscodeSessionAsync(sessionKey: "zz7llzqlx8w9
 
 ### Errors
 
-| Error Object                                           | Status Code                                            | Content Type                                           |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| PlexAPI.Models.Errors.StopTranscodeSessionResponseBody | 401                                                    | application/json                                       |
-| PlexAPI.Models.Errors.SDKException                     | 4xx-5xx                                                | */*                                                    |
+| Error Object                                                         | Status Code                                                          | Content Type                                                         |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.StopTranscodeSessionResponseBody | 401                                                                  | application/json                                                     |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                     | 4xx-5xx                                                              | */*                                                                  |

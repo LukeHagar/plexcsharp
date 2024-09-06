@@ -18,11 +18,11 @@ Get the timeline for a media item
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -30,7 +30,7 @@ var sdk = new PlexAPISDK(
 GetTimelineRequest req = new GetTimelineRequest() {
     RatingKey = 23409D,
     Key = "/library/metadata/23409",
-    State = PlexAPI.Models.Requests.State.Playing,
+    State = LukeHagar.PlexAPI.SDK.Models.Requests.State.Playing,
     HasMDE = 1D,
     Time = 2000D,
     Duration = 10000D,
@@ -57,10 +57,10 @@ var res = await sdk.Video.GetTimelineAsync(req);
 
 ### Errors
 
-| Error Object                                  | Status Code                                   | Content Type                                  |
-| --------------------------------------------- | --------------------------------------------- | --------------------------------------------- |
-| PlexAPI.Models.Errors.GetTimelineResponseBody | 401                                           | application/json                              |
-| PlexAPI.Models.Errors.SDKException            | 4xx-5xx                                       | */*                                           |
+| Error Object                                                | Status Code                                                 | Content Type                                                |
+| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetTimelineResponseBody | 401                                                         | application/json                                            |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException            | 4xx-5xx                                                     | */*                                                         |
 
 
 ## StartUniversalTranscode
@@ -70,11 +70,11 @@ Begin a Universal Transcode Session
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -115,7 +115,7 @@ var res = await sdk.Video.StartUniversalTranscodeAsync(req);
 
 ### Errors
 
-| Error Object                                              | Status Code                                               | Content Type                                              |
-| --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
-| PlexAPI.Models.Errors.StartUniversalTranscodeResponseBody | 401                                                       | application/json                                          |
-| PlexAPI.Models.Errors.SDKException                        | 4xx-5xx                                                   | */*                                                       |
+| Error Object                                                            | Status Code                                                             | Content Type                                                            |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.StartUniversalTranscodeResponseBody | 401                                                                     | application/json                                                        |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                        | 4xx-5xx                                                                 | */*                                                                     |

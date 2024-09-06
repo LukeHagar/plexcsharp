@@ -24,10 +24,10 @@ Get Server Activities
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -43,10 +43,10 @@ var res = await sdk.Activities.GetServerActivitiesAsync();
 
 ### Errors
 
-| Error Object                                          | Status Code                                           | Content Type                                          |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| PlexAPI.Models.Errors.GetServerActivitiesResponseBody | 401                                                   | application/json                                      |
-| PlexAPI.Models.Errors.SDKException                    | 4xx-5xx                                               | */*                                                   |
+| Error Object                                                        | Status Code                                                         | Content Type                                                        |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetServerActivitiesResponseBody | 401                                                                 | application/json                                                    |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                    | 4xx-5xx                                                             | */*                                                                 |
 
 
 ## CancelServerActivities
@@ -56,11 +56,11 @@ Cancel Server Activities
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -82,7 +82,7 @@ var res = await sdk.Activities.CancelServerActivitiesAsync(activityUUID: "25b71e
 
 ### Errors
 
-| Error Object                                             | Status Code                                              | Content Type                                             |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| PlexAPI.Models.Errors.CancelServerActivitiesResponseBody | 401                                                      | application/json                                         |
-| PlexAPI.Models.Errors.SDKException                       | 4xx-5xx                                                  | */*                                                      |
+| Error Object                                                           | Status Code                                                            | Content Type                                                           |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.CancelServerActivitiesResponseBody | 401                                                                    | application/json                                                       |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                       | 4xx-5xx                                                                | */*                                                                    |

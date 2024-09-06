@@ -28,11 +28,11 @@ This resource returns hash values for local files
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -58,10 +58,10 @@ var res = await sdk.Library.GetFileHashAsync(
 
 ### Errors
 
-| Error Object                                  | Status Code                                   | Content Type                                  |
-| --------------------------------------------- | --------------------------------------------- | --------------------------------------------- |
-| PlexAPI.Models.Errors.GetFileHashResponseBody | 401                                           | application/json                              |
-| PlexAPI.Models.Errors.SDKException            | 4xx-5xx                                       | */*                                           |
+| Error Object                                                | Status Code                                                 | Content Type                                                |
+| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetFileHashResponseBody | 401                                                         | application/json                                            |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException            | 4xx-5xx                                                     | */*                                                         |
 
 
 ## GetRecentlyAdded
@@ -72,11 +72,11 @@ This endpoint will return the recently added content.
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -102,10 +102,10 @@ var res = await sdk.Library.GetRecentlyAddedAsync(
 
 ### Errors
 
-| Error Object                                       | Status Code                                        | Content Type                                       |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| PlexAPI.Models.Errors.GetRecentlyAddedResponseBody | 401                                                | application/json                                   |
-| PlexAPI.Models.Errors.SDKException                 | 4xx-5xx                                            | */*                                                |
+| Error Object                                                     | Status Code                                                      | Content Type                                                     |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetRecentlyAddedResponseBody | 401                                                              | application/json                                                 |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                 | 4xx-5xx                                                          | */*                                                              |
 
 
 ## GetAllLibraries
@@ -121,10 +121,10 @@ This allows a client to provide a rich interface around the media (e.g. allow so
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -140,10 +140,10 @@ var res = await sdk.Library.GetAllLibrariesAsync();
 
 ### Errors
 
-| Error Object                                      | Status Code                                       | Content Type                                      |
-| ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
-| PlexAPI.Models.Errors.GetAllLibrariesResponseBody | 401                                               | application/json                                  |
-| PlexAPI.Models.Errors.SDKException                | 4xx-5xx                                           | */*                                               |
+| Error Object                                                    | Status Code                                                     | Content Type                                                    |
+| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetAllLibrariesResponseBody | 401                                                             | application/json                                                |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                | 4xx-5xx                                                         | */*                                                             |
 
 
 ## GetLibraryDetails
@@ -192,18 +192,18 @@ Each type in the library comes with a set of filters and sorts, aiding in buildi
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Library.GetLibraryDetailsAsync(
     sectionKey: 9518,
-    includeDetails: PlexAPI.Models.Requests.IncludeDetails.Zero
+    includeDetails: LukeHagar.PlexAPI.SDK.Models.Requests.IncludeDetails.Zero
 );
 
 // handle response
@@ -222,10 +222,10 @@ var res = await sdk.Library.GetLibraryDetailsAsync(
 
 ### Errors
 
-| Error Object                                        | Status Code                                         | Content Type                                        |
-| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
-| PlexAPI.Models.Errors.GetLibraryDetailsResponseBody | 401                                                 | application/json                                    |
-| PlexAPI.Models.Errors.SDKException                  | 4xx-5xx                                             | */*                                                 |
+| Error Object                                                      | Status Code                                                       | Content Type                                                      |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetLibraryDetailsResponseBody | 401                                                               | application/json                                                  |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                  | 4xx-5xx                                                           | */*                                                               |
 
 
 ## DeleteLibrary
@@ -235,11 +235,11 @@ Delete a library using a specific section id
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -261,10 +261,10 @@ var res = await sdk.Library.DeleteLibraryAsync(sectionKey: 9518);
 
 ### Errors
 
-| Error Object                                    | Status Code                                     | Content Type                                    |
-| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| PlexAPI.Models.Errors.DeleteLibraryResponseBody | 401                                             | application/json                                |
-| PlexAPI.Models.Errors.SDKException              | 4xx-5xx                                         | */*                                             |
+| Error Object                                                  | Status Code                                                   | Content Type                                                  |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.DeleteLibraryResponseBody | 401                                                           | application/json                                              |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException              | 4xx-5xx                                                       | */*                                                           |
 
 
 ## GetLibraryItems
@@ -294,21 +294,21 @@ Fetches details from a specific section of the library identified by a section k
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 GetLibraryItemsRequest req = new GetLibraryItemsRequest() {
     SectionKey = 9518,
-    Tag = PlexAPI.Models.Requests.Tag.Edition,
-    Type = PlexAPI.Models.Requests.Type.Two,
-    IncludeGuids = PlexAPI.Models.Requests.IncludeGuids.One,
-    IncludeMeta = PlexAPI.Models.Requests.IncludeMeta.One,
+    Tag = LukeHagar.PlexAPI.SDK.Models.Requests.Tag.Edition,
+    Type = LukeHagar.PlexAPI.SDK.Models.Requests.Type.Two,
+    IncludeGuids = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeGuids.One,
+    IncludeMeta = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeMeta.One,
     XPlexContainerStart = 0,
     XPlexContainerSize = 50,
 };
@@ -330,10 +330,10 @@ var res = await sdk.Library.GetLibraryItemsAsync(req);
 
 ### Errors
 
-| Error Object                                      | Status Code                                       | Content Type                                      |
-| ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
-| PlexAPI.Models.Errors.GetLibraryItemsResponseBody | 401                                               | application/json                                  |
-| PlexAPI.Models.Errors.SDKException                | 4xx-5xx                                           | */*                                               |
+| Error Object                                                    | Status Code                                                     | Content Type                                                    |
+| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetLibraryItemsResponseBody | 401                                                             | application/json                                                |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                | 4xx-5xx                                                         | */*                                                             |
 
 
 ## GetRefreshLibraryMetadata
@@ -344,18 +344,18 @@ This endpoint Refreshes all the Metadata of the library.
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Library.GetRefreshLibraryMetadataAsync(
     sectionKey: 9518,
-    force: PlexAPI.Models.Requests.Force.One
+    force: LukeHagar.PlexAPI.SDK.Models.Requests.Force.One
 );
 
 // handle response
@@ -374,10 +374,10 @@ var res = await sdk.Library.GetRefreshLibraryMetadataAsync(
 
 ### Errors
 
-| Error Object                                                | Status Code                                                 | Content Type                                                |
-| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
-| PlexAPI.Models.Errors.GetRefreshLibraryMetadataResponseBody | 401                                                         | application/json                                            |
-| PlexAPI.Models.Errors.SDKException                          | 4xx-5xx                                                     | */*                                                         |
+| Error Object                                                              | Status Code                                                               | Content Type                                                              |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetRefreshLibraryMetadataResponseBody | 401                                                                       | application/json                                                          |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                          | 4xx-5xx                                                                   | */*                                                                       |
 
 
 ## GetSearchLibrary
@@ -405,18 +405,18 @@ Each type in the library comes with a set of filters and sorts, aiding in buildi
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Library.GetSearchLibraryAsync(
     sectionKey: 9518,
-    type: PlexAPI.Models.Requests.QueryParamType.Two
+    type: LukeHagar.PlexAPI.SDK.Models.Requests.QueryParamType.Two
 );
 
 // handle response
@@ -435,10 +435,10 @@ var res = await sdk.Library.GetSearchLibraryAsync(
 
 ### Errors
 
-| Error Object                                       | Status Code                                        | Content Type                                       |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| PlexAPI.Models.Errors.GetSearchLibraryResponseBody | 401                                                | application/json                                   |
-| PlexAPI.Models.Errors.SDKException                 | 4xx-5xx                                            | */*                                                |
+| Error Object                                                     | Status Code                                                      | Content Type                                                     |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetSearchLibraryResponseBody | 401                                                              | application/json                                                 |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                 | 4xx-5xx                                                          | */*                                                              |
 
 
 ## GetMetaDataByRatingKey
@@ -449,11 +449,11 @@ This endpoint will return the metadata of a library item specified with the rati
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -475,10 +475,10 @@ var res = await sdk.Library.GetMetaDataByRatingKeyAsync(ratingKey: 9518);
 
 ### Errors
 
-| Error Object                                             | Status Code                                              | Content Type                                             |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| PlexAPI.Models.Errors.GetMetaDataByRatingKeyResponseBody | 401                                                      | application/json                                         |
-| PlexAPI.Models.Errors.SDKException                       | 4xx-5xx                                                  | */*                                                      |
+| Error Object                                                           | Status Code                                                            | Content Type                                                           |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetMetaDataByRatingKeyResponseBody | 401                                                                    | application/json                                                       |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                       | 4xx-5xx                                                                | */*                                                                    |
 
 
 ## GetMetadataChildren
@@ -489,11 +489,11 @@ This endpoint will return the children of of a library item specified with the r
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -519,10 +519,10 @@ var res = await sdk.Library.GetMetadataChildrenAsync(
 
 ### Errors
 
-| Error Object                                          | Status Code                                           | Content Type                                          |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| PlexAPI.Models.Errors.GetMetadataChildrenResponseBody | 401                                                   | application/json                                      |
-| PlexAPI.Models.Errors.SDKException                    | 4xx-5xx                                               | */*                                                   |
+| Error Object                                                        | Status Code                                                         | Content Type                                                        |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetMetadataChildrenResponseBody | 401                                                                 | application/json                                                    |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                    | 4xx-5xx                                                             | */*                                                                 |
 
 
 ## GetTopWatchedContent
@@ -533,17 +533,17 @@ This endpoint will return the top watched content from libraries of a certain ty
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Library.GetTopWatchedContentAsync(
-    type: PlexAPI.Models.Requests.GetTopWatchedContentQueryParamType.Two,
+    type: LukeHagar.PlexAPI.SDK.Models.Requests.GetTopWatchedContentQueryParamType.Two,
     includeGuids: 1
 );
 
@@ -563,10 +563,10 @@ var res = await sdk.Library.GetTopWatchedContentAsync(
 
 ### Errors
 
-| Error Object                                           | Status Code                                            | Content Type                                           |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| PlexAPI.Models.Errors.GetTopWatchedContentResponseBody | 401                                                    | application/json                                       |
-| PlexAPI.Models.Errors.SDKException                     | 4xx-5xx                                                | */*                                                    |
+| Error Object                                                         | Status Code                                                          | Content Type                                                         |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetTopWatchedContentResponseBody | 401                                                                  | application/json                                                     |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                     | 4xx-5xx                                                              | */*                                                                  |
 
 
 ## GetOnDeck
@@ -577,10 +577,10 @@ This endpoint will return the on deck content.
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -596,7 +596,7 @@ var res = await sdk.Library.GetOnDeckAsync();
 
 ### Errors
 
-| Error Object                                | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| PlexAPI.Models.Errors.GetOnDeckResponseBody | 401                                         | application/json                            |
-| PlexAPI.Models.Errors.SDKException          | 4xx-5xx                                     | */*                                         |
+| Error Object                                              | Status Code                                               | Content Type                                              |
+| --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetOnDeckResponseBody | 401                                                       | application/json                                          |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException          | 4xx-5xx                                                   | */*                                                       |

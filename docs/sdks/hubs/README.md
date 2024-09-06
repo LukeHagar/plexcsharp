@@ -18,18 +18,18 @@ Get Global Hubs filtered by the parameters provided.
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Hubs.GetGlobalHubsAsync(
     count: 1262.49D,
-    onlyTransient: PlexAPI.Models.Requests.OnlyTransient.One
+    onlyTransient: LukeHagar.PlexAPI.SDK.Models.Requests.OnlyTransient.One
 );
 
 // handle response
@@ -48,10 +48,10 @@ var res = await sdk.Hubs.GetGlobalHubsAsync(
 
 ### Errors
 
-| Error Object                                    | Status Code                                     | Content Type                                    |
-| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| PlexAPI.Models.Errors.GetGlobalHubsResponseBody | 401                                             | application/json                                |
-| PlexAPI.Models.Errors.SDKException              | 4xx-5xx                                         | */*                                             |
+| Error Object                                                  | Status Code                                                   | Content Type                                                  |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetGlobalHubsResponseBody | 401                                                           | application/json                                              |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException              | 4xx-5xx                                                       | */*                                                           |
 
 
 ## GetLibraryHubs
@@ -62,11 +62,11 @@ This endpoint will return a list of library specific hubs
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -74,7 +74,7 @@ var sdk = new PlexAPISDK(
 var res = await sdk.Hubs.GetLibraryHubsAsync(
     sectionId: 6728.76D,
     count: 9010.22D,
-    onlyTransient: PlexAPI.Models.Requests.QueryParamOnlyTransient.Zero
+    onlyTransient: LukeHagar.PlexAPI.SDK.Models.Requests.QueryParamOnlyTransient.Zero
 );
 
 // handle response
@@ -94,7 +94,7 @@ var res = await sdk.Hubs.GetLibraryHubsAsync(
 
 ### Errors
 
-| Error Object                                     | Status Code                                      | Content Type                                     |
-| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| PlexAPI.Models.Errors.GetLibraryHubsResponseBody | 401                                              | application/json                                 |
-| PlexAPI.Models.Errors.SDKException               | 4xx-5xx                                          | */*                                              |
+| Error Object                                                   | Status Code                                                    | Content Type                                                   |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetLibraryHubsResponseBody | 401                                                            | application/json                                               |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException               | 4xx-5xx                                                        | */*                                                            |

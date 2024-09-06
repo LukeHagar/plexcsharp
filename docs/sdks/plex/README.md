@@ -23,10 +23,10 @@ Get Companions Data
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -48,10 +48,10 @@ var res = await sdk.Plex.GetCompanionsDataAsync();
 
 ### Errors
 
-| Error Object                                        | Status Code                                         | Content Type                                        |
-| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
-| PlexAPI.Models.Errors.GetCompanionsDataResponseBody | 401                                                 | application/json                                    |
-| PlexAPI.Models.Errors.SDKException                  | 4xx-5xx                                             | */*                                                 |
+| Error Object                                                      | Status Code                                                       | Content Type                                                      |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetCompanionsDataResponseBody | 401                                                               | application/json                                                  |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                  | 4xx-5xx                                                           | */*                                                               |
 
 
 ## GetUserFriends
@@ -61,10 +61,10 @@ Get friends of provided auth token.
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -86,10 +86,10 @@ var res = await sdk.Plex.GetUserFriendsAsync();
 
 ### Errors
 
-| Error Object                                     | Status Code                                      | Content Type                                     |
-| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-| PlexAPI.Models.Errors.GetUserFriendsResponseBody | 401                                              | application/json                                 |
-| PlexAPI.Models.Errors.SDKException               | 4xx-5xx                                          | */*                                              |
+| Error Object                                                   | Status Code                                                    | Content Type                                                   |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetUserFriendsResponseBody | 401                                                            | application/json                                               |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException               | 4xx-5xx                                                        | */*                                                            |
 
 
 ## GetGeoData
@@ -99,10 +99,10 @@ Returns the geolocation and locale data of the caller
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40");
+var sdk = new PlexAPI(xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40");
 
 var res = await sdk.Plex.GetGeoDataAsync();
 
@@ -121,10 +121,10 @@ var res = await sdk.Plex.GetGeoDataAsync();
 
 ### Errors
 
-| Error Object                                 | Status Code                                  | Content Type                                 |
-| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| PlexAPI.Models.Errors.GetGeoDataResponseBody | 401                                          | application/json                             |
-| PlexAPI.Models.Errors.SDKException           | 4xx-5xx                                      | */*                                          |
+| Error Object                                               | Status Code                                                | Content Type                                               |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetGeoDataResponseBody | 401                                                        | application/json                                           |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException           | 4xx-5xx                                                    | */*                                                        |
 
 
 ## GetHomeData
@@ -134,10 +134,10 @@ Retrieves the home data for the authenticated user, including details like home 
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -153,10 +153,10 @@ var res = await sdk.Plex.GetHomeDataAsync();
 
 ### Errors
 
-| Error Object                                  | Status Code                                   | Content Type                                  |
-| --------------------------------------------- | --------------------------------------------- | --------------------------------------------- |
-| PlexAPI.Models.Errors.GetHomeDataResponseBody | 401                                           | application/json                              |
-| PlexAPI.Models.Errors.SDKException            | 4xx-5xx                                       | */*                                           |
+| Error Object                                                | Status Code                                                 | Content Type                                                |
+| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetHomeDataResponseBody | 401                                                         | application/json                                            |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException            | 4xx-5xx                                                     | */*                                                         |
 
 
 ## GetServerResources
@@ -166,20 +166,20 @@ Get Plex server access tokens and server connections
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 GetServerResourcesRequest req = new GetServerResourcesRequest() {
     XPlexToken = "CV5xoxjTpFKUzBTShsaf",
-    IncludeHttps = PlexAPI.Models.Requests.IncludeHttps.One,
-    IncludeRelay = PlexAPI.Models.Requests.IncludeRelay.One,
-    IncludeIPv6 = PlexAPI.Models.Requests.IncludeIPv6.One,
+    IncludeHttps = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeHttps.One,
+    IncludeRelay = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeRelay.One,
+    IncludeIPv6 = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeIPv6.One,
 };
 
 var res = await sdk.Plex.GetServerResourcesAsync(req);
@@ -200,10 +200,10 @@ var res = await sdk.Plex.GetServerResourcesAsync(req);
 
 ### Errors
 
-| Error Object                                         | Status Code                                          | Content Type                                         |
-| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| PlexAPI.Models.Errors.GetServerResourcesResponseBody | 401                                                  | application/json                                     |
-| PlexAPI.Models.Errors.SDKException                   | 4xx-5xx                                              | */*                                                  |
+| Error Object                                                       | Status Code                                                        | Content Type                                                       |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetServerResourcesResponseBody | 401                                                                | application/json                                                   |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                   | 4xx-5xx                                                            | */*                                                                |
 
 
 ## GetPin
@@ -213,11 +213,11 @@ Retrieve a Pin from Plex.tv for authentication flows
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40");
+var sdk = new PlexAPI(xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40");
 
 var res = await sdk.Plex.GetPinAsync(
     strong: false,
@@ -243,10 +243,10 @@ var res = await sdk.Plex.GetPinAsync(
 
 ### Errors
 
-| Error Object                             | Status Code                              | Content Type                             |
-| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| PlexAPI.Models.Errors.GetPinResponseBody | 400                                      | application/json                         |
-| PlexAPI.Models.Errors.SDKException       | 4xx-5xx                                  | */*                                      |
+| Error Object                                           | Status Code                                            | Content Type                                           |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetPinResponseBody | 400                                                    | application/json                                       |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException       | 4xx-5xx                                                | */*                                                    |
 
 
 ## GetTokenByPinId
@@ -256,11 +256,11 @@ Retrieve an Access Token from Plex.tv after the Pin has been authenticated
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40");
+var sdk = new PlexAPI(xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40");
 
 var res = await sdk.Plex.GetTokenByPinIdAsync(
     pinID: 408895,
@@ -284,8 +284,8 @@ var res = await sdk.Plex.GetTokenByPinIdAsync(
 
 ### Errors
 
-| Error Object                                          | Status Code                                           | Content Type                                          |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| PlexAPI.Models.Errors.GetTokenByPinIdResponseBody     | 400                                                   | application/json                                      |
-| PlexAPI.Models.Errors.GetTokenByPinIdPlexResponseBody | 404                                                   | application/json                                      |
-| PlexAPI.Models.Errors.SDKException                    | 4xx-5xx                                               | */*                                                   |
+| Error Object                                                        | Status Code                                                         | Content Type                                                        |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetTokenByPinIdResponseBody     | 400                                                                 | application/json                                                    |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetTokenByPinIdPlexResponseBody | 404                                                                 | application/json                                                    |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                    | 4xx-5xx                                                             | */*                                                                 |

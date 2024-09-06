@@ -20,10 +20,10 @@ Querying status of updates
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -39,10 +39,10 @@ var res = await sdk.Updater.GetUpdateStatusAsync();
 
 ### Errors
 
-| Error Object                                      | Status Code                                       | Content Type                                      |
-| ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
-| PlexAPI.Models.Errors.GetUpdateStatusResponseBody | 401                                               | application/json                                  |
-| PlexAPI.Models.Errors.SDKException                | 4xx-5xx                                           | */*                                               |
+| Error Object                                                    | Status Code                                                     | Content Type                                                    |
+| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetUpdateStatusResponseBody | 401                                                             | application/json                                                |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                | 4xx-5xx                                                         | */*                                                             |
 
 
 ## CheckForUpdates
@@ -52,16 +52,16 @@ Checking for updates
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
-var res = await sdk.Updater.CheckForUpdatesAsync(download: PlexAPI.Models.Requests.Download.One);
+var res = await sdk.Updater.CheckForUpdatesAsync(download: LukeHagar.PlexAPI.SDK.Models.Requests.Download.One);
 
 // handle response
 ```
@@ -78,10 +78,10 @@ var res = await sdk.Updater.CheckForUpdatesAsync(download: PlexAPI.Models.Reques
 
 ### Errors
 
-| Error Object                                      | Status Code                                       | Content Type                                      |
-| ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
-| PlexAPI.Models.Errors.CheckForUpdatesResponseBody | 401                                               | application/json                                  |
-| PlexAPI.Models.Errors.SDKException                | 4xx-5xx                                           | */*                                               |
+| Error Object                                                    | Status Code                                                     | Content Type                                                    |
+| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.CheckForUpdatesResponseBody | 401                                                             | application/json                                                |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                | 4xx-5xx                                                         | */*                                                             |
 
 
 ## ApplyUpdates
@@ -92,18 +92,18 @@ Note that these two parameters are effectively mutually exclusive. The `tonight`
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Updater.ApplyUpdatesAsync(
-    tonight: PlexAPI.Models.Requests.Tonight.One,
-    skip: PlexAPI.Models.Requests.Skip.One
+    tonight: LukeHagar.PlexAPI.SDK.Models.Requests.Tonight.One,
+    skip: LukeHagar.PlexAPI.SDK.Models.Requests.Skip.One
 );
 
 // handle response
@@ -122,7 +122,7 @@ var res = await sdk.Updater.ApplyUpdatesAsync(
 
 ### Errors
 
-| Error Object                                   | Status Code                                    | Content Type                                   |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| PlexAPI.Models.Errors.ApplyUpdatesResponseBody | 401                                            | application/json                               |
-| PlexAPI.Models.Errors.SDKException             | 4xx-5xx                                        | */*                                            |
+| Error Object                                                 | Status Code                                                  | Content Type                                                 |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| LukeHagar.PlexAPI.SDK.Models.Errors.ApplyUpdatesResponseBody | 401                                                          | application/json                                             |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException             | 4xx-5xx                                                      | */*                                                          |

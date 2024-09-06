@@ -3,10 +3,10 @@ id: 5a8dbcbc-e0ee-41f0-9d84-b8b50567d1e9
 management:
   docChecksum: f627107f2ac6c53325be4f291ae2dea7
   docVersion: 0.0.3
-  speakeasyVersion: 1.390.7
-  generationVersion: 2.409.8
-  releaseVersion: 0.5.0
-  configChecksum: 4bb12ec49dacd5ee7587cdd901280ff9
+  speakeasyVersion: 1.391.3
+  generationVersion: 2.411.5
+  releaseVersion: 0.5.1
+  configChecksum: f734ad53a666188f16120f249ba12bf7
   repoURL: https://github.com/LukeHagar/plexcsharp.git
   repoSubDirectory: .
   published: true
@@ -14,7 +14,7 @@ features:
   csharp:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.0.1
-    core: 3.9.16
+    core: 3.9.17
     deprecations: 2.81.2
     flattening: 2.81.2
     globalSecurity: 2.83.6
@@ -30,1156 +30,1921 @@ features:
     sdkHooks: 0.1.0
     unions: 0.2.1
 generatedFiles:
-  - PlexAPI/Server.cs
-  - PlexAPI/Media.cs
-  - PlexAPI/Video.cs
-  - PlexAPI/Activities.cs
-  - PlexAPI/Butler.cs
-  - PlexAPI/Plex.cs
-  - PlexAPI/Hubs.cs
-  - PlexAPI/Search.cs
-  - PlexAPI/Library.cs
-  - PlexAPI/Watchlist.cs
-  - PlexAPI/Log.cs
-  - PlexAPI/Playlists.cs
-  - PlexAPI/Authentication.cs
-  - PlexAPI/Statistics.cs
-  - PlexAPI/Sessions.cs
-  - PlexAPI/Updater.cs
-  - PlexAPI/PlexAPISDK.cs
-  - global.json
-  - PlexAPI.sln
-  - PlexAPI/Utils/AnyDeserializer.cs
-  - PlexAPI/Utils/BigIntStrConverter.cs
-  - PlexAPI/Utils/DecimalStrConverter.cs
-  - PlexAPI/Utils/EnumConverter.cs
-  - PlexAPI/Utils/FlexibleObjectDeserializer.cs
-  - PlexAPI/Utils/HeaderSerializer.cs
-  - PlexAPI/Utils/IsoDateTimeSerializer.cs
-  - PlexAPI/Utils/RequestBodySerializer.cs
-  - PlexAPI/Utils/ResponseBodyDeserializer.cs
-  - PlexAPI/Utils/Retries/BackoffStrategy.cs
-  - PlexAPI/Utils/Retries/Retries.cs
-  - PlexAPI/Utils/Retries/RetryConfig.cs
-  - PlexAPI/Utils/SecurityMetadata.cs
-  - PlexAPI/Utils/SpeakeasyHttpClient.cs
-  - PlexAPI/Utils/SpeakeasyMetadata.cs
-  - PlexAPI/Utils/URLBuilder.cs
-  - PlexAPI/Utils/Utilities.cs
-  - PlexAPI/PlexAPI.csproj
-  - PlexAPI/Models/Errors/SDKException.cs
-  - PlexAPI/Models/Requests/Directory.cs
-  - PlexAPI/Models/Requests/MediaContainer.cs
-  - PlexAPI/Models/Requests/GetServerCapabilitiesResponseBody.cs
-  - PlexAPI/Models/Requests/GetServerCapabilitiesResponse.cs
-  - PlexAPI/Models/Requests/Setting.cs
-  - PlexAPI/Models/Requests/GetServerPreferencesMediaContainer.cs
-  - PlexAPI/Models/Requests/GetServerPreferencesResponseBody.cs
-  - PlexAPI/Models/Requests/GetServerPreferencesResponse.cs
-  - PlexAPI/Models/Requests/Server.cs
-  - PlexAPI/Models/Requests/GetAvailableClientsMediaContainer.cs
-  - PlexAPI/Models/Requests/GetAvailableClientsResponseBody.cs
-  - PlexAPI/Models/Requests/GetAvailableClientsResponse.cs
-  - PlexAPI/Models/Requests/Device.cs
-  - PlexAPI/Models/Requests/GetDevicesMediaContainer.cs
-  - PlexAPI/Models/Requests/GetDevicesResponseBody.cs
-  - PlexAPI/Models/Requests/GetDevicesResponse.cs
-  - PlexAPI/Models/Requests/GetServerIdentityMediaContainer.cs
-  - PlexAPI/Models/Requests/GetServerIdentityResponseBody.cs
-  - PlexAPI/Models/Requests/GetServerIdentityResponse.cs
-  - PlexAPI/Models/Requests/MyPlex.cs
-  - PlexAPI/Models/Requests/GetMyPlexAccountResponseBody.cs
-  - PlexAPI/Models/Requests/GetMyPlexAccountResponse.cs
-  - PlexAPI/Models/Requests/MinSize.cs
-  - PlexAPI/Models/Requests/Upscale.cs
-  - PlexAPI/Models/Requests/GetResizedPhotoRequest.cs
-  - PlexAPI/Models/Requests/GetResizedPhotoResponse.cs
-  - PlexAPI/Models/Requests/GetMediaProvidersRequest.cs
-  - PlexAPI/Models/Requests/Pivot.cs
-  - PlexAPI/Models/Requests/GetMediaProvidersDirectory.cs
-  - PlexAPI/Models/Requests/Feature.cs
-  - PlexAPI/Models/Requests/MediaProvider.cs
-  - PlexAPI/Models/Requests/GetMediaProvidersMediaContainer.cs
-  - PlexAPI/Models/Requests/GetMediaProvidersResponseBody.cs
-  - PlexAPI/Models/Requests/GetMediaProvidersResponse.cs
-  - PlexAPI/Models/Requests/GetServerListServer.cs
-  - PlexAPI/Models/Requests/GetServerListMediaContainer.cs
-  - PlexAPI/Models/Requests/GetServerListResponseBody.cs
-  - PlexAPI/Models/Requests/GetServerListResponse.cs
-  - PlexAPI/Models/Requests/MarkPlayedRequest.cs
-  - PlexAPI/Models/Requests/MarkPlayedResponse.cs
-  - PlexAPI/Models/Requests/MarkUnplayedRequest.cs
-  - PlexAPI/Models/Requests/MarkUnplayedResponse.cs
-  - PlexAPI/Models/Requests/UpdatePlayProgressRequest.cs
-  - PlexAPI/Models/Requests/UpdatePlayProgressResponse.cs
-  - PlexAPI/Models/Requests/GetBannerImageRequest.cs
-  - PlexAPI/Models/Requests/GetBannerImageResponse.cs
-  - PlexAPI/Models/Requests/GetThumbImageRequest.cs
-  - PlexAPI/Models/Requests/GetThumbImageResponse.cs
-  - PlexAPI/Models/Requests/State.cs
-  - PlexAPI/Models/Requests/GetTimelineRequest.cs
-  - PlexAPI/Models/Requests/GetTimelineResponse.cs
-  - PlexAPI/Models/Requests/StartUniversalTranscodeRequest.cs
-  - PlexAPI/Models/Requests/StartUniversalTranscodeResponse.cs
-  - PlexAPI/Models/Requests/Context.cs
-  - PlexAPI/Models/Requests/Activity.cs
-  - PlexAPI/Models/Requests/GetServerActivitiesMediaContainer.cs
-  - PlexAPI/Models/Requests/GetServerActivitiesResponseBody.cs
-  - PlexAPI/Models/Requests/GetServerActivitiesResponse.cs
-  - PlexAPI/Models/Requests/CancelServerActivitiesRequest.cs
-  - PlexAPI/Models/Requests/CancelServerActivitiesResponse.cs
-  - PlexAPI/Models/Requests/ButlerTask.cs
-  - PlexAPI/Models/Requests/ButlerTasks.cs
-  - PlexAPI/Models/Requests/GetButlerTasksResponseBody.cs
-  - PlexAPI/Models/Requests/GetButlerTasksResponse.cs
-  - PlexAPI/Models/Requests/StartAllTasksResponse.cs
-  - PlexAPI/Models/Requests/StopAllTasksResponse.cs
-  - PlexAPI/Models/Requests/TaskName.cs
-  - PlexAPI/Models/Requests/StartTaskRequest.cs
-  - PlexAPI/Models/Requests/StartTaskResponse.cs
-  - PlexAPI/Models/Requests/PathParamTaskName.cs
-  - PlexAPI/Models/Requests/StopTaskRequest.cs
-  - PlexAPI/Models/Requests/StopTaskResponse.cs
-  - PlexAPI/Models/Requests/ResponseBody.cs
-  - PlexAPI/Models/Requests/GetCompanionsDataResponse.cs
-  - PlexAPI/Models/Requests/SharedServers.cs
-  - PlexAPI/Models/Requests/SharedSources.cs
-  - PlexAPI/Models/Requests/Status.cs
-  - PlexAPI/Models/Requests/Friend.cs
-  - PlexAPI/Models/Requests/GetUserFriendsResponse.cs
-  - PlexAPI/Models/Requests/GetGeoDataGeoData.cs
-  - PlexAPI/Models/Requests/GetGeoDataResponse.cs
-  - PlexAPI/Models/Requests/GetHomeDataResponseBody.cs
-  - PlexAPI/Models/Requests/GetHomeDataResponse.cs
-  - PlexAPI/Models/Requests/IncludeHttps.cs
-  - PlexAPI/Models/Requests/IncludeRelay.cs
-  - PlexAPI/Models/Requests/IncludeIPv6.cs
-  - PlexAPI/Models/Requests/GetServerResourcesRequest.cs
-  - PlexAPI/Models/Requests/Connections.cs
-  - PlexAPI/Models/Requests/PlexDevice.cs
-  - PlexAPI/Models/Requests/GetServerResourcesResponse.cs
-  - PlexAPI/Models/Requests/GetPinRequest.cs
-  - PlexAPI/Models/Requests/GeoData.cs
-  - PlexAPI/Models/Requests/GetPinAuthPinContainer.cs
-  - PlexAPI/Models/Requests/GetPinResponse.cs
-  - PlexAPI/Models/Requests/GetTokenByPinIdRequest.cs
-  - PlexAPI/Models/Requests/GetTokenByPinIdGeoData.cs
-  - PlexAPI/Models/Requests/GetTokenByPinIdAuthPinContainer.cs
-  - PlexAPI/Models/Requests/GetTokenByPinIdResponse.cs
-  - PlexAPI/Models/Requests/OnlyTransient.cs
-  - PlexAPI/Models/Requests/GetGlobalHubsRequest.cs
-  - PlexAPI/Models/Requests/GetGlobalHubsMetadata.cs
-  - PlexAPI/Models/Requests/Hub.cs
-  - PlexAPI/Models/Requests/GetGlobalHubsMediaContainer.cs
-  - PlexAPI/Models/Requests/GetGlobalHubsResponseBody.cs
-  - PlexAPI/Models/Requests/GetGlobalHubsResponse.cs
-  - PlexAPI/Models/Requests/QueryParamOnlyTransient.cs
-  - PlexAPI/Models/Requests/GetLibraryHubsRequest.cs
-  - PlexAPI/Models/Requests/GetLibraryHubsPart.cs
-  - PlexAPI/Models/Requests/GetLibraryHubsMedia.cs
-  - PlexAPI/Models/Requests/GetLibraryHubsGenre.cs
-  - PlexAPI/Models/Requests/GetLibraryHubsCountry.cs
-  - PlexAPI/Models/Requests/GetLibraryHubsDirector.cs
-  - PlexAPI/Models/Requests/GetLibraryHubsRole.cs
-  - PlexAPI/Models/Requests/GetLibraryHubsWriter.cs
-  - PlexAPI/Models/Requests/GetLibraryHubsMetadata.cs
-  - PlexAPI/Models/Requests/GetLibraryHubsHub.cs
-  - PlexAPI/Models/Requests/GetLibraryHubsMediaContainer.cs
-  - PlexAPI/Models/Requests/GetLibraryHubsResponseBody.cs
-  - PlexAPI/Models/Requests/GetLibraryHubsResponse.cs
-  - PlexAPI/Models/Requests/PerformSearchRequest.cs
-  - PlexAPI/Models/Requests/PerformSearchResponse.cs
-  - PlexAPI/Models/Requests/PerformVoiceSearchRequest.cs
-  - PlexAPI/Models/Requests/PerformVoiceSearchResponse.cs
-  - PlexAPI/Models/Requests/GetSearchResultsRequest.cs
-  - PlexAPI/Models/Requests/GetSearchResultsPart.cs
-  - PlexAPI/Models/Requests/GetSearchResultsMedia.cs
-  - PlexAPI/Models/Requests/GetSearchResultsGenre.cs
-  - PlexAPI/Models/Requests/GetSearchResultsDirector.cs
-  - PlexAPI/Models/Requests/GetSearchResultsWriter.cs
-  - PlexAPI/Models/Requests/GetSearchResultsCountry.cs
-  - PlexAPI/Models/Requests/GetSearchResultsRole.cs
-  - PlexAPI/Models/Requests/GetSearchResultsMetadata.cs
-  - PlexAPI/Models/Requests/Provider.cs
-  - PlexAPI/Models/Requests/GetSearchResultsMediaContainer.cs
-  - PlexAPI/Models/Requests/GetSearchResultsResponseBody.cs
-  - PlexAPI/Models/Requests/GetSearchResultsResponse.cs
-  - PlexAPI/Models/Requests/GetFileHashRequest.cs
-  - PlexAPI/Models/Requests/GetFileHashResponse.cs
-  - PlexAPI/Models/Requests/GetRecentlyAddedRequest.cs
-  - PlexAPI/Models/Requests/Part.cs
-  - PlexAPI/Models/Requests/Media.cs
-  - PlexAPI/Models/Requests/Genre.cs
-  - PlexAPI/Models/Requests/Director.cs
-  - PlexAPI/Models/Requests/Writer.cs
-  - PlexAPI/Models/Requests/Country.cs
-  - PlexAPI/Models/Requests/Role.cs
-  - PlexAPI/Models/Requests/GetRecentlyAddedMetadata.cs
-  - PlexAPI/Models/Requests/GetRecentlyAddedMediaContainer.cs
-  - PlexAPI/Models/Requests/GetRecentlyAddedResponseBody.cs
-  - PlexAPI/Models/Requests/GetRecentlyAddedResponse.cs
-  - PlexAPI/Models/Requests/Location.cs
-  - PlexAPI/Models/Requests/GetAllLibrariesDirectory.cs
-  - PlexAPI/Models/Requests/GetAllLibrariesMediaContainer.cs
-  - PlexAPI/Models/Requests/GetAllLibrariesResponseBody.cs
-  - PlexAPI/Models/Requests/GetAllLibrariesResponse.cs
-  - PlexAPI/Models/Requests/IncludeDetails.cs
-  - PlexAPI/Models/Requests/GetLibraryDetailsRequest.cs
-  - PlexAPI/Models/Requests/GetLibraryDetailsDirectory.cs
-  - PlexAPI/Models/Requests/GetLibraryDetailsFilter.cs
-  - PlexAPI/Models/Requests/Sort.cs
-  - PlexAPI/Models/Requests/Field.cs
-  - PlexAPI/Models/Requests/GetLibraryDetailsType.cs
-  - PlexAPI/Models/Requests/Operator.cs
-  - PlexAPI/Models/Requests/FieldType.cs
-  - PlexAPI/Models/Requests/GetLibraryDetailsMediaContainer.cs
-  - PlexAPI/Models/Requests/GetLibraryDetailsResponseBody.cs
-  - PlexAPI/Models/Requests/GetLibraryDetailsResponse.cs
-  - PlexAPI/Models/Requests/DeleteLibraryRequest.cs
-  - PlexAPI/Models/Requests/DeleteLibraryResponse.cs
-  - PlexAPI/Models/Requests/Tag.cs
-  - PlexAPI/Models/Requests/IncludeGuids.cs
-  - PlexAPI/Models/Requests/IncludeMeta.cs
-  - PlexAPI/Models/Requests/Type.cs
-  - PlexAPI/Models/Requests/GetLibraryItemsRequest.cs
-  - PlexAPI/Models/Requests/LibrarySectionID.cs
-  - PlexAPI/Models/Requests/GetLibraryItemsPart.cs
-  - PlexAPI/Models/Requests/GetLibraryItemsMedia.cs
-  - PlexAPI/Models/Requests/GetLibraryItemsGenre.cs
-  - PlexAPI/Models/Requests/GetLibraryItemsCountry.cs
-  - PlexAPI/Models/Requests/GetLibraryItemsDirector.cs
-  - PlexAPI/Models/Requests/GetLibraryItemsWriter.cs
-  - PlexAPI/Models/Requests/GetLibraryItemsRole.cs
-  - PlexAPI/Models/Requests/GetLibraryItemsMetadata.cs
-  - PlexAPI/Models/Requests/GetLibraryItemsMediaContainer.cs
-  - PlexAPI/Models/Requests/GetLibraryItemsResponseBody.cs
-  - PlexAPI/Models/Requests/GetLibraryItemsResponse.cs
-  - PlexAPI/Models/Requests/Force.cs
-  - PlexAPI/Models/Requests/GetRefreshLibraryMetadataRequest.cs
-  - PlexAPI/Models/Requests/GetRefreshLibraryMetadataResponse.cs
-  - PlexAPI/Models/Requests/QueryParamType.cs
-  - PlexAPI/Models/Requests/GetSearchLibraryRequest.cs
-  - PlexAPI/Models/Requests/GetSearchLibraryMetadata.cs
-  - PlexAPI/Models/Requests/GetSearchLibraryMediaContainer.cs
-  - PlexAPI/Models/Requests/GetSearchLibraryResponseBody.cs
-  - PlexAPI/Models/Requests/GetSearchLibraryResponse.cs
-  - PlexAPI/Models/Requests/GetMetaDataByRatingKeyRequest.cs
-  - PlexAPI/Models/Requests/Stream.cs
-  - PlexAPI/Models/Requests/GetMetaDataByRatingKeyPart.cs
-  - PlexAPI/Models/Requests/GetMetaDataByRatingKeyMedia.cs
-  - PlexAPI/Models/Requests/GetMetaDataByRatingKeyGenre.cs
-  - PlexAPI/Models/Requests/GetMetaDataByRatingKeyCountry.cs
-  - PlexAPI/Models/Requests/Guids.cs
-  - PlexAPI/Models/Requests/Ratings.cs
-  - PlexAPI/Models/Requests/GetMetaDataByRatingKeyDirector.cs
-  - PlexAPI/Models/Requests/GetMetaDataByRatingKeyWriter.cs
-  - PlexAPI/Models/Requests/GetMetaDataByRatingKeyRole.cs
-  - PlexAPI/Models/Requests/Producer.cs
-  - PlexAPI/Models/Requests/GetMetaDataByRatingKeyMetadata.cs
-  - PlexAPI/Models/Requests/GetMetaDataByRatingKeyMediaContainer.cs
-  - PlexAPI/Models/Requests/GetMetaDataByRatingKeyResponseBody.cs
-  - PlexAPI/Models/Requests/GetMetaDataByRatingKeyResponse.cs
-  - PlexAPI/Models/Requests/GetMetadataChildrenRequest.cs
-  - PlexAPI/Models/Requests/GetMetadataChildrenDirectory.cs
-  - PlexAPI/Models/Requests/GetMetadataChildrenMetadata.cs
-  - PlexAPI/Models/Requests/GetMetadataChildrenMediaContainer.cs
-  - PlexAPI/Models/Requests/GetMetadataChildrenResponseBody.cs
-  - PlexAPI/Models/Requests/GetMetadataChildrenResponse.cs
-  - PlexAPI/Models/Requests/GetTopWatchedContentQueryParamType.cs
-  - PlexAPI/Models/Requests/GetTopWatchedContentRequest.cs
-  - PlexAPI/Models/Requests/GetTopWatchedContentGenre.cs
-  - PlexAPI/Models/Requests/GetTopWatchedContentCountry.cs
-  - PlexAPI/Models/Requests/GetTopWatchedContentGuids.cs
-  - PlexAPI/Models/Requests/GetTopWatchedContentRole.cs
-  - PlexAPI/Models/Requests/User.cs
-  - PlexAPI/Models/Requests/GetTopWatchedContentMetadata.cs
-  - PlexAPI/Models/Requests/GetTopWatchedContentMediaContainer.cs
-  - PlexAPI/Models/Requests/GetTopWatchedContentResponseBody.cs
-  - PlexAPI/Models/Requests/GetTopWatchedContentResponse.cs
-  - PlexAPI/Models/Requests/GetOnDeckStream.cs
-  - PlexAPI/Models/Requests/GetOnDeckPart.cs
-  - PlexAPI/Models/Requests/GetOnDeckMedia.cs
-  - PlexAPI/Models/Requests/GetOnDeckGuids.cs
-  - PlexAPI/Models/Requests/GetOnDeckMetadata.cs
-  - PlexAPI/Models/Requests/GetOnDeckMediaContainer.cs
-  - PlexAPI/Models/Requests/GetOnDeckResponseBody.cs
-  - PlexAPI/Models/Requests/GetOnDeckResponse.cs
-  - PlexAPI/Models/Requests/Filter.cs
-  - PlexAPI/Models/Requests/Libtype.cs
-  - PlexAPI/Models/Requests/IncludeCollections.cs
-  - PlexAPI/Models/Requests/IncludeExternalMedia.cs
-  - PlexAPI/Models/Requests/GetWatchListRequest.cs
-  - PlexAPI/Models/Requests/Image.cs
-  - PlexAPI/Models/Requests/Metadata.cs
-  - PlexAPI/Models/Requests/GetWatchListResponseBody.cs
-  - PlexAPI/Models/Requests/GetWatchListResponse.cs
-  - PlexAPI/Models/Requests/Level.cs
-  - PlexAPI/Models/Requests/LogLineRequest.cs
-  - PlexAPI/Models/Requests/LogLineResponse.cs
-  - PlexAPI/Models/Requests/LogMultiLineResponse.cs
-  - PlexAPI/Models/Requests/EnablePaperTrailResponse.cs
-  - PlexAPI/Models/Requests/CreatePlaylistQueryParamType.cs
-  - PlexAPI/Models/Requests/Smart.cs
-  - PlexAPI/Models/Requests/CreatePlaylistRequest.cs
-  - PlexAPI/Models/Requests/CreatePlaylistMetadata.cs
-  - PlexAPI/Models/Requests/CreatePlaylistMediaContainer.cs
-  - PlexAPI/Models/Requests/CreatePlaylistResponseBody.cs
-  - PlexAPI/Models/Requests/CreatePlaylistResponse.cs
-  - PlexAPI/Models/Requests/PlaylistType.cs
-  - PlexAPI/Models/Requests/QueryParamSmart.cs
-  - PlexAPI/Models/Requests/GetPlaylistsRequest.cs
-  - PlexAPI/Models/Requests/GetPlaylistsMetadata.cs
-  - PlexAPI/Models/Requests/GetPlaylistsMediaContainer.cs
-  - PlexAPI/Models/Requests/GetPlaylistsResponseBody.cs
-  - PlexAPI/Models/Requests/GetPlaylistsResponse.cs
-  - PlexAPI/Models/Requests/GetPlaylistRequest.cs
-  - PlexAPI/Models/Requests/GetPlaylistMetadata.cs
-  - PlexAPI/Models/Requests/GetPlaylistMediaContainer.cs
-  - PlexAPI/Models/Requests/GetPlaylistResponseBody.cs
-  - PlexAPI/Models/Requests/GetPlaylistResponse.cs
-  - PlexAPI/Models/Requests/DeletePlaylistRequest.cs
-  - PlexAPI/Models/Requests/DeletePlaylistResponse.cs
-  - PlexAPI/Models/Requests/UpdatePlaylistRequest.cs
-  - PlexAPI/Models/Requests/UpdatePlaylistResponse.cs
-  - PlexAPI/Models/Requests/GetPlaylistContentsQueryParamType.cs
-  - PlexAPI/Models/Requests/GetPlaylistContentsRequest.cs
-  - PlexAPI/Models/Requests/GetPlaylistContentsPart.cs
-  - PlexAPI/Models/Requests/GetPlaylistContentsMedia.cs
-  - PlexAPI/Models/Requests/GetPlaylistContentsGenre.cs
-  - PlexAPI/Models/Requests/GetPlaylistContentsCountry.cs
-  - PlexAPI/Models/Requests/GetPlaylistContentsDirector.cs
-  - PlexAPI/Models/Requests/GetPlaylistContentsWriter.cs
-  - PlexAPI/Models/Requests/GetPlaylistContentsRole.cs
-  - PlexAPI/Models/Requests/GetPlaylistContentsMetadata.cs
-  - PlexAPI/Models/Requests/GetPlaylistContentsMediaContainer.cs
-  - PlexAPI/Models/Requests/GetPlaylistContentsResponseBody.cs
-  - PlexAPI/Models/Requests/GetPlaylistContentsResponse.cs
-  - PlexAPI/Models/Requests/ClearPlaylistContentsRequest.cs
-  - PlexAPI/Models/Requests/ClearPlaylistContentsResponse.cs
-  - PlexAPI/Models/Requests/AddPlaylistContentsRequest.cs
-  - PlexAPI/Models/Requests/AddPlaylistContentsMetadata.cs
-  - PlexAPI/Models/Requests/AddPlaylistContentsMediaContainer.cs
-  - PlexAPI/Models/Requests/AddPlaylistContentsResponseBody.cs
-  - PlexAPI/Models/Requests/AddPlaylistContentsResponse.cs
-  - PlexAPI/Models/Requests/QueryParamForce.cs
-  - PlexAPI/Models/Requests/UploadPlaylistRequest.cs
-  - PlexAPI/Models/Requests/UploadPlaylistResponse.cs
-  - PlexAPI/Models/Requests/GetTransientTokenQueryParamType.cs
-  - PlexAPI/Models/Requests/Scope.cs
-  - PlexAPI/Models/Requests/GetTransientTokenRequest.cs
-  - PlexAPI/Models/Requests/GetTransientTokenResponse.cs
-  - PlexAPI/Models/Requests/GetSourceConnectionInformationRequest.cs
-  - PlexAPI/Models/Requests/GetSourceConnectionInformationResponse.cs
-  - PlexAPI/Models/Requests/GetUserDetailsRequest.cs
-  - PlexAPI/Models/Requests/MailingListStatus.cs
-  - PlexAPI/Models/Requests/AutoSelectSubtitle.cs
-  - PlexAPI/Models/Requests/DefaultSubtitleAccessibility.cs
-  - PlexAPI/Models/Requests/DefaultSubtitleForced.cs
-  - PlexAPI/Models/Requests/WatchedIndicator.cs
-  - PlexAPI/Models/Requests/MediaReviewsVisibility.cs
-  - PlexAPI/Models/Requests/UserProfile.cs
-  - PlexAPI/Models/Requests/GetUserDetailsStatus.cs
-  - PlexAPI/Models/Requests/Services.cs
-  - PlexAPI/Models/Requests/Features.cs
-  - PlexAPI/Models/Requests/GetUserDetailsAuthenticationStatus.cs
-  - PlexAPI/Models/Requests/Subscription.cs
-  - PlexAPI/Models/Requests/GetUserDetailsFeatures.cs
-  - PlexAPI/Models/Requests/GetUserDetailsAuthenticationResponseStatus.cs
-  - PlexAPI/Models/Requests/GetUserDetailsSubscription.cs
-  - PlexAPI/Models/Requests/GetUserDetailsUserPlexAccount.cs
-  - PlexAPI/Models/Requests/GetUserDetailsResponse.cs
-  - PlexAPI/Models/Requests/PostUsersSignInDataRequestBody.cs
-  - PlexAPI/Models/Requests/PostUsersSignInDataRequest.cs
-  - PlexAPI/Models/Requests/PostUsersSignInDataMailingListStatus.cs
-  - PlexAPI/Models/Requests/PostUsersSignInDataAutoSelectSubtitle.cs
-  - PlexAPI/Models/Requests/PostUsersSignInDataDefaultSubtitleAccessibility.cs
-  - PlexAPI/Models/Requests/PostUsersSignInDataDefaultSubtitleForced.cs
-  - PlexAPI/Models/Requests/PostUsersSignInDataWatchedIndicator.cs
-  - PlexAPI/Models/Requests/PostUsersSignInDataMediaReviewsVisibility.cs
-  - PlexAPI/Models/Requests/PostUsersSignInDataUserProfile.cs
-  - PlexAPI/Models/Requests/PostUsersSignInDataStatus.cs
-  - PlexAPI/Models/Requests/PostUsersSignInDataServices.cs
-  - PlexAPI/Models/Requests/PostUsersSignInDataFeatures.cs
-  - PlexAPI/Models/Requests/PostUsersSignInDataAuthenticationStatus.cs
-  - PlexAPI/Models/Requests/PostUsersSignInDataSubscription.cs
-  - PlexAPI/Models/Requests/PostUsersSignInDataAuthenticationFeatures.cs
-  - PlexAPI/Models/Requests/PostUsersSignInDataAuthenticationResponseStatus.cs
-  - PlexAPI/Models/Requests/PostUsersSignInDataAuthenticationSubscription.cs
-  - PlexAPI/Models/Requests/PostUsersSignInDataState.cs
-  - PlexAPI/Models/Requests/InternalPaymentMethod.cs
-  - PlexAPI/Models/Requests/Billing.cs
-  - PlexAPI/Models/Requests/PastSubscription.cs
-  - PlexAPI/Models/Requests/Trials.cs
-  - PlexAPI/Models/Requests/PostUsersSignInDataUserPlexAccount.cs
-  - PlexAPI/Models/Requests/PostUsersSignInDataResponse.cs
-  - PlexAPI/Models/Requests/GetStatisticsRequest.cs
-  - PlexAPI/Models/Requests/GetStatisticsDevice.cs
-  - PlexAPI/Models/Requests/Account.cs
-  - PlexAPI/Models/Requests/StatisticsMedia.cs
-  - PlexAPI/Models/Requests/GetStatisticsMediaContainer.cs
-  - PlexAPI/Models/Requests/GetStatisticsResponseBody.cs
-  - PlexAPI/Models/Requests/GetStatisticsResponse.cs
-  - PlexAPI/Models/Requests/GetResourcesStatisticsRequest.cs
-  - PlexAPI/Models/Requests/StatisticsResources.cs
-  - PlexAPI/Models/Requests/GetResourcesStatisticsMediaContainer.cs
-  - PlexAPI/Models/Requests/GetResourcesStatisticsResponseBody.cs
-  - PlexAPI/Models/Requests/GetResourcesStatisticsResponse.cs
-  - PlexAPI/Models/Requests/GetBandwidthStatisticsRequest.cs
-  - PlexAPI/Models/Requests/GetBandwidthStatisticsDevice.cs
-  - PlexAPI/Models/Requests/GetBandwidthStatisticsAccount.cs
-  - PlexAPI/Models/Requests/StatisticsBandwidth.cs
-  - PlexAPI/Models/Requests/GetBandwidthStatisticsMediaContainer.cs
-  - PlexAPI/Models/Requests/GetBandwidthStatisticsResponseBody.cs
-  - PlexAPI/Models/Requests/GetBandwidthStatisticsResponse.cs
-  - PlexAPI/Models/Requests/GetSessionsStream.cs
-  - PlexAPI/Models/Requests/GetSessionsPart.cs
-  - PlexAPI/Models/Requests/GetSessionsMedia.cs
-  - PlexAPI/Models/Requests/GetSessionsUser.cs
-  - PlexAPI/Models/Requests/Player.cs
-  - PlexAPI/Models/Requests/Session.cs
-  - PlexAPI/Models/Requests/GetSessionsMetadata.cs
-  - PlexAPI/Models/Requests/GetSessionsMediaContainer.cs
-  - PlexAPI/Models/Requests/GetSessionsResponseBody.cs
-  - PlexAPI/Models/Requests/GetSessionsResponse.cs
-  - PlexAPI/Models/Requests/QueryParamFilter.cs
-  - PlexAPI/Models/Requests/GetSessionHistoryRequest.cs
-  - PlexAPI/Models/Requests/GetSessionHistoryMetadata.cs
-  - PlexAPI/Models/Requests/GetSessionHistoryMediaContainer.cs
-  - PlexAPI/Models/Requests/GetSessionHistoryResponseBody.cs
-  - PlexAPI/Models/Requests/GetSessionHistoryResponse.cs
-  - PlexAPI/Models/Requests/TranscodeSession.cs
-  - PlexAPI/Models/Requests/GetTranscodeSessionsMediaContainer.cs
-  - PlexAPI/Models/Requests/GetTranscodeSessionsResponseBody.cs
-  - PlexAPI/Models/Requests/GetTranscodeSessionsResponse.cs
-  - PlexAPI/Models/Requests/StopTranscodeSessionRequest.cs
-  - PlexAPI/Models/Requests/StopTranscodeSessionResponse.cs
-  - PlexAPI/Models/Requests/Release.cs
-  - PlexAPI/Models/Requests/GetUpdateStatusMediaContainer.cs
-  - PlexAPI/Models/Requests/GetUpdateStatusResponseBody.cs
-  - PlexAPI/Models/Requests/GetUpdateStatusResponse.cs
-  - PlexAPI/Models/Requests/Download.cs
-  - PlexAPI/Models/Requests/CheckForUpdatesRequest.cs
-  - PlexAPI/Models/Requests/CheckForUpdatesResponse.cs
-  - PlexAPI/Models/Requests/Tonight.cs
-  - PlexAPI/Models/Requests/Skip.cs
-  - PlexAPI/Models/Requests/ApplyUpdatesRequest.cs
-  - PlexAPI/Models/Requests/ApplyUpdatesResponse.cs
-  - PlexAPI/Models/Errors/Errors.cs
-  - PlexAPI/Models/Errors/GetServerCapabilitiesResponseBody.cs
-  - PlexAPI/Models/Errors/GetServerPreferencesErrors.cs
-  - PlexAPI/Models/Errors/GetServerPreferencesResponseBody.cs
-  - PlexAPI/Models/Errors/GetAvailableClientsErrors.cs
-  - PlexAPI/Models/Errors/GetAvailableClientsResponseBody.cs
-  - PlexAPI/Models/Errors/GetDevicesErrors.cs
-  - PlexAPI/Models/Errors/GetDevicesResponseBody.cs
-  - PlexAPI/Models/Errors/GetServerIdentityResponseBody.cs
-  - PlexAPI/Models/Errors/GetMyPlexAccountErrors.cs
-  - PlexAPI/Models/Errors/GetMyPlexAccountResponseBody.cs
-  - PlexAPI/Models/Errors/GetResizedPhotoErrors.cs
-  - PlexAPI/Models/Errors/GetResizedPhotoResponseBody.cs
-  - PlexAPI/Models/Errors/GetMediaProvidersErrors.cs
-  - PlexAPI/Models/Errors/GetMediaProvidersResponseBody.cs
-  - PlexAPI/Models/Errors/GetServerListErrors.cs
-  - PlexAPI/Models/Errors/GetServerListResponseBody.cs
-  - PlexAPI/Models/Errors/MarkPlayedErrors.cs
-  - PlexAPI/Models/Errors/MarkPlayedResponseBody.cs
-  - PlexAPI/Models/Errors/MarkUnplayedErrors.cs
-  - PlexAPI/Models/Errors/MarkUnplayedResponseBody.cs
-  - PlexAPI/Models/Errors/UpdatePlayProgressErrors.cs
-  - PlexAPI/Models/Errors/UpdatePlayProgressResponseBody.cs
-  - PlexAPI/Models/Errors/GetBannerImageErrors.cs
-  - PlexAPI/Models/Errors/GetBannerImageResponseBody.cs
-  - PlexAPI/Models/Errors/GetThumbImageErrors.cs
-  - PlexAPI/Models/Errors/GetThumbImageResponseBody.cs
-  - PlexAPI/Models/Errors/GetTimelineErrors.cs
-  - PlexAPI/Models/Errors/GetTimelineResponseBody.cs
-  - PlexAPI/Models/Errors/StartUniversalTranscodeErrors.cs
-  - PlexAPI/Models/Errors/StartUniversalTranscodeResponseBody.cs
-  - PlexAPI/Models/Errors/GetServerActivitiesErrors.cs
-  - PlexAPI/Models/Errors/GetServerActivitiesResponseBody.cs
-  - PlexAPI/Models/Errors/CancelServerActivitiesErrors.cs
-  - PlexAPI/Models/Errors/CancelServerActivitiesResponseBody.cs
-  - PlexAPI/Models/Errors/GetButlerTasksErrors.cs
-  - PlexAPI/Models/Errors/GetButlerTasksResponseBody.cs
-  - PlexAPI/Models/Errors/StartAllTasksErrors.cs
-  - PlexAPI/Models/Errors/StartAllTasksResponseBody.cs
-  - PlexAPI/Models/Errors/StopAllTasksErrors.cs
-  - PlexAPI/Models/Errors/StopAllTasksResponseBody.cs
-  - PlexAPI/Models/Errors/StartTaskErrors.cs
-  - PlexAPI/Models/Errors/StartTaskResponseBody.cs
-  - PlexAPI/Models/Errors/StopTaskErrors.cs
-  - PlexAPI/Models/Errors/StopTaskResponseBody.cs
-  - PlexAPI/Models/Errors/GetCompanionsDataErrors.cs
-  - PlexAPI/Models/Errors/GetCompanionsDataResponseBody.cs
-  - PlexAPI/Models/Errors/GetUserFriendsErrors.cs
-  - PlexAPI/Models/Errors/GetUserFriendsResponseBody.cs
-  - PlexAPI/Models/Errors/GetGeoDataErrors.cs
-  - PlexAPI/Models/Errors/GetGeoDataResponseBody.cs
-  - PlexAPI/Models/Errors/GetHomeDataErrors.cs
-  - PlexAPI/Models/Errors/GetHomeDataResponseBody.cs
-  - PlexAPI/Models/Errors/GetServerResourcesErrors.cs
-  - PlexAPI/Models/Errors/GetServerResourcesResponseBody.cs
-  - PlexAPI/Models/Errors/GetPinErrors.cs
-  - PlexAPI/Models/Errors/GetPinResponseBody.cs
-  - PlexAPI/Models/Errors/GetTokenByPinIdPlexErrors.cs
-  - PlexAPI/Models/Errors/GetTokenByPinIdPlexResponseBody.cs
-  - PlexAPI/Models/Errors/GetTokenByPinIdErrors.cs
-  - PlexAPI/Models/Errors/GetTokenByPinIdResponseBody.cs
-  - PlexAPI/Models/Errors/GetGlobalHubsErrors.cs
-  - PlexAPI/Models/Errors/GetGlobalHubsResponseBody.cs
-  - PlexAPI/Models/Errors/GetLibraryHubsErrors.cs
-  - PlexAPI/Models/Errors/GetLibraryHubsResponseBody.cs
-  - PlexAPI/Models/Errors/PerformSearchErrors.cs
-  - PlexAPI/Models/Errors/PerformSearchResponseBody.cs
-  - PlexAPI/Models/Errors/PerformVoiceSearchErrors.cs
-  - PlexAPI/Models/Errors/PerformVoiceSearchResponseBody.cs
-  - PlexAPI/Models/Errors/GetSearchResultsErrors.cs
-  - PlexAPI/Models/Errors/GetSearchResultsResponseBody.cs
-  - PlexAPI/Models/Errors/GetFileHashErrors.cs
-  - PlexAPI/Models/Errors/GetFileHashResponseBody.cs
-  - PlexAPI/Models/Errors/GetRecentlyAddedErrors.cs
-  - PlexAPI/Models/Errors/GetRecentlyAddedResponseBody.cs
-  - PlexAPI/Models/Errors/GetAllLibrariesErrors.cs
-  - PlexAPI/Models/Errors/GetAllLibrariesResponseBody.cs
-  - PlexAPI/Models/Errors/GetLibraryDetailsErrors.cs
-  - PlexAPI/Models/Errors/GetLibraryDetailsResponseBody.cs
-  - PlexAPI/Models/Errors/DeleteLibraryErrors.cs
-  - PlexAPI/Models/Errors/DeleteLibraryResponseBody.cs
-  - PlexAPI/Models/Errors/GetLibraryItemsErrors.cs
-  - PlexAPI/Models/Errors/GetLibraryItemsResponseBody.cs
-  - PlexAPI/Models/Errors/GetRefreshLibraryMetadataErrors.cs
-  - PlexAPI/Models/Errors/GetRefreshLibraryMetadataResponseBody.cs
-  - PlexAPI/Models/Errors/GetSearchLibraryErrors.cs
-  - PlexAPI/Models/Errors/GetSearchLibraryResponseBody.cs
-  - PlexAPI/Models/Errors/GetMetaDataByRatingKeyErrors.cs
-  - PlexAPI/Models/Errors/GetMetaDataByRatingKeyResponseBody.cs
-  - PlexAPI/Models/Errors/GetMetadataChildrenErrors.cs
-  - PlexAPI/Models/Errors/GetMetadataChildrenResponseBody.cs
-  - PlexAPI/Models/Errors/GetTopWatchedContentErrors.cs
-  - PlexAPI/Models/Errors/GetTopWatchedContentResponseBody.cs
-  - PlexAPI/Models/Errors/GetOnDeckErrors.cs
-  - PlexAPI/Models/Errors/GetOnDeckResponseBody.cs
-  - PlexAPI/Models/Errors/GetWatchListErrors.cs
-  - PlexAPI/Models/Errors/GetWatchListResponseBody.cs
-  - PlexAPI/Models/Errors/LogLineErrors.cs
-  - PlexAPI/Models/Errors/LogLineResponseBody.cs
-  - PlexAPI/Models/Errors/LogMultiLineErrors.cs
-  - PlexAPI/Models/Errors/LogMultiLineResponseBody.cs
-  - PlexAPI/Models/Errors/EnablePaperTrailErrors.cs
-  - PlexAPI/Models/Errors/EnablePaperTrailResponseBody.cs
-  - PlexAPI/Models/Errors/CreatePlaylistErrors.cs
-  - PlexAPI/Models/Errors/CreatePlaylistResponseBody.cs
-  - PlexAPI/Models/Errors/GetPlaylistsErrors.cs
-  - PlexAPI/Models/Errors/GetPlaylistsResponseBody.cs
-  - PlexAPI/Models/Errors/GetPlaylistErrors.cs
-  - PlexAPI/Models/Errors/GetPlaylistResponseBody.cs
-  - PlexAPI/Models/Errors/DeletePlaylistErrors.cs
-  - PlexAPI/Models/Errors/DeletePlaylistResponseBody.cs
-  - PlexAPI/Models/Errors/UpdatePlaylistErrors.cs
-  - PlexAPI/Models/Errors/UpdatePlaylistResponseBody.cs
-  - PlexAPI/Models/Errors/GetPlaylistContentsErrors.cs
-  - PlexAPI/Models/Errors/GetPlaylistContentsResponseBody.cs
-  - PlexAPI/Models/Errors/ClearPlaylistContentsErrors.cs
-  - PlexAPI/Models/Errors/ClearPlaylistContentsResponseBody.cs
-  - PlexAPI/Models/Errors/AddPlaylistContentsErrors.cs
-  - PlexAPI/Models/Errors/AddPlaylistContentsResponseBody.cs
-  - PlexAPI/Models/Errors/UploadPlaylistErrors.cs
-  - PlexAPI/Models/Errors/UploadPlaylistResponseBody.cs
-  - PlexAPI/Models/Errors/GetTransientTokenErrors.cs
-  - PlexAPI/Models/Errors/GetTransientTokenResponseBody.cs
-  - PlexAPI/Models/Errors/GetSourceConnectionInformationErrors.cs
-  - PlexAPI/Models/Errors/GetSourceConnectionInformationResponseBody.cs
-  - PlexAPI/Models/Errors/GetUserDetailsErrors.cs
-  - PlexAPI/Models/Errors/GetUserDetailsResponseBody.cs
-  - PlexAPI/Models/Errors/PostUsersSignInDataErrors.cs
-  - PlexAPI/Models/Errors/PostUsersSignInDataResponseBody.cs
-  - PlexAPI/Models/Errors/GetStatisticsErrors.cs
-  - PlexAPI/Models/Errors/GetStatisticsResponseBody.cs
-  - PlexAPI/Models/Errors/GetResourcesStatisticsErrors.cs
-  - PlexAPI/Models/Errors/GetResourcesStatisticsResponseBody.cs
-  - PlexAPI/Models/Errors/GetBandwidthStatisticsErrors.cs
-  - PlexAPI/Models/Errors/GetBandwidthStatisticsResponseBody.cs
-  - PlexAPI/Models/Errors/GetSessionsErrors.cs
-  - PlexAPI/Models/Errors/GetSessionsResponseBody.cs
-  - PlexAPI/Models/Errors/GetSessionHistoryErrors.cs
-  - PlexAPI/Models/Errors/GetSessionHistoryResponseBody.cs
-  - PlexAPI/Models/Errors/GetTranscodeSessionsErrors.cs
-  - PlexAPI/Models/Errors/GetTranscodeSessionsResponseBody.cs
-  - PlexAPI/Models/Errors/StopTranscodeSessionErrors.cs
-  - PlexAPI/Models/Errors/StopTranscodeSessionResponseBody.cs
-  - PlexAPI/Models/Errors/GetUpdateStatusErrors.cs
-  - PlexAPI/Models/Errors/GetUpdateStatusResponseBody.cs
-  - PlexAPI/Models/Errors/CheckForUpdatesErrors.cs
-  - PlexAPI/Models/Errors/CheckForUpdatesResponseBody.cs
-  - PlexAPI/Models/Errors/ApplyUpdatesErrors.cs
-  - PlexAPI/Models/Errors/ApplyUpdatesResponseBody.cs
-  - PlexAPI/Models/Components/Security.cs
-  - docs/Models/Requests/Directory.md
-  - docs/Models/Requests/MediaContainer.md
-  - docs/Models/Requests/GetServerCapabilitiesResponseBody.md
-  - docs/Models/Requests/GetServerCapabilitiesResponse.md
-  - docs/Models/Requests/Setting.md
-  - docs/Models/Requests/GetServerPreferencesMediaContainer.md
-  - docs/Models/Requests/GetServerPreferencesResponseBody.md
-  - docs/Models/Requests/GetServerPreferencesResponse.md
-  - docs/Models/Requests/Server.md
-  - docs/Models/Requests/GetAvailableClientsMediaContainer.md
-  - docs/Models/Requests/GetAvailableClientsResponseBody.md
-  - docs/Models/Requests/GetAvailableClientsResponse.md
-  - docs/Models/Requests/Device.md
-  - docs/Models/Requests/GetDevicesMediaContainer.md
-  - docs/Models/Requests/GetDevicesResponseBody.md
-  - docs/Models/Requests/GetDevicesResponse.md
-  - docs/Models/Requests/GetServerIdentityMediaContainer.md
-  - docs/Models/Requests/GetServerIdentityResponseBody.md
-  - docs/Models/Requests/GetServerIdentityResponse.md
-  - docs/Models/Requests/MyPlex.md
-  - docs/Models/Requests/GetMyPlexAccountResponseBody.md
-  - docs/Models/Requests/GetMyPlexAccountResponse.md
-  - docs/Models/Requests/MinSize.md
-  - docs/Models/Requests/Upscale.md
-  - docs/Models/Requests/GetResizedPhotoRequest.md
-  - docs/Models/Requests/GetResizedPhotoResponse.md
-  - docs/Models/Requests/GetMediaProvidersRequest.md
-  - docs/Models/Requests/Pivot.md
-  - docs/Models/Requests/GetMediaProvidersDirectory.md
-  - docs/Models/Requests/Feature.md
-  - docs/Models/Requests/MediaProvider.md
-  - docs/Models/Requests/GetMediaProvidersMediaContainer.md
-  - docs/Models/Requests/GetMediaProvidersResponseBody.md
-  - docs/Models/Requests/GetMediaProvidersResponse.md
-  - docs/Models/Requests/GetServerListServer.md
-  - docs/Models/Requests/GetServerListMediaContainer.md
-  - docs/Models/Requests/GetServerListResponseBody.md
-  - docs/Models/Requests/GetServerListResponse.md
-  - docs/Models/Requests/MarkPlayedRequest.md
-  - docs/Models/Requests/MarkPlayedResponse.md
-  - docs/Models/Requests/MarkUnplayedRequest.md
-  - docs/Models/Requests/MarkUnplayedResponse.md
-  - docs/Models/Requests/UpdatePlayProgressRequest.md
-  - docs/Models/Requests/UpdatePlayProgressResponse.md
-  - docs/Models/Requests/GetBannerImageRequest.md
-  - docs/Models/Requests/GetBannerImageResponse.md
-  - docs/Models/Requests/GetThumbImageRequest.md
-  - docs/Models/Requests/GetThumbImageResponse.md
-  - docs/Models/Requests/State.md
-  - docs/Models/Requests/GetTimelineRequest.md
-  - docs/Models/Requests/GetTimelineResponse.md
-  - docs/Models/Requests/StartUniversalTranscodeRequest.md
-  - docs/Models/Requests/StartUniversalTranscodeResponse.md
-  - docs/Models/Requests/Context.md
-  - docs/Models/Requests/Activity.md
-  - docs/Models/Requests/GetServerActivitiesMediaContainer.md
-  - docs/Models/Requests/GetServerActivitiesResponseBody.md
-  - docs/Models/Requests/GetServerActivitiesResponse.md
-  - docs/Models/Requests/CancelServerActivitiesRequest.md
-  - docs/Models/Requests/CancelServerActivitiesResponse.md
-  - docs/Models/Requests/ButlerTask.md
-  - docs/Models/Requests/ButlerTasks.md
-  - docs/Models/Requests/GetButlerTasksResponseBody.md
-  - docs/Models/Requests/GetButlerTasksResponse.md
-  - docs/Models/Requests/StartAllTasksResponse.md
-  - docs/Models/Requests/StopAllTasksResponse.md
-  - docs/Models/Requests/TaskName.md
-  - docs/Models/Requests/StartTaskRequest.md
-  - docs/Models/Requests/StartTaskResponse.md
-  - docs/Models/Requests/PathParamTaskName.md
-  - docs/Models/Requests/StopTaskRequest.md
-  - docs/Models/Requests/StopTaskResponse.md
-  - docs/Models/Requests/ResponseBody.md
-  - docs/Models/Requests/GetCompanionsDataResponse.md
-  - docs/Models/Requests/SharedServers.md
-  - docs/Models/Requests/SharedSources.md
-  - docs/Models/Requests/Status.md
-  - docs/Models/Requests/Friend.md
-  - docs/Models/Requests/GetUserFriendsResponse.md
-  - docs/Models/Requests/GetGeoDataGeoData.md
-  - docs/Models/Requests/GetGeoDataResponse.md
-  - docs/Models/Requests/GetHomeDataResponseBody.md
-  - docs/Models/Requests/GetHomeDataResponse.md
-  - docs/Models/Requests/IncludeHttps.md
-  - docs/Models/Requests/IncludeRelay.md
-  - docs/Models/Requests/IncludeIPv6.md
-  - docs/Models/Requests/GetServerResourcesRequest.md
-  - docs/Models/Requests/Connections.md
-  - docs/Models/Requests/PlexDevice.md
-  - docs/Models/Requests/GetServerResourcesResponse.md
-  - docs/Models/Requests/GetPinRequest.md
-  - docs/Models/Requests/GeoData.md
-  - docs/Models/Requests/GetPinAuthPinContainer.md
-  - docs/Models/Requests/GetPinResponse.md
-  - docs/Models/Requests/GetTokenByPinIdRequest.md
-  - docs/Models/Requests/GetTokenByPinIdGeoData.md
-  - docs/Models/Requests/GetTokenByPinIdAuthPinContainer.md
-  - docs/Models/Requests/GetTokenByPinIdResponse.md
-  - docs/Models/Requests/OnlyTransient.md
-  - docs/Models/Requests/GetGlobalHubsRequest.md
-  - docs/Models/Requests/GetGlobalHubsMetadata.md
-  - docs/Models/Requests/Hub.md
-  - docs/Models/Requests/GetGlobalHubsMediaContainer.md
-  - docs/Models/Requests/GetGlobalHubsResponseBody.md
-  - docs/Models/Requests/GetGlobalHubsResponse.md
-  - docs/Models/Requests/QueryParamOnlyTransient.md
-  - docs/Models/Requests/GetLibraryHubsRequest.md
-  - docs/Models/Requests/GetLibraryHubsPart.md
-  - docs/Models/Requests/GetLibraryHubsMedia.md
-  - docs/Models/Requests/GetLibraryHubsGenre.md
-  - docs/Models/Requests/GetLibraryHubsCountry.md
-  - docs/Models/Requests/GetLibraryHubsDirector.md
-  - docs/Models/Requests/GetLibraryHubsRole.md
-  - docs/Models/Requests/GetLibraryHubsWriter.md
-  - docs/Models/Requests/GetLibraryHubsMetadata.md
-  - docs/Models/Requests/GetLibraryHubsHub.md
-  - docs/Models/Requests/GetLibraryHubsMediaContainer.md
-  - docs/Models/Requests/GetLibraryHubsResponseBody.md
-  - docs/Models/Requests/GetLibraryHubsResponse.md
-  - docs/Models/Requests/PerformSearchRequest.md
-  - docs/Models/Requests/PerformSearchResponse.md
-  - docs/Models/Requests/PerformVoiceSearchRequest.md
-  - docs/Models/Requests/PerformVoiceSearchResponse.md
-  - docs/Models/Requests/GetSearchResultsRequest.md
-  - docs/Models/Requests/GetSearchResultsPart.md
-  - docs/Models/Requests/GetSearchResultsMedia.md
-  - docs/Models/Requests/GetSearchResultsGenre.md
-  - docs/Models/Requests/GetSearchResultsDirector.md
-  - docs/Models/Requests/GetSearchResultsWriter.md
-  - docs/Models/Requests/GetSearchResultsCountry.md
-  - docs/Models/Requests/GetSearchResultsRole.md
-  - docs/Models/Requests/GetSearchResultsMetadata.md
-  - docs/Models/Requests/Provider.md
-  - docs/Models/Requests/GetSearchResultsMediaContainer.md
-  - docs/Models/Requests/GetSearchResultsResponseBody.md
-  - docs/Models/Requests/GetSearchResultsResponse.md
-  - docs/Models/Requests/GetFileHashRequest.md
-  - docs/Models/Requests/GetFileHashResponse.md
-  - docs/Models/Requests/GetRecentlyAddedRequest.md
-  - docs/Models/Requests/Part.md
-  - docs/Models/Requests/Media.md
-  - docs/Models/Requests/Genre.md
-  - docs/Models/Requests/Director.md
-  - docs/Models/Requests/Writer.md
-  - docs/Models/Requests/Country.md
-  - docs/Models/Requests/Role.md
-  - docs/Models/Requests/GetRecentlyAddedMetadata.md
-  - docs/Models/Requests/GetRecentlyAddedMediaContainer.md
-  - docs/Models/Requests/GetRecentlyAddedResponseBody.md
-  - docs/Models/Requests/GetRecentlyAddedResponse.md
-  - docs/Models/Requests/Location.md
-  - docs/Models/Requests/GetAllLibrariesDirectory.md
-  - docs/Models/Requests/GetAllLibrariesMediaContainer.md
-  - docs/Models/Requests/GetAllLibrariesResponseBody.md
-  - docs/Models/Requests/GetAllLibrariesResponse.md
-  - docs/Models/Requests/IncludeDetails.md
-  - docs/Models/Requests/GetLibraryDetailsRequest.md
-  - docs/Models/Requests/GetLibraryDetailsDirectory.md
-  - docs/Models/Requests/GetLibraryDetailsFilter.md
-  - docs/Models/Requests/Sort.md
-  - docs/Models/Requests/Field.md
-  - docs/Models/Requests/GetLibraryDetailsType.md
-  - docs/Models/Requests/Operator.md
-  - docs/Models/Requests/FieldType.md
-  - docs/Models/Requests/GetLibraryDetailsMediaContainer.md
-  - docs/Models/Requests/GetLibraryDetailsResponseBody.md
-  - docs/Models/Requests/GetLibraryDetailsResponse.md
-  - docs/Models/Requests/DeleteLibraryRequest.md
-  - docs/Models/Requests/DeleteLibraryResponse.md
-  - docs/Models/Requests/Tag.md
-  - docs/Models/Requests/IncludeGuids.md
-  - docs/Models/Requests/IncludeMeta.md
-  - docs/Models/Requests/Type.md
-  - docs/Models/Requests/GetLibraryItemsRequest.md
-  - docs/Models/Requests/LibrarySectionID.md
-  - docs/Models/Requests/GetLibraryItemsPart.md
-  - docs/Models/Requests/GetLibraryItemsMedia.md
-  - docs/Models/Requests/GetLibraryItemsGenre.md
-  - docs/Models/Requests/GetLibraryItemsCountry.md
-  - docs/Models/Requests/GetLibraryItemsDirector.md
-  - docs/Models/Requests/GetLibraryItemsWriter.md
-  - docs/Models/Requests/GetLibraryItemsRole.md
-  - docs/Models/Requests/GetLibraryItemsMetadata.md
-  - docs/Models/Requests/GetLibraryItemsMediaContainer.md
-  - docs/Models/Requests/GetLibraryItemsResponseBody.md
-  - docs/Models/Requests/GetLibraryItemsResponse.md
-  - docs/Models/Requests/Force.md
-  - docs/Models/Requests/GetRefreshLibraryMetadataRequest.md
-  - docs/Models/Requests/GetRefreshLibraryMetadataResponse.md
-  - docs/Models/Requests/QueryParamType.md
-  - docs/Models/Requests/GetSearchLibraryRequest.md
-  - docs/Models/Requests/GetSearchLibraryMetadata.md
-  - docs/Models/Requests/GetSearchLibraryMediaContainer.md
-  - docs/Models/Requests/GetSearchLibraryResponseBody.md
-  - docs/Models/Requests/GetSearchLibraryResponse.md
-  - docs/Models/Requests/GetMetaDataByRatingKeyRequest.md
-  - docs/Models/Requests/Stream.md
-  - docs/Models/Requests/GetMetaDataByRatingKeyPart.md
-  - docs/Models/Requests/GetMetaDataByRatingKeyMedia.md
-  - docs/Models/Requests/GetMetaDataByRatingKeyGenre.md
-  - docs/Models/Requests/GetMetaDataByRatingKeyCountry.md
-  - docs/Models/Requests/Guids.md
-  - docs/Models/Requests/Ratings.md
-  - docs/Models/Requests/GetMetaDataByRatingKeyDirector.md
-  - docs/Models/Requests/GetMetaDataByRatingKeyWriter.md
-  - docs/Models/Requests/GetMetaDataByRatingKeyRole.md
-  - docs/Models/Requests/Producer.md
-  - docs/Models/Requests/GetMetaDataByRatingKeyMetadata.md
-  - docs/Models/Requests/GetMetaDataByRatingKeyMediaContainer.md
-  - docs/Models/Requests/GetMetaDataByRatingKeyResponseBody.md
-  - docs/Models/Requests/GetMetaDataByRatingKeyResponse.md
-  - docs/Models/Requests/GetMetadataChildrenRequest.md
-  - docs/Models/Requests/GetMetadataChildrenDirectory.md
-  - docs/Models/Requests/GetMetadataChildrenMetadata.md
-  - docs/Models/Requests/GetMetadataChildrenMediaContainer.md
-  - docs/Models/Requests/GetMetadataChildrenResponseBody.md
-  - docs/Models/Requests/GetMetadataChildrenResponse.md
-  - docs/Models/Requests/GetTopWatchedContentQueryParamType.md
-  - docs/Models/Requests/GetTopWatchedContentRequest.md
-  - docs/Models/Requests/GetTopWatchedContentGenre.md
-  - docs/Models/Requests/GetTopWatchedContentCountry.md
-  - docs/Models/Requests/GetTopWatchedContentGuids.md
-  - docs/Models/Requests/GetTopWatchedContentRole.md
-  - docs/Models/Requests/User.md
-  - docs/Models/Requests/GetTopWatchedContentMetadata.md
-  - docs/Models/Requests/GetTopWatchedContentMediaContainer.md
-  - docs/Models/Requests/GetTopWatchedContentResponseBody.md
-  - docs/Models/Requests/GetTopWatchedContentResponse.md
-  - docs/Models/Requests/GetOnDeckStream.md
-  - docs/Models/Requests/GetOnDeckPart.md
-  - docs/Models/Requests/GetOnDeckMedia.md
-  - docs/Models/Requests/GetOnDeckGuids.md
-  - docs/Models/Requests/GetOnDeckMetadata.md
-  - docs/Models/Requests/GetOnDeckMediaContainer.md
-  - docs/Models/Requests/GetOnDeckResponseBody.md
-  - docs/Models/Requests/GetOnDeckResponse.md
-  - docs/Models/Requests/Filter.md
-  - docs/Models/Requests/Libtype.md
-  - docs/Models/Requests/IncludeCollections.md
-  - docs/Models/Requests/IncludeExternalMedia.md
-  - docs/Models/Requests/GetWatchListRequest.md
-  - docs/Models/Requests/Image.md
-  - docs/Models/Requests/Metadata.md
-  - docs/Models/Requests/GetWatchListResponseBody.md
-  - docs/Models/Requests/GetWatchListResponse.md
-  - docs/Models/Requests/Level.md
-  - docs/Models/Requests/LogLineRequest.md
-  - docs/Models/Requests/LogLineResponse.md
-  - docs/Models/Requests/LogMultiLineResponse.md
-  - docs/Models/Requests/EnablePaperTrailResponse.md
-  - docs/Models/Requests/CreatePlaylistQueryParamType.md
-  - docs/Models/Requests/Smart.md
-  - docs/Models/Requests/CreatePlaylistRequest.md
-  - docs/Models/Requests/CreatePlaylistMetadata.md
-  - docs/Models/Requests/CreatePlaylistMediaContainer.md
-  - docs/Models/Requests/CreatePlaylistResponseBody.md
-  - docs/Models/Requests/CreatePlaylistResponse.md
-  - docs/Models/Requests/PlaylistType.md
-  - docs/Models/Requests/QueryParamSmart.md
-  - docs/Models/Requests/GetPlaylistsRequest.md
-  - docs/Models/Requests/GetPlaylistsMetadata.md
-  - docs/Models/Requests/GetPlaylistsMediaContainer.md
-  - docs/Models/Requests/GetPlaylistsResponseBody.md
-  - docs/Models/Requests/GetPlaylistsResponse.md
-  - docs/Models/Requests/GetPlaylistRequest.md
-  - docs/Models/Requests/GetPlaylistMetadata.md
-  - docs/Models/Requests/GetPlaylistMediaContainer.md
-  - docs/Models/Requests/GetPlaylistResponseBody.md
-  - docs/Models/Requests/GetPlaylistResponse.md
-  - docs/Models/Requests/DeletePlaylistRequest.md
-  - docs/Models/Requests/DeletePlaylistResponse.md
-  - docs/Models/Requests/UpdatePlaylistRequest.md
-  - docs/Models/Requests/UpdatePlaylistResponse.md
-  - docs/Models/Requests/GetPlaylistContentsQueryParamType.md
-  - docs/Models/Requests/GetPlaylistContentsRequest.md
-  - docs/Models/Requests/GetPlaylistContentsPart.md
-  - docs/Models/Requests/GetPlaylistContentsMedia.md
-  - docs/Models/Requests/GetPlaylistContentsGenre.md
-  - docs/Models/Requests/GetPlaylistContentsCountry.md
-  - docs/Models/Requests/GetPlaylistContentsDirector.md
-  - docs/Models/Requests/GetPlaylistContentsWriter.md
-  - docs/Models/Requests/GetPlaylistContentsRole.md
-  - docs/Models/Requests/GetPlaylistContentsMetadata.md
-  - docs/Models/Requests/GetPlaylistContentsMediaContainer.md
-  - docs/Models/Requests/GetPlaylistContentsResponseBody.md
-  - docs/Models/Requests/GetPlaylistContentsResponse.md
-  - docs/Models/Requests/ClearPlaylistContentsRequest.md
-  - docs/Models/Requests/ClearPlaylistContentsResponse.md
-  - docs/Models/Requests/AddPlaylistContentsRequest.md
-  - docs/Models/Requests/AddPlaylistContentsMetadata.md
-  - docs/Models/Requests/AddPlaylistContentsMediaContainer.md
-  - docs/Models/Requests/AddPlaylistContentsResponseBody.md
-  - docs/Models/Requests/AddPlaylistContentsResponse.md
-  - docs/Models/Requests/QueryParamForce.md
-  - docs/Models/Requests/UploadPlaylistRequest.md
-  - docs/Models/Requests/UploadPlaylistResponse.md
-  - docs/Models/Requests/GetTransientTokenQueryParamType.md
-  - docs/Models/Requests/Scope.md
-  - docs/Models/Requests/GetTransientTokenRequest.md
-  - docs/Models/Requests/GetTransientTokenResponse.md
-  - docs/Models/Requests/GetSourceConnectionInformationRequest.md
-  - docs/Models/Requests/GetSourceConnectionInformationResponse.md
-  - docs/Models/Requests/GetUserDetailsRequest.md
-  - docs/Models/Requests/MailingListStatus.md
-  - docs/Models/Requests/AutoSelectSubtitle.md
-  - docs/Models/Requests/DefaultSubtitleAccessibility.md
-  - docs/Models/Requests/DefaultSubtitleForced.md
-  - docs/Models/Requests/WatchedIndicator.md
-  - docs/Models/Requests/MediaReviewsVisibility.md
-  - docs/Models/Requests/UserProfile.md
-  - docs/Models/Requests/GetUserDetailsStatus.md
-  - docs/Models/Requests/Services.md
-  - docs/Models/Requests/Features.md
-  - docs/Models/Requests/GetUserDetailsAuthenticationStatus.md
-  - docs/Models/Requests/Subscription.md
-  - docs/Models/Requests/GetUserDetailsFeatures.md
-  - docs/Models/Requests/GetUserDetailsAuthenticationResponseStatus.md
-  - docs/Models/Requests/GetUserDetailsSubscription.md
-  - docs/Models/Requests/GetUserDetailsUserPlexAccount.md
-  - docs/Models/Requests/GetUserDetailsResponse.md
-  - docs/Models/Requests/PostUsersSignInDataRequestBody.md
-  - docs/Models/Requests/PostUsersSignInDataRequest.md
-  - docs/Models/Requests/PostUsersSignInDataMailingListStatus.md
-  - docs/Models/Requests/PostUsersSignInDataAutoSelectSubtitle.md
-  - docs/Models/Requests/PostUsersSignInDataDefaultSubtitleAccessibility.md
-  - docs/Models/Requests/PostUsersSignInDataDefaultSubtitleForced.md
-  - docs/Models/Requests/PostUsersSignInDataWatchedIndicator.md
-  - docs/Models/Requests/PostUsersSignInDataMediaReviewsVisibility.md
-  - docs/Models/Requests/PostUsersSignInDataUserProfile.md
-  - docs/Models/Requests/PostUsersSignInDataStatus.md
-  - docs/Models/Requests/PostUsersSignInDataServices.md
-  - docs/Models/Requests/PostUsersSignInDataFeatures.md
-  - docs/Models/Requests/PostUsersSignInDataAuthenticationStatus.md
-  - docs/Models/Requests/PostUsersSignInDataSubscription.md
-  - docs/Models/Requests/PostUsersSignInDataAuthenticationFeatures.md
-  - docs/Models/Requests/PostUsersSignInDataAuthenticationResponseStatus.md
-  - docs/Models/Requests/PostUsersSignInDataAuthenticationSubscription.md
-  - docs/Models/Requests/PostUsersSignInDataState.md
-  - docs/Models/Requests/InternalPaymentMethod.md
-  - docs/Models/Requests/Billing.md
-  - docs/Models/Requests/PastSubscription.md
-  - docs/Models/Requests/Trials.md
-  - docs/Models/Requests/PostUsersSignInDataUserPlexAccount.md
-  - docs/Models/Requests/PostUsersSignInDataResponse.md
-  - docs/Models/Requests/GetStatisticsRequest.md
-  - docs/Models/Requests/GetStatisticsDevice.md
-  - docs/Models/Requests/Account.md
-  - docs/Models/Requests/StatisticsMedia.md
-  - docs/Models/Requests/GetStatisticsMediaContainer.md
-  - docs/Models/Requests/GetStatisticsResponseBody.md
-  - docs/Models/Requests/GetStatisticsResponse.md
-  - docs/Models/Requests/GetResourcesStatisticsRequest.md
-  - docs/Models/Requests/StatisticsResources.md
-  - docs/Models/Requests/GetResourcesStatisticsMediaContainer.md
-  - docs/Models/Requests/GetResourcesStatisticsResponseBody.md
-  - docs/Models/Requests/GetResourcesStatisticsResponse.md
-  - docs/Models/Requests/GetBandwidthStatisticsRequest.md
-  - docs/Models/Requests/GetBandwidthStatisticsDevice.md
-  - docs/Models/Requests/GetBandwidthStatisticsAccount.md
-  - docs/Models/Requests/StatisticsBandwidth.md
-  - docs/Models/Requests/GetBandwidthStatisticsMediaContainer.md
-  - docs/Models/Requests/GetBandwidthStatisticsResponseBody.md
-  - docs/Models/Requests/GetBandwidthStatisticsResponse.md
-  - docs/Models/Requests/GetSessionsStream.md
-  - docs/Models/Requests/GetSessionsPart.md
-  - docs/Models/Requests/GetSessionsMedia.md
-  - docs/Models/Requests/GetSessionsUser.md
-  - docs/Models/Requests/Player.md
-  - docs/Models/Requests/Session.md
-  - docs/Models/Requests/GetSessionsMetadata.md
-  - docs/Models/Requests/GetSessionsMediaContainer.md
-  - docs/Models/Requests/GetSessionsResponseBody.md
-  - docs/Models/Requests/GetSessionsResponse.md
-  - docs/Models/Requests/QueryParamFilter.md
-  - docs/Models/Requests/GetSessionHistoryRequest.md
-  - docs/Models/Requests/GetSessionHistoryMetadata.md
-  - docs/Models/Requests/GetSessionHistoryMediaContainer.md
-  - docs/Models/Requests/GetSessionHistoryResponseBody.md
-  - docs/Models/Requests/GetSessionHistoryResponse.md
-  - docs/Models/Requests/TranscodeSession.md
-  - docs/Models/Requests/GetTranscodeSessionsMediaContainer.md
-  - docs/Models/Requests/GetTranscodeSessionsResponseBody.md
-  - docs/Models/Requests/GetTranscodeSessionsResponse.md
-  - docs/Models/Requests/StopTranscodeSessionRequest.md
-  - docs/Models/Requests/StopTranscodeSessionResponse.md
-  - docs/Models/Requests/Release.md
-  - docs/Models/Requests/GetUpdateStatusMediaContainer.md
-  - docs/Models/Requests/GetUpdateStatusResponseBody.md
-  - docs/Models/Requests/GetUpdateStatusResponse.md
-  - docs/Models/Requests/Download.md
-  - docs/Models/Requests/CheckForUpdatesRequest.md
-  - docs/Models/Requests/CheckForUpdatesResponse.md
-  - docs/Models/Requests/Tonight.md
-  - docs/Models/Requests/Skip.md
-  - docs/Models/Requests/ApplyUpdatesRequest.md
-  - docs/Models/Requests/ApplyUpdatesResponse.md
-  - docs/Models/Errors/Errors.md
-  - docs/Models/Errors/GetServerCapabilitiesResponseBody.md
-  - docs/Models/Errors/GetServerPreferencesErrors.md
-  - docs/Models/Errors/GetServerPreferencesResponseBody.md
-  - docs/Models/Errors/GetAvailableClientsErrors.md
-  - docs/Models/Errors/GetAvailableClientsResponseBody.md
-  - docs/Models/Errors/GetDevicesErrors.md
-  - docs/Models/Errors/GetDevicesResponseBody.md
-  - docs/Models/Errors/GetServerIdentityResponseBody.md
-  - docs/Models/Errors/GetMyPlexAccountErrors.md
-  - docs/Models/Errors/GetMyPlexAccountResponseBody.md
-  - docs/Models/Errors/GetResizedPhotoErrors.md
-  - docs/Models/Errors/GetResizedPhotoResponseBody.md
-  - docs/Models/Errors/GetMediaProvidersErrors.md
-  - docs/Models/Errors/GetMediaProvidersResponseBody.md
-  - docs/Models/Errors/GetServerListErrors.md
-  - docs/Models/Errors/GetServerListResponseBody.md
-  - docs/Models/Errors/MarkPlayedErrors.md
-  - docs/Models/Errors/MarkPlayedResponseBody.md
-  - docs/Models/Errors/MarkUnplayedErrors.md
-  - docs/Models/Errors/MarkUnplayedResponseBody.md
-  - docs/Models/Errors/UpdatePlayProgressErrors.md
-  - docs/Models/Errors/UpdatePlayProgressResponseBody.md
-  - docs/Models/Errors/GetBannerImageErrors.md
-  - docs/Models/Errors/GetBannerImageResponseBody.md
-  - docs/Models/Errors/GetThumbImageErrors.md
-  - docs/Models/Errors/GetThumbImageResponseBody.md
-  - docs/Models/Errors/GetTimelineErrors.md
-  - docs/Models/Errors/GetTimelineResponseBody.md
-  - docs/Models/Errors/StartUniversalTranscodeErrors.md
-  - docs/Models/Errors/StartUniversalTranscodeResponseBody.md
-  - docs/Models/Errors/GetServerActivitiesErrors.md
-  - docs/Models/Errors/GetServerActivitiesResponseBody.md
+  - .gitattributes
+  - CONTRIBUTING.md
+  - LukeHagar.PlexAPI.SDK.sln
+  - LukeHagar/PlexAPI/SDK/Activities.cs
+  - LukeHagar/PlexAPI/SDK/Authentication.cs
+  - LukeHagar/PlexAPI/SDK/Butler.cs
+  - LukeHagar/PlexAPI/SDK/Hooks/HookTypes.cs
+  - LukeHagar/PlexAPI/SDK/Hooks/SDKHooks.cs
+  - LukeHagar/PlexAPI/SDK/Hubs.cs
+  - LukeHagar/PlexAPI/SDK/Library.cs
+  - LukeHagar/PlexAPI/SDK/Log.cs
+  - LukeHagar/PlexAPI/SDK/LukeHagar.PlexAPI.SDK.csproj
+  - LukeHagar/PlexAPI/SDK/Media.cs
+  - LukeHagar/PlexAPI/SDK/Models/Components/Security.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/AddPlaylistContentsErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/AddPlaylistContentsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/ApplyUpdatesErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/ApplyUpdatesResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/CancelServerActivitiesErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/CancelServerActivitiesResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/CheckForUpdatesErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/CheckForUpdatesResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/ClearPlaylistContentsErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/ClearPlaylistContentsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/CreatePlaylistErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/CreatePlaylistResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/DeleteLibraryErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/DeleteLibraryResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/DeletePlaylistErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/DeletePlaylistResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/EnablePaperTrailErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/EnablePaperTrailResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/Errors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetAllLibrariesErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetAllLibrariesResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetAvailableClientsErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetAvailableClientsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetBandwidthStatisticsErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetBandwidthStatisticsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetBannerImageErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetBannerImageResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetButlerTasksErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetButlerTasksResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetCompanionsDataErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetCompanionsDataResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetDevicesErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetDevicesResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetFileHashErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetFileHashResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetGeoDataErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetGeoDataResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetGlobalHubsErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetGlobalHubsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetHomeDataErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetHomeDataResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetLibraryDetailsErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetLibraryDetailsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetLibraryHubsErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetLibraryHubsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetLibraryItemsErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetLibraryItemsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetMediaProvidersErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetMediaProvidersResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetMetaDataByRatingKeyErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetMetaDataByRatingKeyResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetMetadataChildrenErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetMetadataChildrenResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetMyPlexAccountErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetMyPlexAccountResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetOnDeckErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetOnDeckResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetPinErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetPinResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetPlaylistContentsErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetPlaylistContentsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetPlaylistErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetPlaylistResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetPlaylistsErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetPlaylistsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetRecentlyAddedErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetRecentlyAddedResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetRefreshLibraryMetadataErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetRefreshLibraryMetadataResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetResizedPhotoErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetResizedPhotoResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetResourcesStatisticsErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetResourcesStatisticsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetSearchLibraryErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetSearchLibraryResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetSearchResultsErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetSearchResultsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetServerActivitiesErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetServerActivitiesResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetServerCapabilitiesResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetServerIdentityResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetServerListErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetServerListResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetServerPreferencesErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetServerPreferencesResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetServerResourcesErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetServerResourcesResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetSessionHistoryErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetSessionHistoryResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetSessionsErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetSessionsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetSourceConnectionInformationErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetSourceConnectionInformationResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetStatisticsErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetStatisticsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetThumbImageErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetThumbImageResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetTimelineErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetTimelineResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetTokenByPinIdErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetTokenByPinIdPlexErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetTokenByPinIdPlexResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetTokenByPinIdResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetTopWatchedContentErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetTopWatchedContentResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetTranscodeSessionsErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetTranscodeSessionsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetTransientTokenErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetTransientTokenResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetUpdateStatusErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetUpdateStatusResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetUserDetailsErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetUserDetailsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetUserFriendsErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetUserFriendsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetWatchListErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetWatchListResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/LogLineErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/LogLineResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/LogMultiLineErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/LogMultiLineResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/MarkPlayedErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/MarkPlayedResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/MarkUnplayedErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/MarkUnplayedResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/PerformSearchErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/PerformSearchResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/PerformVoiceSearchErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/PerformVoiceSearchResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/PostUsersSignInDataErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/PostUsersSignInDataResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/SDKException.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/StartAllTasksErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/StartAllTasksResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/StartTaskErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/StartTaskResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/StartUniversalTranscodeErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/StartUniversalTranscodeResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/StopAllTasksErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/StopAllTasksResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/StopTaskErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/StopTaskResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/StopTranscodeSessionErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/StopTranscodeSessionResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/UpdatePlayProgressErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/UpdatePlayProgressResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/UpdatePlaylistErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/UpdatePlaylistResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/UploadPlaylistErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/UploadPlaylistResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Account.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Activity.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/AddPlaylistContentsMediaContainer.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/AddPlaylistContentsMetadata.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/AddPlaylistContentsRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/AddPlaylistContentsResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/AddPlaylistContentsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/ApplyUpdatesRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/ApplyUpdatesResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/AutoSelectSubtitle.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Billing.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/ButlerTask.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/ButlerTasks.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/CancelServerActivitiesRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/CancelServerActivitiesResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/CheckForUpdatesRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/CheckForUpdatesResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/ClearPlaylistContentsRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/ClearPlaylistContentsResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Connections.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Context.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Country.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/CreatePlaylistMediaContainer.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/CreatePlaylistMetadata.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/CreatePlaylistQueryParamType.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/CreatePlaylistRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/CreatePlaylistResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/CreatePlaylistResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/DefaultSubtitleAccessibility.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/DefaultSubtitleForced.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/DeleteLibraryRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/DeleteLibraryResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/DeletePlaylistRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/DeletePlaylistResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Device.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Director.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Directory.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Download.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/EnablePaperTrailResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Feature.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Features.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Field.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/FieldType.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Filter.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Force.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Friend.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Genre.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GeoData.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetAllLibrariesDirectory.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetAllLibrariesMediaContainer.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetAllLibrariesResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetAllLibrariesResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetAvailableClientsMediaContainer.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetAvailableClientsResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetAvailableClientsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetBandwidthStatisticsAccount.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetBandwidthStatisticsDevice.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetBandwidthStatisticsMediaContainer.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetBandwidthStatisticsRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetBandwidthStatisticsResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetBandwidthStatisticsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetBannerImageRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetBannerImageResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetButlerTasksResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetButlerTasksResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetCompanionsDataResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetDevicesMediaContainer.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetDevicesResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetDevicesResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetFileHashRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetFileHashResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetGeoDataGeoData.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetGeoDataResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetGlobalHubsMediaContainer.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetGlobalHubsMetadata.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetGlobalHubsRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetGlobalHubsResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetGlobalHubsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetHomeDataResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetHomeDataResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryDetailsDirectory.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryDetailsFilter.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryDetailsMediaContainer.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryDetailsRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryDetailsResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryDetailsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryDetailsType.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryHubsCountry.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryHubsDirector.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryHubsGenre.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryHubsHub.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryHubsMedia.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryHubsMediaContainer.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryHubsMetadata.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryHubsPart.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryHubsRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryHubsResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryHubsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryHubsRole.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryHubsWriter.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsCountry.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsDirector.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsGenre.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsMedia.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsMediaContainer.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsMetadata.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsPart.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsRole.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsWriter.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetMediaProvidersDirectory.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetMediaProvidersMediaContainer.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetMediaProvidersRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetMediaProvidersResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetMediaProvidersResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetMetaDataByRatingKeyCountry.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetMetaDataByRatingKeyDirector.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetMetaDataByRatingKeyGenre.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetMetaDataByRatingKeyMedia.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetMetaDataByRatingKeyMediaContainer.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetMetaDataByRatingKeyMetadata.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetMetaDataByRatingKeyPart.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetMetaDataByRatingKeyRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetMetaDataByRatingKeyResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetMetaDataByRatingKeyResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetMetaDataByRatingKeyRole.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetMetaDataByRatingKeyWriter.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetMetadataChildrenDirectory.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetMetadataChildrenMediaContainer.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetMetadataChildrenMetadata.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetMetadataChildrenRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetMetadataChildrenResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetMetadataChildrenResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetMyPlexAccountResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetMyPlexAccountResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetOnDeckGuids.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetOnDeckMedia.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetOnDeckMediaContainer.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetOnDeckMetadata.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetOnDeckPart.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetOnDeckResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetOnDeckResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetOnDeckStream.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetPinAuthPinContainer.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetPinRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetPinResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetPlaylistContentsCountry.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetPlaylistContentsDirector.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetPlaylistContentsGenre.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetPlaylistContentsMedia.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetPlaylistContentsMediaContainer.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetPlaylistContentsMetadata.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetPlaylistContentsPart.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetPlaylistContentsQueryParamType.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetPlaylistContentsRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetPlaylistContentsResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetPlaylistContentsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetPlaylistContentsRole.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetPlaylistContentsWriter.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetPlaylistMediaContainer.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetPlaylistMetadata.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetPlaylistRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetPlaylistResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetPlaylistResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetPlaylistsMediaContainer.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetPlaylistsMetadata.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetPlaylistsRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetPlaylistsResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetPlaylistsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetRecentlyAddedMediaContainer.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetRecentlyAddedMetadata.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetRecentlyAddedRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetRecentlyAddedResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetRecentlyAddedResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetRefreshLibraryMetadataRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetRefreshLibraryMetadataResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetResizedPhotoRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetResizedPhotoResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetResourcesStatisticsMediaContainer.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetResourcesStatisticsRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetResourcesStatisticsResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetResourcesStatisticsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchLibraryMediaContainer.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchLibraryMetadata.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchLibraryRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchLibraryResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchLibraryResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchResultsCountry.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchResultsDirector.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchResultsGenre.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchResultsMedia.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchResultsMediaContainer.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchResultsMetadata.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchResultsPart.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchResultsRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchResultsResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchResultsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchResultsRole.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchResultsWriter.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetServerActivitiesMediaContainer.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetServerActivitiesResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetServerActivitiesResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetServerCapabilitiesResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetServerCapabilitiesResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetServerIdentityMediaContainer.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetServerIdentityResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetServerIdentityResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetServerListMediaContainer.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetServerListResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetServerListResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetServerListServer.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetServerPreferencesMediaContainer.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetServerPreferencesResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetServerPreferencesResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetServerResourcesRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetServerResourcesResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSessionHistoryMediaContainer.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSessionHistoryMetadata.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSessionHistoryRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSessionHistoryResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSessionHistoryResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSessionsMedia.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSessionsMediaContainer.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSessionsMetadata.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSessionsPart.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSessionsResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSessionsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSessionsStream.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSessionsUser.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSourceConnectionInformationRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSourceConnectionInformationResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetStatisticsDevice.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetStatisticsMediaContainer.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetStatisticsRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetStatisticsResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetStatisticsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetThumbImageRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetThumbImageResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetTimelineRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetTimelineResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetTokenByPinIdAuthPinContainer.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetTokenByPinIdGeoData.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetTokenByPinIdRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetTokenByPinIdResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetTopWatchedContentCountry.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetTopWatchedContentGenre.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetTopWatchedContentGuids.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetTopWatchedContentMediaContainer.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetTopWatchedContentMetadata.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetTopWatchedContentQueryParamType.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetTopWatchedContentRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetTopWatchedContentResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetTopWatchedContentResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetTopWatchedContentRole.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetTranscodeSessionsMediaContainer.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetTranscodeSessionsResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetTranscodeSessionsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetTransientTokenQueryParamType.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetTransientTokenRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetTransientTokenResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetUpdateStatusMediaContainer.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetUpdateStatusResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetUpdateStatusResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetUserDetailsAuthenticationResponseStatus.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetUserDetailsAuthenticationStatus.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetUserDetailsFeatures.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetUserDetailsRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetUserDetailsResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetUserDetailsStatus.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetUserDetailsSubscription.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetUserDetailsUserPlexAccount.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetUserFriendsResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetWatchListRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetWatchListResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetWatchListResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Guids.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Hub.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Image.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/IncludeCollections.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/IncludeDetails.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/IncludeExternalMedia.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/IncludeGuids.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/IncludeHttps.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/IncludeIPv6.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/IncludeMeta.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/IncludeRelay.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/InternalPaymentMethod.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Level.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/LibrarySectionID.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Libtype.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Location.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/LogLineRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/LogLineResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/LogMultiLineResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/MailingListStatus.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/MarkPlayedRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/MarkPlayedResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/MarkUnplayedRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/MarkUnplayedResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Media.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/MediaContainer.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/MediaProvider.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/MediaReviewsVisibility.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Metadata.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/MinSize.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/MyPlex.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/OnlyTransient.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Operator.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Part.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/PastSubscription.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/PathParamTaskName.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/PerformSearchRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/PerformSearchResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/PerformVoiceSearchRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/PerformVoiceSearchResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Pivot.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Player.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/PlaylistType.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/PlexDevice.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/PostUsersSignInDataAuthenticationFeatures.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/PostUsersSignInDataAuthenticationResponseStatus.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/PostUsersSignInDataAuthenticationStatus.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/PostUsersSignInDataAuthenticationSubscription.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/PostUsersSignInDataAutoSelectSubtitle.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/PostUsersSignInDataDefaultSubtitleAccessibility.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/PostUsersSignInDataDefaultSubtitleForced.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/PostUsersSignInDataFeatures.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/PostUsersSignInDataMailingListStatus.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/PostUsersSignInDataMediaReviewsVisibility.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/PostUsersSignInDataRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/PostUsersSignInDataRequestBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/PostUsersSignInDataResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/PostUsersSignInDataServices.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/PostUsersSignInDataState.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/PostUsersSignInDataStatus.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/PostUsersSignInDataSubscription.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/PostUsersSignInDataUserPlexAccount.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/PostUsersSignInDataUserProfile.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/PostUsersSignInDataWatchedIndicator.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Producer.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Provider.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/QueryParamFilter.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/QueryParamForce.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/QueryParamOnlyTransient.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/QueryParamSmart.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/QueryParamType.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Ratings.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Release.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/ResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Role.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Scope.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Server.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Services.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Session.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Setting.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/SharedServers.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/SharedSources.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Skip.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Smart.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Sort.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/StartAllTasksResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/StartTaskRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/StartTaskResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/StartUniversalTranscodeRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/StartUniversalTranscodeResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/State.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/StatisticsBandwidth.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/StatisticsMedia.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/StatisticsResources.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Status.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/StopAllTasksResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/StopTaskRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/StopTaskResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/StopTranscodeSessionRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/StopTranscodeSessionResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Stream.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Subscription.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Tag.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/TaskName.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Tonight.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/TranscodeSession.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Trials.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Type.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/UpdatePlayProgressRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/UpdatePlayProgressResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/UpdatePlaylistRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/UpdatePlaylistResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/UploadPlaylistRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/UploadPlaylistResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Upscale.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/User.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/UserProfile.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/WatchedIndicator.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Writer.cs
+  - LukeHagar/PlexAPI/SDK/Playlists.cs
+  - LukeHagar/PlexAPI/SDK/Plex.cs
+  - LukeHagar/PlexAPI/SDK/PlexAPI.cs
+  - LukeHagar/PlexAPI/SDK/Search.cs
+  - LukeHagar/PlexAPI/SDK/Server.cs
+  - LukeHagar/PlexAPI/SDK/Sessions.cs
+  - LukeHagar/PlexAPI/SDK/Statistics.cs
+  - LukeHagar/PlexAPI/SDK/Updater.cs
+  - LukeHagar/PlexAPI/SDK/Utils/AnyDeserializer.cs
+  - LukeHagar/PlexAPI/SDK/Utils/BigIntStrConverter.cs
+  - LukeHagar/PlexAPI/SDK/Utils/DecimalStrConverter.cs
+  - LukeHagar/PlexAPI/SDK/Utils/EnumConverter.cs
+  - LukeHagar/PlexAPI/SDK/Utils/FlexibleObjectDeserializer.cs
+  - LukeHagar/PlexAPI/SDK/Utils/HeaderSerializer.cs
+  - LukeHagar/PlexAPI/SDK/Utils/IsoDateTimeSerializer.cs
+  - LukeHagar/PlexAPI/SDK/Utils/RequestBodySerializer.cs
+  - LukeHagar/PlexAPI/SDK/Utils/ResponseBodyDeserializer.cs
+  - LukeHagar/PlexAPI/SDK/Utils/Retries/BackoffStrategy.cs
+  - LukeHagar/PlexAPI/SDK/Utils/Retries/Retries.cs
+  - LukeHagar/PlexAPI/SDK/Utils/Retries/RetryConfig.cs
+  - LukeHagar/PlexAPI/SDK/Utils/SecurityMetadata.cs
+  - LukeHagar/PlexAPI/SDK/Utils/SpeakeasyHttpClient.cs
+  - LukeHagar/PlexAPI/SDK/Utils/SpeakeasyMetadata.cs
+  - LukeHagar/PlexAPI/SDK/Utils/URLBuilder.cs
+  - LukeHagar/PlexAPI/SDK/Utils/Utilities.cs
+  - LukeHagar/PlexAPI/SDK/Video.cs
+  - LukeHagar/PlexAPI/SDK/Watchlist.cs
+  - NUGET.md
+  - USAGE.md
+  - docs/Models/Components/Security.md
+  - docs/Models/Errors/AddPlaylistContentsErrors.md
+  - docs/Models/Errors/AddPlaylistContentsResponseBody.md
+  - docs/Models/Errors/ApplyUpdatesErrors.md
+  - docs/Models/Errors/ApplyUpdatesResponseBody.md
   - docs/Models/Errors/CancelServerActivitiesErrors.md
   - docs/Models/Errors/CancelServerActivitiesResponseBody.md
-  - docs/Models/Errors/GetButlerTasksErrors.md
-  - docs/Models/Errors/GetButlerTasksResponseBody.md
-  - docs/Models/Errors/StartAllTasksErrors.md
-  - docs/Models/Errors/StartAllTasksResponseBody.md
-  - docs/Models/Errors/StopAllTasksErrors.md
-  - docs/Models/Errors/StopAllTasksResponseBody.md
-  - docs/Models/Errors/StartTaskErrors.md
-  - docs/Models/Errors/StartTaskResponseBody.md
-  - docs/Models/Errors/StopTaskErrors.md
-  - docs/Models/Errors/StopTaskResponseBody.md
-  - docs/Models/Errors/GetCompanionsDataErrors.md
-  - docs/Models/Errors/GetCompanionsDataResponseBody.md
-  - docs/Models/Errors/GetUserFriendsErrors.md
-  - docs/Models/Errors/GetUserFriendsResponseBody.md
-  - docs/Models/Errors/GetGeoDataErrors.md
-  - docs/Models/Errors/GetGeoDataResponseBody.md
-  - docs/Models/Errors/GetHomeDataErrors.md
-  - docs/Models/Errors/GetHomeDataResponseBody.md
-  - docs/Models/Errors/GetServerResourcesErrors.md
-  - docs/Models/Errors/GetServerResourcesResponseBody.md
-  - docs/Models/Errors/GetPinErrors.md
-  - docs/Models/Errors/GetPinResponseBody.md
-  - docs/Models/Errors/GetTokenByPinIdPlexErrors.md
-  - docs/Models/Errors/GetTokenByPinIdPlexResponseBody.md
-  - docs/Models/Errors/GetTokenByPinIdErrors.md
-  - docs/Models/Errors/GetTokenByPinIdResponseBody.md
-  - docs/Models/Errors/GetGlobalHubsErrors.md
-  - docs/Models/Errors/GetGlobalHubsResponseBody.md
-  - docs/Models/Errors/GetLibraryHubsErrors.md
-  - docs/Models/Errors/GetLibraryHubsResponseBody.md
-  - docs/Models/Errors/PerformSearchErrors.md
-  - docs/Models/Errors/PerformSearchResponseBody.md
-  - docs/Models/Errors/PerformVoiceSearchErrors.md
-  - docs/Models/Errors/PerformVoiceSearchResponseBody.md
-  - docs/Models/Errors/GetSearchResultsErrors.md
-  - docs/Models/Errors/GetSearchResultsResponseBody.md
-  - docs/Models/Errors/GetFileHashErrors.md
-  - docs/Models/Errors/GetFileHashResponseBody.md
-  - docs/Models/Errors/GetRecentlyAddedErrors.md
-  - docs/Models/Errors/GetRecentlyAddedResponseBody.md
-  - docs/Models/Errors/GetAllLibrariesErrors.md
-  - docs/Models/Errors/GetAllLibrariesResponseBody.md
-  - docs/Models/Errors/GetLibraryDetailsErrors.md
-  - docs/Models/Errors/GetLibraryDetailsResponseBody.md
+  - docs/Models/Errors/CheckForUpdatesErrors.md
+  - docs/Models/Errors/CheckForUpdatesResponseBody.md
+  - docs/Models/Errors/ClearPlaylistContentsErrors.md
+  - docs/Models/Errors/ClearPlaylistContentsResponseBody.md
+  - docs/Models/Errors/CreatePlaylistErrors.md
+  - docs/Models/Errors/CreatePlaylistResponseBody.md
   - docs/Models/Errors/DeleteLibraryErrors.md
   - docs/Models/Errors/DeleteLibraryResponseBody.md
+  - docs/Models/Errors/DeletePlaylistErrors.md
+  - docs/Models/Errors/DeletePlaylistResponseBody.md
+  - docs/Models/Errors/EnablePaperTrailErrors.md
+  - docs/Models/Errors/EnablePaperTrailResponseBody.md
+  - docs/Models/Errors/Errors.md
+  - docs/Models/Errors/GetAllLibrariesErrors.md
+  - docs/Models/Errors/GetAllLibrariesResponseBody.md
+  - docs/Models/Errors/GetAvailableClientsErrors.md
+  - docs/Models/Errors/GetAvailableClientsResponseBody.md
+  - docs/Models/Errors/GetBandwidthStatisticsErrors.md
+  - docs/Models/Errors/GetBandwidthStatisticsResponseBody.md
+  - docs/Models/Errors/GetBannerImageErrors.md
+  - docs/Models/Errors/GetBannerImageResponseBody.md
+  - docs/Models/Errors/GetButlerTasksErrors.md
+  - docs/Models/Errors/GetButlerTasksResponseBody.md
+  - docs/Models/Errors/GetCompanionsDataErrors.md
+  - docs/Models/Errors/GetCompanionsDataResponseBody.md
+  - docs/Models/Errors/GetDevicesErrors.md
+  - docs/Models/Errors/GetDevicesResponseBody.md
+  - docs/Models/Errors/GetFileHashErrors.md
+  - docs/Models/Errors/GetFileHashResponseBody.md
+  - docs/Models/Errors/GetGeoDataErrors.md
+  - docs/Models/Errors/GetGeoDataResponseBody.md
+  - docs/Models/Errors/GetGlobalHubsErrors.md
+  - docs/Models/Errors/GetGlobalHubsResponseBody.md
+  - docs/Models/Errors/GetHomeDataErrors.md
+  - docs/Models/Errors/GetHomeDataResponseBody.md
+  - docs/Models/Errors/GetLibraryDetailsErrors.md
+  - docs/Models/Errors/GetLibraryDetailsResponseBody.md
+  - docs/Models/Errors/GetLibraryHubsErrors.md
+  - docs/Models/Errors/GetLibraryHubsResponseBody.md
   - docs/Models/Errors/GetLibraryItemsErrors.md
   - docs/Models/Errors/GetLibraryItemsResponseBody.md
-  - docs/Models/Errors/GetRefreshLibraryMetadataErrors.md
-  - docs/Models/Errors/GetRefreshLibraryMetadataResponseBody.md
-  - docs/Models/Errors/GetSearchLibraryErrors.md
-  - docs/Models/Errors/GetSearchLibraryResponseBody.md
+  - docs/Models/Errors/GetMediaProvidersErrors.md
+  - docs/Models/Errors/GetMediaProvidersResponseBody.md
   - docs/Models/Errors/GetMetaDataByRatingKeyErrors.md
   - docs/Models/Errors/GetMetaDataByRatingKeyResponseBody.md
   - docs/Models/Errors/GetMetadataChildrenErrors.md
   - docs/Models/Errors/GetMetadataChildrenResponseBody.md
-  - docs/Models/Errors/GetTopWatchedContentErrors.md
-  - docs/Models/Errors/GetTopWatchedContentResponseBody.md
+  - docs/Models/Errors/GetMyPlexAccountErrors.md
+  - docs/Models/Errors/GetMyPlexAccountResponseBody.md
   - docs/Models/Errors/GetOnDeckErrors.md
   - docs/Models/Errors/GetOnDeckResponseBody.md
+  - docs/Models/Errors/GetPinErrors.md
+  - docs/Models/Errors/GetPinResponseBody.md
+  - docs/Models/Errors/GetPlaylistContentsErrors.md
+  - docs/Models/Errors/GetPlaylistContentsResponseBody.md
+  - docs/Models/Errors/GetPlaylistErrors.md
+  - docs/Models/Errors/GetPlaylistResponseBody.md
+  - docs/Models/Errors/GetPlaylistsErrors.md
+  - docs/Models/Errors/GetPlaylistsResponseBody.md
+  - docs/Models/Errors/GetRecentlyAddedErrors.md
+  - docs/Models/Errors/GetRecentlyAddedResponseBody.md
+  - docs/Models/Errors/GetRefreshLibraryMetadataErrors.md
+  - docs/Models/Errors/GetRefreshLibraryMetadataResponseBody.md
+  - docs/Models/Errors/GetResizedPhotoErrors.md
+  - docs/Models/Errors/GetResizedPhotoResponseBody.md
+  - docs/Models/Errors/GetResourcesStatisticsErrors.md
+  - docs/Models/Errors/GetResourcesStatisticsResponseBody.md
+  - docs/Models/Errors/GetSearchLibraryErrors.md
+  - docs/Models/Errors/GetSearchLibraryResponseBody.md
+  - docs/Models/Errors/GetSearchResultsErrors.md
+  - docs/Models/Errors/GetSearchResultsResponseBody.md
+  - docs/Models/Errors/GetServerActivitiesErrors.md
+  - docs/Models/Errors/GetServerActivitiesResponseBody.md
+  - docs/Models/Errors/GetServerCapabilitiesResponseBody.md
+  - docs/Models/Errors/GetServerIdentityResponseBody.md
+  - docs/Models/Errors/GetServerListErrors.md
+  - docs/Models/Errors/GetServerListResponseBody.md
+  - docs/Models/Errors/GetServerPreferencesErrors.md
+  - docs/Models/Errors/GetServerPreferencesResponseBody.md
+  - docs/Models/Errors/GetServerResourcesErrors.md
+  - docs/Models/Errors/GetServerResourcesResponseBody.md
+  - docs/Models/Errors/GetSessionHistoryErrors.md
+  - docs/Models/Errors/GetSessionHistoryResponseBody.md
+  - docs/Models/Errors/GetSessionsErrors.md
+  - docs/Models/Errors/GetSessionsResponseBody.md
+  - docs/Models/Errors/GetSourceConnectionInformationErrors.md
+  - docs/Models/Errors/GetSourceConnectionInformationResponseBody.md
+  - docs/Models/Errors/GetStatisticsErrors.md
+  - docs/Models/Errors/GetStatisticsResponseBody.md
+  - docs/Models/Errors/GetThumbImageErrors.md
+  - docs/Models/Errors/GetThumbImageResponseBody.md
+  - docs/Models/Errors/GetTimelineErrors.md
+  - docs/Models/Errors/GetTimelineResponseBody.md
+  - docs/Models/Errors/GetTokenByPinIdErrors.md
+  - docs/Models/Errors/GetTokenByPinIdPlexErrors.md
+  - docs/Models/Errors/GetTokenByPinIdPlexResponseBody.md
+  - docs/Models/Errors/GetTokenByPinIdResponseBody.md
+  - docs/Models/Errors/GetTopWatchedContentErrors.md
+  - docs/Models/Errors/GetTopWatchedContentResponseBody.md
+  - docs/Models/Errors/GetTranscodeSessionsErrors.md
+  - docs/Models/Errors/GetTranscodeSessionsResponseBody.md
+  - docs/Models/Errors/GetTransientTokenErrors.md
+  - docs/Models/Errors/GetTransientTokenResponseBody.md
+  - docs/Models/Errors/GetUpdateStatusErrors.md
+  - docs/Models/Errors/GetUpdateStatusResponseBody.md
+  - docs/Models/Errors/GetUserDetailsErrors.md
+  - docs/Models/Errors/GetUserDetailsResponseBody.md
+  - docs/Models/Errors/GetUserFriendsErrors.md
+  - docs/Models/Errors/GetUserFriendsResponseBody.md
   - docs/Models/Errors/GetWatchListErrors.md
   - docs/Models/Errors/GetWatchListResponseBody.md
   - docs/Models/Errors/LogLineErrors.md
   - docs/Models/Errors/LogLineResponseBody.md
   - docs/Models/Errors/LogMultiLineErrors.md
   - docs/Models/Errors/LogMultiLineResponseBody.md
-  - docs/Models/Errors/EnablePaperTrailErrors.md
-  - docs/Models/Errors/EnablePaperTrailResponseBody.md
-  - docs/Models/Errors/CreatePlaylistErrors.md
-  - docs/Models/Errors/CreatePlaylistResponseBody.md
-  - docs/Models/Errors/GetPlaylistsErrors.md
-  - docs/Models/Errors/GetPlaylistsResponseBody.md
-  - docs/Models/Errors/GetPlaylistErrors.md
-  - docs/Models/Errors/GetPlaylistResponseBody.md
-  - docs/Models/Errors/DeletePlaylistErrors.md
-  - docs/Models/Errors/DeletePlaylistResponseBody.md
-  - docs/Models/Errors/UpdatePlaylistErrors.md
-  - docs/Models/Errors/UpdatePlaylistResponseBody.md
-  - docs/Models/Errors/GetPlaylistContentsErrors.md
-  - docs/Models/Errors/GetPlaylistContentsResponseBody.md
-  - docs/Models/Errors/ClearPlaylistContentsErrors.md
-  - docs/Models/Errors/ClearPlaylistContentsResponseBody.md
-  - docs/Models/Errors/AddPlaylistContentsErrors.md
-  - docs/Models/Errors/AddPlaylistContentsResponseBody.md
-  - docs/Models/Errors/UploadPlaylistErrors.md
-  - docs/Models/Errors/UploadPlaylistResponseBody.md
-  - docs/Models/Errors/GetTransientTokenErrors.md
-  - docs/Models/Errors/GetTransientTokenResponseBody.md
-  - docs/Models/Errors/GetSourceConnectionInformationErrors.md
-  - docs/Models/Errors/GetSourceConnectionInformationResponseBody.md
-  - docs/Models/Errors/GetUserDetailsErrors.md
-  - docs/Models/Errors/GetUserDetailsResponseBody.md
+  - docs/Models/Errors/MarkPlayedErrors.md
+  - docs/Models/Errors/MarkPlayedResponseBody.md
+  - docs/Models/Errors/MarkUnplayedErrors.md
+  - docs/Models/Errors/MarkUnplayedResponseBody.md
+  - docs/Models/Errors/PerformSearchErrors.md
+  - docs/Models/Errors/PerformSearchResponseBody.md
+  - docs/Models/Errors/PerformVoiceSearchErrors.md
+  - docs/Models/Errors/PerformVoiceSearchResponseBody.md
   - docs/Models/Errors/PostUsersSignInDataErrors.md
   - docs/Models/Errors/PostUsersSignInDataResponseBody.md
-  - docs/Models/Errors/GetStatisticsErrors.md
-  - docs/Models/Errors/GetStatisticsResponseBody.md
-  - docs/Models/Errors/GetResourcesStatisticsErrors.md
-  - docs/Models/Errors/GetResourcesStatisticsResponseBody.md
-  - docs/Models/Errors/GetBandwidthStatisticsErrors.md
-  - docs/Models/Errors/GetBandwidthStatisticsResponseBody.md
-  - docs/Models/Errors/GetSessionsErrors.md
-  - docs/Models/Errors/GetSessionsResponseBody.md
-  - docs/Models/Errors/GetSessionHistoryErrors.md
-  - docs/Models/Errors/GetSessionHistoryResponseBody.md
-  - docs/Models/Errors/GetTranscodeSessionsErrors.md
-  - docs/Models/Errors/GetTranscodeSessionsResponseBody.md
+  - docs/Models/Errors/StartAllTasksErrors.md
+  - docs/Models/Errors/StartAllTasksResponseBody.md
+  - docs/Models/Errors/StartTaskErrors.md
+  - docs/Models/Errors/StartTaskResponseBody.md
+  - docs/Models/Errors/StartUniversalTranscodeErrors.md
+  - docs/Models/Errors/StartUniversalTranscodeResponseBody.md
+  - docs/Models/Errors/StopAllTasksErrors.md
+  - docs/Models/Errors/StopAllTasksResponseBody.md
+  - docs/Models/Errors/StopTaskErrors.md
+  - docs/Models/Errors/StopTaskResponseBody.md
   - docs/Models/Errors/StopTranscodeSessionErrors.md
   - docs/Models/Errors/StopTranscodeSessionResponseBody.md
-  - docs/Models/Errors/GetUpdateStatusErrors.md
-  - docs/Models/Errors/GetUpdateStatusResponseBody.md
-  - docs/Models/Errors/CheckForUpdatesErrors.md
-  - docs/Models/Errors/CheckForUpdatesResponseBody.md
-  - docs/Models/Errors/ApplyUpdatesErrors.md
-  - docs/Models/Errors/ApplyUpdatesResponseBody.md
-  - docs/Models/Components/Security.md
-  - docs/sdks/plexapi/README.md
-  - docs/sdks/server/README.md
-  - docs/sdks/media/README.md
-  - docs/sdks/video/README.md
+  - docs/Models/Errors/UpdatePlayProgressErrors.md
+  - docs/Models/Errors/UpdatePlayProgressResponseBody.md
+  - docs/Models/Errors/UpdatePlaylistErrors.md
+  - docs/Models/Errors/UpdatePlaylistResponseBody.md
+  - docs/Models/Errors/UploadPlaylistErrors.md
+  - docs/Models/Errors/UploadPlaylistResponseBody.md
+  - docs/Models/Requests/Account.md
+  - docs/Models/Requests/Activity.md
+  - docs/Models/Requests/AddPlaylistContentsMediaContainer.md
+  - docs/Models/Requests/AddPlaylistContentsMetadata.md
+  - docs/Models/Requests/AddPlaylistContentsRequest.md
+  - docs/Models/Requests/AddPlaylistContentsResponse.md
+  - docs/Models/Requests/AddPlaylistContentsResponseBody.md
+  - docs/Models/Requests/ApplyUpdatesRequest.md
+  - docs/Models/Requests/ApplyUpdatesResponse.md
+  - docs/Models/Requests/AutoSelectSubtitle.md
+  - docs/Models/Requests/Billing.md
+  - docs/Models/Requests/ButlerTask.md
+  - docs/Models/Requests/ButlerTasks.md
+  - docs/Models/Requests/CancelServerActivitiesRequest.md
+  - docs/Models/Requests/CancelServerActivitiesResponse.md
+  - docs/Models/Requests/CheckForUpdatesRequest.md
+  - docs/Models/Requests/CheckForUpdatesResponse.md
+  - docs/Models/Requests/ClearPlaylistContentsRequest.md
+  - docs/Models/Requests/ClearPlaylistContentsResponse.md
+  - docs/Models/Requests/Connections.md
+  - docs/Models/Requests/Context.md
+  - docs/Models/Requests/Country.md
+  - docs/Models/Requests/CreatePlaylistMediaContainer.md
+  - docs/Models/Requests/CreatePlaylistMetadata.md
+  - docs/Models/Requests/CreatePlaylistQueryParamType.md
+  - docs/Models/Requests/CreatePlaylistRequest.md
+  - docs/Models/Requests/CreatePlaylistResponse.md
+  - docs/Models/Requests/CreatePlaylistResponseBody.md
+  - docs/Models/Requests/DefaultSubtitleAccessibility.md
+  - docs/Models/Requests/DefaultSubtitleForced.md
+  - docs/Models/Requests/DeleteLibraryRequest.md
+  - docs/Models/Requests/DeleteLibraryResponse.md
+  - docs/Models/Requests/DeletePlaylistRequest.md
+  - docs/Models/Requests/DeletePlaylistResponse.md
+  - docs/Models/Requests/Device.md
+  - docs/Models/Requests/Director.md
+  - docs/Models/Requests/Directory.md
+  - docs/Models/Requests/Download.md
+  - docs/Models/Requests/EnablePaperTrailResponse.md
+  - docs/Models/Requests/Feature.md
+  - docs/Models/Requests/Features.md
+  - docs/Models/Requests/Field.md
+  - docs/Models/Requests/FieldType.md
+  - docs/Models/Requests/Filter.md
+  - docs/Models/Requests/Force.md
+  - docs/Models/Requests/Friend.md
+  - docs/Models/Requests/Genre.md
+  - docs/Models/Requests/GeoData.md
+  - docs/Models/Requests/GetAllLibrariesDirectory.md
+  - docs/Models/Requests/GetAllLibrariesMediaContainer.md
+  - docs/Models/Requests/GetAllLibrariesResponse.md
+  - docs/Models/Requests/GetAllLibrariesResponseBody.md
+  - docs/Models/Requests/GetAvailableClientsMediaContainer.md
+  - docs/Models/Requests/GetAvailableClientsResponse.md
+  - docs/Models/Requests/GetAvailableClientsResponseBody.md
+  - docs/Models/Requests/GetBandwidthStatisticsAccount.md
+  - docs/Models/Requests/GetBandwidthStatisticsDevice.md
+  - docs/Models/Requests/GetBandwidthStatisticsMediaContainer.md
+  - docs/Models/Requests/GetBandwidthStatisticsRequest.md
+  - docs/Models/Requests/GetBandwidthStatisticsResponse.md
+  - docs/Models/Requests/GetBandwidthStatisticsResponseBody.md
+  - docs/Models/Requests/GetBannerImageRequest.md
+  - docs/Models/Requests/GetBannerImageResponse.md
+  - docs/Models/Requests/GetButlerTasksResponse.md
+  - docs/Models/Requests/GetButlerTasksResponseBody.md
+  - docs/Models/Requests/GetCompanionsDataResponse.md
+  - docs/Models/Requests/GetDevicesMediaContainer.md
+  - docs/Models/Requests/GetDevicesResponse.md
+  - docs/Models/Requests/GetDevicesResponseBody.md
+  - docs/Models/Requests/GetFileHashRequest.md
+  - docs/Models/Requests/GetFileHashResponse.md
+  - docs/Models/Requests/GetGeoDataGeoData.md
+  - docs/Models/Requests/GetGeoDataResponse.md
+  - docs/Models/Requests/GetGlobalHubsMediaContainer.md
+  - docs/Models/Requests/GetGlobalHubsMetadata.md
+  - docs/Models/Requests/GetGlobalHubsRequest.md
+  - docs/Models/Requests/GetGlobalHubsResponse.md
+  - docs/Models/Requests/GetGlobalHubsResponseBody.md
+  - docs/Models/Requests/GetHomeDataResponse.md
+  - docs/Models/Requests/GetHomeDataResponseBody.md
+  - docs/Models/Requests/GetLibraryDetailsDirectory.md
+  - docs/Models/Requests/GetLibraryDetailsFilter.md
+  - docs/Models/Requests/GetLibraryDetailsMediaContainer.md
+  - docs/Models/Requests/GetLibraryDetailsRequest.md
+  - docs/Models/Requests/GetLibraryDetailsResponse.md
+  - docs/Models/Requests/GetLibraryDetailsResponseBody.md
+  - docs/Models/Requests/GetLibraryDetailsType.md
+  - docs/Models/Requests/GetLibraryHubsCountry.md
+  - docs/Models/Requests/GetLibraryHubsDirector.md
+  - docs/Models/Requests/GetLibraryHubsGenre.md
+  - docs/Models/Requests/GetLibraryHubsHub.md
+  - docs/Models/Requests/GetLibraryHubsMedia.md
+  - docs/Models/Requests/GetLibraryHubsMediaContainer.md
+  - docs/Models/Requests/GetLibraryHubsMetadata.md
+  - docs/Models/Requests/GetLibraryHubsPart.md
+  - docs/Models/Requests/GetLibraryHubsRequest.md
+  - docs/Models/Requests/GetLibraryHubsResponse.md
+  - docs/Models/Requests/GetLibraryHubsResponseBody.md
+  - docs/Models/Requests/GetLibraryHubsRole.md
+  - docs/Models/Requests/GetLibraryHubsWriter.md
+  - docs/Models/Requests/GetLibraryItemsCountry.md
+  - docs/Models/Requests/GetLibraryItemsDirector.md
+  - docs/Models/Requests/GetLibraryItemsGenre.md
+  - docs/Models/Requests/GetLibraryItemsMedia.md
+  - docs/Models/Requests/GetLibraryItemsMediaContainer.md
+  - docs/Models/Requests/GetLibraryItemsMetadata.md
+  - docs/Models/Requests/GetLibraryItemsPart.md
+  - docs/Models/Requests/GetLibraryItemsRequest.md
+  - docs/Models/Requests/GetLibraryItemsResponse.md
+  - docs/Models/Requests/GetLibraryItemsResponseBody.md
+  - docs/Models/Requests/GetLibraryItemsRole.md
+  - docs/Models/Requests/GetLibraryItemsWriter.md
+  - docs/Models/Requests/GetMediaProvidersDirectory.md
+  - docs/Models/Requests/GetMediaProvidersMediaContainer.md
+  - docs/Models/Requests/GetMediaProvidersRequest.md
+  - docs/Models/Requests/GetMediaProvidersResponse.md
+  - docs/Models/Requests/GetMediaProvidersResponseBody.md
+  - docs/Models/Requests/GetMetaDataByRatingKeyCountry.md
+  - docs/Models/Requests/GetMetaDataByRatingKeyDirector.md
+  - docs/Models/Requests/GetMetaDataByRatingKeyGenre.md
+  - docs/Models/Requests/GetMetaDataByRatingKeyMedia.md
+  - docs/Models/Requests/GetMetaDataByRatingKeyMediaContainer.md
+  - docs/Models/Requests/GetMetaDataByRatingKeyMetadata.md
+  - docs/Models/Requests/GetMetaDataByRatingKeyPart.md
+  - docs/Models/Requests/GetMetaDataByRatingKeyRequest.md
+  - docs/Models/Requests/GetMetaDataByRatingKeyResponse.md
+  - docs/Models/Requests/GetMetaDataByRatingKeyResponseBody.md
+  - docs/Models/Requests/GetMetaDataByRatingKeyRole.md
+  - docs/Models/Requests/GetMetaDataByRatingKeyWriter.md
+  - docs/Models/Requests/GetMetadataChildrenDirectory.md
+  - docs/Models/Requests/GetMetadataChildrenMediaContainer.md
+  - docs/Models/Requests/GetMetadataChildrenMetadata.md
+  - docs/Models/Requests/GetMetadataChildrenRequest.md
+  - docs/Models/Requests/GetMetadataChildrenResponse.md
+  - docs/Models/Requests/GetMetadataChildrenResponseBody.md
+  - docs/Models/Requests/GetMyPlexAccountResponse.md
+  - docs/Models/Requests/GetMyPlexAccountResponseBody.md
+  - docs/Models/Requests/GetOnDeckGuids.md
+  - docs/Models/Requests/GetOnDeckMedia.md
+  - docs/Models/Requests/GetOnDeckMediaContainer.md
+  - docs/Models/Requests/GetOnDeckMetadata.md
+  - docs/Models/Requests/GetOnDeckPart.md
+  - docs/Models/Requests/GetOnDeckResponse.md
+  - docs/Models/Requests/GetOnDeckResponseBody.md
+  - docs/Models/Requests/GetOnDeckStream.md
+  - docs/Models/Requests/GetPinAuthPinContainer.md
+  - docs/Models/Requests/GetPinRequest.md
+  - docs/Models/Requests/GetPinResponse.md
+  - docs/Models/Requests/GetPlaylistContentsCountry.md
+  - docs/Models/Requests/GetPlaylistContentsDirector.md
+  - docs/Models/Requests/GetPlaylistContentsGenre.md
+  - docs/Models/Requests/GetPlaylistContentsMedia.md
+  - docs/Models/Requests/GetPlaylistContentsMediaContainer.md
+  - docs/Models/Requests/GetPlaylistContentsMetadata.md
+  - docs/Models/Requests/GetPlaylistContentsPart.md
+  - docs/Models/Requests/GetPlaylistContentsQueryParamType.md
+  - docs/Models/Requests/GetPlaylistContentsRequest.md
+  - docs/Models/Requests/GetPlaylistContentsResponse.md
+  - docs/Models/Requests/GetPlaylistContentsResponseBody.md
+  - docs/Models/Requests/GetPlaylistContentsRole.md
+  - docs/Models/Requests/GetPlaylistContentsWriter.md
+  - docs/Models/Requests/GetPlaylistMediaContainer.md
+  - docs/Models/Requests/GetPlaylistMetadata.md
+  - docs/Models/Requests/GetPlaylistRequest.md
+  - docs/Models/Requests/GetPlaylistResponse.md
+  - docs/Models/Requests/GetPlaylistResponseBody.md
+  - docs/Models/Requests/GetPlaylistsMediaContainer.md
+  - docs/Models/Requests/GetPlaylistsMetadata.md
+  - docs/Models/Requests/GetPlaylistsRequest.md
+  - docs/Models/Requests/GetPlaylistsResponse.md
+  - docs/Models/Requests/GetPlaylistsResponseBody.md
+  - docs/Models/Requests/GetRecentlyAddedMediaContainer.md
+  - docs/Models/Requests/GetRecentlyAddedMetadata.md
+  - docs/Models/Requests/GetRecentlyAddedRequest.md
+  - docs/Models/Requests/GetRecentlyAddedResponse.md
+  - docs/Models/Requests/GetRecentlyAddedResponseBody.md
+  - docs/Models/Requests/GetRefreshLibraryMetadataRequest.md
+  - docs/Models/Requests/GetRefreshLibraryMetadataResponse.md
+  - docs/Models/Requests/GetResizedPhotoRequest.md
+  - docs/Models/Requests/GetResizedPhotoResponse.md
+  - docs/Models/Requests/GetResourcesStatisticsMediaContainer.md
+  - docs/Models/Requests/GetResourcesStatisticsRequest.md
+  - docs/Models/Requests/GetResourcesStatisticsResponse.md
+  - docs/Models/Requests/GetResourcesStatisticsResponseBody.md
+  - docs/Models/Requests/GetSearchLibraryMediaContainer.md
+  - docs/Models/Requests/GetSearchLibraryMetadata.md
+  - docs/Models/Requests/GetSearchLibraryRequest.md
+  - docs/Models/Requests/GetSearchLibraryResponse.md
+  - docs/Models/Requests/GetSearchLibraryResponseBody.md
+  - docs/Models/Requests/GetSearchResultsCountry.md
+  - docs/Models/Requests/GetSearchResultsDirector.md
+  - docs/Models/Requests/GetSearchResultsGenre.md
+  - docs/Models/Requests/GetSearchResultsMedia.md
+  - docs/Models/Requests/GetSearchResultsMediaContainer.md
+  - docs/Models/Requests/GetSearchResultsMetadata.md
+  - docs/Models/Requests/GetSearchResultsPart.md
+  - docs/Models/Requests/GetSearchResultsRequest.md
+  - docs/Models/Requests/GetSearchResultsResponse.md
+  - docs/Models/Requests/GetSearchResultsResponseBody.md
+  - docs/Models/Requests/GetSearchResultsRole.md
+  - docs/Models/Requests/GetSearchResultsWriter.md
+  - docs/Models/Requests/GetServerActivitiesMediaContainer.md
+  - docs/Models/Requests/GetServerActivitiesResponse.md
+  - docs/Models/Requests/GetServerActivitiesResponseBody.md
+  - docs/Models/Requests/GetServerCapabilitiesResponse.md
+  - docs/Models/Requests/GetServerCapabilitiesResponseBody.md
+  - docs/Models/Requests/GetServerIdentityMediaContainer.md
+  - docs/Models/Requests/GetServerIdentityResponse.md
+  - docs/Models/Requests/GetServerIdentityResponseBody.md
+  - docs/Models/Requests/GetServerListMediaContainer.md
+  - docs/Models/Requests/GetServerListResponse.md
+  - docs/Models/Requests/GetServerListResponseBody.md
+  - docs/Models/Requests/GetServerListServer.md
+  - docs/Models/Requests/GetServerPreferencesMediaContainer.md
+  - docs/Models/Requests/GetServerPreferencesResponse.md
+  - docs/Models/Requests/GetServerPreferencesResponseBody.md
+  - docs/Models/Requests/GetServerResourcesRequest.md
+  - docs/Models/Requests/GetServerResourcesResponse.md
+  - docs/Models/Requests/GetSessionHistoryMediaContainer.md
+  - docs/Models/Requests/GetSessionHistoryMetadata.md
+  - docs/Models/Requests/GetSessionHistoryRequest.md
+  - docs/Models/Requests/GetSessionHistoryResponse.md
+  - docs/Models/Requests/GetSessionHistoryResponseBody.md
+  - docs/Models/Requests/GetSessionsMedia.md
+  - docs/Models/Requests/GetSessionsMediaContainer.md
+  - docs/Models/Requests/GetSessionsMetadata.md
+  - docs/Models/Requests/GetSessionsPart.md
+  - docs/Models/Requests/GetSessionsResponse.md
+  - docs/Models/Requests/GetSessionsResponseBody.md
+  - docs/Models/Requests/GetSessionsStream.md
+  - docs/Models/Requests/GetSessionsUser.md
+  - docs/Models/Requests/GetSourceConnectionInformationRequest.md
+  - docs/Models/Requests/GetSourceConnectionInformationResponse.md
+  - docs/Models/Requests/GetStatisticsDevice.md
+  - docs/Models/Requests/GetStatisticsMediaContainer.md
+  - docs/Models/Requests/GetStatisticsRequest.md
+  - docs/Models/Requests/GetStatisticsResponse.md
+  - docs/Models/Requests/GetStatisticsResponseBody.md
+  - docs/Models/Requests/GetThumbImageRequest.md
+  - docs/Models/Requests/GetThumbImageResponse.md
+  - docs/Models/Requests/GetTimelineRequest.md
+  - docs/Models/Requests/GetTimelineResponse.md
+  - docs/Models/Requests/GetTokenByPinIdAuthPinContainer.md
+  - docs/Models/Requests/GetTokenByPinIdGeoData.md
+  - docs/Models/Requests/GetTokenByPinIdRequest.md
+  - docs/Models/Requests/GetTokenByPinIdResponse.md
+  - docs/Models/Requests/GetTopWatchedContentCountry.md
+  - docs/Models/Requests/GetTopWatchedContentGenre.md
+  - docs/Models/Requests/GetTopWatchedContentGuids.md
+  - docs/Models/Requests/GetTopWatchedContentMediaContainer.md
+  - docs/Models/Requests/GetTopWatchedContentMetadata.md
+  - docs/Models/Requests/GetTopWatchedContentQueryParamType.md
+  - docs/Models/Requests/GetTopWatchedContentRequest.md
+  - docs/Models/Requests/GetTopWatchedContentResponse.md
+  - docs/Models/Requests/GetTopWatchedContentResponseBody.md
+  - docs/Models/Requests/GetTopWatchedContentRole.md
+  - docs/Models/Requests/GetTranscodeSessionsMediaContainer.md
+  - docs/Models/Requests/GetTranscodeSessionsResponse.md
+  - docs/Models/Requests/GetTranscodeSessionsResponseBody.md
+  - docs/Models/Requests/GetTransientTokenQueryParamType.md
+  - docs/Models/Requests/GetTransientTokenRequest.md
+  - docs/Models/Requests/GetTransientTokenResponse.md
+  - docs/Models/Requests/GetUpdateStatusMediaContainer.md
+  - docs/Models/Requests/GetUpdateStatusResponse.md
+  - docs/Models/Requests/GetUpdateStatusResponseBody.md
+  - docs/Models/Requests/GetUserDetailsAuthenticationResponseStatus.md
+  - docs/Models/Requests/GetUserDetailsAuthenticationStatus.md
+  - docs/Models/Requests/GetUserDetailsFeatures.md
+  - docs/Models/Requests/GetUserDetailsRequest.md
+  - docs/Models/Requests/GetUserDetailsResponse.md
+  - docs/Models/Requests/GetUserDetailsStatus.md
+  - docs/Models/Requests/GetUserDetailsSubscription.md
+  - docs/Models/Requests/GetUserDetailsUserPlexAccount.md
+  - docs/Models/Requests/GetUserFriendsResponse.md
+  - docs/Models/Requests/GetWatchListRequest.md
+  - docs/Models/Requests/GetWatchListResponse.md
+  - docs/Models/Requests/GetWatchListResponseBody.md
+  - docs/Models/Requests/Guids.md
+  - docs/Models/Requests/Hub.md
+  - docs/Models/Requests/Image.md
+  - docs/Models/Requests/IncludeCollections.md
+  - docs/Models/Requests/IncludeDetails.md
+  - docs/Models/Requests/IncludeExternalMedia.md
+  - docs/Models/Requests/IncludeGuids.md
+  - docs/Models/Requests/IncludeHttps.md
+  - docs/Models/Requests/IncludeIPv6.md
+  - docs/Models/Requests/IncludeMeta.md
+  - docs/Models/Requests/IncludeRelay.md
+  - docs/Models/Requests/InternalPaymentMethod.md
+  - docs/Models/Requests/Level.md
+  - docs/Models/Requests/LibrarySectionID.md
+  - docs/Models/Requests/Libtype.md
+  - docs/Models/Requests/Location.md
+  - docs/Models/Requests/LogLineRequest.md
+  - docs/Models/Requests/LogLineResponse.md
+  - docs/Models/Requests/LogMultiLineResponse.md
+  - docs/Models/Requests/MailingListStatus.md
+  - docs/Models/Requests/MarkPlayedRequest.md
+  - docs/Models/Requests/MarkPlayedResponse.md
+  - docs/Models/Requests/MarkUnplayedRequest.md
+  - docs/Models/Requests/MarkUnplayedResponse.md
+  - docs/Models/Requests/Media.md
+  - docs/Models/Requests/MediaContainer.md
+  - docs/Models/Requests/MediaProvider.md
+  - docs/Models/Requests/MediaReviewsVisibility.md
+  - docs/Models/Requests/Metadata.md
+  - docs/Models/Requests/MinSize.md
+  - docs/Models/Requests/MyPlex.md
+  - docs/Models/Requests/OnlyTransient.md
+  - docs/Models/Requests/Operator.md
+  - docs/Models/Requests/Part.md
+  - docs/Models/Requests/PastSubscription.md
+  - docs/Models/Requests/PathParamTaskName.md
+  - docs/Models/Requests/PerformSearchRequest.md
+  - docs/Models/Requests/PerformSearchResponse.md
+  - docs/Models/Requests/PerformVoiceSearchRequest.md
+  - docs/Models/Requests/PerformVoiceSearchResponse.md
+  - docs/Models/Requests/Pivot.md
+  - docs/Models/Requests/Player.md
+  - docs/Models/Requests/PlaylistType.md
+  - docs/Models/Requests/PlexDevice.md
+  - docs/Models/Requests/PostUsersSignInDataAuthenticationFeatures.md
+  - docs/Models/Requests/PostUsersSignInDataAuthenticationResponseStatus.md
+  - docs/Models/Requests/PostUsersSignInDataAuthenticationStatus.md
+  - docs/Models/Requests/PostUsersSignInDataAuthenticationSubscription.md
+  - docs/Models/Requests/PostUsersSignInDataAutoSelectSubtitle.md
+  - docs/Models/Requests/PostUsersSignInDataDefaultSubtitleAccessibility.md
+  - docs/Models/Requests/PostUsersSignInDataDefaultSubtitleForced.md
+  - docs/Models/Requests/PostUsersSignInDataFeatures.md
+  - docs/Models/Requests/PostUsersSignInDataMailingListStatus.md
+  - docs/Models/Requests/PostUsersSignInDataMediaReviewsVisibility.md
+  - docs/Models/Requests/PostUsersSignInDataRequest.md
+  - docs/Models/Requests/PostUsersSignInDataRequestBody.md
+  - docs/Models/Requests/PostUsersSignInDataResponse.md
+  - docs/Models/Requests/PostUsersSignInDataServices.md
+  - docs/Models/Requests/PostUsersSignInDataState.md
+  - docs/Models/Requests/PostUsersSignInDataStatus.md
+  - docs/Models/Requests/PostUsersSignInDataSubscription.md
+  - docs/Models/Requests/PostUsersSignInDataUserPlexAccount.md
+  - docs/Models/Requests/PostUsersSignInDataUserProfile.md
+  - docs/Models/Requests/PostUsersSignInDataWatchedIndicator.md
+  - docs/Models/Requests/Producer.md
+  - docs/Models/Requests/Provider.md
+  - docs/Models/Requests/QueryParamFilter.md
+  - docs/Models/Requests/QueryParamForce.md
+  - docs/Models/Requests/QueryParamOnlyTransient.md
+  - docs/Models/Requests/QueryParamSmart.md
+  - docs/Models/Requests/QueryParamType.md
+  - docs/Models/Requests/Ratings.md
+  - docs/Models/Requests/Release.md
+  - docs/Models/Requests/ResponseBody.md
+  - docs/Models/Requests/Role.md
+  - docs/Models/Requests/Scope.md
+  - docs/Models/Requests/Server.md
+  - docs/Models/Requests/Services.md
+  - docs/Models/Requests/Session.md
+  - docs/Models/Requests/Setting.md
+  - docs/Models/Requests/SharedServers.md
+  - docs/Models/Requests/SharedSources.md
+  - docs/Models/Requests/Skip.md
+  - docs/Models/Requests/Smart.md
+  - docs/Models/Requests/Sort.md
+  - docs/Models/Requests/StartAllTasksResponse.md
+  - docs/Models/Requests/StartTaskRequest.md
+  - docs/Models/Requests/StartTaskResponse.md
+  - docs/Models/Requests/StartUniversalTranscodeRequest.md
+  - docs/Models/Requests/StartUniversalTranscodeResponse.md
+  - docs/Models/Requests/State.md
+  - docs/Models/Requests/StatisticsBandwidth.md
+  - docs/Models/Requests/StatisticsMedia.md
+  - docs/Models/Requests/StatisticsResources.md
+  - docs/Models/Requests/Status.md
+  - docs/Models/Requests/StopAllTasksResponse.md
+  - docs/Models/Requests/StopTaskRequest.md
+  - docs/Models/Requests/StopTaskResponse.md
+  - docs/Models/Requests/StopTranscodeSessionRequest.md
+  - docs/Models/Requests/StopTranscodeSessionResponse.md
+  - docs/Models/Requests/Stream.md
+  - docs/Models/Requests/Subscription.md
+  - docs/Models/Requests/Tag.md
+  - docs/Models/Requests/TaskName.md
+  - docs/Models/Requests/Tonight.md
+  - docs/Models/Requests/TranscodeSession.md
+  - docs/Models/Requests/Trials.md
+  - docs/Models/Requests/Type.md
+  - docs/Models/Requests/UpdatePlayProgressRequest.md
+  - docs/Models/Requests/UpdatePlayProgressResponse.md
+  - docs/Models/Requests/UpdatePlaylistRequest.md
+  - docs/Models/Requests/UpdatePlaylistResponse.md
+  - docs/Models/Requests/UploadPlaylistRequest.md
+  - docs/Models/Requests/UploadPlaylistResponse.md
+  - docs/Models/Requests/Upscale.md
+  - docs/Models/Requests/User.md
+  - docs/Models/Requests/UserProfile.md
+  - docs/Models/Requests/WatchedIndicator.md
+  - docs/Models/Requests/Writer.md
   - docs/sdks/activities/README.md
-  - docs/sdks/butler/README.md
-  - docs/sdks/plex/README.md
-  - docs/sdks/hubs/README.md
-  - docs/sdks/search/README.md
-  - docs/sdks/library/README.md
-  - docs/sdks/watchlist/README.md
-  - docs/sdks/log/README.md
-  - docs/sdks/playlists/README.md
   - docs/sdks/authentication/README.md
-  - docs/sdks/statistics/README.md
+  - docs/sdks/butler/README.md
+  - docs/sdks/hubs/README.md
+  - docs/sdks/library/README.md
+  - docs/sdks/log/README.md
+  - docs/sdks/media/README.md
+  - docs/sdks/playlists/README.md
+  - docs/sdks/plex/README.md
+  - docs/sdks/plexapi/README.md
+  - docs/sdks/search/README.md
+  - docs/sdks/server/README.md
   - docs/sdks/sessions/README.md
+  - docs/sdks/statistics/README.md
   - docs/sdks/updater/README.md
-  - NUGET.md
-  - USAGE.md
-  - .gitattributes
-  - PlexAPI/Hooks/SDKHooks.cs
-  - PlexAPI/Hooks/HookTypes.cs
-  - CONTRIBUTING.md
+  - docs/sdks/video/README.md
+  - docs/sdks/watchlist/README.md
+  - global.json
+examples:
+  getServerCapabilities:
+    speakeasy-default-get-server-capabilities:
+      responses:
+        "401":
+          application/json: {"errors": []}
+  getServerPreferences:
+    speakeasy-default-get-server-preferences:
+      responses:
+        "200":
+          application/json: {"MediaContainer": {"size": 161, "Setting": []}}
+        "401":
+          application/json: {"errors": []}
+  getAvailableClients:
+    speakeasy-default-get-available-clients:
+      responses:
+        "200":
+          application/json: {"MediaContainer": {"size": 1, "Server": []}}
+        "401":
+          application/json: {"errors": []}
+  getDevices:
+    speakeasy-default-get-devices:
+      responses:
+        "200":
+          application/json: {"MediaContainer": {"size": 151, "identifier": "com.plexapp.system.devices", "Device": []}}
+        "401":
+          application/json: {"errors": []}
+  get-server-identity:
+    speakeasy-default-get-server-identity:
+      responses:
+        "200":
+          application/json: {"MediaContainer": {"size": 0, "machineIdentifier": "96f2fe7a78c9dc1f16a16bedbe90f98149be16b4", "version": "1.31.3.6868-28fc46b27"}}
+        "408":
+          application/json: {"code": 408, "message": "The server timed out waiting for the request."}
+  getMyPlexAccount:
+    speakeasy-default-get-my-plex-account:
+      responses:
+        "200":
+          application/json: {"MyPlex": {"authToken": "Z5v-PrNASDFpsaCi3CPK7", "username": "example.email@mail.com", "mappingState": "mapped", "signInState": "ok", "publicAddress": "140.20.68.140", "publicPort": 32400, "privateAddress": "10.10.10.47", "privatePort": 32400, "subscriptionFeatures": "federated-auth,hardware_transcoding,home,hwtranscode,item_clusters,kevin-bacon,livetv,loudness,lyrics,music-analysis,music_videos,pass,photo_autotags,photos-v5,photosV6-edit,photosV6-tv-albums,premium_music_metadata,radio,server-manager,session_bandwidth_restrictions,session_kick,shared-radio,sync,trailers,tuner-sharing,type-first,unsupportedtuners,webhooks", "subscriptionState": "Active"}}
+        "401":
+          application/json: {"errors": []}
+  getResizedPhoto:
+    speakeasy-default-get-resized-photo:
+      parameters:
+        query:
+          width: 110
+          height: 165
+          opacity: 100
+          blur: 20
+          minSize: 1
+          upscale: 0
+          url: "/library/metadata/49564/thumb/1654258204"
+      responses:
+        "401":
+          application/json: {"errors": []}
+  get-media-providers:
+    speakeasy-default-get-media-providers:
+      parameters:
+        query:
+          X-Plex-Token: "CV5xoxjTpFKUzBTShsaf"
+      responses:
+        "401":
+          application/json: {"errors": []}
+  getServerList:
+    speakeasy-default-get-server-list:
+      responses:
+        "200":
+          application/json: {"MediaContainer": {"size": 1, "Server": []}}
+        "401":
+          application/json: {"errors": []}
+  markPlayed:
+    speakeasy-default-mark-played:
+      parameters:
+        query:
+          key: 59398
+      responses:
+        "401":
+          application/json: {"errors": []}
+  markUnplayed:
+    speakeasy-default-mark-unplayed:
+      parameters:
+        query:
+          key: 59398
+      responses:
+        "401":
+          application/json: {"errors": []}
+  updatePlayProgress:
+    "":
+      parameters:
+        query:
+          key: "<key>"
+          time: 90000
+          state: "played"
+      responses:
+        "401":
+          application/json: {"errors": []}
+  get-banner-image:
+    speakeasy-default-get-banner-image:
+      parameters:
+        path:
+          ratingKey: 9518
+        query:
+          width: 396
+          height: 396
+          minSize: 1
+          upscale: 1
+          X-Plex-Token: "CV5xoxjTpFKUzBTShsaf"
+      responses:
+        "401":
+          application/json: {"errors": []}
+  get-thumb-image:
+    speakeasy-default-get-thumb-image:
+      parameters:
+        path:
+          ratingKey: 9518
+        query:
+          width: 396
+          height: 396
+          minSize: 1
+          upscale: 1
+          X-Plex-Token: "CV5xoxjTpFKUzBTShsaf"
+      responses:
+        "401":
+          application/json: {"errors": []}
+  getTimeline:
+    "":
+      parameters:
+        query:
+          ratingKey: 23409
+          key: "/library/metadata/23409"
+          state: "playing"
+          hasMDE: 1
+          time: 2000
+          duration: 10000
+          context: "home:hub.continueWatching"
+          playQueueItemID: 1
+          playBackTime: 2000
+          row: 1
+      responses:
+        "401":
+          application/json: {"errors": []}
+  startUniversalTranscode:
+    "":
+      parameters:
+        query:
+          hasMDE: 1
+          path: "/library/metadata/23409"
+          mediaIndex: 0
+          partIndex: 0
+          protocol: "hls"
+          fastSeek: 0
+          directPlay: 0
+          directStream: 0
+          subtitleSize: 100
+          subtites: "burn"
+          audioBoost: 100
+          location: "lan"
+          mediaBufferSize: 102400
+          session: "zvcage8b7rkioqcm8f4uns4c"
+          addDebugOverlay: 0
+          autoAdjustQuality: 0
+      responses:
+        "401":
+          application/json: {"errors": []}
+  getServerActivities:
+    speakeasy-default-get-server-activities:
+      responses:
+        "401":
+          application/json: {"errors": []}
+  cancelServerActivities:
+    "":
+      parameters:
+        path:
+          activityUUID: "25b71ed5-0f9d-461c-baa7-d404e9e10d3e"
+      responses:
+        "401":
+          application/json: {"errors": []}
+  getButlerTasks:
+    speakeasy-default-get-butler-tasks:
+      responses:
+        "200":
+          application/json: {"ButlerTasks": {"ButlerTask": []}}
+        "401":
+          application/json: {"errors": []}
+  startAllTasks:
+    speakeasy-default-start-all-tasks:
+      responses:
+        "401":
+          application/json: {"errors": []}
+  stopAllTasks:
+    speakeasy-default-stop-all-tasks:
+      responses:
+        "401":
+          application/json: {"errors": []}
+  startTask:
+    speakeasy-default-start-task:
+      parameters:
+        path:
+          taskName: "CleanOldBundles"
+      responses:
+        "401":
+          application/json: {"errors": []}
+  stopTask:
+    speakeasy-default-stop-task:
+      parameters:
+        path:
+          taskName: "BackupDatabase"
+      responses:
+        "401":
+          application/json: {"errors": []}
+  getCompanionsData:
+    speakeasy-default-get-companions-data:
+      responses:
+        "200":
+          application/json: []
+        "401":
+          application/json: {"errors": []}
+  getUserFriends:
+    speakeasy-default-get-user-friends:
+      responses:
+        "200":
+          application/json: [{"email": "username@email.com", "friendlyName": "exampleUser", "home": true, "id": 0, "restricted": false, "sharedServers": [], "sharedSources": [], "status": "accepted", "thumb": "https://plex.tv/users/7d1916e0d8f6e76b/avatar?c=1694481578", "title": "username123", "username": "username123", "uuid": "7d1916e0d8f6e76b"}]
+        "401":
+          application/json: {"errors": []}
+  getGeoData:
+    speakeasy-default-get-geo-data:
+      responses:
+        "200":
+          application/json: {"code": "VI", "continent_code": "NA", "country": "United States Virgin Islands", "city": "Amsterdam", "european_union_member": true, "time_zone": "America/St_Thomas", "postal_code": 802, "in_privacy_restricted_country": true, "in_privacy_restricted_region": true, "subdivisions": "Saint Thomas", "coordinates": "18.3381, -64.8941"}
+        "401":
+          application/json: {"errors": []}
+  getHomeData:
+    speakeasy-default-get-home-data:
+      responses:
+        "200":
+          application/json: {"id": 1841489, "name": "Blindkitty38's home", "guestUserID": 58815432, "guestUserUUID": "f3df4e01bfca0787"}
+        "401":
+          application/json: {"errors": []}
+  get-server-resources:
+    speakeasy-default-get-server-resources:
+      parameters:
+        query:
+          X-Plex-Token: "CV5xoxjTpFKUzBTShsaf"
+          includeHttps: 1
+          includeRelay: 1
+          includeIPv6: 1
+      responses:
+        "401":
+          application/json: {"errors": []}
+  getPin:
+    "":
+      parameters:
+        query:
+          X-Plex-Product: "Plex Web"
+      responses:
+        "200":
+          application/json: {"id": 308667304, "code": "7RQZ", "product": "0", "trusted": false, "qr": "https://plex.tv/api/v2/pins/qr/7RQZ", "clientIdentifier": "string", "location": {"code": "VI", "continent_code": "NA", "country": "United States Virgin Islands", "city": "Amsterdam", "european_union_member": true, "time_zone": "America/St_Thomas", "postal_code": 802, "in_privacy_restricted_country": true, "in_privacy_restricted_region": true, "subdivisions": "Saint Thomas", "coordinates": "18.3381, -64.8941"}, "expiresIn": 876, "createdAt": "2024-07-16T17:03:05Z", "expiresAt": "2024-07-16T17:18:05Z", "authToken": null, "newRegistration": null}
+        "400":
+          application/json: {"errors": []}
+  getTokenByPinId:
+    "":
+      parameters:
+        path:
+          pinID: 408895
+        query: {}
+      responses:
+        "200":
+          application/json: {"id": 308667304, "code": "7RQZ", "product": "0", "trusted": false, "qr": "https://plex.tv/api/v2/pins/qr/7RQZ", "clientIdentifier": "string", "location": {"code": "VI", "continent_code": "NA", "country": "United States Virgin Islands", "city": "Amsterdam", "european_union_member": true, "time_zone": "America/St_Thomas", "postal_code": 802, "in_privacy_restricted_country": true, "in_privacy_restricted_region": true, "subdivisions": "Saint Thomas", "coordinates": "18.3381, -64.8941"}, "expiresIn": 876, "createdAt": "2024-07-16T17:03:05Z", "expiresAt": "2024-07-16T17:18:05Z", "authToken": null, "newRegistration": null}
+        "400":
+          application/json: {"errors": []}
+        "404":
+          application/json: {"errors": [{"code": 1020, "message": "Code not found or expired"}]}
+  getGlobalHubs:
+    speakeasy-default-get-global-hubs:
+      responses:
+        "200":
+          application/json: {"MediaContainer": {"size": 8, "allowSync": true, "identifier": "com.plexapp.plugins.library", "Hub": []}}
+        "401":
+          application/json: {"errors": []}
+  getLibraryHubs:
+    speakeasy-default-get-library-hubs:
+      parameters:
+        path:
+          sectionId: "6728.76"
+        query: {}
+      responses:
+        "200":
+          application/json: {"MediaContainer": {"size": 7, "allowSync": true, "identifier": "com.plexapp.plugins.library", "librarySectionID": 1, "librarySectionTitle": "Movies", "librarySectionUUID": "322a231a-b7f7-49f5-920f-14c61199cd30", "Hub": []}}
+        "401":
+          application/json: {"errors": []}
+  performSearch:
+    speakeasy-default-perform-search:
+      parameters:
+        query:
+          query: "dylan"
+          limit: 5
+      responses:
+        "401":
+          application/json: {"errors": []}
+  performVoiceSearch:
+    speakeasy-default-perform-voice-search:
+      parameters:
+        query:
+          query: "dead+poop"
+          limit: 5
+      responses:
+        "401":
+          application/json: {"errors": []}
+  getSearchResults:
+    speakeasy-default-get-search-results:
+      parameters:
+        query:
+          query: "110"
+      responses:
+        "200":
+          application/json: {"MediaContainer": {"size": 26, "identifier": "com.plexapp.plugins.library", "mediaTagPrefix": "/system/bundle/media/flags/", "mediaTagVersion": 1680021154, "Metadata": [], "Provider": []}}
+        "401":
+          application/json: {"errors": []}
+  getFileHash:
+    speakeasy-default-get-file-hash:
+      parameters:
+        query:
+          url: "file://C:\\Image.png&type=13"
+      responses:
+        "401":
+          application/json: {"errors": []}
+  getRecentlyAdded:
+    speakeasy-default-get-recently-added:
+      parameters:
+        query:
+          X-Plex-Container-Start: 0
+          X-Plex-Container-Size: 50
+      responses:
+        "200":
+          application/json: {"MediaContainer": {"size": 50, "identifier": "com.plexapp.plugins.library", "mediaTagPrefix": "/system/bundle/media/flags/", "mediaTagVersion": 1680021154, "Metadata": []}}
+        "401":
+          application/json: {"errors": []}
+  get-all-libraries:
+    speakeasy-default-get-all-libraries:
+      responses:
+        "200":
+          application/json: {"MediaContainer": {"size": 5, "allowSync": false, "title1": "Plex Library", "Directory": []}}
+        "401":
+          application/json: {"errors": []}
+  get-library-details:
+    speakeasy-default-get-library-details:
+      parameters:
+        path:
+          sectionKey: 9518
+        query: {}
+      responses:
+        "200":
+          application/json: {"MediaContainer": {"size": 29, "allowSync": false, "art": "/:/resources/movie-fanart.jpg", "content": "secondary", "identifier": "com.plexapp.plugins.library", "librarySectionID": 1, "mediaTagPrefix": "/system/bundle/media/flags/", "mediaTagVersion": 1701731894, "thumb": "/:/resources/movie.png", "title1": "Movies", "viewGroup": "secondary", "viewMode": 65592, "Directory": [], "Type": [], "FieldType": []}}
+        "401":
+          application/json: {"errors": []}
+  deleteLibrary:
+    speakeasy-default-delete-library:
+      parameters:
+        path:
+          sectionKey: 9518
+      responses:
+        "401":
+          application/json: {"errors": []}
+  get-library-items:
+    "":
+      parameters:
+        path:
+          sectionKey: 9518
+          tag: "edition"
+        query:
+          includeGuids: 1
+          includeMeta: 1
+          type: 2
+          X-Plex-Container-Start: 0
+          X-Plex-Container-Size: 50
+      responses:
+        "200":
+          application/json: {"MediaContainer": {"size": 70, "allowSync": true, "art": "/:/resources/movie-fanart.jpg", "identifier": "com.plexapp.plugins.library", "librarySectionTitle": "Movies", "librarySectionUUID": "322a231a-b7f7-49f5-920f-14c61199cd30", "mediaTagPrefix": "/system/bundle/media/flags/", "mediaTagVersion": 1701731894, "thumb": "/:/resources/movie.png", "title1": "Movies", "title2": "Recently Released", "viewGroup": "movie", "viewMode": 65592, "mixedParents": true, "Metadata": []}}
+        "401":
+          application/json: {"errors": []}
+  get-refresh-library-metadata:
+    speakeasy-default-get-refresh-library-metadata:
+      parameters:
+        path:
+          sectionKey: 9518
+        query:
+          force: 0
+      responses:
+        "401":
+          application/json: {"errors": []}
+  get-search-library:
+    speakeasy-default-get-search-library:
+      parameters:
+        path:
+          sectionKey: 9518
+        query:
+          type: 2
+      responses:
+        "200":
+          application/json: {"MediaContainer": {"size": 2, "allowSync": false, "art": "/:/resources/show-fanart.jpg", "identifier": "com.plexapp.plugins.library", "mediaTagPrefix": "/system/bundle/media/flags/", "mediaTagVersion": 1698860922, "nocache": true, "thumb": "/:/resources/show.png", "title1": "TV Shows", "title2": "Search for ''", "viewGroup": "season", "viewMode": 65593, "Metadata": []}}
+        "401":
+          application/json: {"errors": []}
+  get-meta-data-by-rating-key:
+    speakeasy-default-get-meta-data-by-rating-key:
+      parameters:
+        path:
+          ratingKey: 9518
+      responses:
+        "200":
+          application/json: {"MediaContainer": {"size": 1, "allowSync": true, "identifier": "com.plexapp.plugins.library", "librarySectionID": 1, "librarySectionTitle": "Movies", "librarySectionUUID": "cfc899d7-3000-46f6-8489-b9592714ada5", "mediaTagPrefix": "/system/bundle/media/flags/", "mediaTagVersion": 1698860922, "Metadata": []}}
+        "401":
+          application/json: {"errors": []}
+  getMetadataChildren:
+    include-stream:
+      parameters:
+        path:
+          ratingKey: "1539.14"
+        query:
+          includeElements: "Stream"
+      responses:
+        "200":
+          application/json: {"MediaContainer": {"size": 3, "allowSync": true, "art": "/library/metadata/30072/art/1705739923", "identifier": "com.plexapp.plugins.library", "key": "30072", "librarySectionID": 2, "librarySectionTitle": "TV Shows", "librarySectionUUID": "4bb2521c-8ba9-459b-aaee-8ab8bc35eabd", "mediaTagPrefix": "/system/bundle/media/flags/", "mediaTagVersion": 1701731894, "nocache": true, "parentIndex": 1, "parentTitle": "Reacher", "parentYear": 2022, "summary": "When retired Military Police Officer Jack Reacher is arrested for a murder he did not commit, he finds himself in the middle of a deadly conspiracy full of dirty cops, shady businessmen, and scheming politicians. With nothing but his wits, he must figure out what is happening in Margrave, Georgia.", "theme": "/library/metadata/30072/theme/1705739923", "thumb": "/library/metadata/30072/thumb/1705739923", "title1": "TV Shows", "title2": "Reacher", "viewGroup": "season", "viewMode": 65593, "Directory": [{"leafCount": 16, "thumb": "/library/metadata/30072/thumb/1705739923", "viewedLeafCount": 16, "key": "/library/metadata/30072/allLeaves", "title": "All episodes"}], "Metadata": []}}
+        "401":
+          application/json: {"errors": []}
+    include-stream-otheritem:
+      parameters:
+        path:
+          ratingKey: "8449.64"
+        query:
+          includeElements: "Stream,OtherItem"
+      responses:
+        "200":
+          application/json: {"MediaContainer": {"size": 3, "allowSync": true, "art": "/library/metadata/30072/art/1705739923", "identifier": "com.plexapp.plugins.library", "key": "30072", "librarySectionID": 2, "librarySectionTitle": "TV Shows", "librarySectionUUID": "4bb2521c-8ba9-459b-aaee-8ab8bc35eabd", "mediaTagPrefix": "/system/bundle/media/flags/", "mediaTagVersion": 1701731894, "nocache": true, "parentIndex": 1, "parentTitle": "Reacher", "parentYear": 2022, "summary": "When retired Military Police Officer Jack Reacher is arrested for a murder he did not commit, he finds himself in the middle of a deadly conspiracy full of dirty cops, shady businessmen, and scheming politicians. With nothing but his wits, he must figure out what is happening in Margrave, Georgia.", "theme": "/library/metadata/30072/theme/1705739923", "thumb": "/library/metadata/30072/thumb/1705739923", "title1": "TV Shows", "title2": "Reacher", "viewGroup": "season", "viewMode": 65593, "Directory": [{"leafCount": 16, "thumb": "/library/metadata/30072/thumb/1705739923", "viewedLeafCount": 16, "key": "/library/metadata/30072/allLeaves", "title": "All episodes"}], "Metadata": []}}
+        "401":
+          application/json: {"errors": []}
+    include-stream-otheritem-anotheritem:
+      parameters:
+        path:
+          ratingKey: "5800.4"
+        query:
+          includeElements: "Stream,OtherItem,AnotherItem"
+      responses:
+        "200":
+          application/json: {"MediaContainer": {"size": 3, "allowSync": true, "art": "/library/metadata/30072/art/1705739923", "identifier": "com.plexapp.plugins.library", "key": "30072", "librarySectionID": 2, "librarySectionTitle": "TV Shows", "librarySectionUUID": "4bb2521c-8ba9-459b-aaee-8ab8bc35eabd", "mediaTagPrefix": "/system/bundle/media/flags/", "mediaTagVersion": 1701731894, "nocache": true, "parentIndex": 1, "parentTitle": "Reacher", "parentYear": 2022, "summary": "When retired Military Police Officer Jack Reacher is arrested for a murder he did not commit, he finds himself in the middle of a deadly conspiracy full of dirty cops, shady businessmen, and scheming politicians. With nothing but his wits, he must figure out what is happening in Margrave, Georgia.", "theme": "/library/metadata/30072/theme/1705739923", "thumb": "/library/metadata/30072/thumb/1705739923", "title1": "TV Shows", "title2": "Reacher", "viewGroup": "season", "viewMode": 65593, "Directory": [{"leafCount": 16, "thumb": "/library/metadata/30072/thumb/1705739923", "viewedLeafCount": 16, "key": "/library/metadata/30072/allLeaves", "title": "All episodes"}], "Metadata": []}}
+        "401":
+          application/json: {"errors": []}
+  getTopWatchedContent:
+    "":
+      parameters:
+        query:
+          type: 2
+          includeGuids: 1
+      responses:
+        "200":
+          application/json: {"MediaContainer": {"size": 1, "allowSync": true, "identifier": "com.plexapp.plugins.library", "mediaTagPrefix": "/system/bundle/media/flags/", "mediaTagVersion": 1698860922, "Metadata": []}}
+        "401":
+          application/json: {"errors": []}
+  getOnDeck:
+    speakeasy-default-get-on-deck:
+      responses:
+        "200":
+          application/json: {"MediaContainer": {"size": 16, "identifier": "com.plexapp.plugins.library", "mediaTagPrefix": "/system/bundle/media/flags/", "mediaTagVersion": 1680021154, "Metadata": []}}
+        "401":
+          application/json: {"errors": []}
+  get-watch-list:
+    speakeasy-default-get-watch-list:
+      parameters:
+        path:
+          filter: "available"
+        query:
+          X-Plex-Container-Start: 0
+          X-Plex-Container-Size: 50
+          X-Plex-Token: "CV5xoxjTpFKUzBTShsaf"
+      responses:
+        "401":
+          application/json: {"errors": []}
+  logLine:
+    speakeasy-default-log-line:
+      parameters:
+        query:
+          level: 3
+          message: "Test log message"
+          source: "Postman"
+      responses:
+        "401":
+          application/json: {"errors": []}
+  logMultiLine:
+    speakeasy-default-log-multi-line:
+      requestBody:
+        text/plain: "level=4&message=Test%20message%201&source=postman\nlevel=3&message=Test%20message%202&source=postman\nlevel=1&message=Test%20message%203&source=postman"
+      responses:
+        "401":
+          application/json: {"errors": []}
+  enablePaperTrail:
+    speakeasy-default-enable-paper-trail:
+      responses:
+        "401":
+          application/json: {"errors": []}
+  createPlaylist:
+    speakeasy-default-create-playlist:
+      parameters:
+        query:
+          title: "<value>"
+          type: "photo"
+          smart: 1
+          uri: "https://inborn-brochure.biz"
+      responses:
+        "200":
+          application/json: {"MediaContainer": {"size": 7, "Metadata": []}}
+        "401":
+          application/json: {"errors": []}
+  getPlaylists:
+    speakeasy-default-get-playlists:
+      responses:
+        "200":
+          application/json: {"MediaContainer": {"size": 4, "Metadata": []}}
+        "401":
+          application/json: {"errors": []}
+  getPlaylist:
+    speakeasy-default-get-playlist:
+      parameters:
+        path:
+          playlistID: "4109.48"
+      responses:
+        "200":
+          application/json: {"MediaContainer": {"size": 1, "Metadata": []}}
+        "401":
+          application/json: {"errors": []}
+  deletePlaylist:
+    speakeasy-default-delete-playlist:
+      parameters:
+        path:
+          playlistID: "216.22"
+      responses:
+        "401":
+          application/json: {"errors": []}
+  updatePlaylist:
+    speakeasy-default-update-playlist:
+      parameters:
+        path:
+          playlistID: "3915"
+        query: {}
+      responses:
+        "401":
+          application/json: {"errors": []}
+  getPlaylistContents:
+    speakeasy-default-get-playlist-contents:
+      parameters:
+        path:
+          playlistID: "5004.46"
+        query:
+          type: 2
+      responses:
+        "200":
+          application/json: {"MediaContainer": {"size": 2, "composite": "/playlists/95/composite/1705717521", "duration": 282, "leafCount": 2, "playlistType": "video", "ratingKey": "95", "smart": true, "title": "Smart Movie Playlist", "Metadata": []}}
+        "401":
+          application/json: {"errors": []}
+  clearPlaylistContents:
+    speakeasy-default-clear-playlist-contents:
+      parameters:
+        path:
+          playlistID: "1893.18"
+      responses:
+        "401":
+          application/json: {"errors": []}
+  addPlaylistContents:
+    speakeasy-default-add-playlist-contents:
+      parameters:
+        path:
+          playlistID: "8502.01"
+        query:
+          uri: "server://12345/com.plexapp.plugins.library/library/metadata/1"
+          playQueueID: 123
+      responses:
+        "200":
+          application/json: {"MediaContainer": {"size": 1, "leafCountAdded": 1, "leafCountRequested": 1, "Metadata": []}}
+        "401":
+          application/json: {"errors": []}
+  uploadPlaylist:
+    speakeasy-default-upload-playlist:
+      parameters:
+        query:
+          path: "/home/barkley/playlist.m3u"
+          force: 0
+      responses:
+        "401":
+          application/json: {"errors": []}
+  getTransientToken:
+    speakeasy-default-get-transient-token:
+      parameters:
+        query:
+          type: "delegation"
+          scope: "all"
+      responses:
+        "401":
+          application/json: {"errors": []}
+  getSourceConnectionInformation:
+    speakeasy-default-get-source-connection-information:
+      parameters:
+        query:
+          source: "server://client-identifier"
+      responses:
+        "401":
+          application/json: {"errors": []}
+  getUserDetails:
+    speakeasy-default-get-user-details:
+      parameters:
+        query:
+          X-Plex-Token: "CV5xoxjTpFKUzBTShsaf"
+      responses:
+        "200":
+          application/json: {"adsConsent": true, "adsConsentReminderAt": "2019-08-24T14:15:22Z", "adsConsentSetAt": "2019-08-24T14:15:22Z", "anonymous": false, "authToken": "CxoUzBTSV5hsxjTpFKaf", "backupCodesCreated": false, "confirmed": false, "country": "US", "email": "username@email.com", "emailOnlyAuth": false, "experimentalFeatures": false, "friendlyName": "friendlyUsername", "entitlements": [], "guest": false, "hasPassword": true, "home": false, "homeAdmin": false, "homeSize": 1, "id": 13692262, "joinedAt": 1721154902, "locale": null, "mailingListActive": false, "mailingListStatus": "unsubscribed", "maxHomeSize": 15, "pin": "string", "profile": {"autoSelectAudio": true, "defaultAudioLanguage": "ja", "defaultSubtitleLanguage": "en", "autoSelectSubtitle": "1", "defaultSubtitleAccessibility": "1", "defaultSubtitleForced": "0", "watchedIndicator": "1", "mediaReviewsVisibility": 0}, "protected": false, "rememberExpiresAt": 1722364046, "restricted": false, "roles": ["string"], "scrobbleTypes": "", "services": [{"identifier": "metadata-dev", "endpoint": "https://epg.provider.plex.tv", "token": "DjoMtqFAGRL1uVtCyF1dKIorTbShJeqv", "secret": "string", "status": "online"}], "subscription": {"features": ["Android - Dolby Vision"], "active": true, "subscribedAt": "2021-04-12T18:21:12Z", "status": "Inactive", "paymentService": "string", "plan": "string"}, "subscriptionDescription": "string", "subscriptions": [{"features": ["Android - Dolby Vision"], "active": true, "subscribedAt": "2021-04-12T18:21:12Z", "status": "Inactive", "paymentService": "string", "plan": "string"}], "thumb": "https://plex.tv/users/a4f43c1ebfde43a5/avatar?c=8372075101", "title": "UsernameTitle", "twoFactorEnabled": false, "username": "Username", "uuid": "dae343c1f45beb4f"}
+        "401":
+          application/json: {"errors": []}
+  post-users-sign-in-data:
+    speakeasy-default-post-users-sign-in-data:
+      requestBody:
+        application/x-www-form-urlencoded: {"login": "username@email.com", "password": "password123"}
+      responses:
+        "201":
+          application/json: {"adsConsent": true, "adsConsentReminderAt": "2019-08-24T14:15:22Z", "adsConsentSetAt": "2019-08-24T14:15:22Z", "anonymous": false, "authToken": "CxoUzBTSV5hsxjTpFKaf", "backupCodesCreated": false, "confirmed": false, "country": "US", "email": "username@email.com", "emailOnlyAuth": false, "experimentalFeatures": false, "friendlyName": "friendlyUsername", "entitlements": [], "guest": false, "hasPassword": true, "home": false, "homeAdmin": false, "homeSize": 1, "id": 13692262, "joinedAt": 1721154902, "locale": null, "mailingListActive": false, "mailingListStatus": "unsubscribed", "maxHomeSize": 15, "pin": "string", "profile": {"autoSelectAudio": true, "defaultAudioLanguage": "ja", "defaultSubtitleLanguage": "en", "autoSelectSubtitle": "1", "defaultSubtitleAccessibility": "1", "defaultSubtitleForced": "0", "watchedIndicator": "1", "mediaReviewsVisibility": 0}, "protected": false, "rememberExpiresAt": 1722364046, "restricted": false, "roles": ["string"], "scrobbleTypes": "", "services": [{"identifier": "metadata-dev", "endpoint": "https://epg.provider.plex.tv", "token": "DjoMtqFAGRL1uVtCyF1dKIorTbShJeqv", "secret": "string", "status": "online"}], "subscription": {"features": ["Android - Dolby Vision"], "active": true, "subscribedAt": "2021-04-12T18:21:12Z", "status": "Inactive", "paymentService": "string", "plan": "string"}, "subscriptionDescription": "string", "subscriptions": [{"features": ["Android - Dolby Vision"], "active": true, "subscribedAt": "2021-04-12T18:21:12Z", "status": "Inactive", "paymentService": "string", "plan": "string"}], "thumb": "https://plex.tv/users/a4f43c1ebfde43a5/avatar?c=8372075101", "title": "UsernameTitle", "twoFactorEnabled": false, "username": "Username", "uuid": "dae343c1f45beb4f", "pastSubscriptions": [{"id": "string", "mode": "string", "renewsAt": "string", "endsAt": "1556281940", "canceled": "0", "gracePeriod": "0", "onHold": "0", "canReactivate": "0", "canUpgrade": "0", "canDowngrade": "0", "canConvert": "0", "type": "plexpass", "transfer": "string", "state": "ended", "billing": {"paymentMethodId": 569045}}], "trials": [{}]}
+        "401":
+          application/json: {"errors": []}
+  getStatistics:
+    "":
+      parameters:
+        query:
+          Timespan: 4
+      responses:
+        "200":
+          application/json: {"MediaContainer": {"size": 5497, "Device": [], "Account": [], "StatisticsMedia": []}}
+        "401":
+          application/json: {"errors": []}
+  getResourcesStatistics:
+    "":
+      parameters:
+        query:
+          Timespan: 4
+      responses:
+        "200":
+          application/json: {"MediaContainer": {"size": 5497, "StatisticsResources": []}}
+        "401":
+          application/json: {"errors": []}
+  getBandwidthStatistics:
+    "":
+      parameters:
+        query:
+          Timespan: 4
+      responses:
+        "200":
+          application/json: {"MediaContainer": {"size": 5497, "Device": [], "Account": [], "StatisticsBandwidth": []}}
+        "401":
+          application/json: {"errors": []}
+  getSessions:
+    speakeasy-default-get-sessions:
+      responses:
+        "200":
+          application/json: {"MediaContainer": {"size": 1, "Metadata": []}}
+        "401":
+          application/json: {"errors": []}
+  getSessionHistory:
+    viewed-at-descending:
+      parameters:
+        query:
+          sort: "viewedAt:desc"
+          accountId: 1
+          librarySectionID: 12
+      responses:
+        "200":
+          application/json: {"MediaContainer": {"size": 10855, "Metadata": []}}
+        "401":
+          application/json: {"errors": []}
+    viewed-at-ascending:
+      parameters:
+        query:
+          sort: "viewedAt:asc"
+          accountId: 1
+          librarySectionID: 12
+      responses:
+        "200":
+          application/json: {"MediaContainer": {"size": 10855, "Metadata": []}}
+        "401":
+          application/json: {"errors": []}
+    rating-descending:
+      parameters:
+        query:
+          sort: "rating:desc"
+          accountId: 1
+          librarySectionID: 12
+      responses:
+        "200":
+          application/json: {"MediaContainer": {"size": 10855, "Metadata": []}}
+        "401":
+          application/json: {"errors": []}
+    rating-ascending:
+      parameters:
+        query:
+          sort: "rating:asc"
+          accountId: 1
+          librarySectionID: 12
+      responses:
+        "200":
+          application/json: {"MediaContainer": {"size": 10855, "Metadata": []}}
+        "401":
+          application/json: {"errors": []}
+    "":
+      parameters:
+        query:
+          accountId: 1
+          librarySectionID: 12
+      responses:
+        "200":
+          application/json: {"MediaContainer": {"size": 10855, "Metadata": []}}
+        "401":
+          application/json: {"errors": []}
+    ViewedAt:
+      parameters:
+        query:
+          accountId: 1
+          filter: viewedAt>=1704862818
+          librarySectionID: 12
+      responses:
+        "200":
+          application/json: {"MediaContainer": {"size": 10855, "Metadata": []}}
+        "401":
+          application/json: {"errors": []}
+  getTranscodeSessions:
+    speakeasy-default-get-transcode-sessions:
+      responses:
+        "200":
+          application/json: {"MediaContainer": {"size": 1, "TranscodeSession": [{"key": "vv3i2q2lax92qlzul1hbd4bx", "throttled": false, "complete": false, "progress": 1.7999999523162842, "size": -22, "speed": 25.100000381469727, "error": false, "duration": 1445695, "remaining": 53, "context": "streaming", "sourceVideoCodec": "h264", "sourceAudioCodec": "aac", "videoDecision": "transcode", "audioDecision": "transcode", "subtitleDecision": "burn", "protocol": "http", "container": "mkv", "videoCodec": "h264", "audioCodec": "opus", "audioChannels": 1, "transcodeHwRequested": true, "timeStamp": 1705895805.4919229, "maxOffsetAvailable": 29.53, "minOffsetAvailable": 3.003000020980835}]}}
+        "401":
+          application/json: {"errors": []}
+  stopTranscodeSession:
+    speakeasy-default-stop-transcode-session:
+      parameters:
+        path:
+          sessionKey: "zz7llzqlx8w9vnrsbnwhbmep"
+      responses:
+        "401":
+          application/json: {"errors": []}
+  getUpdateStatus:
+    speakeasy-default-get-update-status:
+      responses:
+        "200":
+          application/json: {"MediaContainer": {"size": 1, "canInstall": false, "checkedAt": 1705801232, "downloadURL": "https://plex.tv/downloads/latest/5?channel=8&build=linux-x86_64&distro=redhat&X-Plex-Token=xxxxxxxxxxxxxxxxxxxx", "status": 0, "Release": [{"key": "https://plex.tv/updater/releases/5136", "version": "1.40.0.7775-456fbaf97", "added": "(PLEASE NOTE) This version makes changes to the database which will make it compatible only with server versions 1.31.2 or higher (released March 14). You will not be able to use your database on Plex Media Server versions lower than this after this update. Please also be patient when updating to this version if you have a very large database and allow the upgrade process to finish.\n(Collections) Items added to a collection from the item context menu will now lock the collection field on the items (#12793)\n(Music) Store track genres and add filtering options (#14653)\n(Music) Support ID3v2.4 null-separated tags for genres and release type (#14653)\n(View History) No longer create a view history entry for items marked as played (#10888)\n(Web) Updated to 4.118.0", "fixed": "(Agents) Changing a 'Other Videos' type library to the modern movie agent would fail (#14483)\n(Agents) It is possible that agents are not initialised during startup on rare occasions (#14654)\n(Agents) Remove the legacy OpenSubtitles agent which is no longer supported upstream (#14667)\n(Collection) Server could become unresponsive when collection membership changes (#14612)\n(DVR) Previously watched recordings could be deleted without being watched again (#13779)\n(Libraries) When performing fix match on items from certain music libraries the language would default to Arabic (#14501)\n(Library) The Content Rating not equal to None filter does not work (#14620)\n(Search) Album search results could contain all the album's tracks too (#14486)\n(Subtitles) In some circumstances, sidecar subtitles can show up for media when they're no longer available (#14674)\n(Transcoder) HW encoding would fail on devices with no rate control (#14222)\n(Transcoder) Software transcoding on Ubuntu could cause unexpected behavior (#14605)", "downloadURL": "https://plex.tv/downloads/latest/5?channel=8&build=linux-x86_64&distro=redhat&X-Plex-Token=xxxxxxxxxxxxxxxxxxxx", "state": "notify"}]}}
+        "401":
+          application/json: {"errors": []}
+  checkForUpdates:
+    "":
+      parameters:
+        query:
+          download: 1
+      responses:
+        "401":
+          application/json: {"errors": []}
+  applyUpdates:
+    "":
+      parameters:
+        query:
+          tonight: 1
+          skip: 1
+      responses:
+        "401":
+          application/json: {"errors": []}

@@ -25,10 +25,10 @@ Get Server Capabilities
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -44,10 +44,10 @@ var res = await sdk.Server.GetServerCapabilitiesAsync();
 
 ### Errors
 
-| Error Object                                            | Status Code                                             | Content Type                                            |
-| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| PlexAPI.Models.Errors.GetServerCapabilitiesResponseBody | 401                                                     | application/json                                        |
-| PlexAPI.Models.Errors.SDKException                      | 4xx-5xx                                                 | */*                                                     |
+| Error Object                                                          | Status Code                                                           | Content Type                                                          |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetServerCapabilitiesResponseBody | 401                                                                   | application/json                                                      |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                      | 4xx-5xx                                                               | */*                                                                   |
 
 
 ## GetServerPreferences
@@ -57,10 +57,10 @@ Get Server Preferences
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -76,10 +76,10 @@ var res = await sdk.Server.GetServerPreferencesAsync();
 
 ### Errors
 
-| Error Object                                           | Status Code                                            | Content Type                                           |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| PlexAPI.Models.Errors.GetServerPreferencesResponseBody | 401                                                    | application/json                                       |
-| PlexAPI.Models.Errors.SDKException                     | 4xx-5xx                                                | */*                                                    |
+| Error Object                                                         | Status Code                                                          | Content Type                                                         |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetServerPreferencesResponseBody | 401                                                                  | application/json                                                     |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                     | 4xx-5xx                                                              | */*                                                                  |
 
 
 ## GetAvailableClients
@@ -89,10 +89,10 @@ Get Available Clients
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -108,10 +108,10 @@ var res = await sdk.Server.GetAvailableClientsAsync();
 
 ### Errors
 
-| Error Object                                          | Status Code                                           | Content Type                                          |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| PlexAPI.Models.Errors.GetAvailableClientsResponseBody | 401                                                   | application/json                                      |
-| PlexAPI.Models.Errors.SDKException                    | 4xx-5xx                                               | */*                                                   |
+| Error Object                                                        | Status Code                                                         | Content Type                                                        |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetAvailableClientsResponseBody | 401                                                                 | application/json                                                    |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                    | 4xx-5xx                                                             | */*                                                                 |
 
 
 ## GetDevices
@@ -121,10 +121,10 @@ Get Devices
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -140,10 +140,10 @@ var res = await sdk.Server.GetDevicesAsync();
 
 ### Errors
 
-| Error Object                                 | Status Code                                  | Content Type                                 |
-| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| PlexAPI.Models.Errors.GetDevicesResponseBody | 401                                          | application/json                             |
-| PlexAPI.Models.Errors.SDKException           | 4xx-5xx                                      | */*                                          |
+| Error Object                                               | Status Code                                                | Content Type                                               |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetDevicesResponseBody | 401                                                        | application/json                                           |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException           | 4xx-5xx                                                    | */*                                                        |
 
 
 ## GetServerIdentity
@@ -153,10 +153,10 @@ This request is useful to determine if the server is online or offline
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40");
+var sdk = new PlexAPI(xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40");
 
 var res = await sdk.Server.GetServerIdentityAsync();
 
@@ -169,10 +169,10 @@ var res = await sdk.Server.GetServerIdentityAsync();
 
 ### Errors
 
-| Error Object                                        | Status Code                                         | Content Type                                        |
-| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
-| PlexAPI.Models.Errors.GetServerIdentityResponseBody | 408                                                 | application/json                                    |
-| PlexAPI.Models.Errors.SDKException                  | 4xx-5xx                                             | */*                                                 |
+| Error Object                                                      | Status Code                                                       | Content Type                                                      |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetServerIdentityResponseBody | 408                                                               | application/json                                                  |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                  | 4xx-5xx                                                           | */*                                                               |
 
 
 ## GetMyPlexAccount
@@ -182,10 +182,10 @@ Returns MyPlex Account Information
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -201,10 +201,10 @@ var res = await sdk.Server.GetMyPlexAccountAsync();
 
 ### Errors
 
-| Error Object                                       | Status Code                                        | Content Type                                       |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| PlexAPI.Models.Errors.GetMyPlexAccountResponseBody | 401                                                | application/json                                   |
-| PlexAPI.Models.Errors.SDKException                 | 4xx-5xx                                            | */*                                                |
+| Error Object                                                     | Status Code                                                      | Content Type                                                     |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetMyPlexAccountResponseBody | 401                                                              | application/json                                                 |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                 | 4xx-5xx                                                          | */*                                                              |
 
 
 ## GetResizedPhoto
@@ -215,11 +215,11 @@ Plex's Photo transcoder is used throughout the service to serve images at specif
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -229,8 +229,8 @@ GetResizedPhotoRequest req = new GetResizedPhotoRequest() {
     Height = 165D,
     Opacity = 100,
     Blur = 20D,
-    MinSize = PlexAPI.Models.Requests.MinSize.One,
-    Upscale = PlexAPI.Models.Requests.Upscale.Zero,
+    MinSize = LukeHagar.PlexAPI.SDK.Models.Requests.MinSize.One,
+    Upscale = LukeHagar.PlexAPI.SDK.Models.Requests.Upscale.Zero,
     Url = "/library/metadata/49564/thumb/1654258204",
 };
 
@@ -251,10 +251,10 @@ var res = await sdk.Server.GetResizedPhotoAsync(req);
 
 ### Errors
 
-| Error Object                                      | Status Code                                       | Content Type                                      |
-| ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
-| PlexAPI.Models.Errors.GetResizedPhotoResponseBody | 401                                               | application/json                                  |
-| PlexAPI.Models.Errors.SDKException                | 4xx-5xx                                           | */*                                               |
+| Error Object                                                    | Status Code                                                     | Content Type                                                    |
+| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetResizedPhotoResponseBody | 401                                                             | application/json                                                |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                | 4xx-5xx                                                         | */*                                                             |
 
 
 ## GetMediaProviders
@@ -264,11 +264,11 @@ Retrieves media providers and their features from the Plex server.
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -290,10 +290,10 @@ var res = await sdk.Server.GetMediaProvidersAsync(xPlexToken: "CV5xoxjTpFKUzBTSh
 
 ### Errors
 
-| Error Object                                        | Status Code                                         | Content Type                                        |
-| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
-| PlexAPI.Models.Errors.GetMediaProvidersResponseBody | 401                                                 | application/json                                    |
-| PlexAPI.Models.Errors.SDKException                  | 4xx-5xx                                             | */*                                                 |
+| Error Object                                                      | Status Code                                                       | Content Type                                                      |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetMediaProvidersResponseBody | 401                                                               | application/json                                                  |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                  | 4xx-5xx                                                           | */*                                                               |
 
 
 ## GetServerList
@@ -303,10 +303,10 @@ Get Server List
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -322,7 +322,7 @@ var res = await sdk.Server.GetServerListAsync();
 
 ### Errors
 
-| Error Object                                    | Status Code                                     | Content Type                                    |
-| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| PlexAPI.Models.Errors.GetServerListResponseBody | 401                                             | application/json                                |
-| PlexAPI.Models.Errors.SDKException              | 4xx-5xx                                         | */*                                             |
+| Error Object                                                  | Status Code                                                   | Content Type                                                  |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetServerListResponseBody | 401                                                           | application/json                                              |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException              | 4xx-5xx                                                       | */*                                                           |

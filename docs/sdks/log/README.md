@@ -20,17 +20,17 @@ This endpoint will write a single-line log message, including a level and source
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Requests;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
 var res = await sdk.Log.LogLineAsync(
-    level: PlexAPI.Models.Requests.Level.Three,
+    level: LukeHagar.PlexAPI.SDK.Models.Requests.Level.Three,
     message: "Test log message",
     source: "Postman"
 );
@@ -52,10 +52,10 @@ var res = await sdk.Log.LogLineAsync(
 
 ### Errors
 
-| Error Object                              | Status Code                               | Content Type                              |
-| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| PlexAPI.Models.Errors.LogLineResponseBody | 401                                       | application/json                          |
-| PlexAPI.Models.Errors.SDKException        | 4xx-5xx                                   | */*                                       |
+| Error Object                                            | Status Code                                             | Content Type                                            |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.LogLineResponseBody | 401                                                     | application/json                                        |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException        | 4xx-5xx                                                 | */*                                                     |
 
 
 ## LogMultiLine
@@ -86,10 +86,10 @@ Ensure each parameter is properly URL-encoded to avoid interpretation issues.
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -115,10 +115,10 @@ var res = await sdk.Log.LogMultiLineAsync(req);
 
 ### Errors
 
-| Error Object                                   | Status Code                                    | Content Type                                   |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| PlexAPI.Models.Errors.LogMultiLineResponseBody | 401                                            | application/json                               |
-| PlexAPI.Models.Errors.SDKException             | 4xx-5xx                                        | */*                                            |
+| Error Object                                                 | Status Code                                                  | Content Type                                                 |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| LukeHagar.PlexAPI.SDK.Models.Errors.LogMultiLineResponseBody | 401                                                          | application/json                                             |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException             | 4xx-5xx                                                      | */*                                                          |
 
 
 ## EnablePaperTrail
@@ -129,10 +129,10 @@ This endpoint will enable all Plex Media Serverlogs to be sent to the Papertrail
 ### Example Usage
 
 ```csharp
-using PlexAPI;
-using PlexAPI.Models.Components;
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPISDK(
+var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
@@ -148,7 +148,7 @@ var res = await sdk.Log.EnablePaperTrailAsync();
 
 ### Errors
 
-| Error Object                                       | Status Code                                        | Content Type                                       |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| PlexAPI.Models.Errors.EnablePaperTrailResponseBody | 401                                                | application/json                                   |
-| PlexAPI.Models.Errors.SDKException                 | 4xx-5xx                                            | */*                                                |
+| Error Object                                                     | Status Code                                                      | Content Type                                                     |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.EnablePaperTrailResponseBody | 401                                                              | application/json                                                 |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                 | 4xx-5xx                                                          | */*                                                              |
