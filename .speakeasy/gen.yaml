@@ -17,7 +17,7 @@ csharp:
   author: LukeHagar
   clientServerStatusCodesAsErrors: true
   disableNamespacePascalCasingApr2024: true
-  dotnetVersion: net5.0
+  dotnetVersion: net8.0
   enableSourceLink: false
   flattenGlobalSecurity: true
   imports:
@@ -32,6 +32,6 @@ csharp:
   inputModelSuffix: input
   maxMethodParams: 4
   outputModelSuffix: output
-  packageName: PlexAPI
+  packageName: LukeHagar.PlexAPI.SDK
   packageTags: ""
   responseFormat: envelope
