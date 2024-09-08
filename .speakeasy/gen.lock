@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 5a8dbcbc-e0ee-41f0-9d84-b8b50567d1e9
 management:
-  docChecksum: f627107f2ac6c53325be4f291ae2dea7
+  docChecksum: eae2a027b2467f033ac397a5d9f0add5
   docVersion: 0.0.3
-  speakeasyVersion: 1.391.3
-  generationVersion: 2.411.5
-  releaseVersion: 0.5.1
-  configChecksum: f734ad53a666188f16120f249ba12bf7
+  speakeasyVersion: 1.392.1
+  generationVersion: 2.411.9
+  releaseVersion: 0.5.2
+  configChecksum: 6ae6ab198738654301f24693d5a0e7a9
   repoURL: https://github.com/LukeHagar/plexcsharp.git
   repoSubDirectory: .
   published: true
@@ -1189,6 +1189,7 @@ examples:
       responses:
         "401":
           application/json: {"errors": []}
+        "200": {}
   getServerPreferences:
     speakeasy-default-get-server-preferences:
       responses:
@@ -1246,6 +1247,7 @@ examples:
       responses:
         "401":
           application/json: {"errors": []}
+        "200": {}
   getServerList:
     speakeasy-default-get-server-list:
       responses:
@@ -1293,6 +1295,7 @@ examples:
       responses:
         "401":
           application/json: {"errors": []}
+        "200": {}
   get-thumb-image:
     speakeasy-default-get-thumb-image:
       parameters:
@@ -1307,6 +1310,7 @@ examples:
       responses:
         "401":
           application/json: {"errors": []}
+        "200": {}
   getTimeline:
     "":
       parameters:
@@ -1352,6 +1356,7 @@ examples:
       responses:
         "401":
           application/json: {"errors": []}
+        "200": {}
   cancelServerActivities:
     "":
       parameters:
@@ -1432,6 +1437,7 @@ examples:
       responses:
         "401":
           application/json: {"errors": []}
+        "200": {}
   getPin:
     "":
       parameters:
@@ -1659,6 +1665,7 @@ examples:
       responses:
         "401":
           application/json: {"errors": []}
+        "200": {}
   logLine:
     speakeasy-default-log-line:
       parameters:

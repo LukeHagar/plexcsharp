@@ -7,4 +7,7 @@ sources:
 targets:
     plexcsharp:
         target: csharp
-        source: my-source
+        source: plex-api
+        publish:
+            nuget:
+                apiKey: $nuget_api_key
