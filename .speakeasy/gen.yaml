@@ -18,7 +18,7 @@ csharp:
   clientServerStatusCodesAsErrors: true
   disableNamespacePascalCasingApr2024: true
   dotnetVersion: net8.0
-  enableSourceLink: false
+  enableSourceLink: true
   flattenGlobalSecurity: true
   imports:
     option: openapi
@@ -28,10 +28,10 @@ csharp:
       operations: Models/Requests
       shared: Models/Components
       webhooks: Models/Webhooks
-  includeDebugSymbols: false
+  includeDebugSymbols: true
   inputModelSuffix: input
   maxMethodParams: 4
   outputModelSuffix: output
   packageName: LukeHagar.PlexAPI.SDK
-  packageTags: ""
+  packageTags: Plex Media Server SDK
   responseFormat: envelope
