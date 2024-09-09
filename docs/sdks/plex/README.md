@@ -48,10 +48,11 @@ var res = await sdk.Plex.GetCompanionsDataAsync();
 
 ### Errors
 
-| Error Object                                                      | Status Code                                                       | Content Type                                                      |
-| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetCompanionsDataResponseBody | 401                                                               | application/json                                                  |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                  | 4xx-5xx                                                           | */*                                                               |
+| Error Object                                                          | Status Code                                                           | Content Type                                                          |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetCompanionsDataResponseBody     | 400                                                                   | application/json                                                      |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetCompanionsDataPlexResponseBody | 401                                                                   | application/json                                                      |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                      | 4xx-5xx                                                               | */*                                                                   |
 
 
 ## GetUserFriends
@@ -86,10 +87,11 @@ var res = await sdk.Plex.GetUserFriendsAsync();
 
 ### Errors
 
-| Error Object                                                   | Status Code                                                    | Content Type                                                   |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetUserFriendsResponseBody | 401                                                            | application/json                                               |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException               | 4xx-5xx                                                        | */*                                                            |
+| Error Object                                                       | Status Code                                                        | Content Type                                                       |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetUserFriendsResponseBody     | 400                                                                | application/json                                                   |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetUserFriendsPlexResponseBody | 401                                                                | application/json                                                   |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                   | 4xx-5xx                                                            | */*                                                                |
 
 
 ## GetGeoData
@@ -121,10 +123,11 @@ var res = await sdk.Plex.GetGeoDataAsync();
 
 ### Errors
 
-| Error Object                                               | Status Code                                                | Content Type                                               |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetGeoDataResponseBody | 401                                                        | application/json                                           |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException           | 4xx-5xx                                                    | */*                                                        |
+| Error Object                                                   | Status Code                                                    | Content Type                                                   |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetGeoDataResponseBody     | 400                                                            | application/json                                               |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetGeoDataPlexResponseBody | 401                                                            | application/json                                               |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException               | 4xx-5xx                                                        | */*                                                            |
 
 
 ## GetHomeData
@@ -153,10 +156,11 @@ var res = await sdk.Plex.GetHomeDataAsync();
 
 ### Errors
 
-| Error Object                                                | Status Code                                                 | Content Type                                                |
-| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetHomeDataResponseBody | 401                                                         | application/json                                            |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException            | 4xx-5xx                                                     | */*                                                         |
+| Error Object                                                    | Status Code                                                     | Content Type                                                    |
+| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetHomeDataResponseBody     | 400                                                             | application/json                                                |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetHomeDataPlexResponseBody | 401                                                             | application/json                                                |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                | 4xx-5xx                                                         | */*                                                             |
 
 
 ## GetServerResources
@@ -200,10 +204,11 @@ var res = await sdk.Plex.GetServerResourcesAsync(req);
 
 ### Errors
 
-| Error Object                                                       | Status Code                                                        | Content Type                                                       |
-| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetServerResourcesResponseBody | 401                                                                | application/json                                                   |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                   | 4xx-5xx                                                            | */*                                                                |
+| Error Object                                                           | Status Code                                                            | Content Type                                                           |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetServerResourcesResponseBody     | 400                                                                    | application/json                                                       |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetServerResourcesPlexResponseBody | 401                                                                    | application/json                                                       |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                       | 4xx-5xx                                                                | */*                                                                    |
 
 
 ## GetPin

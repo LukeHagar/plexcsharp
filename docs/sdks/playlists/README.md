@@ -64,10 +64,11 @@ var res = await sdk.Playlists.CreatePlaylistAsync(req);
 
 ### Errors
 
-| Error Object                                                   | Status Code                                                    | Content Type                                                   |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.CreatePlaylistResponseBody | 401                                                            | application/json                                               |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException               | 4xx-5xx                                                        | */*                                                            |
+| Error Object                                                            | Status Code                                                             | Content Type                                                            |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.CreatePlaylistResponseBody          | 400                                                                     | application/json                                                        |
+| LukeHagar.PlexAPI.SDK.Models.Errors.CreatePlaylistPlaylistsResponseBody | 401                                                                     | application/json                                                        |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                        | 4xx-5xx                                                                 | */*                                                                     |
 
 
 ## GetPlaylists
@@ -107,10 +108,11 @@ var res = await sdk.Playlists.GetPlaylistsAsync(
 
 ### Errors
 
-| Error Object                                                 | Status Code                                                  | Content Type                                                 |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetPlaylistsResponseBody | 401                                                          | application/json                                             |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException             | 4xx-5xx                                                      | */*                                                          |
+| Error Object                                                          | Status Code                                                           | Content Type                                                          |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetPlaylistsResponseBody          | 400                                                                   | application/json                                                      |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetPlaylistsPlaylistsResponseBody | 401                                                                   | application/json                                                      |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                      | 4xx-5xx                                                               | */*                                                                   |
 
 
 ## GetPlaylist
@@ -148,10 +150,11 @@ var res = await sdk.Playlists.GetPlaylistAsync(playlistID: 4109.48D);
 
 ### Errors
 
-| Error Object                                                | Status Code                                                 | Content Type                                                |
-| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetPlaylistResponseBody | 401                                                         | application/json                                            |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException            | 4xx-5xx                                                     | */*                                                         |
+| Error Object                                                         | Status Code                                                          | Content Type                                                         |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetPlaylistResponseBody          | 400                                                                  | application/json                                                     |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetPlaylistPlaylistsResponseBody | 401                                                                  | application/json                                                     |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                     | 4xx-5xx                                                              | */*                                                                  |
 
 
 ## DeletePlaylist
@@ -188,10 +191,11 @@ var res = await sdk.Playlists.DeletePlaylistAsync(playlistID: 216.22D);
 
 ### Errors
 
-| Error Object                                                   | Status Code                                                    | Content Type                                                   |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.DeletePlaylistResponseBody | 401                                                            | application/json                                               |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException               | 4xx-5xx                                                        | */*                                                            |
+| Error Object                                                            | Status Code                                                             | Content Type                                                            |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.DeletePlaylistResponseBody          | 400                                                                     | application/json                                                        |
+| LukeHagar.PlexAPI.SDK.Models.Errors.DeletePlaylistPlaylistsResponseBody | 401                                                                     | application/json                                                        |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                        | 4xx-5xx                                                                 | */*                                                                     |
 
 
 ## UpdatePlaylist
@@ -234,10 +238,11 @@ var res = await sdk.Playlists.UpdatePlaylistAsync(
 
 ### Errors
 
-| Error Object                                                   | Status Code                                                    | Content Type                                                   |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.UpdatePlaylistResponseBody | 401                                                            | application/json                                               |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException               | 4xx-5xx                                                        | */*                                                            |
+| Error Object                                                            | Status Code                                                             | Content Type                                                            |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.UpdatePlaylistResponseBody          | 400                                                                     | application/json                                                        |
+| LukeHagar.PlexAPI.SDK.Models.Errors.UpdatePlaylistPlaylistsResponseBody | 401                                                                     | application/json                                                        |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                        | 4xx-5xx                                                                 | */*                                                                     |
 
 
 ## GetPlaylistContents
@@ -281,10 +286,11 @@ var res = await sdk.Playlists.GetPlaylistContentsAsync(
 
 ### Errors
 
-| Error Object                                                        | Status Code                                                         | Content Type                                                        |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetPlaylistContentsResponseBody | 401                                                                 | application/json                                                    |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                    | 4xx-5xx                                                             | */*                                                                 |
+| Error Object                                                                 | Status Code                                                                  | Content Type                                                                 |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetPlaylistContentsResponseBody          | 400                                                                          | application/json                                                             |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetPlaylistContentsPlaylistsResponseBody | 401                                                                          | application/json                                                             |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                             | 4xx-5xx                                                                      | */*                                                                          |
 
 
 ## ClearPlaylistContents
@@ -321,10 +327,11 @@ var res = await sdk.Playlists.ClearPlaylistContentsAsync(playlistID: 1893.18D);
 
 ### Errors
 
-| Error Object                                                          | Status Code                                                           | Content Type                                                          |
-| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.ClearPlaylistContentsResponseBody | 401                                                                   | application/json                                                      |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                      | 4xx-5xx                                                               | */*                                                                   |
+| Error Object                                                                   | Status Code                                                                    | Content Type                                                                   |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| LukeHagar.PlexAPI.SDK.Models.Errors.ClearPlaylistContentsResponseBody          | 400                                                                            | application/json                                                               |
+| LukeHagar.PlexAPI.SDK.Models.Errors.ClearPlaylistContentsPlaylistsResponseBody | 401                                                                            | application/json                                                               |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                               | 4xx-5xx                                                                        | */*                                                                            |
 
 
 ## AddPlaylistContents
@@ -368,10 +375,11 @@ var res = await sdk.Playlists.AddPlaylistContentsAsync(
 
 ### Errors
 
-| Error Object                                                        | Status Code                                                         | Content Type                                                        |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.AddPlaylistContentsResponseBody | 401                                                                 | application/json                                                    |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                    | 4xx-5xx                                                             | */*                                                                 |
+| Error Object                                                                 | Status Code                                                                  | Content Type                                                                 |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.AddPlaylistContentsResponseBody          | 400                                                                          | application/json                                                             |
+| LukeHagar.PlexAPI.SDK.Models.Errors.AddPlaylistContentsPlaylistsResponseBody | 401                                                                          | application/json                                                             |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                             | 4xx-5xx                                                                      | */*                                                                          |
 
 
 ## UploadPlaylist
@@ -412,7 +420,8 @@ var res = await sdk.Playlists.UploadPlaylistAsync(
 
 ### Errors
 
-| Error Object                                                   | Status Code                                                    | Content Type                                                   |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.UploadPlaylistResponseBody | 401                                                            | application/json                                               |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException               | 4xx-5xx                                                        | */*                                                            |
+| Error Object                                                            | Status Code                                                             | Content Type                                                            |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.UploadPlaylistResponseBody          | 400                                                                     | application/json                                                        |
+| LukeHagar.PlexAPI.SDK.Models.Errors.UploadPlaylistPlaylistsResponseBody | 401                                                                     | application/json                                                        |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                        | 4xx-5xx                                                                 | */*                                                                     |

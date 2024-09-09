@@ -23,10 +23,10 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public string? Mode { get; set; }
 
         [JsonProperty("renewsAt", NullValueHandling = NullValueHandling.Include)]
-        public int? RenewsAt { get; set; }
+        public long? RenewsAt { get; set; }
 
         [JsonProperty("endsAt", NullValueHandling = NullValueHandling.Include)]
-        public int? EndsAt { get; set; }
+        public long? EndsAt { get; set; }
 
         [JsonProperty("canceled")]
         public bool? Canceled { get; set; } = false;

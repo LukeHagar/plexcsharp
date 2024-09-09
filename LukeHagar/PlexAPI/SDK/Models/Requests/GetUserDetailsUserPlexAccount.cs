@@ -136,10 +136,10 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public int Id { get; set; } = default!;
 
         /// <summary>
-        /// Unix epoch datetime the account joined Plex
+        /// Unix epoch datetime
         /// </summary>
         [JsonProperty("joinedAt")]
-        public int JoinedAt { get; set; } = default!;
+        public long JoinedAt { get; set; } = default!;
 
         /// <summary>
         /// The account locale
@@ -182,10 +182,10 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public bool? Protected { get; set; } = false;
 
         /// <summary>
-        /// Unix epoch datetime the authtoken expires
+        /// Unix epoch datetime
         /// </summary>
         [JsonProperty("rememberExpiresAt")]
-        public int RememberExpiresAt { get; set; } = default!;
+        public long RememberExpiresAt { get; set; } = default!;
 
         /// <summary>
         /// If the account is a Plex Home managed user

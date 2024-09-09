@@ -43,10 +43,11 @@ var res = await sdk.Activities.GetServerActivitiesAsync();
 
 ### Errors
 
-| Error Object                                                        | Status Code                                                         | Content Type                                                        |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetServerActivitiesResponseBody | 401                                                                 | application/json                                                    |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                    | 4xx-5xx                                                             | */*                                                                 |
+| Error Object                                                                  | Status Code                                                                   | Content Type                                                                  |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetServerActivitiesResponseBody           | 400                                                                           | application/json                                                              |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetServerActivitiesActivitiesResponseBody | 401                                                                           | application/json                                                              |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                              | 4xx-5xx                                                                       | */*                                                                           |
 
 
 ## CancelServerActivities
@@ -82,7 +83,8 @@ var res = await sdk.Activities.CancelServerActivitiesAsync(activityUUID: "25b71e
 
 ### Errors
 
-| Error Object                                                           | Status Code                                                            | Content Type                                                           |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.CancelServerActivitiesResponseBody | 401                                                                    | application/json                                                       |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                       | 4xx-5xx                                                                | */*                                                                    |
+| Error Object                                                                     | Status Code                                                                      | Content Type                                                                     |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.CancelServerActivitiesResponseBody           | 400                                                                              | application/json                                                                 |
+| LukeHagar.PlexAPI.SDK.Models.Errors.CancelServerActivitiesActivitiesResponseBody | 401                                                                              | application/json                                                                 |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                                 | 4xx-5xx                                                                          | */*                                                                              |

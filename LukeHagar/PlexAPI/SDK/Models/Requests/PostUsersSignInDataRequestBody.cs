@@ -25,5 +25,8 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
 
         [SpeakeasyMetadata("form:name=rememberMe")]
         public bool? RememberMe { get; set; } = false;
+
+        [SpeakeasyMetadata("form:name=verificationCode")]
+        public string? VerificationCode { get; set; }
     }
 }

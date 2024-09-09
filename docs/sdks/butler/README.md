@@ -40,10 +40,11 @@ var res = await sdk.Butler.GetButlerTasksAsync();
 
 ### Errors
 
-| Error Object                                                   | Status Code                                                    | Content Type                                                   |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetButlerTasksResponseBody | 401                                                            | application/json                                               |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException               | 4xx-5xx                                                        | */*                                                            |
+| Error Object                                                         | Status Code                                                          | Content Type                                                         |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetButlerTasksResponseBody       | 400                                                                  | application/json                                                     |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetButlerTasksButlerResponseBody | 401                                                                  | application/json                                                     |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                     | 4xx-5xx                                                              | */*                                                                  |
 
 
 ## StartAllTasks
@@ -77,10 +78,11 @@ var res = await sdk.Butler.StartAllTasksAsync();
 
 ### Errors
 
-| Error Object                                                  | Status Code                                                   | Content Type                                                  |
-| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.StartAllTasksResponseBody | 401                                                           | application/json                                              |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException              | 4xx-5xx                                                       | */*                                                           |
+| Error Object                                                        | Status Code                                                         | Content Type                                                        |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.StartAllTasksResponseBody       | 400                                                                 | application/json                                                    |
+| LukeHagar.PlexAPI.SDK.Models.Errors.StartAllTasksButlerResponseBody | 401                                                                 | application/json                                                    |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                    | 4xx-5xx                                                             | */*                                                                 |
 
 
 ## StopAllTasks
@@ -110,10 +112,11 @@ var res = await sdk.Butler.StopAllTasksAsync();
 
 ### Errors
 
-| Error Object                                                 | Status Code                                                  | Content Type                                                 |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| LukeHagar.PlexAPI.SDK.Models.Errors.StopAllTasksResponseBody | 401                                                          | application/json                                             |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException             | 4xx-5xx                                                      | */*                                                          |
+| Error Object                                                       | Status Code                                                        | Content Type                                                       |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| LukeHagar.PlexAPI.SDK.Models.Errors.StopAllTasksResponseBody       | 400                                                                | application/json                                                   |
+| LukeHagar.PlexAPI.SDK.Models.Errors.StopAllTasksButlerResponseBody | 401                                                                | application/json                                                   |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                   | 4xx-5xx                                                            | */*                                                                |
 
 
 ## StartTask
@@ -154,10 +157,11 @@ var res = await sdk.Butler.StartTaskAsync(taskName: LukeHagar.PlexAPI.SDK.Models
 
 ### Errors
 
-| Error Object                                              | Status Code                                               | Content Type                                              |
-| --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.StartTaskResponseBody | 401                                                       | application/json                                          |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException          | 4xx-5xx                                                   | */*                                                       |
+| Error Object                                                    | Status Code                                                     | Content Type                                                    |
+| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.StartTaskResponseBody       | 400                                                             | application/json                                                |
+| LukeHagar.PlexAPI.SDK.Models.Errors.StartTaskButlerResponseBody | 401                                                             | application/json                                                |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                | 4xx-5xx                                                         | */*                                                             |
 
 
 ## StopTask
@@ -194,7 +198,8 @@ var res = await sdk.Butler.StopTaskAsync(taskName: LukeHagar.PlexAPI.SDK.Models.
 
 ### Errors
 
-| Error Object                                             | Status Code                                              | Content Type                                             |
-| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.StopTaskResponseBody | 401                                                      | application/json                                         |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException         | 4xx-5xx                                                  | */*                                                      |
+| Error Object                                                   | Status Code                                                    | Content Type                                                   |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.StopTaskResponseBody       | 400                                                            | application/json                                               |
+| LukeHagar.PlexAPI.SDK.Models.Errors.StopTaskButlerResponseBody | 401                                                            | application/json                                               |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException               | 4xx-5xx                                                        | */*                                                            |

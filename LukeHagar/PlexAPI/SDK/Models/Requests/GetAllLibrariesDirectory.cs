@@ -60,19 +60,19 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Unix epoch datetime
         /// </summary>
         [JsonProperty("updatedAt")]
-        public int? UpdatedAt { get; set; }
+        public long? UpdatedAt { get; set; }
 
         /// <summary>
         /// Unix epoch datetime
         /// </summary>
         [JsonProperty("createdAt")]
-        public int? CreatedAt { get; set; }
+        public long? CreatedAt { get; set; }
 
         /// <summary>
         /// Unix epoch datetime
         /// </summary>
         [JsonProperty("scannedAt")]
-        public int? ScannedAt { get; set; }
+        public long? ScannedAt { get; set; }
 
         [JsonProperty("content")]
         public bool? Content { get; set; }

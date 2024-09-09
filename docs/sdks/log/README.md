@@ -52,10 +52,11 @@ var res = await sdk.Log.LogLineAsync(
 
 ### Errors
 
-| Error Object                                            | Status Code                                             | Content Type                                            |
-| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.LogLineResponseBody | 401                                                     | application/json                                        |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException        | 4xx-5xx                                                 | */*                                                     |
+| Error Object                                               | Status Code                                                | Content Type                                               |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.LogLineResponseBody    | 400                                                        | application/json                                           |
+| LukeHagar.PlexAPI.SDK.Models.Errors.LogLineLogResponseBody | 401                                                        | application/json                                           |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException           | 4xx-5xx                                                    | */*                                                        |
 
 
 ## LogMultiLine
@@ -115,10 +116,11 @@ var res = await sdk.Log.LogMultiLineAsync(req);
 
 ### Errors
 
-| Error Object                                                 | Status Code                                                  | Content Type                                                 |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| LukeHagar.PlexAPI.SDK.Models.Errors.LogMultiLineResponseBody | 401                                                          | application/json                                             |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException             | 4xx-5xx                                                      | */*                                                          |
+| Error Object                                                    | Status Code                                                     | Content Type                                                    |
+| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.LogMultiLineResponseBody    | 400                                                             | application/json                                                |
+| LukeHagar.PlexAPI.SDK.Models.Errors.LogMultiLineLogResponseBody | 401                                                             | application/json                                                |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                | 4xx-5xx                                                         | */*                                                             |
 
 
 ## EnablePaperTrail
@@ -148,7 +150,8 @@ var res = await sdk.Log.EnablePaperTrailAsync();
 
 ### Errors
 
-| Error Object                                                     | Status Code                                                      | Content Type                                                     |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.EnablePaperTrailResponseBody | 401                                                              | application/json                                                 |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                 | 4xx-5xx                                                          | */*                                                              |
+| Error Object                                                        | Status Code                                                         | Content Type                                                        |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.EnablePaperTrailResponseBody    | 400                                                                 | application/json                                                    |
+| LukeHagar.PlexAPI.SDK.Models.Errors.EnablePaperTrailLogResponseBody | 401                                                                 | application/json                                                    |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                    | 4xx-5xx                                                             | */*                                                                 |

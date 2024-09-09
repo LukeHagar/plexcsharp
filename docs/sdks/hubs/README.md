@@ -48,10 +48,11 @@ var res = await sdk.Hubs.GetGlobalHubsAsync(
 
 ### Errors
 
-| Error Object                                                  | Status Code                                                   | Content Type                                                  |
-| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetGlobalHubsResponseBody | 401                                                           | application/json                                              |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException              | 4xx-5xx                                                       | */*                                                           |
+| Error Object                                                      | Status Code                                                       | Content Type                                                      |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetGlobalHubsResponseBody     | 400                                                               | application/json                                                  |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetGlobalHubsHubsResponseBody | 401                                                               | application/json                                                  |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                  | 4xx-5xx                                                           | */*                                                               |
 
 
 ## GetLibraryHubs
@@ -94,7 +95,8 @@ var res = await sdk.Hubs.GetLibraryHubsAsync(
 
 ### Errors
 
-| Error Object                                                   | Status Code                                                    | Content Type                                                   |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetLibraryHubsResponseBody | 401                                                            | application/json                                               |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException               | 4xx-5xx                                                        | */*                                                            |
+| Error Object                                                       | Status Code                                                        | Content Type                                                       |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetLibraryHubsResponseBody     | 400                                                                | application/json                                                   |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetLibraryHubsHubsResponseBody | 401                                                                | application/json                                                   |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                   | 4xx-5xx                                                            | */*                                                                |

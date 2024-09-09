@@ -149,7 +149,7 @@ var res = await sdk.Server.GetServerCapabilitiesAsync();
 * [GetTransientToken](docs/sdks/authentication/README.md#gettransienttoken) - Get a Transient Token.
 * [GetSourceConnectionInformation](docs/sdks/authentication/README.md#getsourceconnectioninformation) - Get Source Connection Information
 * [GetUserDetails](docs/sdks/authentication/README.md#getuserdetails) - Get User Data By Token
-* [PostUsersSignInData](docs/sdks/authentication/README.md#postuserssignindata) - Get User SignIn Data
+* [PostUsersSignInData](docs/sdks/authentication/README.md#postuserssignindata) - Get User Sign In Data
 
 ### [Statistics](docs/sdks/statistics/README.md)
 
@@ -208,7 +208,7 @@ var sdk = new PlexAPI(
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
-var res = await sdk.Plex.GetCompanionsDataAsync(serverUrl: "https://plex.tv/api/v2");
+var res = await sdk.Plex.GetCompanionsDataAsync(serverUrl: "https://plex.tv/api/v2/");
 
 // handle response
 ```
@@ -293,10 +293,11 @@ var res = await sdk.Plex.GetServerResourcesAsync(req);
 
 Handling errors in this SDK should largely match your expectations.  All operations return a response object or thow an exception.  If Error objects are specified in your OpenAPI Spec, the SDK will raise the appropriate type.
 
-| Error Object                                                          | Status Code                                                           | Content Type                                                          |
-| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetServerCapabilitiesResponseBody | 401                                                                   | application/json                                                      |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                      | 4xx-5xx                                                               | */*                                                                   |
+| Error Object                                                                | Status Code                                                                 | Content Type                                                                |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetServerCapabilitiesResponseBody       | 400                                                                         | application/json                                                            |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetServerCapabilitiesServerResponseBody | 401                                                                         | application/json                                                            |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                            | 4xx-5xx                                                                     | */*                                                                         |
 
 ### Example
 
@@ -320,6 +321,10 @@ try
 catch (Exception ex)
 {
     if (ex is Models.Errors.GetServerCapabilitiesResponseBody)
+    {
+        // handle exception
+    }
+    else if (ex is GetServerCapabilitiesServerResponseBody)
     {
         // handle exception
     }

@@ -11,7 +11,7 @@ API Calls regarding authentication for Plex Media Server
 * [GetTransientToken](#gettransienttoken) - Get a Transient Token.
 * [GetSourceConnectionInformation](#getsourceconnectioninformation) - Get Source Connection Information
 * [GetUserDetails](#getuserdetails) - Get User Data By Token
-* [PostUsersSignInData](#postuserssignindata) - Get User SignIn Data
+* [PostUsersSignInData](#postuserssignindata) - Get User Sign In Data
 
 ## GetTransientToken
 
@@ -51,10 +51,11 @@ var res = await sdk.Authentication.GetTransientTokenAsync(
 
 ### Errors
 
-| Error Object                                                      | Status Code                                                       | Content Type                                                      |
-| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetTransientTokenResponseBody | 401                                                               | application/json                                                  |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                  | 4xx-5xx                                                           | */*                                                               |
+| Error Object                                                                    | Status Code                                                                     | Content Type                                                                    |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetTransientTokenResponseBody               | 400                                                                             | application/json                                                                |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetTransientTokenAuthenticationResponseBody | 401                                                                             | application/json                                                                |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                                | 4xx-5xx                                                                         | */*                                                                             |
 
 
 ## GetSourceConnectionInformation
@@ -92,10 +93,11 @@ var res = await sdk.Authentication.GetSourceConnectionInformationAsync(source: "
 
 ### Errors
 
-| Error Object                                                                   | Status Code                                                                    | Content Type                                                                   |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetSourceConnectionInformationResponseBody | 401                                                                            | application/json                                                               |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                               | 4xx-5xx                                                                        | */*                                                                            |
+| Error Object                                                                                 | Status Code                                                                                  | Content Type                                                                                 |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetSourceConnectionInformationResponseBody               | 400                                                                                          | application/json                                                                             |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetSourceConnectionInformationAuthenticationResponseBody | 401                                                                                          | application/json                                                                             |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                                             | 4xx-5xx                                                                                      | */*                                                                                          |
 
 
 ## GetUserDetails
@@ -132,10 +134,11 @@ var res = await sdk.Authentication.GetUserDetailsAsync(xPlexToken: "CV5xoxjTpFKU
 
 ### Errors
 
-| Error Object                                                   | Status Code                                                    | Content Type                                                   |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetUserDetailsResponseBody | 401                                                            | application/json                                               |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException               | 4xx-5xx                                                        | */*                                                            |
+| Error Object                                                                 | Status Code                                                                  | Content Type                                                                 |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetUserDetailsResponseBody               | 400                                                                          | application/json                                                             |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetUserDetailsAuthenticationResponseBody | 401                                                                          | application/json                                                             |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                             | 4xx-5xx                                                                      | */*                                                                          |
 
 
 ## PostUsersSignInData
@@ -156,6 +159,7 @@ var res = await sdk.Authentication.PostUsersSignInDataAsync(
     requestBody: new PostUsersSignInDataRequestBody() {
         Login = "username@email.com",
         Password = "password123",
+        VerificationCode = "123456",
     }
 );
 
@@ -176,7 +180,8 @@ var res = await sdk.Authentication.PostUsersSignInDataAsync(
 
 ### Errors
 
-| Error Object                                                        | Status Code                                                         | Content Type                                                        |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.PostUsersSignInDataResponseBody | 401                                                                 | application/json                                                    |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                    | 4xx-5xx                                                             | */*                                                                 |
+| Error Object                                                                      | Status Code                                                                       | Content Type                                                                      |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.PostUsersSignInDataResponseBody               | 400                                                                               | application/json                                                                  |
+| LukeHagar.PlexAPI.SDK.Models.Errors.PostUsersSignInDataAuthenticationResponseBody | 401                                                                               | application/json                                                                  |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                                  | 4xx-5xx                                                                           | */*                                                                               |

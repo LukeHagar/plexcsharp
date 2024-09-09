@@ -39,10 +39,11 @@ var res = await sdk.Updater.GetUpdateStatusAsync();
 
 ### Errors
 
-| Error Object                                                    | Status Code                                                     | Content Type                                                    |
-| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetUpdateStatusResponseBody | 401                                                             | application/json                                                |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                | 4xx-5xx                                                         | */*                                                             |
+| Error Object                                                           | Status Code                                                            | Content Type                                                           |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetUpdateStatusResponseBody        | 400                                                                    | application/json                                                       |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetUpdateStatusUpdaterResponseBody | 401                                                                    | application/json                                                       |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                       | 4xx-5xx                                                                | */*                                                                    |
 
 
 ## CheckForUpdates
@@ -78,10 +79,11 @@ var res = await sdk.Updater.CheckForUpdatesAsync(download: LukeHagar.PlexAPI.SDK
 
 ### Errors
 
-| Error Object                                                    | Status Code                                                     | Content Type                                                    |
-| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.CheckForUpdatesResponseBody | 401                                                             | application/json                                                |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                | 4xx-5xx                                                         | */*                                                             |
+| Error Object                                                           | Status Code                                                            | Content Type                                                           |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.CheckForUpdatesResponseBody        | 400                                                                    | application/json                                                       |
+| LukeHagar.PlexAPI.SDK.Models.Errors.CheckForUpdatesUpdaterResponseBody | 401                                                                    | application/json                                                       |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                       | 4xx-5xx                                                                | */*                                                                    |
 
 
 ## ApplyUpdates
@@ -122,7 +124,8 @@ var res = await sdk.Updater.ApplyUpdatesAsync(
 
 ### Errors
 
-| Error Object                                                 | Status Code                                                  | Content Type                                                 |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| LukeHagar.PlexAPI.SDK.Models.Errors.ApplyUpdatesResponseBody | 401                                                          | application/json                                             |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException             | 4xx-5xx                                                      | */*                                                          |
+| Error Object                                                        | Status Code                                                         | Content Type                                                        |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.ApplyUpdatesResponseBody        | 400                                                                 | application/json                                                    |
+| LukeHagar.PlexAPI.SDK.Models.Errors.ApplyUpdatesUpdaterResponseBody | 401                                                                 | application/json                                                    |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                    | 4xx-5xx                                                             | */*                                                                 |
