@@ -35,6 +35,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// <summary>
         /// The Transcode Sessions
         /// </summary>
-        public Models.Requests.GetTranscodeSessionsResponseBody? Object { get; set; }
+        public GetTranscodeSessionsResponseBody? Object { get; set; }
     }
 }

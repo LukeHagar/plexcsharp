@@ -35,6 +35,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// <summary>
         /// The contents of the library by section and type
         /// </summary>
-        public Models.Requests.GetSearchLibraryResponseBody? Object { get; set; }
+        public GetSearchLibraryResponseBody? Object { get; set; }
     }
 }

@@ -42,7 +42,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// String representation of subscriptionActive
         /// </summary>
         [JsonProperty("status")]
-        public GetUserDetailsAuthenticationStatus? Status { get; set; }
+        public GetTokenDetailsAuthenticationStatus? Status { get; set; }
 
         /// <summary>
         /// Payment service used for your Plex Pass subscription

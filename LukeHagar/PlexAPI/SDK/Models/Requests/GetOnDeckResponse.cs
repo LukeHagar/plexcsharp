@@ -35,6 +35,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// <summary>
         /// The on Deck content
         /// </summary>
-        public Models.Requests.GetOnDeckResponseBody? Object { get; set; }
+        public GetOnDeckResponseBody? Object { get; set; }
     }
 }

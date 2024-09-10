@@ -51,8 +51,8 @@ var res = await sdk.Watchlist.GetWatchListAsync(req);
 
 ### Errors
 
-| Error Object                                                          | Status Code                                                           | Content Type                                                          |
-| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetWatchListResponseBody          | 400                                                                   | application/json                                                      |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetWatchListWatchlistResponseBody | 401                                                                   | application/json                                                      |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                      | 4xx-5xx                                                               | */*                                                                   |
+| Error Object                                                 | Status Code                                                  | Content Type                                                 |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetWatchListBadRequest   | 400                                                          | application/json                                             |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetWatchListUnauthorized | 401                                                          | application/json                                             |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException             | 4xx-5xx                                                      | */*                                                          |

@@ -35,6 +35,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// <summary>
         /// List of Active Plex Sessions
         /// </summary>
-        public Models.Requests.GetSessionsResponseBody? Object { get; set; }
+        public GetSessionsResponseBody? Object { get; set; }
     }
 }

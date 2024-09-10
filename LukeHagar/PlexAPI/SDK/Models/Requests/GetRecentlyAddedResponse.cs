@@ -35,6 +35,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// <summary>
         /// The recently added content
         /// </summary>
-        public Models.Requests.GetRecentlyAddedResponseBody? Object { get; set; }
+        public GetRecentlyAddedResponseBody? Object { get; set; }
     }
 }

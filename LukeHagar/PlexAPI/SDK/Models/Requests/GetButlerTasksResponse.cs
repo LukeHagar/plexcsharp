@@ -35,6 +35,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// <summary>
         /// All butler tasks
         /// </summary>
-        public Models.Requests.GetButlerTasksResponseBody? Object { get; set; }
+        public GetButlerTasksResponseBody? Object { get; set; }
     }
 }

@@ -57,11 +57,11 @@ var res = await sdk.Video.GetTimelineAsync(req);
 
 ### Errors
 
-| Error Object                                                     | Status Code                                                      | Content Type                                                     |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetTimelineResponseBody      | 400                                                              | application/json                                                 |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetTimelineVideoResponseBody | 401                                                              | application/json                                                 |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                 | 4xx-5xx                                                          | */*                                                              |
+| Error Object                                                | Status Code                                                 | Content Type                                                |
+| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetTimelineBadRequest   | 400                                                         | application/json                                            |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetTimelineUnauthorized | 401                                                         | application/json                                            |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException            | 4xx-5xx                                                     | */*                                                         |
 
 
 ## StartUniversalTranscode
@@ -116,8 +116,8 @@ var res = await sdk.Video.StartUniversalTranscodeAsync(req);
 
 ### Errors
 
-| Error Object                                                                 | Status Code                                                                  | Content Type                                                                 |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.StartUniversalTranscodeResponseBody      | 400                                                                          | application/json                                                             |
-| LukeHagar.PlexAPI.SDK.Models.Errors.StartUniversalTranscodeVideoResponseBody | 401                                                                          | application/json                                                             |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                             | 4xx-5xx                                                                      | */*                                                                          |
+| Error Object                                                            | Status Code                                                             | Content Type                                                            |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.StartUniversalTranscodeBadRequest   | 400                                                                     | application/json                                                        |
+| LukeHagar.PlexAPI.SDK.Models.Errors.StartUniversalTranscodeUnauthorized | 401                                                                     | application/json                                                        |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                        | 4xx-5xx                                                                 | */*                                                                     |

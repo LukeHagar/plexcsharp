@@ -35,6 +35,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// <summary>
         /// The Server Identity information
         /// </summary>
-        public Models.Requests.GetServerIdentityResponseBody? Object { get; set; }
+        public GetServerIdentityResponseBody? Object { get; set; }
     }
 }

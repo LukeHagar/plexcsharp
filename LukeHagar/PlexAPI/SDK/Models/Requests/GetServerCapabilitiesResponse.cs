@@ -35,6 +35,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// <summary>
         /// The Server Capabilities
         /// </summary>
-        public Models.Requests.GetServerCapabilitiesResponseBody? Object { get; set; }
+        public GetServerCapabilitiesResponseBody? Object { get; set; }
     }
 }

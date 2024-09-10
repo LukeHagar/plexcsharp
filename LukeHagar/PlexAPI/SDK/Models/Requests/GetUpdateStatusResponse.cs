@@ -35,6 +35,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// <summary>
         /// The Server Updates
         /// </summary>
-        public Models.Requests.GetUpdateStatusResponseBody? Object { get; set; }
+        public GetUpdateStatusResponseBody? Object { get; set; }
     }
 }

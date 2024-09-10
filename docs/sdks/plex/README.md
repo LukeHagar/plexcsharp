@@ -48,11 +48,11 @@ var res = await sdk.Plex.GetCompanionsDataAsync();
 
 ### Errors
 
-| Error Object                                                          | Status Code                                                           | Content Type                                                          |
-| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetCompanionsDataResponseBody     | 400                                                                   | application/json                                                      |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetCompanionsDataPlexResponseBody | 401                                                                   | application/json                                                      |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                      | 4xx-5xx                                                               | */*                                                                   |
+| Error Object                                                      | Status Code                                                       | Content Type                                                      |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetCompanionsDataBadRequest   | 400                                                               | application/json                                                  |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetCompanionsDataUnauthorized | 401                                                               | application/json                                                  |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                  | 4xx-5xx                                                           | */*                                                               |
 
 
 ## GetUserFriends
@@ -87,11 +87,11 @@ var res = await sdk.Plex.GetUserFriendsAsync();
 
 ### Errors
 
-| Error Object                                                       | Status Code                                                        | Content Type                                                       |
-| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetUserFriendsResponseBody     | 400                                                                | application/json                                                   |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetUserFriendsPlexResponseBody | 401                                                                | application/json                                                   |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                   | 4xx-5xx                                                            | */*                                                                |
+| Error Object                                                   | Status Code                                                    | Content Type                                                   |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetUserFriendsBadRequest   | 400                                                            | application/json                                               |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetUserFriendsUnauthorized | 401                                                            | application/json                                               |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException               | 4xx-5xx                                                        | */*                                                            |
 
 
 ## GetGeoData
@@ -123,11 +123,11 @@ var res = await sdk.Plex.GetGeoDataAsync();
 
 ### Errors
 
-| Error Object                                                   | Status Code                                                    | Content Type                                                   |
-| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetGeoDataResponseBody     | 400                                                            | application/json                                               |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetGeoDataPlexResponseBody | 401                                                            | application/json                                               |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException               | 4xx-5xx                                                        | */*                                                            |
+| Error Object                                               | Status Code                                                | Content Type                                               |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetGeoDataBadRequest   | 400                                                        | application/json                                           |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetGeoDataUnauthorized | 401                                                        | application/json                                           |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException           | 4xx-5xx                                                    | */*                                                        |
 
 
 ## GetHomeData
@@ -156,11 +156,11 @@ var res = await sdk.Plex.GetHomeDataAsync();
 
 ### Errors
 
-| Error Object                                                    | Status Code                                                     | Content Type                                                    |
-| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetHomeDataResponseBody     | 400                                                             | application/json                                                |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetHomeDataPlexResponseBody | 401                                                             | application/json                                                |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                | 4xx-5xx                                                         | */*                                                             |
+| Error Object                                                | Status Code                                                 | Content Type                                                |
+| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetHomeDataBadRequest   | 400                                                         | application/json                                            |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetHomeDataUnauthorized | 401                                                         | application/json                                            |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException            | 4xx-5xx                                                     | */*                                                         |
 
 
 ## GetServerResources
@@ -179,24 +179,25 @@ var sdk = new PlexAPI(
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
-GetServerResourcesRequest req = new GetServerResourcesRequest() {
-    XPlexToken = "CV5xoxjTpFKUzBTShsaf",
-    IncludeHttps = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeHttps.One,
-    IncludeRelay = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeRelay.One,
-    IncludeIPv6 = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeIPv6.One,
-};
-
-var res = await sdk.Plex.GetServerResourcesAsync(req);
+var res = await sdk.Plex.GetServerResourcesAsync(
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40",
+    includeHttps: LukeHagar.PlexAPI.SDK.Models.Requests.IncludeHttps.One,
+    includeRelay: LukeHagar.PlexAPI.SDK.Models.Requests.IncludeRelay.One,
+    includeIPv6: LukeHagar.PlexAPI.SDK.Models.Requests.IncludeIPv6.One
+);
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
-| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `request`                                                                       | [GetServerResourcesRequest](../../Models/Requests/GetServerResourcesRequest.md) | :heavy_check_mark:                                                              | The request object to use for the request.                                      |
-| `serverURL`                                                                     | *string*                                                                        | :heavy_minus_sign:                                                              | An optional server URL to use.                                                  |
+| Parameter                                                                                                                                                             | Type                                                                                                                                                                  | Required                                                                                                                                                              | Description                                                                                                                                                           | Example                                                                                                                                                               |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `XPlexClientIdentifier`                                                                                                                                               | *string*                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                    | The unique identifier for the client application<br/>This is used to track the client application and its usage<br/>(UUID, serial number, or other number unique per device)<br/> | gcgzw5rz2xovp84b4vha3a40                                                                                                                                              |
+| `IncludeHttps`                                                                                                                                                        | [IncludeHttps](../../Models/Requests/IncludeHttps.md)                                                                                                                 | :heavy_minus_sign:                                                                                                                                                    | Include Https entries in the results                                                                                                                                  | 1                                                                                                                                                                     |
+| `IncludeRelay`                                                                                                                                                        | [IncludeRelay](../../Models/Requests/IncludeRelay.md)                                                                                                                 | :heavy_minus_sign:                                                                                                                                                    | Include Relay addresses in the results <br/>E.g: https://10-0-0-25.bbf8e10c7fa20447cacee74cd9914cde.plex.direct:32400<br/>                                            | 1                                                                                                                                                                     |
+| `IncludeIPv6`                                                                                                                                                         | [IncludeIPv6](../../Models/Requests/IncludeIPv6.md)                                                                                                                   | :heavy_minus_sign:                                                                                                                                                    | Include IPv6 entries in the results                                                                                                                                   | 1                                                                                                                                                                     |
+| `serverURL`                                                                                                                                                           | *string*                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                    | An optional server URL to use.                                                                                                                                        | http://localhost:8080                                                                                                                                                 |
 
 ### Response
 
@@ -204,11 +205,11 @@ var res = await sdk.Plex.GetServerResourcesAsync(req);
 
 ### Errors
 
-| Error Object                                                           | Status Code                                                            | Content Type                                                           |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetServerResourcesResponseBody     | 400                                                                    | application/json                                                       |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetServerResourcesPlexResponseBody | 401                                                                    | application/json                                                       |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                       | 4xx-5xx                                                                | */*                                                                    |
+| Error Object                                                       | Status Code                                                        | Content Type                                                       |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetServerResourcesBadRequest   | 400                                                                | application/json                                                   |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetServerResourcesUnauthorized | 401                                                                | application/json                                                   |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                   | 4xx-5xx                                                            | */*                                                                |
 
 
 ## GetPin
@@ -248,10 +249,10 @@ var res = await sdk.Plex.GetPinAsync(
 
 ### Errors
 
-| Error Object                                           | Status Code                                            | Content Type                                           |
-| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetPinResponseBody | 400                                                    | application/json                                       |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException       | 4xx-5xx                                                | */*                                                    |
+| Error Object                                         | Status Code                                          | Content Type                                         |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetPinBadRequest | 400                                                  | application/json                                     |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException     | 4xx-5xx                                              | */*                                                  |
 
 
 ## GetTokenByPinId
@@ -289,8 +290,8 @@ var res = await sdk.Plex.GetTokenByPinIdAsync(
 
 ### Errors
 
-| Error Object                                                        | Status Code                                                         | Content Type                                                        |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetTokenByPinIdResponseBody     | 400                                                                 | application/json                                                    |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetTokenByPinIdPlexResponseBody | 404                                                                 | application/json                                                    |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                    | 4xx-5xx                                                             | */*                                                                 |
+| Error Object                                                    | Status Code                                                     | Content Type                                                    |
+| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetTokenByPinIdBadRequest   | 400                                                             | application/json                                                |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetTokenByPinIdResponseBody | 404                                                             | application/json                                                |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                | 4xx-5xx                                                         | */*                                                             |

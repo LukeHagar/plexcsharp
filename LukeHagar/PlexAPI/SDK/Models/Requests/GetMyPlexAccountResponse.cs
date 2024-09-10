@@ -35,6 +35,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// <summary>
         /// MyPlex Account
         /// </summary>
-        public Models.Requests.GetMyPlexAccountResponseBody? Object { get; set; }
+        public GetMyPlexAccountResponseBody? Object { get; set; }
     }
 }

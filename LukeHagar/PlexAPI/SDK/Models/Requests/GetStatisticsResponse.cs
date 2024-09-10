@@ -35,6 +35,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// <summary>
         /// Media Statistics
         /// </summary>
-        public Models.Requests.GetStatisticsResponseBody? Object { get; set; }
+        public GetStatisticsResponseBody? Object { get; set; }
     }
 }

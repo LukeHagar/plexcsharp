@@ -35,6 +35,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// <summary>
         /// Bandwidth Statistics
         /// </summary>
-        public Models.Requests.GetBandwidthStatisticsResponseBody? Object { get; set; }
+        public GetBandwidthStatisticsResponseBody? Object { get; set; }
     }
 }

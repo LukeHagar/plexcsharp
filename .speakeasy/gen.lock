@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 5a8dbcbc-e0ee-41f0-9d84-b8b50567d1e9
 management:
-  docChecksum: 75338df5d596b761fe73fe6ff177a197
+  docChecksum: a6fee1797b2da7ccbaf7743772a40b56
   docVersion: 0.0.3
-  speakeasyVersion: 1.392.1
-  generationVersion: 2.411.9
-  releaseVersion: 0.6.0
-  configChecksum: daa6d2e7013638bcab2dc9041b9f5763
+  speakeasyVersion: 1.394.0
+  generationVersion: 2.413.0
+  releaseVersion: 0.6.1
+  configChecksum: db104482bbf604a069965c101252b879
   repoURL: https://github.com/LukeHagar/plexcsharp.git
   repoSubDirectory: .
   published: true
@@ -45,298 +45,298 @@ generatedFiles:
   - LukeHagar/PlexAPI/SDK/LukeHagar.PlexAPI.SDK.csproj
   - LukeHagar/PlexAPI/SDK/Media.cs
   - LukeHagar/PlexAPI/SDK/Models/Components/Security.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/AddPlaylistContentsBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/AddPlaylistContentsErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/AddPlaylistContentsPlaylistsErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/AddPlaylistContentsPlaylistsResponseBody.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/AddPlaylistContentsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/AddPlaylistContentsUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/ApplyUpdatesBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/ApplyUpdatesErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/ApplyUpdatesResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/ApplyUpdatesUnauthorized.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/ApplyUpdatesUpdaterErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/ApplyUpdatesUpdaterResponseBody.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/CancelServerActivitiesActivitiesErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/CancelServerActivitiesActivitiesResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/CancelServerActivitiesBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/CancelServerActivitiesErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/CancelServerActivitiesResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/CancelServerActivitiesUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/CheckForUpdatesBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/CheckForUpdatesErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/CheckForUpdatesResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/CheckForUpdatesUnauthorized.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/CheckForUpdatesUpdaterErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/CheckForUpdatesUpdaterResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/ClearPlaylistContentsBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/ClearPlaylistContentsErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/ClearPlaylistContentsPlaylistsErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/ClearPlaylistContentsPlaylistsResponseBody.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/ClearPlaylistContentsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/ClearPlaylistContentsUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/CreatePlaylistBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/CreatePlaylistErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/CreatePlaylistPlaylistsErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/CreatePlaylistPlaylistsResponseBody.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/CreatePlaylistResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/CreatePlaylistUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/DeleteLibraryBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/DeleteLibraryErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/DeleteLibraryLibraryErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/DeleteLibraryLibraryResponseBody.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/DeleteLibraryResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/DeleteLibraryUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/DeletePlaylistBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/DeletePlaylistErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/DeletePlaylistPlaylistsErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/DeletePlaylistPlaylistsResponseBody.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/DeletePlaylistResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/DeletePlaylistUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/EnablePaperTrailBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/EnablePaperTrailErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/EnablePaperTrailLogErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/EnablePaperTrailLogResponseBody.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/EnablePaperTrailResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/EnablePaperTrailUnauthorized.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/Errors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetAllLibrariesBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetAllLibrariesErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetAllLibrariesLibraryErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetAllLibrariesLibraryResponseBody.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetAllLibrariesResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetAllLibrariesUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetAvailableClientsBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetAvailableClientsErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetAvailableClientsResponseBody.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetAvailableClientsServerErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetAvailableClientsServerResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetAvailableClientsUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetBandwidthStatisticsBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetBandwidthStatisticsErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetBandwidthStatisticsResponseBody.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetBandwidthStatisticsStatisticsErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetBandwidthStatisticsStatisticsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetBandwidthStatisticsUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetBannerImageBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetBannerImageErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetBannerImageMediaErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetBannerImageMediaResponseBody.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetBannerImageResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetBannerImageUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetButlerTasksBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetButlerTasksButlerErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetButlerTasksButlerResponseBody.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetButlerTasksErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetButlerTasksResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetButlerTasksUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetCompanionsDataBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetCompanionsDataErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetCompanionsDataPlexErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetCompanionsDataPlexResponseBody.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetCompanionsDataResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetCompanionsDataUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetDevicesBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetDevicesErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetDevicesResponseBody.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetDevicesServerErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetDevicesServerResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetDevicesUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetFileHashBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetFileHashErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetFileHashLibraryErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetFileHashLibraryResponseBody.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetFileHashResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetFileHashUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetGeoDataBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetGeoDataErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetGeoDataPlexErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetGeoDataPlexResponseBody.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetGeoDataResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetGeoDataUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetGlobalHubsBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetGlobalHubsErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetGlobalHubsHubsErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetGlobalHubsHubsResponseBody.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetGlobalHubsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetGlobalHubsUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetHomeDataBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetHomeDataErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetHomeDataPlexErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetHomeDataPlexResponseBody.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetHomeDataResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetHomeDataUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetLibraryDetailsBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetLibraryDetailsErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetLibraryDetailsLibraryErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetLibraryDetailsLibraryResponseBody.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetLibraryDetailsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetLibraryDetailsUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetLibraryHubsBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetLibraryHubsErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetLibraryHubsHubsErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetLibraryHubsHubsResponseBody.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetLibraryHubsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetLibraryHubsUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetLibraryItemsBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetLibraryItemsErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetLibraryItemsLibraryErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetLibraryItemsLibraryResponseBody.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetLibraryItemsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetLibraryItemsUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetMediaProvidersBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetMediaProvidersErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetMediaProvidersResponseBody.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetMediaProvidersServerErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetMediaProvidersServerResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetMediaProvidersUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetMetaDataByRatingKeyBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetMetaDataByRatingKeyErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetMetaDataByRatingKeyLibraryErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetMetaDataByRatingKeyLibraryResponseBody.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetMetaDataByRatingKeyResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetMetaDataByRatingKeyUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetMetadataChildrenBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetMetadataChildrenErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetMetadataChildrenLibraryErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetMetadataChildrenLibraryResponseBody.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetMetadataChildrenResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetMetadataChildrenUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetMyPlexAccountBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetMyPlexAccountErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetMyPlexAccountResponseBody.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetMyPlexAccountServerErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetMyPlexAccountServerResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetMyPlexAccountUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetOnDeckBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetOnDeckErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetOnDeckLibraryErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetOnDeckLibraryResponseBody.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetOnDeckResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetOnDeckUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetPinBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetPinErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetPinResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetPlaylistBadRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetPlaylistContentsBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetPlaylistContentsErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetPlaylistContentsPlaylistsErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetPlaylistContentsPlaylistsResponseBody.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetPlaylistContentsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetPlaylistContentsUnauthorized.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetPlaylistErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetPlaylistPlaylistsErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetPlaylistPlaylistsResponseBody.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetPlaylistResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetPlaylistUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetPlaylistsBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetPlaylistsErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetPlaylistsPlaylistsErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetPlaylistsPlaylistsResponseBody.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetPlaylistsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetPlaylistsUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetRecentlyAddedBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetRecentlyAddedErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetRecentlyAddedLibraryErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetRecentlyAddedLibraryResponseBody.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetRecentlyAddedResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetRecentlyAddedUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetRefreshLibraryMetadataBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetRefreshLibraryMetadataErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetRefreshLibraryMetadataLibraryErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetRefreshLibraryMetadataLibraryResponseBody.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetRefreshLibraryMetadataResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetRefreshLibraryMetadataUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetResizedPhotoBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetResizedPhotoErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetResizedPhotoResponseBody.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetResizedPhotoServerErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetResizedPhotoServerResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetResizedPhotoUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetResourcesStatisticsBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetResourcesStatisticsErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetResourcesStatisticsResponseBody.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetResourcesStatisticsStatisticsErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetResourcesStatisticsStatisticsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetResourcesStatisticsUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetSearchLibraryBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetSearchLibraryErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetSearchLibraryLibraryErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetSearchLibraryLibraryResponseBody.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetSearchLibraryResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetSearchLibraryUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetSearchResultsBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetSearchResultsErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetSearchResultsResponseBody.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetSearchResultsSearchErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetSearchResultsSearchResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetSearchResultsUnauthorized.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetServerActivitiesActivitiesErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetServerActivitiesActivitiesResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetServerActivitiesBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetServerActivitiesErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetServerActivitiesResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetServerActivitiesUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetServerCapabilitiesBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetServerCapabilitiesErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetServerCapabilitiesResponseBody.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetServerCapabilitiesServerResponseBody.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetServerIdentityResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetServerCapabilitiesUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetServerIdentityRequestTimeout.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetServerListBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetServerListErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetServerListResponseBody.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetServerListServerErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetServerListServerResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetServerListUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetServerPreferencesBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetServerPreferencesErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetServerPreferencesResponseBody.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetServerPreferencesServerErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetServerPreferencesServerResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetServerPreferencesUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetServerResourcesBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetServerResourcesErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetServerResourcesPlexErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetServerResourcesPlexResponseBody.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetServerResourcesResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetServerResourcesUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetSessionHistoryBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetSessionHistoryErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetSessionHistoryResponseBody.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetSessionHistorySessionsErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetSessionHistorySessionsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetSessionHistoryUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetSessionsBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetSessionsErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetSessionsResponseBody.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetSessionsSessionsErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetSessionsSessionsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetSessionsUnauthorized.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetSourceConnectionInformationAuthenticationErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetSourceConnectionInformationAuthenticationResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetSourceConnectionInformationBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetSourceConnectionInformationErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetSourceConnectionInformationResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetSourceConnectionInformationUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetStatisticsBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetStatisticsErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetStatisticsResponseBody.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetStatisticsStatisticsErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetStatisticsStatisticsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetStatisticsUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetThumbImageBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetThumbImageErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetThumbImageMediaErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetThumbImageMediaResponseBody.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetThumbImageResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetThumbImageUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetTimelineBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetTimelineErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetTimelineResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetTimelineUnauthorized.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetTimelineVideoErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetTimelineVideoResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetTokenByPinIdBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetTokenByPinIdErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetTokenByPinIdPlexErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetTokenByPinIdPlexResponseBody.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetTokenByPinIdResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetTokenDetailsAuthenticationErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetTokenDetailsBadRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetTokenDetailsErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetTokenDetailsUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetTopWatchedContentBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetTopWatchedContentErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetTopWatchedContentLibraryErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetTopWatchedContentLibraryResponseBody.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetTopWatchedContentResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetTopWatchedContentUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetTranscodeSessionsBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetTranscodeSessionsErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetTranscodeSessionsResponseBody.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetTranscodeSessionsSessionsErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetTranscodeSessionsSessionsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetTranscodeSessionsUnauthorized.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetTransientTokenAuthenticationErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetTransientTokenAuthenticationResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetTransientTokenBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetTransientTokenErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetTransientTokenResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetTransientTokenUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetUpdateStatusBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetUpdateStatusErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetUpdateStatusResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetUpdateStatusUnauthorized.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetUpdateStatusUpdaterErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetUpdateStatusUpdaterResponseBody.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetUserDetailsAuthenticationErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetUserDetailsAuthenticationResponseBody.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetUserDetailsErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetUserDetailsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetUserFriendsBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetUserFriendsErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetUserFriendsPlexErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetUserFriendsPlexResponseBody.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetUserFriendsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetUserFriendsUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetWatchListBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetWatchListErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetWatchListResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetWatchListUnauthorized.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetWatchListWatchlistErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/GetWatchListWatchlistResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/LogLineBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/LogLineErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/LogLineLogErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/LogLineLogResponseBody.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/LogLineResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/LogLineUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/LogMultiLineBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/LogMultiLineErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/LogMultiLineLogErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/LogMultiLineLogResponseBody.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/LogMultiLineResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/LogMultiLineUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/MarkPlayedBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/MarkPlayedErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/MarkPlayedMediaErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/MarkPlayedMediaResponseBody.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/MarkPlayedResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/MarkPlayedUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/MarkUnplayedBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/MarkUnplayedErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/MarkUnplayedMediaErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/MarkUnplayedMediaResponseBody.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/MarkUnplayedResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/MarkUnplayedUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/PerformSearchBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/PerformSearchErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/PerformSearchResponseBody.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/PerformSearchSearchErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/PerformSearchSearchResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/PerformSearchUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/PerformVoiceSearchBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/PerformVoiceSearchErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/PerformVoiceSearchResponseBody.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/PerformVoiceSearchSearchErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/PerformVoiceSearchSearchResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/PerformVoiceSearchUnauthorized.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/PostUsersSignInDataAuthenticationErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/PostUsersSignInDataAuthenticationResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/PostUsersSignInDataBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/PostUsersSignInDataErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/PostUsersSignInDataResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/PostUsersSignInDataUnauthorized.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/SDKException.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/StartAllTasksBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/StartAllTasksButlerErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/StartAllTasksButlerResponseBody.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/StartAllTasksErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/StartAllTasksResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/StartAllTasksUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/StartTaskBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/StartTaskButlerErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/StartTaskButlerResponseBody.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/StartTaskErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/StartTaskResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/StartTaskUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/StartUniversalTranscodeBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/StartUniversalTranscodeErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/StartUniversalTranscodeResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/StartUniversalTranscodeUnauthorized.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/StartUniversalTranscodeVideoErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/StartUniversalTranscodeVideoResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/StopAllTasksBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/StopAllTasksButlerErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/StopAllTasksButlerResponseBody.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/StopAllTasksErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/StopAllTasksResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/StopAllTasksUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/StopTaskBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/StopTaskButlerErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/StopTaskButlerResponseBody.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/StopTaskErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/StopTaskResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/StopTaskUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/StopTranscodeSessionBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/StopTranscodeSessionErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/StopTranscodeSessionResponseBody.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/StopTranscodeSessionSessionsErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/StopTranscodeSessionSessionsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/StopTranscodeSessionUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/UpdatePlayProgressBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/UpdatePlayProgressErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/UpdatePlayProgressMediaErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/UpdatePlayProgressMediaResponseBody.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/UpdatePlayProgressResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/UpdatePlayProgressUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/UpdatePlaylistBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/UpdatePlaylistErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/UpdatePlaylistPlaylistsErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/UpdatePlaylistPlaylistsResponseBody.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/UpdatePlaylistResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/UpdatePlaylistUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/UploadPlaylistBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/UploadPlaylistErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/UploadPlaylistPlaylistsErrors.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/UploadPlaylistPlaylistsResponseBody.cs
-  - LukeHagar/PlexAPI/SDK/Models/Errors/UploadPlaylistResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/UploadPlaylistUnauthorized.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/Account.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/Activity.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/AddPlaylistContentsMediaContainer.cs
@@ -583,6 +583,13 @@ generatedFiles:
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetTokenByPinIdGeoData.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetTokenByPinIdRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetTokenByPinIdResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetTokenDetailsAuthenticationResponseStatus.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetTokenDetailsAuthenticationStatus.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetTokenDetailsFeatures.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetTokenDetailsResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetTokenDetailsStatus.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetTokenDetailsSubscription.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetTokenDetailsUserPlexAccount.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetTopWatchedContentCountry.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetTopWatchedContentGenre.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetTopWatchedContentGuids.cs
@@ -602,14 +609,6 @@ generatedFiles:
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetUpdateStatusMediaContainer.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetUpdateStatusResponse.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetUpdateStatusResponseBody.cs
-  - LukeHagar/PlexAPI/SDK/Models/Requests/GetUserDetailsAuthenticationResponseStatus.cs
-  - LukeHagar/PlexAPI/SDK/Models/Requests/GetUserDetailsAuthenticationStatus.cs
-  - LukeHagar/PlexAPI/SDK/Models/Requests/GetUserDetailsFeatures.cs
-  - LukeHagar/PlexAPI/SDK/Models/Requests/GetUserDetailsRequest.cs
-  - LukeHagar/PlexAPI/SDK/Models/Requests/GetUserDetailsResponse.cs
-  - LukeHagar/PlexAPI/SDK/Models/Requests/GetUserDetailsStatus.cs
-  - LukeHagar/PlexAPI/SDK/Models/Requests/GetUserDetailsSubscription.cs
-  - LukeHagar/PlexAPI/SDK/Models/Requests/GetUserDetailsUserPlexAccount.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetUserFriendsResponse.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetWatchListRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetWatchListResponse.cs
@@ -763,297 +762,297 @@ generatedFiles:
   - NUGET.md
   - USAGE.md
   - docs/Models/Components/Security.md
+  - docs/Models/Errors/AddPlaylistContentsBadRequest.md
   - docs/Models/Errors/AddPlaylistContentsErrors.md
   - docs/Models/Errors/AddPlaylistContentsPlaylistsErrors.md
-  - docs/Models/Errors/AddPlaylistContentsPlaylistsResponseBody.md
-  - docs/Models/Errors/AddPlaylistContentsResponseBody.md
+  - docs/Models/Errors/AddPlaylistContentsUnauthorized.md
+  - docs/Models/Errors/ApplyUpdatesBadRequest.md
   - docs/Models/Errors/ApplyUpdatesErrors.md
-  - docs/Models/Errors/ApplyUpdatesResponseBody.md
+  - docs/Models/Errors/ApplyUpdatesUnauthorized.md
   - docs/Models/Errors/ApplyUpdatesUpdaterErrors.md
-  - docs/Models/Errors/ApplyUpdatesUpdaterResponseBody.md
   - docs/Models/Errors/CancelServerActivitiesActivitiesErrors.md
-  - docs/Models/Errors/CancelServerActivitiesActivitiesResponseBody.md
+  - docs/Models/Errors/CancelServerActivitiesBadRequest.md
   - docs/Models/Errors/CancelServerActivitiesErrors.md
-  - docs/Models/Errors/CancelServerActivitiesResponseBody.md
+  - docs/Models/Errors/CancelServerActivitiesUnauthorized.md
+  - docs/Models/Errors/CheckForUpdatesBadRequest.md
   - docs/Models/Errors/CheckForUpdatesErrors.md
-  - docs/Models/Errors/CheckForUpdatesResponseBody.md
+  - docs/Models/Errors/CheckForUpdatesUnauthorized.md
   - docs/Models/Errors/CheckForUpdatesUpdaterErrors.md
-  - docs/Models/Errors/CheckForUpdatesUpdaterResponseBody.md
+  - docs/Models/Errors/ClearPlaylistContentsBadRequest.md
   - docs/Models/Errors/ClearPlaylistContentsErrors.md
   - docs/Models/Errors/ClearPlaylistContentsPlaylistsErrors.md
-  - docs/Models/Errors/ClearPlaylistContentsPlaylistsResponseBody.md
-  - docs/Models/Errors/ClearPlaylistContentsResponseBody.md
+  - docs/Models/Errors/ClearPlaylistContentsUnauthorized.md
+  - docs/Models/Errors/CreatePlaylistBadRequest.md
   - docs/Models/Errors/CreatePlaylistErrors.md
   - docs/Models/Errors/CreatePlaylistPlaylistsErrors.md
-  - docs/Models/Errors/CreatePlaylistPlaylistsResponseBody.md
-  - docs/Models/Errors/CreatePlaylistResponseBody.md
+  - docs/Models/Errors/CreatePlaylistUnauthorized.md
+  - docs/Models/Errors/DeleteLibraryBadRequest.md
   - docs/Models/Errors/DeleteLibraryErrors.md
   - docs/Models/Errors/DeleteLibraryLibraryErrors.md
-  - docs/Models/Errors/DeleteLibraryLibraryResponseBody.md
-  - docs/Models/Errors/DeleteLibraryResponseBody.md
+  - docs/Models/Errors/DeleteLibraryUnauthorized.md
+  - docs/Models/Errors/DeletePlaylistBadRequest.md
   - docs/Models/Errors/DeletePlaylistErrors.md
   - docs/Models/Errors/DeletePlaylistPlaylistsErrors.md
-  - docs/Models/Errors/DeletePlaylistPlaylistsResponseBody.md
-  - docs/Models/Errors/DeletePlaylistResponseBody.md
+  - docs/Models/Errors/DeletePlaylistUnauthorized.md
+  - docs/Models/Errors/EnablePaperTrailBadRequest.md
   - docs/Models/Errors/EnablePaperTrailErrors.md
   - docs/Models/Errors/EnablePaperTrailLogErrors.md
-  - docs/Models/Errors/EnablePaperTrailLogResponseBody.md
-  - docs/Models/Errors/EnablePaperTrailResponseBody.md
+  - docs/Models/Errors/EnablePaperTrailUnauthorized.md
   - docs/Models/Errors/Errors.md
+  - docs/Models/Errors/GetAllLibrariesBadRequest.md
   - docs/Models/Errors/GetAllLibrariesErrors.md
   - docs/Models/Errors/GetAllLibrariesLibraryErrors.md
-  - docs/Models/Errors/GetAllLibrariesLibraryResponseBody.md
-  - docs/Models/Errors/GetAllLibrariesResponseBody.md
+  - docs/Models/Errors/GetAllLibrariesUnauthorized.md
+  - docs/Models/Errors/GetAvailableClientsBadRequest.md
   - docs/Models/Errors/GetAvailableClientsErrors.md
-  - docs/Models/Errors/GetAvailableClientsResponseBody.md
   - docs/Models/Errors/GetAvailableClientsServerErrors.md
-  - docs/Models/Errors/GetAvailableClientsServerResponseBody.md
+  - docs/Models/Errors/GetAvailableClientsUnauthorized.md
+  - docs/Models/Errors/GetBandwidthStatisticsBadRequest.md
   - docs/Models/Errors/GetBandwidthStatisticsErrors.md
-  - docs/Models/Errors/GetBandwidthStatisticsResponseBody.md
   - docs/Models/Errors/GetBandwidthStatisticsStatisticsErrors.md
-  - docs/Models/Errors/GetBandwidthStatisticsStatisticsResponseBody.md
+  - docs/Models/Errors/GetBandwidthStatisticsUnauthorized.md
+  - docs/Models/Errors/GetBannerImageBadRequest.md
   - docs/Models/Errors/GetBannerImageErrors.md
   - docs/Models/Errors/GetBannerImageMediaErrors.md
-  - docs/Models/Errors/GetBannerImageMediaResponseBody.md
-  - docs/Models/Errors/GetBannerImageResponseBody.md
+  - docs/Models/Errors/GetBannerImageUnauthorized.md
+  - docs/Models/Errors/GetButlerTasksBadRequest.md
   - docs/Models/Errors/GetButlerTasksButlerErrors.md
-  - docs/Models/Errors/GetButlerTasksButlerResponseBody.md
   - docs/Models/Errors/GetButlerTasksErrors.md
-  - docs/Models/Errors/GetButlerTasksResponseBody.md
+  - docs/Models/Errors/GetButlerTasksUnauthorized.md
+  - docs/Models/Errors/GetCompanionsDataBadRequest.md
   - docs/Models/Errors/GetCompanionsDataErrors.md
   - docs/Models/Errors/GetCompanionsDataPlexErrors.md
-  - docs/Models/Errors/GetCompanionsDataPlexResponseBody.md
-  - docs/Models/Errors/GetCompanionsDataResponseBody.md
+  - docs/Models/Errors/GetCompanionsDataUnauthorized.md
+  - docs/Models/Errors/GetDevicesBadRequest.md
   - docs/Models/Errors/GetDevicesErrors.md
-  - docs/Models/Errors/GetDevicesResponseBody.md
   - docs/Models/Errors/GetDevicesServerErrors.md
-  - docs/Models/Errors/GetDevicesServerResponseBody.md
+  - docs/Models/Errors/GetDevicesUnauthorized.md
+  - docs/Models/Errors/GetFileHashBadRequest.md
   - docs/Models/Errors/GetFileHashErrors.md
   - docs/Models/Errors/GetFileHashLibraryErrors.md
-  - docs/Models/Errors/GetFileHashLibraryResponseBody.md
-  - docs/Models/Errors/GetFileHashResponseBody.md
+  - docs/Models/Errors/GetFileHashUnauthorized.md
+  - docs/Models/Errors/GetGeoDataBadRequest.md
   - docs/Models/Errors/GetGeoDataErrors.md
   - docs/Models/Errors/GetGeoDataPlexErrors.md
-  - docs/Models/Errors/GetGeoDataPlexResponseBody.md
-  - docs/Models/Errors/GetGeoDataResponseBody.md
+  - docs/Models/Errors/GetGeoDataUnauthorized.md
+  - docs/Models/Errors/GetGlobalHubsBadRequest.md
   - docs/Models/Errors/GetGlobalHubsErrors.md
   - docs/Models/Errors/GetGlobalHubsHubsErrors.md
-  - docs/Models/Errors/GetGlobalHubsHubsResponseBody.md
-  - docs/Models/Errors/GetGlobalHubsResponseBody.md
+  - docs/Models/Errors/GetGlobalHubsUnauthorized.md
+  - docs/Models/Errors/GetHomeDataBadRequest.md
   - docs/Models/Errors/GetHomeDataErrors.md
   - docs/Models/Errors/GetHomeDataPlexErrors.md
-  - docs/Models/Errors/GetHomeDataPlexResponseBody.md
-  - docs/Models/Errors/GetHomeDataResponseBody.md
+  - docs/Models/Errors/GetHomeDataUnauthorized.md
+  - docs/Models/Errors/GetLibraryDetailsBadRequest.md
   - docs/Models/Errors/GetLibraryDetailsErrors.md
   - docs/Models/Errors/GetLibraryDetailsLibraryErrors.md
-  - docs/Models/Errors/GetLibraryDetailsLibraryResponseBody.md
-  - docs/Models/Errors/GetLibraryDetailsResponseBody.md
+  - docs/Models/Errors/GetLibraryDetailsUnauthorized.md
+  - docs/Models/Errors/GetLibraryHubsBadRequest.md
   - docs/Models/Errors/GetLibraryHubsErrors.md
   - docs/Models/Errors/GetLibraryHubsHubsErrors.md
-  - docs/Models/Errors/GetLibraryHubsHubsResponseBody.md
-  - docs/Models/Errors/GetLibraryHubsResponseBody.md
+  - docs/Models/Errors/GetLibraryHubsUnauthorized.md
+  - docs/Models/Errors/GetLibraryItemsBadRequest.md
   - docs/Models/Errors/GetLibraryItemsErrors.md
   - docs/Models/Errors/GetLibraryItemsLibraryErrors.md
-  - docs/Models/Errors/GetLibraryItemsLibraryResponseBody.md
-  - docs/Models/Errors/GetLibraryItemsResponseBody.md
+  - docs/Models/Errors/GetLibraryItemsUnauthorized.md
+  - docs/Models/Errors/GetMediaProvidersBadRequest.md
   - docs/Models/Errors/GetMediaProvidersErrors.md
-  - docs/Models/Errors/GetMediaProvidersResponseBody.md
   - docs/Models/Errors/GetMediaProvidersServerErrors.md
-  - docs/Models/Errors/GetMediaProvidersServerResponseBody.md
+  - docs/Models/Errors/GetMediaProvidersUnauthorized.md
+  - docs/Models/Errors/GetMetaDataByRatingKeyBadRequest.md
   - docs/Models/Errors/GetMetaDataByRatingKeyErrors.md
   - docs/Models/Errors/GetMetaDataByRatingKeyLibraryErrors.md
-  - docs/Models/Errors/GetMetaDataByRatingKeyLibraryResponseBody.md
-  - docs/Models/Errors/GetMetaDataByRatingKeyResponseBody.md
+  - docs/Models/Errors/GetMetaDataByRatingKeyUnauthorized.md
+  - docs/Models/Errors/GetMetadataChildrenBadRequest.md
   - docs/Models/Errors/GetMetadataChildrenErrors.md
   - docs/Models/Errors/GetMetadataChildrenLibraryErrors.md
-  - docs/Models/Errors/GetMetadataChildrenLibraryResponseBody.md
-  - docs/Models/Errors/GetMetadataChildrenResponseBody.md
+  - docs/Models/Errors/GetMetadataChildrenUnauthorized.md
+  - docs/Models/Errors/GetMyPlexAccountBadRequest.md
   - docs/Models/Errors/GetMyPlexAccountErrors.md
-  - docs/Models/Errors/GetMyPlexAccountResponseBody.md
   - docs/Models/Errors/GetMyPlexAccountServerErrors.md
-  - docs/Models/Errors/GetMyPlexAccountServerResponseBody.md
+  - docs/Models/Errors/GetMyPlexAccountUnauthorized.md
+  - docs/Models/Errors/GetOnDeckBadRequest.md
   - docs/Models/Errors/GetOnDeckErrors.md
   - docs/Models/Errors/GetOnDeckLibraryErrors.md
-  - docs/Models/Errors/GetOnDeckLibraryResponseBody.md
-  - docs/Models/Errors/GetOnDeckResponseBody.md
+  - docs/Models/Errors/GetOnDeckUnauthorized.md
+  - docs/Models/Errors/GetPinBadRequest.md
   - docs/Models/Errors/GetPinErrors.md
-  - docs/Models/Errors/GetPinResponseBody.md
+  - docs/Models/Errors/GetPlaylistBadRequest.md
+  - docs/Models/Errors/GetPlaylistContentsBadRequest.md
   - docs/Models/Errors/GetPlaylistContentsErrors.md
   - docs/Models/Errors/GetPlaylistContentsPlaylistsErrors.md
-  - docs/Models/Errors/GetPlaylistContentsPlaylistsResponseBody.md
-  - docs/Models/Errors/GetPlaylistContentsResponseBody.md
+  - docs/Models/Errors/GetPlaylistContentsUnauthorized.md
   - docs/Models/Errors/GetPlaylistErrors.md
   - docs/Models/Errors/GetPlaylistPlaylistsErrors.md
-  - docs/Models/Errors/GetPlaylistPlaylistsResponseBody.md
-  - docs/Models/Errors/GetPlaylistResponseBody.md
+  - docs/Models/Errors/GetPlaylistUnauthorized.md
+  - docs/Models/Errors/GetPlaylistsBadRequest.md
   - docs/Models/Errors/GetPlaylistsErrors.md
   - docs/Models/Errors/GetPlaylistsPlaylistsErrors.md
-  - docs/Models/Errors/GetPlaylistsPlaylistsResponseBody.md
-  - docs/Models/Errors/GetPlaylistsResponseBody.md
+  - docs/Models/Errors/GetPlaylistsUnauthorized.md
+  - docs/Models/Errors/GetRecentlyAddedBadRequest.md
   - docs/Models/Errors/GetRecentlyAddedErrors.md
   - docs/Models/Errors/GetRecentlyAddedLibraryErrors.md
-  - docs/Models/Errors/GetRecentlyAddedLibraryResponseBody.md
-  - docs/Models/Errors/GetRecentlyAddedResponseBody.md
+  - docs/Models/Errors/GetRecentlyAddedUnauthorized.md
+  - docs/Models/Errors/GetRefreshLibraryMetadataBadRequest.md
   - docs/Models/Errors/GetRefreshLibraryMetadataErrors.md
   - docs/Models/Errors/GetRefreshLibraryMetadataLibraryErrors.md
-  - docs/Models/Errors/GetRefreshLibraryMetadataLibraryResponseBody.md
-  - docs/Models/Errors/GetRefreshLibraryMetadataResponseBody.md
+  - docs/Models/Errors/GetRefreshLibraryMetadataUnauthorized.md
+  - docs/Models/Errors/GetResizedPhotoBadRequest.md
   - docs/Models/Errors/GetResizedPhotoErrors.md
-  - docs/Models/Errors/GetResizedPhotoResponseBody.md
   - docs/Models/Errors/GetResizedPhotoServerErrors.md
-  - docs/Models/Errors/GetResizedPhotoServerResponseBody.md
+  - docs/Models/Errors/GetResizedPhotoUnauthorized.md
+  - docs/Models/Errors/GetResourcesStatisticsBadRequest.md
   - docs/Models/Errors/GetResourcesStatisticsErrors.md
-  - docs/Models/Errors/GetResourcesStatisticsResponseBody.md
   - docs/Models/Errors/GetResourcesStatisticsStatisticsErrors.md
-  - docs/Models/Errors/GetResourcesStatisticsStatisticsResponseBody.md
+  - docs/Models/Errors/GetResourcesStatisticsUnauthorized.md
+  - docs/Models/Errors/GetSearchLibraryBadRequest.md
   - docs/Models/Errors/GetSearchLibraryErrors.md
   - docs/Models/Errors/GetSearchLibraryLibraryErrors.md
-  - docs/Models/Errors/GetSearchLibraryLibraryResponseBody.md
-  - docs/Models/Errors/GetSearchLibraryResponseBody.md
+  - docs/Models/Errors/GetSearchLibraryUnauthorized.md
+  - docs/Models/Errors/GetSearchResultsBadRequest.md
   - docs/Models/Errors/GetSearchResultsErrors.md
-  - docs/Models/Errors/GetSearchResultsResponseBody.md
   - docs/Models/Errors/GetSearchResultsSearchErrors.md
-  - docs/Models/Errors/GetSearchResultsSearchResponseBody.md
+  - docs/Models/Errors/GetSearchResultsUnauthorized.md
   - docs/Models/Errors/GetServerActivitiesActivitiesErrors.md
-  - docs/Models/Errors/GetServerActivitiesActivitiesResponseBody.md
+  - docs/Models/Errors/GetServerActivitiesBadRequest.md
   - docs/Models/Errors/GetServerActivitiesErrors.md
-  - docs/Models/Errors/GetServerActivitiesResponseBody.md
+  - docs/Models/Errors/GetServerActivitiesUnauthorized.md
+  - docs/Models/Errors/GetServerCapabilitiesBadRequest.md
   - docs/Models/Errors/GetServerCapabilitiesErrors.md
-  - docs/Models/Errors/GetServerCapabilitiesResponseBody.md
-  - docs/Models/Errors/GetServerCapabilitiesServerResponseBody.md
-  - docs/Models/Errors/GetServerIdentityResponseBody.md
+  - docs/Models/Errors/GetServerCapabilitiesUnauthorized.md
+  - docs/Models/Errors/GetServerIdentityRequestTimeout.md
+  - docs/Models/Errors/GetServerListBadRequest.md
   - docs/Models/Errors/GetServerListErrors.md
-  - docs/Models/Errors/GetServerListResponseBody.md
   - docs/Models/Errors/GetServerListServerErrors.md
-  - docs/Models/Errors/GetServerListServerResponseBody.md
+  - docs/Models/Errors/GetServerListUnauthorized.md
+  - docs/Models/Errors/GetServerPreferencesBadRequest.md
   - docs/Models/Errors/GetServerPreferencesErrors.md
-  - docs/Models/Errors/GetServerPreferencesResponseBody.md
   - docs/Models/Errors/GetServerPreferencesServerErrors.md
-  - docs/Models/Errors/GetServerPreferencesServerResponseBody.md
+  - docs/Models/Errors/GetServerPreferencesUnauthorized.md
+  - docs/Models/Errors/GetServerResourcesBadRequest.md
   - docs/Models/Errors/GetServerResourcesErrors.md
   - docs/Models/Errors/GetServerResourcesPlexErrors.md
-  - docs/Models/Errors/GetServerResourcesPlexResponseBody.md
-  - docs/Models/Errors/GetServerResourcesResponseBody.md
+  - docs/Models/Errors/GetServerResourcesUnauthorized.md
+  - docs/Models/Errors/GetSessionHistoryBadRequest.md
   - docs/Models/Errors/GetSessionHistoryErrors.md
-  - docs/Models/Errors/GetSessionHistoryResponseBody.md
   - docs/Models/Errors/GetSessionHistorySessionsErrors.md
-  - docs/Models/Errors/GetSessionHistorySessionsResponseBody.md
+  - docs/Models/Errors/GetSessionHistoryUnauthorized.md
+  - docs/Models/Errors/GetSessionsBadRequest.md
   - docs/Models/Errors/GetSessionsErrors.md
-  - docs/Models/Errors/GetSessionsResponseBody.md
   - docs/Models/Errors/GetSessionsSessionsErrors.md
-  - docs/Models/Errors/GetSessionsSessionsResponseBody.md
+  - docs/Models/Errors/GetSessionsUnauthorized.md
   - docs/Models/Errors/GetSourceConnectionInformationAuthenticationErrors.md
-  - docs/Models/Errors/GetSourceConnectionInformationAuthenticationResponseBody.md
+  - docs/Models/Errors/GetSourceConnectionInformationBadRequest.md
   - docs/Models/Errors/GetSourceConnectionInformationErrors.md
-  - docs/Models/Errors/GetSourceConnectionInformationResponseBody.md
+  - docs/Models/Errors/GetSourceConnectionInformationUnauthorized.md
+  - docs/Models/Errors/GetStatisticsBadRequest.md
   - docs/Models/Errors/GetStatisticsErrors.md
-  - docs/Models/Errors/GetStatisticsResponseBody.md
   - docs/Models/Errors/GetStatisticsStatisticsErrors.md
-  - docs/Models/Errors/GetStatisticsStatisticsResponseBody.md
+  - docs/Models/Errors/GetStatisticsUnauthorized.md
+  - docs/Models/Errors/GetThumbImageBadRequest.md
   - docs/Models/Errors/GetThumbImageErrors.md
   - docs/Models/Errors/GetThumbImageMediaErrors.md
-  - docs/Models/Errors/GetThumbImageMediaResponseBody.md
-  - docs/Models/Errors/GetThumbImageResponseBody.md
+  - docs/Models/Errors/GetThumbImageUnauthorized.md
+  - docs/Models/Errors/GetTimelineBadRequest.md
   - docs/Models/Errors/GetTimelineErrors.md
-  - docs/Models/Errors/GetTimelineResponseBody.md
+  - docs/Models/Errors/GetTimelineUnauthorized.md
   - docs/Models/Errors/GetTimelineVideoErrors.md
-  - docs/Models/Errors/GetTimelineVideoResponseBody.md
+  - docs/Models/Errors/GetTokenByPinIdBadRequest.md
   - docs/Models/Errors/GetTokenByPinIdErrors.md
   - docs/Models/Errors/GetTokenByPinIdPlexErrors.md
-  - docs/Models/Errors/GetTokenByPinIdPlexResponseBody.md
   - docs/Models/Errors/GetTokenByPinIdResponseBody.md
+  - docs/Models/Errors/GetTokenDetailsAuthenticationErrors.md
+  - docs/Models/Errors/GetTokenDetailsBadRequest.md
+  - docs/Models/Errors/GetTokenDetailsErrors.md
+  - docs/Models/Errors/GetTokenDetailsUnauthorized.md
+  - docs/Models/Errors/GetTopWatchedContentBadRequest.md
   - docs/Models/Errors/GetTopWatchedContentErrors.md
   - docs/Models/Errors/GetTopWatchedContentLibraryErrors.md
-  - docs/Models/Errors/GetTopWatchedContentLibraryResponseBody.md
-  - docs/Models/Errors/GetTopWatchedContentResponseBody.md
+  - docs/Models/Errors/GetTopWatchedContentUnauthorized.md
+  - docs/Models/Errors/GetTranscodeSessionsBadRequest.md
   - docs/Models/Errors/GetTranscodeSessionsErrors.md
-  - docs/Models/Errors/GetTranscodeSessionsResponseBody.md
   - docs/Models/Errors/GetTranscodeSessionsSessionsErrors.md
-  - docs/Models/Errors/GetTranscodeSessionsSessionsResponseBody.md
+  - docs/Models/Errors/GetTranscodeSessionsUnauthorized.md
   - docs/Models/Errors/GetTransientTokenAuthenticationErrors.md
-  - docs/Models/Errors/GetTransientTokenAuthenticationResponseBody.md
+  - docs/Models/Errors/GetTransientTokenBadRequest.md
   - docs/Models/Errors/GetTransientTokenErrors.md
-  - docs/Models/Errors/GetTransientTokenResponseBody.md
+  - docs/Models/Errors/GetTransientTokenUnauthorized.md
+  - docs/Models/Errors/GetUpdateStatusBadRequest.md
   - docs/Models/Errors/GetUpdateStatusErrors.md
-  - docs/Models/Errors/GetUpdateStatusResponseBody.md
+  - docs/Models/Errors/GetUpdateStatusUnauthorized.md
   - docs/Models/Errors/GetUpdateStatusUpdaterErrors.md
-  - docs/Models/Errors/GetUpdateStatusUpdaterResponseBody.md
-  - docs/Models/Errors/GetUserDetailsAuthenticationErrors.md
-  - docs/Models/Errors/GetUserDetailsAuthenticationResponseBody.md
-  - docs/Models/Errors/GetUserDetailsErrors.md
-  - docs/Models/Errors/GetUserDetailsResponseBody.md
+  - docs/Models/Errors/GetUserFriendsBadRequest.md
   - docs/Models/Errors/GetUserFriendsErrors.md
   - docs/Models/Errors/GetUserFriendsPlexErrors.md
-  - docs/Models/Errors/GetUserFriendsPlexResponseBody.md
-  - docs/Models/Errors/GetUserFriendsResponseBody.md
+  - docs/Models/Errors/GetUserFriendsUnauthorized.md
+  - docs/Models/Errors/GetWatchListBadRequest.md
   - docs/Models/Errors/GetWatchListErrors.md
-  - docs/Models/Errors/GetWatchListResponseBody.md
+  - docs/Models/Errors/GetWatchListUnauthorized.md
   - docs/Models/Errors/GetWatchListWatchlistErrors.md
-  - docs/Models/Errors/GetWatchListWatchlistResponseBody.md
+  - docs/Models/Errors/LogLineBadRequest.md
   - docs/Models/Errors/LogLineErrors.md
   - docs/Models/Errors/LogLineLogErrors.md
-  - docs/Models/Errors/LogLineLogResponseBody.md
-  - docs/Models/Errors/LogLineResponseBody.md
+  - docs/Models/Errors/LogLineUnauthorized.md
+  - docs/Models/Errors/LogMultiLineBadRequest.md
   - docs/Models/Errors/LogMultiLineErrors.md
   - docs/Models/Errors/LogMultiLineLogErrors.md
-  - docs/Models/Errors/LogMultiLineLogResponseBody.md
-  - docs/Models/Errors/LogMultiLineResponseBody.md
+  - docs/Models/Errors/LogMultiLineUnauthorized.md
+  - docs/Models/Errors/MarkPlayedBadRequest.md
   - docs/Models/Errors/MarkPlayedErrors.md
   - docs/Models/Errors/MarkPlayedMediaErrors.md
-  - docs/Models/Errors/MarkPlayedMediaResponseBody.md
-  - docs/Models/Errors/MarkPlayedResponseBody.md
+  - docs/Models/Errors/MarkPlayedUnauthorized.md
+  - docs/Models/Errors/MarkUnplayedBadRequest.md
   - docs/Models/Errors/MarkUnplayedErrors.md
   - docs/Models/Errors/MarkUnplayedMediaErrors.md
-  - docs/Models/Errors/MarkUnplayedMediaResponseBody.md
-  - docs/Models/Errors/MarkUnplayedResponseBody.md
+  - docs/Models/Errors/MarkUnplayedUnauthorized.md
+  - docs/Models/Errors/PerformSearchBadRequest.md
   - docs/Models/Errors/PerformSearchErrors.md
-  - docs/Models/Errors/PerformSearchResponseBody.md
   - docs/Models/Errors/PerformSearchSearchErrors.md
-  - docs/Models/Errors/PerformSearchSearchResponseBody.md
+  - docs/Models/Errors/PerformSearchUnauthorized.md
+  - docs/Models/Errors/PerformVoiceSearchBadRequest.md
   - docs/Models/Errors/PerformVoiceSearchErrors.md
-  - docs/Models/Errors/PerformVoiceSearchResponseBody.md
   - docs/Models/Errors/PerformVoiceSearchSearchErrors.md
-  - docs/Models/Errors/PerformVoiceSearchSearchResponseBody.md
+  - docs/Models/Errors/PerformVoiceSearchUnauthorized.md
   - docs/Models/Errors/PostUsersSignInDataAuthenticationErrors.md
-  - docs/Models/Errors/PostUsersSignInDataAuthenticationResponseBody.md
+  - docs/Models/Errors/PostUsersSignInDataBadRequest.md
   - docs/Models/Errors/PostUsersSignInDataErrors.md
-  - docs/Models/Errors/PostUsersSignInDataResponseBody.md
+  - docs/Models/Errors/PostUsersSignInDataUnauthorized.md
+  - docs/Models/Errors/StartAllTasksBadRequest.md
   - docs/Models/Errors/StartAllTasksButlerErrors.md
-  - docs/Models/Errors/StartAllTasksButlerResponseBody.md
   - docs/Models/Errors/StartAllTasksErrors.md
-  - docs/Models/Errors/StartAllTasksResponseBody.md
+  - docs/Models/Errors/StartAllTasksUnauthorized.md
+  - docs/Models/Errors/StartTaskBadRequest.md
   - docs/Models/Errors/StartTaskButlerErrors.md
-  - docs/Models/Errors/StartTaskButlerResponseBody.md
   - docs/Models/Errors/StartTaskErrors.md
-  - docs/Models/Errors/StartTaskResponseBody.md
+  - docs/Models/Errors/StartTaskUnauthorized.md
+  - docs/Models/Errors/StartUniversalTranscodeBadRequest.md
   - docs/Models/Errors/StartUniversalTranscodeErrors.md
-  - docs/Models/Errors/StartUniversalTranscodeResponseBody.md
+  - docs/Models/Errors/StartUniversalTranscodeUnauthorized.md
   - docs/Models/Errors/StartUniversalTranscodeVideoErrors.md
-  - docs/Models/Errors/StartUniversalTranscodeVideoResponseBody.md
+  - docs/Models/Errors/StopAllTasksBadRequest.md
   - docs/Models/Errors/StopAllTasksButlerErrors.md
-  - docs/Models/Errors/StopAllTasksButlerResponseBody.md
   - docs/Models/Errors/StopAllTasksErrors.md
-  - docs/Models/Errors/StopAllTasksResponseBody.md
+  - docs/Models/Errors/StopAllTasksUnauthorized.md
+  - docs/Models/Errors/StopTaskBadRequest.md
   - docs/Models/Errors/StopTaskButlerErrors.md
-  - docs/Models/Errors/StopTaskButlerResponseBody.md
   - docs/Models/Errors/StopTaskErrors.md
-  - docs/Models/Errors/StopTaskResponseBody.md
+  - docs/Models/Errors/StopTaskUnauthorized.md
+  - docs/Models/Errors/StopTranscodeSessionBadRequest.md
   - docs/Models/Errors/StopTranscodeSessionErrors.md
-  - docs/Models/Errors/StopTranscodeSessionResponseBody.md
   - docs/Models/Errors/StopTranscodeSessionSessionsErrors.md
-  - docs/Models/Errors/StopTranscodeSessionSessionsResponseBody.md
+  - docs/Models/Errors/StopTranscodeSessionUnauthorized.md
+  - docs/Models/Errors/UpdatePlayProgressBadRequest.md
   - docs/Models/Errors/UpdatePlayProgressErrors.md
   - docs/Models/Errors/UpdatePlayProgressMediaErrors.md
-  - docs/Models/Errors/UpdatePlayProgressMediaResponseBody.md
-  - docs/Models/Errors/UpdatePlayProgressResponseBody.md
+  - docs/Models/Errors/UpdatePlayProgressUnauthorized.md
+  - docs/Models/Errors/UpdatePlaylistBadRequest.md
   - docs/Models/Errors/UpdatePlaylistErrors.md
   - docs/Models/Errors/UpdatePlaylistPlaylistsErrors.md
-  - docs/Models/Errors/UpdatePlaylistPlaylistsResponseBody.md
-  - docs/Models/Errors/UpdatePlaylistResponseBody.md
+  - docs/Models/Errors/UpdatePlaylistUnauthorized.md
+  - docs/Models/Errors/UploadPlaylistBadRequest.md
   - docs/Models/Errors/UploadPlaylistErrors.md
   - docs/Models/Errors/UploadPlaylistPlaylistsErrors.md
-  - docs/Models/Errors/UploadPlaylistPlaylistsResponseBody.md
-  - docs/Models/Errors/UploadPlaylistResponseBody.md
+  - docs/Models/Errors/UploadPlaylistUnauthorized.md
   - docs/Models/Requests/Account.md
   - docs/Models/Requests/Activity.md
   - docs/Models/Requests/AddPlaylistContentsMediaContainer.md
@@ -1300,6 +1299,13 @@ generatedFiles:
   - docs/Models/Requests/GetTokenByPinIdGeoData.md
   - docs/Models/Requests/GetTokenByPinIdRequest.md
   - docs/Models/Requests/GetTokenByPinIdResponse.md
+  - docs/Models/Requests/GetTokenDetailsAuthenticationResponseStatus.md
+  - docs/Models/Requests/GetTokenDetailsAuthenticationStatus.md
+  - docs/Models/Requests/GetTokenDetailsFeatures.md
+  - docs/Models/Requests/GetTokenDetailsResponse.md
+  - docs/Models/Requests/GetTokenDetailsStatus.md
+  - docs/Models/Requests/GetTokenDetailsSubscription.md
+  - docs/Models/Requests/GetTokenDetailsUserPlexAccount.md
   - docs/Models/Requests/GetTopWatchedContentCountry.md
   - docs/Models/Requests/GetTopWatchedContentGenre.md
   - docs/Models/Requests/GetTopWatchedContentGuids.md
@@ -1319,14 +1325,6 @@ generatedFiles:
   - docs/Models/Requests/GetUpdateStatusMediaContainer.md
   - docs/Models/Requests/GetUpdateStatusResponse.md
   - docs/Models/Requests/GetUpdateStatusResponseBody.md
-  - docs/Models/Requests/GetUserDetailsAuthenticationResponseStatus.md
-  - docs/Models/Requests/GetUserDetailsAuthenticationStatus.md
-  - docs/Models/Requests/GetUserDetailsFeatures.md
-  - docs/Models/Requests/GetUserDetailsRequest.md
-  - docs/Models/Requests/GetUserDetailsResponse.md
-  - docs/Models/Requests/GetUserDetailsStatus.md
-  - docs/Models/Requests/GetUserDetailsSubscription.md
-  - docs/Models/Requests/GetUserDetailsUserPlexAccount.md
   - docs/Models/Requests/GetUserFriendsResponse.md
   - docs/Models/Requests/GetWatchListRequest.md
   - docs/Models/Requests/GetWatchListResponse.md
@@ -1602,7 +1600,8 @@ examples:
       responses:
         "401":
           application/json: {"errors": []}
-        "200": {}
+        "200":
+          image/jpeg: "0xE5A1092305"
         "400":
           application/json: {"errors": []}
   get-thumb-image:
@@ -1619,7 +1618,8 @@ examples:
       responses:
         "401":
           application/json: {"errors": []}
-        "200": {}
+        "200":
+          image/jpeg: "0x4f576BaCaA"
         "400":
           application/json: {"errors": []}
   getTimeline:
@@ -1774,7 +1774,8 @@ examples:
       responses:
         "401":
           application/json: {"errors": []}
-        "200": {}
+        "200":
+          application/json: []
         "400":
           application/json: {"errors": []}
   getPin:
@@ -2395,4 +2396,13 @@ examples:
         "401":
           application/json: {"errors": []}
         "400":
+          application/json: {"errors": []}
+  getTokenDetails:
+    speakeasy-default-get-token-details:
+      responses:
+        "200":
+          application/json: {"adsConsent": true, "adsConsentReminderAt": "2019-08-24T14:15:22Z", "adsConsentSetAt": "2019-08-24T14:15:22Z", "anonymous": false, "authToken": "CxoUzBTSV5hsxjTpFKaf", "backupCodesCreated": false, "confirmed": false, "country": "US", "email": "username@email.com", "emailOnlyAuth": false, "experimentalFeatures": false, "friendlyName": "friendlyUsername", "entitlements": [], "guest": false, "hasPassword": true, "home": false, "homeAdmin": false, "homeSize": 1, "id": 13692262, "joinedAt": 1721154902, "locale": null, "mailingListActive": false, "mailingListStatus": "unsubscribed", "maxHomeSize": 15, "pin": "string", "profile": {"autoSelectAudio": true, "defaultAudioLanguage": "ja", "defaultSubtitleLanguage": "en", "autoSelectSubtitle": "1", "defaultSubtitleAccessibility": "1", "defaultSubtitleForced": "0", "watchedIndicator": "1", "mediaReviewsVisibility": 0}, "protected": false, "rememberExpiresAt": 1722364046, "restricted": false, "roles": ["string"], "scrobbleTypes": "", "services": [{"identifier": "metadata-dev", "endpoint": "https://epg.provider.plex.tv", "token": "DjoMtqFAGRL1uVtCyF1dKIorTbShJeqv", "secret": "string", "status": "online"}], "subscription": {"features": ["Android - Dolby Vision"], "active": true, "subscribedAt": "2021-04-12T18:21:12Z", "status": "Inactive", "paymentService": "string", "plan": "string"}, "subscriptionDescription": "string", "subscriptions": [{"features": ["Android - Dolby Vision"], "active": true, "subscribedAt": "2021-04-12T18:21:12Z", "status": "Inactive", "paymentService": "string", "plan": "string"}], "thumb": "https://plex.tv/users/a4f43c1ebfde43a5/avatar?c=8372075101", "title": "UsernameTitle", "twoFactorEnabled": false, "username": "Username", "uuid": "dae343c1f45beb4f"}
+        "400":
+          application/json: {"errors": []}
+        "401":
           application/json: {"errors": []}

@@ -35,6 +35,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// <summary>
         /// returns all playlists
         /// </summary>
-        public Models.Requests.CreatePlaylistResponseBody? Object { get; set; }
+        public CreatePlaylistResponseBody? Object { get; set; }
     }
 }

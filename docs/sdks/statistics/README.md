@@ -45,11 +45,11 @@ var res = await sdk.Statistics.GetStatisticsAsync(timespan: 4);
 
 ### Errors
 
-| Error Object                                                            | Status Code                                                             | Content Type                                                            |
-| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetStatisticsResponseBody           | 400                                                                     | application/json                                                        |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetStatisticsStatisticsResponseBody | 401                                                                     | application/json                                                        |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                        | 4xx-5xx                                                                 | */*                                                                     |
+| Error Object                                                  | Status Code                                                   | Content Type                                                  |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetStatisticsBadRequest   | 400                                                           | application/json                                              |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetStatisticsUnauthorized | 401                                                           | application/json                                              |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException              | 4xx-5xx                                                       | */*                                                           |
 
 
 ## GetResourcesStatistics
@@ -85,11 +85,11 @@ var res = await sdk.Statistics.GetResourcesStatisticsAsync(timespan: 4);
 
 ### Errors
 
-| Error Object                                                                     | Status Code                                                                      | Content Type                                                                     |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetResourcesStatisticsResponseBody           | 400                                                                              | application/json                                                                 |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetResourcesStatisticsStatisticsResponseBody | 401                                                                              | application/json                                                                 |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                                 | 4xx-5xx                                                                          | */*                                                                              |
+| Error Object                                                           | Status Code                                                            | Content Type                                                           |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetResourcesStatisticsBadRequest   | 400                                                                    | application/json                                                       |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetResourcesStatisticsUnauthorized | 401                                                                    | application/json                                                       |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                       | 4xx-5xx                                                                | */*                                                                    |
 
 
 ## GetBandwidthStatistics
@@ -125,8 +125,8 @@ var res = await sdk.Statistics.GetBandwidthStatisticsAsync(timespan: 4);
 
 ### Errors
 
-| Error Object                                                                     | Status Code                                                                      | Content Type                                                                     |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetBandwidthStatisticsResponseBody           | 400                                                                              | application/json                                                                 |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetBandwidthStatisticsStatisticsResponseBody | 401                                                                              | application/json                                                                 |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                                 | 4xx-5xx                                                                          | */*                                                                              |
+| Error Object                                                           | Status Code                                                            | Content Type                                                           |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetBandwidthStatisticsBadRequest   | 400                                                                    | application/json                                                       |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetBandwidthStatisticsUnauthorized | 401                                                                    | application/json                                                       |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                       | 4xx-5xx                                                                | */*                                                                    |

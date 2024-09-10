@@ -33,7 +33,7 @@ namespace LukeHagar.PlexAPI.SDK
     {
 
         /// <summary>
-        /// Get a Transient Token.
+        /// Get a Transient Token
         /// 
         /// <remarks>
         /// This endpoint provides the caller with a temporary token with the same access level as the caller&apos;s token. These tokens are valid for up to 48 hours and are destroyed if the server instance is restarted.<br/>
@@ -54,13 +54,13 @@ namespace LukeHagar.PlexAPI.SDK
         Task<GetSourceConnectionInformationResponse> GetSourceConnectionInformationAsync(string source);
 
         /// <summary>
-        /// Get User Data By Token
+        /// Get Token Details
         /// 
         /// <remarks>
         /// Get the User data from the provided X-Plex-Token
         /// </remarks>
         /// </summary>
-        Task<GetUserDetailsResponse> GetUserDetailsAsync(string xPlexToken, string? serverUrl = null);
+        Task<GetTokenDetailsResponse> GetTokenDetailsAsync(string? serverUrl = null);
 
         /// <summary>
         /// Get User Sign In Data
@@ -82,9 +82,9 @@ namespace LukeHagar.PlexAPI.SDK
     public class Authentication: IAuthentication
     {
         /// <summary>
-        /// List of server URLs available for the getUserDetails operation.
+        /// List of server URLs available for the getTokenDetails operation.
         /// </summary>
-        public static readonly string[] GetUserDetailsServerList = {
+        public static readonly string[] GetTokenDetailsServerList = {
             "https://plex.tv/api/v2/",
         };
         /// <summary>
@@ -95,10 +95,10 @@ namespace LukeHagar.PlexAPI.SDK
         };
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.6.0";
-        private const string _sdkGenVersion = "2.411.9";
+        private const string _sdkVersion = "0.6.1";
+        private const string _sdkGenVersion = "2.413.0";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.6.0 2.411.9 0.0.3 LukeHagar.PlexAPI.SDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.6.1 2.413.0 0.0.3 LukeHagar.PlexAPI.SDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<LukeHagar.PlexAPI.SDK.Models.Components.Security>? _securitySource;
@@ -178,7 +178,7 @@ namespace LukeHagar.PlexAPI.SDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<GetTransientTokenResponseBody>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<GetTransientTokenBadRequest>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     obj!.RawResponse = httpResponse;
                     throw obj!;
                 }
@@ -191,7 +191,7 @@ namespace LukeHagar.PlexAPI.SDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<GetTransientTokenAuthenticationResponseBody>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<GetTransientTokenUnauthorized>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     obj!.RawResponse = httpResponse;
                     throw obj!;
                 }
@@ -276,7 +276,7 @@ namespace LukeHagar.PlexAPI.SDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<GetSourceConnectionInformationResponseBody>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<GetSourceConnectionInformationBadRequest>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     obj!.RawResponse = httpResponse;
                     throw obj!;
                 }
@@ -289,7 +289,7 @@ namespace LukeHagar.PlexAPI.SDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<GetSourceConnectionInformationAuthenticationResponseBody>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<GetSourceConnectionInformationUnauthorized>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     obj!.RawResponse = httpResponse;
                     throw obj!;
                 }
@@ -308,19 +308,16 @@ namespace LukeHagar.PlexAPI.SDK
             }
         }
 
-        public async Task<GetUserDetailsResponse> GetUserDetailsAsync(string xPlexToken, string? serverUrl = null)
+        public async Task<GetTokenDetailsResponse> GetTokenDetailsAsync(string? serverUrl = null)
         {
-            var request = new GetUserDetailsRequest()
-            {
-                XPlexToken = xPlexToken,
-            };
-            string baseUrl = Utilities.TemplateUrl(GetUserDetailsServerList[0], new Dictionary<string, string>(){
+            string baseUrl = Utilities.TemplateUrl(GetTokenDetailsServerList[0], new Dictionary<string, string>(){
             });
             if (serverUrl != null)
             {
                 baseUrl = serverUrl;
             }
-            var urlString = URLBuilder.Build(baseUrl, "/user", request);
+
+            var urlString = baseUrl + "/user";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
@@ -330,7 +327,7 @@ namespace LukeHagar.PlexAPI.SDK
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("getUserDetails", null, _securitySource);
+            var hookCtx = new HookContext("getTokenDetails", null, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -370,8 +367,8 @@ namespace LukeHagar.PlexAPI.SDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<GetUserDetailsUserPlexAccount>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new GetUserDetailsResponse()
+                    var obj = ResponseBodyDeserializer.Deserialize<GetTokenDetailsUserPlexAccount>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new GetTokenDetailsResponse()
                     {
                         StatusCode = responseStatusCode,
                         ContentType = contentType,
@@ -389,7 +386,7 @@ namespace LukeHagar.PlexAPI.SDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<GetUserDetailsResponseBody>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<GetTokenDetailsBadRequest>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     obj!.RawResponse = httpResponse;
                     throw obj!;
                 }
@@ -402,7 +399,7 @@ namespace LukeHagar.PlexAPI.SDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<GetUserDetailsAuthenticationResponseBody>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<GetTokenDetailsUnauthorized>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     obj!.RawResponse = httpResponse;
                     throw obj!;
                 }
@@ -506,7 +503,7 @@ namespace LukeHagar.PlexAPI.SDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<PostUsersSignInDataResponseBody>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<PostUsersSignInDataBadRequest>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     obj!.RawResponse = httpResponse;
                     throw obj!;
                 }
@@ -519,7 +516,7 @@ namespace LukeHagar.PlexAPI.SDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<PostUsersSignInDataAuthenticationResponseBody>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<PostUsersSignInDataUnauthorized>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     obj!.RawResponse = httpResponse;
                     throw obj!;
                 }

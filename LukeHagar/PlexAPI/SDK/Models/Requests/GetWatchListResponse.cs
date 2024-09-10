@@ -35,6 +35,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// <summary>
         /// Watchlist Data
         /// </summary>
-        public Models.Requests.GetWatchListResponseBody? Object { get; set; }
+        public GetWatchListResponseBody? Object { get; set; }
     }
 }

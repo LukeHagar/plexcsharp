@@ -35,6 +35,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// <summary>
         /// Available Clients
         /// </summary>
-        public Models.Requests.GetAvailableClientsResponseBody? Object { get; set; }
+        public GetAvailableClientsResponseBody? Object { get; set; }
     }
 }

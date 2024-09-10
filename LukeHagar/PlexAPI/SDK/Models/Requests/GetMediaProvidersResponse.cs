@@ -35,6 +35,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// <summary>
         /// Media providers and their features
         /// </summary>
-        public Models.Requests.GetMediaProvidersResponseBody? Object { get; set; }
+        public GetMediaProvidersResponseBody? Object { get; set; }
     }
 }

@@ -35,6 +35,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// <summary>
         /// The hubs specific to the library
         /// </summary>
-        public Models.Requests.GetLibraryHubsResponseBody? Object { get; set; }
+        public GetLibraryHubsResponseBody? Object { get; set; }
     }
 }

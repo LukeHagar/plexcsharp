@@ -35,6 +35,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// <summary>
         /// The children of the library item.
         /// </summary>
-        public Models.Requests.GetMetadataChildrenResponseBody? Object { get; set; }
+        public GetMetadataChildrenResponseBody? Object { get; set; }
     }
 }

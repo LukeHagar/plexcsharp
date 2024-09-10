@@ -17,13 +17,13 @@ namespace LukeHagar.PlexAPI.SDK.Models.Errors
     using System;
     
     /// <summary>
-    /// Bad Request response when the X-Plex-Client-Identifier is missing
+    /// Not Found or Expired
     /// </summary>
     public class GetTokenByPinIdResponseBody : Exception
     {
 
         [JsonProperty("errors")]
-        public List<GetTokenByPinIdErrors>? Errors { get; set; }
+        public List<GetTokenByPinIdPlexErrors>? Errors { get; set; }
 
         /// <summary>
         /// Raw HTTP response; suitable for custom response parsing

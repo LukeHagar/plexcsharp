@@ -146,9 +146,9 @@ var res = await sdk.Server.GetServerCapabilitiesAsync();
 
 ### [Authentication](docs/sdks/authentication/README.md)
 
-* [GetTransientToken](docs/sdks/authentication/README.md#gettransienttoken) - Get a Transient Token.
+* [GetTransientToken](docs/sdks/authentication/README.md#gettransienttoken) - Get a Transient Token
 * [GetSourceConnectionInformation](docs/sdks/authentication/README.md#getsourceconnectioninformation) - Get Source Connection Information
-* [GetUserDetails](docs/sdks/authentication/README.md#getuserdetails) - Get User Data By Token
+* [GetTokenDetails](docs/sdks/authentication/README.md#gettokendetails) - Get Token Details
 * [PostUsersSignInData](docs/sdks/authentication/README.md#postuserssignindata) - Get User Sign In Data
 
 ### [Statistics](docs/sdks/statistics/README.md)
@@ -275,14 +275,12 @@ var sdk = new PlexAPI(
     xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
 );
 
-GetServerResourcesRequest req = new GetServerResourcesRequest() {
-    XPlexToken = "CV5xoxjTpFKUzBTShsaf",
-    IncludeHttps = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeHttps.One,
-    IncludeRelay = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeRelay.One,
-    IncludeIPv6 = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeIPv6.One,
-};
-
-var res = await sdk.Plex.GetServerResourcesAsync(req);
+var res = await sdk.Plex.GetServerResourcesAsync(
+    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40",
+    includeHttps: LukeHagar.PlexAPI.SDK.Models.Requests.IncludeHttps.One,
+    includeRelay: LukeHagar.PlexAPI.SDK.Models.Requests.IncludeRelay.One,
+    includeIPv6: LukeHagar.PlexAPI.SDK.Models.Requests.IncludeIPv6.One
+);
 
 // handle response
 ```
@@ -293,11 +291,11 @@ var res = await sdk.Plex.GetServerResourcesAsync(req);
 
 Handling errors in this SDK should largely match your expectations.  All operations return a response object or thow an exception.  If Error objects are specified in your OpenAPI Spec, the SDK will raise the appropriate type.
 
-| Error Object                                                                | Status Code                                                                 | Content Type                                                                |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetServerCapabilitiesResponseBody       | 400                                                                         | application/json                                                            |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetServerCapabilitiesServerResponseBody | 401                                                                         | application/json                                                            |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                            | 4xx-5xx                                                                     | */*                                                                         |
+| Error Object                                                          | Status Code                                                           | Content Type                                                          |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetServerCapabilitiesBadRequest   | 400                                                                   | application/json                                                      |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetServerCapabilitiesUnauthorized | 401                                                                   | application/json                                                      |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                      | 4xx-5xx                                                               | */*                                                                   |
 
 ### Example
 
@@ -320,11 +318,11 @@ try
 }
 catch (Exception ex)
 {
-    if (ex is Models.Errors.GetServerCapabilitiesResponseBody)
+    if (ex is GetServerCapabilitiesBadRequest)
     {
         // handle exception
     }
-    else if (ex is GetServerCapabilitiesServerResponseBody)
+    else if (ex is GetServerCapabilitiesUnauthorized)
     {
         // handle exception
     }

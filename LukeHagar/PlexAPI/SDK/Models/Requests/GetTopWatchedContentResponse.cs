@@ -35,6 +35,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// <summary>
         /// The metadata of the library item.
         /// </summary>
-        public Models.Requests.GetTopWatchedContentResponseBody? Object { get; set; }
+        public GetTopWatchedContentResponseBody? Object { get; set; }
     }
 }

@@ -35,6 +35,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// <summary>
         /// Home Data
         /// </summary>
-        public Models.Requests.GetHomeDataResponseBody? Object { get; set; }
+        public GetHomeDataResponseBody? Object { get; set; }
     }
 }

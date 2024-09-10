@@ -29,6 +29,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public string? Secret { get; set; }
 
         [JsonProperty("status")]
-        public GetUserDetailsStatus Status { get; set; } = default!;
+        public GetTokenDetailsStatus Status { get; set; } = default!;
     }
 }

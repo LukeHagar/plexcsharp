@@ -35,6 +35,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// <summary>
         /// Server Preferences
         /// </summary>
-        public Models.Requests.GetServerPreferencesResponseBody? Object { get; set; }
+        public GetServerPreferencesResponseBody? Object { get; set; }
     }
 }

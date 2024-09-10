@@ -35,6 +35,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// <summary>
         /// Devices
         /// </summary>
-        public Models.Requests.GetDevicesResponseBody? Object { get; set; }
+        public GetDevicesResponseBody? Object { get; set; }
     }
 }

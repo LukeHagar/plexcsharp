@@ -35,6 +35,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// <summary>
         /// returns global hubs
         /// </summary>
-        public Models.Requests.GetGlobalHubsResponseBody? Object { get; set; }
+        public GetGlobalHubsResponseBody? Object { get; set; }
     }
 }

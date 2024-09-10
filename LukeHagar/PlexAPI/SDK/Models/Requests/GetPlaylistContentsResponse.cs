@@ -35,6 +35,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// <summary>
         /// The playlist contents
         /// </summary>
-        public Models.Requests.GetPlaylistContentsResponseBody? Object { get; set; }
+        public GetPlaylistContentsResponseBody? Object { get; set; }
     }
 }
