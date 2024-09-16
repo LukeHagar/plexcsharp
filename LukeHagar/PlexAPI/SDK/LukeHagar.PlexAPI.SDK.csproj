@@ -3,8 +3,8 @@
   <PropertyGroup>
     <IsPackable>true</IsPackable>
     <PackageId>LukeHagar.PlexAPI.SDK</PackageId>
-    <Version>0.6.3</Version>
-    <TargetFramework>net6.0</TargetFramework>
+    <Version>0.6.4</Version>
+    <TargetFramework>net8.0</TargetFramework>
     <Authors>LukeHagar</Authors>
     <Copyright>Copyright (c) LukeHagar 2024</Copyright>
     <RepositoryUrl>https://github.com/LukeHagar/plexcsharp.git</RepositoryUrl>
