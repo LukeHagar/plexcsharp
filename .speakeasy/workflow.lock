@@ -28,7 +28,7 @@ targets:
         sourceRevisionDigest: sha256:533fe97486e3fe2d84e890b7bbcdba4543d415e45181386154e011861f6da36f
         sourceBlobDigest: sha256:f7e2709f52370dff16c1851a7a4e44a89f2e978e9cae335bffc10625950b3bd9
         codeSamplesNamespace: code-samples-csharp-plexcsharp
-        codeSamplesRevisionDigest: sha256:5afbf54bb7194001325b1c72f18063fd1950539c9d8d165f627301897ca6da9f
+        codeSamplesRevisionDigest: sha256:e8c936700dba1d895b8fb1ffba469fd6335db4f90d32542d8884b6687caa19da
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
