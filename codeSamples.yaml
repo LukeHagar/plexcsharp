@@ -1,0 +1,1478 @@
+overlay: 1.0.0
+info:
+  title: CodeSamples overlay for csharp target
+  version: 0.0.0
+actions:
+  - target: $["paths"]["/"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getServerCapabilities
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Server.GetServerCapabilitiesAsync();
+
+            // handle response
+  - target: $["paths"]["/:/prefs"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getServerPreferences
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Server.GetServerPreferencesAsync();
+
+            // handle response
+  - target: $["paths"]["/:/progress"]["post"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: updatePlayProgress
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Media.UpdatePlayProgressAsync(
+                key: "<key>",
+                time: 90000D,
+                state: "played"
+            );
+
+            // handle response
+  - target: $["paths"]["/:/scrobble"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: markPlayed
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Media.MarkPlayedAsync(key: 59398D);
+
+            // handle response
+  - target: $["paths"]["/:/timeline"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getTimeline
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            GetTimelineRequest req = new GetTimelineRequest() {
+                RatingKey = 23409D,
+                Key = "/library/metadata/23409",
+                State = LukeHagar.PlexAPI.SDK.Models.Requests.State.Playing,
+                HasMDE = 1D,
+                Time = 2000D,
+                Duration = 10000D,
+                Context = "home:hub.continueWatching",
+                PlayQueueItemID = 1D,
+                PlayBackTime = 2000D,
+                Row = 1D,
+            };
+
+            var res = await sdk.Video.GetTimelineAsync(req);
+
+            // handle response
+  - target: $["paths"]["/:/unscrobble"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: markUnplayed
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Media.MarkUnplayedAsync(key: 59398D);
+
+            // handle response
+  - target: $["paths"]["/activities"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getServerActivities
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Activities.GetServerActivitiesAsync();
+
+            // handle response
+  - target: $["paths"]["/activities/{activityUUID}"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: cancelServerActivities
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Activities.CancelServerActivitiesAsync(activityUUID: "25b71ed5-0f9d-461c-baa7-d404e9e10d3e");
+
+            // handle response
+  - target: $["paths"]["/butler"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: stopAllTasks
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Butler.StopAllTasksAsync();
+
+            // handle response
+  - target: $["paths"]["/butler"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getButlerTasks
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Butler.GetButlerTasksAsync();
+
+            // handle response
+  - target: $["paths"]["/butler"]["post"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: startAllTasks
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Butler.StartAllTasksAsync();
+
+            // handle response
+  - target: $["paths"]["/butler/{taskName}"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: stopTask
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Butler.StopTaskAsync(taskName: LukeHagar.PlexAPI.SDK.Models.Requests.PathParamTaskName.BackupDatabase);
+
+            // handle response
+  - target: $["paths"]["/butler/{taskName}"]["post"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: startTask
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Butler.StartTaskAsync(taskName: LukeHagar.PlexAPI.SDK.Models.Requests.TaskName.CleanOldBundles);
+
+            // handle response
+  - target: $["paths"]["/clients"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getAvailableClients
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Server.GetAvailableClientsAsync();
+
+            // handle response
+  - target: $["paths"]["/companions"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getCompanionsData
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Plex.GetCompanionsDataAsync();
+
+            // handle response
+  - target: $["paths"]["/devices"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getDevices
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Server.GetDevicesAsync();
+
+            // handle response
+  - target: $["paths"]["/friends"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getUserFriends
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Plex.GetUserFriendsAsync();
+
+            // handle response
+  - target: $["paths"]["/geoip"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getGeoData
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40");
+
+            var res = await sdk.Plex.GetGeoDataAsync();
+
+            // handle response
+  - target: $["paths"]["/home"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getHomeData
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Plex.GetHomeDataAsync();
+
+            // handle response
+  - target: $["paths"]["/hubs"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getGlobalHubs
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Hubs.GetGlobalHubsAsync(
+                count: 1262.49D,
+                onlyTransient: LukeHagar.PlexAPI.SDK.Models.Requests.OnlyTransient.One
+            );
+
+            // handle response
+  - target: $["paths"]["/hubs/search"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: performSearch
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Search.PerformSearchAsync(
+                query: "arnold",
+                sectionId: 9372.7D,
+                limit: 5D
+            );
+
+            // handle response
+  - target: $["paths"]["/hubs/search/voice"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: performVoiceSearch
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Search.PerformVoiceSearchAsync(
+                query: "dead+poop",
+                sectionId: 4094.8D,
+                limit: 5D
+            );
+
+            // handle response
+  - target: $["paths"]["/hubs/sections/{sectionId}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getLibraryHubs
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Hubs.GetLibraryHubsAsync(
+                sectionId: 6728.76D,
+                count: 9010.22D,
+                onlyTransient: LukeHagar.PlexAPI.SDK.Models.Requests.QueryParamOnlyTransient.Zero
+            );
+
+            // handle response
+  - target: $["paths"]["/identity"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: identity
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40");
+
+            var res = await sdk.Server.GetServerIdentityAsync();
+
+            // handle response
+  - target: $["paths"]["/library/all/top"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getTopWatchedContent
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Library.GetTopWatchedContentAsync(
+                type: LukeHagar.PlexAPI.SDK.Models.Requests.GetTopWatchedContentQueryParamType.Two,
+                includeGuids: 1
+            );
+
+            // handle response
+  - target: $["paths"]["/library/hashes"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getFileHash
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Library.GetFileHashAsync(
+                url: "file://C:\Image.png&type=13",
+                type: 4462.17D
+            );
+
+            // handle response
+  - target: $["paths"]["/library/metadata/{ratingKey}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: key
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Library.GetMetaDataByRatingKeyAsync(ratingKey: 9518);
+
+            // handle response
+  - target: $["paths"]["/library/metadata/{ratingKey}/banner"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: image
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            GetBannerImageRequest req = new GetBannerImageRequest() {
+                RatingKey = 9518,
+                Width = 396,
+                Height = 396,
+                MinSize = 1,
+                Upscale = 1,
+                XPlexToken = "CV5xoxjTpFKUzBTShsaf",
+            };
+
+            var res = await sdk.Media.GetBannerImageAsync(req);
+
+            // handle response
+  - target: $["paths"]["/library/metadata/{ratingKey}/children"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getMetadataChildren
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Library.GetMetadataChildrenAsync(
+                ratingKey: 1539.14D,
+                includeElements: "<value>"
+            );
+
+            // handle response
+  - target: $["paths"]["/library/metadata/{ratingKey}/thumb"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: image
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            GetThumbImageRequest req = new GetThumbImageRequest() {
+                RatingKey = 9518,
+                Width = 396,
+                Height = 396,
+                MinSize = 1,
+                Upscale = 1,
+                XPlexToken = "CV5xoxjTpFKUzBTShsaf",
+            };
+
+            var res = await sdk.Media.GetThumbImageAsync(req);
+
+            // handle response
+  - target: $["paths"]["/library/onDeck"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getOnDeck
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Library.GetOnDeckAsync();
+
+            // handle response
+  - target: $["paths"]["/library/recentlyAdded"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getRecentlyAdded
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Library.GetRecentlyAddedAsync(
+                xPlexContainerStart: 0,
+                xPlexContainerSize: 50
+            );
+
+            // handle response
+  - target: $["paths"]["/library/sections"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: libraries
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Library.GetAllLibrariesAsync();
+
+            // handle response
+  - target: $["paths"]["/library/sections/watchlist/{filter}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: list
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            GetWatchListRequest req = new GetWatchListRequest() {
+                Filter = LukeHagar.PlexAPI.SDK.Models.Requests.Filter.Available,
+                XPlexContainerStart = 0,
+                XPlexContainerSize = 50,
+                XPlexToken = "CV5xoxjTpFKUzBTShsaf",
+            };
+
+            var res = await sdk.Watchlist.GetWatchListAsync(req);
+
+            // handle response
+  - target: $["paths"]["/library/sections/{sectionKey}"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: deleteLibrary
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Library.DeleteLibraryAsync(sectionKey: 9518);
+
+            // handle response
+  - target: $["paths"]["/library/sections/{sectionKey}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: details
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Library.GetLibraryDetailsAsync(
+                sectionKey: 9518,
+                includeDetails: LukeHagar.PlexAPI.SDK.Models.Requests.IncludeDetails.Zero
+            );
+
+            // handle response
+  - target: $["paths"]["/library/sections/{sectionKey}/refresh"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: metadata
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Library.GetRefreshLibraryMetadataAsync(
+                sectionKey: 9518,
+                force: LukeHagar.PlexAPI.SDK.Models.Requests.Force.One
+            );
+
+            // handle response
+  - target: $["paths"]["/library/sections/{sectionKey}/search"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: library
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Library.GetSearchLibraryAsync(
+                sectionKey: 9518,
+                type: LukeHagar.PlexAPI.SDK.Models.Requests.QueryParamType.Two
+            );
+
+            // handle response
+  - target: $["paths"]["/library/sections/{sectionKey}/{tag}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: items
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            GetLibraryItemsRequest req = new GetLibraryItemsRequest() {
+                SectionKey = 9518,
+                Tag = LukeHagar.PlexAPI.SDK.Models.Requests.Tag.Edition,
+                IncludeGuids = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeGuids.One,
+                IncludeMeta = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeMeta.One,
+                Type = LukeHagar.PlexAPI.SDK.Models.Requests.Type.Two,
+                XPlexContainerStart = 0,
+                XPlexContainerSize = 50,
+            };
+
+            var res = await sdk.Library.GetLibraryItemsAsync(req);
+
+            // handle response
+  - target: $["paths"]["/log"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: logLine
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Log.LogLineAsync(
+                level: LukeHagar.PlexAPI.SDK.Models.Requests.Level.Three,
+                message: "Test log message",
+                source: "Postman"
+            );
+
+            // handle response
+  - target: $["paths"]["/log"]["post"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: logMultiLine
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            string req = "level=4&message=Test%20message%201&source=postman
+            level=3&message=Test%20message%202&source=postman
+            level=1&message=Test%20message%203&source=postman";
+
+            var res = await sdk.Log.LogMultiLineAsync(req);
+
+            // handle response
+  - target: $["paths"]["/log/networked"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: enablePaperTrail
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Log.EnablePaperTrailAsync();
+
+            // handle response
+  - target: $["paths"]["/media/providers"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: providers
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Server.GetMediaProvidersAsync(xPlexToken: "CV5xoxjTpFKUzBTShsaf");
+
+            // handle response
+  - target: $["paths"]["/myplex/account"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getMyPlexAccount
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Server.GetMyPlexAccountAsync();
+
+            // handle response
+  - target: $["paths"]["/photo/:/transcode"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getResizedPhoto
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            GetResizedPhotoRequest req = new GetResizedPhotoRequest() {
+                Width = 110D,
+                Height = 165D,
+                Opacity = 100,
+                Blur = 4000D,
+                MinSize = LukeHagar.PlexAPI.SDK.Models.Requests.MinSize.Zero,
+                Upscale = LukeHagar.PlexAPI.SDK.Models.Requests.Upscale.Zero,
+                Url = "/library/metadata/49564/thumb/1654258204",
+            };
+
+            var res = await sdk.Server.GetResizedPhotoAsync(req);
+
+            // handle response
+  - target: $["paths"]["/pins"]["post"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getPin
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40");
+
+            var res = await sdk.Plex.GetPinAsync(
+                strong: false,
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40",
+                xPlexProduct: "Plex Web"
+            );
+
+            // handle response
+  - target: $["paths"]["/pins/{pinID}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getTokenByPinId
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40");
+
+            var res = await sdk.Plex.GetTokenByPinIdAsync(
+                pinID: 408895,
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            // handle response
+  - target: $["paths"]["/playlists"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getPlaylists
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Playlists.GetPlaylistsAsync(
+                playlistType: LukeHagar.PlexAPI.SDK.Models.Requests.PlaylistType.Audio,
+                smart: LukeHagar.PlexAPI.SDK.Models.Requests.QueryParamSmart.Zero
+            );
+
+            // handle response
+  - target: $["paths"]["/playlists"]["post"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: createPlaylist
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            CreatePlaylistRequest req = new CreatePlaylistRequest() {
+                Title = "<value>",
+                Type = LukeHagar.PlexAPI.SDK.Models.Requests.CreatePlaylistQueryParamType.Photo,
+                Smart = LukeHagar.PlexAPI.SDK.Models.Requests.Smart.One,
+                Uri = "https://inborn-brochure.biz",
+            };
+
+            var res = await sdk.Playlists.CreatePlaylistAsync(req);
+
+            // handle response
+  - target: $["paths"]["/playlists/upload"]["post"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: uploadPlaylist
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Playlists.UploadPlaylistAsync(
+                path: "/home/barkley/playlist.m3u",
+                force: LukeHagar.PlexAPI.SDK.Models.Requests.QueryParamForce.Zero
+            );
+
+            // handle response
+  - target: $["paths"]["/playlists/{playlistID}"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: deletePlaylist
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Playlists.DeletePlaylistAsync(playlistID: 216.22D);
+
+            // handle response
+  - target: $["paths"]["/playlists/{playlistID}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getPlaylist
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Playlists.GetPlaylistAsync(playlistID: 4109.48D);
+
+            // handle response
+  - target: $["paths"]["/playlists/{playlistID}"]["put"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: updatePlaylist
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Playlists.UpdatePlaylistAsync(
+                playlistID: 3915D,
+                title: "<value>",
+                summary: "<value>"
+            );
+
+            // handle response
+  - target: $["paths"]["/playlists/{playlistID}/items"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: clearPlaylistContents
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Playlists.ClearPlaylistContentsAsync(playlistID: 1893.18D);
+
+            // handle response
+  - target: $["paths"]["/playlists/{playlistID}/items"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getPlaylistContents
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Playlists.GetPlaylistContentsAsync(
+                playlistID: 5004.46D,
+                type: LukeHagar.PlexAPI.SDK.Models.Requests.GetPlaylistContentsQueryParamType.Two
+            );
+
+            // handle response
+  - target: $["paths"]["/playlists/{playlistID}/items"]["put"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: addPlaylistContents
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Playlists.AddPlaylistContentsAsync(
+                playlistID: 8502.01D,
+                uri: "server://12345/com.plexapp.plugins.library/library/metadata/1",
+                playQueueID: 123D
+            );
+
+            // handle response
+  - target: $["paths"]["/resources"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: resources
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Plex.GetServerResourcesAsync(
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40",
+                includeHttps: LukeHagar.PlexAPI.SDK.Models.Requests.IncludeHttps.One,
+                includeRelay: LukeHagar.PlexAPI.SDK.Models.Requests.IncludeRelay.One,
+                includeIPv6: LukeHagar.PlexAPI.SDK.Models.Requests.IncludeIPv6.One
+            );
+
+            // handle response
+  - target: $["paths"]["/search"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getSearchResults
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Search.GetSearchResultsAsync(query: "110");
+
+            // handle response
+  - target: $["paths"]["/security/resources"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getSourceConnectionInformation
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Authentication.GetSourceConnectionInformationAsync(source: "server://client-identifier");
+
+            // handle response
+  - target: $["paths"]["/security/token"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getTransientToken
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Authentication.GetTransientTokenAsync(
+                type: LukeHagar.PlexAPI.SDK.Models.Requests.GetTransientTokenQueryParamType.Delegation,
+                scope: LukeHagar.PlexAPI.SDK.Models.Requests.Scope.All
+            );
+
+            // handle response
+  - target: $["paths"]["/servers"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getServerList
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Server.GetServerListAsync();
+
+            // handle response
+  - target: $["paths"]["/statistics/bandwidth"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getBandwidthStatistics
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Statistics.GetBandwidthStatisticsAsync(timespan: 4);
+
+            // handle response
+  - target: $["paths"]["/statistics/media"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getStatistics
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Statistics.GetStatisticsAsync(timespan: 4);
+
+            // handle response
+  - target: $["paths"]["/statistics/resources"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getResourcesStatistics
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Statistics.GetResourcesStatisticsAsync(timespan: 4);
+
+            // handle response
+  - target: $["paths"]["/status/sessions"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getSessions
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Sessions.GetSessionsAsync();
+
+            // handle response
+  - target: $["paths"]["/status/sessions/history/all"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getSessionHistory
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Sessions.GetSessionHistoryAsync(
+                sort: "<value>",
+                accountId: 1,
+                filter: new QueryParamFilter() {},
+                librarySectionID: 12
+            );
+
+            // handle response
+  - target: $["paths"]["/transcode/sessions"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getTranscodeSessions
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Sessions.GetTranscodeSessionsAsync();
+
+            // handle response
+  - target: $["paths"]["/transcode/sessions/{sessionKey}"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: stopTranscodeSession
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Sessions.StopTranscodeSessionAsync(sessionKey: "zz7llzqlx8w9vnrsbnwhbmep");
+
+            // handle response
+  - target: $["paths"]["/updater/apply"]["put"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: applyUpdates
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Updater.ApplyUpdatesAsync(
+                tonight: LukeHagar.PlexAPI.SDK.Models.Requests.Tonight.One,
+                skip: LukeHagar.PlexAPI.SDK.Models.Requests.Skip.One
+            );
+
+            // handle response
+  - target: $["paths"]["/updater/check"]["put"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: checkForUpdates
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Updater.CheckForUpdatesAsync(download: LukeHagar.PlexAPI.SDK.Models.Requests.Download.One);
+
+            // handle response
+  - target: $["paths"]["/updater/status"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getUpdateStatus
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Updater.GetUpdateStatusAsync();
+
+            // handle response
+  - target: $["paths"]["/user"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: getTokenDetails
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            var res = await sdk.Authentication.GetTokenDetailsAsync();
+
+            // handle response
+  - target: $["paths"]["/users/signin"]["post"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: data
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40");
+
+            var res = await sdk.Authentication.PostUsersSignInDataAsync(
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40",
+                requestBody: new PostUsersSignInDataRequestBody() {
+                    Login = "username@email.com",
+                    Password = "password123",
+                    VerificationCode = "123456",
+                }
+            );
+
+            // handle response
+  - target: $["paths"]["/video/:/transcode/universal/start.mpd"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: startUniversalTranscode
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+            );
+
+            StartUniversalTranscodeRequest req = new StartUniversalTranscodeRequest() {
+                HasMDE = 1D,
+                Path = "/library/metadata/23409",
+                MediaIndex = 0D,
+                PartIndex = 0D,
+                Protocol = "hls",
+                FastSeek = 0D,
+                DirectPlay = 0D,
+                DirectStream = 0D,
+                SubtitleSize = 100D,
+                Subtites = "burn",
+                AudioBoost = 100D,
+                Location = "lan",
+                MediaBufferSize = 102400D,
+                Session = "zvcage8b7rkioqcm8f4uns4c",
+                AddDebugOverlay = 0D,
+                AutoAdjustQuality = 0D,
+            };
+
+            var res = await sdk.Video.StartUniversalTranscodeAsync(req);
+
+            // handle response
