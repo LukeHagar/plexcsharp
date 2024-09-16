@@ -3,10 +3,10 @@ id: 5a8dbcbc-e0ee-41f0-9d84-b8b50567d1e9
 management:
   docChecksum: a6fee1797b2da7ccbaf7743772a40b56
   docVersion: 0.0.3
-  speakeasyVersion: 1.397.3
+  speakeasyVersion: 1.398.0
   generationVersion: 2.415.8
-  releaseVersion: 0.6.8
-  configChecksum: f7fa598350dfc5fa1b4ac16a8eb4e5ea
+  releaseVersion: 0.6.9
+  configChecksum: 52c02933306402fb9fb31a7ffe487e97
   repoURL: https://github.com/LukeHagar/plexcsharp.git
   repoSubDirectory: .
   published: true

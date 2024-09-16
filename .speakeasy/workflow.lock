@@ -1,4 +1,4 @@
-speakeasyVersion: 1.397.3
+speakeasyVersion: 1.398.0
 sources:
     my-source:
         sourceNamespace: my-source
@@ -28,7 +28,7 @@ targets:
         sourceRevisionDigest: sha256:533fe97486e3fe2d84e890b7bbcdba4543d415e45181386154e011861f6da36f
         sourceBlobDigest: sha256:f7e2709f52370dff16c1851a7a4e44a89f2e978e9cae335bffc10625950b3bd9
         codeSamplesNamespace: code-samples-csharp-plexcsharp
-        codeSamplesRevisionDigest: sha256:e8c936700dba1d895b8fb1ffba469fd6335db4f90d32542d8884b6687caa19da
+        codeSamplesRevisionDigest: sha256:e85cd88211344b245e308d1c24ce30033282538127c6d7c1a2ada10a51d3803e
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
