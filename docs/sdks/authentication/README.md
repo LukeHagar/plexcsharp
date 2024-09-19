@@ -27,7 +27,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+    clientID: "gcgzw5rz2xovp84b4vha3a40",
+    clientName: "Plex Web",
+    clientVersion: "4.133.0",
+    clientPlatform: "Chrome",
+    deviceName: "Linux"
 );
 
 var res = await sdk.Authentication.GetTransientTokenAsync(
@@ -73,7 +77,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+    clientID: "gcgzw5rz2xovp84b4vha3a40",
+    clientName: "Plex Web",
+    clientVersion: "4.133.0",
+    clientPlatform: "Chrome",
+    deviceName: "Linux"
 );
 
 var res = await sdk.Authentication.GetSourceConnectionInformationAsync(source: "server://client-identifier");
@@ -112,7 +120,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+    clientID: "gcgzw5rz2xovp84b4vha3a40",
+    clientName: "Plex Web",
+    clientVersion: "4.133.0",
+    clientPlatform: "Chrome",
+    deviceName: "Linux"
 );
 
 var res = await sdk.Authentication.GetTokenDetailsAsync();
@@ -150,10 +162,16 @@ using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Requests;
 using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPI(xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40");
+var sdk = new PlexAPI(
+    clientID: "gcgzw5rz2xovp84b4vha3a40",
+    clientName: "Plex Web",
+    clientVersion: "4.133.0",
+    clientPlatform: "Chrome",
+    deviceName: "Linux"
+);
 
 var res = await sdk.Authentication.PostUsersSignInDataAsync(
-    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40",
+    clientID: "gcgzw5rz2xovp84b4vha3a40",
     requestBody: new PostUsersSignInDataRequestBody() {
         Login = "username@email.com",
         Password = "password123",
@@ -168,7 +186,7 @@ var res = await sdk.Authentication.PostUsersSignInDataAsync(
 
 | Parameter                                                                                                                                                             | Type                                                                                                                                                                  | Required                                                                                                                                                              | Description                                                                                                                                                           | Example                                                                                                                                                               |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `XPlexClientIdentifier`                                                                                                                                               | *string*                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                    | The unique identifier for the client application<br/>This is used to track the client application and its usage<br/>(UUID, serial number, or other number unique per device)<br/> | gcgzw5rz2xovp84b4vha3a40                                                                                                                                              |
+| `ClientID`                                                                                                                                                            | *string*                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                    | The unique identifier for the client application<br/>This is used to track the client application and its usage<br/>(UUID, serial number, or other number unique per device)<br/> | gcgzw5rz2xovp84b4vha3a40                                                                                                                                              |
 | `RequestBody`                                                                                                                                                         | [PostUsersSignInDataRequestBody](../../Models/Requests/PostUsersSignInDataRequestBody.md)                                                                             | :heavy_minus_sign:                                                                                                                                                    | Login credentials                                                                                                                                                     |                                                                                                                                                                       |
 | `serverURL`                                                                                                                                                           | *string*                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                    | An optional server URL to use.                                                                                                                                        | http://localhost:8080                                                                                                                                                 |
 

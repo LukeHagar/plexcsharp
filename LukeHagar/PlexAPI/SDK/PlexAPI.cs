@@ -238,7 +238,11 @@ namespace LukeHagar.PlexAPI.SDK
         public string ServerUrl = "";
         public int ServerIndex = 0;
         public List<Dictionary<string, string>> ServerDefaults = new List<Dictionary<string, string>>();
-        public string? XPlexClientIdentifier;
+        public string? ClientID;
+        public string? ClientName;
+        public string? ClientVersion;
+        public string? ClientPlatform;
+        public string? DeviceName;
         public SDKHooks Hooks = new SDKHooks();
         public RetryConfig? RetryConfig = null;
 
@@ -271,10 +275,10 @@ namespace LukeHagar.PlexAPI.SDK
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.6.10";
-        private const string _sdkGenVersion = "2.415.8";
+        private const string _sdkVersion = "0.6.11";
+        private const string _sdkGenVersion = "2.416.6";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.6.10 2.415.8 0.0.3 LukeHagar.PlexAPI.SDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.6.11 2.416.6 0.0.3 LukeHagar.PlexAPI.SDK";
         private string _serverUrl = "";
         private int _serverIndex = 0;
         private ISpeakeasyHttpClient _client;
@@ -296,7 +300,7 @@ namespace LukeHagar.PlexAPI.SDK
         public ISessions Sessions { get; private set; }
         public IUpdater Updater { get; private set; }
 
-        public PlexAPI(string? accessToken = null, Func<string>? accessTokenSource = null, string? xPlexClientIdentifier = null, int? serverIndex = null, ServerProtocol? protocol = null, string?  ip = null, string?  port = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null, RetryConfig? retryConfig = null)
+        public PlexAPI(string? accessToken = null, Func<string>? accessTokenSource = null, string? clientID = null, string? clientName = null, string? clientVersion = null, string? clientPlatform = null, string? deviceName = null, int? serverIndex = null, ServerProtocol? protocol = null, string?  ip = null, string?  port = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null, RetryConfig? retryConfig = null)
         {
             if (serverIndex != null)
             {
@@ -338,7 +342,11 @@ namespace LukeHagar.PlexAPI.SDK
 
             SDKConfiguration = new SDKConfig()
             {
-                XPlexClientIdentifier = xPlexClientIdentifier,
+                ClientID = clientID,
+                ClientName = clientName,
+                ClientVersion = clientVersion,
+                ClientPlatform = clientPlatform,
+                DeviceName = deviceName,
                 ServerDefaults = serverDefaults,
                 ServerIndex = _serverIndex,
                 ServerUrl = _serverUrl,

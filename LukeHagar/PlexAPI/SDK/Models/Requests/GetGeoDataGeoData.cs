@@ -58,7 +58,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// The postal code of the location.
         /// </summary>
         [JsonProperty("postal_code")]
-        public long PostalCode { get; set; } = default!;
+        public string PostalCode { get; set; } = default!;
 
         /// <summary>
         /// Indicates if the country has privacy restrictions.

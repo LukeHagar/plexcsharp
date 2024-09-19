@@ -30,7 +30,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+    clientID: "gcgzw5rz2xovp84b4vha3a40",
+    clientName: "Plex Web",
+    clientVersion: "4.133.0",
+    clientPlatform: "Chrome",
+    deviceName: "Linux"
 );
 
 var res = await sdk.Server.GetServerCapabilitiesAsync();
@@ -63,7 +67,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+    clientID: "gcgzw5rz2xovp84b4vha3a40",
+    clientName: "Plex Web",
+    clientVersion: "4.133.0",
+    clientPlatform: "Chrome",
+    deviceName: "Linux"
 );
 
 var res = await sdk.Server.GetServerPreferencesAsync();
@@ -96,7 +104,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+    clientID: "gcgzw5rz2xovp84b4vha3a40",
+    clientName: "Plex Web",
+    clientVersion: "4.133.0",
+    clientPlatform: "Chrome",
+    deviceName: "Linux"
 );
 
 var res = await sdk.Server.GetAvailableClientsAsync();
@@ -129,7 +141,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+    clientID: "gcgzw5rz2xovp84b4vha3a40",
+    clientName: "Plex Web",
+    clientVersion: "4.133.0",
+    clientPlatform: "Chrome",
+    deviceName: "Linux"
 );
 
 var res = await sdk.Server.GetDevicesAsync();
@@ -160,7 +176,13 @@ This request is useful to determine if the server is online or offline
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPI(xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40");
+var sdk = new PlexAPI(
+    clientID: "gcgzw5rz2xovp84b4vha3a40",
+    clientName: "Plex Web",
+    clientVersion: "4.133.0",
+    clientPlatform: "Chrome",
+    deviceName: "Linux"
+);
 
 var res = await sdk.Server.GetServerIdentityAsync();
 
@@ -191,7 +213,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+    clientID: "gcgzw5rz2xovp84b4vha3a40",
+    clientName: "Plex Web",
+    clientVersion: "4.133.0",
+    clientPlatform: "Chrome",
+    deviceName: "Linux"
 );
 
 var res = await sdk.Server.GetMyPlexAccountAsync();
@@ -226,7 +252,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+    clientID: "gcgzw5rz2xovp84b4vha3a40",
+    clientName: "Plex Web",
+    clientVersion: "4.133.0",
+    clientPlatform: "Chrome",
+    deviceName: "Linux"
 );
 
 GetResizedPhotoRequest req = new GetResizedPhotoRequest() {
@@ -276,7 +306,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+    clientID: "gcgzw5rz2xovp84b4vha3a40",
+    clientName: "Plex Web",
+    clientVersion: "4.133.0",
+    clientPlatform: "Chrome",
+    deviceName: "Linux"
 );
 
 var res = await sdk.Server.GetMediaProvidersAsync(xPlexToken: "CV5xoxjTpFKUzBTShsaf");
@@ -315,7 +349,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+    clientID: "gcgzw5rz2xovp84b4vha3a40",
+    clientName: "Plex Web",
+    clientVersion: "4.133.0",
+    clientPlatform: "Chrome",
+    deviceName: "Linux"
 );
 
 var res = await sdk.Server.GetServerListAsync();

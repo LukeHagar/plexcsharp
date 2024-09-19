@@ -25,7 +25,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// </remarks>
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=X-Plex-Client-Identifier")]
-        public string? XPlexClientIdentifier { get; set; }
+        public string? ClientID { get; set; }
 
         /// <summary>
         /// Login credentials

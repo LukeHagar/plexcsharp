@@ -34,7 +34,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+    clientID: "gcgzw5rz2xovp84b4vha3a40",
+    clientName: "Plex Web",
+    clientVersion: "4.133.0",
+    clientPlatform: "Chrome",
+    deviceName: "Linux"
 );
 
 var res = await sdk.Library.GetFileHashAsync(
@@ -79,7 +83,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+    clientID: "gcgzw5rz2xovp84b4vha3a40",
+    clientName: "Plex Web",
+    clientVersion: "4.133.0",
+    clientPlatform: "Chrome",
+    deviceName: "Linux"
 );
 
 var res = await sdk.Library.GetRecentlyAddedAsync(
@@ -128,7 +136,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+    clientID: "gcgzw5rz2xovp84b4vha3a40",
+    clientName: "Plex Web",
+    clientVersion: "4.133.0",
+    clientPlatform: "Chrome",
+    deviceName: "Linux"
 );
 
 var res = await sdk.Library.GetAllLibrariesAsync();
@@ -201,7 +213,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+    clientID: "gcgzw5rz2xovp84b4vha3a40",
+    clientName: "Plex Web",
+    clientVersion: "4.133.0",
+    clientPlatform: "Chrome",
+    deviceName: "Linux"
 );
 
 var res = await sdk.Library.GetLibraryDetailsAsync(
@@ -245,7 +261,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+    clientID: "gcgzw5rz2xovp84b4vha3a40",
+    clientName: "Plex Web",
+    clientVersion: "4.133.0",
+    clientPlatform: "Chrome",
+    deviceName: "Linux"
 );
 
 var res = await sdk.Library.DeleteLibraryAsync(sectionKey: 9518);
@@ -305,7 +325,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+    clientID: "gcgzw5rz2xovp84b4vha3a40",
+    clientName: "Plex Web",
+    clientVersion: "4.133.0",
+    clientPlatform: "Chrome",
+    deviceName: "Linux"
 );
 
 GetLibraryItemsRequest req = new GetLibraryItemsRequest() {
@@ -356,7 +380,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+    clientID: "gcgzw5rz2xovp84b4vha3a40",
+    clientName: "Plex Web",
+    clientVersion: "4.133.0",
+    clientPlatform: "Chrome",
+    deviceName: "Linux"
 );
 
 var res = await sdk.Library.GetRefreshLibraryMetadataAsync(
@@ -418,7 +446,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+    clientID: "gcgzw5rz2xovp84b4vha3a40",
+    clientName: "Plex Web",
+    clientVersion: "4.133.0",
+    clientPlatform: "Chrome",
+    deviceName: "Linux"
 );
 
 var res = await sdk.Library.GetSearchLibraryAsync(
@@ -463,7 +495,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+    clientID: "gcgzw5rz2xovp84b4vha3a40",
+    clientName: "Plex Web",
+    clientVersion: "4.133.0",
+    clientPlatform: "Chrome",
+    deviceName: "Linux"
 );
 
 var res = await sdk.Library.GetMetaDataByRatingKeyAsync(ratingKey: 9518);
@@ -504,7 +540,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+    clientID: "gcgzw5rz2xovp84b4vha3a40",
+    clientName: "Plex Web",
+    clientVersion: "4.133.0",
+    clientPlatform: "Chrome",
+    deviceName: "Linux"
 );
 
 var res = await sdk.Library.GetMetadataChildrenAsync(
@@ -549,7 +589,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+    clientID: "gcgzw5rz2xovp84b4vha3a40",
+    clientName: "Plex Web",
+    clientVersion: "4.133.0",
+    clientPlatform: "Chrome",
+    deviceName: "Linux"
 );
 
 var res = await sdk.Library.GetTopWatchedContentAsync(
@@ -593,7 +637,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+    clientID: "gcgzw5rz2xovp84b4vha3a40",
+    clientName: "Plex Web",
+    clientVersion: "4.133.0",
+    clientPlatform: "Chrome",
+    deviceName: "Linux"
 );
 
 var res = await sdk.Library.GetOnDeckAsync();

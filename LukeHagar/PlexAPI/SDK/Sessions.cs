@@ -80,10 +80,10 @@ namespace LukeHagar.PlexAPI.SDK
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.6.10";
-        private const string _sdkGenVersion = "2.415.8";
+        private const string _sdkVersion = "0.6.11";
+        private const string _sdkGenVersion = "2.416.6";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.6.10 2.415.8 0.0.3 LukeHagar.PlexAPI.SDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.6.11 2.416.6 0.0.3 LukeHagar.PlexAPI.SDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<LukeHagar.PlexAPI.SDK.Models.Components.Security>? _securitySource;
@@ -261,7 +261,7 @@ namespace LukeHagar.PlexAPI.SDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<GetSessionHistoryResponseBody>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<GetSessionHistoryResponseBody>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
                     var response = new GetSessionHistoryResponse()
                     {
                         StatusCode = responseStatusCode,
@@ -280,7 +280,7 @@ namespace LukeHagar.PlexAPI.SDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<GetSessionHistoryBadRequest>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<GetSessionHistoryBadRequest>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
                     obj!.RawResponse = httpResponse;
                     throw obj!;
                 }
@@ -293,7 +293,7 @@ namespace LukeHagar.PlexAPI.SDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<GetSessionHistoryUnauthorized>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<GetSessionHistoryUnauthorized>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
                     obj!.RawResponse = httpResponse;
                     throw obj!;
                 }

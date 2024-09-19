@@ -26,7 +26,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+    clientID: "gcgzw5rz2xovp84b4vha3a40",
+    clientName: "Plex Web",
+    clientVersion: "4.133.0",
+    clientPlatform: "Chrome",
+    deviceName: "Linux"
 );
 
 var res = await sdk.Log.LogLineAsync(
@@ -92,7 +96,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+    clientID: "gcgzw5rz2xovp84b4vha3a40",
+    clientName: "Plex Web",
+    clientVersion: "4.133.0",
+    clientPlatform: "Chrome",
+    deviceName: "Linux"
 );
 
 string req = "level=4&message=Test%20message%201&source=postman
@@ -136,7 +144,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    xPlexClientIdentifier: "gcgzw5rz2xovp84b4vha3a40"
+    clientID: "gcgzw5rz2xovp84b4vha3a40",
+    clientName: "Plex Web",
+    clientVersion: "4.133.0",
+    clientPlatform: "Chrome",
+    deviceName: "Linux"
 );
 
 var res = await sdk.Log.EnablePaperTrailAsync();

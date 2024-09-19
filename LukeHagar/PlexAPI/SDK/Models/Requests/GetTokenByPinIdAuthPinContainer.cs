@@ -60,7 +60,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public DateTime ExpiresAt { get; set; } = default!;
 
         [JsonProperty("authToken")]
-        public object? AuthToken { get; set; } = null;
+        public string? AuthToken { get; set; } = null;
 
         [JsonProperty("newRegistration")]
         public object? NewRegistration { get; set; } = null;

@@ -75,16 +75,16 @@ namespace LukeHagar.PlexAPI.SDK
         /// Get Plex server access tokens and server connections
         /// </remarks>
         /// </summary>
-        Task<GetServerResourcesResponse> GetServerResourcesAsync(string? xPlexClientIdentifier = null, IncludeHttps? includeHttps = null, IncludeRelay? includeRelay = null, IncludeIPv6? includeIPv6 = null, string? serverUrl = null);
+        Task<GetServerResourcesResponse> GetServerResourcesAsync(string? clientID = null, IncludeHttps? includeHttps = null, IncludeRelay? includeRelay = null, IncludeIPv6? includeIPv6 = null, string? serverUrl = null);
 
         /// <summary>
         /// Get a Pin
         /// 
         /// <remarks>
-        /// Retrieve a Pin from Plex.tv for authentication flows
+        /// Retrieve a Pin ID from Plex.tv to use for authentication flows
         /// </remarks>
         /// </summary>
-        Task<GetPinResponse> GetPinAsync(bool? strong = null, string? xPlexClientIdentifier = null, string? xPlexProduct = null, string? serverUrl = null);
+        Task<GetPinResponse> GetPinAsync(GetPinRequest? request = null, string? serverUrl = null);
 
         /// <summary>
         /// Get Access Token by PinId
@@ -93,7 +93,7 @@ namespace LukeHagar.PlexAPI.SDK
         /// Retrieve an Access Token from Plex.tv after the Pin has been authenticated
         /// </remarks>
         /// </summary>
-        Task<GetTokenByPinIdResponse> GetTokenByPinIdAsync(long pinID, string? xPlexClientIdentifier = null, string? serverUrl = null);
+        Task<GetTokenByPinIdResponse> GetTokenByPinIdAsync(long pinID, string? clientID = null, string? serverUrl = null);
     }
 
     /// <summary>
@@ -143,10 +143,10 @@ namespace LukeHagar.PlexAPI.SDK
         };
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.6.10";
-        private const string _sdkGenVersion = "2.415.8";
+        private const string _sdkVersion = "0.6.11";
+        private const string _sdkGenVersion = "2.416.6";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.6.10 2.415.8 0.0.3 LukeHagar.PlexAPI.SDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.6.11 2.416.6 0.0.3 LukeHagar.PlexAPI.SDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<LukeHagar.PlexAPI.SDK.Models.Components.Security>? _securitySource;
@@ -589,16 +589,16 @@ namespace LukeHagar.PlexAPI.SDK
             }
         }
 
-        public async Task<GetServerResourcesResponse> GetServerResourcesAsync(string? xPlexClientIdentifier = null, IncludeHttps? includeHttps = null, IncludeRelay? includeRelay = null, IncludeIPv6? includeIPv6 = null, string? serverUrl = null)
+        public async Task<GetServerResourcesResponse> GetServerResourcesAsync(string? clientID = null, IncludeHttps? includeHttps = null, IncludeRelay? includeRelay = null, IncludeIPv6? includeIPv6 = null, string? serverUrl = null)
         {
             var request = new GetServerResourcesRequest()
             {
-                XPlexClientIdentifier = xPlexClientIdentifier,
+                ClientID = clientID,
                 IncludeHttps = includeHttps,
                 IncludeRelay = includeRelay,
                 IncludeIPv6 = includeIPv6,
             };
-            request.XPlexClientIdentifier ??= SDKConfiguration.XPlexClientIdentifier;
+            request.ClientID ??= SDKConfiguration.ClientID;
             
             string baseUrl = Utilities.TemplateUrl(GetServerResourcesServerList[0], new Dictionary<string, string>(){
             });
@@ -656,7 +656,7 @@ namespace LukeHagar.PlexAPI.SDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<List<PlexDevice>>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<List<PlexDevice>>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
                     var response = new GetServerResourcesResponse()
                     {
                         StatusCode = responseStatusCode,
@@ -675,7 +675,7 @@ namespace LukeHagar.PlexAPI.SDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<GetServerResourcesBadRequest>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<GetServerResourcesBadRequest>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
                     obj!.RawResponse = httpResponse;
                     throw obj!;
                 }
@@ -688,7 +688,7 @@ namespace LukeHagar.PlexAPI.SDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<GetServerResourcesUnauthorized>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<GetServerResourcesUnauthorized>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
                     obj!.RawResponse = httpResponse;
                     throw obj!;
                 }
@@ -707,15 +707,13 @@ namespace LukeHagar.PlexAPI.SDK
             }
         }
 
-        public async Task<GetPinResponse> GetPinAsync(bool? strong = null, string? xPlexClientIdentifier = null, string? xPlexProduct = null, string? serverUrl = null)
+        public async Task<GetPinResponse> GetPinAsync(GetPinRequest? request = null, string? serverUrl = null)
         {
-            var request = new GetPinRequest()
-            {
-                Strong = strong,
-                XPlexClientIdentifier = xPlexClientIdentifier,
-                XPlexProduct = xPlexProduct,
-            };
-            request.XPlexClientIdentifier ??= SDKConfiguration.XPlexClientIdentifier;
+            request.ClientID ??= SDKConfiguration.ClientID;
+            request.ClientName ??= SDKConfiguration.ClientName;
+            request.ClientVersion ??= SDKConfiguration.ClientVersion;
+            request.ClientPlatform ??= SDKConfiguration.ClientPlatform;
+            request.DeviceName ??= SDKConfiguration.DeviceName;
             
             string baseUrl = Utilities.TemplateUrl(GetPinServerList[0], new Dictionary<string, string>(){
             });
@@ -764,11 +762,11 @@ namespace LukeHagar.PlexAPI.SDK
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
             int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode == 200)
+            if(responseStatusCode == 201)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<GetPinAuthPinContainer>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<GetPinAuthPinContainer>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
                     var response = new GetPinResponse()
                     {
                         StatusCode = responseStatusCode,
@@ -787,7 +785,7 @@ namespace LukeHagar.PlexAPI.SDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<GetPinBadRequest>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<GetPinBadRequest>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
                     obj!.RawResponse = httpResponse;
                     throw obj!;
                 }
@@ -806,14 +804,14 @@ namespace LukeHagar.PlexAPI.SDK
             }
         }
 
-        public async Task<GetTokenByPinIdResponse> GetTokenByPinIdAsync(long pinID, string? xPlexClientIdentifier = null, string? serverUrl = null)
+        public async Task<GetTokenByPinIdResponse> GetTokenByPinIdAsync(long pinID, string? clientID = null, string? serverUrl = null)
         {
             var request = new GetTokenByPinIdRequest()
             {
                 PinID = pinID,
-                XPlexClientIdentifier = xPlexClientIdentifier,
+                ClientID = clientID,
             };
-            request.XPlexClientIdentifier ??= SDKConfiguration.XPlexClientIdentifier;
+            request.ClientID ??= SDKConfiguration.ClientID;
             
             string baseUrl = Utilities.TemplateUrl(GetTokenByPinIdServerList[0], new Dictionary<string, string>(){
             });

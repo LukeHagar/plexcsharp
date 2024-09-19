@@ -36,9 +36,18 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// </remarks>
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=X-Plex-Client-Identifier")]
-        public string? XPlexClientIdentifier { get; set; }
+        public string? ClientID { get; set; }
 
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=X-Plex-Product")]
-        public string? XPlexProduct { get; set; }
+        public string? ClientName { get; set; }
+
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=X-Plex-Device")]
+        public string? DeviceName { get; set; }
+
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=X-Plex-Version")]
+        public string? ClientVersion { get; set; }
+
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=X-Plex-Platform")]
+        public string? ClientPlatform { get; set; }
     }
 }
