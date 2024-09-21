@@ -21,9 +21,21 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public string? Key { get; set; }
 
         [JsonProperty("type")]
-        public string? Type { get; set; }
+        public string Type { get; set; } = default!;
+
+        [JsonProperty("flavor")]
+        public string? Flavor { get; set; }
+
+        [JsonProperty("scrobbleKey")]
+        public string? ScrobbleKey { get; set; }
+
+        [JsonProperty("unscrobbleKey")]
+        public string? UnscrobbleKey { get; set; }
 
         [JsonProperty("Directory")]
         public List<GetMediaProvidersDirectory>? Directory { get; set; }
+
+        [JsonProperty("Action")]
+        public List<Action>? Action { get; set; }
     }
 }

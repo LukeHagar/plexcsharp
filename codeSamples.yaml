@@ -568,7 +568,7 @@ actions:
             );
 
             var res = await sdk.Library.GetTopWatchedContentAsync(
-                type: LukeHagar.PlexAPI.SDK.Models.Requests.GetTopWatchedContentQueryParamType.Show,
+                type: LukeHagar.PlexAPI.SDK.Models.Requests.GetTopWatchedContentQueryParamType.TvShow,
                 includeGuids: 1
             );
 
@@ -896,7 +896,7 @@ actions:
 
             var res = await sdk.Library.GetSearchLibraryAsync(
                 sectionKey: 9518,
-                type: LukeHagar.PlexAPI.SDK.Models.Requests.QueryParamType.Show
+                type: LukeHagar.PlexAPI.SDK.Models.Requests.QueryParamType.TvShow
             );
 
             // handle response
@@ -924,7 +924,7 @@ actions:
                 Tag = LukeHagar.PlexAPI.SDK.Models.Requests.Tag.Edition,
                 IncludeGuids = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeGuids.Enable,
                 IncludeMeta = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeMeta.Enable,
-                Type = LukeHagar.PlexAPI.SDK.Models.Requests.Type.Show,
+                Type = LukeHagar.PlexAPI.SDK.Models.Requests.Type.TvShow,
                 XPlexContainerStart = 0,
                 XPlexContainerSize = 50,
             };
@@ -1316,7 +1316,7 @@ actions:
 
             var res = await sdk.Playlists.GetPlaylistContentsAsync(
                 playlistID: 5004.46D,
-                type: LukeHagar.PlexAPI.SDK.Models.Requests.GetPlaylistContentsQueryParamType.Show
+                type: LukeHagar.PlexAPI.SDK.Models.Requests.GetPlaylistContentsQueryParamType.TvShow
             );
 
             // handle response

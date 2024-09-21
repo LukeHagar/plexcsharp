@@ -9,6 +9,7 @@
 #nullable enable
 namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
+    using LukeHagar.PlexAPI.SDK.Models.Requests;
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     
@@ -16,24 +17,40 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     {
 
         [JsonProperty("id")]
-        public int? Id { get; set; }
+        public int Id { get; set; } = default!;
 
         [JsonProperty("key")]
-        public string? Key { get; set; }
+        public string Key { get; set; } = default!;
 
         [JsonProperty("duration")]
-        public int? Duration { get; set; }
+        public int Duration { get; set; } = default!;
 
         [JsonProperty("file")]
-        public string? File { get; set; }
+        public string File { get; set; } = default!;
 
         [JsonProperty("size")]
-        public long? Size { get; set; }
+        public long Size { get; set; } = default!;
 
+        /// <summary>
+        /// The container format of the media file.<br/>
+        /// 
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// </summary>
         [JsonProperty("container")]
-        public string? Container { get; set; }
+        public string Container { get; set; } = default!;
+
+        [JsonProperty("audioProfile")]
+        public string? AudioProfile { get; set; }
 
         [JsonProperty("videoProfile")]
-        public string? VideoProfile { get; set; }
+        public string VideoProfile { get; set; } = default!;
+
+        [JsonProperty("indexes")]
+        public string? Indexes { get; set; }
+
+        [JsonProperty("hasThumbnail")]
+        public HasThumbnail? HasThumbnail { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.HasThumbnail.False;
     }
 }

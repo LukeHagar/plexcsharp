@@ -12,7 +12,7 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: true
 csharp:
-  version: 0.7.0
+  version: 0.7.1
   additionalDependencies: []
   author: LukeHagar
   clientServerStatusCodesAsErrors: true
@@ -35,3 +35,4 @@ csharp:
   packageName: LukeHagar.PlexAPI.SDK
   packageTags: Plex Media Server SDK
   responseFormat: envelope
+  sourceDirectory: ""

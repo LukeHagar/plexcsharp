@@ -9,6 +9,7 @@
 #nullable enable
 namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
+    using LukeHagar.PlexAPI.SDK.Models.Requests;
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     
@@ -18,8 +19,28 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         [JsonProperty("default")]
         public string? Default { get; set; }
 
+        [JsonProperty("active")]
+        public bool? Active { get; set; }
+
+        /// <summary>
+        /// The direction of the sort. Can be either `asc` or `desc`.<br/>
+        /// 
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// </summary>
+        [JsonProperty("activeDirection")]
+        public ActiveDirection? ActiveDirection { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.ActiveDirection.Ascending;
+
+        /// <summary>
+        /// The direction of the sort. Can be either `asc` or `desc`.<br/>
+        /// 
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// </summary>
         [JsonProperty("defaultDirection")]
-        public string DefaultDirection { get; set; } = default!;
+        public DefaultDirection? DefaultDirection { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.DefaultDirection.Ascending;
 
         [JsonProperty("descKey")]
         public string? DescKey { get; set; }

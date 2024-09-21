@@ -21,8 +21,20 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         [JsonProperty("size")]
         public int Size { get; set; } = default!;
 
+        [JsonProperty("totalSize")]
+        public int TotalSize { get; set; } = default!;
+
+        [JsonProperty("offset")]
+        public int Offset { get; set; } = default!;
+
+        [JsonProperty("content")]
+        public string Content { get; set; } = default!;
+
         [JsonProperty("allowSync")]
         public bool AllowSync { get; set; } = default!;
+
+        [JsonProperty("nocache")]
+        public bool? Nocache { get; set; }
 
         [JsonProperty("art")]
         public string Art { get; set; } = default!;
@@ -64,7 +76,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public bool? MixedParents { get; set; }
 
         [JsonProperty("Metadata")]
-        public List<GetLibraryItemsMetadata>? Metadata { get; set; }
+        public List<GetLibraryItemsMetadata> Metadata { get; set; } = default!;
 
         /// <summary>
         /// The Meta object is only included in the response if the `includeMeta` parameter is set to `1`.<br/>

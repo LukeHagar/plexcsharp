@@ -25,7 +25,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     {
 
         [JsonProperty("Type")]
-        public List<GetLibraryItemsType>? Type { get; set; }
+        public List<GetLibraryItemsLibraryType>? Type { get; set; }
 
         [JsonProperty("FieldType")]
         public List<GetLibraryItemsFieldType>? FieldType { get; set; }

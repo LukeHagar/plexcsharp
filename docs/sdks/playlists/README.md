@@ -291,7 +291,7 @@ var sdk = new PlexAPI(
 
 var res = await sdk.Playlists.GetPlaylistContentsAsync(
     playlistID: 5004.46D,
-    type: LukeHagar.PlexAPI.SDK.Models.Requests.GetPlaylistContentsQueryParamType.Show
+    type: LukeHagar.PlexAPI.SDK.Models.Requests.GetPlaylistContentsQueryParamType.TvShow
 );
 
 // handle response

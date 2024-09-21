@@ -18,6 +18,14 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     public class GetLibraryItemsMetadata
     {
 
+        /// <summary>
+        /// The rating key (Media ID) of this media item.<br/>
+        /// 
+        /// <remarks>
+        /// Note: This is always an integer, but is represented as a string in the API.<br/>
+        /// 
+        /// </remarks>
+        /// </summary>
         [JsonProperty("ratingKey")]
         public string RatingKey { get; set; } = default!;
 
@@ -30,17 +38,30 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         [JsonProperty("studio")]
         public string? Studio { get; set; }
 
+        [JsonProperty("skipChildren")]
+        public bool? SkipChildren { get; set; }
+
+        /// <summary>
+        /// The type of media content<br/>
+        /// 
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// </summary>
         [JsonProperty("type")]
-        public string Type { get; set; } = default!;
+        public GetLibraryItemsType Type { get; set; } = default!;
 
         [JsonProperty("title")]
         public string Title { get; set; } = default!;
+
+        [JsonProperty("slug")]
+        public string? Slug { get; set; }
 
         [JsonProperty("contentRating")]
         public string? ContentRating { get; set; }
 
         [JsonProperty("summary")]
-        public string? Summary { get; set; }
+        public string Summary { get; set; } = default!;
 
         [JsonProperty("rating")]
         public double? Rating { get; set; }
@@ -49,10 +70,31 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public double? AudienceRating { get; set; }
 
         [JsonProperty("year")]
-        public int Year { get; set; } = default!;
+        public int? Year { get; set; }
+
+        [JsonProperty("seasonCount")]
+        public int? SeasonCount { get; set; }
 
         [JsonProperty("tagline")]
         public string? Tagline { get; set; }
+
+        [JsonProperty("flattenSeasons")]
+        public FlattenSeasons? FlattenSeasons { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.FlattenSeasons.False;
+
+        /// <summary>
+        /// Setting that indicates the episode ordering for the show <br/>
+        /// 
+        /// <remarks>
+        /// None = Library default, <br/>
+        /// tmdbAiring = The Movie Database (Aired), <br/>
+        /// aired = TheTVDB (Aired), <br/>
+        /// dvd = TheTVDB (DVD), <br/>
+        /// absolute = TheTVDB (Absolute)).<br/>
+        /// 
+        /// </remarks>
+        /// </summary>
+        [JsonProperty("showOrdering")]
+        public ShowOrdering? ShowOrdering { get; set; }
 
         [JsonProperty("thumb")]
         public string? Thumb { get; set; }
@@ -60,17 +102,26 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         [JsonProperty("art")]
         public string? Art { get; set; }
 
+        [JsonProperty("banner")]
+        public string? Banner { get; set; }
+
         [JsonProperty("duration")]
-        public int Duration { get; set; } = default!;
+        public int? Duration { get; set; }
 
         [JsonProperty("originallyAvailableAt")]
         public LocalDate? OriginallyAvailableAt { get; set; }
 
+        /// <summary>
+        /// Unix epoch datetime in seconds
+        /// </summary>
         [JsonProperty("addedAt")]
-        public int? AddedAt { get; set; }
+        public long AddedAt { get; set; } = default!;
 
+        /// <summary>
+        /// Unix epoch datetime in seconds
+        /// </summary>
         [JsonProperty("updatedAt")]
-        public int? UpdatedAt { get; set; }
+        public long? UpdatedAt { get; set; }
 
         [JsonProperty("audienceRatingImage")]
         public string? AudienceRatingImage { get; set; }
@@ -99,14 +150,24 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         [JsonProperty("grandparentThumb")]
         public string? GrandparentThumb { get; set; }
 
+        [JsonProperty("grandparentSlug")]
+        public string? GrandparentSlug { get; set; }
+
         [JsonProperty("grandparentArt")]
         public string? GrandparentArt { get; set; }
 
         [JsonProperty("grandparentTheme")]
         public string? GrandparentTheme { get; set; }
 
+        /// <summary>
+        /// The Media object is only included when type query is `4` or higher.<br/>
+        /// 
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// </summary>
         [JsonProperty("Media")]
-        public List<GetLibraryItemsMedia> Media { get; set; } = default!;
+        public List<GetLibraryItemsMedia>? Media { get; set; }
 
         [JsonProperty("Genre")]
         public List<GetLibraryItemsGenre>? Genre { get; set; }
@@ -120,6 +181,9 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         [JsonProperty("Writer")]
         public List<GetLibraryItemsWriter>? Writer { get; set; }
 
+        [JsonProperty("Collection")]
+        public List<Collection>? Collection { get; set; }
+
         [JsonProperty("Role")]
         public List<GetLibraryItemsRole>? Role { get; set; }
 
@@ -132,6 +196,12 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// </summary>
         [JsonProperty("Guid")]
         public List<MediaGuid>? MediaGuid { get; set; }
+
+        [JsonProperty("UltraBlurColors")]
+        public UltraBlurColors? UltraBlurColors { get; set; }
+
+        [JsonProperty("Image")]
+        public List<GetLibraryItemsImage>? Image { get; set; }
 
         [JsonProperty("titleSort")]
         public string? TitleSort { get; set; }
@@ -172,6 +242,13 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         [JsonProperty("hasPremiumPrimaryExtra")]
         public string? HasPremiumPrimaryExtra { get; set; }
 
+        /// <summary>
+        /// The rating key of the parent item.<br/>
+        /// 
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// </summary>
         [JsonProperty("parentRatingKey")]
         public string? ParentRatingKey { get; set; }
 

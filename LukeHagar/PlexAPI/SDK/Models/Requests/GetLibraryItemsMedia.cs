@@ -18,45 +18,51 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     {
 
         [JsonProperty("id")]
-        public int? Id { get; set; }
+        public int Id { get; set; } = default!;
 
         [JsonProperty("duration")]
-        public int? Duration { get; set; }
+        public int Duration { get; set; } = default!;
 
         [JsonProperty("bitrate")]
-        public int? Bitrate { get; set; }
+        public int Bitrate { get; set; } = default!;
 
         [JsonProperty("width")]
-        public int? Width { get; set; }
+        public int Width { get; set; } = default!;
 
         [JsonProperty("height")]
-        public int? Height { get; set; }
+        public int Height { get; set; } = default!;
 
         [JsonProperty("aspectRatio")]
-        public double? AspectRatio { get; set; }
+        public double AspectRatio { get; set; } = default!;
+
+        [JsonProperty("audioProfile")]
+        public string? AudioProfile { get; set; }
 
         [JsonProperty("audioChannels")]
-        public int? AudioChannels { get; set; }
+        public int AudioChannels { get; set; } = default!;
 
         [JsonProperty("audioCodec")]
-        public string? AudioCodec { get; set; }
+        public string AudioCodec { get; set; } = default!;
 
         [JsonProperty("videoCodec")]
-        public string? VideoCodec { get; set; }
+        public string VideoCodec { get; set; } = default!;
 
         [JsonProperty("videoResolution")]
-        public string? VideoResolution { get; set; }
+        public string VideoResolution { get; set; } = default!;
 
         [JsonProperty("container")]
-        public string? Container { get; set; }
+        public string Container { get; set; } = default!;
 
         [JsonProperty("videoFrameRate")]
-        public string? VideoFrameRate { get; set; }
+        public string VideoFrameRate { get; set; } = default!;
 
         [JsonProperty("videoProfile")]
-        public string? VideoProfile { get; set; }
+        public string VideoProfile { get; set; } = default!;
+
+        [JsonProperty("hasVoiceActivity")]
+        public bool? HasVoiceActivity { get; set; }
 
         [JsonProperty("Part")]
-        public List<GetLibraryItemsPart>? Part { get; set; }
+        public List<GetLibraryItemsPart> Part { get; set; } = default!;
     }
 }

@@ -26,7 +26,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     public enum GetTopWatchedContentQueryParamType
     {
         Movie = 1,
-        Show = 2,
+        TvShow = 2,
         Season = 3,
         Episode = 4,
     }

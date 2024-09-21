@@ -33,21 +33,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public Tag Tag { get; set; } = default!;
 
         /// <summary>
-        /// The type of media to retrieve.<br/>
-        /// 
-        /// <remarks>
-        /// 1 = movie<br/>
-        /// 2 = show<br/>
-        /// 3 = season<br/>
-        /// 4 = episode<br/>
-        /// E.g. A movie library will not return anything with type 3 as there are no seasons for movie libraries<br/>
-        /// 
-        /// </remarks>
-        /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=type")]
-        public Models.Requests.Type Type { get; set; } = default!;
-
-        /// <summary>
         /// Adds the Guids object to the response<br/>
         /// 
         /// <remarks>
@@ -66,6 +51,21 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=includeMeta")]
         public IncludeMeta? IncludeMeta { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeMeta.Disable;
+
+        /// <summary>
+        /// The type of media to retrieve.<br/>
+        /// 
+        /// <remarks>
+        /// 1 = movie<br/>
+        /// 2 = show<br/>
+        /// 3 = season<br/>
+        /// 4 = episode<br/>
+        /// E.g. A movie library will not return anything with type 3 as there are no seasons for movie libraries<br/>
+        /// 
+        /// </remarks>
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=type")]
+        public Models.Requests.Type? Type { get; set; }
 
         /// <summary>
         /// The index of the first item to return. If not specified, the first item will be returned.<br/>

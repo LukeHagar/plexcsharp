@@ -16,12 +16,12 @@ namespace LukeHagar.PlexAPI.SDK.Models.Errors
     {
 
         [JsonProperty("code")]
-        public long? Code { get; set; }
+        public int? Code { get; set; }
 
         [JsonProperty("message")]
         public string? Message { get; set; }
 
         [JsonProperty("status")]
-        public long? Status { get; set; }
+        public int? Status { get; set; }
     }
 }

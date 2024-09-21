@@ -253,6 +253,9 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         [JsonProperty("uuid")]
         public string Uuid { get; set; } = default!;
 
+        [JsonProperty("attributionPartner", NullValueHandling = NullValueHandling.Include)]
+        public string? AttributionPartner { get; set; }
+
         [JsonProperty("pastSubscriptions")]
         public List<PastSubscription> PastSubscriptions { get; set; } = default!;
 
