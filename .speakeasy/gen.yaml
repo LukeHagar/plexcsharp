@@ -35,4 +35,3 @@ csharp:
   packageName: LukeHagar.PlexAPI.SDK
   packageTags: Plex Media Server SDK
   responseFormat: envelope
-  sourceDirectory: ""
