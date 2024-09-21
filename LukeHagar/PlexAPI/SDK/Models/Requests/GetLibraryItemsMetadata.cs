@@ -19,22 +19,22 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     {
 
         [JsonProperty("ratingKey")]
-        public string? RatingKey { get; set; }
+        public string RatingKey { get; set; } = default!;
 
         [JsonProperty("key")]
-        public string? Key { get; set; }
+        public string Key { get; set; } = default!;
 
         [JsonProperty("guid")]
-        public string? Guid { get; set; }
+        public string Guid { get; set; } = default!;
 
         [JsonProperty("studio")]
         public string? Studio { get; set; }
 
         [JsonProperty("type")]
-        public string? Type { get; set; }
+        public string Type { get; set; } = default!;
 
         [JsonProperty("title")]
-        public string? Title { get; set; }
+        public string Title { get; set; } = default!;
 
         [JsonProperty("contentRating")]
         public string? ContentRating { get; set; }
@@ -49,7 +49,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public double? AudienceRating { get; set; }
 
         [JsonProperty("year")]
-        public int? Year { get; set; }
+        public int Year { get; set; } = default!;
 
         [JsonProperty("tagline")]
         public string? Tagline { get; set; }
@@ -61,7 +61,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public string? Art { get; set; }
 
         [JsonProperty("duration")]
-        public int? Duration { get; set; }
+        public int Duration { get; set; } = default!;
 
         [JsonProperty("originallyAvailableAt")]
         public LocalDate? OriginallyAvailableAt { get; set; }
@@ -106,7 +106,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public string? GrandparentTheme { get; set; }
 
         [JsonProperty("Media")]
-        public List<GetLibraryItemsMedia>? Media { get; set; }
+        public List<GetLibraryItemsMedia> Media { get; set; } = default!;
 
         [JsonProperty("Genre")]
         public List<GetLibraryItemsGenre>? Genre { get; set; }
@@ -122,6 +122,16 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
 
         [JsonProperty("Role")]
         public List<GetLibraryItemsRole>? Role { get; set; }
+
+        /// <summary>
+        /// The Guid object is only included in the response if the `includeGuids` parameter is set to `1`.<br/>
+        /// 
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// </summary>
+        [JsonProperty("Guid")]
+        public List<MediaGuid>? MediaGuid { get; set; }
 
         [JsonProperty("titleSort")]
         public string? TitleSort { get; set; }

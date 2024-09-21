@@ -335,9 +335,9 @@ var sdk = new PlexAPI(
 GetLibraryItemsRequest req = new GetLibraryItemsRequest() {
     SectionKey = 9518,
     Tag = LukeHagar.PlexAPI.SDK.Models.Requests.Tag.Edition,
-    Type = LukeHagar.PlexAPI.SDK.Models.Requests.Type.Two,
-    IncludeGuids = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeGuids.One,
-    IncludeMeta = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeMeta.One,
+    Type = LukeHagar.PlexAPI.SDK.Models.Requests.Type.Show,
+    IncludeGuids = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeGuids.Enable,
+    IncludeMeta = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeMeta.Enable,
     XPlexContainerStart = 0,
     XPlexContainerSize = 50,
 };
@@ -455,7 +455,7 @@ var sdk = new PlexAPI(
 
 var res = await sdk.Library.GetSearchLibraryAsync(
     sectionKey: 9518,
-    type: LukeHagar.PlexAPI.SDK.Models.Requests.QueryParamType.Two
+    type: LukeHagar.PlexAPI.SDK.Models.Requests.QueryParamType.Show
 );
 
 // handle response
@@ -548,7 +548,7 @@ var sdk = new PlexAPI(
 );
 
 var res = await sdk.Library.GetMetadataChildrenAsync(
-    ratingKey: 1539.14D,
+    ratingKey: 1539.15D,
     includeElements: "<value>"
 );
 
@@ -597,7 +597,7 @@ var sdk = new PlexAPI(
 );
 
 var res = await sdk.Library.GetTopWatchedContentAsync(
-    type: LukeHagar.PlexAPI.SDK.Models.Requests.GetTopWatchedContentQueryParamType.Two,
+    type: LukeHagar.PlexAPI.SDK.Models.Requests.GetTopWatchedContentQueryParamType.Show,
     includeGuids: 1
 );
 

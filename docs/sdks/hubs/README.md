@@ -82,8 +82,8 @@ var sdk = new PlexAPI(
 
 var res = await sdk.Hubs.GetLibraryHubsAsync(
     sectionId: 6728.76D,
-    count: 9010.22D,
-    onlyTransient: LukeHagar.PlexAPI.SDK.Models.Requests.QueryParamOnlyTransient.Zero
+    count: 639.24D,
+    onlyTransient: LukeHagar.PlexAPI.SDK.Models.Requests.QueryParamOnlyTransient.One
 );
 
 // handle response

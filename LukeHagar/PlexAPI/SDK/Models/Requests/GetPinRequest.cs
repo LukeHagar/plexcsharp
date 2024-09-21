@@ -26,18 +26,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=strong")]
         public bool? Strong { get; set; } = false;
 
-        /// <summary>
-        /// The unique identifier for the client application<br/>
-        /// 
-        /// <remarks>
-        /// This is used to track the client application and its usage<br/>
-        /// (UUID, serial number, or other number unique per device)<br/>
-        /// 
-        /// </remarks>
-        /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=X-Plex-Client-Identifier")]
-        public string? ClientID { get; set; }
-
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=X-Plex-Product")]
         public string? ClientName { get; set; }
 

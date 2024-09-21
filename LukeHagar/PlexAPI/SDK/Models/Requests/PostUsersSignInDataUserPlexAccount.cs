@@ -136,7 +136,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public int Id { get; set; } = default!;
 
         /// <summary>
-        /// Unix epoch datetime
+        /// Unix epoch datetime in seconds
         /// </summary>
         [JsonProperty("joinedAt")]
         public long JoinedAt { get; set; } = default!;
@@ -182,7 +182,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public bool? Protected { get; set; } = false;
 
         /// <summary>
-        /// Unix epoch datetime
+        /// Unix epoch datetime in seconds
         /// </summary>
         [JsonProperty("rememberExpiresAt")]
         public long RememberExpiresAt { get; set; } = default!;

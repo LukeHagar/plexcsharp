@@ -45,8 +45,8 @@ var sdk = new PlexAPI(
 );
 
 var res = await sdk.Search.PerformSearchAsync(
-    query: "arnold",
-    sectionId: 9372.7D,
+    query: "dylan",
+    sectionId: 5838.67D,
     limit: 5D
 );
 
@@ -100,7 +100,7 @@ var sdk = new PlexAPI(
 
 var res = await sdk.Search.PerformVoiceSearchAsync(
     query: "dead+poop",
-    sectionId: 4094.8D,
+    sectionId: 4094.80D,
     limit: 5D
 );
 

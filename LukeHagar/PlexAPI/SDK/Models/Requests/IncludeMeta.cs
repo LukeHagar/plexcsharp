@@ -20,8 +20,8 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     /// </summary>
     public enum IncludeMeta
     {
-        Zero = 0,
-        One = 1,
+        Disable = 0,
+        Enable = 1,
     }
 
 }

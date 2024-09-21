@@ -11,10 +11,13 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
     using LukeHagar.PlexAPI.SDK.Utils;
     
+    /// <summary>
+    /// Whether or not the account has media reviews visibility enabled
+    /// </summary>
     public enum MediaReviewsVisibility
     {
-        Zero = 0,
-        One = 1,
+        Disable = 0,
+        Enable = 1,
     }
 
 }

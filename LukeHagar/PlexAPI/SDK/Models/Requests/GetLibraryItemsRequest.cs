@@ -55,7 +55,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// </remarks>
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=includeGuids")]
-        public IncludeGuids? IncludeGuids { get; set; }
+        public IncludeGuids? IncludeGuids { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeGuids.Disable;
 
         /// <summary>
         /// Adds the Meta object to the response<br/>
@@ -65,7 +65,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// </remarks>
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=includeMeta")]
-        public IncludeMeta? IncludeMeta { get; set; }
+        public IncludeMeta? IncludeMeta { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeMeta.Disable;
 
         /// <summary>
         /// The index of the first item to return. If not specified, the first item will be returned.<br/>

@@ -5,7 +5,7 @@ The auto-select subtitle mode (0 = Manually selected, 1 = Shown with foreign aud
 
 ## Values
 
-| Name   | Value  |
-| ------ | ------ |
-| `Zero` | 0      |
-| `One`  | 1      |
+| Name      | Value     |
+| --------- | --------- |
+| `Disable` | 0         |
+| `Enable`  | 1         |

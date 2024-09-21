@@ -25,10 +25,10 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     /// </summary>
     public enum GetPlaylistContentsQueryParamType
     {
-        One = 1,
-        Two = 2,
-        Three = 3,
-        Four = 4,
+        Movie = 1,
+        Show = 2,
+        Season = 3,
+        Episode = 4,
     }
 
 }

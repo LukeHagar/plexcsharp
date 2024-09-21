@@ -34,28 +34,19 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         [JsonProperty("defaultSubtitleLanguage", NullValueHandling = NullValueHandling.Include)]
         public string? DefaultSubtitleLanguage { get; set; }
 
-        /// <summary>
-        /// The auto-select subtitle mode (0 = Manually selected, 1 = Shown with foreign audio, 2 = Always enabled)
-        /// </summary>
         [JsonProperty("autoSelectSubtitle")]
-        public PostUsersSignInDataAutoSelectSubtitle? AutoSelectSubtitle { get; set; }
+        public PostUsersSignInDataAutoSelectSubtitle? AutoSelectSubtitle { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.PostUsersSignInDataAutoSelectSubtitle.Disable;
 
-        /// <summary>
-        /// The subtitles for the deaf or hard-of-hearing (SDH) searches mode (0 = Prefer non-SDH subtitles, 1 = Prefer SDH subtitles, 2 = Only show SDH subtitles, 3 = Only shown non-SDH subtitles)
-        /// </summary>
         [JsonProperty("defaultSubtitleAccessibility")]
-        public PostUsersSignInDataDefaultSubtitleAccessibility? DefaultSubtitleAccessibility { get; set; }
+        public PostUsersSignInDataDefaultSubtitleAccessibility? DefaultSubtitleAccessibility { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.PostUsersSignInDataDefaultSubtitleAccessibility.Disable;
 
-        /// <summary>
-        /// The forced subtitles searches mode (0 = Prefer non-forced subtitles, 1 = Prefer forced subtitles, 2 = Only show forced subtitles, 3 = Only show non-forced subtitles)
-        /// </summary>
         [JsonProperty("defaultSubtitleForced")]
-        public PostUsersSignInDataDefaultSubtitleForced? DefaultSubtitleForced { get; set; }
+        public PostUsersSignInDataDefaultSubtitleForced? DefaultSubtitleForced { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.PostUsersSignInDataDefaultSubtitleForced.Disable;
 
         [JsonProperty("watchedIndicator")]
-        public PostUsersSignInDataWatchedIndicator? WatchedIndicator { get; set; }
+        public PostUsersSignInDataWatchedIndicator? WatchedIndicator { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.PostUsersSignInDataWatchedIndicator.Disable;
 
         [JsonProperty("mediaReviewsVisibility")]
-        public PostUsersSignInDataMediaReviewsVisibility? MediaReviewsVisibility { get; set; }
+        public PostUsersSignInDataMediaReviewsVisibility? MediaReviewsVisibility { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.PostUsersSignInDataMediaReviewsVisibility.Disable;
     }
 }

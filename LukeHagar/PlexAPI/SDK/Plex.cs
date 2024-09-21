@@ -75,7 +75,7 @@ namespace LukeHagar.PlexAPI.SDK
         /// Get Plex server access tokens and server connections
         /// </remarks>
         /// </summary>
-        Task<GetServerResourcesResponse> GetServerResourcesAsync(string? clientID = null, IncludeHttps? includeHttps = null, IncludeRelay? includeRelay = null, IncludeIPv6? includeIPv6 = null, string? serverUrl = null);
+        Task<GetServerResourcesResponse> GetServerResourcesAsync(IncludeHttps? includeHttps = null, IncludeRelay? includeRelay = null, IncludeIPv6? includeIPv6 = null, string? serverUrl = null);
 
         /// <summary>
         /// Get a Pin
@@ -93,7 +93,7 @@ namespace LukeHagar.PlexAPI.SDK
         /// Retrieve an Access Token from Plex.tv after the Pin has been authenticated
         /// </remarks>
         /// </summary>
-        Task<GetTokenByPinIdResponse> GetTokenByPinIdAsync(long pinID, string? clientID = null, string? serverUrl = null);
+        Task<GetTokenByPinIdResponse> GetTokenByPinIdAsync(long pinID, string? serverUrl = null);
     }
 
     /// <summary>
@@ -143,10 +143,10 @@ namespace LukeHagar.PlexAPI.SDK
         };
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.6.11";
-        private const string _sdkGenVersion = "2.416.6";
+        private const string _sdkVersion = "0.7.0";
+        private const string _sdkGenVersion = "2.421.3";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.6.11 2.416.6 0.0.3 LukeHagar.PlexAPI.SDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.7.0 2.421.3 0.0.3 LukeHagar.PlexAPI.SDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<LukeHagar.PlexAPI.SDK.Models.Components.Security>? _securitySource;
@@ -228,10 +228,8 @@ namespace LukeHagar.PlexAPI.SDK
                     response.ResponseBodies = obj;
                     return response;
                 }
-                else
-                {
-                    throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-                }
+
+                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 400)
             {
@@ -241,10 +239,8 @@ namespace LukeHagar.PlexAPI.SDK
                     obj!.RawResponse = httpResponse;
                     throw obj!;
                 }
-                else
-                {
-                    throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-                }
+
+                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 401)
             {
@@ -254,19 +250,15 @@ namespace LukeHagar.PlexAPI.SDK
                     obj!.RawResponse = httpResponse;
                     throw obj!;
                 }
-                else
-                {
-                    throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-                }
+
+                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode >= 400 && responseStatusCode < 500 || responseStatusCode >= 500 && responseStatusCode < 600)
             {
-                throw new SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+                throw new Models.Errors.SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
-            else
-            {
-                throw new SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-            }
+
+            throw new Models.Errors.SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
         public async Task<GetUserFriendsResponse> GetUserFriendsAsync(string? serverUrl = null)
@@ -338,10 +330,8 @@ namespace LukeHagar.PlexAPI.SDK
                     response.Friends = obj;
                     return response;
                 }
-                else
-                {
-                    throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-                }
+
+                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 400)
             {
@@ -351,10 +341,8 @@ namespace LukeHagar.PlexAPI.SDK
                     obj!.RawResponse = httpResponse;
                     throw obj!;
                 }
-                else
-                {
-                    throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-                }
+
+                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 401)
             {
@@ -364,19 +352,15 @@ namespace LukeHagar.PlexAPI.SDK
                     obj!.RawResponse = httpResponse;
                     throw obj!;
                 }
-                else
-                {
-                    throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-                }
+
+                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode >= 400 && responseStatusCode < 500 || responseStatusCode >= 500 && responseStatusCode < 600)
             {
-                throw new SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+                throw new Models.Errors.SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
-            else
-            {
-                throw new SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-            }
+
+            throw new Models.Errors.SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
         public async Task<GetGeoDataResponse> GetGeoDataAsync(string? serverUrl = null)
@@ -443,10 +427,8 @@ namespace LukeHagar.PlexAPI.SDK
                     response.GeoData = obj;
                     return response;
                 }
-                else
-                {
-                    throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-                }
+
+                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 400)
             {
@@ -456,10 +438,8 @@ namespace LukeHagar.PlexAPI.SDK
                     obj!.RawResponse = httpResponse;
                     throw obj!;
                 }
-                else
-                {
-                    throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-                }
+
+                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 401)
             {
@@ -469,19 +449,15 @@ namespace LukeHagar.PlexAPI.SDK
                     obj!.RawResponse = httpResponse;
                     throw obj!;
                 }
-                else
-                {
-                    throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-                }
+
+                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode >= 400 && responseStatusCode < 500 || responseStatusCode >= 500 && responseStatusCode < 600)
             {
-                throw new SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+                throw new Models.Errors.SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
-            else
-            {
-                throw new SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-            }
+
+            throw new Models.Errors.SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
         public async Task<GetHomeDataResponse> GetHomeDataAsync()
@@ -548,10 +524,8 @@ namespace LukeHagar.PlexAPI.SDK
                     response.Object = obj;
                     return response;
                 }
-                else
-                {
-                    throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-                }
+
+                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 400)
             {
@@ -561,10 +535,8 @@ namespace LukeHagar.PlexAPI.SDK
                     obj!.RawResponse = httpResponse;
                     throw obj!;
                 }
-                else
-                {
-                    throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-                }
+
+                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 401)
             {
@@ -574,32 +546,25 @@ namespace LukeHagar.PlexAPI.SDK
                     obj!.RawResponse = httpResponse;
                     throw obj!;
                 }
-                else
-                {
-                    throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-                }
+
+                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode >= 400 && responseStatusCode < 500 || responseStatusCode >= 500 && responseStatusCode < 600)
             {
-                throw new SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+                throw new Models.Errors.SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
-            else
-            {
-                throw new SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-            }
+
+            throw new Models.Errors.SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<GetServerResourcesResponse> GetServerResourcesAsync(string? clientID = null, IncludeHttps? includeHttps = null, IncludeRelay? includeRelay = null, IncludeIPv6? includeIPv6 = null, string? serverUrl = null)
+        public async Task<GetServerResourcesResponse> GetServerResourcesAsync(IncludeHttps? includeHttps = null, IncludeRelay? includeRelay = null, IncludeIPv6? includeIPv6 = null, string? serverUrl = null)
         {
             var request = new GetServerResourcesRequest()
             {
-                ClientID = clientID,
                 IncludeHttps = includeHttps,
                 IncludeRelay = includeRelay,
                 IncludeIPv6 = includeIPv6,
             };
-            request.ClientID ??= SDKConfiguration.ClientID;
-            
             string baseUrl = Utilities.TemplateUrl(GetServerResourcesServerList[0], new Dictionary<string, string>(){
             });
             if (serverUrl != null)
@@ -666,10 +631,8 @@ namespace LukeHagar.PlexAPI.SDK
                     response.PlexDevices = obj;
                     return response;
                 }
-                else
-                {
-                    throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-                }
+
+                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 400)
             {
@@ -679,10 +642,8 @@ namespace LukeHagar.PlexAPI.SDK
                     obj!.RawResponse = httpResponse;
                     throw obj!;
                 }
-                else
-                {
-                    throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-                }
+
+                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 401)
             {
@@ -692,24 +653,19 @@ namespace LukeHagar.PlexAPI.SDK
                     obj!.RawResponse = httpResponse;
                     throw obj!;
                 }
-                else
-                {
-                    throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-                }
+
+                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode >= 400 && responseStatusCode < 500 || responseStatusCode >= 500 && responseStatusCode < 600)
             {
-                throw new SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+                throw new Models.Errors.SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
-            else
-            {
-                throw new SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-            }
+
+            throw new Models.Errors.SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
         public async Task<GetPinResponse> GetPinAsync(GetPinRequest? request = null, string? serverUrl = null)
         {
-            request.ClientID ??= SDKConfiguration.ClientID;
             request.ClientName ??= SDKConfiguration.ClientName;
             request.ClientVersion ??= SDKConfiguration.ClientVersion;
             request.ClientPlatform ??= SDKConfiguration.ClientPlatform;
@@ -776,10 +732,8 @@ namespace LukeHagar.PlexAPI.SDK
                     response.AuthPinContainer = obj;
                     return response;
                 }
-                else
-                {
-                    throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-                }
+
+                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 400)
             {
@@ -789,30 +743,23 @@ namespace LukeHagar.PlexAPI.SDK
                     obj!.RawResponse = httpResponse;
                     throw obj!;
                 }
-                else
-                {
-                    throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-                }
+
+                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode >= 400 && responseStatusCode < 500 || responseStatusCode >= 500 && responseStatusCode < 600)
             {
-                throw new SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+                throw new Models.Errors.SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
-            else
-            {
-                throw new SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-            }
+
+            throw new Models.Errors.SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<GetTokenByPinIdResponse> GetTokenByPinIdAsync(long pinID, string? clientID = null, string? serverUrl = null)
+        public async Task<GetTokenByPinIdResponse> GetTokenByPinIdAsync(long pinID, string? serverUrl = null)
         {
             var request = new GetTokenByPinIdRequest()
             {
                 PinID = pinID,
-                ClientID = clientID,
             };
-            request.ClientID ??= SDKConfiguration.ClientID;
-            
             string baseUrl = Utilities.TemplateUrl(GetTokenByPinIdServerList[0], new Dictionary<string, string>(){
             });
             if (serverUrl != null)
@@ -874,10 +821,8 @@ namespace LukeHagar.PlexAPI.SDK
                     response.AuthPinContainer = obj;
                     return response;
                 }
-                else
-                {
-                    throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-                }
+
+                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 400)
             {
@@ -887,10 +832,8 @@ namespace LukeHagar.PlexAPI.SDK
                     obj!.RawResponse = httpResponse;
                     throw obj!;
                 }
-                else
-                {
-                    throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-                }
+
+                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 404)
             {
@@ -900,19 +843,15 @@ namespace LukeHagar.PlexAPI.SDK
                     obj!.RawResponse = httpResponse;
                     throw obj!;
                 }
-                else
-                {
-                    throw new SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-                }
+
+                throw new Models.Errors.SDKException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode >= 400 && responseStatusCode < 500 || responseStatusCode >= 500 && responseStatusCode < 600)
             {
-                throw new SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
+                throw new Models.Errors.SDKException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
-            else
-            {
-                throw new SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-            }
+
+            throw new Models.Errors.SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
     }
 }

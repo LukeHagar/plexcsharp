@@ -18,75 +18,75 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     {
 
         [JsonProperty("allowSync")]
-        public bool? AllowSync { get; set; }
+        public bool AllowSync { get; set; } = default!;
 
         [JsonProperty("art")]
-        public string? Art { get; set; }
+        public string Art { get; set; } = default!;
 
         [JsonProperty("composite")]
-        public string? Composite { get; set; }
+        public string Composite { get; set; } = default!;
 
         [JsonProperty("filters")]
-        public bool? Filters { get; set; }
+        public bool Filters { get; set; } = default!;
 
         [JsonProperty("refreshing")]
-        public bool? Refreshing { get; set; }
+        public bool Refreshing { get; set; } = default!;
 
         [JsonProperty("thumb")]
-        public string? Thumb { get; set; }
+        public string Thumb { get; set; } = default!;
 
         [JsonProperty("key")]
-        public string? Key { get; set; }
+        public string Key { get; set; } = default!;
 
         [JsonProperty("type")]
-        public string? Type { get; set; }
+        public string Type { get; set; } = default!;
 
         [JsonProperty("title")]
-        public string? Title { get; set; }
+        public string Title { get; set; } = default!;
 
         [JsonProperty("agent")]
-        public string? Agent { get; set; }
+        public string Agent { get; set; } = default!;
 
         [JsonProperty("scanner")]
-        public string? Scanner { get; set; }
+        public string Scanner { get; set; } = default!;
 
         [JsonProperty("language")]
-        public string? Language { get; set; }
+        public string Language { get; set; } = default!;
 
         [JsonProperty("uuid")]
-        public string? Uuid { get; set; }
+        public string Uuid { get; set; } = default!;
 
         /// <summary>
-        /// Unix epoch datetime
+        /// Unix epoch datetime in seconds
         /// </summary>
         [JsonProperty("updatedAt")]
-        public long? UpdatedAt { get; set; }
+        public long UpdatedAt { get; set; } = default!;
 
         /// <summary>
-        /// Unix epoch datetime
+        /// Unix epoch datetime in seconds
         /// </summary>
         [JsonProperty("createdAt")]
-        public long? CreatedAt { get; set; }
+        public long CreatedAt { get; set; } = default!;
 
         /// <summary>
-        /// Unix epoch datetime
+        /// Unix epoch datetime in seconds
         /// </summary>
         [JsonProperty("scannedAt")]
-        public long? ScannedAt { get; set; }
+        public long ScannedAt { get; set; } = default!;
 
         [JsonProperty("content")]
-        public bool? Content { get; set; }
+        public bool Content { get; set; } = default!;
 
         [JsonProperty("directory")]
-        public bool? Directory { get; set; }
+        public bool Directory { get; set; } = default!;
 
         [JsonProperty("contentChangedAt")]
-        public int? ContentChangedAt { get; set; }
+        public int ContentChangedAt { get; set; } = default!;
 
         [JsonProperty("hidden")]
-        public int? Hidden { get; set; }
+        public int Hidden { get; set; } = default!;
 
         [JsonProperty("Location")]
-        public List<Location>? Location { get; set; }
+        public List<Location> Location { get; set; } = default!;
     }
 }

@@ -1,9 +1,11 @@
 # PostUsersSignInDataMediaReviewsVisibility
 
+Whether or not the account has media reviews visibility enabled
+
 
 ## Values
 
-| Name   | Value  |
-| ------ | ------ |
-| `Zero` | 0      |
-| `One`  | 1      |
+| Name      | Value     |
+| --------- | --------- |
+| `Disable` | 0         |
+| `Enable`  | 1         |

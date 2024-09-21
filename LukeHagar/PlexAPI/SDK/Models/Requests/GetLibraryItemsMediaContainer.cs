@@ -19,43 +19,43 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     {
 
         [JsonProperty("size")]
-        public int? Size { get; set; }
+        public int Size { get; set; } = default!;
 
         [JsonProperty("allowSync")]
-        public bool? AllowSync { get; set; }
+        public bool AllowSync { get; set; } = default!;
 
         [JsonProperty("art")]
-        public string? Art { get; set; }
+        public string Art { get; set; } = default!;
 
         [JsonProperty("identifier")]
-        public string? Identifier { get; set; }
+        public string Identifier { get; set; } = default!;
 
         [JsonProperty("librarySectionID")]
-        public LibrarySectionID? LibrarySectionID { get; set; }
+        public LibrarySectionID LibrarySectionID { get; set; } = default!;
 
         [JsonProperty("librarySectionTitle")]
-        public string? LibrarySectionTitle { get; set; }
+        public string LibrarySectionTitle { get; set; } = default!;
 
         [JsonProperty("librarySectionUUID")]
-        public string? LibrarySectionUUID { get; set; }
+        public string LibrarySectionUUID { get; set; } = default!;
 
         [JsonProperty("mediaTagPrefix")]
-        public string? MediaTagPrefix { get; set; }
+        public string MediaTagPrefix { get; set; } = default!;
 
         [JsonProperty("mediaTagVersion")]
-        public int? MediaTagVersion { get; set; }
+        public int MediaTagVersion { get; set; } = default!;
 
         [JsonProperty("thumb")]
-        public string? Thumb { get; set; }
+        public string Thumb { get; set; } = default!;
 
         [JsonProperty("title1")]
-        public string? Title1 { get; set; }
+        public string Title1 { get; set; } = default!;
 
         [JsonProperty("title2")]
-        public string? Title2 { get; set; }
+        public string Title2 { get; set; } = default!;
 
         [JsonProperty("viewGroup")]
-        public string? ViewGroup { get; set; }
+        public string ViewGroup { get; set; } = default!;
 
         [JsonProperty("viewMode")]
         public int? ViewMode { get; set; }
@@ -65,5 +65,15 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
 
         [JsonProperty("Metadata")]
         public List<GetLibraryItemsMetadata>? Metadata { get; set; }
+
+        /// <summary>
+        /// The Meta object is only included in the response if the `includeMeta` parameter is set to `1`.<br/>
+        /// 
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// </summary>
+        [JsonProperty("Meta")]
+        public Meta? Meta { get; set; }
     }
 }

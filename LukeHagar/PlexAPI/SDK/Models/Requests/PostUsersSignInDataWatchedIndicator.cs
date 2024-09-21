@@ -10,48 +10,14 @@
 namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
     using LukeHagar.PlexAPI.SDK.Utils;
-    using Newtonsoft.Json;
-    using System;
     
+    /// <summary>
+    /// Whether or not media watched indicators are enabled (little orange dot on media)
+    /// </summary>
     public enum PostUsersSignInDataWatchedIndicator
     {
-        [JsonProperty("0")]
-        Zero,
-        [JsonProperty("1")]
-        One,
-    }
-
-    public static class PostUsersSignInDataWatchedIndicatorExtension
-    {
-        public static string Value(this PostUsersSignInDataWatchedIndicator value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static PostUsersSignInDataWatchedIndicator ToEnum(this string value)
-        {
-            foreach(var field in typeof(PostUsersSignInDataWatchedIndicator).GetFields())
-            {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
-
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
-
-                    if (enumVal is PostUsersSignInDataWatchedIndicator)
-                    {
-                        return (PostUsersSignInDataWatchedIndicator)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum PostUsersSignInDataWatchedIndicator");
-        }
+        Disable = 0,
+        Enable = 1,
     }
 
 }

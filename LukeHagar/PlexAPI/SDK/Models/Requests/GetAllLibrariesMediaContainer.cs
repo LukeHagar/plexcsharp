@@ -27,6 +27,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public string Title1 { get; set; } = default!;
 
         [JsonProperty("Directory")]
-        public List<GetAllLibrariesDirectory>? Directory { get; set; }
+        public List<GetAllLibrariesDirectory> Directory { get; set; } = default!;
     }
 }

@@ -16,8 +16,8 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     /// </summary>
     public enum IncludeIPv6
     {
-        Zero = 0,
-        One = 1,
+        Disable = 0,
+        Enable = 1,
     }
 
 }

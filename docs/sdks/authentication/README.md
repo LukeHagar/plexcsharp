@@ -84,7 +84,7 @@ var sdk = new PlexAPI(
     deviceName: "Linux"
 );
 
-var res = await sdk.Authentication.GetSourceConnectionInformationAsync(source: "server://client-identifier");
+var res = await sdk.Authentication.GetSourceConnectionInformationAsync(source: "provider://provider-identifier");
 
 // handle response
 ```
@@ -170,25 +170,23 @@ var sdk = new PlexAPI(
     deviceName: "Linux"
 );
 
-var res = await sdk.Authentication.PostUsersSignInDataAsync(
-    clientID: "gcgzw5rz2xovp84b4vha3a40",
-    requestBody: new PostUsersSignInDataRequestBody() {
-        Login = "username@email.com",
-        Password = "password123",
-        VerificationCode = "123456",
-    }
-);
+PostUsersSignInDataRequestBody req = new PostUsersSignInDataRequestBody() {
+    Login = "username@email.com",
+    Password = "password123",
+    VerificationCode = "123456",
+};
+
+var res = await sdk.Authentication.PostUsersSignInDataAsync(req);
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                                                                                                                                                             | Type                                                                                                                                                                  | Required                                                                                                                                                              | Description                                                                                                                                                           | Example                                                                                                                                                               |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ClientID`                                                                                                                                                            | *string*                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                    | The unique identifier for the client application<br/>This is used to track the client application and its usage<br/>(UUID, serial number, or other number unique per device)<br/> | gcgzw5rz2xovp84b4vha3a40                                                                                                                                              |
-| `RequestBody`                                                                                                                                                         | [PostUsersSignInDataRequestBody](../../Models/Requests/PostUsersSignInDataRequestBody.md)                                                                             | :heavy_minus_sign:                                                                                                                                                    | Login credentials                                                                                                                                                     |                                                                                                                                                                       |
-| `serverURL`                                                                                                                                                           | *string*                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                    | An optional server URL to use.                                                                                                                                        | http://localhost:8080                                                                                                                                                 |
+| Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `request`                                                                                 | [PostUsersSignInDataRequestBody](../../Models/Requests/PostUsersSignInDataRequestBody.md) | :heavy_check_mark:                                                                        | The request object to use for the request.                                                |
+| `serverURL`                                                                               | *string*                                                                                  | :heavy_minus_sign:                                                                        | An optional server URL to use.                                                            |
 
 ### Response
 

@@ -16,22 +16,10 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     {
 
         /// <summary>
-        /// The unique identifier for the client application<br/>
-        /// 
-        /// <remarks>
-        /// This is used to track the client application and its usage<br/>
-        /// (UUID, serial number, or other number unique per device)<br/>
-        /// 
-        /// </remarks>
-        /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=X-Plex-Client-Identifier")]
-        public string? ClientID { get; set; }
-
-        /// <summary>
         /// Include Https entries in the results
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=includeHttps")]
-        public IncludeHttps? IncludeHttps { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeHttps.Zero;
+        public IncludeHttps? IncludeHttps { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeHttps.Disable;
 
         /// <summary>
         /// Include Relay addresses in the results <br/>
@@ -42,12 +30,12 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// </remarks>
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=includeRelay")]
-        public IncludeRelay? IncludeRelay { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeRelay.Zero;
+        public IncludeRelay? IncludeRelay { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeRelay.Disable;
 
         /// <summary>
         /// Include IPv6 entries in the results
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=includeIPv6")]
-        public IncludeIPv6? IncludeIPv6 { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeIPv6.Zero;
+        public IncludeIPv6? IncludeIPv6 { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeIPv6.Disable;
     }
 }

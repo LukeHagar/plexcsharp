@@ -275,10 +275,10 @@ namespace LukeHagar.PlexAPI.SDK
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.6.11";
-        private const string _sdkGenVersion = "2.416.6";
+        private const string _sdkVersion = "0.7.0";
+        private const string _sdkGenVersion = "2.421.3";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.6.11 2.416.6 0.0.3 LukeHagar.PlexAPI.SDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.7.0 2.421.3 0.0.3 LukeHagar.PlexAPI.SDK";
         private string _serverUrl = "";
         private int _serverIndex = 0;
         private ISpeakeasyHttpClient _client;

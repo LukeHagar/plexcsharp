@@ -10,51 +10,14 @@
 namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
     using LukeHagar.PlexAPI.SDK.Utils;
-    using Newtonsoft.Json;
-    using System;
     
     /// <summary>
     /// The forced subtitles searches mode (0 = Prefer non-forced subtitles, 1 = Prefer forced subtitles, 2 = Only show forced subtitles, 3 = Only show non-forced subtitles)
     /// </summary>
     public enum DefaultSubtitleForced
     {
-        [JsonProperty("0")]
-        Zero,
-        [JsonProperty("1")]
-        One,
-    }
-
-    public static class DefaultSubtitleForcedExtension
-    {
-        public static string Value(this DefaultSubtitleForced value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static DefaultSubtitleForced ToEnum(this string value)
-        {
-            foreach(var field in typeof(DefaultSubtitleForced).GetFields())
-            {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
-
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
-
-                    if (enumVal is DefaultSubtitleForced)
-                    {
-                        return (DefaultSubtitleForced)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum DefaultSubtitleForced");
-        }
+        Disable = 0,
+        Enable = 1,
     }
 
 }

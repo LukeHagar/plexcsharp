@@ -20,6 +20,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     {
 
         [JsonProperty("MediaContainer")]
-        public GetAllLibrariesMediaContainer? MediaContainer { get; set; }
+        public GetAllLibrariesMediaContainer MediaContainer { get; set; } = default!;
     }
 }

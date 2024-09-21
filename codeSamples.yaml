@@ -470,8 +470,8 @@ actions:
             );
 
             var res = await sdk.Search.PerformSearchAsync(
-                query: "arnold",
-                sectionId: 9372.7D,
+                query: "dylan",
+                sectionId: 5838.67D,
                 limit: 5D
             );
 
@@ -497,7 +497,7 @@ actions:
 
             var res = await sdk.Search.PerformVoiceSearchAsync(
                 query: "dead+poop",
-                sectionId: 4094.8D,
+                sectionId: 4094.80D,
                 limit: 5D
             );
 
@@ -523,8 +523,8 @@ actions:
 
             var res = await sdk.Hubs.GetLibraryHubsAsync(
                 sectionId: 6728.76D,
-                count: 9010.22D,
-                onlyTransient: LukeHagar.PlexAPI.SDK.Models.Requests.QueryParamOnlyTransient.Zero
+                count: 639.24D,
+                onlyTransient: LukeHagar.PlexAPI.SDK.Models.Requests.QueryParamOnlyTransient.One
             );
 
             // handle response
@@ -568,7 +568,7 @@ actions:
             );
 
             var res = await sdk.Library.GetTopWatchedContentAsync(
-                type: LukeHagar.PlexAPI.SDK.Models.Requests.GetTopWatchedContentQueryParamType.Two,
+                type: LukeHagar.PlexAPI.SDK.Models.Requests.GetTopWatchedContentQueryParamType.Show,
                 includeGuids: 1
             );
 
@@ -671,7 +671,7 @@ actions:
             );
 
             var res = await sdk.Library.GetMetadataChildrenAsync(
-                ratingKey: 1539.14D,
+                ratingKey: 1539.15D,
                 includeElements: "<value>"
             );
 
@@ -896,7 +896,7 @@ actions:
 
             var res = await sdk.Library.GetSearchLibraryAsync(
                 sectionKey: 9518,
-                type: LukeHagar.PlexAPI.SDK.Models.Requests.QueryParamType.Two
+                type: LukeHagar.PlexAPI.SDK.Models.Requests.QueryParamType.Show
             );
 
             // handle response
@@ -922,9 +922,9 @@ actions:
             GetLibraryItemsRequest req = new GetLibraryItemsRequest() {
                 SectionKey = 9518,
                 Tag = LukeHagar.PlexAPI.SDK.Models.Requests.Tag.Edition,
-                IncludeGuids = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeGuids.One,
-                IncludeMeta = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeMeta.One,
-                Type = LukeHagar.PlexAPI.SDK.Models.Requests.Type.Two,
+                IncludeGuids = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeGuids.Enable,
+                IncludeMeta = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeMeta.Enable,
+                Type = LukeHagar.PlexAPI.SDK.Models.Requests.Type.Show,
                 XPlexContainerStart = 0,
                 XPlexContainerSize = 50,
             };
@@ -1070,9 +1070,9 @@ actions:
                 Width = 110D,
                 Height = 165D,
                 Opacity = 100,
-                Blur = 4000D,
-                MinSize = LukeHagar.PlexAPI.SDK.Models.Requests.MinSize.Zero,
-                Upscale = LukeHagar.PlexAPI.SDK.Models.Requests.Upscale.Zero,
+                Blur = 0D,
+                MinSize = LukeHagar.PlexAPI.SDK.Models.Requests.MinSize.One,
+                Upscale = LukeHagar.PlexAPI.SDK.Models.Requests.Upscale.One,
                 Url = "/library/metadata/49564/thumb/1654258204",
             };
 
@@ -1120,10 +1120,7 @@ actions:
                 deviceName: "Linux"
             );
 
-            var res = await sdk.Plex.GetTokenByPinIdAsync(
-                pinID: 408895,
-                clientID: "gcgzw5rz2xovp84b4vha3a40"
-            );
+            var res = await sdk.Plex.GetTokenByPinIdAsync(pinID: 408895);
 
             // handle response
   - target: $["paths"]["/playlists"]["get"]
@@ -1174,7 +1171,7 @@ actions:
                 Title = "<value>",
                 Type = LukeHagar.PlexAPI.SDK.Models.Requests.CreatePlaylistQueryParamType.Photo,
                 Smart = LukeHagar.PlexAPI.SDK.Models.Requests.Smart.One,
-                Uri = "https://inborn-brochure.biz",
+                Uri = "https://hoarse-testing.info/",
             };
 
             var res = await sdk.Playlists.CreatePlaylistAsync(req);
@@ -1201,7 +1198,8 @@ actions:
 
             var res = await sdk.Playlists.UploadPlaylistAsync(
                 path: "/home/barkley/playlist.m3u",
-                force: LukeHagar.PlexAPI.SDK.Models.Requests.QueryParamForce.Zero
+                force: LukeHagar.PlexAPI.SDK.Models.Requests.QueryParamForce.Zero,
+                sectionID: 1
             );
 
             // handle response
@@ -1269,7 +1267,7 @@ actions:
             );
 
             var res = await sdk.Playlists.UpdatePlaylistAsync(
-                playlistID: 3915D,
+                playlistID: 3915.00D,
                 title: "<value>",
                 summary: "<value>"
             );
@@ -1318,7 +1316,7 @@ actions:
 
             var res = await sdk.Playlists.GetPlaylistContentsAsync(
                 playlistID: 5004.46D,
-                type: LukeHagar.PlexAPI.SDK.Models.Requests.GetPlaylistContentsQueryParamType.Two
+                type: LukeHagar.PlexAPI.SDK.Models.Requests.GetPlaylistContentsQueryParamType.Show
             );
 
             // handle response
@@ -1342,7 +1340,7 @@ actions:
             );
 
             var res = await sdk.Playlists.AddPlaylistContentsAsync(
-                playlistID: 8502.01D,
+                playlistID: 8502.00D,
                 uri: "server://12345/com.plexapp.plugins.library/library/metadata/1",
                 playQueueID: 123D
             );
@@ -1368,10 +1366,9 @@ actions:
             );
 
             var res = await sdk.Plex.GetServerResourcesAsync(
-                clientID: "gcgzw5rz2xovp84b4vha3a40",
-                includeHttps: LukeHagar.PlexAPI.SDK.Models.Requests.IncludeHttps.One,
-                includeRelay: LukeHagar.PlexAPI.SDK.Models.Requests.IncludeRelay.One,
-                includeIPv6: LukeHagar.PlexAPI.SDK.Models.Requests.IncludeIPv6.One
+                includeHttps: LukeHagar.PlexAPI.SDK.Models.Requests.IncludeHttps.Enable,
+                includeRelay: LukeHagar.PlexAPI.SDK.Models.Requests.IncludeRelay.Enable,
+                includeIPv6: LukeHagar.PlexAPI.SDK.Models.Requests.IncludeIPv6.Enable
             );
 
             // handle response
@@ -1416,7 +1413,7 @@ actions:
                 deviceName: "Linux"
             );
 
-            var res = await sdk.Authentication.GetSourceConnectionInformationAsync(source: "server://client-identifier");
+            var res = await sdk.Authentication.GetSourceConnectionInformationAsync(source: "provider://provider-identifier");
 
             // handle response
   - target: $["paths"]["/security/token"]["get"]
@@ -1729,14 +1726,13 @@ actions:
                 deviceName: "Linux"
             );
 
-            var res = await sdk.Authentication.PostUsersSignInDataAsync(
-                clientID: "gcgzw5rz2xovp84b4vha3a40",
-                requestBody: new PostUsersSignInDataRequestBody() {
-                    Login = "username@email.com",
-                    Password = "password123",
-                    VerificationCode = "123456",
-                }
-            );
+            PostUsersSignInDataRequestBody req = new PostUsersSignInDataRequestBody() {
+                Login = "username@email.com",
+                Password = "password123",
+                VerificationCode = "123456",
+            };
+
+            var res = await sdk.Authentication.PostUsersSignInDataAsync(req);
 
             // handle response
   - target: $["paths"]["/video/:/transcode/universal/start.mpd"]["get"]

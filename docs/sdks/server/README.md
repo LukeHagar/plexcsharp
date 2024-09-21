@@ -263,9 +263,9 @@ GetResizedPhotoRequest req = new GetResizedPhotoRequest() {
     Width = 110D,
     Height = 165D,
     Opacity = 100,
-    Blur = 4000D,
-    MinSize = LukeHagar.PlexAPI.SDK.Models.Requests.MinSize.Zero,
-    Upscale = LukeHagar.PlexAPI.SDK.Models.Requests.Upscale.Zero,
+    Blur = 0D,
+    MinSize = LukeHagar.PlexAPI.SDK.Models.Requests.MinSize.One,
+    Upscale = LukeHagar.PlexAPI.SDK.Models.Requests.Upscale.One,
     Url = "/library/metadata/49564/thumb/1654258204",
 };
 

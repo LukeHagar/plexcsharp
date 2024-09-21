@@ -42,5 +42,11 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=force")]
         public QueryParamForce Force { get; set; } = default!;
+
+        /// <summary>
+        /// Possibly the section ID to upload the playlist to, we are not certain.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=sectionID")]
+        public long SectionID { get; set; } = 1;
     }
 }
