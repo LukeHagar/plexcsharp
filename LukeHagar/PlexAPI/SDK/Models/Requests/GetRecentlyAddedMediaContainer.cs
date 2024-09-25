@@ -18,22 +18,29 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     {
 
         [JsonProperty("size")]
-        public double? Size { get; set; }
+        public double Size { get; set; } = default!;
 
-        [JsonProperty("allowSync")]
-        public bool? AllowSync { get; set; }
+        [JsonProperty("offset")]
+        public int? Offset { get; set; }
+
+        [JsonProperty("totalSize")]
+        public int? TotalSize { get; set; }
 
         [JsonProperty("identifier")]
         public string? Identifier { get; set; }
 
-        [JsonProperty("mediaTagPrefix")]
-        public string? MediaTagPrefix { get; set; }
+        [JsonProperty("allowSync")]
+        public bool? AllowSync { get; set; }
 
-        [JsonProperty("mediaTagVersion")]
-        public double? MediaTagVersion { get; set; }
-
-        [JsonProperty("mixedParents")]
-        public bool? MixedParents { get; set; }
+        /// <summary>
+        /// The Meta object is only included in the response if the `includeMeta` parameter is set to `1`.<br/>
+        /// 
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// </summary>
+        [JsonProperty("Meta")]
+        public Meta? Meta { get; set; }
 
         [JsonProperty("Metadata")]
         public List<GetRecentlyAddedMetadata>? Metadata { get; set; }

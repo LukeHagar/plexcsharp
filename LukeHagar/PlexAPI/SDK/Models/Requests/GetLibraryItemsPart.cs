@@ -12,6 +12,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using LukeHagar.PlexAPI.SDK.Models.Requests;
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
+    using System.Collections.Generic;
     
     public class GetLibraryItemsPart
     {
@@ -44,6 +45,12 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         [JsonProperty("audioProfile")]
         public string? AudioProfile { get; set; }
 
+        [JsonProperty("has64bitOffsets")]
+        public bool? Has64bitOffsets { get; set; }
+
+        [JsonProperty("optimizedForStreaming")]
+        public bool? OptimizedForStreaming { get; set; }
+
         [JsonProperty("videoProfile")]
         public string VideoProfile { get; set; } = default!;
 
@@ -51,6 +58,9 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public string? Indexes { get; set; }
 
         [JsonProperty("hasThumbnail")]
-        public HasThumbnail? HasThumbnail { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.HasThumbnail.False;
+        public GetLibraryItemsHasThumbnail? HasThumbnail { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.GetLibraryItemsHasThumbnail.False;
+
+        [JsonProperty("Stream")]
+        public List<GetLibraryItemsStream>? Stream { get; set; }
     }
 }

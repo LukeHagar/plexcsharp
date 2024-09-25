@@ -9,53 +9,33 @@
 #nullable enable
 namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
+    using LukeHagar.PlexAPI.SDK.Models.Requests;
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
-    using System;
+    using System.Collections.Generic;
     
-    public enum GetLibraryItemsLibraryResponseType
+    public class GetLibraryItemsLibraryResponseType
     {
-        [JsonProperty("coverPoster")]
-        CoverPoster,
-        [JsonProperty("background")]
-        Background,
-        [JsonProperty("snapshot")]
-        Snapshot,
-        [JsonProperty("clearLogo")]
-        ClearLogo,
+
+        [JsonProperty("key")]
+        public string Key { get; set; } = default!;
+
+        [JsonProperty("type")]
+        public string Type { get; set; } = default!;
+
+        [JsonProperty("title")]
+        public string Title { get; set; } = default!;
+
+        [JsonProperty("active")]
+        public bool Active { get; set; } = default!;
+
+        [JsonProperty("Filter")]
+        public List<GetLibraryItemsLibraryFilter>? Filter { get; set; }
+
+        [JsonProperty("Sort")]
+        public List<GetLibraryItemsLibrarySort>? Sort { get; set; }
+
+        [JsonProperty("Field")]
+        public List<GetLibraryItemsLibraryField>? Field { get; set; }
     }
-
-    public static class GetLibraryItemsLibraryResponseTypeExtension
-    {
-        public static string Value(this GetLibraryItemsLibraryResponseType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static GetLibraryItemsLibraryResponseType ToEnum(this string value)
-        {
-            foreach(var field in typeof(GetLibraryItemsLibraryResponseType).GetFields())
-            {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
-
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
-
-                    if (enumVal is GetLibraryItemsLibraryResponseType)
-                    {
-                        return (GetLibraryItemsLibraryResponseType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum GetLibraryItemsLibraryResponseType");
-        }
-    }
-
 }

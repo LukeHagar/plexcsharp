@@ -39,6 +39,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// </remarks>
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=type")]
-        public QueryParamType Type { get; set; } = default!;
+        public GetSearchLibraryQueryParamType Type { get; set; } = default!;
     }
 }

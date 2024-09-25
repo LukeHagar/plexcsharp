@@ -1,14 +1,14 @@
 # GetLibraryItemsLibraryType
 
+The type of media content
 
-## Fields
 
-| Field                                                                         | Type                                                                          | Required                                                                      | Description                                                                   | Example                                                                       |
-| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| `Key`                                                                         | *string*                                                                      | :heavy_check_mark:                                                            | N/A                                                                           | /library/sections/2/all?type=2                                                |
-| `Type`                                                                        | *string*                                                                      | :heavy_check_mark:                                                            | N/A                                                                           | show                                                                          |
-| `Title`                                                                       | *string*                                                                      | :heavy_check_mark:                                                            | N/A                                                                           | TV Shows                                                                      |
-| `Active`                                                                      | *bool*                                                                        | :heavy_check_mark:                                                            | N/A                                                                           | false                                                                         |
-| `Filter`                                                                      | List<[GetLibraryItemsFilter](../../Models/Requests/GetLibraryItemsFilter.md)> | :heavy_minus_sign:                                                            | N/A                                                                           |                                                                               |
-| `Sort`                                                                        | List<[GetLibraryItemsSort](../../Models/Requests/GetLibraryItemsSort.md)>     | :heavy_minus_sign:                                                            | N/A                                                                           |                                                                               |
-| `Field`                                                                       | List<[GetLibraryItemsField](../../Models/Requests/GetLibraryItemsField.md)>   | :heavy_minus_sign:                                                            | N/A                                                                           |                                                                               |
+
+## Values
+
+| Name      | Value     |
+| --------- | --------- |
+| `Movie`   | movie     |
+| `TvShow`  | show      |
+| `Season`  | season    |
+| `Episode` | episode   |

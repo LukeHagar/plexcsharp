@@ -450,6 +450,37 @@ actions:
             );
 
             // handle response
+  - target: $["paths"]["/hubs/home/recentlyAdded"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: added
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(
+                accessToken: "<YOUR_API_KEY_HERE>",
+                clientID: "gcgzw5rz2xovp84b4vha3a40",
+                clientName: "Plex Web",
+                clientVersion: "4.133.0",
+                clientPlatform: "Chrome",
+                deviceName: "Linux"
+            );
+
+            GetRecentlyAddedRequest req = new GetRecentlyAddedRequest() {
+                ContentDirectoryID = 470161,
+                SectionID = 2,
+                Type = LukeHagar.PlexAPI.SDK.Models.Requests.Type.TvShow,
+                IncludeMeta = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeMeta.Enable,
+                XPlexContainerStart = 0,
+                XPlexContainerSize = 50,
+            };
+
+            var res = await sdk.Hubs.GetRecentlyAddedAsync(req);
+
+            // handle response
   - target: $["paths"]["/hubs/search"]["get"]
     update:
       x-codeSamples:
@@ -471,7 +502,7 @@ actions:
 
             var res = await sdk.Search.PerformSearchAsync(
                 query: "dylan",
-                sectionId: 5838.67D,
+                sectionId: 9372.69D,
                 limit: 5D
             );
 
@@ -732,10 +763,11 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: getRecentlyAdded
+          label: library
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Requests;
+            using System.Collections.Generic;
             using LukeHagar.PlexAPI.SDK.Models.Components;
 
             var sdk = new PlexAPI(
@@ -747,10 +779,30 @@ actions:
                 deviceName: "Linux"
             );
 
-            var res = await sdk.Library.GetRecentlyAddedAsync(
-                xPlexContainerStart: 0,
-                xPlexContainerSize: 50
-            );
+            GetRecentlyAddedLibraryRequest req = new GetRecentlyAddedLibraryRequest() {
+                ContentDirectoryID = 2,
+                PinnedContentDirectoryID = new List<long>() {
+                    3,
+                    5,
+                    7,
+                    13,
+                    12,
+                    1,
+                    6,
+                    14,
+                    2,
+                    10,
+                    16,
+                    17,
+                },
+                SectionID = 2,
+                Type = LukeHagar.PlexAPI.SDK.Models.Requests.QueryParamType.TvShow,
+                IncludeMeta = LukeHagar.PlexAPI.SDK.Models.Requests.QueryParamIncludeMeta.Enable,
+                XPlexContainerStart = 0,
+                XPlexContainerSize = 50,
+            };
+
+            var res = await sdk.Library.GetRecentlyAddedLibraryAsync(req);
 
             // handle response
   - target: $["paths"]["/library/sections"]["get"]
@@ -896,7 +948,7 @@ actions:
 
             var res = await sdk.Library.GetSearchLibraryAsync(
                 sectionKey: 9518,
-                type: LukeHagar.PlexAPI.SDK.Models.Requests.QueryParamType.TvShow
+                type: LukeHagar.PlexAPI.SDK.Models.Requests.GetSearchLibraryQueryParamType.TvShow
             );
 
             // handle response
@@ -923,8 +975,8 @@ actions:
                 SectionKey = 9518,
                 Tag = LukeHagar.PlexAPI.SDK.Models.Requests.Tag.Edition,
                 IncludeGuids = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeGuids.Enable,
-                IncludeMeta = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeMeta.Enable,
-                Type = LukeHagar.PlexAPI.SDK.Models.Requests.Type.TvShow,
+                Type = LukeHagar.PlexAPI.SDK.Models.Requests.GetLibraryItemsQueryParamType.TvShow,
+                IncludeMeta = LukeHagar.PlexAPI.SDK.Models.Requests.GetLibraryItemsQueryParamIncludeMeta.Enable,
                 XPlexContainerStart = 0,
                 XPlexContainerSize = 50,
             };
@@ -1070,8 +1122,8 @@ actions:
                 Width = 110D,
                 Height = 165D,
                 Opacity = 100,
-                Blur = 0D,
-                MinSize = LukeHagar.PlexAPI.SDK.Models.Requests.MinSize.One,
+                Blur = 20D,
+                MinSize = LukeHagar.PlexAPI.SDK.Models.Requests.MinSize.Zero,
                 Upscale = LukeHagar.PlexAPI.SDK.Models.Requests.Upscale.One,
                 Url = "/library/metadata/49564/thumb/1654258204",
             };
@@ -1413,7 +1465,7 @@ actions:
                 deviceName: "Linux"
             );
 
-            var res = await sdk.Authentication.GetSourceConnectionInformationAsync(source: "provider://provider-identifier");
+            var res = await sdk.Authentication.GetSourceConnectionInformationAsync(source: "server://client-identifier");
 
             // handle response
   - target: $["paths"]["/security/token"]["get"]

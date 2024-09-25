@@ -49,7 +49,7 @@ namespace LukeHagar.PlexAPI.SDK
         /// 
         /// </remarks>
         /// </summary>
-        Task<GetRecentlyAddedResponse> GetRecentlyAddedAsync(int? xPlexContainerStart = null, int? xPlexContainerSize = null);
+        Task<GetRecentlyAddedLibraryResponse> GetRecentlyAddedLibraryAsync(GetRecentlyAddedLibraryRequest request);
 
         /// <summary>
         /// Get All Libraries
@@ -187,7 +187,7 @@ namespace LukeHagar.PlexAPI.SDK
         /// 
         /// </remarks>
         /// </summary>
-        Task<GetSearchLibraryResponse> GetSearchLibraryAsync(int sectionKey, QueryParamType type);
+        Task<GetSearchLibraryResponse> GetSearchLibraryAsync(int sectionKey, GetSearchLibraryQueryParamType type);
 
         /// <summary>
         /// Get Metadata by RatingKey
@@ -241,10 +241,10 @@ namespace LukeHagar.PlexAPI.SDK
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.7.1";
-        private const string _sdkGenVersion = "2.421.3";
+        private const string _sdkVersion = "0.8.0";
+        private const string _sdkGenVersion = "2.422.22";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.7.1 2.421.3 0.0.3 LukeHagar.PlexAPI.SDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.8.0 2.422.22 0.0.3 LukeHagar.PlexAPI.SDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<LukeHagar.PlexAPI.SDK.Models.Components.Security>? _securitySource;
@@ -350,13 +350,8 @@ namespace LukeHagar.PlexAPI.SDK
             throw new Models.Errors.SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<GetRecentlyAddedResponse> GetRecentlyAddedAsync(int? xPlexContainerStart = null, int? xPlexContainerSize = null)
+        public async Task<GetRecentlyAddedLibraryResponse> GetRecentlyAddedLibraryAsync(GetRecentlyAddedLibraryRequest request)
         {
-            var request = new GetRecentlyAddedRequest()
-            {
-                XPlexContainerStart = xPlexContainerStart,
-                XPlexContainerSize = xPlexContainerSize,
-            };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/library/recentlyAdded", request);
 
@@ -368,7 +363,7 @@ namespace LukeHagar.PlexAPI.SDK
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("getRecentlyAdded", null, _securitySource);
+            var hookCtx = new HookContext("get-recently-added-library", null, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -408,8 +403,8 @@ namespace LukeHagar.PlexAPI.SDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<GetRecentlyAddedResponseBody>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
-                    var response = new GetRecentlyAddedResponse()
+                    var obj = ResponseBodyDeserializer.Deserialize<GetRecentlyAddedLibraryResponseBody>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new GetRecentlyAddedLibraryResponse()
                     {
                         StatusCode = responseStatusCode,
                         ContentType = contentType,
@@ -425,7 +420,7 @@ namespace LukeHagar.PlexAPI.SDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<GetRecentlyAddedBadRequest>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
+                    var obj = ResponseBodyDeserializer.Deserialize<GetRecentlyAddedLibraryBadRequest>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     obj!.RawResponse = httpResponse;
                     throw obj!;
                 }
@@ -436,7 +431,7 @@ namespace LukeHagar.PlexAPI.SDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<GetRecentlyAddedUnauthorized>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
+                    var obj = ResponseBodyDeserializer.Deserialize<GetRecentlyAddedLibraryUnauthorized>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     obj!.RawResponse = httpResponse;
                     throw obj!;
                 }
@@ -930,7 +925,7 @@ namespace LukeHagar.PlexAPI.SDK
             throw new Models.Errors.SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<GetSearchLibraryResponse> GetSearchLibraryAsync(int sectionKey, QueryParamType type)
+        public async Task<GetSearchLibraryResponse> GetSearchLibraryAsync(int sectionKey, GetSearchLibraryQueryParamType type)
         {
             var request = new GetSearchLibraryRequest()
             {

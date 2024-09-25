@@ -84,7 +84,7 @@ var sdk = new PlexAPI(
     deviceName: "Linux"
 );
 
-var res = await sdk.Authentication.GetSourceConnectionInformationAsync(source: "provider://provider-identifier");
+var res = await sdk.Authentication.GetSourceConnectionInformationAsync(source: "server://client-identifier");
 
 // handle response
 ```

@@ -7,21 +7,15 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 #nullable enable
-namespace LukeHagar.PlexAPI.SDK.Models.Errors
+namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     
-    public class GetRecentlyAddedErrors
+    public class GetRecentlyAddedLibraryDirector
     {
 
-        [JsonProperty("code")]
-        public int? Code { get; set; }
-
-        [JsonProperty("message")]
-        public string? Message { get; set; }
-
-        [JsonProperty("status")]
-        public int? Status { get; set; }
+        [JsonProperty("tag")]
+        public string? Tag { get; set; }
     }
 }

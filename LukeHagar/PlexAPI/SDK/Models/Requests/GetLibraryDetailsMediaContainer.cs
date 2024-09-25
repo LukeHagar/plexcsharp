@@ -60,6 +60,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public List<GetLibraryDetailsType>? Type { get; set; }
 
         [JsonProperty("FieldType")]
-        public List<FieldType>? FieldType { get; set; }
+        public List<GetLibraryDetailsFieldType>? FieldType { get; set; }
     }
 }

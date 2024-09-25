@@ -18,9 +18,9 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     {
 
         [JsonProperty("type")]
-        public string? Type { get; set; }
+        public string Type { get; set; } = default!;
 
         [JsonProperty("Operator")]
-        public List<Operator>? Operator { get; set; }
+        public List<Operator> Operator { get; set; } = default!;
     }
 }

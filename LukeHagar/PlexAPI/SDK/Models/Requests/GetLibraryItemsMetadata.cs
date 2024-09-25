@@ -41,6 +41,15 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         [JsonProperty("skipChildren")]
         public bool? SkipChildren { get; set; }
 
+        [JsonProperty("librarySectionID")]
+        public long? LibrarySectionID { get; set; }
+
+        [JsonProperty("librarySectionTitle")]
+        public string? LibrarySectionTitle { get; set; }
+
+        [JsonProperty("librarySectionKey")]
+        public string? LibrarySectionKey { get; set; }
+
         /// <summary>
         /// The type of media content<br/>
         /// 
@@ -49,7 +58,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// </remarks>
         /// </summary>
         [JsonProperty("type")]
-        public GetLibraryItemsType Type { get; set; } = default!;
+        public GetLibraryItemsLibraryType Type { get; set; } = default!;
 
         [JsonProperty("title")]
         public string Title { get; set; } = default!;
@@ -79,7 +88,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public string? Tagline { get; set; }
 
         [JsonProperty("flattenSeasons")]
-        public FlattenSeasons? FlattenSeasons { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.FlattenSeasons.False;
+        public GetLibraryItemsFlattenSeasons? FlattenSeasons { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.GetLibraryItemsFlattenSeasons.False;
 
         /// <summary>
         /// Setting that indicates the episode ordering for the show <br/>
@@ -94,7 +103,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// </remarks>
         /// </summary>
         [JsonProperty("showOrdering")]
-        public ShowOrdering? ShowOrdering { get; set; }
+        public GetLibraryItemsShowOrdering? ShowOrdering { get; set; }
 
         [JsonProperty("thumb")]
         public string? Thumb { get; set; }
@@ -150,6 +159,9 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         [JsonProperty("grandparentThumb")]
         public string? GrandparentThumb { get; set; }
 
+        [JsonProperty("parentSlug")]
+        public string? ParentSlug { get; set; }
+
         [JsonProperty("grandparentSlug")]
         public string? GrandparentSlug { get; set; }
 
@@ -182,7 +194,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public List<GetLibraryItemsWriter>? Writer { get; set; }
 
         [JsonProperty("Collection")]
-        public List<Collection>? Collection { get; set; }
+        public List<GetLibraryItemsCollection>? Collection { get; set; }
 
         [JsonProperty("Role")]
         public List<GetLibraryItemsRole>? Role { get; set; }
@@ -195,10 +207,13 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// </remarks>
         /// </summary>
         [JsonProperty("Guid")]
-        public List<MediaGuid>? MediaGuid { get; set; }
+        public List<GetLibraryItemsMediaGuid>? MediaGuid { get; set; }
 
         [JsonProperty("UltraBlurColors")]
-        public UltraBlurColors? UltraBlurColors { get; set; }
+        public GetLibraryItemsUltraBlurColors? UltraBlurColors { get; set; }
+
+        [JsonProperty("Rating")]
+        public List<GetLibraryItemsMetaDataRating>? MetaDataRating { get; set; }
 
         [JsonProperty("Image")]
         public List<GetLibraryItemsImage>? Image { get; set; }

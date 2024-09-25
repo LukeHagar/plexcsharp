@@ -33,9 +33,9 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public List<GetLibraryDetailsFilter>? Filter { get; set; }
 
         [JsonProperty("Sort")]
-        public List<Sort>? Sort { get; set; }
+        public List<GetLibraryDetailsSort>? Sort { get; set; }
 
         [JsonProperty("Field")]
-        public List<Field>? Field { get; set; }
+        public List<GetLibraryDetailsField>? Field { get; set; }
     }
 }

@@ -9,14 +9,26 @@
 #nullable enable
 namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
-    using LukeHagar.PlexAPI.SDK.Models.Components;
     using LukeHagar.PlexAPI.SDK.Models.Requests;
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
     
+    /// <summary>
+    /// The Meta object is only included in the response if the `includeMeta` parameter is set to `1`.<br/>
+    /// 
+    /// <remarks>
+    /// 
+    /// </remarks>
+    /// </summary>
     public class GetLibraryItemsMediaContainer
     {
+
+        [JsonProperty("Type")]
+        public List<GetLibraryItemsType>? Type { get; set; }
+
+        [JsonProperty("FieldType")]
+        public List<GetLibraryItemsFieldType>? FieldType { get; set; }
 
         [JsonProperty("size")]
         public int Size { get; set; } = default!;
@@ -43,7 +55,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public string Identifier { get; set; } = default!;
 
         [JsonProperty("librarySectionID")]
-        public LibrarySectionID LibrarySectionID { get; set; } = default!;
+        public long LibrarySectionID { get; set; } = default!;
 
         [JsonProperty("librarySectionTitle")]
         public string LibrarySectionTitle { get; set; } = default!;
@@ -86,6 +98,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// </remarks>
         /// </summary>
         [JsonProperty("Meta")]
-        public Meta? Meta { get; set; }
+        public GetLibraryItemsMeta? Meta { get; set; }
     }
 }

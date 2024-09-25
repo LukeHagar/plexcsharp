@@ -48,6 +48,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public string? VideoProfile { get; set; }
 
         [JsonProperty("Stream")]
-        public List<Stream>? Stream { get; set; }
+        public List<GetMetaDataByRatingKeyStream>? Stream { get; set; }
     }
 }

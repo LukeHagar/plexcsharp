@@ -9,7 +9,7 @@ API Calls interacting with Plex Media Server Libraries
 ### Available Operations
 
 * [GetFileHash](#getfilehash) - Get Hash Value
-* [GetRecentlyAdded](#getrecentlyadded) - Get Recently Added
+* [GetRecentlyAddedLibrary](#getrecentlyaddedlibrary) - Get Recently Added
 * [GetAllLibraries](#getalllibraries) - Get All Libraries
 * [GetLibraryDetails](#getlibrarydetails) - Get Library Details
 * [DeleteLibrary](#deletelibrary) - Delete Library Section
@@ -69,7 +69,7 @@ var res = await sdk.Library.GetFileHashAsync(
 | LukeHagar.PlexAPI.SDK.Models.Errors.SDKException            | 4xx-5xx                                                     | */*                                                         |
 
 
-## GetRecentlyAdded
+## GetRecentlyAddedLibrary
 
 This endpoint will return the recently added content.
 
@@ -79,6 +79,7 @@ This endpoint will return the recently added content.
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Requests;
+using System.Collections.Generic;
 using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
@@ -90,32 +91,51 @@ var sdk = new PlexAPI(
     deviceName: "Linux"
 );
 
-var res = await sdk.Library.GetRecentlyAddedAsync(
-    xPlexContainerStart: 0,
-    xPlexContainerSize: 50
-);
+GetRecentlyAddedLibraryRequest req = new GetRecentlyAddedLibraryRequest() {
+    Type = LukeHagar.PlexAPI.SDK.Models.Requests.QueryParamType.TvShow,
+    ContentDirectoryID = 2,
+    PinnedContentDirectoryID = new List<long>() {
+        3,
+        5,
+        7,
+        13,
+        12,
+        1,
+        6,
+        14,
+        2,
+        10,
+        16,
+        17,
+    },
+    SectionID = 2,
+    IncludeMeta = LukeHagar.PlexAPI.SDK.Models.Requests.QueryParamIncludeMeta.Enable,
+    XPlexContainerStart = 0,
+    XPlexContainerSize = 50,
+};
+
+var res = await sdk.Library.GetRecentlyAddedLibraryAsync(req);
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                 | Type                                                                                                                                                                                      | Required                                                                                                                                                                                  | Description                                                                                                                                                                               | Example                                                                                                                                                                                   |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `XPlexContainerStart`                                                                                                                                                                     | *int*                                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                        | The index of the first item to return. If not specified, the first item will be returned.<br/>If the number of items exceeds the limit, the response will be paginated.<br/>By default this is 0<br/> | 0                                                                                                                                                                                         |
-| `XPlexContainerSize`                                                                                                                                                                      | *int*                                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                                        | The number of items to return. If not specified, all items will be returned.<br/>If the number of items exceeds the limit, the response will be paginated.<br/>By default this is 50<br/> | 50                                                                                                                                                                                        |
+| Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `request`                                                                                 | [GetRecentlyAddedLibraryRequest](../../Models/Requests/GetRecentlyAddedLibraryRequest.md) | :heavy_check_mark:                                                                        | The request object to use for the request.                                                |
 
 ### Response
 
-**[GetRecentlyAddedResponse](../../Models/Requests/GetRecentlyAddedResponse.md)**
+**[GetRecentlyAddedLibraryResponse](../../Models/Requests/GetRecentlyAddedLibraryResponse.md)**
 
 ### Errors
 
-| Error Object                                                     | Status Code                                                      | Content Type                                                     |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetRecentlyAddedBadRequest   | 400                                                              | application/json                                                 |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetRecentlyAddedUnauthorized | 401                                                              | application/json                                                 |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                 | 4xx-5xx                                                          | */*                                                              |
+| Error Object                                                            | Status Code                                                             | Content Type                                                            |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetRecentlyAddedLibraryBadRequest   | 400                                                                     | application/json                                                        |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetRecentlyAddedLibraryUnauthorized | 401                                                                     | application/json                                                        |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                        | 4xx-5xx                                                                 | */*                                                                     |
 
 
 ## GetAllLibraries
@@ -336,8 +356,8 @@ GetLibraryItemsRequest req = new GetLibraryItemsRequest() {
     SectionKey = 9518,
     Tag = LukeHagar.PlexAPI.SDK.Models.Requests.Tag.Edition,
     IncludeGuids = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeGuids.Enable,
-    IncludeMeta = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeMeta.Enable,
-    Type = LukeHagar.PlexAPI.SDK.Models.Requests.Type.TvShow,
+    Type = LukeHagar.PlexAPI.SDK.Models.Requests.GetLibraryItemsQueryParamType.TvShow,
+    IncludeMeta = LukeHagar.PlexAPI.SDK.Models.Requests.GetLibraryItemsQueryParamIncludeMeta.Enable,
     XPlexContainerStart = 0,
     XPlexContainerSize = 50,
 };
@@ -455,7 +475,7 @@ var sdk = new PlexAPI(
 
 var res = await sdk.Library.GetSearchLibraryAsync(
     sectionKey: 9518,
-    type: LukeHagar.PlexAPI.SDK.Models.Requests.QueryParamType.TvShow
+    type: LukeHagar.PlexAPI.SDK.Models.Requests.GetSearchLibraryQueryParamType.TvShow
 );
 
 // handle response
@@ -466,7 +486,7 @@ var res = await sdk.Library.GetSearchLibraryAsync(
 | Parameter                                                                                                                                                                       | Type                                                                                                                                                                            | Required                                                                                                                                                                        | Description                                                                                                                                                                     | Example                                                                                                                                                                         |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `SectionKey`                                                                                                                                                                    | *int*                                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                              | The unique key of the Plex library. <br/>Note: This is unique in the context of the Plex server.<br/>                                                                           | 9518                                                                                                                                                                            |
-| `Type`                                                                                                                                                                          | [QueryParamType](../../Models/Requests/QueryParamType.md)                                                                                                                       | :heavy_check_mark:                                                                                                                                                              | The type of media to retrieve.<br/>1 = movie<br/>2 = show<br/>3 = season<br/>4 = episode<br/>E.g. A movie library will not return anything with type 3 as there are no seasons for movie libraries<br/> | 2                                                                                                                                                                               |
+| `Type`                                                                                                                                                                          | [GetSearchLibraryQueryParamType](../../Models/Requests/GetSearchLibraryQueryParamType.md)                                                                                       | :heavy_check_mark:                                                                                                                                                              | The type of media to retrieve.<br/>1 = movie<br/>2 = show<br/>3 = season<br/>4 = episode<br/>E.g. A movie library will not return anything with type 3 as there are no seasons for movie libraries<br/> | 2                                                                                                                                                                               |
 
 ### Response
 

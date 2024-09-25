@@ -30,7 +30,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// </remarks>
         /// </summary>
         [JsonProperty("activeDirection")]
-        public ActiveDirection? ActiveDirection { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.ActiveDirection.Ascending;
+        public GetLibraryItemsActiveDirection? ActiveDirection { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.GetLibraryItemsActiveDirection.Ascending;
 
         /// <summary>
         /// The direction of the sort. Can be either `asc` or `desc`.<br/>
@@ -40,7 +40,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// </remarks>
         /// </summary>
         [JsonProperty("defaultDirection")]
-        public DefaultDirection? DefaultDirection { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.DefaultDirection.Ascending;
+        public GetLibraryItemsDefaultDirection? DefaultDirection { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.GetLibraryItemsDefaultDirection.Ascending;
 
         [JsonProperty("descKey")]
         public string? DescKey { get; set; }

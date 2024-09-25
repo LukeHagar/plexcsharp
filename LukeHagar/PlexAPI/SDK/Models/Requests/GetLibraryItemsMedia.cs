@@ -62,6 +62,12 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         [JsonProperty("hasVoiceActivity")]
         public bool? HasVoiceActivity { get; set; }
 
+        [JsonProperty("optimizedForStreaming")]
+        public GetLibraryItemsOptimizedForStreaming? OptimizedForStreaming { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.GetLibraryItemsOptimizedForStreaming.Disable;
+
+        [JsonProperty("has64bitOffsets")]
+        public bool? Has64bitOffsets { get; set; }
+
         [JsonProperty("Part")]
         public List<GetLibraryItemsPart> Part { get; set; } = default!;
     }

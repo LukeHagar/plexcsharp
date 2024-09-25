@@ -43,16 +43,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public IncludeGuids? IncludeGuids { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeGuids.Disable;
 
         /// <summary>
-        /// Adds the Meta object to the response<br/>
-        /// 
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=includeMeta")]
-        public IncludeMeta? IncludeMeta { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeMeta.Disable;
-
-        /// <summary>
         /// The type of media to retrieve.<br/>
         /// 
         /// <remarks>
@@ -65,7 +55,17 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// </remarks>
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=type")]
-        public Models.Requests.Type? Type { get; set; }
+        public GetLibraryItemsQueryParamType? Type { get; set; }
+
+        /// <summary>
+        /// Adds the Meta object to the response<br/>
+        /// 
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=includeMeta")]
+        public GetLibraryItemsQueryParamIncludeMeta? IncludeMeta { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.GetLibraryItemsQueryParamIncludeMeta.Disable;
 
         /// <summary>
         /// The index of the first item to return. If not specified, the first item will be returned.<br/>

@@ -19,11 +19,11 @@ namespace LukeHagar.PlexAPI.SDK.Models.Errors
     /// <summary>
     /// Bad Request - A parameter was not specified, or was specified incorrectly.
     /// </summary>
-    public class GetRecentlyAddedBadRequest : Exception
+    public class GetRecentlyAddedLibraryBadRequest : Exception
     {
 
         [JsonProperty("errors")]
-        public List<GetRecentlyAddedErrors>? Errors { get; set; }
+        public List<GetRecentlyAddedLibraryErrors>? Errors { get; set; }
 
         /// <summary>
         /// Raw HTTP response; suitable for custom response parsing

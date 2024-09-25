@@ -19,11 +19,11 @@ namespace LukeHagar.PlexAPI.SDK.Models.Errors
     /// <summary>
     /// Unauthorized - Returned if the X-Plex-Token is missing from the header or query.
     /// </summary>
-    public class GetRecentlyAddedUnauthorized : Exception
+    public class GetRecentlyAddedLibraryUnauthorized : Exception
     {
 
         [JsonProperty("errors")]
-        public List<GetRecentlyAddedLibraryErrors>? Errors { get; set; }
+        public List<GetRecentlyAddedLibraryLibraryErrors>? Errors { get; set; }
 
         /// <summary>
         /// Raw HTTP response; suitable for custom response parsing

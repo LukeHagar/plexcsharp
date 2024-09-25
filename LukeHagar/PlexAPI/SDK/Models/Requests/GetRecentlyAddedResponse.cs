@@ -33,7 +33,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public HttpResponseMessage RawResponse { get; set; } = default!;
 
         /// <summary>
-        /// The recently added content
+        /// A successful response with recently added content.
         /// </summary>
         public GetRecentlyAddedResponseBody? Object { get; set; }
     }

@@ -46,7 +46,7 @@ var sdk = new PlexAPI(
 
 var res = await sdk.Search.PerformSearchAsync(
     query: "dylan",
-    sectionId: 5838.67D,
+    sectionId: 9372.69D,
     limit: 5D
 );
 

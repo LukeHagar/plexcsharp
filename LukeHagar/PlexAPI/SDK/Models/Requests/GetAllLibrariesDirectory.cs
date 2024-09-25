@@ -80,8 +80,11 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         [JsonProperty("directory")]
         public bool Directory { get; set; } = default!;
 
+        /// <summary>
+        /// Unix epoch datetime in seconds
+        /// </summary>
         [JsonProperty("contentChangedAt")]
-        public int ContentChangedAt { get; set; } = default!;
+        public long ContentChangedAt { get; set; } = default!;
 
         [JsonProperty("hidden")]
         public int Hidden { get; set; } = default!;

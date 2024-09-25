@@ -14,7 +14,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using Newtonsoft.Json;
     
     /// <summary>
-    /// The recently added content
+    /// A successful response with recently added content.
     /// </summary>
     public class GetRecentlyAddedResponseBody
     {

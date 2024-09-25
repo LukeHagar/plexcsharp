@@ -186,7 +186,9 @@ namespace LukeHagar.PlexAPI.SDK.Utils
                     headerParams.Add(key, Utilities.PrefixBearer(valStr));
                     break;
                 case "oauth2":
-                    headerParams.Add(key, Utilities.PrefixBearer(valStr));
+                    if (!"client_credentials".Equals(schemeMetadata.SubType)) {
+                        headerParams.Add(key, Utilities.PrefixBearer(valStr));
+                    }
                     break;
                 case "http":
                     switch (schemeMetadata.SubType)

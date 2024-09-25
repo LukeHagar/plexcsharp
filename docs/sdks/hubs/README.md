@@ -9,6 +9,7 @@ Hubs are a structured two-dimensional container for media, generally represented
 ### Available Operations
 
 * [GetGlobalHubs](#getglobalhubs) - Get Global Hubs
+* [GetRecentlyAdded](#getrecentlyadded) - Get Recently Added
 * [GetLibraryHubs](#getlibraryhubs) - Get library specific hubs
 
 ## GetGlobalHubs
@@ -57,6 +58,58 @@ var res = await sdk.Hubs.GetGlobalHubsAsync(
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetGlobalHubsBadRequest   | 400                                                           | application/json                                              |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetGlobalHubsUnauthorized | 401                                                           | application/json                                              |
 | LukeHagar.PlexAPI.SDK.Models.Errors.SDKException              | 4xx-5xx                                                       | */*                                                           |
+
+
+## GetRecentlyAdded
+
+This endpoint will return the recently added content.
+
+
+### Example Usage
+
+```csharp
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using LukeHagar.PlexAPI.SDK.Models.Components;
+
+var sdk = new PlexAPI(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    clientID: "gcgzw5rz2xovp84b4vha3a40",
+    clientName: "Plex Web",
+    clientVersion: "4.133.0",
+    clientPlatform: "Chrome",
+    deviceName: "Linux"
+);
+
+GetRecentlyAddedRequest req = new GetRecentlyAddedRequest() {
+    ContentDirectoryID = 470161,
+    Type = LukeHagar.PlexAPI.SDK.Models.Requests.Type.TvShow,
+    SectionID = 2,
+    IncludeMeta = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeMeta.Enable,
+    XPlexContainerStart = 0,
+    XPlexContainerSize = 50,
+};
+
+var res = await sdk.Hubs.GetRecentlyAddedAsync(req);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `request`                                                                   | [GetRecentlyAddedRequest](../../Models/Requests/GetRecentlyAddedRequest.md) | :heavy_check_mark:                                                          | The request object to use for the request.                                  |
+
+### Response
+
+**[GetRecentlyAddedResponse](../../Models/Requests/GetRecentlyAddedResponse.md)**
+
+### Errors
+
+| Error Object                                     | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException | 4xx-5xx                                          | */*                                              |
 
 
 ## GetLibraryHubs

@@ -16,9 +16,9 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     {
 
         [JsonProperty("key")]
-        public string? Key { get; set; }
+        public string Key { get; set; } = default!;
 
         [JsonProperty("title")]
-        public string? Title { get; set; }
+        public string Title { get; set; } = default!;
     }
 }

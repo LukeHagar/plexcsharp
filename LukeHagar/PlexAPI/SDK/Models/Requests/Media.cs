@@ -18,51 +18,57 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     {
 
         [JsonProperty("id")]
-        public double? Id { get; set; }
+        public int Id { get; set; } = default!;
 
         [JsonProperty("duration")]
-        public double? Duration { get; set; }
+        public int Duration { get; set; } = default!;
 
         [JsonProperty("bitrate")]
-        public double? Bitrate { get; set; }
+        public int Bitrate { get; set; } = default!;
 
         [JsonProperty("width")]
-        public double? Width { get; set; }
+        public int Width { get; set; } = default!;
 
         [JsonProperty("height")]
-        public double? Height { get; set; }
+        public int Height { get; set; } = default!;
 
         [JsonProperty("aspectRatio")]
-        public double? AspectRatio { get; set; }
+        public double AspectRatio { get; set; } = default!;
+
+        [JsonProperty("audioProfile")]
+        public string? AudioProfile { get; set; }
 
         [JsonProperty("audioChannels")]
-        public double? AudioChannels { get; set; }
+        public int AudioChannels { get; set; } = default!;
 
         [JsonProperty("audioCodec")]
-        public string? AudioCodec { get; set; }
+        public string AudioCodec { get; set; } = default!;
 
         [JsonProperty("videoCodec")]
-        public string? VideoCodec { get; set; }
+        public string VideoCodec { get; set; } = default!;
 
         [JsonProperty("videoResolution")]
-        public double? VideoResolution { get; set; }
+        public string VideoResolution { get; set; } = default!;
 
         [JsonProperty("container")]
-        public string? Container { get; set; }
+        public string Container { get; set; } = default!;
 
         [JsonProperty("videoFrameRate")]
-        public string? VideoFrameRate { get; set; }
+        public string VideoFrameRate { get; set; } = default!;
+
+        [JsonProperty("videoProfile")]
+        public string VideoProfile { get; set; } = default!;
+
+        [JsonProperty("hasVoiceActivity")]
+        public bool? HasVoiceActivity { get; set; }
 
         [JsonProperty("optimizedForStreaming")]
-        public double? OptimizedForStreaming { get; set; }
+        public OptimizedForStreaming? OptimizedForStreaming { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.OptimizedForStreaming.Disable;
 
         [JsonProperty("has64bitOffsets")]
         public bool? Has64bitOffsets { get; set; }
 
-        [JsonProperty("videoProfile")]
-        public string? VideoProfile { get; set; }
-
         [JsonProperty("Part")]
-        public List<Part>? Part { get; set; }
+        public List<Part> Part { get; set; } = default!;
     }
 }

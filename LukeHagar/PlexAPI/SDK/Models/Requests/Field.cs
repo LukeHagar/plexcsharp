@@ -16,13 +16,13 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     {
 
         [JsonProperty("key")]
-        public string? Key { get; set; }
+        public string Key { get; set; } = default!;
 
         [JsonProperty("title")]
-        public string? Title { get; set; }
+        public string Title { get; set; } = default!;
 
         [JsonProperty("type")]
-        public string? Type { get; set; }
+        public string Type { get; set; } = default!;
 
         [JsonProperty("subType")]
         public string? SubType { get; set; }
