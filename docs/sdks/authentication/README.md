@@ -170,10 +170,12 @@ var sdk = new PlexAPI(
     deviceName: "Linux"
 );
 
-PostUsersSignInDataRequestBody req = new PostUsersSignInDataRequestBody() {
-    Login = "username@email.com",
-    Password = "password123",
-    VerificationCode = "123456",
+PostUsersSignInDataRequest req = new PostUsersSignInDataRequest() {
+    RequestBody = new PostUsersSignInDataRequestBody() {
+        Login = "username@email.com",
+        Password = "password123",
+        VerificationCode = "123456",
+    },
 };
 
 var res = await sdk.Authentication.PostUsersSignInDataAsync(req);
@@ -183,10 +185,10 @@ var res = await sdk.Authentication.PostUsersSignInDataAsync(req);
 
 ### Parameters
 
-| Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
-| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `request`                                                                                 | [PostUsersSignInDataRequestBody](../../Models/Requests/PostUsersSignInDataRequestBody.md) | :heavy_check_mark:                                                                        | The request object to use for the request.                                                |
-| `serverURL`                                                                               | *string*                                                                                  | :heavy_minus_sign:                                                                        | An optional server URL to use.                                                            |
+| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `request`                                                                         | [PostUsersSignInDataRequest](../../Models/Requests/PostUsersSignInDataRequest.md) | :heavy_check_mark:                                                                | The request object to use for the request.                                        |
+| `serverURL`                                                                       | *string*                                                                          | :heavy_minus_sign:                                                                | An optional server URL to use.                                                    |
 
 ### Response
 

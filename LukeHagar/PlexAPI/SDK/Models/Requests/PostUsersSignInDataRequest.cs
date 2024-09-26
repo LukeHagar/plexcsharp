@@ -9,22 +9,11 @@
 #nullable enable
 namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
+    using LukeHagar.PlexAPI.SDK.Models.Requests;
     using LukeHagar.PlexAPI.SDK.Utils;
     
-    public class GetPinRequest
+    public class PostUsersSignInDataRequest
     {
-
-        /// <summary>
-        /// Determines the kind of code returned by the API call<br/>
-        /// 
-        /// <remarks>
-        /// Strong codes are used for Pin authentication flows<br/>
-        /// Non-Strong codes are used for `Plex.tv/link`<br/>
-        /// 
-        /// </remarks>
-        /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=strong")]
-        public bool? Strong { get; set; } = false;
 
         /// <summary>
         /// The unique identifier for the client application<br/>
@@ -49,5 +38,11 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
 
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=X-Plex-Platform")]
         public string? ClientPlatform { get; set; }
+
+        /// <summary>
+        /// Login credentials
+        /// </summary>
+        [SpeakeasyMetadata("request:mediaType=application/x-www-form-urlencoded")]
+        public PostUsersSignInDataRequestBody? RequestBody { get; set; }
     }
 }

@@ -1778,10 +1778,12 @@ actions:
                 deviceName: "Linux"
             );
 
-            PostUsersSignInDataRequestBody req = new PostUsersSignInDataRequestBody() {
-                Login = "username@email.com",
-                Password = "password123",
-                VerificationCode = "123456",
+            PostUsersSignInDataRequest req = new PostUsersSignInDataRequest() {
+                RequestBody = new PostUsersSignInDataRequestBody() {
+                    Login = "username@email.com",
+                    Password = "password123",
+                    VerificationCode = "123456",
+                },
             };
 
             var res = await sdk.Authentication.PostUsersSignInDataAsync(req);

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 5a8dbcbc-e0ee-41f0-9d84-b8b50567d1e9
 management:
-  docChecksum: 4b984f7caf05a57f71aaaaa33a3a51da
+  docChecksum: 5e039359563b41bbe118fc6701ba22dc
   docVersion: 0.0.3
   speakeasyVersion: 1.402.14
   generationVersion: 2.422.22
-  releaseVersion: 0.8.0
-  configChecksum: b2f977640ef890e79b91e89ca8b0ab90
+  releaseVersion: 0.8.1
+  configChecksum: 67c2fafca972224c918ba21859003791
   repoURL: https://github.com/LukeHagar/plexcsharp.git
   repoSubDirectory: .
   published: true
@@ -738,6 +738,7 @@ generatedFiles:
   - LukeHagar/PlexAPI/SDK/Models/Requests/PostUsersSignInDataFeatures.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/PostUsersSignInDataMailingListStatus.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/PostUsersSignInDataMediaReviewsVisibility.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/PostUsersSignInDataRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/PostUsersSignInDataRequestBody.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/PostUsersSignInDataResponse.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/PostUsersSignInDataServices.cs
@@ -1528,6 +1529,7 @@ generatedFiles:
   - docs/Models/Requests/PostUsersSignInDataFeatures.md
   - docs/Models/Requests/PostUsersSignInDataMailingListStatus.md
   - docs/Models/Requests/PostUsersSignInDataMediaReviewsVisibility.md
+  - docs/Models/Requests/PostUsersSignInDataRequest.md
   - docs/Models/Requests/PostUsersSignInDataRequestBody.md
   - docs/Models/Requests/PostUsersSignInDataResponse.md
   - docs/Models/Requests/PostUsersSignInDataServices.md
@@ -1935,6 +1937,7 @@ examples:
           X-Plex-Device: "Linux"
           X-Plex-Version: "4.133.0"
           X-Plex-Platform: "Chrome"
+          X-Plex-Client-Identifier: "gcgzw5rz2xovp84b4vha3a40"
       responses:
         "200":
           application/json: {"id": 308667304, "code": "7RQZ", "product": "0", "trusted": false, "qr": "https://plex.tv/api/v2/pins/qr/7RQZ", "clientIdentifier": "string", "location": {"code": "VI", "continent_code": "NA", "country": "United States Virgin Islands", "city": "Amsterdam", "european_union_member": true, "time_zone": "America/St_Thomas", "postal_code": 802, "in_privacy_restricted_country": true, "in_privacy_restricted_region": true, "subdivisions": "Saint Thomas", "coordinates": "18.3381, -64.8941"}, "expiresIn": 876, "createdAt": "2024-07-16T17:03:05Z", "expiresAt": "2024-07-16T17:18:05Z", "authToken": null, "newRegistration": null}
@@ -2397,6 +2400,23 @@ examples:
         "401":
           application/json: {"errors": []}
         "400":
+          application/json: {"errors": []}
+    "":
+      parameters:
+        query:
+          X-Plex-Client-Identifier: "gcgzw5rz2xovp84b4vha3a40"
+          X-Plex-Product: "Plex Web"
+          X-Plex-Device: "Linux"
+          X-Plex-Version: "4.133.0"
+          X-Plex-Platform: "Chrome"
+      requestBody:
+        application/x-www-form-urlencoded: {"login": "username@email.com", "password": "password123", "verificationCode": "123456"}
+      responses:
+        "201":
+          application/json: {"adsConsent": true, "adsConsentReminderAt": "2019-08-24T14:15:22Z", "adsConsentSetAt": "2019-08-24T14:15:22Z", "anonymous": false, "authToken": "CxoUzBTSV5hsxjTpFKaf", "backupCodesCreated": false, "confirmed": false, "country": "US", "email": "username@email.com", "emailOnlyAuth": false, "experimentalFeatures": false, "friendlyName": "friendlyUsername", "entitlements": [], "guest": false, "hasPassword": true, "home": false, "homeAdmin": false, "homeSize": 1, "id": 13692262, "joinedAt": 1721154902, "locale": null, "mailingListActive": false, "mailingListStatus": "unsubscribed", "maxHomeSize": 15, "pin": "string", "profile": {"autoSelectAudio": true, "defaultAudioLanguage": "ja", "defaultSubtitleLanguage": "en", "autoSelectSubtitle": 1, "defaultSubtitleAccessibility": 1, "defaultSubtitleForced": 1, "watchedIndicator": 1, "mediaReviewsVisibility": 1}, "protected": false, "rememberExpiresAt": 1722364046, "restricted": false, "roles": ["string"], "scrobbleTypes": "", "services": [{"identifier": "metadata-dev", "endpoint": "https://epg.provider.plex.tv", "token": "DjoMtqFAGRL1uVtCyF1dKIorTbShJeqv", "secret": "string", "status": "online"}], "subscription": {"features": ["Android - Dolby Vision"], "active": true, "subscribedAt": "2021-04-12T18:21:12Z", "status": "Inactive", "paymentService": "string", "plan": "string"}, "subscriptionDescription": "string", "subscriptions": [{"features": ["Android - Dolby Vision"], "active": true, "subscribedAt": "2021-04-12T18:21:12Z", "status": "Inactive", "paymentService": "string", "plan": "string"}], "thumb": "https://plex.tv/users/a4f43c1ebfde43a5/avatar?c=8372075101", "title": "UsernameTitle", "twoFactorEnabled": false, "username": "Username", "uuid": "dae343c1f45beb4f", "attributionPartner": null, "pastSubscriptions": [{"id": "string", "mode": "string", "renewsAt": "string", "endsAt": "1556281940", "canceled": "0", "gracePeriod": "0", "onHold": "0", "canReactivate": "0", "canUpgrade": "0", "canDowngrade": "0", "canConvert": "0", "type": "plexpass", "transfer": "string", "state": "ended", "billing": {"paymentMethodId": 481656}}], "trials": [{}]}
+        "400":
+          application/json: {"errors": [{"code": 1000, "message": "X-Plex-Client-Identifier is missing", "status": 400}, {"code": 1000, "message": "X-Plex-Client-Identifier is missing", "status": 400}, {"code": 1000, "message": "X-Plex-Client-Identifier is missing", "status": 400}]}
+        "401":
           application/json: {"errors": []}
   getStatistics:
     "":

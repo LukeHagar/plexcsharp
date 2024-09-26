@@ -69,7 +69,7 @@ namespace LukeHagar.PlexAPI.SDK
         /// Sign in user with username and password and return user data with Plex authentication token
         /// </remarks>
         /// </summary>
-        Task<PostUsersSignInDataResponse> PostUsersSignInDataAsync(PostUsersSignInDataRequestBody? request = null, string? serverUrl = null);
+        Task<PostUsersSignInDataResponse> PostUsersSignInDataAsync(PostUsersSignInDataRequest? request = null, string? serverUrl = null);
     }
 
     /// <summary>
@@ -95,10 +95,10 @@ namespace LukeHagar.PlexAPI.SDK
         };
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.8.0";
+        private const string _sdkVersion = "0.8.1";
         private const string _sdkGenVersion = "2.422.22";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.8.0 2.422.22 0.0.3 LukeHagar.PlexAPI.SDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.8.1 2.422.22 0.0.3 LukeHagar.PlexAPI.SDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<LukeHagar.PlexAPI.SDK.Models.Components.Security>? _securitySource;
@@ -398,21 +398,26 @@ namespace LukeHagar.PlexAPI.SDK
             throw new Models.Errors.SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<PostUsersSignInDataResponse> PostUsersSignInDataAsync(PostUsersSignInDataRequestBody? request = null, string? serverUrl = null)
+        public async Task<PostUsersSignInDataResponse> PostUsersSignInDataAsync(PostUsersSignInDataRequest? request = null, string? serverUrl = null)
         {
+            request.ClientID ??= SDKConfiguration.ClientID;
+            request.ClientName ??= SDKConfiguration.ClientName;
+            request.ClientVersion ??= SDKConfiguration.ClientVersion;
+            request.ClientPlatform ??= SDKConfiguration.ClientPlatform;
+            request.DeviceName ??= SDKConfiguration.DeviceName;
+            
             string baseUrl = Utilities.TemplateUrl(PostUsersSignInDataServerList[0], new Dictionary<string, string>(){
             });
             if (serverUrl != null)
             {
                 baseUrl = serverUrl;
             }
-
-            var urlString = baseUrl + "/users/signin";
+            var urlString = URLBuilder.Build(baseUrl, "/users/signin", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
 
-            var serializedBody = RequestBodySerializer.Serialize(request, "Request", "form", false, true);
+            var serializedBody = RequestBodySerializer.Serialize(request, "RequestBody", "form", false, true);
             if (serializedBody != null)
             {
                 httpRequest.Content = serializedBody;
