@@ -154,7 +154,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public bool? MailingListActive { get; set; } = false;
 
         /// <summary>
-        /// Your current mailing list status
+        /// Your current mailing list status (active or unsubscribed)
         /// </summary>
         [JsonProperty("mailingListStatus")]
         public MailingListStatus MailingListStatus { get; set; } = default!;

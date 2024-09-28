@@ -85,20 +85,20 @@ namespace LukeHagar.PlexAPI.SDK
         /// List of server URLs available for the getTokenDetails operation.
         /// </summary>
         public static readonly string[] GetTokenDetailsServerList = {
-            "https://plex.tv/api/v2/",
+            "https://plex.tv/api/v2",
         };
         /// <summary>
         /// List of server URLs available for the post-users-sign-in-data operation.
         /// </summary>
         public static readonly string[] PostUsersSignInDataServerList = {
-            "https://plex.tv/api/v2/",
+            "https://plex.tv/api/v2",
         };
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.8.1";
-        private const string _sdkGenVersion = "2.422.22";
+        private const string _sdkVersion = "0.8.2";
+        private const string _sdkGenVersion = "2.426.2";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.8.1 2.422.22 0.0.3 LukeHagar.PlexAPI.SDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.8.2 2.426.2 0.0.3 LukeHagar.PlexAPI.SDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<LukeHagar.PlexAPI.SDK.Models.Components.Security>? _securitySource;

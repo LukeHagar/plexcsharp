@@ -19,5 +19,29 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=pinID")]
         public long PinID { get; set; } = default!;
+
+        /// <summary>
+        /// The unique identifier for the client application<br/>
+        /// 
+        /// <remarks>
+        /// This is used to track the client application and its usage<br/>
+        /// (UUID, serial number, or other number unique per device)<br/>
+        /// 
+        /// </remarks>
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=X-Plex-Client-Identifier")]
+        public string? ClientID { get; set; }
+
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=X-Plex-Product")]
+        public string? ClientName { get; set; }
+
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=X-Plex-Device")]
+        public string? DeviceName { get; set; }
+
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=X-Plex-Version")]
+        public string? ClientVersion { get; set; }
+
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=X-Plex-Platform")]
+        public string? ClientPlatform { get; set; }
     }
 }

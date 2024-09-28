@@ -93,7 +93,7 @@ namespace LukeHagar.PlexAPI.SDK
         /// Retrieve an Access Token from Plex.tv after the Pin has been authenticated
         /// </remarks>
         /// </summary>
-        Task<GetTokenByPinIdResponse> GetTokenByPinIdAsync(long pinID, string? serverUrl = null);
+        Task<GetTokenByPinIdResponse> GetTokenByPinIdAsync(GetTokenByPinIdRequest request, string? serverUrl = null);
     }
 
     /// <summary>
@@ -109,44 +109,44 @@ namespace LukeHagar.PlexAPI.SDK
         /// List of server URLs available for the getCompanionsData operation.
         /// </summary>
         public static readonly string[] GetCompanionsDataServerList = {
-            "https://plex.tv/api/v2/",
+            "https://plex.tv/api/v2",
         };
         /// <summary>
         /// List of server URLs available for the getUserFriends operation.
         /// </summary>
         public static readonly string[] GetUserFriendsServerList = {
-            "https://plex.tv/api/v2/",
+            "https://plex.tv/api/v2",
         };
         /// <summary>
         /// List of server URLs available for the getGeoData operation.
         /// </summary>
         public static readonly string[] GetGeoDataServerList = {
-            "https://plex.tv/api/v2/",
+            "https://plex.tv/api/v2",
         };
         /// <summary>
         /// List of server URLs available for the get-server-resources operation.
         /// </summary>
         public static readonly string[] GetServerResourcesServerList = {
-            "https://plex.tv/api/v2/",
+            "https://plex.tv/api/v2",
         };
         /// <summary>
         /// List of server URLs available for the getPin operation.
         /// </summary>
         public static readonly string[] GetPinServerList = {
-            "https://plex.tv/api/v2/",
+            "https://plex.tv/api/v2",
         };
         /// <summary>
         /// List of server URLs available for the getTokenByPinId operation.
         /// </summary>
         public static readonly string[] GetTokenByPinIdServerList = {
-            "https://plex.tv/api/v2/",
+            "https://plex.tv/api/v2",
         };
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.8.1";
-        private const string _sdkGenVersion = "2.422.22";
+        private const string _sdkVersion = "0.8.2";
+        private const string _sdkGenVersion = "2.426.2";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.8.1 2.422.22 0.0.3 LukeHagar.PlexAPI.SDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.8.2 2.426.2 0.0.3 LukeHagar.PlexAPI.SDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<LukeHagar.PlexAPI.SDK.Models.Components.Security>? _securitySource;
@@ -755,12 +755,18 @@ namespace LukeHagar.PlexAPI.SDK
             throw new Models.Errors.SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<GetTokenByPinIdResponse> GetTokenByPinIdAsync(long pinID, string? serverUrl = null)
+        public async Task<GetTokenByPinIdResponse> GetTokenByPinIdAsync(GetTokenByPinIdRequest request, string? serverUrl = null)
         {
-            var request = new GetTokenByPinIdRequest()
+            if (request == null)
             {
-                PinID = pinID,
-            };
+                request = new GetTokenByPinIdRequest();
+            }
+            request.ClientID ??= SDKConfiguration.ClientID;
+            request.ClientName ??= SDKConfiguration.ClientName;
+            request.ClientVersion ??= SDKConfiguration.ClientVersion;
+            request.ClientPlatform ??= SDKConfiguration.ClientPlatform;
+            request.DeviceName ??= SDKConfiguration.DeviceName;
+            
             string baseUrl = Utilities.TemplateUrl(GetTokenByPinIdServerList[0], new Dictionary<string, string>(){
             });
             if (serverUrl != null)

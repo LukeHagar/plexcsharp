@@ -67,6 +67,34 @@ namespace LukeHagar.PlexAPI.SDK
 
     /// <summary>
     /// Plex-API: An Open API Spec for interacting with Plex.tv and Plex Media Server
+    /// 
+    /// <remarks>
+    /// # Plex Media Server OpenAPI Specification<br/>
+    /// <br/>
+    /// An Open Source OpenAPI Specification for Plex Media Server<br/>
+    /// <br/>
+    /// Automation and SDKs provided by <a href="https://speakeasyapi.dev/">Speakeasy</a><br/>
+    /// <br/>
+    /// ## Documentation<br/>
+    /// <br/>
+    /// <a href="https://plexapi.dev">API Documentation</a><br/>
+    /// <br/>
+    /// ## SDKs<br/>
+    /// <br/>
+    /// The following SDKs are generated from the OpenAPI Specification. They are automatically generated and may not be fully tested. If you find any issues, please open an issue on the respective repository.<br/>
+    /// <br/>
+    /// | Language              | Repository                                        | Releases                                                                                         | Other                                                   |<br/>
+    /// | --------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------- |<br/>
+    /// | Python                | <a href="https://github.com/LukeHagar/plexpy">GitHub</a>     | <a href="https://pypi.org/project/plex-api-client/">PyPI</a>                                                | -                                                       |<br/>
+    /// | JavaScript/TypeScript | <a href="https://github.com/LukeHagar/plexjs">GitHub</a>     | <a href="https://www.npmjs.com/package/@lukehagar/plexjs">NPM</a> \ <a href="https://jsr.io/@lukehagar/plexjs">JSR</a> | -                                                       |<br/>
+    /// | Go                    | <a href="https://github.com/LukeHagar/plexgo">GitHub</a>     | <a href="https://github.com/LukeHagar/plexgo/releases">Releases</a>                                         | <a href="https://pkg.go.dev/github.com/LukeHagar/plexgo">GoDoc</a> |<br/>
+    /// | Ruby                  | <a href="https://github.com/LukeHagar/plexruby">GitHub</a>   | <a href="https://github.com/LukeHagar/plexruby/releases">Releases</a>                                       | -                                                       |<br/>
+    /// | Swift                 | <a href="https://github.com/LukeHagar/plexswift">GitHub</a>  | <a href="https://github.com/LukeHagar/plexswift/releases">Releases</a>                                      | -                                                       |<br/>
+    /// | PHP                   | <a href="https://github.com/LukeHagar/plexphp">GitHub</a>    | <a href="https://github.com/LukeHagar/plexphp/releases">Releases</a>                                        | -                                                       |<br/>
+    /// | Java                  | <a href="https://github.com/LukeHagar/plexjava">GitHub</a>   | <a href="https://github.com/LukeHagar/plexjava/releases">Releases</a>                                       | -                                                       |<br/>
+    /// | C#                    | <a href="https://github.com/LukeHagar/plexcsharp">GitHub</a> | <a href="https://github.com/LukeHagar/plexcsharp/releases">Releases</a>                                     | -     <br/>
+    /// 
+    /// </remarks>
     /// </summary>
     public interface IPlexAPI
     {
@@ -269,16 +297,44 @@ namespace LukeHagar.PlexAPI.SDK
 
     /// <summary>
     /// Plex-API: An Open API Spec for interacting with Plex.tv and Plex Media Server
+    /// 
+    /// <remarks>
+    /// # Plex Media Server OpenAPI Specification<br/>
+    /// <br/>
+    /// An Open Source OpenAPI Specification for Plex Media Server<br/>
+    /// <br/>
+    /// Automation and SDKs provided by <a href="https://speakeasyapi.dev/">Speakeasy</a><br/>
+    /// <br/>
+    /// ## Documentation<br/>
+    /// <br/>
+    /// <a href="https://plexapi.dev">API Documentation</a><br/>
+    /// <br/>
+    /// ## SDKs<br/>
+    /// <br/>
+    /// The following SDKs are generated from the OpenAPI Specification. They are automatically generated and may not be fully tested. If you find any issues, please open an issue on the respective repository.<br/>
+    /// <br/>
+    /// | Language              | Repository                                        | Releases                                                                                         | Other                                                   |<br/>
+    /// | --------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------- |<br/>
+    /// | Python                | <a href="https://github.com/LukeHagar/plexpy">GitHub</a>     | <a href="https://pypi.org/project/plex-api-client/">PyPI</a>                                                | -                                                       |<br/>
+    /// | JavaScript/TypeScript | <a href="https://github.com/LukeHagar/plexjs">GitHub</a>     | <a href="https://www.npmjs.com/package/@lukehagar/plexjs">NPM</a> \ <a href="https://jsr.io/@lukehagar/plexjs">JSR</a> | -                                                       |<br/>
+    /// | Go                    | <a href="https://github.com/LukeHagar/plexgo">GitHub</a>     | <a href="https://github.com/LukeHagar/plexgo/releases">Releases</a>                                         | <a href="https://pkg.go.dev/github.com/LukeHagar/plexgo">GoDoc</a> |<br/>
+    /// | Ruby                  | <a href="https://github.com/LukeHagar/plexruby">GitHub</a>   | <a href="https://github.com/LukeHagar/plexruby/releases">Releases</a>                                       | -                                                       |<br/>
+    /// | Swift                 | <a href="https://github.com/LukeHagar/plexswift">GitHub</a>  | <a href="https://github.com/LukeHagar/plexswift/releases">Releases</a>                                      | -                                                       |<br/>
+    /// | PHP                   | <a href="https://github.com/LukeHagar/plexphp">GitHub</a>    | <a href="https://github.com/LukeHagar/plexphp/releases">Releases</a>                                        | -                                                       |<br/>
+    /// | Java                  | <a href="https://github.com/LukeHagar/plexjava">GitHub</a>   | <a href="https://github.com/LukeHagar/plexjava/releases">Releases</a>                                       | -                                                       |<br/>
+    /// | C#                    | <a href="https://github.com/LukeHagar/plexcsharp">GitHub</a> | <a href="https://github.com/LukeHagar/plexcsharp/releases">Releases</a>                                     | -     <br/>
+    /// 
+    /// </remarks>
     /// </summary>
     public class PlexAPI: IPlexAPI
     {
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.8.1";
-        private const string _sdkGenVersion = "2.422.22";
+        private const string _sdkVersion = "0.8.2";
+        private const string _sdkGenVersion = "2.426.2";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.8.1 2.422.22 0.0.3 LukeHagar.PlexAPI.SDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.8.2 2.426.2 0.0.3 LukeHagar.PlexAPI.SDK";
         private string _serverUrl = "";
         private int _serverIndex = 0;
         private ISpeakeasyHttpClient _client;

@@ -14,7 +14,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using System;
     
     /// <summary>
-    /// Your current mailing list status
+    /// Your current mailing list status (active or unsubscribed)
     /// </summary>
     public enum MailingListStatus
     {

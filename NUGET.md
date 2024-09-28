@@ -170,7 +170,7 @@ var sdk = new PlexAPI(
     deviceName: "Linux"
 );
 
-var res = await sdk.Plex.GetCompanionsDataAsync(serverUrl: "https://plex.tv/api/v2/");
+var res = await sdk.Plex.GetCompanionsDataAsync(serverUrl: "https://plex.tv/api/v2");
 
 // handle response
 ```

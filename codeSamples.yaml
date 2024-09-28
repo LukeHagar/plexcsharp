@@ -1172,7 +1172,11 @@ actions:
                 deviceName: "Linux"
             );
 
-            var res = await sdk.Plex.GetTokenByPinIdAsync(pinID: 408895);
+            GetTokenByPinIdRequest req = new GetTokenByPinIdRequest() {
+                PinID = 408895,
+            };
+
+            var res = await sdk.Plex.GetTokenByPinIdAsync(req);
 
             // handle response
   - target: $["paths"]["/playlists"]["get"]

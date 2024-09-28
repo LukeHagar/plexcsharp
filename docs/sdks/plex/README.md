@@ -296,17 +296,21 @@ var sdk = new PlexAPI(
     deviceName: "Linux"
 );
 
-var res = await sdk.Plex.GetTokenByPinIdAsync(pinID: 408895);
+GetTokenByPinIdRequest req = new GetTokenByPinIdRequest() {
+    PinID = 408895,
+};
+
+var res = await sdk.Plex.GetTokenByPinIdAsync(req);
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                                 | Type                                      | Required                                  | Description                               |
-| ----------------------------------------- | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
-| `PinID`                                   | *long*                                    | :heavy_check_mark:                        | The PinID to retrieve an access token for |
-| `serverURL`                               | *string*                                  | :heavy_minus_sign:                        | An optional server URL to use.            |
+| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `request`                                                                 | [GetTokenByPinIdRequest](../../Models/Requests/GetTokenByPinIdRequest.md) | :heavy_check_mark:                                                        | The request object to use for the request.                                |
+| `serverURL`                                                               | *string*                                                                  | :heavy_minus_sign:                                                        | An optional server URL to use.                                            |
 
 ### Response
 
