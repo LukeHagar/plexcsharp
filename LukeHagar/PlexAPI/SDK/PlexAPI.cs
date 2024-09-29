@@ -81,7 +81,7 @@ namespace LukeHagar.PlexAPI.SDK
     /// <br/>
     /// ## SDKs<br/>
     /// <br/>
-    /// The following SDKs are generated from the OpenAPI Specification. They are automatically generated and may not be fully tested. If you find any issues, please open an issue on the respective repository.<br/>
+    /// The following SDKs are generated from the OpenAPI Specification. They are automatically generated and may not be fully tested. If you find any issues, please open an issue on the <a href="https://github.com/LukeHagar/plex-api-spec">main specification Repository</a>.<br/>
     /// <br/>
     /// | Language              | Repository                                        | Releases                                                                                         | Other                                                   |<br/>
     /// | --------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------- |<br/>
@@ -311,7 +311,7 @@ namespace LukeHagar.PlexAPI.SDK
     /// <br/>
     /// ## SDKs<br/>
     /// <br/>
-    /// The following SDKs are generated from the OpenAPI Specification. They are automatically generated and may not be fully tested. If you find any issues, please open an issue on the respective repository.<br/>
+    /// The following SDKs are generated from the OpenAPI Specification. They are automatically generated and may not be fully tested. If you find any issues, please open an issue on the <a href="https://github.com/LukeHagar/plex-api-spec">main specification Repository</a>.<br/>
     /// <br/>
     /// | Language              | Repository                                        | Releases                                                                                         | Other                                                   |<br/>
     /// | --------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------- |<br/>
@@ -331,10 +331,10 @@ namespace LukeHagar.PlexAPI.SDK
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.8.2";
+        private const string _sdkVersion = "0.8.3";
         private const string _sdkGenVersion = "2.426.2";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.8.2 2.426.2 0.0.3 LukeHagar.PlexAPI.SDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.8.3 2.426.2 0.0.3 LukeHagar.PlexAPI.SDK";
         private string _serverUrl = "";
         private int _serverIndex = 0;
         private ISpeakeasyHttpClient _client;

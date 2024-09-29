@@ -3,7 +3,7 @@
   <PropertyGroup>
     <IsPackable>true</IsPackable>
     <PackageId>LukeHagar.PlexAPI.SDK</PackageId>
-    <Version>0.8.2</Version>
+    <Version>0.8.3</Version>
     <TargetFramework>net8.0</TargetFramework>
     <Authors>LukeHagar</Authors>
     <Copyright>Copyright (c) LukeHagar 2024</Copyright>
@@ -22,7 +22,7 @@ Automation and SDKs provided by [Speakeasy](https://speakeasyapi.dev/)
 
 ## SDKs
 
-The following SDKs are generated from the OpenAPI Specification. They are automatically generated and may not be fully tested. If you find any issues, please open an issue on the respective repository.
+The following SDKs are generated from the OpenAPI Specification. They are automatically generated and may not be fully tested. If you find any issues, please open an issue on the [main specification Repository](https://github.com/LukeHagar/plex-api-spec).
 
 | Language              | Repository                                        | Releases                                                                                         | Other                                                   |
 | --------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------- |
