@@ -75,7 +75,7 @@ namespace LukeHagar.PlexAPI.SDK
         /// Get Plex server access tokens and server connections
         /// </remarks>
         /// </summary>
-        Task<GetServerResourcesResponse> GetServerResourcesAsync(IncludeHttps? includeHttps = null, IncludeRelay? includeRelay = null, IncludeIPv6? includeIPv6 = null, string? serverUrl = null);
+        Task<GetServerResourcesResponse> GetServerResourcesAsync(IncludeHttps? includeHttps = null, IncludeRelay? includeRelay = null, IncludeIPv6? includeIPv6 = null, string? clientID = null, string? serverUrl = null);
 
         /// <summary>
         /// Get a Pin
@@ -143,10 +143,10 @@ namespace LukeHagar.PlexAPI.SDK
         };
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.8.3";
+        private const string _sdkVersion = "0.8.4";
         private const string _sdkGenVersion = "2.426.2";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.8.3 2.426.2 0.0.3 LukeHagar.PlexAPI.SDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.8.4 2.426.2 0.0.3 LukeHagar.PlexAPI.SDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<LukeHagar.PlexAPI.SDK.Models.Components.Security>? _securitySource;
@@ -557,14 +557,17 @@ namespace LukeHagar.PlexAPI.SDK
             throw new Models.Errors.SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<GetServerResourcesResponse> GetServerResourcesAsync(IncludeHttps? includeHttps = null, IncludeRelay? includeRelay = null, IncludeIPv6? includeIPv6 = null, string? serverUrl = null)
+        public async Task<GetServerResourcesResponse> GetServerResourcesAsync(IncludeHttps? includeHttps = null, IncludeRelay? includeRelay = null, IncludeIPv6? includeIPv6 = null, string? clientID = null, string? serverUrl = null)
         {
             var request = new GetServerResourcesRequest()
             {
                 IncludeHttps = includeHttps,
                 IncludeRelay = includeRelay,
                 IncludeIPv6 = includeIPv6,
+                ClientID = clientID,
             };
+            request.ClientID ??= SDKConfiguration.ClientID;
+            
             string baseUrl = Utilities.TemplateUrl(GetServerResourcesServerList[0], new Dictionary<string, string>(){
             });
             if (serverUrl != null)

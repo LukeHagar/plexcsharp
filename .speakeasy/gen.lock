@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 5a8dbcbc-e0ee-41f0-9d84-b8b50567d1e9
 management:
-  docChecksum: 9f62ea35c6168986c8e3557d5df50b99
+  docChecksum: f387ae03f10decba230886eaab322b20
   docVersion: 0.0.3
   speakeasyVersion: 1.404.5
   generationVersion: 2.426.2
-  releaseVersion: 0.8.3
-  configChecksum: fec2c17247b5fd283d2d5f2a7e6ff6d1
+  releaseVersion: 0.8.4
+  configChecksum: 443a1c0c9fca201cfe4e2527124b0cad
   repoURL: https://github.com/LukeHagar/plexcsharp.git
   repoSubDirectory: .
   published: true
@@ -1922,6 +1922,7 @@ examples:
           includeHttps: 1
           includeRelay: 1
           includeIPv6: 1
+          X-Plex-Client-Identifier: "gcgzw5rz2xovp84b4vha3a40"
       responses:
         "401":
           application/json: {"errors": []}

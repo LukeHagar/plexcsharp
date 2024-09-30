@@ -267,7 +267,7 @@ var res = await sdk.Server.GetServerCapabilitiesAsync();
 
 Certain parameters are configured globally. These parameters may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
 
-For example, you can set `ClientID` to `"gcgzw5rz2xovp84b4vha3a40"` at SDK initialization and then you do not have to pass the same value on calls to operations like `GetPin`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+For example, you can set `ClientID` to `"gcgzw5rz2xovp84b4vha3a40"` at SDK initialization and then you do not have to pass the same value on calls to operations like `GetServerResources`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
 
 
 ### Available Globals
@@ -294,6 +294,7 @@ using LukeHagar.PlexAPI.SDK.Models.Requests;
 using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
+    accessToken: "<YOUR_API_KEY_HERE>",
     clientID: "gcgzw5rz2xovp84b4vha3a40",
     clientName: "Plex Web",
     clientVersion: "4.133.0",
@@ -301,9 +302,12 @@ var sdk = new PlexAPI(
     deviceName: "Linux"
 );
 
-GetPinRequest req = new GetPinRequest() {};
-
-var res = await sdk.Plex.GetPinAsync(req);
+var res = await sdk.Plex.GetServerResourcesAsync(
+    includeHttps: LukeHagar.PlexAPI.SDK.Models.Requests.IncludeHttps.Enable,
+    includeRelay: LukeHagar.PlexAPI.SDK.Models.Requests.IncludeRelay.Enable,
+    includeIPv6: LukeHagar.PlexAPI.SDK.Models.Requests.IncludeIPv6.Enable,
+    clientID: "gcgzw5rz2xovp84b4vha3a40"
+);
 
 // handle response
 ```

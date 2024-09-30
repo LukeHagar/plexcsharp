@@ -1424,7 +1424,8 @@ actions:
             var res = await sdk.Plex.GetServerResourcesAsync(
                 includeHttps: LukeHagar.PlexAPI.SDK.Models.Requests.IncludeHttps.Enable,
                 includeRelay: LukeHagar.PlexAPI.SDK.Models.Requests.IncludeRelay.Enable,
-                includeIPv6: LukeHagar.PlexAPI.SDK.Models.Requests.IncludeIPv6.Enable
+                includeIPv6: LukeHagar.PlexAPI.SDK.Models.Requests.IncludeIPv6.Enable,
+                clientID: "gcgzw5rz2xovp84b4vha3a40"
             );
 
             // handle response
