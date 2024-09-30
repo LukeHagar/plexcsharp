@@ -12,7 +12,7 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: true
 csharp:
-  version: 0.8.4
+  version: 0.8.5
   additionalDependencies: []
   author: LukeHagar
   clientServerStatusCodesAsErrors: true
