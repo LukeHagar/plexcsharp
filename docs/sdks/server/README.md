@@ -48,12 +48,11 @@ var res = await sdk.Server.GetServerCapabilitiesAsync();
 
 ### Errors
 
-| Error Object                                                          | Status Code                                                           | Content Type                                                          |
+| Error Type                                                            | Status Code                                                           | Content Type                                                          |
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetServerCapabilitiesBadRequest   | 400                                                                   | application/json                                                      |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetServerCapabilitiesUnauthorized | 401                                                                   | application/json                                                      |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                      | 4xx-5xx                                                               | */*                                                                   |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                      | 4XX, 5XX                                                              | \*/\*                                                                 |
 
 ## GetServerPreferences
 
@@ -85,12 +84,11 @@ var res = await sdk.Server.GetServerPreferencesAsync();
 
 ### Errors
 
-| Error Object                                                         | Status Code                                                          | Content Type                                                         |
+| Error Type                                                           | Status Code                                                          | Content Type                                                         |
 | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetServerPreferencesBadRequest   | 400                                                                  | application/json                                                     |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetServerPreferencesUnauthorized | 401                                                                  | application/json                                                     |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                     | 4xx-5xx                                                              | */*                                                                  |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                     | 4XX, 5XX                                                             | \*/\*                                                                |
 
 ## GetAvailableClients
 
@@ -122,12 +120,11 @@ var res = await sdk.Server.GetAvailableClientsAsync();
 
 ### Errors
 
-| Error Object                                                        | Status Code                                                         | Content Type                                                        |
+| Error Type                                                          | Status Code                                                         | Content Type                                                        |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetAvailableClientsBadRequest   | 400                                                                 | application/json                                                    |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetAvailableClientsUnauthorized | 401                                                                 | application/json                                                    |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                    | 4xx-5xx                                                             | */*                                                                 |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                    | 4XX, 5XX                                                            | \*/\*                                                               |
 
 ## GetDevices
 
@@ -159,12 +156,11 @@ var res = await sdk.Server.GetDevicesAsync();
 
 ### Errors
 
-| Error Object                                               | Status Code                                                | Content Type                                               |
+| Error Type                                                 | Status Code                                                | Content Type                                               |
 | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetDevicesBadRequest   | 400                                                        | application/json                                           |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetDevicesUnauthorized | 401                                                        | application/json                                           |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException           | 4xx-5xx                                                    | */*                                                        |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException           | 4XX, 5XX                                                   | \*/\*                                                      |
 
 ## GetServerIdentity
 
@@ -195,11 +191,10 @@ var res = await sdk.Server.GetServerIdentityAsync();
 
 ### Errors
 
-| Error Object                                                        | Status Code                                                         | Content Type                                                        |
+| Error Type                                                          | Status Code                                                         | Content Type                                                        |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetServerIdentityRequestTimeout | 408                                                                 | application/json                                                    |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                    | 4xx-5xx                                                             | */*                                                                 |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                    | 4XX, 5XX                                                            | \*/\*                                                               |
 
 ## GetMyPlexAccount
 
@@ -231,12 +226,11 @@ var res = await sdk.Server.GetMyPlexAccountAsync();
 
 ### Errors
 
-| Error Object                                                     | Status Code                                                      | Content Type                                                     |
+| Error Type                                                       | Status Code                                                      | Content Type                                                     |
 | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetMyPlexAccountBadRequest   | 400                                                              | application/json                                                 |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetMyPlexAccountUnauthorized | 401                                                              | application/json                                                 |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                 | 4xx-5xx                                                          | */*                                                              |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                 | 4XX, 5XX                                                         | \*/\*                                                            |
 
 ## GetResizedPhoto
 
@@ -286,12 +280,11 @@ var res = await sdk.Server.GetResizedPhotoAsync(req);
 
 ### Errors
 
-| Error Object                                                    | Status Code                                                     | Content Type                                                    |
+| Error Type                                                      | Status Code                                                     | Content Type                                                    |
 | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetResizedPhotoBadRequest   | 400                                                             | application/json                                                |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetResizedPhotoUnauthorized | 401                                                             | application/json                                                |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                | 4xx-5xx                                                         | */*                                                             |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                | 4XX, 5XX                                                        | \*/\*                                                           |
 
 ## GetMediaProviders
 
@@ -330,12 +323,11 @@ var res = await sdk.Server.GetMediaProvidersAsync(xPlexToken: "CV5xoxjTpFKUzBTSh
 
 ### Errors
 
-| Error Object                                                      | Status Code                                                       | Content Type                                                      |
+| Error Type                                                        | Status Code                                                       | Content Type                                                      |
 | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetMediaProvidersBadRequest   | 400                                                               | application/json                                                  |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetMediaProvidersUnauthorized | 401                                                               | application/json                                                  |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                  | 4xx-5xx                                                           | */*                                                               |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                  | 4XX, 5XX                                                          | \*/\*                                                             |
 
 ## GetServerList
 
@@ -367,8 +359,8 @@ var res = await sdk.Server.GetServerListAsync();
 
 ### Errors
 
-| Error Object                                                  | Status Code                                                   | Content Type                                                  |
+| Error Type                                                    | Status Code                                                   | Content Type                                                  |
 | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetServerListBadRequest   | 400                                                           | application/json                                              |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetServerListUnauthorized | 401                                                           | application/json                                              |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException              | 4xx-5xx                                                       | */*                                                           |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException              | 4XX, 5XX                                                      | \*/\*                                                         |

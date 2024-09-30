@@ -67,12 +67,11 @@ var res = await sdk.Search.PerformSearchAsync(
 
 ### Errors
 
-| Error Object                                                  | Status Code                                                   | Content Type                                                  |
+| Error Type                                                    | Status Code                                                   | Content Type                                                  |
 | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.PerformSearchBadRequest   | 400                                                           | application/json                                              |
 | LukeHagar.PlexAPI.SDK.Models.Errors.PerformSearchUnauthorized | 401                                                           | application/json                                              |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException              | 4xx-5xx                                                       | */*                                                           |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException              | 4XX, 5XX                                                      | \*/\*                                                         |
 
 ## PerformVoiceSearch
 
@@ -121,12 +120,11 @@ var res = await sdk.Search.PerformVoiceSearchAsync(
 
 ### Errors
 
-| Error Object                                                       | Status Code                                                        | Content Type                                                       |
+| Error Type                                                         | Status Code                                                        | Content Type                                                       |
 | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
 | LukeHagar.PlexAPI.SDK.Models.Errors.PerformVoiceSearchBadRequest   | 400                                                                | application/json                                                   |
 | LukeHagar.PlexAPI.SDK.Models.Errors.PerformVoiceSearchUnauthorized | 401                                                                | application/json                                                   |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                   | 4xx-5xx                                                            | */*                                                                |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                   | 4XX, 5XX                                                           | \*/\*                                                              |
 
 ## GetSearchResults
 
@@ -165,8 +163,8 @@ var res = await sdk.Search.GetSearchResultsAsync(query: "110");
 
 ### Errors
 
-| Error Object                                                     | Status Code                                                      | Content Type                                                     |
+| Error Type                                                       | Status Code                                                      | Content Type                                                     |
 | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetSearchResultsBadRequest   | 400                                                              | application/json                                                 |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetSearchResultsUnauthorized | 401                                                              | application/json                                                 |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                 | 4xx-5xx                                                          | */*                                                              |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                 | 4XX, 5XX                                                         | \*/\*                                                            |

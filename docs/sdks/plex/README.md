@@ -52,12 +52,11 @@ var res = await sdk.Plex.GetCompanionsDataAsync();
 
 ### Errors
 
-| Error Object                                                      | Status Code                                                       | Content Type                                                      |
+| Error Type                                                        | Status Code                                                       | Content Type                                                      |
 | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetCompanionsDataBadRequest   | 400                                                               | application/json                                                  |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetCompanionsDataUnauthorized | 401                                                               | application/json                                                  |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                  | 4xx-5xx                                                           | */*                                                               |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                  | 4XX, 5XX                                                          | \*/\*                                                             |
 
 ## GetUserFriends
 
@@ -95,12 +94,11 @@ var res = await sdk.Plex.GetUserFriendsAsync();
 
 ### Errors
 
-| Error Object                                                   | Status Code                                                    | Content Type                                                   |
+| Error Type                                                     | Status Code                                                    | Content Type                                                   |
 | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetUserFriendsBadRequest   | 400                                                            | application/json                                               |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetUserFriendsUnauthorized | 401                                                            | application/json                                               |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException               | 4xx-5xx                                                        | */*                                                            |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException               | 4XX, 5XX                                                       | \*/\*                                                          |
 
 ## GetGeoData
 
@@ -137,12 +135,11 @@ var res = await sdk.Plex.GetGeoDataAsync();
 
 ### Errors
 
-| Error Object                                               | Status Code                                                | Content Type                                               |
+| Error Type                                                 | Status Code                                                | Content Type                                               |
 | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetGeoDataBadRequest   | 400                                                        | application/json                                           |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetGeoDataUnauthorized | 401                                                        | application/json                                           |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException           | 4xx-5xx                                                    | */*                                                        |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException           | 4XX, 5XX                                                   | \*/\*                                                      |
 
 ## GetHomeData
 
@@ -174,12 +171,11 @@ var res = await sdk.Plex.GetHomeDataAsync();
 
 ### Errors
 
-| Error Object                                                | Status Code                                                 | Content Type                                                |
+| Error Type                                                  | Status Code                                                 | Content Type                                                |
 | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetHomeDataBadRequest   | 400                                                         | application/json                                            |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetHomeDataUnauthorized | 401                                                         | application/json                                            |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException            | 4xx-5xx                                                     | */*                                                         |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException            | 4XX, 5XX                                                    | \*/\*                                                       |
 
 ## GetServerResources
 
@@ -227,12 +223,11 @@ var res = await sdk.Plex.GetServerResourcesAsync(
 
 ### Errors
 
-| Error Object                                                       | Status Code                                                        | Content Type                                                       |
+| Error Type                                                         | Status Code                                                        | Content Type                                                       |
 | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetServerResourcesBadRequest   | 400                                                                | application/json                                                   |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetServerResourcesUnauthorized | 401                                                                | application/json                                                   |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                   | 4xx-5xx                                                            | */*                                                                |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                   | 4XX, 5XX                                                           | \*/\*                                                              |
 
 ## GetPin
 
@@ -273,11 +268,10 @@ var res = await sdk.Plex.GetPinAsync(req);
 
 ### Errors
 
-| Error Object                                         | Status Code                                          | Content Type                                         |
+| Error Type                                           | Status Code                                          | Content Type                                         |
 | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetPinBadRequest | 400                                                  | application/json                                     |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException     | 4xx-5xx                                              | */*                                                  |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException     | 4XX, 5XX                                             | \*/\*                                                |
 
 ## GetTokenByPinId
 
@@ -320,8 +314,8 @@ var res = await sdk.Plex.GetTokenByPinIdAsync(req);
 
 ### Errors
 
-| Error Object                                                    | Status Code                                                     | Content Type                                                    |
+| Error Type                                                      | Status Code                                                     | Content Type                                                    |
 | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetTokenByPinIdBadRequest   | 400                                                             | application/json                                                |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetTokenByPinIdResponseBody | 404                                                             | application/json                                                |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                | 4xx-5xx                                                         | */*                                                             |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                | 4XX, 5XX                                                        | \*/\*                                                           |

@@ -43,12 +43,11 @@ var res = await sdk.Updater.GetUpdateStatusAsync();
 
 ### Errors
 
-| Error Object                                                    | Status Code                                                     | Content Type                                                    |
+| Error Type                                                      | Status Code                                                     | Content Type                                                    |
 | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetUpdateStatusBadRequest   | 400                                                             | application/json                                                |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetUpdateStatusUnauthorized | 401                                                             | application/json                                                |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                | 4xx-5xx                                                         | */*                                                             |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                | 4XX, 5XX                                                        | \*/\*                                                           |
 
 ## CheckForUpdates
 
@@ -87,12 +86,11 @@ var res = await sdk.Updater.CheckForUpdatesAsync(download: LukeHagar.PlexAPI.SDK
 
 ### Errors
 
-| Error Object                                                    | Status Code                                                     | Content Type                                                    |
+| Error Type                                                      | Status Code                                                     | Content Type                                                    |
 | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.CheckForUpdatesBadRequest   | 400                                                             | application/json                                                |
 | LukeHagar.PlexAPI.SDK.Models.Errors.CheckForUpdatesUnauthorized | 401                                                             | application/json                                                |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                | 4xx-5xx                                                         | */*                                                             |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                | 4XX, 5XX                                                        | \*/\*                                                           |
 
 ## ApplyUpdates
 
@@ -136,8 +134,8 @@ var res = await sdk.Updater.ApplyUpdatesAsync(
 
 ### Errors
 
-| Error Object                                                 | Status Code                                                  | Content Type                                                 |
+| Error Type                                                   | Status Code                                                  | Content Type                                                 |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | LukeHagar.PlexAPI.SDK.Models.Errors.ApplyUpdatesBadRequest   | 400                                                          | application/json                                             |
 | LukeHagar.PlexAPI.SDK.Models.Errors.ApplyUpdatesUnauthorized | 401                                                          | application/json                                             |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException             | 4xx-5xx                                                      | */*                                                          |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException             | 4XX, 5XX                                                     | \*/\*                                                        |

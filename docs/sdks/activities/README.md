@@ -47,12 +47,11 @@ var res = await sdk.Activities.GetServerActivitiesAsync();
 
 ### Errors
 
-| Error Object                                                        | Status Code                                                         | Content Type                                                        |
+| Error Type                                                          | Status Code                                                         | Content Type                                                        |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetServerActivitiesBadRequest   | 400                                                                 | application/json                                                    |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetServerActivitiesUnauthorized | 401                                                                 | application/json                                                    |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                    | 4xx-5xx                                                             | */*                                                                 |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                    | 4XX, 5XX                                                            | \*/\*                                                               |
 
 ## CancelServerActivities
 
@@ -91,8 +90,8 @@ var res = await sdk.Activities.CancelServerActivitiesAsync(activityUUID: "25b71e
 
 ### Errors
 
-| Error Object                                                           | Status Code                                                            | Content Type                                                           |
+| Error Type                                                             | Status Code                                                            | Content Type                                                           |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.CancelServerActivitiesBadRequest   | 400                                                                    | application/json                                                       |
 | LukeHagar.PlexAPI.SDK.Models.Errors.CancelServerActivitiesUnauthorized | 401                                                                    | application/json                                                       |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                       | 4xx-5xx                                                                | */*                                                                    |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                       | 4XX, 5XX                                                               | \*/\*                                                                  |

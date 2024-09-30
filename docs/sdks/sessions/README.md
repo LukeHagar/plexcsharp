@@ -43,12 +43,11 @@ var res = await sdk.Sessions.GetSessionsAsync();
 
 ### Errors
 
-| Error Object                                                | Status Code                                                 | Content Type                                                |
+| Error Type                                                  | Status Code                                                 | Content Type                                                |
 | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetSessionsBadRequest   | 400                                                         | application/json                                            |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetSessionsUnauthorized | 401                                                         | application/json                                            |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException            | 4xx-5xx                                                     | */*                                                         |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException            | 4XX, 5XX                                                    | \*/\*                                                       |
 
 ## GetSessionHistory
 
@@ -95,12 +94,11 @@ var res = await sdk.Sessions.GetSessionHistoryAsync(
 
 ### Errors
 
-| Error Object                                                      | Status Code                                                       | Content Type                                                      |
+| Error Type                                                        | Status Code                                                       | Content Type                                                      |
 | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetSessionHistoryBadRequest   | 400                                                               | application/json                                                  |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetSessionHistoryUnauthorized | 401                                                               | application/json                                                  |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                  | 4xx-5xx                                                           | */*                                                               |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                  | 4XX, 5XX                                                          | \*/\*                                                             |
 
 ## GetTranscodeSessions
 
@@ -132,12 +130,11 @@ var res = await sdk.Sessions.GetTranscodeSessionsAsync();
 
 ### Errors
 
-| Error Object                                                         | Status Code                                                          | Content Type                                                         |
+| Error Type                                                           | Status Code                                                          | Content Type                                                         |
 | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetTranscodeSessionsBadRequest   | 400                                                                  | application/json                                                     |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetTranscodeSessionsUnauthorized | 401                                                                  | application/json                                                     |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                     | 4xx-5xx                                                              | */*                                                                  |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                     | 4XX, 5XX                                                             | \*/\*                                                                |
 
 ## StopTranscodeSession
 
@@ -176,8 +173,8 @@ var res = await sdk.Sessions.StopTranscodeSessionAsync(sessionKey: "zz7llzqlx8w9
 
 ### Errors
 
-| Error Object                                                         | Status Code                                                          | Content Type                                                         |
+| Error Type                                                           | Status Code                                                          | Content Type                                                         |
 | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.StopTranscodeSessionBadRequest   | 400                                                                  | application/json                                                     |
 | LukeHagar.PlexAPI.SDK.Models.Errors.StopTranscodeSessionUnauthorized | 401                                                                  | application/json                                                     |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                     | 4xx-5xx                                                              | */*                                                                  |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                     | 4XX, 5XX                                                             | \*/\*                                                                |

@@ -56,12 +56,11 @@ var res = await sdk.Log.LogLineAsync(
 
 ### Errors
 
-| Error Object                                            | Status Code                                             | Content Type                                            |
+| Error Type                                              | Status Code                                             | Content Type                                            |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.LogLineBadRequest   | 400                                                     | application/json                                        |
 | LukeHagar.PlexAPI.SDK.Models.Errors.LogLineUnauthorized | 401                                                     | application/json                                        |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException        | 4xx-5xx                                                 | */*                                                     |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException        | 4XX, 5XX                                                | \*/\*                                                   |
 
 ## LogMultiLine
 
@@ -124,12 +123,11 @@ var res = await sdk.Log.LogMultiLineAsync(req);
 
 ### Errors
 
-| Error Object                                                 | Status Code                                                  | Content Type                                                 |
+| Error Type                                                   | Status Code                                                  | Content Type                                                 |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | LukeHagar.PlexAPI.SDK.Models.Errors.LogMultiLineBadRequest   | 400                                                          | application/json                                             |
 | LukeHagar.PlexAPI.SDK.Models.Errors.LogMultiLineUnauthorized | 401                                                          | application/json                                             |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException             | 4xx-5xx                                                      | */*                                                          |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException             | 4XX, 5XX                                                     | \*/\*                                                        |
 
 ## EnablePaperTrail
 
@@ -162,8 +160,8 @@ var res = await sdk.Log.EnablePaperTrailAsync();
 
 ### Errors
 
-| Error Object                                                     | Status Code                                                      | Content Type                                                     |
+| Error Type                                                       | Status Code                                                      | Content Type                                                     |
 | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.EnablePaperTrailBadRequest   | 400                                                              | application/json                                                 |
 | LukeHagar.PlexAPI.SDK.Models.Errors.EnablePaperTrailUnauthorized | 401                                                              | application/json                                                 |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                 | 4xx-5xx                                                          | */*                                                              |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                 | 4XX, 5XX                                                         | \*/\*                                                            |

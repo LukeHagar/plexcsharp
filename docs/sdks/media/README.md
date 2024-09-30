@@ -51,12 +51,11 @@ var res = await sdk.Media.MarkPlayedAsync(key: 59398D);
 
 ### Errors
 
-| Error Object                                               | Status Code                                                | Content Type                                               |
+| Error Type                                                 | Status Code                                                | Content Type                                               |
 | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.MarkPlayedBadRequest   | 400                                                        | application/json                                           |
 | LukeHagar.PlexAPI.SDK.Models.Errors.MarkPlayedUnauthorized | 401                                                        | application/json                                           |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException           | 4xx-5xx                                                    | */*                                                        |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException           | 4XX, 5XX                                                   | \*/\*                                                      |
 
 ## MarkUnplayed
 
@@ -95,12 +94,11 @@ var res = await sdk.Media.MarkUnplayedAsync(key: 59398D);
 
 ### Errors
 
-| Error Object                                                 | Status Code                                                  | Content Type                                                 |
+| Error Type                                                   | Status Code                                                  | Content Type                                                 |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | LukeHagar.PlexAPI.SDK.Models.Errors.MarkUnplayedBadRequest   | 400                                                          | application/json                                             |
 | LukeHagar.PlexAPI.SDK.Models.Errors.MarkUnplayedUnauthorized | 401                                                          | application/json                                             |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException             | 4xx-5xx                                                      | */*                                                          |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException             | 4XX, 5XX                                                     | \*/\*                                                        |
 
 ## UpdatePlayProgress
 
@@ -146,12 +144,11 @@ var res = await sdk.Media.UpdatePlayProgressAsync(
 
 ### Errors
 
-| Error Object                                                       | Status Code                                                        | Content Type                                                       |
+| Error Type                                                         | Status Code                                                        | Content Type                                                       |
 | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
 | LukeHagar.PlexAPI.SDK.Models.Errors.UpdatePlayProgressBadRequest   | 400                                                                | application/json                                                   |
 | LukeHagar.PlexAPI.SDK.Models.Errors.UpdatePlayProgressUnauthorized | 401                                                                | application/json                                                   |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                   | 4xx-5xx                                                            | */*                                                                |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                   | 4XX, 5XX                                                           | \*/\*                                                              |
 
 ## GetBannerImage
 
@@ -199,12 +196,11 @@ var res = await sdk.Media.GetBannerImageAsync(req);
 
 ### Errors
 
-| Error Object                                                   | Status Code                                                    | Content Type                                                   |
+| Error Type                                                     | Status Code                                                    | Content Type                                                   |
 | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetBannerImageBadRequest   | 400                                                            | application/json                                               |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetBannerImageUnauthorized | 401                                                            | application/json                                               |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException               | 4xx-5xx                                                        | */*                                                            |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException               | 4XX, 5XX                                                       | \*/\*                                                          |
 
 ## GetThumbImage
 
@@ -252,8 +248,8 @@ var res = await sdk.Media.GetThumbImageAsync(req);
 
 ### Errors
 
-| Error Object                                                  | Status Code                                                   | Content Type                                                  |
+| Error Type                                                    | Status Code                                                   | Content Type                                                  |
 | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetThumbImageBadRequest   | 400                                                           | application/json                                              |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetThumbImageUnauthorized | 401                                                           | application/json                                              |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException              | 4xx-5xx                                                       | */*                                                           |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException              | 4XX, 5XX                                                      | \*/\*                                                         |

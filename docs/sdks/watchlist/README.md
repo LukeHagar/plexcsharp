@@ -55,8 +55,8 @@ var res = await sdk.Watchlist.GetWatchListAsync(req);
 
 ### Errors
 
-| Error Object                                                 | Status Code                                                  | Content Type                                                 |
+| Error Type                                                   | Status Code                                                  | Content Type                                                 |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetWatchListBadRequest   | 400                                                          | application/json                                             |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetWatchListUnauthorized | 401                                                          | application/json                                             |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException             | 4xx-5xx                                                      | */*                                                          |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException             | 4XX, 5XX                                                     | \*/\*                                                        |

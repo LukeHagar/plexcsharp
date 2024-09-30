@@ -44,12 +44,11 @@ var res = await sdk.Butler.GetButlerTasksAsync();
 
 ### Errors
 
-| Error Object                                                   | Status Code                                                    | Content Type                                                   |
+| Error Type                                                     | Status Code                                                    | Content Type                                                   |
 | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetButlerTasksBadRequest   | 400                                                            | application/json                                               |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetButlerTasksUnauthorized | 401                                                            | application/json                                               |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException               | 4xx-5xx                                                        | */*                                                            |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException               | 4XX, 5XX                                                       | \*/\*                                                          |
 
 ## StartAllTasks
 
@@ -86,12 +85,11 @@ var res = await sdk.Butler.StartAllTasksAsync();
 
 ### Errors
 
-| Error Object                                                  | Status Code                                                   | Content Type                                                  |
+| Error Type                                                    | Status Code                                                   | Content Type                                                  |
 | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.StartAllTasksBadRequest   | 400                                                           | application/json                                              |
 | LukeHagar.PlexAPI.SDK.Models.Errors.StartAllTasksUnauthorized | 401                                                           | application/json                                              |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException              | 4xx-5xx                                                       | */*                                                           |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException              | 4XX, 5XX                                                      | \*/\*                                                         |
 
 ## StopAllTasks
 
@@ -124,12 +122,11 @@ var res = await sdk.Butler.StopAllTasksAsync();
 
 ### Errors
 
-| Error Object                                                 | Status Code                                                  | Content Type                                                 |
+| Error Type                                                   | Status Code                                                  | Content Type                                                 |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | LukeHagar.PlexAPI.SDK.Models.Errors.StopAllTasksBadRequest   | 400                                                          | application/json                                             |
 | LukeHagar.PlexAPI.SDK.Models.Errors.StopAllTasksUnauthorized | 401                                                          | application/json                                             |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException             | 4xx-5xx                                                      | */*                                                          |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException             | 4XX, 5XX                                                     | \*/\*                                                        |
 
 ## StartTask
 
@@ -173,12 +170,11 @@ var res = await sdk.Butler.StartTaskAsync(taskName: LukeHagar.PlexAPI.SDK.Models
 
 ### Errors
 
-| Error Object                                              | Status Code                                               | Content Type                                              |
+| Error Type                                                | Status Code                                               | Content Type                                              |
 | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.StartTaskBadRequest   | 400                                                       | application/json                                          |
 | LukeHagar.PlexAPI.SDK.Models.Errors.StartTaskUnauthorized | 401                                                       | application/json                                          |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException          | 4xx-5xx                                                   | */*                                                       |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException          | 4XX, 5XX                                                  | \*/\*                                                     |
 
 ## StopTask
 
@@ -218,8 +214,8 @@ var res = await sdk.Butler.StopTaskAsync(taskName: LukeHagar.PlexAPI.SDK.Models.
 
 ### Errors
 
-| Error Object                                             | Status Code                                              | Content Type                                             |
+| Error Type                                               | Status Code                                              | Content Type                                             |
 | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.StopTaskBadRequest   | 400                                                      | application/json                                         |
 | LukeHagar.PlexAPI.SDK.Models.Errors.StopTaskUnauthorized | 401                                                      | application/json                                         |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException         | 4xx-5xx                                                  | */*                                                      |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException         | 4XX, 5XX                                                 | \*/\*                                                    |

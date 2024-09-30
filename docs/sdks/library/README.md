@@ -62,12 +62,11 @@ var res = await sdk.Library.GetFileHashAsync(
 
 ### Errors
 
-| Error Object                                                | Status Code                                                 | Content Type                                                |
+| Error Type                                                  | Status Code                                                 | Content Type                                                |
 | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetFileHashBadRequest   | 400                                                         | application/json                                            |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetFileHashUnauthorized | 401                                                         | application/json                                            |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException            | 4xx-5xx                                                     | */*                                                         |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException            | 4XX, 5XX                                                    | \*/\*                                                       |
 
 ## GetRecentlyAddedLibrary
 
@@ -131,12 +130,11 @@ var res = await sdk.Library.GetRecentlyAddedLibraryAsync(req);
 
 ### Errors
 
-| Error Object                                                            | Status Code                                                             | Content Type                                                            |
+| Error Type                                                              | Status Code                                                             | Content Type                                                            |
 | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetRecentlyAddedLibraryBadRequest   | 400                                                                     | application/json                                                        |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetRecentlyAddedLibraryUnauthorized | 401                                                                     | application/json                                                        |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                        | 4xx-5xx                                                                 | */*                                                                     |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                        | 4XX, 5XX                                                                | \*/\*                                                                   |
 
 ## GetAllLibraries
 
@@ -174,12 +172,11 @@ var res = await sdk.Library.GetAllLibrariesAsync();
 
 ### Errors
 
-| Error Object                                                    | Status Code                                                     | Content Type                                                    |
+| Error Type                                                      | Status Code                                                     | Content Type                                                    |
 | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetAllLibrariesBadRequest   | 400                                                             | application/json                                                |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetAllLibrariesUnauthorized | 401                                                             | application/json                                                |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                | 4xx-5xx                                                         | */*                                                             |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                | 4XX, 5XX                                                        | \*/\*                                                           |
 
 ## GetLibraryDetails
 
@@ -261,12 +258,11 @@ var res = await sdk.Library.GetLibraryDetailsAsync(
 
 ### Errors
 
-| Error Object                                                      | Status Code                                                       | Content Type                                                      |
+| Error Type                                                        | Status Code                                                       | Content Type                                                      |
 | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetLibraryDetailsBadRequest   | 400                                                               | application/json                                                  |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetLibraryDetailsUnauthorized | 401                                                               | application/json                                                  |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                  | 4xx-5xx                                                           | */*                                                               |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                  | 4XX, 5XX                                                          | \*/\*                                                             |
 
 ## DeleteLibrary
 
@@ -305,12 +301,11 @@ var res = await sdk.Library.DeleteLibraryAsync(sectionKey: 9518);
 
 ### Errors
 
-| Error Object                                                  | Status Code                                                   | Content Type                                                  |
+| Error Type                                                    | Status Code                                                   | Content Type                                                  |
 | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.DeleteLibraryBadRequest   | 400                                                           | application/json                                              |
 | LukeHagar.PlexAPI.SDK.Models.Errors.DeleteLibraryUnauthorized | 401                                                           | application/json                                              |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException              | 4xx-5xx                                                       | */*                                                           |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException              | 4XX, 5XX                                                      | \*/\*                                                         |
 
 ## GetLibraryItems
 
@@ -379,12 +374,11 @@ var res = await sdk.Library.GetLibraryItemsAsync(req);
 
 ### Errors
 
-| Error Object                                                    | Status Code                                                     | Content Type                                                    |
+| Error Type                                                      | Status Code                                                     | Content Type                                                    |
 | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetLibraryItemsBadRequest   | 400                                                             | application/json                                                |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetLibraryItemsUnauthorized | 401                                                             | application/json                                                |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                | 4xx-5xx                                                         | */*                                                             |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                | 4XX, 5XX                                                        | \*/\*                                                           |
 
 ## GetRefreshLibraryMetadata
 
@@ -428,12 +422,11 @@ var res = await sdk.Library.GetRefreshLibraryMetadataAsync(
 
 ### Errors
 
-| Error Object                                                              | Status Code                                                               | Content Type                                                              |
+| Error Type                                                                | Status Code                                                               | Content Type                                                              |
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetRefreshLibraryMetadataBadRequest   | 400                                                                       | application/json                                                          |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetRefreshLibraryMetadataUnauthorized | 401                                                                       | application/json                                                          |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                          | 4xx-5xx                                                                   | */*                                                                       |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                          | 4XX, 5XX                                                                  | \*/\*                                                                     |
 
 ## GetSearchLibrary
 
@@ -494,12 +487,11 @@ var res = await sdk.Library.GetSearchLibraryAsync(
 
 ### Errors
 
-| Error Object                                                     | Status Code                                                      | Content Type                                                     |
+| Error Type                                                       | Status Code                                                      | Content Type                                                     |
 | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetSearchLibraryBadRequest   | 400                                                              | application/json                                                 |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetSearchLibraryUnauthorized | 401                                                              | application/json                                                 |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                 | 4xx-5xx                                                          | */*                                                              |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                 | 4XX, 5XX                                                         | \*/\*                                                            |
 
 ## GetMetaDataByRatingKey
 
@@ -539,12 +531,11 @@ var res = await sdk.Library.GetMetaDataByRatingKeyAsync(ratingKey: 9518);
 
 ### Errors
 
-| Error Object                                                           | Status Code                                                            | Content Type                                                           |
+| Error Type                                                             | Status Code                                                            | Content Type                                                           |
 | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetMetaDataByRatingKeyBadRequest   | 400                                                                    | application/json                                                       |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetMetaDataByRatingKeyUnauthorized | 401                                                                    | application/json                                                       |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                       | 4xx-5xx                                                                | */*                                                                    |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                       | 4XX, 5XX                                                               | \*/\*                                                                  |
 
 ## GetMetadataChildren
 
@@ -588,12 +579,11 @@ var res = await sdk.Library.GetMetadataChildrenAsync(
 
 ### Errors
 
-| Error Object                                                        | Status Code                                                         | Content Type                                                        |
+| Error Type                                                          | Status Code                                                         | Content Type                                                        |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetMetadataChildrenBadRequest   | 400                                                                 | application/json                                                    |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetMetadataChildrenUnauthorized | 401                                                                 | application/json                                                    |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                    | 4xx-5xx                                                             | */*                                                                 |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                    | 4XX, 5XX                                                            | \*/\*                                                               |
 
 ## GetTopWatchedContent
 
@@ -637,12 +627,11 @@ var res = await sdk.Library.GetTopWatchedContentAsync(
 
 ### Errors
 
-| Error Object                                                         | Status Code                                                          | Content Type                                                         |
+| Error Type                                                           | Status Code                                                          | Content Type                                                         |
 | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetTopWatchedContentBadRequest   | 400                                                                  | application/json                                                     |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetTopWatchedContentUnauthorized | 401                                                                  | application/json                                                     |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                     | 4xx-5xx                                                              | */*                                                                  |
-
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                     | 4XX, 5XX                                                             | \*/\*                                                                |
 
 ## GetOnDeck
 
@@ -675,8 +664,8 @@ var res = await sdk.Library.GetOnDeckAsync();
 
 ### Errors
 
-| Error Object                                              | Status Code                                               | Content Type                                              |
+| Error Type                                                | Status Code                                               | Content Type                                              |
 | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetOnDeckBadRequest   | 400                                                       | application/json                                          |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetOnDeckUnauthorized | 401                                                       | application/json                                          |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException          | 4xx-5xx                                                   | */*                                                       |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException          | 4XX, 5XX                                                  | \*/\*                                                     |
