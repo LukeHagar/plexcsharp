@@ -16,13 +16,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     {
 
         /// <summary>
-        /// The unique identifier for the client application<br/>
-        /// 
-        /// <remarks>
-        /// This is used to track the client application and its usage<br/>
-        /// (UUID, serial number, or other number unique per device)<br/>
-        /// 
-        /// </remarks>
+        /// The unique identifier for the client application. This is used to track the client application and its usage. (UUID, serial number, or other number unique per device)
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=X-Plex-Client-Identifier")]
         public string? ClientID { get; set; }

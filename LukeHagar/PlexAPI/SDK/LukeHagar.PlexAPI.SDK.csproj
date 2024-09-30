@@ -3,7 +3,7 @@
   <PropertyGroup>
     <IsPackable>true</IsPackable>
     <PackageId>LukeHagar.PlexAPI.SDK</PackageId>
-    <Version>0.8.6</Version>
+    <Version>0.8.7</Version>
     <TargetFramework>net8.0</TargetFramework>
     <Authors>LukeHagar</Authors>
     <Copyright>Copyright (c) LukeHagar 2024</Copyright>

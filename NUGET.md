@@ -41,10 +41,7 @@ The following global parameters are available.
 
 | Name | Type | Required | Description |
 | ---- | ---- |:--------:| ----------- |
-| clientID | string |  | The unique identifier for the client application
-This is used to track the client application and its usage
-(UUID, serial number, or other number unique per device)
- |
+| clientID | string |  | The unique identifier for the client application. This is used to track the client application and its usage. (UUID, serial number, or other number unique per device) |
 | clientName | string |  | The ClientName parameter. |
 | clientVersion | string |  | The ClientVersion parameter. |
 | clientPlatform | string |  | The ClientPlatform parameter. |
