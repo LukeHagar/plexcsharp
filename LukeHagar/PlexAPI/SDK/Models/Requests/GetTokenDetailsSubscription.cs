@@ -21,7 +21,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// List of features allowed on your Plex Pass subscription
         /// </summary>
         [JsonProperty("features")]
-        public List<GetTokenDetailsFeatures>? Features { get; set; }
+        public List<string>? Features { get; set; }
 
         /// <summary>
         /// If the account&apos;s Plex Pass subscription is active

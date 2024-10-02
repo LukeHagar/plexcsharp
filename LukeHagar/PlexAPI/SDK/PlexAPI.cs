@@ -92,7 +92,7 @@ namespace LukeHagar.PlexAPI.SDK
     /// | Swift                 | <a href="https://github.com/LukeHagar/plexswift">GitHub</a>  | <a href="https://github.com/LukeHagar/plexswift/releases">Releases</a>                                      | -                                                       |<br/>
     /// | PHP                   | <a href="https://github.com/LukeHagar/plexphp">GitHub</a>    | <a href="https://github.com/LukeHagar/plexphp/releases">Releases</a>                                        | -                                                       |<br/>
     /// | Java                  | <a href="https://github.com/LukeHagar/plexjava">GitHub</a>   | <a href="https://github.com/LukeHagar/plexjava/releases">Releases</a>                                       | -                                                       |<br/>
-    /// | C#                    | <a href="https://github.com/LukeHagar/plexcsharp">GitHub</a> | <a href="https://github.com/LukeHagar/plexcsharp/releases">Releases</a>                                     | -     <br/>
+    /// | C#                    | <a href="https://github.com/LukeHagar/plexcsharp">GitHub</a> | <a href="https://github.com/LukeHagar/plexcsharp/releases">Releases</a>                                     | -<br/>
     /// 
     /// </remarks>
     /// </summary>
@@ -322,7 +322,7 @@ namespace LukeHagar.PlexAPI.SDK
     /// | Swift                 | <a href="https://github.com/LukeHagar/plexswift">GitHub</a>  | <a href="https://github.com/LukeHagar/plexswift/releases">Releases</a>                                      | -                                                       |<br/>
     /// | PHP                   | <a href="https://github.com/LukeHagar/plexphp">GitHub</a>    | <a href="https://github.com/LukeHagar/plexphp/releases">Releases</a>                                        | -                                                       |<br/>
     /// | Java                  | <a href="https://github.com/LukeHagar/plexjava">GitHub</a>   | <a href="https://github.com/LukeHagar/plexjava/releases">Releases</a>                                       | -                                                       |<br/>
-    /// | C#                    | <a href="https://github.com/LukeHagar/plexcsharp">GitHub</a> | <a href="https://github.com/LukeHagar/plexcsharp/releases">Releases</a>                                     | -     <br/>
+    /// | C#                    | <a href="https://github.com/LukeHagar/plexcsharp">GitHub</a> | <a href="https://github.com/LukeHagar/plexcsharp/releases">Releases</a>                                     | -<br/>
     /// 
     /// </remarks>
     /// </summary>
@@ -331,10 +331,10 @@ namespace LukeHagar.PlexAPI.SDK
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.9.1";
+        private const string _sdkVersion = "0.9.2";
         private const string _sdkGenVersion = "2.429.0";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.9.1 2.429.0 0.0.3 LukeHagar.PlexAPI.SDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.9.2 2.429.0 0.0.3 LukeHagar.PlexAPI.SDK";
         private string _serverUrl = "";
         private int _serverIndex = 0;
         private ISpeakeasyHttpClient _client;

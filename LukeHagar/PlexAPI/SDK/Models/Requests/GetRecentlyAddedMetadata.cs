@@ -199,6 +199,9 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         [JsonProperty("Role")]
         public List<Role>? Role { get; set; }
 
+        [JsonProperty("Location")]
+        public List<Location>? Location { get; set; }
+
         /// <summary>
         /// The Guid object is only included in the response if the `includeGuids` parameter is set to `1`.<br/>
         /// 

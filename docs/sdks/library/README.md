@@ -16,6 +16,7 @@ API Calls interacting with Plex Media Server Libraries
 * [GetLibraryItems](#getlibraryitems) - Get Library Items
 * [GetRefreshLibraryMetadata](#getrefreshlibrarymetadata) - Refresh Metadata Of The Library
 * [GetSearchLibrary](#getsearchlibrary) - Search Library
+* [GetSearchAllLibraries](#getsearchalllibraries) - Search All Libraries
 * [GetMetaDataByRatingKey](#getmetadatabyratingkey) - Get Metadata by RatingKey
 * [GetMetadataChildren](#getmetadatachildren) - Get Items Children
 * [GetTopWatchedContent](#gettopwatchedcontent) - Get Top Watched Content
@@ -492,6 +493,60 @@ var res = await sdk.Library.GetSearchLibraryAsync(
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetSearchLibraryBadRequest   | 400                                                              | application/json                                                 |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetSearchLibraryUnauthorized | 401                                                              | application/json                                                 |
 | LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                 | 4XX, 5XX                                                         | \*/\*                                                            |
+
+## GetSearchAllLibraries
+
+Search the provided query across all library sections, or a single section, and return matches as hubs, split up by type.
+
+
+### Example Usage
+
+```csharp
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+using System.Collections.Generic;
+using LukeHagar.PlexAPI.SDK.Models.Components;
+
+var sdk = new PlexAPI(
+    accessToken: "<YOUR_API_KEY_HERE>",
+    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
+    clientName: "Plex for Roku",
+    clientVersion: "2.4.1",
+    platform: "Roku",
+    deviceNickname: "Roku 3"
+);
+
+GetSearchAllLibrariesRequest req = new GetSearchAllLibrariesRequest() {
+    Query = "<value>",
+    SearchTypes = new List<SearchTypes>() {
+        LukeHagar.PlexAPI.SDK.Models.Requests.SearchTypes.People,
+    },
+    IncludeCollections = LukeHagar.PlexAPI.SDK.Models.Requests.QueryParamIncludeCollections.Enable,
+    IncludeExternalMedia = LukeHagar.PlexAPI.SDK.Models.Requests.QueryParamIncludeExternalMedia.Enable,
+};
+
+var res = await sdk.Library.GetSearchAllLibrariesAsync(req);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `request`                                                                             | [GetSearchAllLibrariesRequest](../../Models/Requests/GetSearchAllLibrariesRequest.md) | :heavy_check_mark:                                                                    | The request object to use for the request.                                            |
+
+### Response
+
+**[GetSearchAllLibrariesResponse](../../Models/Requests/GetSearchAllLibrariesResponse.md)**
+
+### Errors
+
+| Error Type                                                            | Status Code                                                           | Content Type                                                          |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetSearchAllLibrariesBadRequest   | 400                                                                   | application/json                                                      |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetSearchAllLibrariesUnauthorized | 401                                                                   | application/json                                                      |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                      | 4XX, 5XX                                                              | \*/\*                                                                 |
 
 ## GetMetaDataByRatingKey
 

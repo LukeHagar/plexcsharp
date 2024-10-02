@@ -15,10 +15,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     public class Location
     {
 
-        [JsonProperty("id")]
-        public int Id { get; set; } = default!;
-
         [JsonProperty("path")]
-        public string Path { get; set; } = default!;
+        public string? Path { get; set; }
     }
 }

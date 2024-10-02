@@ -21,43 +21,43 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public int Id { get; set; } = default!;
 
         [JsonProperty("duration")]
-        public int Duration { get; set; } = default!;
+        public int? Duration { get; set; }
 
         [JsonProperty("bitrate")]
-        public int Bitrate { get; set; } = default!;
+        public int? Bitrate { get; set; }
 
         [JsonProperty("width")]
-        public int Width { get; set; } = default!;
+        public int? Width { get; set; }
 
         [JsonProperty("height")]
-        public int Height { get; set; } = default!;
+        public int? Height { get; set; }
 
         [JsonProperty("aspectRatio")]
-        public double AspectRatio { get; set; } = default!;
+        public double? AspectRatio { get; set; }
 
         [JsonProperty("audioProfile")]
         public string? AudioProfile { get; set; }
 
         [JsonProperty("audioChannels")]
-        public int AudioChannels { get; set; } = default!;
+        public int? AudioChannels { get; set; }
 
         [JsonProperty("audioCodec")]
-        public string AudioCodec { get; set; } = default!;
+        public string? AudioCodec { get; set; }
 
         [JsonProperty("videoCodec")]
-        public string VideoCodec { get; set; } = default!;
+        public string? VideoCodec { get; set; }
 
         [JsonProperty("videoResolution")]
-        public string VideoResolution { get; set; } = default!;
+        public string? VideoResolution { get; set; }
 
         [JsonProperty("container")]
         public string Container { get; set; } = default!;
 
         [JsonProperty("videoFrameRate")]
-        public string VideoFrameRate { get; set; } = default!;
+        public string? VideoFrameRate { get; set; }
 
         [JsonProperty("videoProfile")]
-        public string VideoProfile { get; set; } = default!;
+        public string? VideoProfile { get; set; }
 
         [JsonProperty("hasVoiceActivity")]
         public bool? HasVoiceActivity { get; set; }

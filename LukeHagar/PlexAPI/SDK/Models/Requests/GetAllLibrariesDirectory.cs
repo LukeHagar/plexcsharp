@@ -90,6 +90,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public int Hidden { get; set; } = default!;
 
         [JsonProperty("Location")]
-        public List<Location> Location { get; set; } = default!;
+        public List<GetAllLibrariesLocation> Location { get; set; } = default!;
     }
 }

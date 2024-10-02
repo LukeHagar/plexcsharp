@@ -24,7 +24,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public string Key { get; set; } = default!;
 
         [JsonProperty("duration")]
-        public int Duration { get; set; } = default!;
+        public int? Duration { get; set; }
 
         [JsonProperty("file")]
         public string File { get; set; } = default!;
@@ -52,7 +52,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public bool? OptimizedForStreaming { get; set; }
 
         [JsonProperty("videoProfile")]
-        public string VideoProfile { get; set; } = default!;
+        public string? VideoProfile { get; set; }
 
         [JsonProperty("indexes")]
         public string? Indexes { get; set; }
