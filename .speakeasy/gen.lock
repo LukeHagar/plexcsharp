@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 5a8dbcbc-e0ee-41f0-9d84-b8b50567d1e9
 management:
-  docChecksum: f12b653820ae77ca3b2820bc9459d866
+  docChecksum: 649b155561aeea4d804f8713e7b2dcac
   docVersion: 0.0.3
-  speakeasyVersion: 1.405.4
-  generationVersion: 2.428.1
-  releaseVersion: 0.8.7
-  configChecksum: 13422ad1c84a29dafd76ff43cb3e6315
+  speakeasyVersion: 1.405.8
+  generationVersion: 2.429.0
+  releaseVersion: 0.9.0
+  configChecksum: dc06201584fb7850142fe453a89a3e52
   repoURL: https://github.com/LukeHagar/plexcsharp.git
   repoSubDirectory: .
   published: true
@@ -29,6 +29,7 @@ features:
     nameOverrides: 2.81.2
     nullables: 0.1.0
     responseFormat: 0.0.4
+    retries: 0.0.1
     sdkHooks: 0.1.0
 generatedFiles:
   - .gitattributes
@@ -1689,6 +1690,8 @@ examples:
       parameters:
         query:
           X-Plex-Token: "CV5xoxjTpFKUzBTShsaf"
+        header:
+          X-Plex-Token: "CV5xoxjTpFKUzBTShsaf"
       responses:
         "401":
           application/json: {"errors": []}
@@ -1748,6 +1751,8 @@ examples:
           minSize: 1
           upscale: 1
           X-Plex-Token: "CV5xoxjTpFKUzBTShsaf"
+        header:
+          X-Plex-Token: "CV5xoxjTpFKUzBTShsaf"
       responses:
         "401":
           application/json: {"errors": []}
@@ -1765,6 +1770,8 @@ examples:
           height: 396
           minSize: 1
           upscale: 1
+          X-Plex-Token: "CV5xoxjTpFKUzBTShsaf"
+        header:
           X-Plex-Token: "CV5xoxjTpFKUzBTShsaf"
       responses:
         "401":
@@ -1930,6 +1937,21 @@ examples:
           application/json: []
         "400":
           application/json: {"errors": []}
+    "":
+      parameters:
+        query:
+          includeHttps: 1
+          includeRelay: 1
+          includeIPv6: 1
+        header:
+          X-Plex-Client-Identifier: "3381b62b-9ab7-4e37-827b-203e9809eb58"
+      responses:
+        "200":
+          application/json: []
+        "400":
+          application/json: {"errors": [{"code": 1000, "message": "X-Plex-Client-Identifier is missing", "status": 400}, {"code": 1000, "message": "X-Plex-Client-Identifier is missing", "status": 400}]}
+        "401":
+          application/json: {"errors": [{"code": 1001, "message": "User could not be authenticated", "status": 401}]}
   getPin:
     "":
       parameters:
@@ -1939,6 +1961,12 @@ examples:
           X-Plex-Version: "4.133.0"
           X-Plex-Platform: "Chrome"
           X-Plex-Client-Identifier: "gcgzw5rz2xovp84b4vha3a40"
+        header:
+          X-Plex-Client-Identifier: "3381b62b-9ab7-4e37-827b-203e9809eb58"
+          X-Plex-Product: "Plex for Roku"
+          X-Plex-Device: "Roku 3"
+          X-Plex-Version: "2.4.1"
+          X-Plex-Platform: "Roku"
       responses:
         "200":
           application/json: {"id": 308667304, "code": "7RQZ", "product": "0", "trusted": false, "qr": "https://plex.tv/api/v2/pins/qr/7RQZ", "clientIdentifier": "string", "location": {"code": "VI", "continent_code": "NA", "country": "United States Virgin Islands", "city": "Amsterdam", "european_union_member": true, "time_zone": "America/St_Thomas", "postal_code": 802, "in_privacy_restricted_country": true, "in_privacy_restricted_region": true, "subdivisions": "Saint Thomas", "coordinates": "18.3381, -64.8941"}, "expiresIn": 876, "createdAt": "2024-07-16T17:03:05Z", "expiresAt": "2024-07-16T17:18:05Z", "authToken": null, "newRegistration": null}
@@ -1957,6 +1985,12 @@ examples:
           X-Plex-Device: "Linux"
           X-Plex-Version: "4.133.0"
           X-Plex-Platform: "Chrome"
+        header:
+          X-Plex-Client-Identifier: "3381b62b-9ab7-4e37-827b-203e9809eb58"
+          X-Plex-Product: "Plex for Roku"
+          X-Plex-Device: "Roku 3"
+          X-Plex-Version: "2.4.1"
+          X-Plex-Platform: "Roku"
       responses:
         "200":
           application/json: {"id": 308667304, "code": "7RQZ", "product": "0", "trusted": false, "qr": "https://plex.tv/api/v2/pins/qr/7RQZ", "clientIdentifier": "string", "location": {"code": "VI", "continent_code": "NA", "country": "United States Virgin Islands", "city": "Amsterdam", "european_union_member": true, "time_zone": "America/St_Thomas", "postal_code": 802, "in_privacy_restricted_country": true, "in_privacy_restricted_region": true, "subdivisions": "Saint Thomas", "coordinates": "18.3381, -64.8941"}, "expiresIn": 876, "createdAt": "2024-07-16T17:03:05Z", "expiresAt": "2024-07-16T17:18:05Z", "authToken": null, "newRegistration": null}
@@ -2221,6 +2255,8 @@ examples:
           X-Plex-Container-Start: 0
           X-Plex-Container-Size: 50
           X-Plex-Token: "CV5xoxjTpFKUzBTShsaf"
+        header:
+          X-Plex-Token: "CV5xoxjTpFKUzBTShsaf"
       responses:
         "401":
           application/json: {"errors": []}
@@ -2415,6 +2451,12 @@ examples:
           X-Plex-Device: "Linux"
           X-Plex-Version: "4.133.0"
           X-Plex-Platform: "Chrome"
+        header:
+          X-Plex-Client-Identifier: "3381b62b-9ab7-4e37-827b-203e9809eb58"
+          X-Plex-Product: "Plex for Roku"
+          X-Plex-Device: "Roku 3"
+          X-Plex-Version: "2.4.1"
+          X-Plex-Platform: "Roku"
       requestBody:
         application/x-www-form-urlencoded: {"login": "username@email.com", "password": "password123", "verificationCode": "123456"}
       responses:

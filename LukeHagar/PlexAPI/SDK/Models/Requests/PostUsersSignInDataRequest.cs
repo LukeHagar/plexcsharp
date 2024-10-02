@@ -16,22 +16,34 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     {
 
         /// <summary>
-        /// The unique identifier for the client application. This is used to track the client application and its usage. (UUID, serial number, or other number unique per device)
+        /// An opaque identifier unique to the client (UUID, serial number, or other unique device ID)
         /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=X-Plex-Client-Identifier")]
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Client-Identifier")]
         public string? ClientID { get; set; }
 
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=X-Plex-Product")]
+        /// <summary>
+        /// The name of the client application. (Plex Web, Plex Media Server, etc.)
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Product")]
         public string? ClientName { get; set; }
 
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=X-Plex-Device")]
-        public string? DeviceName { get; set; }
+        /// <summary>
+        /// A relatively friendly name for the client device
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Device")]
+        public string? DeviceNickname { get; set; }
 
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=X-Plex-Version")]
+        /// <summary>
+        /// The version of the client application.
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Version")]
         public string? ClientVersion { get; set; }
 
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=X-Plex-Platform")]
-        public string? ClientPlatform { get; set; }
+        /// <summary>
+        /// The platform of the client application.
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Platform")]
+        public string? Platform { get; set; }
 
         /// <summary>
         /// Login credentials

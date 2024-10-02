@@ -34,11 +34,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "gcgzw5rz2xovp84b4vha3a40",
-    clientName: "Plex Web",
-    clientVersion: "4.133.0",
-    clientPlatform: "Chrome",
-    deviceName: "Linux"
+    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
+    clientName: "Plex for Roku",
+    clientVersion: "2.4.1",
+    platform: "Roku",
+    deviceNickname: "Roku 3"
 );
 
 var res = await sdk.Library.GetFileHashAsync(
@@ -83,11 +83,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "gcgzw5rz2xovp84b4vha3a40",
-    clientName: "Plex Web",
-    clientVersion: "4.133.0",
-    clientPlatform: "Chrome",
-    deviceName: "Linux"
+    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
+    clientName: "Plex for Roku",
+    clientVersion: "2.4.1",
+    platform: "Roku",
+    deviceNickname: "Roku 3"
 );
 
 GetRecentlyAddedLibraryRequest req = new GetRecentlyAddedLibraryRequest() {
@@ -154,11 +154,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "gcgzw5rz2xovp84b4vha3a40",
-    clientName: "Plex Web",
-    clientVersion: "4.133.0",
-    clientPlatform: "Chrome",
-    deviceName: "Linux"
+    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
+    clientName: "Plex for Roku",
+    clientVersion: "2.4.1",
+    platform: "Roku",
+    deviceNickname: "Roku 3"
 );
 
 var res = await sdk.Library.GetAllLibrariesAsync();
@@ -230,11 +230,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "gcgzw5rz2xovp84b4vha3a40",
-    clientName: "Plex Web",
-    clientVersion: "4.133.0",
-    clientPlatform: "Chrome",
-    deviceName: "Linux"
+    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
+    clientName: "Plex for Roku",
+    clientVersion: "2.4.1",
+    platform: "Roku",
+    deviceNickname: "Roku 3"
 );
 
 var res = await sdk.Library.GetLibraryDetailsAsync(
@@ -277,11 +277,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "gcgzw5rz2xovp84b4vha3a40",
-    clientName: "Plex Web",
-    clientVersion: "4.133.0",
-    clientPlatform: "Chrome",
-    deviceName: "Linux"
+    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
+    clientName: "Plex for Roku",
+    clientVersion: "2.4.1",
+    platform: "Roku",
+    deviceNickname: "Roku 3"
 );
 
 var res = await sdk.Library.DeleteLibraryAsync(sectionKey: 9518);
@@ -340,16 +340,16 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "gcgzw5rz2xovp84b4vha3a40",
-    clientName: "Plex Web",
-    clientVersion: "4.133.0",
-    clientPlatform: "Chrome",
-    deviceName: "Linux"
+    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
+    clientName: "Plex for Roku",
+    clientVersion: "2.4.1",
+    platform: "Roku",
+    deviceNickname: "Roku 3"
 );
 
 GetLibraryItemsRequest req = new GetLibraryItemsRequest() {
-    SectionKey = 9518,
     Tag = LukeHagar.PlexAPI.SDK.Models.Requests.Tag.Edition,
+    SectionKey = 9518,
     IncludeGuids = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeGuids.Enable,
     Type = LukeHagar.PlexAPI.SDK.Models.Requests.GetLibraryItemsQueryParamType.TvShow,
     IncludeMeta = LukeHagar.PlexAPI.SDK.Models.Requests.GetLibraryItemsQueryParamIncludeMeta.Enable,
@@ -394,11 +394,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "gcgzw5rz2xovp84b4vha3a40",
-    clientName: "Plex Web",
-    clientVersion: "4.133.0",
-    clientPlatform: "Chrome",
-    deviceName: "Linux"
+    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
+    clientName: "Plex for Roku",
+    clientVersion: "2.4.1",
+    platform: "Roku",
+    deviceNickname: "Roku 3"
 );
 
 var res = await sdk.Library.GetRefreshLibraryMetadataAsync(
@@ -459,11 +459,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "gcgzw5rz2xovp84b4vha3a40",
-    clientName: "Plex Web",
-    clientVersion: "4.133.0",
-    clientPlatform: "Chrome",
-    deviceName: "Linux"
+    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
+    clientName: "Plex for Roku",
+    clientVersion: "2.4.1",
+    platform: "Roku",
+    deviceNickname: "Roku 3"
 );
 
 var res = await sdk.Library.GetSearchLibraryAsync(
@@ -507,11 +507,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "gcgzw5rz2xovp84b4vha3a40",
-    clientName: "Plex Web",
-    clientVersion: "4.133.0",
-    clientPlatform: "Chrome",
-    deviceName: "Linux"
+    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
+    clientName: "Plex for Roku",
+    clientVersion: "2.4.1",
+    platform: "Roku",
+    deviceNickname: "Roku 3"
 );
 
 var res = await sdk.Library.GetMetaDataByRatingKeyAsync(ratingKey: 9518);
@@ -551,11 +551,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "gcgzw5rz2xovp84b4vha3a40",
-    clientName: "Plex Web",
-    clientVersion: "4.133.0",
-    clientPlatform: "Chrome",
-    deviceName: "Linux"
+    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
+    clientName: "Plex for Roku",
+    clientVersion: "2.4.1",
+    platform: "Roku",
+    deviceNickname: "Roku 3"
 );
 
 var res = await sdk.Library.GetMetadataChildrenAsync(
@@ -599,11 +599,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "gcgzw5rz2xovp84b4vha3a40",
-    clientName: "Plex Web",
-    clientVersion: "4.133.0",
-    clientPlatform: "Chrome",
-    deviceName: "Linux"
+    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
+    clientName: "Plex for Roku",
+    clientVersion: "2.4.1",
+    platform: "Roku",
+    deviceNickname: "Roku 3"
 );
 
 var res = await sdk.Library.GetTopWatchedContentAsync(
@@ -646,11 +646,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "gcgzw5rz2xovp84b4vha3a40",
-    clientName: "Plex Web",
-    clientVersion: "4.133.0",
-    clientPlatform: "Chrome",
-    deviceName: "Linux"
+    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
+    clientName: "Plex for Roku",
+    clientVersion: "2.4.1",
+    platform: "Roku",
+    deviceNickname: "Roku 3"
 );
 
 var res = await sdk.Library.GetOnDeckAsync();

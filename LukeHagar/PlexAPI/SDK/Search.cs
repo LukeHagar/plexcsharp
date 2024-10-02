@@ -51,7 +51,7 @@ namespace LukeHagar.PlexAPI.SDK
         /// 
         /// </remarks>
         /// </summary>
-        Task<PerformSearchResponse> PerformSearchAsync(string query, double? sectionId = null, double? limit = null);
+        Task<PerformSearchResponse> PerformSearchAsync(string query, double? sectionId = null, double? limit = null, RetryConfig? retryConfig = null);
 
         /// <summary>
         /// Perform a voice search
@@ -64,7 +64,7 @@ namespace LukeHagar.PlexAPI.SDK
         /// 
         /// </remarks>
         /// </summary>
-        Task<PerformVoiceSearchResponse> PerformVoiceSearchAsync(string query, double? sectionId = null, double? limit = null);
+        Task<PerformVoiceSearchResponse> PerformVoiceSearchAsync(string query, double? sectionId = null, double? limit = null, RetryConfig? retryConfig = null);
 
         /// <summary>
         /// Get Search Results
@@ -73,7 +73,7 @@ namespace LukeHagar.PlexAPI.SDK
         /// This will search the database for the string provided.
         /// </remarks>
         /// </summary>
-        Task<GetSearchResultsResponse> GetSearchResultsAsync(string query);
+        Task<GetSearchResultsResponse> GetSearchResultsAsync(string query, RetryConfig? retryConfig = null);
     }
 
     /// <summary>
@@ -87,10 +87,10 @@ namespace LukeHagar.PlexAPI.SDK
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.8.7";
-        private const string _sdkGenVersion = "2.428.1";
+        private const string _sdkVersion = "0.9.0";
+        private const string _sdkGenVersion = "2.429.0";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.8.7 2.428.1 0.0.3 LukeHagar.PlexAPI.SDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.9.0 2.429.0 0.0.3 LukeHagar.PlexAPI.SDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<LukeHagar.PlexAPI.SDK.Models.Components.Security>? _securitySource;
@@ -103,7 +103,7 @@ namespace LukeHagar.PlexAPI.SDK
             SDKConfiguration = config;
         }
 
-        public async Task<PerformSearchResponse> PerformSearchAsync(string query, double? sectionId = null, double? limit = null)
+        public async Task<PerformSearchResponse> PerformSearchAsync(string query, double? sectionId = null, double? limit = null, RetryConfig? retryConfig = null)
         {
             var request = new PerformSearchRequest()
             {
@@ -125,11 +125,44 @@ namespace LukeHagar.PlexAPI.SDK
             var hookCtx = new HookContext("performSearch", null, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+            if (retryConfig == null)
+            {
+                if (this.SDKConfiguration.RetryConfig != null)
+                {
+                    retryConfig = this.SDKConfiguration.RetryConfig;
+                }
+                else
+                {
+                    var backoff = new BackoffStrategy(
+                        initialIntervalMs: 500L,
+                        maxIntervalMs: 60000L,
+                        maxElapsedTimeMs: 3600000L,
+                        exponent: 1.5
+                    );
+                    retryConfig = new RetryConfig(
+                        strategy: RetryConfig.RetryStrategy.BACKOFF,
+                        backoff: backoff,
+                        retryConnectionErrors: true
+                    );
+                }
+            }
+
+            List<string> statusCodes = new List<string>
+            {
+                "5XX",
+            };
+
+            Func<Task<HttpResponseMessage>> retrySend = async () =>
+            {
+                var _httpRequest = await _client.CloneAsync(httpRequest);
+                return await _client.SendAsync(_httpRequest);
+            };
+            var retries = new LukeHagar.PlexAPI.SDK.Utils.Retries.Retries(retrySend, retryConfig, statusCodes);
 
             HttpResponseMessage httpResponse;
             try
             {
-                httpResponse = await _client.SendAsync(httpRequest);
+                httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
                 if (_statusCode == 400 || _statusCode == 401 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
@@ -197,7 +230,7 @@ namespace LukeHagar.PlexAPI.SDK
             throw new Models.Errors.SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<PerformVoiceSearchResponse> PerformVoiceSearchAsync(string query, double? sectionId = null, double? limit = null)
+        public async Task<PerformVoiceSearchResponse> PerformVoiceSearchAsync(string query, double? sectionId = null, double? limit = null, RetryConfig? retryConfig = null)
         {
             var request = new PerformVoiceSearchRequest()
             {
@@ -219,11 +252,44 @@ namespace LukeHagar.PlexAPI.SDK
             var hookCtx = new HookContext("performVoiceSearch", null, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+            if (retryConfig == null)
+            {
+                if (this.SDKConfiguration.RetryConfig != null)
+                {
+                    retryConfig = this.SDKConfiguration.RetryConfig;
+                }
+                else
+                {
+                    var backoff = new BackoffStrategy(
+                        initialIntervalMs: 500L,
+                        maxIntervalMs: 60000L,
+                        maxElapsedTimeMs: 3600000L,
+                        exponent: 1.5
+                    );
+                    retryConfig = new RetryConfig(
+                        strategy: RetryConfig.RetryStrategy.BACKOFF,
+                        backoff: backoff,
+                        retryConnectionErrors: true
+                    );
+                }
+            }
+
+            List<string> statusCodes = new List<string>
+            {
+                "5XX",
+            };
+
+            Func<Task<HttpResponseMessage>> retrySend = async () =>
+            {
+                var _httpRequest = await _client.CloneAsync(httpRequest);
+                return await _client.SendAsync(_httpRequest);
+            };
+            var retries = new LukeHagar.PlexAPI.SDK.Utils.Retries.Retries(retrySend, retryConfig, statusCodes);
 
             HttpResponseMessage httpResponse;
             try
             {
-                httpResponse = await _client.SendAsync(httpRequest);
+                httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
                 if (_statusCode == 400 || _statusCode == 401 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
@@ -291,7 +357,7 @@ namespace LukeHagar.PlexAPI.SDK
             throw new Models.Errors.SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<GetSearchResultsResponse> GetSearchResultsAsync(string query)
+        public async Task<GetSearchResultsResponse> GetSearchResultsAsync(string query, RetryConfig? retryConfig = null)
         {
             var request = new GetSearchResultsRequest()
             {
@@ -311,11 +377,44 @@ namespace LukeHagar.PlexAPI.SDK
             var hookCtx = new HookContext("getSearchResults", null, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+            if (retryConfig == null)
+            {
+                if (this.SDKConfiguration.RetryConfig != null)
+                {
+                    retryConfig = this.SDKConfiguration.RetryConfig;
+                }
+                else
+                {
+                    var backoff = new BackoffStrategy(
+                        initialIntervalMs: 500L,
+                        maxIntervalMs: 60000L,
+                        maxElapsedTimeMs: 3600000L,
+                        exponent: 1.5
+                    );
+                    retryConfig = new RetryConfig(
+                        strategy: RetryConfig.RetryStrategy.BACKOFF,
+                        backoff: backoff,
+                        retryConnectionErrors: true
+                    );
+                }
+            }
+
+            List<string> statusCodes = new List<string>
+            {
+                "5XX",
+            };
+
+            Func<Task<HttpResponseMessage>> retrySend = async () =>
+            {
+                var _httpRequest = await _client.CloneAsync(httpRequest);
+                return await _client.SendAsync(_httpRequest);
+            };
+            var retries = new LukeHagar.PlexAPI.SDK.Utils.Retries.Retries(retrySend, retryConfig, statusCodes);
 
             HttpResponseMessage httpResponse;
             try
             {
-                httpResponse = await _client.SendAsync(httpRequest);
+                httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
                 if (_statusCode == 400 || _statusCode == 401 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)

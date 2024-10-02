@@ -16,6 +16,12 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     {
 
         /// <summary>
+        /// A key representing a specific tag within the section.
+        /// </summary>
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=tag")]
+        public Tag Tag { get; set; } = default!;
+
+        /// <summary>
         /// The unique key of the Plex library. <br/>
         /// 
         /// <remarks>
@@ -25,12 +31,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=sectionKey")]
         public int SectionKey { get; set; } = default!;
-
-        /// <summary>
-        /// A key representing a specific tag within the section.
-        /// </summary>
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=tag")]
-        public Tag Tag { get; set; } = default!;
 
         /// <summary>
         /// Adds the Guids object to the response<br/>

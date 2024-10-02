@@ -28,11 +28,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "gcgzw5rz2xovp84b4vha3a40",
-    clientName: "Plex Web",
-    clientVersion: "4.133.0",
-    clientPlatform: "Chrome",
-    deviceName: "Linux"
+    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
+    clientName: "Plex for Roku",
+    clientVersion: "2.4.1",
+    platform: "Roku",
+    deviceNickname: "Roku 3"
 );
 
 var res = await sdk.Plex.GetCompanionsDataAsync();
@@ -70,11 +70,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "gcgzw5rz2xovp84b4vha3a40",
-    clientName: "Plex Web",
-    clientVersion: "4.133.0",
-    clientPlatform: "Chrome",
-    deviceName: "Linux"
+    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
+    clientName: "Plex for Roku",
+    clientVersion: "2.4.1",
+    platform: "Roku",
+    deviceNickname: "Roku 3"
 );
 
 var res = await sdk.Plex.GetUserFriendsAsync();
@@ -111,11 +111,11 @@ using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
-    clientID: "gcgzw5rz2xovp84b4vha3a40",
-    clientName: "Plex Web",
-    clientVersion: "4.133.0",
-    clientPlatform: "Chrome",
-    deviceName: "Linux"
+    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
+    clientName: "Plex for Roku",
+    clientVersion: "2.4.1",
+    platform: "Roku",
+    deviceNickname: "Roku 3"
 );
 
 var res = await sdk.Plex.GetGeoDataAsync();
@@ -153,11 +153,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "gcgzw5rz2xovp84b4vha3a40",
-    clientName: "Plex Web",
-    clientVersion: "4.133.0",
-    clientPlatform: "Chrome",
-    deviceName: "Linux"
+    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
+    clientName: "Plex for Roku",
+    clientVersion: "2.4.1",
+    platform: "Roku",
+    deviceNickname: "Roku 3"
 );
 
 var res = await sdk.Plex.GetHomeDataAsync();
@@ -190,18 +190,18 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "gcgzw5rz2xovp84b4vha3a40",
-    clientName: "Plex Web",
-    clientVersion: "4.133.0",
-    clientPlatform: "Chrome",
-    deviceName: "Linux"
+    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
+    clientName: "Plex for Roku",
+    clientVersion: "2.4.1",
+    platform: "Roku",
+    deviceNickname: "Roku 3"
 );
 
 var res = await sdk.Plex.GetServerResourcesAsync(
     includeHttps: LukeHagar.PlexAPI.SDK.Models.Requests.IncludeHttps.Enable,
     includeRelay: LukeHagar.PlexAPI.SDK.Models.Requests.IncludeRelay.Enable,
     includeIPv6: LukeHagar.PlexAPI.SDK.Models.Requests.IncludeIPv6.Enable,
-    clientID: "gcgzw5rz2xovp84b4vha3a40"
+    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58"
 );
 
 // handle response
@@ -209,13 +209,13 @@ var res = await sdk.Plex.GetServerResourcesAsync(
 
 ### Parameters
 
-| Parameter                                                                                                                                                              | Type                                                                                                                                                                   | Required                                                                                                                                                               | Description                                                                                                                                                            | Example                                                                                                                                                                |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `IncludeHttps`                                                                                                                                                         | [IncludeHttps](../../Models/Requests/IncludeHttps.md)                                                                                                                  | :heavy_minus_sign:                                                                                                                                                     | Include Https entries in the results                                                                                                                                   | 1                                                                                                                                                                      |
-| `IncludeRelay`                                                                                                                                                         | [IncludeRelay](../../Models/Requests/IncludeRelay.md)                                                                                                                  | :heavy_minus_sign:                                                                                                                                                     | Include Relay addresses in the results <br/>E.g: https://10-0-0-25.bbf8e10c7fa20447cacee74cd9914cde.plex.direct:32400<br/>                                             | 1                                                                                                                                                                      |
-| `IncludeIPv6`                                                                                                                                                          | [IncludeIPv6](../../Models/Requests/IncludeIPv6.md)                                                                                                                    | :heavy_minus_sign:                                                                                                                                                     | Include IPv6 entries in the results                                                                                                                                    | 1                                                                                                                                                                      |
-| `ClientID`                                                                                                                                                             | *string*                                                                                                                                                               | :heavy_minus_sign:                                                                                                                                                     | The unique identifier for the client application. This is used to track the client application and its usage. (UUID, serial number, or other number unique per device) | gcgzw5rz2xovp84b4vha3a40                                                                                                                                               |
-| `serverURL`                                                                                                                                                            | *string*                                                                                                                                                               | :heavy_minus_sign:                                                                                                                                                     | An optional server URL to use.                                                                                                                                         | http://localhost:8080                                                                                                                                                  |
+| Parameter                                                                                                          | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        | Example                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| `IncludeHttps`                                                                                                     | [IncludeHttps](../../Models/Requests/IncludeHttps.md)                                                              | :heavy_minus_sign:                                                                                                 | Include Https entries in the results                                                                               | 1                                                                                                                  |
+| `IncludeRelay`                                                                                                     | [IncludeRelay](../../Models/Requests/IncludeRelay.md)                                                              | :heavy_minus_sign:                                                                                                 | Include Relay addresses in the results <br/>E.g: https://10-0-0-25.bbf8e10c7fa20447cacee74cd9914cde.plex.direct:32400<br/> | 1                                                                                                                  |
+| `IncludeIPv6`                                                                                                      | [IncludeIPv6](../../Models/Requests/IncludeIPv6.md)                                                                | :heavy_minus_sign:                                                                                                 | Include IPv6 entries in the results                                                                                | 1                                                                                                                  |
+| `ClientID`                                                                                                         | *string*                                                                                                           | :heavy_minus_sign:                                                                                                 | An opaque identifier unique to the client (UUID, serial number, or other unique device ID)                         | 3381b62b-9ab7-4e37-827b-203e9809eb58                                                                               |
+| `serverURL`                                                                                                        | *string*                                                                                                           | :heavy_minus_sign:                                                                                                 | An optional server URL to use.                                                                                     | http://localhost:8080                                                                                              |
 
 ### Response
 
@@ -241,11 +241,11 @@ using LukeHagar.PlexAPI.SDK.Models.Requests;
 using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
-    clientID: "gcgzw5rz2xovp84b4vha3a40",
-    clientName: "Plex Web",
-    clientVersion: "4.133.0",
-    clientPlatform: "Chrome",
-    deviceName: "Linux"
+    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
+    clientName: "Plex for Roku",
+    clientVersion: "2.4.1",
+    platform: "Roku",
+    deviceNickname: "Roku 3"
 );
 
 GetPinRequest req = new GetPinRequest() {};
@@ -285,11 +285,11 @@ using LukeHagar.PlexAPI.SDK.Models.Requests;
 using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
-    clientID: "gcgzw5rz2xovp84b4vha3a40",
-    clientName: "Plex Web",
-    clientVersion: "4.133.0",
-    clientPlatform: "Chrome",
-    deviceName: "Linux"
+    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
+    clientName: "Plex for Roku",
+    clientVersion: "2.4.1",
+    platform: "Roku",
+    deviceNickname: "Roku 3"
 );
 
 GetTokenByPinIdRequest req = new GetTokenByPinIdRequest() {

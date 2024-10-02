@@ -15,9 +15,9 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     {
 
         /// <summary>
-        /// Plex Authentication Token
+        /// An authentication token, obtained from plex.tv
         /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=X-Plex-Token")]
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Token")]
         public string XPlexToken { get; set; } = default!;
     }
 }

@@ -26,11 +26,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "gcgzw5rz2xovp84b4vha3a40",
-    clientName: "Plex Web",
-    clientVersion: "4.133.0",
-    clientPlatform: "Chrome",
-    deviceName: "Linux"
+    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
+    clientName: "Plex for Roku",
+    clientVersion: "2.4.1",
+    platform: "Roku",
+    deviceNickname: "Roku 3"
 );
 
 var res = await sdk.Butler.GetButlerTasksAsync();
@@ -67,11 +67,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "gcgzw5rz2xovp84b4vha3a40",
-    clientName: "Plex Web",
-    clientVersion: "4.133.0",
-    clientPlatform: "Chrome",
-    deviceName: "Linux"
+    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
+    clientName: "Plex for Roku",
+    clientVersion: "2.4.1",
+    platform: "Roku",
+    deviceNickname: "Roku 3"
 );
 
 var res = await sdk.Butler.StartAllTasksAsync();
@@ -104,11 +104,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "gcgzw5rz2xovp84b4vha3a40",
-    clientName: "Plex Web",
-    clientVersion: "4.133.0",
-    clientPlatform: "Chrome",
-    deviceName: "Linux"
+    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
+    clientName: "Plex for Roku",
+    clientVersion: "2.4.1",
+    platform: "Roku",
+    deviceNickname: "Roku 3"
 );
 
 var res = await sdk.Butler.StopAllTasksAsync();
@@ -146,11 +146,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "gcgzw5rz2xovp84b4vha3a40",
-    clientName: "Plex Web",
-    clientVersion: "4.133.0",
-    clientPlatform: "Chrome",
-    deviceName: "Linux"
+    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
+    clientName: "Plex for Roku",
+    clientVersion: "2.4.1",
+    platform: "Roku",
+    deviceNickname: "Roku 3"
 );
 
 var res = await sdk.Butler.StartTaskAsync(taskName: LukeHagar.PlexAPI.SDK.Models.Requests.TaskName.CleanOldBundles);
@@ -190,11 +190,11 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "gcgzw5rz2xovp84b4vha3a40",
-    clientName: "Plex Web",
-    clientVersion: "4.133.0",
-    clientPlatform: "Chrome",
-    deviceName: "Linux"
+    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
+    clientName: "Plex for Roku",
+    clientVersion: "2.4.1",
+    platform: "Roku",
+    deviceNickname: "Roku 3"
 );
 
 var res = await sdk.Butler.StopTaskAsync(taskName: LukeHagar.PlexAPI.SDK.Models.Requests.PathParamTaskName.BackupDatabase);
