@@ -88,7 +88,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public bool? MixedParents { get; set; }
 
         [JsonProperty("Metadata")]
-        public List<GetLibraryItemsMetadata> Metadata { get; set; } = default!;
+        public List<GetLibraryItemsMetadata>? Metadata { get; set; }
 
         /// <summary>
         /// The Meta object is only included in the response if the `includeMeta` parameter is set to `1`.<br/>

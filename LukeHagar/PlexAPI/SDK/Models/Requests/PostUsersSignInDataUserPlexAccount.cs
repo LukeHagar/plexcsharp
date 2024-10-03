@@ -27,17 +27,11 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         [JsonProperty("adsConsent", NullValueHandling = NullValueHandling.Include)]
         public bool? AdsConsent { get; set; }
 
-        /// <summary>
-        /// Unknown
-        /// </summary>
         [JsonProperty("adsConsentReminderAt", NullValueHandling = NullValueHandling.Include)]
-        public DateTime? AdsConsentReminderAt { get; set; }
+        public long? AdsConsentReminderAt { get; set; }
 
-        /// <summary>
-        /// Unknown
-        /// </summary>
         [JsonProperty("adsConsentSetAt", NullValueHandling = NullValueHandling.Include)]
-        public DateTime? AdsConsentSetAt { get; set; }
+        public long? AdsConsentSetAt { get; set; }
 
         /// <summary>
         /// Unknown

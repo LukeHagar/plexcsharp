@@ -25,69 +25,6 @@ var res = await sdk.Server.GetServerCapabilitiesAsync();
 ```
 <!-- End SDK Example Usage [usage] -->
 
-<!-- Start Retries [retries] -->
-## Retries
-
-Some of the endpoints in this SDK support retries. If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API. However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
-
-To change the default retry strategy for a single API call, simply pass a `RetryConfig` to the call:
-```csharp
-using LukeHagar.PlexAPI.SDK;
-using LukeHagar.PlexAPI.SDK.Models.Components;
-
-var sdk = new PlexAPI(
-    accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
-
-var res = await sdk.Server.GetServerCapabilitiesAsync(retryConfig: new RetryConfig(
-    strategy: RetryConfig.RetryStrategy.BACKOFF,
-    backoff: new BackoffStrategy(
-        initialIntervalMs: 1L,
-        maxIntervalMs: 50L,
-        maxElapsedTimeMs: 100L,
-        exponent: 1.1
-    ),
-    retryConnectionErrors: false
-));
-
-// handle response
-```
-
-If you'd like to override the default retry strategy for all operations that support retries, you can use the `RetryConfig` optional parameter when intitializing the SDK:
-```csharp
-using LukeHagar.PlexAPI.SDK;
-using LukeHagar.PlexAPI.SDK.Models.Components;
-
-var sdk = new PlexAPI(
-    retryConfig: new RetryConfig(
-        strategy: RetryConfig.RetryStrategy.BACKOFF,
-        backoff: new BackoffStrategy(
-            initialIntervalMs: 1L,
-            maxIntervalMs: 50L,
-            maxElapsedTimeMs: 100L,
-            exponent: 1.1
-        ),
-        retryConnectionErrors: false
-    ),
-    accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
-
-var res = await sdk.Server.GetServerCapabilitiesAsync();
-
-// handle response
-```
-<!-- End Retries [retries] -->
-
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
