@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 5a8dbcbc-e0ee-41f0-9d84-b8b50567d1e9
 management:
-  docChecksum: 23094f3a9fe02710a8628ad5456f5d42
+  docChecksum: af45c1ae70f7fc6589adb3f8075cb275
   docVersion: 0.0.3
-  speakeasyVersion: 1.406.0
-  generationVersion: 2.429.0
-  releaseVersion: 0.10.0
-  configChecksum: 5aeda5d0b47fd16a77f217e0065d7c45
+  speakeasyVersion: 1.438.1
+  generationVersion: 2.457.2
+  releaseVersion: 0.11.0
+  configChecksum: c5bc92dea8d2540f87820eddd9e36dfd
   repoURL: https://github.com/LukeHagar/plexcsharp.git
   repoSubDirectory: .
   published: true
@@ -14,10 +14,10 @@ features:
   csharp:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.0.1
-    core: 3.10.3
+    core: 3.10.4
     deprecations: 2.81.2
     enums: 2.82.0
-    errors: 0.0.3
+    errors: 0.2.0
     flattening: 2.81.3
     globalSecurity: 2.83.6
     globalSecurityCallbacks: 0.1.0
@@ -25,6 +25,7 @@ features:
     globalServerURLs: 2.82.3
     globals: 2.82.1
     intellisenseMarkdownSupport: 0.1.0
+    methodArguments: 0.1.0
     methodServerURLs: 2.82.1
     nameOverrides: 2.81.2
     nullables: 0.1.0

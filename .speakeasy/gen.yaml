@@ -11,15 +11,18 @@ generation:
     requestResponseComponentNamesFeb2024: true
   auth:
     oAuth2ClientCredentialsEnabled: true
+    oAuth2PasswordEnabled: false
 csharp:
-  version: 0.10.0
+  version: 0.11.0
   additionalDependencies: []
   author: LukeHagar
   clientServerStatusCodesAsErrors: true
+  defaultErrorName: SDKException
   disableNamespacePascalCasingApr2024: true
   dotnetVersion: net8.0
   enableSourceLink: true
   flattenGlobalSecurity: true
+  flatteningOrder: ""
   imports:
     option: openapi
     paths:
@@ -31,6 +34,7 @@ csharp:
   includeDebugSymbols: true
   inputModelSuffix: input
   maxMethodParams: 4
+  methodArguments: infer-optional-args
   outputModelSuffix: output
   packageName: LukeHagar.PlexAPI.SDK
   packageTags: Plex Media Server SDK

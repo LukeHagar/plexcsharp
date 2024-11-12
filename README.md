@@ -186,27 +186,34 @@ var res = await sdk.Server.GetServerCapabilitiesAsync();
 <!-- Start Server Selection [server] -->
 ## Server Selection
 
-### Select Server by Index
+### Server Variables
 
-You can override the default server globally by passing a server index to the `serverIndex: number` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
-
-| # | Server | Variables |
-| - | ------ | --------- |
-| 0 | `{protocol}://{ip}:{port}` | `protocol` (default is `https`), `ip` (default is `10.10.10.47`), `port` (default is `32400`) |
-
-
-
-#### Variables
-
-Some of the server options above contain variables. If you want to set the values of those variables, the following options are provided for doing so:
+The default server `{protocol}://{ip}:{port}` contains variables and is set to `https://10.10.10.47:32400` by default. To override default values, the following parameters are available when initializing the SDK client instance:
  * `protocol: ServerProtocol`
  * `ip: string`
  * `port: string`
 
 ### Override Server URL Per-Client
 
-The default server can also be overridden globally by passing a URL to the `serverUrl: str` optional parameter when initializing the SDK client instance. For example:
+The default server can also be overridden globally by passing a URL to the `serverUrl: string` optional parameter when initializing the SDK client instance. For example:
+```csharp
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 
+var sdk = new PlexAPI(
+    serverUrl: "https://10.10.10.47:32400",
+    accessToken: "<YOUR_API_KEY_HERE>",
+    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
+    clientName: "Plex for Roku",
+    clientVersion: "2.4.1",
+    platform: "Roku",
+    deviceNickname: "Roku 3"
+);
+
+var res = await sdk.Server.GetServerCapabilitiesAsync();
+
+// handle response
+```
 
 ### Override Server URL Per-Operation
 
@@ -237,9 +244,9 @@ var res = await sdk.Plex.GetCompanionsDataAsync(serverUrl: "https://plex.tv/api/
 
 This SDK supports the following security scheme globally:
 
-| Name          | Type          | Scheme        |
-| ------------- | ------------- | ------------- |
-| `AccessToken` | apiKey        | API key       |
+| Name          | Type   | Scheme  |
+| ------------- | ------ | ------- |
+| `AccessToken` | apiKey | API key |
 
 To authenticate with the API the `AccessToken` parameter must be set when initializing the SDK client instance. For example:
 ```csharp
@@ -277,11 +284,11 @@ By default, an API error will raise a `LukeHagar.PlexAPI.SDK.Models.Errors.SDKEx
 
 When custom error responses are specified for an operation, the SDK may also throw their associated exceptions. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `GetServerCapabilitiesAsync` method throws the following exceptions:
 
-| Error Type                                                            | Status Code                                                           | Content Type                                                          |
-| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetServerCapabilitiesBadRequest   | 400                                                                   | application/json                                                      |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetServerCapabilitiesUnauthorized | 401                                                                   | application/json                                                      |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                      | 4XX, 5XX                                                              | \*/\*                                                                 |
+| Error Type                                                            | Status Code | Content Type     |
+| --------------------------------------------------------------------- | ----------- | ---------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetServerCapabilitiesBadRequest   | 400         | application/json |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetServerCapabilitiesUnauthorized | 401         | application/json |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                      | 4XX, 5XX    | \*/\*            |
 
 ### Example
 
