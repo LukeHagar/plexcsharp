@@ -22,7 +22,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// 
         /// </remarks>
         /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=Timespan")]
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=timespan")]
         public long? Timespan { get; set; }
     }
 }
