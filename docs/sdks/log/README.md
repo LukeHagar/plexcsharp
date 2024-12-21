@@ -21,20 +21,13 @@ This endpoint will write a single-line log message, including a level and source
 
 ```csharp
 using LukeHagar.PlexAPI.SDK;
-using LukeHagar.PlexAPI.SDK.Models.Requests;
 using LukeHagar.PlexAPI.SDK.Models.Components;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
 
-var sdk = new PlexAPI(
-    accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Log.LogLineAsync(
-    level: LukeHagar.PlexAPI.SDK.Models.Requests.Level.Three,
+    level: Level.Three,
     message: "Test log message",
     source: "Postman"
 );
@@ -93,16 +86,9 @@ Ensure each parameter is properly URL-encoded to avoid interpretation issues.
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPI(
-    accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
-string req = "level=4&message=Test%20message%201&source=postman
+string req = @"level=4&message=Test%20message%201&source=postman
 level=3&message=Test%20message%202&source=postman
 level=1&message=Test%20message%203&source=postman";
 
@@ -140,14 +126,7 @@ This endpoint will enable all Plex Media Serverlogs to be sent to the Papertrail
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPI(
-    accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Log.EnablePaperTrailAsync();
 

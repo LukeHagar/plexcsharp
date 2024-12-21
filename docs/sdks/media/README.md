@@ -22,17 +22,9 @@ This will mark the provided media key as Played.
 
 ```csharp
 using LukeHagar.PlexAPI.SDK;
-using LukeHagar.PlexAPI.SDK.Models.Requests;
 using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPI(
-    accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Media.MarkPlayedAsync(key: 59398D);
 
@@ -65,17 +57,9 @@ This will mark the provided media key as Unplayed.
 
 ```csharp
 using LukeHagar.PlexAPI.SDK;
-using LukeHagar.PlexAPI.SDK.Models.Requests;
 using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPI(
-    accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Media.MarkUnplayedAsync(key: 59398D);
 
@@ -109,17 +93,9 @@ This API command can be used to update the play progress of a media item.
 
 ```csharp
 using LukeHagar.PlexAPI.SDK;
-using LukeHagar.PlexAPI.SDK.Models.Requests;
 using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPI(
-    accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Media.UpdatePlayProgressAsync(
     key: "<key>",
@@ -158,17 +134,10 @@ Gets the banner image of the media item
 
 ```csharp
 using LukeHagar.PlexAPI.SDK;
-using LukeHagar.PlexAPI.SDK.Models.Requests;
 using LukeHagar.PlexAPI.SDK.Models.Components;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
 
-var sdk = new PlexAPI(
-    accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 GetBannerImageRequest req = new GetBannerImageRequest() {
     RatingKey = 9518,
@@ -210,17 +179,10 @@ Gets the thumbnail image of the media item
 
 ```csharp
 using LukeHagar.PlexAPI.SDK;
-using LukeHagar.PlexAPI.SDK.Models.Requests;
 using LukeHagar.PlexAPI.SDK.Models.Components;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
 
-var sdk = new PlexAPI(
-    accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 GetThumbImageRequest req = new GetThumbImageRequest() {
     RatingKey = 9518,

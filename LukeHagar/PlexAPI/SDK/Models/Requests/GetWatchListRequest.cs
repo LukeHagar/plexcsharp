@@ -22,12 +22,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public Filter Filter { get; set; } = default!;
 
         /// <summary>
-        /// An authentication token, obtained from plex.tv
-        /// </summary>
-        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Token")]
-        public string XPlexToken { get; set; } = default!;
-
-        /// <summary>
         /// In the format &quot;field:dir&quot;. Available fields are &quot;watchlistedAt&quot; (Added At),<br/>
         /// 
         /// <remarks>
@@ -103,5 +97,11 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=X-Plex-Container-Size")]
         public int? XPlexContainerSize { get; set; } = 50;
+
+        /// <summary>
+        /// An authentication token, obtained from plex.tv
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Token")]
+        public string XPlexToken { get; set; } = default!;
     }
 }

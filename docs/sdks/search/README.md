@@ -32,17 +32,9 @@ This request is intended to be very fast, and called as the user types.
 
 ```csharp
 using LukeHagar.PlexAPI.SDK;
-using LukeHagar.PlexAPI.SDK.Models.Requests;
 using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPI(
-    accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Search.PerformSearchAsync(
     query: "dylan",
@@ -85,17 +77,9 @@ Results, as well as their containing per-type hubs, contain a `distance` attribu
 
 ```csharp
 using LukeHagar.PlexAPI.SDK;
-using LukeHagar.PlexAPI.SDK.Models.Requests;
 using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPI(
-    accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Search.PerformVoiceSearchAsync(
     query: "dead+poop",
@@ -134,17 +118,9 @@ This will search the database for the string provided.
 
 ```csharp
 using LukeHagar.PlexAPI.SDK;
-using LukeHagar.PlexAPI.SDK.Models.Requests;
 using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPI(
-    accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Search.GetSearchResultsAsync(query: "110");
 

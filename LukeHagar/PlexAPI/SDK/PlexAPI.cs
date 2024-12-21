@@ -12,13 +12,13 @@ namespace LukeHagar.PlexAPI.SDK
     using LukeHagar.PlexAPI.SDK.Hooks;
     using LukeHagar.PlexAPI.SDK.Models.Components;
     using LukeHagar.PlexAPI.SDK.Models.Errors;
-    using LukeHagar.PlexAPI.SDK.Utils.Retries;
     using LukeHagar.PlexAPI.SDK.Utils;
+    using LukeHagar.PlexAPI.SDK.Utils.Retries;
     using Newtonsoft.Json;
+    using System;
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Threading.Tasks;
-    using System;
 
 
     /// <summary>
@@ -266,11 +266,6 @@ namespace LukeHagar.PlexAPI.SDK
         public string ServerUrl = "";
         public int ServerIndex = 0;
         public List<Dictionary<string, string>> ServerDefaults = new List<Dictionary<string, string>>();
-        public string? ClientID;
-        public string? ClientName;
-        public string? ClientVersion;
-        public string? Platform;
-        public string? DeviceNickname;
         public SDKHooks Hooks = new SDKHooks();
         public RetryConfig? RetryConfig = null;
 
@@ -331,10 +326,10 @@ namespace LukeHagar.PlexAPI.SDK
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.11.1";
-        private const string _sdkGenVersion = "2.457.9";
+        private const string _sdkVersion = "0.12.0";
+        private const string _sdkGenVersion = "2.483.1";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.11.1 2.457.9 0.0.3 LukeHagar.PlexAPI.SDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.12.0 2.483.1 0.0.3 LukeHagar.PlexAPI.SDK";
         private string _serverUrl = "";
         private int _serverIndex = 0;
         private ISpeakeasyHttpClient _client;
@@ -356,7 +351,7 @@ namespace LukeHagar.PlexAPI.SDK
         public ISessions Sessions { get; private set; }
         public IUpdater Updater { get; private set; }
 
-        public PlexAPI(string? accessToken = null, Func<string>? accessTokenSource = null, string? clientID = null, string? clientName = null, string? clientVersion = null, string? platform = null, string? deviceNickname = null, int? serverIndex = null, ServerProtocol? protocol = null, string?  ip = null, string?  port = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null, RetryConfig? retryConfig = null)
+        public PlexAPI(string? accessToken = null, Func<string>? accessTokenSource = null, int? serverIndex = null, ServerProtocol? protocol = null, string?  ip = null, string?  port = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null, RetryConfig? retryConfig = null)
         {
             if (serverIndex != null)
             {
@@ -398,11 +393,6 @@ namespace LukeHagar.PlexAPI.SDK
 
             SDKConfiguration = new SDKConfig()
             {
-                ClientID = clientID,
-                ClientName = clientName,
-                ClientVersion = clientVersion,
-                Platform = platform,
-                DeviceNickname = deviceNickname,
                 ServerDefaults = serverDefaults,
                 ServerIndex = _serverIndex,
                 ServerUrl = _serverUrl,

@@ -14,14 +14,14 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using System;
     
     /// <summary>
-    /// Setting that indicates the episode ordering for the show <br/>
+    /// Setting that indicates the episode ordering for the show<br/>
     /// 
     /// <remarks>
-    /// None = Library default, <br/>
-    /// tmdbAiring = The Movie Database (Aired), <br/>
-    /// aired = TheTVDB (Aired), <br/>
-    /// dvd = TheTVDB (DVD), <br/>
-    /// absolute = TheTVDB (Absolute)).<br/>
+    /// None = Library default,<br/>
+    /// tmdbAiring = The Movie Database (Aired),<br/>
+    /// tvdbAiring = TheTVDB (Aired),<br/>
+    /// tvdbDvd = TheTVDB (DVD),<br/>
+    /// tvdbAbsolute = TheTVDB (Absolute)).<br/>
     /// 
     /// </remarks>
     /// </summary>
@@ -31,12 +31,12 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         None,
         [JsonProperty("tmdbAiring")]
         TmdbAiring,
-        [JsonProperty("aired")]
-        Aired,
-        [JsonProperty("dvd")]
-        Dvd,
-        [JsonProperty("absolute")]
-        Absolute,
+        [JsonProperty("tvdbAiring")]
+        TvdbAiring,
+        [JsonProperty("tvdbDvd")]
+        TvdbDvd,
+        [JsonProperty("tvdbAbsolute")]
+        TvdbAbsolute,
     }
 
     public static class ShowOrderingExtension

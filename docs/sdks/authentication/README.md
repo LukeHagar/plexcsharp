@@ -22,21 +22,14 @@ This endpoint provides the caller with a temporary token with the same access le
 
 ```csharp
 using LukeHagar.PlexAPI.SDK;
-using LukeHagar.PlexAPI.SDK.Models.Requests;
 using LukeHagar.PlexAPI.SDK.Models.Components;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
 
-var sdk = new PlexAPI(
-    accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Authentication.GetTransientTokenAsync(
-    type: LukeHagar.PlexAPI.SDK.Models.Requests.GetTransientTokenQueryParamType.Delegation,
-    scope: LukeHagar.PlexAPI.SDK.Models.Requests.Scope.All
+    type: GetTransientTokenQueryParamType.Delegation,
+    scope: Scope.All
 );
 
 // handle response
@@ -71,17 +64,9 @@ Note: requires Plex Media Server >= 1.15.4.
 
 ```csharp
 using LukeHagar.PlexAPI.SDK;
-using LukeHagar.PlexAPI.SDK.Models.Requests;
 using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPI(
-    accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Authentication.GetSourceConnectionInformationAsync(source: "server://client-identifier");
 
@@ -116,14 +101,7 @@ Get the User data from the provided X-Plex-Token
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPI(
-    accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Authentication.GetTokenDetailsAsync();
 
@@ -157,17 +135,15 @@ Sign in user with username and password and return user data with Plex authentic
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Requests;
-using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPI(
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
+var sdk = new PlexAPI();
 
 PostUsersSignInDataRequest req = new PostUsersSignInDataRequest() {
+    ClientID = "3381b62b-9ab7-4e37-827b-203e9809eb58",
+    ClientName = "Plex for Roku",
+    DeviceNickname = "Roku 3",
+    ClientVersion = "2.4.1",
+    Platform = "Roku",
     RequestBody = new PostUsersSignInDataRequestBody() {
         Login = "username@email.com",
         Password = "password123",

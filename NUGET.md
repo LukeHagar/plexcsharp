@@ -10,20 +10,37 @@
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPI(
-    accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Server.GetServerCapabilitiesAsync();
 
 // handle response
 ```
 <!-- End SDK Example Usage [usage] -->
+
+<!-- Start Authentication [security] -->
+## Authentication
+
+### Per-Client Security Schemes
+
+This SDK supports the following security scheme globally:
+
+| Name          | Type   | Scheme  |
+| ------------- | ------ | ------- |
+| `AccessToken` | apiKey | API key |
+
+To authenticate with the API the `AccessToken` parameter must be set when initializing the SDK client instance. For example:
+```csharp
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Components;
+
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
+
+var res = await sdk.Server.GetServerCapabilitiesAsync();
+
+// handle response
+```
+<!-- End Authentication [security] -->
 
 <!-- Start Error Handling [errors] -->
 ## Error Handling
@@ -52,17 +69,9 @@ When custom error responses are specified for an operation, the SDK may also thr
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
-using System;
 using LukeHagar.PlexAPI.SDK.Models.Errors;
 
-var sdk = new PlexAPI(
-    accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 try
 {
@@ -110,12 +119,7 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     serverUrl: "https://10.10.10.47:32400",
-    accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
+    accessToken: "<YOUR_API_KEY_HERE>"
 );
 
 var res = await sdk.Server.GetServerCapabilitiesAsync();
@@ -130,50 +134,12 @@ The server URL can also be overridden on a per-operation basis, provided a serve
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPI(
-    accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Plex.GetCompanionsDataAsync(serverUrl: "https://plex.tv/api/v2");
 
 // handle response
 ```
 <!-- End Server Selection [server] -->
-
-<!-- Start Authentication [security] -->
-## Authentication
-
-### Per-Client Security Schemes
-
-This SDK supports the following security scheme globally:
-
-| Name          | Type   | Scheme  |
-| ------------- | ------ | ------- |
-| `AccessToken` | apiKey | API key |
-
-To authenticate with the API the `AccessToken` parameter must be set when initializing the SDK client instance. For example:
-```csharp
-using LukeHagar.PlexAPI.SDK;
-using LukeHagar.PlexAPI.SDK.Models.Components;
-
-var sdk = new PlexAPI(
-    accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
-
-var res = await sdk.Server.GetServerCapabilitiesAsync();
-
-// handle response
-```
-<!-- End Authentication [security] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->

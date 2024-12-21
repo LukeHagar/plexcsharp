@@ -10,9 +10,9 @@
 namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
     using LukeHagar.PlexAPI.SDK.Utils;
+    using System;
     using System.Collections.Generic;
     using System.Net.Http;
-    using System;
     
     public class GetBannerImageResponse
     {

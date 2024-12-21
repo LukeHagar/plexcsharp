@@ -18,23 +18,16 @@ Get User Watchlist
 
 ```csharp
 using LukeHagar.PlexAPI.SDK;
-using LukeHagar.PlexAPI.SDK.Models.Requests;
 using LukeHagar.PlexAPI.SDK.Models.Components;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
 
-var sdk = new PlexAPI(
-    accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 GetWatchListRequest req = new GetWatchListRequest() {
-    Filter = LukeHagar.PlexAPI.SDK.Models.Requests.Filter.Available,
-    XPlexToken = "CV5xoxjTpFKUzBTShsaf",
+    Filter = Filter.Available,
     XPlexContainerStart = 0,
     XPlexContainerSize = 50,
+    XPlexToken = "CV5xoxjTpFKUzBTShsaf",
 };
 
 var res = await sdk.Watchlist.GetWatchListAsync(req);

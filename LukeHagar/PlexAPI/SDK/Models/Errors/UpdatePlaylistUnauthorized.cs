@@ -12,9 +12,9 @@ namespace LukeHagar.PlexAPI.SDK.Models.Errors
     using LukeHagar.PlexAPI.SDK.Models.Errors;
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
+    using System;
     using System.Collections.Generic;
     using System.Net.Http;
-    using System;
     
     /// <summary>
     /// Unauthorized - Returned if the X-Plex-Token is missing from the header or query.

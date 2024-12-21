@@ -12,8 +12,8 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using LukeHagar.PlexAPI.SDK.Models.Requests;
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
-    using System.Collections.Generic;
     using System;
+    using System.Collections.Generic;
     
     /// <summary>
     /// Returns the user account data with a valid auth token

@@ -56,6 +56,8 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         FirstCharacter,
         [JsonProperty("folder")]
         Folder,
+        [JsonProperty("albums")]
+        Albums,
     }
 
     public static class TagExtension

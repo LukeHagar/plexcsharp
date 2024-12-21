@@ -24,7 +24,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// An opaque identifier unique to the client (UUID, serial number, or other unique device ID)
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Client-Identifier")]
-        public string? ClientID { get; set; }
+        public string ClientID { get; set; } = default!;
 
         /// <summary>
         /// The name of the client application. (Plex Web, Plex Media Server, etc.)

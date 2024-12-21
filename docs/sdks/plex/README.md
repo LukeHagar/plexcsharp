@@ -26,14 +26,7 @@ Get Companions Data
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPI(
-    accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Plex.GetCompanionsDataAsync();
 
@@ -68,14 +61,7 @@ Get friends of provided auth token.
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPI(
-    accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Plex.GetUserFriendsAsync();
 
@@ -108,15 +94,8 @@ Returns the geolocation and locale data of the caller
 
 ```csharp
 using LukeHagar.PlexAPI.SDK;
-using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPI(
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
+var sdk = new PlexAPI();
 
 var res = await sdk.Plex.GetGeoDataAsync();
 
@@ -151,14 +130,7 @@ Retrieves the home data for the authenticated user, including details like home 
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPI(
-    accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Plex.GetHomeDataAsync();
 
@@ -185,23 +157,16 @@ Get Plex server access tokens and server connections
 
 ```csharp
 using LukeHagar.PlexAPI.SDK;
-using LukeHagar.PlexAPI.SDK.Models.Requests;
 using LukeHagar.PlexAPI.SDK.Models.Components;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
 
-var sdk = new PlexAPI(
-    accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Plex.GetServerResourcesAsync(
-    includeHttps: LukeHagar.PlexAPI.SDK.Models.Requests.IncludeHttps.Enable,
-    includeRelay: LukeHagar.PlexAPI.SDK.Models.Requests.IncludeRelay.Enable,
-    includeIPv6: LukeHagar.PlexAPI.SDK.Models.Requests.IncludeIPv6.Enable,
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58"
+    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
+    includeHttps: IncludeHttps.Enable,
+    includeRelay: IncludeRelay.Enable,
+    includeIPv6: IncludeIPv6.Enable
 );
 
 // handle response
@@ -211,10 +176,10 @@ var res = await sdk.Plex.GetServerResourcesAsync(
 
 | Parameter                                                                                                          | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        | Example                                                                                                            |
 | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| `ClientID`                                                                                                         | *string*                                                                                                           | :heavy_check_mark:                                                                                                 | An opaque identifier unique to the client (UUID, serial number, or other unique device ID)                         | 3381b62b-9ab7-4e37-827b-203e9809eb58                                                                               |
 | `IncludeHttps`                                                                                                     | [IncludeHttps](../../Models/Requests/IncludeHttps.md)                                                              | :heavy_minus_sign:                                                                                                 | Include Https entries in the results                                                                               | 1                                                                                                                  |
 | `IncludeRelay`                                                                                                     | [IncludeRelay](../../Models/Requests/IncludeRelay.md)                                                              | :heavy_minus_sign:                                                                                                 | Include Relay addresses in the results <br/>E.g: https://10-0-0-25.bbf8e10c7fa20447cacee74cd9914cde.plex.direct:32400<br/> | 1                                                                                                                  |
 | `IncludeIPv6`                                                                                                      | [IncludeIPv6](../../Models/Requests/IncludeIPv6.md)                                                                | :heavy_minus_sign:                                                                                                 | Include IPv6 entries in the results                                                                                | 1                                                                                                                  |
-| `ClientID`                                                                                                         | *string*                                                                                                           | :heavy_minus_sign:                                                                                                 | An opaque identifier unique to the client (UUID, serial number, or other unique device ID)                         | 3381b62b-9ab7-4e37-827b-203e9809eb58                                                                               |
 | `serverURL`                                                                                                        | *string*                                                                                                           | :heavy_minus_sign:                                                                                                 | An optional server URL to use.                                                                                     | http://localhost:8080                                                                                              |
 
 ### Response
@@ -238,17 +203,16 @@ Retrieve a Pin ID from Plex.tv to use for authentication flows
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Requests;
-using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPI(
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
+var sdk = new PlexAPI();
 
-GetPinRequest req = new GetPinRequest() {};
+GetPinRequest req = new GetPinRequest() {
+    ClientID = "3381b62b-9ab7-4e37-827b-203e9809eb58",
+    ClientName = "Plex for Roku",
+    DeviceNickname = "Roku 3",
+    ClientVersion = "2.4.1",
+    Platform = "Roku",
+};
 
 var res = await sdk.Plex.GetPinAsync(req);
 
@@ -282,18 +246,16 @@ Retrieve an Access Token from Plex.tv after the Pin has been authenticated
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Requests;
-using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPI(
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
+var sdk = new PlexAPI();
 
 GetTokenByPinIdRequest req = new GetTokenByPinIdRequest() {
     PinID = 408895,
+    ClientID = "3381b62b-9ab7-4e37-827b-203e9809eb58",
+    ClientName = "Plex for Roku",
+    DeviceNickname = "Roku 3",
+    ClientVersion = "2.4.1",
+    Platform = "Roku",
 };
 
 var res = await sdk.Plex.GetTokenByPinIdAsync(req);

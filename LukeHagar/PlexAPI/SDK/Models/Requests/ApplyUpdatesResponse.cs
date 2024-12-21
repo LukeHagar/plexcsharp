@@ -10,8 +10,8 @@
 namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
     using LukeHagar.PlexAPI.SDK.Utils;
-    using System.Net.Http;
     using System;
+    using System.Net.Http;
     
     public class ApplyUpdatesResponse
     {

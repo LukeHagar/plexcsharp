@@ -45,6 +45,36 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         [JsonProperty("librarySectionKey")]
         public string? LibrarySectionKey { get; set; }
 
+        /// <summary>
+        /// The name of the album artist for the track when audio, and the name of the TV show for the episode when video.
+        /// </summary>
+        [JsonProperty("grandparentTitle")]
+        public string? GrandparentTitle { get; set; }
+
+        /// <summary>
+        /// The name of the album for the track when audio, and the name of the season for the episode when TV show.
+        /// </summary>
+        [JsonProperty("parentTitle")]
+        public string? ParentTitle { get; set; }
+
+        /// <summary>
+        /// The orginal untranslated name of the media item when non-english.
+        /// </summary>
+        [JsonProperty("originalTitle")]
+        public string? OriginalTitle { get; set; }
+
+        /// <summary>
+        /// The index starting from 0 of this media item in the MetaData array.
+        /// </summary>
+        [JsonProperty("index")]
+        public long? Index { get; set; }
+
+        /// <summary>
+        /// The parent index starting from 0 of this media item in the parent MetaData array.
+        /// </summary>
+        [JsonProperty("parentIndex")]
+        public long? ParentIndex { get; set; }
+
         [JsonProperty("contentRating")]
         public string? ContentRating { get; set; }
 

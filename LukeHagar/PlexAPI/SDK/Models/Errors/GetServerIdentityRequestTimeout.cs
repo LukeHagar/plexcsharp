@@ -11,8 +11,8 @@ namespace LukeHagar.PlexAPI.SDK.Models.Errors
 {
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
-    using System.Net.Http;
     using System;
+    using System.Net.Http;
     
     /// <summary>
     /// Request Timeout

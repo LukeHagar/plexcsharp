@@ -22,17 +22,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public Tag Tag { get; set; } = default!;
 
         /// <summary>
-        /// The unique key of the Plex library. <br/>
-        /// 
-        /// <remarks>
-        /// Note: This is unique in the context of the Plex server.<br/>
-        /// 
-        /// </remarks>
-        /// </summary>
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=sectionKey")]
-        public int SectionKey { get; set; } = default!;
-
-        /// <summary>
         /// Adds the Guids object to the response<br/>
         /// 
         /// <remarks>
@@ -56,6 +45,17 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=type")]
         public GetLibraryItemsQueryParamType? Type { get; set; }
+
+        /// <summary>
+        /// The unique key of the Plex library. <br/>
+        /// 
+        /// <remarks>
+        /// Note: This is unique in the context of the Plex server.<br/>
+        /// 
+        /// </remarks>
+        /// </summary>
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=sectionKey")]
+        public int SectionKey { get; set; } = default!;
 
         /// <summary>
         /// Adds the Meta object to the response<br/>

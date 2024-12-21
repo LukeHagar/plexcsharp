@@ -18,3 +18,5 @@ E.g. A movie library will not return anything with type 3 as there are no season
 | `Season`  | 3         |
 | `Episode` | 4         |
 | `Audio`   | 8         |
+| `Album`   | 9         |
+| `Track`   | 10        |

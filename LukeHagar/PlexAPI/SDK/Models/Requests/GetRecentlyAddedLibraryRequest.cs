@@ -16,6 +16,18 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     public class GetRecentlyAddedLibraryRequest
     {
 
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=contentDirectoryID")]
+        public long? ContentDirectoryID { get; set; }
+
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=pinnedContentDirectoryID")]
+        public List<long>? PinnedContentDirectoryID { get; set; }
+
+        /// <summary>
+        /// The library section ID for filtering content.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=sectionID")]
+        public long? SectionID { get; set; }
+
         /// <summary>
         /// The type of media to retrieve.<br/>
         /// 
@@ -30,18 +42,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=type")]
         public QueryParamType Type { get; set; } = default!;
-
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=contentDirectoryID")]
-        public long? ContentDirectoryID { get; set; }
-
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=pinnedContentDirectoryID")]
-        public List<long>? PinnedContentDirectoryID { get; set; }
-
-        /// <summary>
-        /// The library section ID for filtering content.
-        /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=sectionID")]
-        public long? SectionID { get; set; }
 
         /// <summary>
         /// Adds the Meta object to the response<br/>

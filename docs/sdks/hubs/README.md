@@ -20,21 +20,14 @@ Get Global Hubs filtered by the parameters provided.
 
 ```csharp
 using LukeHagar.PlexAPI.SDK;
-using LukeHagar.PlexAPI.SDK.Models.Requests;
 using LukeHagar.PlexAPI.SDK.Models.Components;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
 
-var sdk = new PlexAPI(
-    accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Hubs.GetGlobalHubsAsync(
     count: 1262.49D,
-    onlyTransient: LukeHagar.PlexAPI.SDK.Models.Requests.OnlyTransient.One
+    onlyTransient: OnlyTransient.One
 );
 
 // handle response
@@ -68,23 +61,16 @@ This endpoint will return the recently added content.
 
 ```csharp
 using LukeHagar.PlexAPI.SDK;
-using LukeHagar.PlexAPI.SDK.Models.Requests;
 using LukeHagar.PlexAPI.SDK.Models.Components;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
 
-var sdk = new PlexAPI(
-    accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 GetRecentlyAddedRequest req = new GetRecentlyAddedRequest() {
     ContentDirectoryID = 470161,
-    Type = LukeHagar.PlexAPI.SDK.Models.Requests.Type.TvShow,
     SectionID = 2,
-    IncludeMeta = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeMeta.Enable,
+    Type = LukeHagar.PlexAPI.SDK.Models.Requests.Type.TvShow,
+    IncludeMeta = IncludeMeta.Enable,
     XPlexContainerStart = 0,
     XPlexContainerSize = 50,
 };
@@ -119,22 +105,15 @@ This endpoint will return a list of library specific hubs
 
 ```csharp
 using LukeHagar.PlexAPI.SDK;
-using LukeHagar.PlexAPI.SDK.Models.Requests;
 using LukeHagar.PlexAPI.SDK.Models.Components;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
 
-var sdk = new PlexAPI(
-    accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Hubs.GetLibraryHubsAsync(
     sectionId: 6728.76D,
     count: 639.24D,
-    onlyTransient: LukeHagar.PlexAPI.SDK.Models.Requests.QueryParamOnlyTransient.One
+    onlyTransient: QueryParamOnlyTransient.One
 );
 
 // handle response

@@ -30,17 +30,9 @@ This resource returns hash values for local files
 
 ```csharp
 using LukeHagar.PlexAPI.SDK;
-using LukeHagar.PlexAPI.SDK.Models.Requests;
 using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPI(
-    accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Library.GetFileHashAsync(
     url: "file://C:\Image.png&type=13",
@@ -78,21 +70,13 @@ This endpoint will return the recently added content.
 
 ```csharp
 using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 using LukeHagar.PlexAPI.SDK.Models.Requests;
 using System.Collections.Generic;
-using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPI(
-    accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 GetRecentlyAddedLibraryRequest req = new GetRecentlyAddedLibraryRequest() {
-    Type = LukeHagar.PlexAPI.SDK.Models.Requests.QueryParamType.TvShow,
     ContentDirectoryID = 2,
     PinnedContentDirectoryID = new List<long>() {
         3,
@@ -109,7 +93,8 @@ GetRecentlyAddedLibraryRequest req = new GetRecentlyAddedLibraryRequest() {
         17,
     },
     SectionID = 2,
-    IncludeMeta = LukeHagar.PlexAPI.SDK.Models.Requests.QueryParamIncludeMeta.Enable,
+    Type = QueryParamType.TvShow,
+    IncludeMeta = QueryParamIncludeMeta.Enable,
     XPlexContainerStart = 0,
     XPlexContainerSize = 50,
 };
@@ -153,14 +138,7 @@ This allows a client to provide a rich interface around the media (e.g. allow so
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPI(
-    accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Library.GetAllLibrariesAsync();
 
@@ -226,21 +204,14 @@ Each type in the library comes with a set of filters and sorts, aiding in buildi
 
 ```csharp
 using LukeHagar.PlexAPI.SDK;
-using LukeHagar.PlexAPI.SDK.Models.Requests;
 using LukeHagar.PlexAPI.SDK.Models.Components;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
 
-var sdk = new PlexAPI(
-    accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Library.GetLibraryDetailsAsync(
     sectionKey: 9518,
-    includeDetails: LukeHagar.PlexAPI.SDK.Models.Requests.IncludeDetails.Zero
+    includeDetails: IncludeDetails.Zero
 );
 
 // handle response
@@ -273,17 +244,9 @@ Delete a library using a specific section id
 
 ```csharp
 using LukeHagar.PlexAPI.SDK;
-using LukeHagar.PlexAPI.SDK.Models.Requests;
 using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPI(
-    accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Library.DeleteLibraryAsync(sectionKey: 9518);
 
@@ -330,30 +293,24 @@ Fetches details from a specific section of the library identified by a section k
 - `resolution`: Items categorized by resolution.
 - `firstCharacter`: Items categorized by the first letter.
 - `folder`: Items categorized by folder.
+- `albums`: Items categorized by album.
 
 
 ### Example Usage
 
 ```csharp
 using LukeHagar.PlexAPI.SDK;
-using LukeHagar.PlexAPI.SDK.Models.Requests;
 using LukeHagar.PlexAPI.SDK.Models.Components;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
 
-var sdk = new PlexAPI(
-    accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 GetLibraryItemsRequest req = new GetLibraryItemsRequest() {
-    Tag = LukeHagar.PlexAPI.SDK.Models.Requests.Tag.Edition,
+    Tag = Tag.Edition,
+    IncludeGuids = IncludeGuids.Enable,
+    Type = GetLibraryItemsQueryParamType.TvShow,
     SectionKey = 9518,
-    IncludeGuids = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeGuids.Enable,
-    Type = LukeHagar.PlexAPI.SDK.Models.Requests.GetLibraryItemsQueryParamType.TvShow,
-    IncludeMeta = LukeHagar.PlexAPI.SDK.Models.Requests.GetLibraryItemsQueryParamIncludeMeta.Enable,
+    IncludeMeta = GetLibraryItemsQueryParamIncludeMeta.Enable,
     XPlexContainerStart = 0,
     XPlexContainerSize = 50,
 };
@@ -390,21 +347,14 @@ This endpoint Refreshes all the Metadata of the library.
 
 ```csharp
 using LukeHagar.PlexAPI.SDK;
-using LukeHagar.PlexAPI.SDK.Models.Requests;
 using LukeHagar.PlexAPI.SDK.Models.Components;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
 
-var sdk = new PlexAPI(
-    accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Library.GetRefreshLibraryMetadataAsync(
     sectionKey: 9518,
-    force: LukeHagar.PlexAPI.SDK.Models.Requests.Force.One
+    force: Force.One
 );
 
 // handle response
@@ -455,21 +405,14 @@ Each type in the library comes with a set of filters and sorts, aiding in buildi
 
 ```csharp
 using LukeHagar.PlexAPI.SDK;
-using LukeHagar.PlexAPI.SDK.Models.Requests;
 using LukeHagar.PlexAPI.SDK.Models.Components;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
 
-var sdk = new PlexAPI(
-    accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Library.GetSearchLibraryAsync(
     sectionKey: 9518,
-    type: LukeHagar.PlexAPI.SDK.Models.Requests.GetSearchLibraryQueryParamType.TvShow
+    type: GetSearchLibraryQueryParamType.TvShow
 );
 
 // handle response
@@ -503,26 +446,20 @@ Search the provided query across all library sections, or a single section, and 
 
 ```csharp
 using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Components;
 using LukeHagar.PlexAPI.SDK.Models.Requests;
 using System.Collections.Generic;
-using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPI(
-    accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 GetSearchAllLibrariesRequest req = new GetSearchAllLibrariesRequest() {
     Query = "<value>",
+    ClientID = "3381b62b-9ab7-4e37-827b-203e9809eb58",
     SearchTypes = new List<SearchTypes>() {
-        LukeHagar.PlexAPI.SDK.Models.Requests.SearchTypes.People,
+        SearchTypes.People,
     },
-    IncludeCollections = LukeHagar.PlexAPI.SDK.Models.Requests.QueryParamIncludeCollections.Enable,
-    IncludeExternalMedia = LukeHagar.PlexAPI.SDK.Models.Requests.QueryParamIncludeExternalMedia.Enable,
+    IncludeCollections = QueryParamIncludeCollections.Enable,
+    IncludeExternalMedia = QueryParamIncludeExternalMedia.Enable,
 };
 
 var res = await sdk.Library.GetSearchAllLibrariesAsync(req);
@@ -557,17 +494,9 @@ This endpoint will return the metadata of a library item specified with the rati
 
 ```csharp
 using LukeHagar.PlexAPI.SDK;
-using LukeHagar.PlexAPI.SDK.Models.Requests;
 using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPI(
-    accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Library.GetMetaDataByRatingKeyAsync(ratingKey: 9518);
 
@@ -601,17 +530,9 @@ This endpoint will return the children of of a library item specified with the r
 
 ```csharp
 using LukeHagar.PlexAPI.SDK;
-using LukeHagar.PlexAPI.SDK.Models.Requests;
 using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPI(
-    accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Library.GetMetadataChildrenAsync(
     ratingKey: 1539.15D,
@@ -649,20 +570,13 @@ This endpoint will return the top watched content from libraries of a certain ty
 
 ```csharp
 using LukeHagar.PlexAPI.SDK;
-using LukeHagar.PlexAPI.SDK.Models.Requests;
 using LukeHagar.PlexAPI.SDK.Models.Components;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
 
-var sdk = new PlexAPI(
-    accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Library.GetTopWatchedContentAsync(
-    type: LukeHagar.PlexAPI.SDK.Models.Requests.GetTopWatchedContentQueryParamType.TvShow,
+    type: GetTopWatchedContentQueryParamType.TvShow,
     includeGuids: 1
 );
 
@@ -699,14 +613,7 @@ This endpoint will return the on deck content.
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
 
-var sdk = new PlexAPI(
-    accessToken: "<YOUR_API_KEY_HERE>",
-    clientID: "3381b62b-9ab7-4e37-827b-203e9809eb58",
-    clientName: "Plex for Roku",
-    clientVersion: "2.4.1",
-    platform: "Roku",
-    deviceNickname: "Roku 3"
-);
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Library.GetOnDeckAsync();
 

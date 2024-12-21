@@ -13,14 +13,14 @@ namespace LukeHagar.PlexAPI.SDK
     using LukeHagar.PlexAPI.SDK.Models.Components;
     using LukeHagar.PlexAPI.SDK.Models.Errors;
     using LukeHagar.PlexAPI.SDK.Models.Requests;
-    using LukeHagar.PlexAPI.SDK.Utils.Retries;
     using LukeHagar.PlexAPI.SDK.Utils;
+    using LukeHagar.PlexAPI.SDK.Utils.Retries;
     using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Net.Http.Headers;
-    using System.Net.Http;
-    using System.Threading.Tasks;
     using System;
+    using System.Collections.Generic;
+    using System.Net.Http;
+    using System.Net.Http.Headers;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// API Calls regarding authentication for Plex Media Server<br/>
@@ -69,7 +69,7 @@ namespace LukeHagar.PlexAPI.SDK
         /// Sign in user with username and password and return user data with Plex authentication token
         /// </remarks>
         /// </summary>
-        Task<PostUsersSignInDataResponse> PostUsersSignInDataAsync(PostUsersSignInDataRequest? request = null, string? serverUrl = null);
+        Task<PostUsersSignInDataResponse> PostUsersSignInDataAsync(PostUsersSignInDataRequest request, string? serverUrl = null);
     }
 
     /// <summary>
@@ -95,10 +95,10 @@ namespace LukeHagar.PlexAPI.SDK
         };
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.11.1";
-        private const string _sdkGenVersion = "2.457.9";
+        private const string _sdkVersion = "0.12.0";
+        private const string _sdkGenVersion = "2.483.1";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.11.1 2.457.9 0.0.3 LukeHagar.PlexAPI.SDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.12.0 2.483.1 0.0.3 LukeHagar.PlexAPI.SDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<LukeHagar.PlexAPI.SDK.Models.Components.Security>? _securitySource;
@@ -398,14 +398,8 @@ namespace LukeHagar.PlexAPI.SDK
             throw new Models.Errors.SDKException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<PostUsersSignInDataResponse> PostUsersSignInDataAsync(PostUsersSignInDataRequest? request = null, string? serverUrl = null)
+        public async Task<PostUsersSignInDataResponse> PostUsersSignInDataAsync(PostUsersSignInDataRequest request, string? serverUrl = null)
         {
-            request.ClientID ??= SDKConfiguration.ClientID;
-            request.ClientName ??= SDKConfiguration.ClientName;
-            request.ClientVersion ??= SDKConfiguration.ClientVersion;
-            request.Platform ??= SDKConfiguration.Platform;
-            request.DeviceNickname ??= SDKConfiguration.DeviceNickname;
-            
             string baseUrl = Utilities.TemplateUrl(PostUsersSignInDataServerList[0], new Dictionary<string, string>(){
             });
             if (serverUrl != null)
@@ -465,7 +459,7 @@ namespace LukeHagar.PlexAPI.SDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<PostUsersSignInDataUserPlexAccount>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
+                    var obj = ResponseBodyDeserializer.Deserialize<PostUsersSignInDataUserPlexAccount>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     var response = new PostUsersSignInDataResponse()
                     {
                         StatusCode = responseStatusCode,
@@ -482,7 +476,7 @@ namespace LukeHagar.PlexAPI.SDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<PostUsersSignInDataBadRequest>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
+                    var obj = ResponseBodyDeserializer.Deserialize<PostUsersSignInDataBadRequest>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     obj!.RawResponse = httpResponse;
                     throw obj!;
                 }
@@ -493,7 +487,7 @@ namespace LukeHagar.PlexAPI.SDK
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<PostUsersSignInDataUnauthorized>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
+                    var obj = ResponseBodyDeserializer.Deserialize<PostUsersSignInDataUnauthorized>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     obj!.RawResponse = httpResponse;
                     throw obj!;
                 }

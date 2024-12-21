@@ -13,14 +13,14 @@ namespace LukeHagar.PlexAPI.SDK
     using LukeHagar.PlexAPI.SDK.Models.Components;
     using LukeHagar.PlexAPI.SDK.Models.Errors;
     using LukeHagar.PlexAPI.SDK.Models.Requests;
-    using LukeHagar.PlexAPI.SDK.Utils.Retries;
     using LukeHagar.PlexAPI.SDK.Utils;
+    using LukeHagar.PlexAPI.SDK.Utils.Retries;
     using Newtonsoft.Json;
-    using System.Collections.Generic;
-    using System.Net.Http.Headers;
-    using System.Net.Http;
-    using System.Threading.Tasks;
     using System;
+    using System.Collections.Generic;
+    using System.Net.Http;
+    using System.Net.Http.Headers;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// Submit logs to the Log Handler for Plex Media Server<br/>
@@ -94,10 +94,10 @@ namespace LukeHagar.PlexAPI.SDK
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.11.1";
-        private const string _sdkGenVersion = "2.457.9";
+        private const string _sdkVersion = "0.12.0";
+        private const string _sdkGenVersion = "2.483.1";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.11.1 2.457.9 0.0.3 LukeHagar.PlexAPI.SDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.12.0 2.483.1 0.0.3 LukeHagar.PlexAPI.SDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<LukeHagar.PlexAPI.SDK.Models.Components.Security>? _securitySource;

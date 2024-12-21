@@ -22,6 +22,18 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public long ContentDirectoryID { get; set; } = default!;
 
         /// <summary>
+        /// Comma-separated list of pinned content directory IDs.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=pinnedContentDirectoryID")]
+        public string? PinnedContentDirectoryID { get; set; }
+
+        /// <summary>
+        /// The library section ID for filtering content.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=sectionID")]
+        public long? SectionID { get; set; }
+
+        /// <summary>
         /// The type of media to retrieve.<br/>
         /// 
         /// <remarks>
@@ -35,18 +47,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=type")]
         public Models.Requests.Type Type { get; set; } = default!;
-
-        /// <summary>
-        /// Comma-separated list of pinned content directory IDs.
-        /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=pinnedContentDirectoryID")]
-        public string? PinnedContentDirectoryID { get; set; }
-
-        /// <summary>
-        /// The library section ID for filtering content.
-        /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=sectionID")]
-        public long? SectionID { get; set; }
 
         /// <summary>
         /// Adds the Meta object to the response<br/>
