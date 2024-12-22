@@ -65,6 +65,12 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         [JsonProperty("musicAnalysisVersion")]
         public string? MusicAnalysisVersion { get; set; }
 
+        /// <summary>
+        /// The original untranslated name of the media item when non-english, or the track artist if an audio Item has an album artist
+        /// </summary>
+        [JsonProperty("originalTitle")]
+        public string? OriginalTitle { get; set; }
+
         [JsonProperty("parentGuid")]
         public string? ParentGuid { get; set; }
 
