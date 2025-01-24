@@ -13,12 +13,17 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using Newtonsoft.Json;
     using System;
     
+    /// <summary>
+    /// Setting that indicates if seasons are set to hidden for the show. (-1 = Library default, 0 = Hide, 1 = Show).
+    /// </summary>
     public enum GetLibraryItemsFlattenSeasons
     {
+        [JsonProperty("-1")]
+        LibraryDefault,
         [JsonProperty("0")]
-        False,
+        Hide,
         [JsonProperty("1")]
-        True,
+        Show,
     }
 
     public static class GetLibraryItemsFlattenSeasonsExtension

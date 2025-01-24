@@ -87,8 +87,23 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         [JsonProperty("tagline")]
         public string? Tagline { get; set; }
 
+        /// <summary>
+        /// Setting that indicates if seasons are set to hidden for the show. (-1 = Library default, 0 = Hide, 1 = Show).
+        /// </summary>
         [JsonProperty("flattenSeasons")]
-        public GetSearchAllLibrariesFlattenSeasons? FlattenSeasons { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.GetSearchAllLibrariesFlattenSeasons.False;
+        public GetSearchAllLibrariesFlattenSeasons? FlattenSeasons { get; set; }
+
+        /// <summary>
+        /// Setting that indicates how episodes are sorted for the show. (-1 = Library default, 0 = Oldest first, 1 = Newest first).
+        /// </summary>
+        [JsonProperty("episodeSort")]
+        public GetSearchAllLibrariesEpisodeSort? EpisodeSort { get; set; }
+
+        /// <summary>
+        /// Setting that indicates if credits markers detection is enabled. (-1 = Library default, 0 = Disabled).
+        /// </summary>
+        [JsonProperty("enableCreditsMarkerGeneration")]
+        public GetSearchAllLibrariesEnableCreditsMarkerGeneration? EnableCreditsMarkerGeneration { get; set; }
 
         /// <summary>
         /// Setting that indicates the episode ordering for the show<br/>

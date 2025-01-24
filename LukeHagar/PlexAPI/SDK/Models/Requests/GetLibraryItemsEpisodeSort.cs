@@ -14,28 +14,28 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using System;
     
     /// <summary>
-    /// Setting that indicates if seasons are set to hidden for the show. (-1 = Library default, 0 = Hide, 1 = Show).
+    /// Setting that indicates how episodes are sorted for the show. (-1 = Library default, 0 = Oldest first, 1 = Newest first).
     /// </summary>
-    public enum GetSearchAllLibrariesFlattenSeasons
+    public enum GetLibraryItemsEpisodeSort
     {
         [JsonProperty("-1")]
         LibraryDefault,
         [JsonProperty("0")]
-        Hide,
+        OldestFirst,
         [JsonProperty("1")]
-        Show,
+        NewestFirst,
     }
 
-    public static class GetSearchAllLibrariesFlattenSeasonsExtension
+    public static class GetLibraryItemsEpisodeSortExtension
     {
-        public static string Value(this GetSearchAllLibrariesFlattenSeasons value)
+        public static string Value(this GetLibraryItemsEpisodeSort value)
         {
             return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
         }
 
-        public static GetSearchAllLibrariesFlattenSeasons ToEnum(this string value)
+        public static GetLibraryItemsEpisodeSort ToEnum(this string value)
         {
-            foreach(var field in typeof(GetSearchAllLibrariesFlattenSeasons).GetFields())
+            foreach(var field in typeof(GetLibraryItemsEpisodeSort).GetFields())
             {
                 var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
                 if (attributes.Length == 0)
@@ -48,14 +48,14 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
                 {
                     var enumVal = field.GetValue(null);
 
-                    if (enumVal is GetSearchAllLibrariesFlattenSeasons)
+                    if (enumVal is GetLibraryItemsEpisodeSort)
                     {
-                        return (GetSearchAllLibrariesFlattenSeasons)enumVal;
+                        return (GetLibraryItemsEpisodeSort)enumVal;
                     }
                 }
             }
 
-            throw new Exception($"Unknown value {value} for enum GetSearchAllLibrariesFlattenSeasons");
+            throw new Exception($"Unknown value {value} for enum GetLibraryItemsEpisodeSort");
         }
     }
 

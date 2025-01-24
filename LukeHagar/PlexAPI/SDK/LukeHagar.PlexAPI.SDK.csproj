@@ -3,10 +3,10 @@
   <PropertyGroup>
     <IsPackable>true</IsPackable>
     <PackageId>LukeHagar.PlexAPI.SDK</PackageId>
-    <Version>0.12.1</Version>
+    <Version>0.13.0</Version>
     <TargetFramework>net8.0</TargetFramework>
     <Authors>LukeHagar</Authors>
-    <Copyright>Copyright (c) LukeHagar 2024</Copyright>
+    <Copyright>Copyright (c) LukeHagar 2025</Copyright>
     <RepositoryUrl>https://github.com/LukeHagar/plexcsharp.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Plex Media Server SDK</PackageTags>

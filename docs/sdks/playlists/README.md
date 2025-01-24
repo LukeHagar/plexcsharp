@@ -194,7 +194,7 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Playlists.UpdatePlaylistAsync(
-    playlistID: 3915.00D,
+    playlistID: 3915D,
     title: "<value>",
     summary: "<value>"
 );
@@ -317,7 +317,7 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Playlists.AddPlaylistContentsAsync(
-    playlistID: 8502.00D,
+    playlistID: 8502.01D,
     uri: "server://12345/com.plexapp.plugins.library/library/metadata/1",
     playQueueID: 123D
 );

@@ -14,28 +14,26 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using System;
     
     /// <summary>
-    /// Setting that indicates if seasons are set to hidden for the show. (-1 = Library default, 0 = Hide, 1 = Show).
+    /// Setting that indicates if credits markers detection is enabled. (-1 = Library default, 0 = Disabled).
     /// </summary>
-    public enum GetSearchAllLibrariesFlattenSeasons
+    public enum GetSearchAllLibrariesEnableCreditsMarkerGeneration
     {
         [JsonProperty("-1")]
         LibraryDefault,
         [JsonProperty("0")]
-        Hide,
-        [JsonProperty("1")]
-        Show,
+        Disabled,
     }
 
-    public static class GetSearchAllLibrariesFlattenSeasonsExtension
+    public static class GetSearchAllLibrariesEnableCreditsMarkerGenerationExtension
     {
-        public static string Value(this GetSearchAllLibrariesFlattenSeasons value)
+        public static string Value(this GetSearchAllLibrariesEnableCreditsMarkerGeneration value)
         {
             return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
         }
 
-        public static GetSearchAllLibrariesFlattenSeasons ToEnum(this string value)
+        public static GetSearchAllLibrariesEnableCreditsMarkerGeneration ToEnum(this string value)
         {
-            foreach(var field in typeof(GetSearchAllLibrariesFlattenSeasons).GetFields())
+            foreach(var field in typeof(GetSearchAllLibrariesEnableCreditsMarkerGeneration).GetFields())
             {
                 var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
                 if (attributes.Length == 0)
@@ -48,14 +46,14 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
                 {
                     var enumVal = field.GetValue(null);
 
-                    if (enumVal is GetSearchAllLibrariesFlattenSeasons)
+                    if (enumVal is GetSearchAllLibrariesEnableCreditsMarkerGeneration)
                     {
-                        return (GetSearchAllLibrariesFlattenSeasons)enumVal;
+                        return (GetSearchAllLibrariesEnableCreditsMarkerGeneration)enumVal;
                     }
                 }
             }
 
-            throw new Exception($"Unknown value {value} for enum GetSearchAllLibrariesFlattenSeasons");
+            throw new Exception($"Unknown value {value} for enum GetSearchAllLibrariesEnableCreditsMarkerGeneration");
         }
     }
 

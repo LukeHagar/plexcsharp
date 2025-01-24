@@ -535,7 +535,7 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Library.GetMetadataChildrenAsync(
-    ratingKey: 1539.15D,
+    ratingKey: 1539.14D,
     includeElements: "<value>"
 );
 
