@@ -5,8 +5,8 @@ management:
   docVersion: 0.0.3
   speakeasyVersion: 1.476.1
   generationVersion: 2.495.1
-  releaseVersion: 0.13.1
-  configChecksum: cb976b7d28ff9e32d6e5d692f7eaaf34
+  releaseVersion: 0.13.2
+  configChecksum: 225999e0d4ea8c589e7e3050bfada9d8
   repoURL: https://github.com/LukeHagar/plexcsharp.git
   repoSubDirectory: .
   published: true
