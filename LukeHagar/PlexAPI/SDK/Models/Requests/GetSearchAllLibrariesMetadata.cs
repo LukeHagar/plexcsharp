@@ -106,14 +106,14 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public GetSearchAllLibrariesEnableCreditsMarkerGeneration? EnableCreditsMarkerGeneration { get; set; }
 
         /// <summary>
-        /// Setting that indicates the episode ordering for the show<br/>
+        /// Setting that indicates the episode ordering for the show.<br/>
         /// 
         /// <remarks>
         /// None = Library default,<br/>
         /// tmdbAiring = The Movie Database (Aired),<br/>
-        /// tvdbAiring = TheTVDB (Aired),<br/>
-        /// tvdbDvd = TheTVDB (DVD),<br/>
-        /// tvdbAbsolute = TheTVDB (Absolute)).<br/>
+        /// aired = TheTVDB (Aired),<br/>
+        /// dvd = TheTVDB (DVD),<br/>
+        /// absolute = TheTVDB (Absolute)).<br/>
         /// 
         /// </remarks>
         /// </summary>
