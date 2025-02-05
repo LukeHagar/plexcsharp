@@ -25,8 +25,6 @@ var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 GetWatchListRequest req = new GetWatchListRequest() {
     Filter = Filter.Available,
-    XPlexContainerStart = 0,
-    XPlexContainerSize = 50,
     XPlexToken = "CV5xoxjTpFKUzBTShsaf",
 };
 

@@ -16,6 +16,8 @@ API Calls interacting with Plex Media Server Libraries
 * [GetLibraryItems](#getlibraryitems) - Get Library Items
 * [GetRefreshLibraryMetadata](#getrefreshlibrarymetadata) - Refresh Metadata Of The Library
 * [GetSearchLibrary](#getsearchlibrary) - Search Library
+* [GetGenresLibrary](#getgenreslibrary) - Get Genres of library media
+* [GetCountriesLibrary](#getcountrieslibrary) - Get Countries of library media
 * [GetSearchAllLibraries](#getsearchalllibraries) - Search All Libraries
 * [GetMetaDataByRatingKey](#getmetadatabyratingkey) - Get Metadata by RatingKey
 * [GetMetadataChildren](#getmetadatachildren) - Get Items Children
@@ -94,9 +96,6 @@ GetRecentlyAddedLibraryRequest req = new GetRecentlyAddedLibraryRequest() {
     },
     SectionID = 2,
     Type = QueryParamType.TvShow,
-    IncludeMeta = QueryParamIncludeMeta.Enable,
-    XPlexContainerStart = 0,
-    XPlexContainerSize = 50,
 };
 
 var res = await sdk.Library.GetRecentlyAddedLibraryAsync(req);
@@ -307,12 +306,8 @@ var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 GetLibraryItemsRequest req = new GetLibraryItemsRequest() {
     Tag = Tag.Edition,
-    IncludeGuids = IncludeGuids.Enable,
     Type = GetLibraryItemsQueryParamType.TvShow,
     SectionKey = 9518,
-    IncludeMeta = GetLibraryItemsQueryParamIncludeMeta.Enable,
-    XPlexContainerStart = 0,
-    XPlexContainerSize = 50,
 };
 
 var res = await sdk.Library.GetLibraryItemsAsync(req);
@@ -437,6 +432,78 @@ var res = await sdk.Library.GetSearchLibraryAsync(
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetSearchLibraryUnauthorized | 401                                                              | application/json                                                 |
 | LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                 | 4XX, 5XX                                                         | \*/\*                                                            |
 
+## GetGenresLibrary
+
+Retrieves a list of all the genres that are found for the media in this library.
+
+
+### Example Usage
+
+```csharp
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Components;
+
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
+
+var res = await sdk.Library.GetGenresLibraryAsync(sectionKey: 9518);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   | Example                                                                                       |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `SectionKey`                                                                                  | *int*                                                                                         | :heavy_check_mark:                                                                            | The unique key of the Plex library. <br/>Note: This is unique in the context of the Plex server.<br/> | 9518                                                                                          |
+
+### Response
+
+**[GetGenresLibraryResponse](../../Models/Requests/GetGenresLibraryResponse.md)**
+
+### Errors
+
+| Error Type                                                       | Status Code                                                      | Content Type                                                     |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetGenresLibraryBadRequest   | 400                                                              | application/json                                                 |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetGenresLibraryUnauthorized | 401                                                              | application/json                                                 |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                 | 4XX, 5XX                                                         | \*/\*                                                            |
+
+## GetCountriesLibrary
+
+Retrieves a list of all the countries that are found for the media in this library.
+
+
+### Example Usage
+
+```csharp
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Components;
+
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
+
+var res = await sdk.Library.GetCountriesLibraryAsync(sectionKey: 9518);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   | Example                                                                                       |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `SectionKey`                                                                                  | *int*                                                                                         | :heavy_check_mark:                                                                            | The unique key of the Plex library. <br/>Note: This is unique in the context of the Plex server.<br/> | 9518                                                                                          |
+
+### Response
+
+**[GetCountriesLibraryResponse](../../Models/Requests/GetCountriesLibraryResponse.md)**
+
+### Errors
+
+| Error Type                                                          | Status Code                                                         | Content Type                                                        |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetCountriesLibraryBadRequest   | 400                                                                 | application/json                                                    |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetCountriesLibraryUnauthorized | 401                                                                 | application/json                                                    |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                    | 4XX, 5XX                                                            | \*/\*                                                               |
+
 ## GetSearchAllLibraries
 
 Search the provided query across all library sections, or a single section, and return matches as hubs, split up by type.
@@ -458,8 +525,6 @@ GetSearchAllLibrariesRequest req = new GetSearchAllLibrariesRequest() {
     SearchTypes = new List<SearchTypes>() {
         SearchTypes.People,
     },
-    IncludeCollections = QueryParamIncludeCollections.Enable,
-    IncludeExternalMedia = QueryParamIncludeExternalMedia.Enable,
 };
 
 var res = await sdk.Library.GetSearchAllLibrariesAsync(req);

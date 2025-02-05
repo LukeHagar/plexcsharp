@@ -322,9 +322,6 @@ actions:
                 ContentDirectoryID = 470161,
                 SectionID = 2,
                 Type = LukeHagar.PlexAPI.SDK.Models.Requests.Type.TvShow,
-                IncludeMeta = IncludeMeta.Enable,
-                XPlexContainerStart = 0,
-                XPlexContainerSize = 50,
             };
 
             var res = await sdk.Hubs.GetRecentlyAddedAsync(req);
@@ -557,9 +554,6 @@ actions:
                 },
                 SectionID = 2,
                 Type = QueryParamType.TvShow,
-                IncludeMeta = QueryParamIncludeMeta.Enable,
-                XPlexContainerStart = 0,
-                XPlexContainerSize = 50,
             };
 
             var res = await sdk.Library.GetRecentlyAddedLibraryAsync(req);
@@ -584,8 +578,6 @@ actions:
                 SearchTypes = new List<SearchTypes>() {
                     SearchTypes.People,
                 },
-                IncludeCollections = QueryParamIncludeCollections.Enable,
-                IncludeExternalMedia = QueryParamIncludeExternalMedia.Enable,
             };
 
             var res = await sdk.Library.GetSearchAllLibrariesAsync(req);
@@ -619,8 +611,6 @@ actions:
 
             GetWatchListRequest req = new GetWatchListRequest() {
                 Filter = Filter.Available,
-                XPlexContainerStart = 0,
-                XPlexContainerSize = 50,
                 XPlexToken = "CV5xoxjTpFKUzBTShsaf",
             };
 
@@ -657,6 +647,34 @@ actions:
                 sectionKey: 9518,
                 includeDetails: IncludeDetails.Zero
             );
+
+            // handle response
+  - target: $["paths"]["/library/sections/{sectionKey}/country"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: library
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
+
+            var res = await sdk.Library.GetCountriesLibraryAsync(sectionKey: 9518);
+
+            // handle response
+  - target: $["paths"]["/library/sections/{sectionKey}/genre"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: library
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
+
+            var res = await sdk.Library.GetGenresLibraryAsync(sectionKey: 9518);
 
             // handle response
   - target: $["paths"]["/library/sections/{sectionKey}/refresh"]["get"]
@@ -709,12 +727,8 @@ actions:
 
             GetLibraryItemsRequest req = new GetLibraryItemsRequest() {
                 Tag = Tag.Edition,
-                IncludeGuids = IncludeGuids.Enable,
                 Type = GetLibraryItemsQueryParamType.TvShow,
                 SectionKey = 9518,
-                IncludeMeta = GetLibraryItemsQueryParamIncludeMeta.Enable,
-                XPlexContainerStart = 0,
-                XPlexContainerSize = 50,
             };
 
             var res = await sdk.Library.GetLibraryItemsAsync(req);

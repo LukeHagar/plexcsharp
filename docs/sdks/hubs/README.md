@@ -70,9 +70,6 @@ GetRecentlyAddedRequest req = new GetRecentlyAddedRequest() {
     ContentDirectoryID = 470161,
     SectionID = 2,
     Type = LukeHagar.PlexAPI.SDK.Models.Requests.Type.TvShow,
-    IncludeMeta = IncludeMeta.Enable,
-    XPlexContainerStart = 0,
-    XPlexContainerSize = 50,
 };
 
 var res = await sdk.Hubs.GetRecentlyAddedAsync(req);
