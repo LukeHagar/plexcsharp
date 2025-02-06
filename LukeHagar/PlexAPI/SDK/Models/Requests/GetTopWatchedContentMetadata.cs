@@ -112,6 +112,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public List<GetTopWatchedContentRole>? Role { get; set; }
 
         [JsonProperty("User")]
-        public List<User>? User { get; set; }
+        public List<GetTopWatchedContentUser>? User { get; set; }
     }
 }

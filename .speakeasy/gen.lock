@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 5a8dbcbc-e0ee-41f0-9d84-b8b50567d1e9
 management:
-  docChecksum: 14b35829d4be91a88269761c3ed01426
+  docChecksum: 7dec92ab9151a1b5a35df5faa81811ba
   docVersion: 0.0.3
   speakeasyVersion: 1.484.1
   generationVersion: 2.503.2
-  releaseVersion: 0.13.4
-  configChecksum: c05208ba767db4b6c55bb4346c69baba
+  releaseVersion: 0.13.5
+  configChecksum: cc3898066032221fc1785594193e0056
   repoURL: https://github.com/LukeHagar/plexcsharp.git
   repoSubDirectory: .
   published: true
@@ -279,6 +279,10 @@ generatedFiles:
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetUserFriendsErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetUserFriendsPlexErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetUserFriendsUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetUsersBadRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetUsersErrors.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetUsersUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/GetUsersUsersErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetWatchListBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetWatchListErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/GetWatchListUnauthorized.cs
@@ -357,6 +361,12 @@ generatedFiles:
   - LukeHagar/PlexAPI/SDK/Models/Requests/AddPlaylistContentsRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/AddPlaylistContentsResponse.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/AddPlaylistContentsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/AllLibraries.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/AllowCameraUpload.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/AllowChannels.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/AllowSubtitleAdmin.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/AllowSync.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/AllowTuners.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/ApplyUpdatesRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/ApplyUpdatesResponse.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/AutoSelectSubtitle.cs
@@ -719,6 +729,7 @@ generatedFiles:
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetTopWatchedContentResponse.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetTopWatchedContentResponseBody.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetTopWatchedContentRole.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetTopWatchedContentUser.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetTranscodeSessionsMediaContainer.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetTranscodeSessionsResponse.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetTranscodeSessionsResponseBody.cs
@@ -729,11 +740,17 @@ generatedFiles:
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetUpdateStatusResponse.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetUpdateStatusResponseBody.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetUserFriendsResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetUsersMediaContainer.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetUsersRequest.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetUsersResponse.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetUsersResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetUsersServer.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetWatchListRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetWatchListResponse.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetWatchListResponseBody.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/Guids.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/HasThumbnail.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Home.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/Hub.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/Image.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/IncludeCollections.cs
@@ -769,9 +786,11 @@ generatedFiles:
   - LukeHagar/PlexAPI/SDK/Models/Requests/OnlyTransient.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/Operator.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/OptimizedForStreaming.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Owned.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/Part.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/PastSubscription.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/PathParamTaskName.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Pending.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/PerformSearchRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/PerformSearchResponse.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/PerformVoiceSearchRequest.cs
@@ -799,6 +818,7 @@ generatedFiles:
   - LukeHagar/PlexAPI/SDK/Models/Requests/PostUsersSignInDataUserProfile.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/PostUsersSignInDataWatchedIndicator.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/Producer.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Protected.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/Protocol.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/Provider.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/QueryParamFilter.cs
@@ -812,6 +832,7 @@ generatedFiles:
   - LukeHagar/PlexAPI/SDK/Models/Requests/Ratings.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/Release.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/ResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/Restricted.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/Role.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/Scope.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/SearchResult.cs
@@ -869,6 +890,7 @@ generatedFiles:
   - LukeHagar/PlexAPI/SDK/Sessions.cs
   - LukeHagar/PlexAPI/SDK/Statistics.cs
   - LukeHagar/PlexAPI/SDK/Updater.cs
+  - LukeHagar/PlexAPI/SDK/Users.cs
   - LukeHagar/PlexAPI/SDK/Utils/AnyDeserializer.cs
   - LukeHagar/PlexAPI/SDK/Utils/BigIntStrConverter.cs
   - LukeHagar/PlexAPI/SDK/Utils/DecimalStrConverter.cs
@@ -1126,6 +1148,10 @@ generatedFiles:
   - docs/Models/Errors/GetUserFriendsErrors.md
   - docs/Models/Errors/GetUserFriendsPlexErrors.md
   - docs/Models/Errors/GetUserFriendsUnauthorized.md
+  - docs/Models/Errors/GetUsersBadRequest.md
+  - docs/Models/Errors/GetUsersErrors.md
+  - docs/Models/Errors/GetUsersUnauthorized.md
+  - docs/Models/Errors/GetUsersUsersErrors.md
   - docs/Models/Errors/GetWatchListBadRequest.md
   - docs/Models/Errors/GetWatchListErrors.md
   - docs/Models/Errors/GetWatchListUnauthorized.md
@@ -1203,6 +1229,12 @@ generatedFiles:
   - docs/Models/Requests/AddPlaylistContentsRequest.md
   - docs/Models/Requests/AddPlaylistContentsResponse.md
   - docs/Models/Requests/AddPlaylistContentsResponseBody.md
+  - docs/Models/Requests/AllLibraries.md
+  - docs/Models/Requests/AllowCameraUpload.md
+  - docs/Models/Requests/AllowChannels.md
+  - docs/Models/Requests/AllowSubtitleAdmin.md
+  - docs/Models/Requests/AllowSync.md
+  - docs/Models/Requests/AllowTuners.md
   - docs/Models/Requests/ApplyUpdatesRequest.md
   - docs/Models/Requests/ApplyUpdatesResponse.md
   - docs/Models/Requests/AutoSelectSubtitle.md
@@ -1565,6 +1597,7 @@ generatedFiles:
   - docs/Models/Requests/GetTopWatchedContentResponse.md
   - docs/Models/Requests/GetTopWatchedContentResponseBody.md
   - docs/Models/Requests/GetTopWatchedContentRole.md
+  - docs/Models/Requests/GetTopWatchedContentUser.md
   - docs/Models/Requests/GetTranscodeSessionsMediaContainer.md
   - docs/Models/Requests/GetTranscodeSessionsResponse.md
   - docs/Models/Requests/GetTranscodeSessionsResponseBody.md
@@ -1575,11 +1608,17 @@ generatedFiles:
   - docs/Models/Requests/GetUpdateStatusResponse.md
   - docs/Models/Requests/GetUpdateStatusResponseBody.md
   - docs/Models/Requests/GetUserFriendsResponse.md
+  - docs/Models/Requests/GetUsersMediaContainer.md
+  - docs/Models/Requests/GetUsersRequest.md
+  - docs/Models/Requests/GetUsersResponse.md
+  - docs/Models/Requests/GetUsersResponseBody.md
+  - docs/Models/Requests/GetUsersServer.md
   - docs/Models/Requests/GetWatchListRequest.md
   - docs/Models/Requests/GetWatchListResponse.md
   - docs/Models/Requests/GetWatchListResponseBody.md
   - docs/Models/Requests/Guids.md
   - docs/Models/Requests/HasThumbnail.md
+  - docs/Models/Requests/Home.md
   - docs/Models/Requests/Hub.md
   - docs/Models/Requests/Image.md
   - docs/Models/Requests/IncludeCollections.md
@@ -1615,9 +1654,11 @@ generatedFiles:
   - docs/Models/Requests/OnlyTransient.md
   - docs/Models/Requests/Operator.md
   - docs/Models/Requests/OptimizedForStreaming.md
+  - docs/Models/Requests/Owned.md
   - docs/Models/Requests/Part.md
   - docs/Models/Requests/PastSubscription.md
   - docs/Models/Requests/PathParamTaskName.md
+  - docs/Models/Requests/Pending.md
   - docs/Models/Requests/PerformSearchRequest.md
   - docs/Models/Requests/PerformSearchResponse.md
   - docs/Models/Requests/PerformVoiceSearchRequest.md
@@ -1645,6 +1686,7 @@ generatedFiles:
   - docs/Models/Requests/PostUsersSignInDataUserProfile.md
   - docs/Models/Requests/PostUsersSignInDataWatchedIndicator.md
   - docs/Models/Requests/Producer.md
+  - docs/Models/Requests/Protected.md
   - docs/Models/Requests/Protocol.md
   - docs/Models/Requests/Provider.md
   - docs/Models/Requests/QueryParamFilter.md
@@ -1658,6 +1700,7 @@ generatedFiles:
   - docs/Models/Requests/Ratings.md
   - docs/Models/Requests/Release.md
   - docs/Models/Requests/ResponseBody.md
+  - docs/Models/Requests/Restricted.md
   - docs/Models/Requests/Role.md
   - docs/Models/Requests/Scope.md
   - docs/Models/Requests/SearchResult.md
@@ -1722,6 +1765,7 @@ generatedFiles:
   - docs/sdks/sessions/README.md
   - docs/sdks/statistics/README.md
   - docs/sdks/updater/README.md
+  - docs/sdks/users/README.md
   - docs/sdks/video/README.md
   - docs/sdks/watchlist/README.md
   - global.json
@@ -2735,5 +2779,29 @@ examples:
           application/json: {"errors": [{"code": 1000, "message": "X-Plex-Client-Identifier is missing", "status": 400}, {"code": 1000, "message": "X-Plex-Client-Identifier is missing", "status": 400}]}
         "401":
           application/json: {"errors": [{"code": 1001, "message": "User could not be authenticated", "status": 401}, {"code": 1001, "message": "User could not be authenticated", "status": 401}, {"code": 1001, "message": "User could not be authenticated", "status": 401}]}
+  get-users:
+    "":
+      parameters:
+        header:
+          X-Plex-Client-Identifier: "3381b62b-9ab7-4e37-827b-203e9809eb58"
+          X-Plex-Product: "Plex for Roku"
+          X-Plex-Device: "Roku 3"
+          X-Plex-Device-Name: "Chrome"
+          X-Plex-Device-Screen-Resolution: "1487x1165,2560x1440"
+          X-Plex-Version: "2.4.1"
+          X-Plex-Platform: "Roku"
+          X-Plex-Features: "external-media,indirect-media,hub-style-list"
+          X-Plex-Model: "4200X"
+          X-Plex-Session-Id: "97e136ef-4ddd-4ff3-89a7-a5820c96c2ca"
+          X-Plex-Language: "en"
+          X-Plex-Platform-Version: "4.3 build 1057"
+          X-Plex-Token: "CV5xoxjTpFKUzBTShsaf"
+      responses:
+        "200":
+          application/xml: "0xa9CdebeF9E"
+        "400":
+          application/json: {"errors": [{"code": 1000, "message": "X-Plex-Client-Identifier is missing", "status": 400}, {"code": 1000, "message": "X-Plex-Client-Identifier is missing", "status": 400}]}
+        "401":
+          application/json: {"errors": [{"code": 1001, "message": "User could not be authenticated", "status": 401}, {"code": 1001, "message": "User could not be authenticated", "status": 401}]}
 examplesVersion: 1.0.0
 generatedTests: {}

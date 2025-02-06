@@ -252,6 +252,7 @@ namespace LukeHagar.PlexAPI.SDK
         /// </remarks>
         /// </summary>
         public IUpdater Updater { get; }
+        public IUsers Users { get; }
     }
 
     public class SDKConfig
@@ -326,10 +327,10 @@ namespace LukeHagar.PlexAPI.SDK
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.13.4";
+        private const string _sdkVersion = "0.13.5";
         private const string _sdkGenVersion = "2.503.2";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.13.4 2.503.2 0.0.3 LukeHagar.PlexAPI.SDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.13.5 2.503.2 0.0.3 LukeHagar.PlexAPI.SDK";
         private string _serverUrl = "";
         private int _serverIndex = 0;
         private ISpeakeasyHttpClient _client;
@@ -350,6 +351,7 @@ namespace LukeHagar.PlexAPI.SDK
         public IStatistics Statistics { get; private set; }
         public ISessions Sessions { get; private set; }
         public IUpdater Updater { get; private set; }
+        public IUsers Users { get; private set; }
 
         public PlexAPI(string? accessToken = null, Func<string>? accessTokenSource = null, int? serverIndex = null, ServerProtocol? protocol = null, string?  ip = null, string?  port = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null, RetryConfig? retryConfig = null)
         {
@@ -448,6 +450,9 @@ namespace LukeHagar.PlexAPI.SDK
 
 
             Updater = new Updater(_client, _securitySource, _serverUrl, SDKConfiguration);
+
+
+            Users = new Users(_client, _securitySource, _serverUrl, SDKConfiguration);
         }
     }
 }
