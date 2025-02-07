@@ -9,6 +9,7 @@
 #nullable enable
 namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
+    using LukeHagar.PlexAPI.SDK.Models.Requests;
     using LukeHagar.PlexAPI.SDK.Utils;
     
     public class GetCountriesLibraryRequest
@@ -24,5 +25,20 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=sectionKey")]
         public int SectionKey { get; set; } = default!;
+
+        /// <summary>
+        /// The type of media to retrieve or filter by.<br/>
+        /// 
+        /// <remarks>
+        /// 1 = movie<br/>
+        /// 2 = show<br/>
+        /// 3 = season<br/>
+        /// 4 = episode<br/>
+        /// E.g. A movie library will not return anything with type 3 as there are no seasons for movie libraries<br/>
+        /// 
+        /// </remarks>
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=type")]
+        public GetCountriesLibraryQueryParamType Type { get; set; } = default!;
     }
 }

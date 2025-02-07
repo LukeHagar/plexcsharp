@@ -22,7 +22,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public double PlaylistID { get; set; } = default!;
 
         /// <summary>
-        /// The type of media to retrieve.<br/>
+        /// The type of media to retrieve or filter by.<br/>
         /// 
         /// <remarks>
         /// 1 = movie<br/>

@@ -18,8 +18,9 @@ API Calls interacting with Plex Media Server Libraries
 * [GetSearchLibrary](#getsearchlibrary) - Search Library
 * [GetGenresLibrary](#getgenreslibrary) - Get Genres of library media
 * [GetCountriesLibrary](#getcountrieslibrary) - Get Countries of library media
+* [GetActorsLibrary](#getactorslibrary) - Get Actors of library media
 * [GetSearchAllLibraries](#getsearchalllibraries) - Search All Libraries
-* [GetMetaDataByRatingKey](#getmetadatabyratingkey) - Get Metadata by RatingKey
+* [GetMediaMetaData](#getmediametadata) - Get Media Metadata
 * [GetMetadataChildren](#getmetadatachildren) - Get Items Children
 * [GetTopWatchedContent](#gettopwatchedcontent) - Get Top Watched Content
 * [GetOnDeck](#getondeck) - Get On Deck
@@ -415,10 +416,10 @@ var res = await sdk.Library.GetSearchLibraryAsync(
 
 ### Parameters
 
-| Parameter                                                                                                                                                                       | Type                                                                                                                                                                            | Required                                                                                                                                                                        | Description                                                                                                                                                                     | Example                                                                                                                                                                         |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `SectionKey`                                                                                                                                                                    | *int*                                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                              | The unique key of the Plex library. <br/>Note: This is unique in the context of the Plex server.<br/>                                                                           | 9518                                                                                                                                                                            |
-| `Type`                                                                                                                                                                          | [GetSearchLibraryQueryParamType](../../Models/Requests/GetSearchLibraryQueryParamType.md)                                                                                       | :heavy_check_mark:                                                                                                                                                              | The type of media to retrieve.<br/>1 = movie<br/>2 = show<br/>3 = season<br/>4 = episode<br/>E.g. A movie library will not return anything with type 3 as there are no seasons for movie libraries<br/> | 2                                                                                                                                                                               |
+| Parameter                                                                                                                                                                                    | Type                                                                                                                                                                                         | Required                                                                                                                                                                                     | Description                                                                                                                                                                                  | Example                                                                                                                                                                                      |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `SectionKey`                                                                                                                                                                                 | *int*                                                                                                                                                                                        | :heavy_check_mark:                                                                                                                                                                           | The unique key of the Plex library. <br/>Note: This is unique in the context of the Plex server.<br/>                                                                                        | 9518                                                                                                                                                                                         |
+| `Type`                                                                                                                                                                                       | [GetSearchLibraryQueryParamType](../../Models/Requests/GetSearchLibraryQueryParamType.md)                                                                                                    | :heavy_check_mark:                                                                                                                                                                           | The type of media to retrieve or filter by.<br/>1 = movie<br/>2 = show<br/>3 = season<br/>4 = episode<br/>E.g. A movie library will not return anything with type 3 as there are no seasons for movie libraries<br/> | 2                                                                                                                                                                                            |
 
 ### Response
 
@@ -442,19 +443,24 @@ Retrieves a list of all the genres that are found for the media in this library.
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
 
 var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
-var res = await sdk.Library.GetGenresLibraryAsync(sectionKey: 9518);
+var res = await sdk.Library.GetGenresLibraryAsync(
+    sectionKey: 9518,
+    type: GetGenresLibraryQueryParamType.TvShow
+);
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   | Example                                                                                       |
-| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `SectionKey`                                                                                  | *int*                                                                                         | :heavy_check_mark:                                                                            | The unique key of the Plex library. <br/>Note: This is unique in the context of the Plex server.<br/> | 9518                                                                                          |
+| Parameter                                                                                                                                                                                    | Type                                                                                                                                                                                         | Required                                                                                                                                                                                     | Description                                                                                                                                                                                  | Example                                                                                                                                                                                      |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `SectionKey`                                                                                                                                                                                 | *int*                                                                                                                                                                                        | :heavy_check_mark:                                                                                                                                                                           | The unique key of the Plex library. <br/>Note: This is unique in the context of the Plex server.<br/>                                                                                        | 9518                                                                                                                                                                                         |
+| `Type`                                                                                                                                                                                       | [GetGenresLibraryQueryParamType](../../Models/Requests/GetGenresLibraryQueryParamType.md)                                                                                                    | :heavy_check_mark:                                                                                                                                                                           | The type of media to retrieve or filter by.<br/>1 = movie<br/>2 = show<br/>3 = season<br/>4 = episode<br/>E.g. A movie library will not return anything with type 3 as there are no seasons for movie libraries<br/> | 2                                                                                                                                                                                            |
 
 ### Response
 
@@ -478,19 +484,24 @@ Retrieves a list of all the countries that are found for the media in this libra
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
 
 var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
-var res = await sdk.Library.GetCountriesLibraryAsync(sectionKey: 9518);
+var res = await sdk.Library.GetCountriesLibraryAsync(
+    sectionKey: 9518,
+    type: GetCountriesLibraryQueryParamType.TvShow
+);
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   | Example                                                                                       |
-| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `SectionKey`                                                                                  | *int*                                                                                         | :heavy_check_mark:                                                                            | The unique key of the Plex library. <br/>Note: This is unique in the context of the Plex server.<br/> | 9518                                                                                          |
+| Parameter                                                                                                                                                                                    | Type                                                                                                                                                                                         | Required                                                                                                                                                                                     | Description                                                                                                                                                                                  | Example                                                                                                                                                                                      |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `SectionKey`                                                                                                                                                                                 | *int*                                                                                                                                                                                        | :heavy_check_mark:                                                                                                                                                                           | The unique key of the Plex library. <br/>Note: This is unique in the context of the Plex server.<br/>                                                                                        | 9518                                                                                                                                                                                         |
+| `Type`                                                                                                                                                                                       | [GetCountriesLibraryQueryParamType](../../Models/Requests/GetCountriesLibraryQueryParamType.md)                                                                                              | :heavy_check_mark:                                                                                                                                                                           | The type of media to retrieve or filter by.<br/>1 = movie<br/>2 = show<br/>3 = season<br/>4 = episode<br/>E.g. A movie library will not return anything with type 3 as there are no seasons for movie libraries<br/> | 2                                                                                                                                                                                            |
 
 ### Response
 
@@ -503,6 +514,47 @@ var res = await sdk.Library.GetCountriesLibraryAsync(sectionKey: 9518);
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetCountriesLibraryBadRequest   | 400                                                                 | application/json                                                    |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetCountriesLibraryUnauthorized | 401                                                                 | application/json                                                    |
 | LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                    | 4XX, 5XX                                                            | \*/\*                                                               |
+
+## GetActorsLibrary
+
+Retrieves a list of all the actors that are found for the media in this library.
+
+
+### Example Usage
+
+```csharp
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Components;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
+
+var res = await sdk.Library.GetActorsLibraryAsync(
+    sectionKey: 9518,
+    type: GetActorsLibraryQueryParamType.TvShow
+);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                    | Type                                                                                                                                                                                         | Required                                                                                                                                                                                     | Description                                                                                                                                                                                  | Example                                                                                                                                                                                      |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `SectionKey`                                                                                                                                                                                 | *int*                                                                                                                                                                                        | :heavy_check_mark:                                                                                                                                                                           | The unique key of the Plex library. <br/>Note: This is unique in the context of the Plex server.<br/>                                                                                        | 9518                                                                                                                                                                                         |
+| `Type`                                                                                                                                                                                       | [GetActorsLibraryQueryParamType](../../Models/Requests/GetActorsLibraryQueryParamType.md)                                                                                                    | :heavy_check_mark:                                                                                                                                                                           | The type of media to retrieve or filter by.<br/>1 = movie<br/>2 = show<br/>3 = season<br/>4 = episode<br/>E.g. A movie library will not return anything with type 3 as there are no seasons for movie libraries<br/> | 2                                                                                                                                                                                            |
+
+### Response
+
+**[GetActorsLibraryResponse](../../Models/Requests/GetActorsLibraryResponse.md)**
+
+### Errors
+
+| Error Type                                                       | Status Code                                                      | Content Type                                                     |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetActorsLibraryBadRequest   | 400                                                              | application/json                                                 |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetActorsLibraryUnauthorized | 401                                                              | application/json                                                 |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                 | 4XX, 5XX                                                         | \*/\*                                                            |
 
 ## GetSearchAllLibraries
 
@@ -550,9 +602,9 @@ var res = await sdk.Library.GetSearchAllLibrariesAsync(req);
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetSearchAllLibrariesUnauthorized | 401                                                                   | application/json                                                      |
 | LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                      | 4XX, 5XX                                                              | \*/\*                                                                 |
 
-## GetMetaDataByRatingKey
+## GetMediaMetaData
 
-This endpoint will return the metadata of a library item specified with the ratingKey.
+This endpoint will return all the (meta)data of a library item specified with by the ratingKey.
 
 
 ### Example Usage
@@ -560,31 +612,49 @@ This endpoint will return the metadata of a library item specified with the rati
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
 
 var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
-var res = await sdk.Library.GetMetaDataByRatingKeyAsync(ratingKey: 9518);
+GetMediaMetaDataRequest req = new GetMediaMetaDataRequest() {
+    RatingKey = 9518,
+    IncludeConcerts = true,
+    IncludeExtras = true,
+    IncludeOnDeck = true,
+    IncludePopularLeaves = true,
+    IncludePreferences = true,
+    IncludeReviews = true,
+    IncludeChapters = true,
+    IncludeStations = true,
+    IncludeExternalMedia = true,
+    AsyncAugmentMetadata = true,
+    AsyncCheckFiles = true,
+    AsyncRefreshAnalysis = true,
+    AsyncRefreshLocalMediaAgent = true,
+};
+
+var res = await sdk.Library.GetMediaMetaDataAsync(req);
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                                             | Type                                                  | Required                                              | Description                                           | Example                                               |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| `RatingKey`                                           | *long*                                                | :heavy_check_mark:                                    | the id of the library item to return the children of. | 9518                                                  |
+| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `request`                                                                   | [GetMediaMetaDataRequest](../../Models/Requests/GetMediaMetaDataRequest.md) | :heavy_check_mark:                                                          | The request object to use for the request.                                  |
 
 ### Response
 
-**[GetMetaDataByRatingKeyResponse](../../Models/Requests/GetMetaDataByRatingKeyResponse.md)**
+**[GetMediaMetaDataResponse](../../Models/Requests/GetMediaMetaDataResponse.md)**
 
 ### Errors
 
-| Error Type                                                             | Status Code                                                            | Content Type                                                           |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetMetaDataByRatingKeyBadRequest   | 400                                                                    | application/json                                                       |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetMetaDataByRatingKeyUnauthorized | 401                                                                    | application/json                                                       |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                       | 4XX, 5XX                                                               | \*/\*                                                                  |
+| Error Type                                                       | Status Code                                                      | Content Type                                                     |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetMediaMetaDataBadRequest   | 400                                                              | application/json                                                 |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetMediaMetaDataUnauthorized | 401                                                              | application/json                                                 |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                 | 4XX, 5XX                                                         | \*/\*                                                            |
 
 ## GetMetadataChildren
 
@@ -650,10 +720,10 @@ var res = await sdk.Library.GetTopWatchedContentAsync(
 
 ### Parameters
 
-| Parameter                                                                                                                                                                       | Type                                                                                                                                                                            | Required                                                                                                                                                                        | Description                                                                                                                                                                     | Example                                                                                                                                                                         |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Type`                                                                                                                                                                          | [GetTopWatchedContentQueryParamType](../../Models/Requests/GetTopWatchedContentQueryParamType.md)                                                                               | :heavy_check_mark:                                                                                                                                                              | The type of media to retrieve.<br/>1 = movie<br/>2 = show<br/>3 = season<br/>4 = episode<br/>E.g. A movie library will not return anything with type 3 as there are no seasons for movie libraries<br/> | 2                                                                                                                                                                               |
-| `IncludeGuids`                                                                                                                                                                  | *long*                                                                                                                                                                          | :heavy_minus_sign:                                                                                                                                                              | Adds the Guids object to the response<br/>                                                                                                                                      | 1                                                                                                                                                                               |
+| Parameter                                                                                                                                                                                    | Type                                                                                                                                                                                         | Required                                                                                                                                                                                     | Description                                                                                                                                                                                  | Example                                                                                                                                                                                      |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Type`                                                                                                                                                                                       | [GetTopWatchedContentQueryParamType](../../Models/Requests/GetTopWatchedContentQueryParamType.md)                                                                                            | :heavy_check_mark:                                                                                                                                                                           | The type of media to retrieve or filter by.<br/>1 = movie<br/>2 = show<br/>3 = season<br/>4 = episode<br/>E.g. A movie library will not return anything with type 3 as there are no seasons for movie libraries<br/> | 2                                                                                                                                                                                            |
+| `IncludeGuids`                                                                                                                                                                               | *long*                                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                                           | Adds the Guids object to the response<br/>                                                                                                                                                   | 1                                                                                                                                                                                            |
 
 ### Response
 

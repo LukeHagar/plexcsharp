@@ -434,14 +434,32 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: key
+          label: data
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
 
             var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
-            var res = await sdk.Library.GetMetaDataByRatingKeyAsync(ratingKey: 9518);
+            GetMediaMetaDataRequest req = new GetMediaMetaDataRequest() {
+                RatingKey = 9518,
+                IncludeConcerts = true,
+                IncludeExtras = true,
+                IncludeOnDeck = true,
+                IncludePopularLeaves = true,
+                IncludePreferences = true,
+                IncludeReviews = true,
+                IncludeChapters = true,
+                IncludeStations = true,
+                IncludeExternalMedia = true,
+                AsyncAugmentMetadata = true,
+                AsyncCheckFiles = true,
+                AsyncRefreshAnalysis = true,
+                AsyncRefreshLocalMediaAgent = true,
+            };
+
+            var res = await sdk.Library.GetMediaMetaDataAsync(req);
 
             // handle response
   - target: $["paths"]["/library/metadata/{ratingKey}/banner"]["get"]
@@ -649,6 +667,24 @@ actions:
             );
 
             // handle response
+  - target: $["paths"]["/library/sections/{sectionKey}/actor"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: library
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+
+            var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
+
+            var res = await sdk.Library.GetActorsLibraryAsync(
+                sectionKey: 9518,
+                type: GetActorsLibraryQueryParamType.TvShow
+            );
+
+            // handle response
   - target: $["paths"]["/library/sections/{sectionKey}/country"]["get"]
     update:
       x-codeSamples:
@@ -657,10 +693,14 @@ actions:
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
 
             var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
-            var res = await sdk.Library.GetCountriesLibraryAsync(sectionKey: 9518);
+            var res = await sdk.Library.GetCountriesLibraryAsync(
+                sectionKey: 9518,
+                type: GetCountriesLibraryQueryParamType.TvShow
+            );
 
             // handle response
   - target: $["paths"]["/library/sections/{sectionKey}/genre"]["get"]
@@ -671,10 +711,14 @@ actions:
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
 
             var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
-            var res = await sdk.Library.GetGenresLibraryAsync(sectionKey: 9518);
+            var res = await sdk.Library.GetGenresLibraryAsync(
+                sectionKey: 9518,
+                type: GetGenresLibraryQueryParamType.TvShow
+            );
 
             // handle response
   - target: $["paths"]["/library/sections/{sectionKey}/refresh"]["get"]

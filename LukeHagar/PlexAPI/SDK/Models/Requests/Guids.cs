@@ -15,7 +15,10 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     public class Guids
     {
 
+        /// <summary>
+        /// The GUID value.
+        /// </summary>
         [JsonProperty("id")]
-        public string? Id { get; set; }
+        public string Id { get; set; } = default!;
     }
 }

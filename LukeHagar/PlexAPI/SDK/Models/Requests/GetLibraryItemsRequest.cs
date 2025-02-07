@@ -32,7 +32,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public IncludeGuids? IncludeGuids { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeGuids.Disable;
 
         /// <summary>
-        /// The type of media to retrieve.<br/>
+        /// The type of media to retrieve or filter by.<br/>
         /// 
         /// <remarks>
         /// 1 = movie<br/>
@@ -44,7 +44,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// </remarks>
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=type")]
-        public GetLibraryItemsQueryParamType? Type { get; set; }
+        public GetLibraryItemsQueryParamType Type { get; set; } = default!;
 
         /// <summary>
         /// The unique key of the Plex library. <br/>

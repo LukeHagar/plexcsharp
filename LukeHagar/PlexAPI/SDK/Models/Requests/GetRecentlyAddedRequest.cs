@@ -34,7 +34,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public long? SectionID { get; set; }
 
         /// <summary>
-        /// The type of media to retrieve.<br/>
+        /// The type of media to retrieve or filter by.<br/>
         /// 
         /// <remarks>
         /// 1 = movie<br/>
