@@ -130,7 +130,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// The content rating (e.g., TV-MA).
         /// </summary>
         [JsonProperty("contentRating")]
-        public string ContentRating { get; set; } = default!;
+        public string? ContentRating { get; set; }
 
         /// <summary>
         /// A summary of the content.
@@ -160,7 +160,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// The audience rating for the content.
         /// </summary>
         [JsonProperty("audienceRating")]
-        public float AudienceRating { get; set; } = default!;
+        public float? AudienceRating { get; set; }
 
         /// <summary>
         /// The number of times the item has been viewed.
@@ -184,7 +184,19 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// The release year.
         /// </summary>
         [JsonProperty("year")]
-        public long Year { get; set; } = default!;
+        public int Year { get; set; } = default!;
+
+        /// <summary>
+        /// The general rating
+        /// </summary>
+        [JsonProperty("rating")]
+        public float? Rating { get; set; }
+
+        /// <summary>
+        /// The URL or identifier for the rating image (e.g., Rotten Tomatoes rating image).
+        /// </summary>
+        [JsonProperty("ratingImage")]
+        public string? RatingImage { get; set; }
 
         /// <summary>
         /// The tagline of the content.
@@ -220,13 +232,13 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Duration of the content in milliseconds.
         /// </summary>
         [JsonProperty("duration")]
-        public long Duration { get; set; } = default!;
+        public int Duration { get; set; } = default!;
 
         /// <summary>
         /// The original release date.
         /// </summary>
         [JsonProperty("originallyAvailableAt")]
-        public LocalDate OriginallyAvailableAt { get; set; } = default!;
+        public LocalDate? OriginallyAvailableAt { get; set; }
 
         /// <summary>
         /// The total number of episodes (or leaves).
@@ -244,17 +256,11 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// The number of child items.
         /// </summary>
         [JsonProperty("childCount")]
-        public long? ChildCount { get; set; }
+        public int? ChildCount { get; set; }
 
-        /// <summary>
-        /// Unix timestamp when the item was added.
-        /// </summary>
         [JsonProperty("addedAt")]
         public long AddedAt { get; set; } = default!;
 
-        /// <summary>
-        /// Unix timestamp when the item was last updated.
-        /// </summary>
         [JsonProperty("updatedAt")]
         public long UpdatedAt { get; set; } = default!;
 
@@ -262,7 +268,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// The URL for the audience rating image.
         /// </summary>
         [JsonProperty("audienceRatingImage")]
-        public string AudienceRatingImage { get; set; } = default!;
+        public string? AudienceRatingImage { get; set; }
 
         /// <summary>
         /// The index number of the parent entity, which could indicate its order or position.
@@ -316,13 +322,13 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// An array of GUID objects.
         /// </summary>
         [JsonProperty("Guid")]
-        public List<Guids> Guids { get; set; } = default!;
+        public List<GetMediaMetaDataGuids>? Guids { get; set; }
 
         /// <summary>
         /// An array of rating objects.
         /// </summary>
         [JsonProperty("Rating")]
-        public List<Rating> Rating { get; set; } = default!;
+        public List<Ratings>? Ratings { get; set; }
 
         /// <summary>
         /// An array of Actor roles.

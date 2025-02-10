@@ -7,7 +7,6 @@ A key representing a specific tag within the section.
 
 | Name             | Value            |
 | ---------------- | ---------------- |
-| `All`            | all              |
 | `Unwatched`      | unwatched        |
 | `Newest`         | newest           |
 | `RecentlyAdded`  | recentlyAdded    |
@@ -15,12 +14,9 @@ A key representing a specific tag within the section.
 | `OnDeck`         | onDeck           |
 | `Collection`     | collection       |
 | `Edition`        | edition          |
-| `Genre`          | genre            |
 | `Year`           | year             |
 | `Decade`         | decade           |
 | `Director`       | director         |
-| `Actor`          | actor            |
-| `Country`        | country          |
 | `ContentRating`  | contentRating    |
 | `Rating`         | rating           |
 | `Resolution`     | resolution       |

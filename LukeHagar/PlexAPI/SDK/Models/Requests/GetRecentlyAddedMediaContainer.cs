@@ -18,7 +18,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     {
 
         [JsonProperty("size")]
-        public double Size { get; set; } = default!;
+        public long Size { get; set; } = default!;
 
         [JsonProperty("offset")]
         public int? Offset { get; set; }

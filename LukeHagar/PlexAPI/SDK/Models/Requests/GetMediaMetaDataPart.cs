@@ -9,6 +9,7 @@
 #nullable enable
 namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
+    using LukeHagar.PlexAPI.SDK.Models.Components;
     using LukeHagar.PlexAPI.SDK.Models.Requests;
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
@@ -48,7 +49,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Duration of the part in milliseconds.
         /// </summary>
         [JsonProperty("duration")]
-        public long Duration { get; set; } = default!;
+        public int? Duration { get; set; }
 
         /// <summary>
         /// File path for the part.
@@ -62,22 +63,43 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         [JsonProperty("size")]
         public long Size { get; set; } = default!;
 
+        [JsonProperty("packetLength")]
+        public int? PacketLength { get; set; }
+
         /// <summary>
         /// Container format of the part.
         /// </summary>
         [JsonProperty("container")]
-        public string Container { get; set; } = default!;
+        public string? Container { get; set; }
 
         /// <summary>
         /// Video profile for the part.
         /// </summary>
         [JsonProperty("videoProfile")]
-        public string VideoProfile { get; set; } = default!;
+        public string? VideoProfile { get; set; }
+
+        /// <summary>
+        /// The audio profile used for the media (e.g., DTS, Dolby Digital, etc.).
+        /// </summary>
+        [JsonProperty("audioProfile")]
+        public string? AudioProfile { get; set; }
+
+        [JsonProperty("has64bitOffsets")]
+        public bool? Has64bitOffsets { get; set; }
+
+        /// <summary>
+        /// Has this media been optimized for streaming. NOTE: This can be 0, 1, false or true
+        /// </summary>
+        [JsonProperty("optimizedForStreaming")]
+        public GetMediaMetaDataLibraryOptimizedForStreaming? OptimizedForStreaming { get; set; }
+
+        [JsonProperty("hasThumbnail")]
+        public GetMediaMetaDataHasThumbnail? HasThumbnail { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.GetMediaMetaDataHasThumbnail.False;
 
         /// <summary>
         /// An array of streams for this part.
         /// </summary>
         [JsonProperty("Stream")]
-        public List<GetMediaMetaDataStream> Stream { get; set; } = default!;
+        public List<GetMediaMetaDataStream>? Stream { get; set; }
     }
 }

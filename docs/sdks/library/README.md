@@ -14,6 +14,7 @@ API Calls interacting with Plex Media Server Libraries
 * [GetLibraryDetails](#getlibrarydetails) - Get Library Details
 * [DeleteLibrary](#deletelibrary) - Delete Library Section
 * [GetLibraryItems](#getlibraryitems) - Get Library Items
+* [GetAllMediaLibrary](#getallmedialibrary) - Get all media of library
 * [GetRefreshLibraryMetadata](#getrefreshlibrarymetadata) - Refresh Metadata Of The Library
 * [GetSearchLibrary](#getsearchlibrary) - Search Library
 * [GetGenresLibrary](#getgenreslibrary) - Get Genres of library media
@@ -333,6 +334,48 @@ var res = await sdk.Library.GetLibraryItemsAsync(req);
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetLibraryItemsBadRequest   | 400                                                             | application/json                                                |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetLibraryItemsUnauthorized | 401                                                             | application/json                                                |
 | LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                | 4XX, 5XX                                                        | \*/\*                                                           |
+
+## GetAllMediaLibrary
+
+Retrieves a list of all general media data for this library.
+
+
+### Example Usage
+
+```csharp
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Components;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
+
+GetAllMediaLibraryRequest req = new GetAllMediaLibraryRequest() {
+    SectionKey = 9518,
+    Type = GetAllMediaLibraryQueryParamType.TvShow,
+};
+
+var res = await sdk.Library.GetAllMediaLibraryAsync(req);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `request`                                                                       | [GetAllMediaLibraryRequest](../../Models/Requests/GetAllMediaLibraryRequest.md) | :heavy_check_mark:                                                              | The request object to use for the request.                                      |
+
+### Response
+
+**[GetAllMediaLibraryResponse](../../Models/Requests/GetAllMediaLibraryResponse.md)**
+
+### Errors
+
+| Error Type                                                         | Status Code                                                        | Content Type                                                       |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetAllMediaLibraryBadRequest   | 400                                                                | application/json                                                   |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetAllMediaLibraryUnauthorized | 401                                                                | application/json                                                   |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                   | 4XX, 5XX                                                           | \*/\*                                                              |
 
 ## GetRefreshLibraryMetadata
 

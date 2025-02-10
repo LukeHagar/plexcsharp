@@ -12,25 +12,13 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     
-    public class Rating
+    public class GetMediaMetaDataGuids
     {
 
         /// <summary>
-        /// The image or reference for the rating.
+        /// The GUID value.
         /// </summary>
-        [JsonProperty("image")]
-        public string Image { get; set; } = default!;
-
-        /// <summary>
-        /// The rating value.
-        /// </summary>
-        [JsonProperty("value")]
-        public float Value { get; set; } = default!;
-
-        /// <summary>
-        /// The type of rating (e.g., audience, critic).
-        /// </summary>
-        [JsonProperty("type")]
-        public string Type { get; set; } = default!;
+        [JsonProperty("id")]
+        public string Id { get; set; } = default!;
     }
 }

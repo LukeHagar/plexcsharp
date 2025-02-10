@@ -29,5 +29,8 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
 
         [JsonProperty("type")]
         public string Type { get; set; } = default!;
+
+        [JsonProperty("advanced")]
+        public bool? Advanced { get; set; }
     }
 }

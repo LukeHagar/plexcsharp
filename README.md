@@ -82,6 +82,7 @@ var res = await sdk.Server.GetServerCapabilitiesAsync();
 * [GetLibraryDetails](docs/sdks/library/README.md#getlibrarydetails) - Get Library Details
 * [DeleteLibrary](docs/sdks/library/README.md#deletelibrary) - Delete Library Section
 * [GetLibraryItems](docs/sdks/library/README.md#getlibraryitems) - Get Library Items
+* [GetAllMediaLibrary](docs/sdks/library/README.md#getallmedialibrary) - Get all media of library
 * [GetRefreshLibraryMetadata](docs/sdks/library/README.md#getrefreshlibrarymetadata) - Refresh Metadata Of The Library
 * [GetSearchLibrary](docs/sdks/library/README.md#getsearchlibrary) - Search Library
 * [GetGenresLibrary](docs/sdks/library/README.md#getgenreslibrary) - Get Genres of library media

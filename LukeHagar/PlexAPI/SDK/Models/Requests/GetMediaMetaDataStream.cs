@@ -25,7 +25,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Stream type (1=video, 2=audio, 3=subtitle).
         /// </summary>
         [JsonProperty("streamType")]
-        public long StreamType { get; set; } = default!;
+        public int StreamType { get; set; } = default!;
 
         /// <summary>
         /// Indicates if this stream is default.
@@ -43,13 +43,13 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Index of the stream.
         /// </summary>
         [JsonProperty("index")]
-        public long Index { get; set; } = default!;
+        public int Index { get; set; } = default!;
 
         /// <summary>
         /// Bitrate of the stream.
         /// </summary>
         [JsonProperty("bitrate")]
-        public long Bitrate { get; set; } = default!;
+        public int? Bitrate { get; set; }
 
         /// <summary>
         /// Language of the stream.
@@ -70,10 +70,16 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public string LanguageCode { get; set; } = default!;
 
         /// <summary>
+        /// Indicates whether header compression is enabled.
+        /// </summary>
+        [JsonProperty("headerCompression")]
+        public bool? HeaderCompression { get; set; }
+
+        /// <summary>
         /// Dolby Vision BL compatibility ID.
         /// </summary>
         [JsonProperty("DOVIBLCompatID")]
-        public long? DOVIBLCompatID { get; set; }
+        public int? DOVIBLCompatID { get; set; }
 
         /// <summary>
         /// Indicates if Dolby Vision BL is present.
@@ -91,7 +97,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Dolby Vision level.
         /// </summary>
         [JsonProperty("DOVILevel")]
-        public long? DOVILevel { get; set; }
+        public int? DOVILevel { get; set; }
 
         /// <summary>
         /// Indicates if Dolby Vision is present.
@@ -103,7 +109,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Dolby Vision profile.
         /// </summary>
         [JsonProperty("DOVIProfile")]
-        public long? DOVIProfile { get; set; }
+        public int? DOVIProfile { get; set; }
 
         /// <summary>
         /// Indicates if Dolby Vision RPU is present.
@@ -121,7 +127,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Bit depth of the video stream.
         /// </summary>
         [JsonProperty("bitDepth")]
-        public long? BitDepth { get; set; }
+        public int? BitDepth { get; set; }
 
         /// <summary>
         /// Chroma sample location.
@@ -139,13 +145,13 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Coded video height.
         /// </summary>
         [JsonProperty("codedHeight")]
-        public long? CodedHeight { get; set; }
+        public int? CodedHeight { get; set; }
 
         /// <summary>
         /// Coded video width.
         /// </summary>
         [JsonProperty("codedWidth")]
-        public long? CodedWidth { get; set; }
+        public int? CodedWidth { get; set; }
 
         /// <summary>
         /// Color primaries used.
@@ -181,13 +187,13 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Height of the video stream.
         /// </summary>
         [JsonProperty("height")]
-        public long? Height { get; set; }
+        public int? Height { get; set; }
 
         /// <summary>
         /// Video level.
         /// </summary>
         [JsonProperty("level")]
-        public long? Level { get; set; }
+        public int? Level { get; set; }
 
         /// <summary>
         /// Indicates if this is the original stream.
@@ -211,13 +217,13 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Number of reference frames.
         /// </summary>
         [JsonProperty("refFrames")]
-        public long? RefFrames { get; set; }
+        public int? RefFrames { get; set; }
 
         /// <summary>
         /// Width of the video stream.
         /// </summary>
         [JsonProperty("width")]
-        public long? Width { get; set; }
+        public int? Width { get; set; }
 
         /// <summary>
         /// Display title for the stream.
@@ -244,7 +250,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Number of audio channels (for audio streams).
         /// </summary>
         [JsonProperty("channels")]
-        public long? Channels { get; set; }
+        public int? Channels { get; set; }
 
         /// <summary>
         /// Audio channel layout.
@@ -256,7 +262,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Sampling rate for the audio stream.
         /// </summary>
         [JsonProperty("samplingRate")]
-        public long? SamplingRate { get; set; }
+        public int? SamplingRate { get; set; }
 
         /// <summary>
         /// Indicates if the stream can auto-sync.

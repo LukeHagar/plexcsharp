@@ -48,12 +48,12 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Whether to include collections in the search results.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=includeCollections")]
-        public QueryParamIncludeCollections? IncludeCollections { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.QueryParamIncludeCollections.Disable;
+        public GetSearchAllLibrariesQueryParamIncludeCollections? IncludeCollections { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.GetSearchAllLibrariesQueryParamIncludeCollections.Disable;
 
         /// <summary>
         /// Whether to include external media in the search results.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=includeExternalMedia")]
-        public QueryParamIncludeExternalMedia? IncludeExternalMedia { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.QueryParamIncludeExternalMedia.Disable;
+        public GetSearchAllLibrariesQueryParamIncludeExternalMedia? IncludeExternalMedia { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.GetSearchAllLibrariesQueryParamIncludeExternalMedia.Disable;
     }
 }

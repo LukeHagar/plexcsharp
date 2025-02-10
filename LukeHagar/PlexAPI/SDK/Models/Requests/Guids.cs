@@ -16,9 +16,13 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     {
 
         /// <summary>
-        /// The GUID value.
+        /// The unique identifier for the Guid. Can be imdb://tt0286347, tmdb://1763, tvdb://2337<br/>
+        /// 
+        /// <remarks>
+        /// 
+        /// </remarks>
         /// </summary>
         [JsonProperty("id")]
-        public string Id { get; set; } = default!;
+        public string? Id { get; set; }
     }
 }

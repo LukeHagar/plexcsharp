@@ -18,8 +18,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     /// </summary>
     public enum Tag
     {
-        [JsonProperty("all")]
-        All,
         [JsonProperty("unwatched")]
         Unwatched,
         [JsonProperty("newest")]
@@ -34,18 +32,12 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         Collection,
         [JsonProperty("edition")]
         Edition,
-        [JsonProperty("genre")]
-        Genre,
         [JsonProperty("year")]
         Year,
         [JsonProperty("decade")]
         Decade,
         [JsonProperty("director")]
         Director,
-        [JsonProperty("actor")]
-        Actor,
-        [JsonProperty("country")]
-        Country,
         [JsonProperty("contentRating")]
         ContentRating,
         [JsonProperty("rating")]

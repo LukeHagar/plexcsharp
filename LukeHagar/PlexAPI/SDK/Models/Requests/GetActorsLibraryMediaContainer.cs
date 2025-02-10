@@ -17,8 +17,11 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     public class GetActorsLibraryMediaContainer
     {
 
+        /// <summary>
+        /// Number of media items returned in this response.
+        /// </summary>
         [JsonProperty("size")]
-        public double Size { get; set; } = default!;
+        public int Size { get; set; } = default!;
 
         /// <summary>
         /// Indicates whether syncing is allowed.

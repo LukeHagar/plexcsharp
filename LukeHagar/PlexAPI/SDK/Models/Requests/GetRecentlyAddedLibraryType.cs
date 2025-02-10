@@ -23,6 +23,9 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         [JsonProperty("type")]
         public string Type { get; set; } = default!;
 
+        [JsonProperty("subtype")]
+        public string? Subtype { get; set; }
+
         [JsonProperty("title")]
         public string Title { get; set; } = default!;
 

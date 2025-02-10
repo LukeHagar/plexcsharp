@@ -30,6 +30,10 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         Season,
         [JsonProperty("episode")]
         Episode,
+        [JsonProperty("artist")]
+        Artist,
+        [JsonProperty("album")]
+        Album,
     }
 
     public static class GetSearchAllLibrariesTypeExtension

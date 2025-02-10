@@ -685,6 +685,26 @@ actions:
             );
 
             // handle response
+  - target: $["paths"]["/library/sections/{sectionKey}/all"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: library
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+
+            var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
+
+            GetAllMediaLibraryRequest req = new GetAllMediaLibraryRequest() {
+                SectionKey = 9518,
+                Type = GetAllMediaLibraryQueryParamType.TvShow,
+            };
+
+            var res = await sdk.Library.GetAllMediaLibraryAsync(req);
+
+            // handle response
   - target: $["paths"]["/library/sections/{sectionKey}/country"]["get"]
     update:
       x-codeSamples:

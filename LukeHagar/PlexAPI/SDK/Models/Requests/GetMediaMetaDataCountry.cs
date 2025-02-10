@@ -19,7 +19,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// The unique country identifier.
         /// </summary>
         [JsonProperty("id")]
-        public long Id { get; set; } = default!;
+        public int Id { get; set; } = default!;
 
         /// <summary>
         /// The filter string for the country.

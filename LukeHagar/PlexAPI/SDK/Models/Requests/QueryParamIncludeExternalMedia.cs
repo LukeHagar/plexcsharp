@@ -11,9 +11,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
     using LukeHagar.PlexAPI.SDK.Utils;
     
-    /// <summary>
-    /// Whether to include external media in the search results.
-    /// </summary>
     public enum QueryParamIncludeExternalMedia
     {
         Disable = 0,

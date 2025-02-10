@@ -11,9 +11,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
     using LukeHagar.PlexAPI.SDK.Utils;
     
-    /// <summary>
-    /// Whether to include collections in the search results.
-    /// </summary>
     public enum QueryParamIncludeCollections
     {
         Disable = 0,
