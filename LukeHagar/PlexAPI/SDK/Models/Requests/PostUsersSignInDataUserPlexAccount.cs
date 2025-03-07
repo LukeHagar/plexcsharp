@@ -215,7 +215,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public string? SubscriptionDescription { get; set; }
 
         [JsonProperty("subscriptions")]
-        public List<PostUsersSignInDataAuthenticationSubscription> Subscriptions { get; set; } = default!;
+        public List<PostUsersSignInDataAuthenticationSubscription>? Subscriptions { get; set; }
 
         /// <summary>
         /// URL of the account thumbnail

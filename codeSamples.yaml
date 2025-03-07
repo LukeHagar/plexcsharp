@@ -310,7 +310,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: added
+          label: get-recently-added
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -386,7 +386,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: identity
+          label: get-server-identity
           source: |-
             using LukeHagar.PlexAPI.SDK;
 
@@ -434,7 +434,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: data
+          label: get-media-meta-data
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -466,7 +466,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: image
+          label: get-banner-image
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -507,7 +507,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: image
+          label: get-thumb-image
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -545,7 +545,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: library
+          label: get-recently-added-library
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -581,7 +581,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: libraries
+          label: get-search-all-libraries
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -605,7 +605,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: libraries
+          label: get-all-libraries
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -619,7 +619,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: list
+          label: get-watch-list
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -653,7 +653,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: details
+          label: get-library-details
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -671,7 +671,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: library
+          label: get-actors-library
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -689,7 +689,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: library
+          label: get-all-media-library
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -709,7 +709,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: library
+          label: get-countries-library
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -727,7 +727,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: library
+          label: get-genres-library
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -745,7 +745,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: metadata
+          label: get-refresh-library-metadata
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -763,7 +763,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: library
+          label: get-search-library
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -781,7 +781,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: items
+          label: get-library-items
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -853,7 +853,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: providers
+          label: get-media-providers
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -1106,7 +1106,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: resources
+          label: get-server-resources
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -1351,7 +1351,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: users
+          label: get-users
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Requests;
@@ -1381,7 +1381,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: data
+          label: post-users-sign-in-data
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Requests;

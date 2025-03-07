@@ -215,7 +215,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public string? SubscriptionDescription { get; set; }
 
         [JsonProperty("subscriptions")]
-        public List<GetTokenDetailsSubscription> Subscriptions { get; set; } = default!;
+        public List<GetTokenDetailsSubscription>? Subscriptions { get; set; }
 
         /// <summary>
         /// URL of the account thumbnail
