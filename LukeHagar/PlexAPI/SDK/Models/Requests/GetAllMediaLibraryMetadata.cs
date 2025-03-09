@@ -98,7 +98,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// The release year of the media item.
         /// </summary>
         [JsonProperty("year")]
-        public int Year { get; set; } = default!;
+        public int? Year { get; set; }
 
         /// <summary>
         /// A brief tagline for the media item.
@@ -368,7 +368,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public List<GetAllMediaLibraryRole>? Role { get; set; }
 
         [JsonProperty("Guid")]
-        public List<Guids>? Guids { get; set; }
+        public List<GetAllMediaLibraryGuids>? Guids { get; set; }
 
         [JsonProperty("Collection")]
         public List<GetAllMediaLibraryCollection>? Collection { get; set; }

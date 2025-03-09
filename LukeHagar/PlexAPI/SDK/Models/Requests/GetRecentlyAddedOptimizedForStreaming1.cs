@@ -10,12 +10,11 @@
 namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
     using LukeHagar.PlexAPI.SDK.Utils;
-    using Newtonsoft.Json;
     
-    public class GetOnDeckGuids
+    public enum GetRecentlyAddedOptimizedForStreaming1
     {
-
-        [JsonProperty("id")]
-        public string? Id { get; set; }
+        Zero = 0,
+        One = 1,
     }
+
 }

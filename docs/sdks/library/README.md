@@ -24,7 +24,6 @@ API Calls interacting with Plex Media Server Libraries
 * [GetMediaMetaData](#getmediametadata) - Get Media Metadata
 * [GetMetadataChildren](#getmetadatachildren) - Get Items Children
 * [GetTopWatchedContent](#gettopwatchedcontent) - Get Top Watched Content
-* [GetOnDeck](#getondeck) - Get On Deck
 
 ## GetFileHash
 
@@ -779,33 +778,3 @@ var res = await sdk.Library.GetTopWatchedContentAsync(
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetTopWatchedContentBadRequest   | 400                                                                  | application/json                                                     |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetTopWatchedContentUnauthorized | 401                                                                  | application/json                                                     |
 | LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                     | 4XX, 5XX                                                             | \*/\*                                                                |
-
-## GetOnDeck
-
-This endpoint will return the on deck content.
-
-
-### Example Usage
-
-```csharp
-using LukeHagar.PlexAPI.SDK;
-using LukeHagar.PlexAPI.SDK.Models.Components;
-
-var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
-
-var res = await sdk.Library.GetOnDeckAsync();
-
-// handle response
-```
-
-### Response
-
-**[GetOnDeckResponse](../../Models/Requests/GetOnDeckResponse.md)**
-
-### Errors
-
-| Error Type                                                | Status Code                                               | Content Type                                              |
-| --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetOnDeckBadRequest   | 400                                                       | application/json                                          |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetOnDeckUnauthorized | 401                                                       | application/json                                          |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException          | 4XX, 5XX                                                  | \*/\*                                                     |

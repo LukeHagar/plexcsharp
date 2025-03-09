@@ -55,19 +55,19 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Language of the stream.
         /// </summary>
         [JsonProperty("language")]
-        public string Language { get; set; } = default!;
+        public string? Language { get; set; }
 
         /// <summary>
         /// Language tag (e.g., en).
         /// </summary>
         [JsonProperty("languageTag")]
-        public string LanguageTag { get; set; } = default!;
+        public string? LanguageTag { get; set; }
 
         /// <summary>
         /// ISO language code.
         /// </summary>
         [JsonProperty("languageCode")]
-        public string LanguageCode { get; set; } = default!;
+        public string? LanguageCode { get; set; }
 
         /// <summary>
         /// Indicates whether header compression is enabled.
@@ -153,6 +153,9 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         [JsonProperty("codedWidth")]
         public int? CodedWidth { get; set; }
 
+        [JsonProperty("closedCaptions")]
+        public bool? ClosedCaptions { get; set; }
+
         /// <summary>
         /// Color primaries used.
         /// </summary>
@@ -212,6 +215,9 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
 
         [JsonProperty("scanType")]
         public string? ScanType { get; set; }
+
+        [JsonProperty("embeddedInVideo")]
+        public string? EmbeddedInVideo { get; set; }
 
         /// <summary>
         /// Number of reference frames.

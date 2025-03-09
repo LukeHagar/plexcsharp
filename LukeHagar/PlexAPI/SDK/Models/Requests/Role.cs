@@ -16,39 +16,39 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     {
 
         /// <summary>
-        /// The ID of the tag or actor.
+        /// Unique identifier for the actor or role.
         /// </summary>
         [JsonProperty("id")]
-        public long? Id { get; set; }
+        public long Id { get; set; } = default!;
 
         /// <summary>
-        /// The filter used to find the actor or tag.
+        /// The filter string used to query this actor. For example, it may indicate that this is an actor with a given key.
         /// </summary>
         [JsonProperty("filter")]
-        public string? Filter { get; set; }
+        public string Filter { get; set; } = default!;
 
         /// <summary>
-        /// The thumbnail of the actor
-        /// </summary>
-        [JsonProperty("thumb")]
-        public string? Thumb { get; set; }
-
-        /// <summary>
-        /// The name of the tag or actor.
+        /// The display tag for the actor (typically the actor&apos;s name).
         /// </summary>
         [JsonProperty("tag")]
-        public string? Tag { get; set; }
+        public string Tag { get; set; } = default!;
 
         /// <summary>
-        /// Unique identifier for the tag.
+        /// A unique key associated with the actor&apos;s tag, used for internal identification.
         /// </summary>
         [JsonProperty("tagKey")]
         public string? TagKey { get; set; }
 
         /// <summary>
-        /// The role of the actor or tag in the media.
+        /// The role played by the actor in the media item.
         /// </summary>
         [JsonProperty("role")]
         public string? RoleValue { get; set; }
+
+        /// <summary>
+        /// The URL of the thumbnail image for the actor.
+        /// </summary>
+        [JsonProperty("thumb")]
+        public string? Thumb { get; set; }
     }
 }

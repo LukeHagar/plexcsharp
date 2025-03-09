@@ -107,7 +107,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Indicates whether voice activity is detected.
         /// </summary>
         [JsonProperty("hasVoiceActivity")]
-        public bool HasVoiceActivity { get; set; } = default!;
+        public bool? HasVoiceActivity { get; set; }
 
         /// <summary>
         /// The audio profile used for the media (e.g., DTS, Dolby Digital, etc.).
@@ -128,6 +128,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// An array of parts for this media item.
         /// </summary>
         [JsonProperty("Part")]
-        public List<GetMediaMetaDataPart> Part { get; set; } = default!;
+        public List<GetMediaMetaDataPart>? Part { get; set; }
     }
 }

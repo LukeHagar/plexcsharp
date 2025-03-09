@@ -527,20 +527,6 @@ actions:
             var res = await sdk.Media.GetThumbImageAsync(req);
 
             // handle response
-  - target: $["paths"]["/library/onDeck"]["get"]
-    update:
-      x-codeSamples:
-        - lang: csharp
-          label: getOnDeck
-          source: |-
-            using LukeHagar.PlexAPI.SDK;
-            using LukeHagar.PlexAPI.SDK.Models.Components;
-
-            var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
-
-            var res = await sdk.Library.GetOnDeckAsync();
-
-            // handle response
   - target: $["paths"]["/library/recentlyAdded"]["get"]
     update:
       x-codeSamples:

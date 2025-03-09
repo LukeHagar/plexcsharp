@@ -12,24 +12,18 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     
+    /// <summary>
+    /// The display tag for the similar item, typically the title.
+    /// </summary>
     public class Similar
     {
 
-        /// <summary>
-        /// The unique similar item identifier.
-        /// </summary>
         [JsonProperty("id")]
         public long Id { get; set; } = default!;
 
-        /// <summary>
-        /// The filter string for similar items.
-        /// </summary>
         [JsonProperty("filter")]
         public string Filter { get; set; } = default!;
 
-        /// <summary>
-        /// The tag or title of the similar content.
-        /// </summary>
         [JsonProperty("tag")]
         public string Tag { get; set; } = default!;
     }

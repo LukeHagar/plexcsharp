@@ -12,25 +12,25 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     
-    public class GetLibraryItemsMetaDataRating
+    public class GetMediaMetaDataSimilar
     {
 
         /// <summary>
-        /// A URI or path to the rating image.
+        /// The unique similar item identifier.
         /// </summary>
-        [JsonProperty("image")]
-        public string Image { get; set; } = default!;
+        [JsonProperty("id")]
+        public long Id { get; set; } = default!;
 
         /// <summary>
-        /// The value of the rating.
+        /// The filter string for similar items.
         /// </summary>
-        [JsonProperty("value")]
-        public float Value { get; set; } = default!;
+        [JsonProperty("filter")]
+        public string Filter { get; set; } = default!;
 
         /// <summary>
-        /// The type of rating (e.g., audience, critic).
+        /// The tag or title of the similar content.
         /// </summary>
-        [JsonProperty("type")]
-        public string Type { get; set; } = default!;
+        [JsonProperty("tag")]
+        public string Tag { get; set; } = default!;
     }
 }

@@ -24,7 +24,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         private GetAllMediaLibraryOptimizedForStreamingType(string value) { Value = value; }
 
         public string Value { get; private set; }
-        public static GetAllMediaLibraryOptimizedForStreamingType One { get { return new GetAllMediaLibraryOptimizedForStreamingType("1"); } }
+        public static GetAllMediaLibraryOptimizedForStreamingType OptimizedForStreaming1 { get { return new GetAllMediaLibraryOptimizedForStreamingType("optimizedForStreaming_1"); } }
         
         public static GetAllMediaLibraryOptimizedForStreamingType Boolean { get { return new GetAllMediaLibraryOptimizedForStreamingType("boolean"); } }
         
@@ -34,7 +34,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public static implicit operator String(GetAllMediaLibraryOptimizedForStreamingType v) { return v.Value; }
         public static GetAllMediaLibraryOptimizedForStreamingType FromString(string v) {
             switch(v) {
-                case "1": return One;
+                case "optimizedForStreaming_1": return OptimizedForStreaming1;
                 case "boolean": return Boolean;
                 case "null": return Null;
                 default: throw new ArgumentException("Invalid value for GetAllMediaLibraryOptimizedForStreamingType");
@@ -66,7 +66,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         }
 
         [SpeakeasyMetadata("form:explode=true")]
-        public One? One { get; set; }
+        public OptimizedForStreaming1? OptimizedForStreaming1 { get; set; }
 
         [SpeakeasyMetadata("form:explode=true")]
         public bool? Boolean { get; set; }
@@ -74,11 +74,11 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public GetAllMediaLibraryOptimizedForStreamingType Type { get; set; }
 
 
-        public static GetAllMediaLibraryOptimizedForStreaming CreateOne(One one) {
-            GetAllMediaLibraryOptimizedForStreamingType typ = GetAllMediaLibraryOptimizedForStreamingType.One;
+        public static GetAllMediaLibraryOptimizedForStreaming CreateOptimizedForStreaming1(OptimizedForStreaming1 optimizedForStreaming1) {
+            GetAllMediaLibraryOptimizedForStreamingType typ = GetAllMediaLibraryOptimizedForStreamingType.OptimizedForStreaming1;
 
             GetAllMediaLibraryOptimizedForStreaming res = new GetAllMediaLibraryOptimizedForStreaming(typ);
-            res.One = one;
+            res.OptimizedForStreaming1 = optimizedForStreaming1;
             return res;
         }
 
@@ -114,14 +114,14 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
 
                 try
                 {
-                    return new GetAllMediaLibraryOptimizedForStreaming(GetAllMediaLibraryOptimizedForStreamingType.One)
+                    return new GetAllMediaLibraryOptimizedForStreaming(GetAllMediaLibraryOptimizedForStreamingType.OptimizedForStreaming1)
                     {
-                        One = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<One>(json)
+                        OptimizedForStreaming1 = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<OptimizedForStreaming1>(json)
                     };
                 }
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
-                    fallbackCandidates.Add((typeof(One), new GetAllMediaLibraryOptimizedForStreaming(GetAllMediaLibraryOptimizedForStreamingType.One), "One"));
+                    fallbackCandidates.Add((typeof(OptimizedForStreaming1), new GetAllMediaLibraryOptimizedForStreaming(GetAllMediaLibraryOptimizedForStreamingType.OptimizedForStreaming1), "OptimizedForStreaming1"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
@@ -180,9 +180,9 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
                     writer.WriteRawValue("null");
                     return;
                 }
-                if (res.One != null)
+                if (res.OptimizedForStreaming1 != null)
                 {
-                    writer.WriteRawValue(Utilities.SerializeJSON(res.One));
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.OptimizedForStreaming1));
                     return;
                 }
                 if (res.Boolean != null)

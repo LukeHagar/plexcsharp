@@ -5,10 +5,10 @@ Has this media been optimized for streaming. NOTE: This can be 0, 1, false or tr
 
 ## Supported Types
 
-### OptimizedForStreaming1
+### GetMediaMetaDataOptimizedForStreaming1
 
 ```csharp
-GetMediaMetaDataOptimizedForStreaming.CreateOptimizedForStreaming1(/* values here */);
+GetMediaMetaDataOptimizedForStreaming.CreateGetMediaMetaDataOptimizedForStreaming1(/* values here */);
 ```
 
 ### Boolean

@@ -352,13 +352,13 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// An array of Writer roles.
         /// </summary>
         [JsonProperty("Producer")]
-        public List<Producer>? Producer { get; set; }
+        public List<GetMediaMetaDataProducer>? Producer { get; set; }
 
         /// <summary>
         /// An array of similar content objects.
         /// </summary>
         [JsonProperty("Similar")]
-        public List<Similar>? Similar { get; set; }
+        public List<GetMediaMetaDataSimilar>? Similar { get; set; }
 
         /// <summary>
         /// An array of location objects.

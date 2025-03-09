@@ -7,21 +7,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 #nullable enable
-namespace LukeHagar.PlexAPI.SDK.Models.Errors
+namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
     using LukeHagar.PlexAPI.SDK.Utils;
-    using Newtonsoft.Json;
     
-    public class GetOnDeckErrors
+    public enum GetMediaMetaDataOptimizedForStreamingLibrary1
     {
-
-        [JsonProperty("code")]
-        public int? Code { get; set; }
-
-        [JsonProperty("message")]
-        public string? Message { get; set; }
-
-        [JsonProperty("status")]
-        public int? Status { get; set; }
+        Zero = 0,
+        One = 1,
     }
+
 }

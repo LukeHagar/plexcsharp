@@ -91,19 +91,19 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Setting that indicates if seasons are set to hidden for the show. (-1 = Library default, 0 = Hide, 1 = Show).
         /// </summary>
         [JsonProperty("flattenSeasons")]
-        public GetLibraryItemsFlattenSeasons? FlattenSeasons { get; set; }
+        public FlattenSeasons? FlattenSeasons { get; set; }
 
         /// <summary>
         /// Setting that indicates how episodes are sorted for the show. (-1 = Library default, 0 = Oldest first, 1 = Newest first).
         /// </summary>
         [JsonProperty("episodeSort")]
-        public GetLibraryItemsEpisodeSort? EpisodeSort { get; set; }
+        public EpisodeSort? EpisodeSort { get; set; }
 
         /// <summary>
         /// Setting that indicates if credits markers detection is enabled. (-1 = Library default, 0 = Disabled).
         /// </summary>
         [JsonProperty("enableCreditsMarkerGeneration")]
-        public GetLibraryItemsEnableCreditsMarkerGeneration? EnableCreditsMarkerGeneration { get; set; }
+        public EnableCreditsMarkerGeneration? EnableCreditsMarkerGeneration { get; set; }
 
         /// <summary>
         /// Setting that indicates the episode ordering for the show.<br/>
@@ -118,7 +118,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// </remarks>
         /// </summary>
         [JsonProperty("showOrdering")]
-        public GetLibraryItemsShowOrdering? ShowOrdering { get; set; }
+        public ShowOrdering? ShowOrdering { get; set; }
 
         [JsonProperty("thumb")]
         public string? Thumb { get; set; }
@@ -225,13 +225,13 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// </remarks>
         /// </summary>
         [JsonProperty("Guid")]
-        public List<GetLibraryItemsMediaGuid>? MediaGuid { get; set; }
+        public List<MediaGuid>? MediaGuid { get; set; }
 
         [JsonProperty("UltraBlurColors")]
         public GetLibraryItemsUltraBlurColors? UltraBlurColors { get; set; }
 
         [JsonProperty("Rating")]
-        public List<GetLibraryItemsMetaDataRating>? MetaDataRating { get; set; }
+        public List<MetaDataRating>? MetaDataRating { get; set; }
 
         [JsonProperty("Image")]
         public List<GetLibraryItemsImage>? Image { get; set; }

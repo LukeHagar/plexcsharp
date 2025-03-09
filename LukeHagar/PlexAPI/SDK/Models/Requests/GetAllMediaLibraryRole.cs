@@ -16,7 +16,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     {
 
         /// <summary>
-        /// The name of the actor for this role
+        /// The display tag for the actor (typically the actor&apos;s name).
         /// </summary>
         [JsonProperty("tag")]
         public string Tag { get; set; } = default!;

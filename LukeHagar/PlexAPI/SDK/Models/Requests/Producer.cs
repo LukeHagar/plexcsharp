@@ -16,37 +16,31 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     {
 
         /// <summary>
-        /// The unique role identifier.
+        /// Unique identifier for the producer.
         /// </summary>
         [JsonProperty("id")]
         public long Id { get; set; } = default!;
 
         /// <summary>
-        /// The filter string for the role.
+        /// The filter string used to query this producer.
         /// </summary>
         [JsonProperty("filter")]
         public string Filter { get; set; } = default!;
 
         /// <summary>
-        /// The actor&apos;s name.
+        /// The name of the producer
         /// </summary>
         [JsonProperty("tag")]
         public string Tag { get; set; } = default!;
 
         /// <summary>
-        /// A key associated with the actor tag.
+        /// A unique key associated with the producer&apos;s tag, used for internal identification.
         /// </summary>
         [JsonProperty("tagKey")]
-        public string TagKey { get; set; } = default!;
+        public string? TagKey { get; set; }
 
         /// <summary>
-        /// The character name or role.
-        /// </summary>
-        [JsonProperty("role")]
-        public string? Role { get; set; }
-
-        /// <summary>
-        /// URL for the role thumbnail image.
+        /// The URL of the thumbnail image for the actor.
         /// </summary>
         [JsonProperty("thumb")]
         public string? Thumb { get; set; }

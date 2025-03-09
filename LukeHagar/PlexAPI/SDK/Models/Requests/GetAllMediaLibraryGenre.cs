@@ -16,7 +16,11 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     {
 
         /// <summary>
-        /// The country of origin of this media item
+        /// The genre name of this media-item<br/>
+        /// 
+        /// <remarks>
+        /// 
+        /// </remarks>
         /// </summary>
         [JsonProperty("tag")]
         public string Tag { get; set; } = default!;

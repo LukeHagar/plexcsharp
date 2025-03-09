@@ -15,7 +15,10 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     public class Collection
     {
 
+        /// <summary>
+        /// The user-made collection this media item belongs to
+        /// </summary>
         [JsonProperty("tag")]
-        public string? Tag { get; set; }
+        public string Tag { get; set; } = default!;
     }
 }

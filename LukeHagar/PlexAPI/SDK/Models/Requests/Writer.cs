@@ -15,7 +15,28 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     public class Writer
     {
 
+        /// <summary>
+        /// Unique identifier for the writer.
+        /// </summary>
+        [JsonProperty("id")]
+        public long Id { get; set; } = default!;
+
+        /// <summary>
+        /// The filter string used to query this writer.
+        /// </summary>
+        [JsonProperty("filter")]
+        public string Filter { get; set; } = default!;
+
+        /// <summary>
+        /// The role of Writer
+        /// </summary>
         [JsonProperty("tag")]
-        public string? Tag { get; set; }
+        public string Tag { get; set; } = default!;
+
+        /// <summary>
+        /// A unique key associated with the writers tag, used for internal identification.
+        /// </summary>
+        [JsonProperty("tagKey")]
+        public string? TagKey { get; set; }
     }
 }

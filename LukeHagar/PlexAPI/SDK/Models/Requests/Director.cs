@@ -15,7 +15,10 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     public class Director
     {
 
+        /// <summary>
+        /// The role of Director
+        /// </summary>
         [JsonProperty("tag")]
-        public string? Tag { get; set; }
+        public string Tag { get; set; } = default!;
     }
 }

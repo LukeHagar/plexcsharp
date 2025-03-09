@@ -24,7 +24,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         private GetMediaMetaDataLibraryOptimizedForStreamingType(string value) { Value = value; }
 
         public string Value { get; private set; }
-        public static GetMediaMetaDataLibraryOptimizedForStreamingType GetMediaMetaDataOptimizedForStreaming1 { get { return new GetMediaMetaDataLibraryOptimizedForStreamingType("get-media-meta-data_optimizedForStreaming_1"); } }
+        public static GetMediaMetaDataLibraryOptimizedForStreamingType GetMediaMetaDataOptimizedForStreamingLibrary1 { get { return new GetMediaMetaDataLibraryOptimizedForStreamingType("get-media-meta-data_optimizedForStreaming_Library_1"); } }
         
         public static GetMediaMetaDataLibraryOptimizedForStreamingType Boolean { get { return new GetMediaMetaDataLibraryOptimizedForStreamingType("boolean"); } }
         
@@ -34,7 +34,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public static implicit operator String(GetMediaMetaDataLibraryOptimizedForStreamingType v) { return v.Value; }
         public static GetMediaMetaDataLibraryOptimizedForStreamingType FromString(string v) {
             switch(v) {
-                case "get-media-meta-data_optimizedForStreaming_1": return GetMediaMetaDataOptimizedForStreaming1;
+                case "get-media-meta-data_optimizedForStreaming_Library_1": return GetMediaMetaDataOptimizedForStreamingLibrary1;
                 case "boolean": return Boolean;
                 case "null": return Null;
                 default: throw new ArgumentException("Invalid value for GetMediaMetaDataLibraryOptimizedForStreamingType");
@@ -66,7 +66,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         }
 
         [SpeakeasyMetadata("form:explode=true")]
-        public GetMediaMetaDataOptimizedForStreaming1? GetMediaMetaDataOptimizedForStreaming1 { get; set; }
+        public GetMediaMetaDataOptimizedForStreamingLibrary1? GetMediaMetaDataOptimizedForStreamingLibrary1 { get; set; }
 
         [SpeakeasyMetadata("form:explode=true")]
         public bool? Boolean { get; set; }
@@ -74,11 +74,11 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public GetMediaMetaDataLibraryOptimizedForStreamingType Type { get; set; }
 
 
-        public static GetMediaMetaDataLibraryOptimizedForStreaming CreateGetMediaMetaDataOptimizedForStreaming1(GetMediaMetaDataOptimizedForStreaming1 getMediaMetaDataOptimizedForStreaming1) {
-            GetMediaMetaDataLibraryOptimizedForStreamingType typ = GetMediaMetaDataLibraryOptimizedForStreamingType.GetMediaMetaDataOptimizedForStreaming1;
+        public static GetMediaMetaDataLibraryOptimizedForStreaming CreateGetMediaMetaDataOptimizedForStreamingLibrary1(GetMediaMetaDataOptimizedForStreamingLibrary1 getMediaMetaDataOptimizedForStreamingLibrary1) {
+            GetMediaMetaDataLibraryOptimizedForStreamingType typ = GetMediaMetaDataLibraryOptimizedForStreamingType.GetMediaMetaDataOptimizedForStreamingLibrary1;
 
             GetMediaMetaDataLibraryOptimizedForStreaming res = new GetMediaMetaDataLibraryOptimizedForStreaming(typ);
-            res.GetMediaMetaDataOptimizedForStreaming1 = getMediaMetaDataOptimizedForStreaming1;
+            res.GetMediaMetaDataOptimizedForStreamingLibrary1 = getMediaMetaDataOptimizedForStreamingLibrary1;
             return res;
         }
 
@@ -114,14 +114,14 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
 
                 try
                 {
-                    return new GetMediaMetaDataLibraryOptimizedForStreaming(GetMediaMetaDataLibraryOptimizedForStreamingType.GetMediaMetaDataOptimizedForStreaming1)
+                    return new GetMediaMetaDataLibraryOptimizedForStreaming(GetMediaMetaDataLibraryOptimizedForStreamingType.GetMediaMetaDataOptimizedForStreamingLibrary1)
                     {
-                        GetMediaMetaDataOptimizedForStreaming1 = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<GetMediaMetaDataOptimizedForStreaming1>(json)
+                        GetMediaMetaDataOptimizedForStreamingLibrary1 = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<GetMediaMetaDataOptimizedForStreamingLibrary1>(json)
                     };
                 }
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
-                    fallbackCandidates.Add((typeof(GetMediaMetaDataOptimizedForStreaming1), new GetMediaMetaDataLibraryOptimizedForStreaming(GetMediaMetaDataLibraryOptimizedForStreamingType.GetMediaMetaDataOptimizedForStreaming1), "GetMediaMetaDataOptimizedForStreaming1"));
+                    fallbackCandidates.Add((typeof(GetMediaMetaDataOptimizedForStreamingLibrary1), new GetMediaMetaDataLibraryOptimizedForStreaming(GetMediaMetaDataLibraryOptimizedForStreamingType.GetMediaMetaDataOptimizedForStreamingLibrary1), "GetMediaMetaDataOptimizedForStreamingLibrary1"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
@@ -180,9 +180,9 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
                     writer.WriteRawValue("null");
                     return;
                 }
-                if (res.GetMediaMetaDataOptimizedForStreaming1 != null)
+                if (res.GetMediaMetaDataOptimizedForStreamingLibrary1 != null)
                 {
-                    writer.WriteRawValue(Utilities.SerializeJSON(res.GetMediaMetaDataOptimizedForStreaming1));
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.GetMediaMetaDataOptimizedForStreamingLibrary1));
                     return;
                 }
                 if (res.Boolean != null)

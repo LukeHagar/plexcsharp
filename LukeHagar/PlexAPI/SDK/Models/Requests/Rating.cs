@@ -7,21 +7,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 #nullable enable
-namespace LukeHagar.PlexAPI.SDK.Models.Errors
+namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     
-    public class GetOnDeckLibraryErrors
+    /// <summary>
+    /// The type of rating, for example &apos;audience&apos; or &apos;critic&apos;.
+    /// </summary>
+    public class Rating
     {
 
-        [JsonProperty("code")]
-        public int? Code { get; set; }
+        [JsonProperty("image")]
+        public string Image { get; set; } = default!;
 
-        [JsonProperty("message")]
-        public string? Message { get; set; }
+        [JsonProperty("value")]
+        public double Value { get; set; } = default!;
 
-        [JsonProperty("status")]
-        public int? Status { get; set; }
+        [JsonProperty("type")]
+        public string Type { get; set; } = default!;
     }
 }

@@ -17,20 +17,35 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     public class GetRecentlyAddedMediaContainer
     {
 
+        /// <summary>
+        /// Number of media items returned in this response.
+        /// </summary>
         [JsonProperty("size")]
-        public long Size { get; set; } = default!;
+        public int Size { get; set; } = default!;
 
-        [JsonProperty("offset")]
-        public int? Offset { get; set; }
-
+        /// <summary>
+        /// Total number of media items in the library.
+        /// </summary>
         [JsonProperty("totalSize")]
-        public int? TotalSize { get; set; }
+        public int TotalSize { get; set; } = default!;
 
-        [JsonProperty("identifier")]
-        public string? Identifier { get; set; }
+        /// <summary>
+        /// Offset value for pagination.
+        /// </summary>
+        [JsonProperty("offset")]
+        public long Offset { get; set; } = default!;
 
+        /// <summary>
+        /// Indicates whether syncing is allowed.
+        /// </summary>
         [JsonProperty("allowSync")]
-        public bool? AllowSync { get; set; }
+        public bool AllowSync { get; set; } = default!;
+
+        /// <summary>
+        /// An plugin identifier for the media container.
+        /// </summary>
+        [JsonProperty("identifier")]
+        public string Identifier { get; set; } = default!;
 
         /// <summary>
         /// The Meta object is only included in the response if the `includeMeta` parameter is set to `1`.<br/>
@@ -42,6 +57,9 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         [JsonProperty("Meta")]
         public Meta? Meta { get; set; }
 
+        /// <summary>
+        /// An array of metadata items.
+        /// </summary>
         [JsonProperty("Metadata")]
         public List<GetRecentlyAddedMetadata>? Metadata { get; set; }
     }
