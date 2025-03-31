@@ -7,7 +7,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: getServerCapabilities
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -21,7 +21,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: getServerPreferences
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -35,7 +35,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: updatePlayProgress
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -53,7 +53,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: markPlayed
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -67,7 +67,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: getTimeline
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -95,7 +95,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: markUnplayed
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -109,7 +109,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: getServerActivities
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -123,7 +123,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: cancelServerActivities
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -137,7 +137,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: stopAllTasks
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -151,7 +151,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: getButlerTasks
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -165,7 +165,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: startAllTasks
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -179,7 +179,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: stopTask
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -194,7 +194,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: startTask
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -209,7 +209,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: getAvailableClients
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -223,7 +223,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: getCompanionsData
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -237,7 +237,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: getDevices
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -251,7 +251,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: getUserFriends
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -265,7 +265,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: getGeoData
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
 
@@ -278,7 +278,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: getHomeData
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -292,7 +292,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: getGlobalHubs
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -310,7 +310,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: get-recently-added
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -331,7 +331,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: performSearch
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -349,7 +349,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: performVoiceSearch
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -367,7 +367,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: getLibraryHubs
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -386,7 +386,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: get-server-identity
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
 
@@ -399,7 +399,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: getTopWatchedContent
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -417,7 +417,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: getFileHash
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -434,7 +434,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: get-media-meta-data
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -466,7 +466,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: get-banner-image
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -490,7 +490,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: getMetadataChildren
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -507,7 +507,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: get-thumb-image
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -531,7 +531,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: get-recently-added-library
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -567,7 +567,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: get-search-all-libraries
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -591,7 +591,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: get-all-libraries
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -605,7 +605,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: get-watch-list
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -625,7 +625,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: deleteLibrary
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -639,7 +639,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: get-library-details
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -657,7 +657,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: get-actors-library
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -675,7 +675,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: get-all-media-library
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -695,7 +695,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: get-countries-library
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -713,7 +713,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: get-genres-library
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -731,7 +731,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: get-refresh-library-metadata
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -749,7 +749,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: get-search-library
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -767,7 +767,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: get-library-items
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -788,7 +788,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: logLine
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -807,7 +807,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: logMultiLine
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -825,7 +825,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: enablePaperTrail
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -839,7 +839,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: get-media-providers
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -853,7 +853,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: getMyPlexAccount
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -867,7 +867,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: getResizedPhoto
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -892,7 +892,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: getPin
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Requests;
@@ -914,7 +914,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: getTokenByPinId
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Requests;
@@ -937,7 +937,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: getPlaylists
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -955,7 +955,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: createPlaylist
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -977,7 +977,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: uploadPlaylist
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -996,7 +996,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: deletePlaylist
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -1010,7 +1010,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: getPlaylist
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -1024,7 +1024,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: updatePlaylist
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -1042,7 +1042,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: clearPlaylistContents
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -1056,7 +1056,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: getPlaylistContents
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -1074,7 +1074,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: addPlaylistContents
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -1092,7 +1092,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: get-server-resources
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -1112,7 +1112,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: getSearchResults
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -1126,7 +1126,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: getSourceConnectionInformation
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -1140,7 +1140,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: getTransientToken
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -1158,7 +1158,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: getServerList
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -1172,7 +1172,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: getBandwidthStatistics
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -1186,7 +1186,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: getStatistics
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -1200,7 +1200,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: getResourcesStatistics
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -1214,7 +1214,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: getSessions
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -1228,7 +1228,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: getSessionHistory
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -1248,7 +1248,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: getTranscodeSessions
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -1262,7 +1262,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: stopTranscodeSession
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -1276,7 +1276,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: applyUpdates
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -1294,7 +1294,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: checkForUpdates
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -1309,7 +1309,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: getUpdateStatus
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -1323,7 +1323,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: getTokenDetails
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -1337,7 +1337,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: get-users
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Requests;
@@ -1367,7 +1367,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: post-users-sign-in-data
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Requests;
@@ -1394,7 +1394,7 @@ actions:
     update:
       x-codeSamples:
         - lang: csharp
-          label: startUniversalTranscode
+          label: PlexCSharp
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;

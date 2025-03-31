@@ -12,8 +12,8 @@ targets:
             nuget:
                 apiKey: $nuget_api_key
         codeSamples:
-            labelOverride: 
-                fixedValue: PlexCSharp
             output: codeSamples.yaml
             registry:
                 location: registry.speakeasyapi.dev/plexapi/plexapi/code-samples-csharp-plexcsharp
+            labelOverride:
+                fixedValue: PlexCSharp
