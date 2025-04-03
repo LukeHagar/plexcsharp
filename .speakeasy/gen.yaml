@@ -15,7 +15,7 @@ generation:
     oAuth2ClientCredentialsEnabled: true
     oAuth2PasswordEnabled: false
 csharp:
-  version: 0.14.3
+  version: 0.14.4
   additionalDependencies: []
   author: LukeHagar
   clientServerStatusCodesAsErrors: true

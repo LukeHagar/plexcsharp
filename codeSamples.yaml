@@ -462,6 +462,39 @@ actions:
             var res = await sdk.Library.GetMediaMetaDataAsync(req);
 
             // handle response
+  - target: $["paths"]["/library/metadata/{ratingKey}/arts"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: PlexCSharp
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
+
+            var res = await sdk.Library.GetMediaArtsAsync(ratingKey: 16099);
+
+            // handle response
+  - target: $["paths"]["/library/metadata/{ratingKey}/arts"]["post"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: PlexCSharp
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+            using System;
+
+            var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
+
+            var res = await sdk.Library.PostMediaArtsAsync(
+                ratingKey: 2268,
+                url: "https://api.mediux.pro/assets/fcfdc487-dd07-4993-a0c1-0a3015362e5b",
+                requestBody: System.Text.Encoding.UTF8.GetBytes("0xee51EFC6De")
+            );
+
+            // handle response
   - target: $["paths"]["/library/metadata/{ratingKey}/banner"]["get"]
     update:
       x-codeSamples:
@@ -500,6 +533,39 @@ actions:
             var res = await sdk.Library.GetMetadataChildrenAsync(
                 ratingKey: 1539.14D,
                 includeElements: "<value>"
+            );
+
+            // handle response
+  - target: $["paths"]["/library/metadata/{ratingKey}/posters"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: PlexCSharp
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+
+            var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
+
+            var res = await sdk.Library.GetMediaPostersAsync(ratingKey: 16099);
+
+            // handle response
+  - target: $["paths"]["/library/metadata/{ratingKey}/posters"]["post"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: PlexCSharp
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+            using System;
+
+            var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
+
+            var res = await sdk.Library.PostMediaPosterAsync(
+                ratingKey: 2268,
+                url: "https://api.mediux.pro/assets/fcfdc487-dd07-4993-a0c1-0a3015362e5b",
+                requestBody: System.Text.Encoding.UTF8.GetBytes("0x7C3d45ad4B")
             );
 
             // handle response

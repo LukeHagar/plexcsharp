@@ -22,6 +22,10 @@ API Calls interacting with Plex Media Server Libraries
 * [GetActorsLibrary](#getactorslibrary) - Get Actors of library media
 * [GetSearchAllLibraries](#getsearchalllibraries) - Search All Libraries
 * [GetMediaMetaData](#getmediametadata) - Get Media Metadata
+* [GetMediaArts](#getmediaarts) - Get Media Background Artwork
+* [PostMediaArts](#postmediaarts) - Upload Media Background Artwork
+* [GetMediaPosters](#getmediaposters) - Get Media Posters
+* [PostMediaPoster](#postmediaposter) - Upload Media Poster
 * [GetMetadataChildren](#getmetadatachildren) - Get Items Children
 * [GetTopWatchedContent](#gettopwatchedcontent) - Get Top Watched Content
 
@@ -697,6 +701,152 @@ var res = await sdk.Library.GetMediaMetaDataAsync(req);
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetMediaMetaDataBadRequest   | 400                                                              | application/json                                                 |
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetMediaMetaDataUnauthorized | 401                                                              | application/json                                                 |
 | LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                 | 4XX, 5XX                                                         | \*/\*                                                            |
+
+## GetMediaArts
+
+Returns the background artwork for a library item.
+
+### Example Usage
+
+```csharp
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Components;
+
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
+
+var res = await sdk.Library.GetMediaArtsAsync(ratingKey: 16099);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                            | Type                                                 | Required                                             | Description                                          | Example                                              |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| `RatingKey`                                          | *long*                                               | :heavy_check_mark:                                   | the id of the library item to return the artwork of. | 16099                                                |
+
+### Response
+
+**[GetMediaArtsResponse](../../Models/Requests/GetMediaArtsResponse.md)**
+
+### Errors
+
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException | 4XX, 5XX                                         | \*/\*                                            |
+
+## PostMediaArts
+
+Uploads an image to use as the background artwork for a library item, either from a local file or a remote URL
+
+### Example Usage
+
+```csharp
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Components;
+using System;
+
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
+
+var res = await sdk.Library.PostMediaArtsAsync(
+    ratingKey: 2268,
+    url: "https://api.mediux.pro/assets/fcfdc487-dd07-4993-a0c1-0a3015362e5b",
+    requestBody: System.Text.Encoding.UTF8.GetBytes("0xee51EFC6De")
+);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                          | Type                                                               | Required                                                           | Description                                                        | Example                                                            |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `RatingKey`                                                        | *long*                                                             | :heavy_check_mark:                                                 | the id of the library item to return the posters of.               | 2268                                                               |
+| `Url`                                                              | *string*                                                           | :heavy_minus_sign:                                                 | The URL of the image, if uploading a remote image                  | https://api.mediux.pro/assets/fcfdc487-dd07-4993-a0c1-0a3015362e5b |
+| `RequestBody`                                                      | *byte[]*                                                           | :heavy_minus_sign:                                                 | The contents of the image, if uploading a local file               |                                                                    |
+
+### Response
+
+**[PostMediaArtsResponse](../../Models/Requests/PostMediaArtsResponse.md)**
+
+### Errors
+
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException | 4XX, 5XX                                         | \*/\*                                            |
+
+## GetMediaPosters
+
+Returns the available posters for a library item.
+
+### Example Usage
+
+```csharp
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Components;
+
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
+
+var res = await sdk.Library.GetMediaPostersAsync(ratingKey: 16099);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                            | Type                                                 | Required                                             | Description                                          | Example                                              |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| `RatingKey`                                          | *long*                                               | :heavy_check_mark:                                   | the id of the library item to return the posters of. | 16099                                                |
+
+### Response
+
+**[GetMediaPostersResponse](../../Models/Requests/GetMediaPostersResponse.md)**
+
+### Errors
+
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException | 4XX, 5XX                                         | \*/\*                                            |
+
+## PostMediaPoster
+
+Uploads a poster to a library item, either from a local file or a remote URL
+
+### Example Usage
+
+```csharp
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Components;
+using System;
+
+var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
+
+var res = await sdk.Library.PostMediaPosterAsync(
+    ratingKey: 2268,
+    url: "https://api.mediux.pro/assets/fcfdc487-dd07-4993-a0c1-0a3015362e5b",
+    requestBody: System.Text.Encoding.UTF8.GetBytes("0x7C3d45ad4B")
+);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                          | Type                                                               | Required                                                           | Description                                                        | Example                                                            |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `RatingKey`                                                        | *long*                                                             | :heavy_check_mark:                                                 | the id of the library item to return the posters of.               | 2268                                                               |
+| `Url`                                                              | *string*                                                           | :heavy_minus_sign:                                                 | The URL of the image, if uploading a remote image                  | https://api.mediux.pro/assets/fcfdc487-dd07-4993-a0c1-0a3015362e5b |
+| `RequestBody`                                                      | *byte[]*                                                           | :heavy_minus_sign:                                                 | The contents of the image, if uploading a local file               |                                                                    |
+
+### Response
+
+**[PostMediaPosterResponse](../../Models/Requests/PostMediaPosterResponse.md)**
+
+### Errors
+
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException | 4XX, 5XX                                         | \*/\*                                            |
 
 ## GetMetadataChildren
 
