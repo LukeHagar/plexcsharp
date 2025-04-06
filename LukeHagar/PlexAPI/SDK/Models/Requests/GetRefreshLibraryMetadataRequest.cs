@@ -16,6 +16,12 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     {
 
         /// <summary>
+        /// Force the refresh even if the library is already being refreshed.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=force")]
+        public Force? Force { get; set; }
+
+        /// <summary>
         /// The unique key of the Plex library. <br/>
         /// 
         /// <remarks>
@@ -25,11 +31,5 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=sectionKey")]
         public int SectionKey { get; set; } = default!;
-
-        /// <summary>
-        /// Force the refresh even if the library is already being refreshed.
-        /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=force")]
-        public Force? Force { get; set; }
     }
 }

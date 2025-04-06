@@ -261,7 +261,7 @@ namespace LukeHagar.PlexAPI.SDK
         /// List of server URLs available to the SDK.
         /// </summary>
         public static readonly string[] ServerList = {
-            "{protocol}://{ip}:{port}",
+            "https://10.10.10.47:32400",
         };
 
         public string ServerUrl = "";
@@ -327,10 +327,10 @@ namespace LukeHagar.PlexAPI.SDK
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.14.4";
-        private const string _sdkGenVersion = "2.565.1";
+        private const string _sdkVersion = "0.14.5";
+        private const string _sdkGenVersion = "2.566.5";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.14.4 2.565.1 0.0.3 LukeHagar.PlexAPI.SDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.14.5 2.566.5 0.0.3 LukeHagar.PlexAPI.SDK";
         private string _serverUrl = "";
         private int _serverIndex = 0;
         private ISpeakeasyHttpClient _client;

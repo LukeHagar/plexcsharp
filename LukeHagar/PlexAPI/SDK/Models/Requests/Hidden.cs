@@ -9,17 +9,15 @@
 #nullable enable
 namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
-    using LukeHagar.PlexAPI.SDK.Models.Requests;
     using LukeHagar.PlexAPI.SDK.Utils;
-    using Newtonsoft.Json;
     
     /// <summary>
-    /// The libraries available on the Server
+    /// UNKNOWN
     /// </summary>
-    public class GetAllLibrariesResponseBody
+    public enum Hidden
     {
-
-        [JsonProperty("MediaContainer")]
-        public GetAllLibrariesMediaContainer? MediaContainer { get; set; }
+        Disable = 0,
+        Enable = 1,
     }
+
 }

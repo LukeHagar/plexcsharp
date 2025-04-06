@@ -16,17 +16,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     {
 
         /// <summary>
-        /// The unique key of the Plex library. <br/>
-        /// 
-        /// <remarks>
-        /// Note: This is unique in the context of the Plex server.<br/>
-        /// 
-        /// </remarks>
-        /// </summary>
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=sectionKey")]
-        public int SectionKey { get; set; } = default!;
-
-        /// <summary>
         /// Whether or not to include details for a section (types, filters, and sorts). <br/>
         /// 
         /// <remarks>
@@ -36,5 +25,16 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=includeDetails")]
         public IncludeDetails? IncludeDetails { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeDetails.Zero;
+
+        /// <summary>
+        /// The unique key of the Plex library. <br/>
+        /// 
+        /// <remarks>
+        /// Note: This is unique in the context of the Plex server.<br/>
+        /// 
+        /// </remarks>
+        /// </summary>
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=sectionKey")]
+        public int SectionKey { get; set; } = default!;
     }
 }

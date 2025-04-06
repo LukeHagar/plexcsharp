@@ -16,12 +16,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     {
 
         /// <summary>
-        /// An opaque identifier unique to the client (UUID, serial number, or other unique device ID)
-        /// </summary>
-        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Client-Identifier")]
-        public string ClientID { get; set; } = default!;
-
-        /// <summary>
         /// Include Https entries in the results
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=includeHttps")]
@@ -43,5 +37,11 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=includeIPv6")]
         public IncludeIPv6? IncludeIPv6 { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeIPv6.Disable;
+
+        /// <summary>
+        /// An opaque identifier unique to the client (UUID, serial number, or other unique device ID)
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Client-Identifier")]
+        public string ClientID { get; set; } = default!;
     }
 }

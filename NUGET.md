@@ -105,7 +105,7 @@ catch (Exception ex)
 
 ### Server Variables
 
-The default server `https://10.10.10.47:32400` contains variables and is set to `https://10.10.10.47:32400` by default. To override default values, the following parameters are available when initializing the SDK client instance:
+The default server `{protocol}://{ip}:{port}` contains variables and is set to `https://10.10.10.47:32400` by default. To override default values, the following parameters are available when initializing the SDK client instance:
 
 | Variable   | Parameter                                               | Supported Values           | Default         | Description                                    |
 | ---------- | ------------------------------------------------------- | -------------------------- | --------------- | ---------------------------------------------- |

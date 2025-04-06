@@ -17,16 +17,25 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     public class GetAllLibrariesMediaContainer
     {
 
+        /// <summary>
+        /// Number of media items returned in this response.
+        /// </summary>
         [JsonProperty("size")]
         public int Size { get; set; } = default!;
 
+        /// <summary>
+        /// Indicates whether syncing is allowed.
+        /// </summary>
         [JsonProperty("allowSync")]
         public bool AllowSync { get; set; } = default!;
 
+        /// <summary>
+        /// The primary title of the media container.
+        /// </summary>
         [JsonProperty("title1")]
         public string Title1 { get; set; } = default!;
 
         [JsonProperty("Directory")]
-        public List<GetAllLibrariesDirectory> Directory { get; set; } = default!;
+        public List<GetAllLibrariesDirectory>? Directory { get; set; }
     }
 }

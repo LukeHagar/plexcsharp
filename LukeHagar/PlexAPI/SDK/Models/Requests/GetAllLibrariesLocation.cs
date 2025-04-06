@@ -15,9 +15,15 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     public class GetAllLibrariesLocation
     {
 
+        /// <summary>
+        /// The ID of the location.
+        /// </summary>
         [JsonProperty("id")]
         public int Id { get; set; } = default!;
 
+        /// <summary>
+        /// The path to the media item.
+        /// </summary>
         [JsonProperty("path")]
         public string Path { get; set; } = default!;
     }

@@ -17,42 +17,78 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     public class GetAllLibrariesDirectory
     {
 
+        /// <summary>
+        /// Indicates whether syncing is allowed.
+        /// </summary>
         [JsonProperty("allowSync")]
         public bool AllowSync { get; set; } = default!;
 
+        /// <summary>
+        /// URL for the background artwork of the media container.
+        /// </summary>
         [JsonProperty("art")]
         public string Art { get; set; } = default!;
 
+        /// <summary>
+        /// The relative path to the composite media item.
+        /// </summary>
         [JsonProperty("composite")]
         public string Composite { get; set; } = default!;
 
+        /// <summary>
+        /// UNKNOWN
+        /// </summary>
         [JsonProperty("filters")]
         public bool Filters { get; set; } = default!;
 
+        /// <summary>
+        /// Indicates whether the library is currently being refreshed or updated
+        /// </summary>
         [JsonProperty("refreshing")]
         public bool Refreshing { get; set; } = default!;
 
+        /// <summary>
+        /// URL for the thumbnail image of the media container.
+        /// </summary>
         [JsonProperty("thumb")]
         public string Thumb { get; set; } = default!;
 
+        /// <summary>
+        /// The library key representing the unique identifier
+        /// </summary>
         [JsonProperty("key")]
         public string Key { get; set; } = default!;
 
         [JsonProperty("type")]
-        public string Type { get; set; } = default!;
+        public GetAllLibrariesType Type { get; set; } = default!;
 
+        /// <summary>
+        /// The title of the library
+        /// </summary>
         [JsonProperty("title")]
         public string Title { get; set; } = default!;
 
+        /// <summary>
+        /// The Plex agent used to match and retrieve media metadata.
+        /// </summary>
         [JsonProperty("agent")]
         public string Agent { get; set; } = default!;
 
+        /// <summary>
+        /// UNKNOWN
+        /// </summary>
         [JsonProperty("scanner")]
         public string Scanner { get; set; } = default!;
 
+        /// <summary>
+        /// The Plex library language that has been set
+        /// </summary>
         [JsonProperty("language")]
         public string Language { get; set; } = default!;
 
+        /// <summary>
+        /// The universally unique identifier for the library.
+        /// </summary>
         [JsonProperty("uuid")]
         public string Uuid { get; set; } = default!;
 
@@ -62,11 +98,8 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         [JsonProperty("updatedAt")]
         public long UpdatedAt { get; set; } = default!;
 
-        /// <summary>
-        /// Unix epoch datetime in seconds
-        /// </summary>
         [JsonProperty("createdAt")]
-        public long CreatedAt { get; set; } = default!;
+        public long? CreatedAt { get; set; }
 
         /// <summary>
         /// Unix epoch datetime in seconds
@@ -74,20 +107,26 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         [JsonProperty("scannedAt")]
         public long ScannedAt { get; set; } = default!;
 
+        /// <summary>
+        /// UNKNOWN
+        /// </summary>
         [JsonProperty("content")]
         public bool Content { get; set; } = default!;
 
+        /// <summary>
+        /// UNKNOWN
+        /// </summary>
         [JsonProperty("directory")]
         public bool Directory { get; set; } = default!;
 
         /// <summary>
-        /// Unix epoch datetime in seconds
+        /// The number of seconds since the content was last changed relative to now.
         /// </summary>
         [JsonProperty("contentChangedAt")]
-        public long ContentChangedAt { get; set; } = default!;
+        public int ContentChangedAt { get; set; } = default!;
 
         [JsonProperty("hidden")]
-        public int Hidden { get; set; } = default!;
+        public Hidden? Hidden { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.Hidden.Disable;
 
         [JsonProperty("Location")]
         public List<GetAllLibrariesLocation> Location { get; set; } = default!;
