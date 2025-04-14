@@ -120,10 +120,15 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public bool Directory { get; set; } = default!;
 
         /// <summary>
-        /// The number of seconds since the content was last changed relative to now.
+        /// Timestamp (in seconds) representing the last time the content was modified.<br/>
+        /// 
+        /// <remarks>
+        /// NOTE: Some Plex server have some absurd values for this field, like 8457612157633039800 so it should be int64<br/>
+        /// 
+        /// </remarks>
         /// </summary>
         [JsonProperty("contentChangedAt")]
-        public int ContentChangedAt { get; set; } = default!;
+        public long ContentChangedAt { get; set; } = default!;
 
         [JsonProperty("hidden")]
         public Hidden? Hidden { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.Hidden.Disable;
