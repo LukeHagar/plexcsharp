@@ -72,14 +72,14 @@ namespace LukeHagar.PlexAPI.SDK
         /// <remarks>
         /// ## Library Details Endpoint<br/>
         /// <br/>
-        /// This endpoint provides comprehensive details about the library, focusing on organizational aspects rather than the content itself.   <br/>
+        /// This endpoint provides comprehensive details about the library, focusing on organizational aspects rather than the content itself.<br/>
         /// <br/>
         /// The details include:<br/>
         /// <br/>
         /// ### Directories<br/>
         /// Organized into three categories:<br/>
         /// <br/>
-        /// - **Primary Directories**: <br/>
+        /// - **Primary Directories**:<br/>
         ///   - Used in some clients for quick access to media subsets (e.g., &quot;All&quot;, &quot;On Deck&quot;).<br/>
         ///   - Most can be replicated via media queries.<br/>
         ///   - Customizable by users.<br/>
@@ -318,10 +318,10 @@ namespace LukeHagar.PlexAPI.SDK
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.14.7";
+        private const string _sdkVersion = "0.14.9";
         private const string _sdkGenVersion = "2.566.5";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.14.7 2.566.5 0.0.3 LukeHagar.PlexAPI.SDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.14.9 2.566.5 0.0.3 LukeHagar.PlexAPI.SDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<LukeHagar.PlexAPI.SDK.Models.Components.Security>? _securitySource;

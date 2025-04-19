@@ -16,13 +16,13 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     {
 
         /// <summary>
-        /// An integer log level to write to the PMS log with.  <br/>
+        /// An integer log level to write to the PMS log with.<br/>
         /// 
         /// <remarks>
-        /// 0: Error  <br/>
-        /// 1: Warning  <br/>
-        /// 2: Info  <br/>
-        /// 3: Debug  <br/>
+        /// 0: Error<br/>
+        /// 1: Warning<br/>
+        /// 2: Info<br/>
+        /// 3: Debug<br/>
         /// 4: Verbose<br/>
         /// 
         /// </remarks>

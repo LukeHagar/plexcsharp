@@ -46,13 +46,13 @@ namespace LukeHagar.PlexAPI.SDK
         /// Logging a multi-line message
         /// 
         /// <remarks>
-        /// This endpoint allows for the batch addition of log entries to the main Plex Media Server log.  <br/>
-        /// It accepts a text/plain request body, where each line represents a distinct log entry.  <br/>
-        /// Each log entry consists of URL-encoded key-value pairs, specifying log attributes such as &apos;level&apos;, &apos;message&apos;, and &apos;source&apos;.  <br/>
+        /// This endpoint allows for the batch addition of log entries to the main Plex Media Server log.<br/>
+        /// It accepts a text/plain request body, where each line represents a distinct log entry.<br/>
+        /// Each log entry consists of URL-encoded key-value pairs, specifying log attributes such as &apos;level&apos;, &apos;message&apos;, and &apos;source&apos;.<br/>
         /// <br/>
-        /// Log entries are separated by a newline character (`\n`).  <br/>
-        /// Each entry&apos;s parameters should be URL-encoded to ensure accurate parsing and handling of special characters.  <br/>
-        /// This method is efficient for logging multiple entries in a single API call, reducing the overhead of multiple individual requests.  <br/>
+        /// Log entries are separated by a newline character (`\n`).<br/>
+        /// Each entry&apos;s parameters should be URL-encoded to ensure accurate parsing and handling of special characters.<br/>
+        /// This method is efficient for logging multiple entries in a single API call, reducing the overhead of multiple individual requests.<br/>
         /// <br/>
         /// The &apos;level&apos; parameter specifies the log entry&apos;s severity or importance, with the following integer values:<br/>
         /// - `0`: Error - Critical issues that require immediate attention.<br/>
@@ -94,10 +94,10 @@ namespace LukeHagar.PlexAPI.SDK
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.14.7";
+        private const string _sdkVersion = "0.14.9";
         private const string _sdkGenVersion = "2.566.5";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.14.7 2.566.5 0.0.3 LukeHagar.PlexAPI.SDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.14.9 2.566.5 0.0.3 LukeHagar.PlexAPI.SDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<LukeHagar.PlexAPI.SDK.Models.Components.Security>? _securitySource;

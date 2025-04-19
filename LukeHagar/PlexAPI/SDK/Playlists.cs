@@ -23,11 +23,11 @@ namespace LukeHagar.PlexAPI.SDK
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Playlists are ordered collections of media. They can be dumb (just a list of media) or smart (based on a media query, such as &quot;all albums from 2017&quot;). <br/>
+    /// Playlists are ordered collections of media. They can be dumb (just a list of media) or smart (based on a media query, such as &quot;all albums from 2017&quot;).<br/>
     /// 
     /// <remarks>
     /// They can be organized in (optionally nesting) folders.<br/>
-    /// Retrieving a playlist, or its items, will trigger a refresh of its metadata. <br/>
+    /// Retrieving a playlist, or its items, will trigger a refresh of its metadata.<br/>
     /// This may cause the duration and number of items to change.<br/>
     /// 
     /// </remarks>
@@ -133,11 +133,11 @@ namespace LukeHagar.PlexAPI.SDK
     }
 
     /// <summary>
-    /// Playlists are ordered collections of media. They can be dumb (just a list of media) or smart (based on a media query, such as &quot;all albums from 2017&quot;). <br/>
+    /// Playlists are ordered collections of media. They can be dumb (just a list of media) or smart (based on a media query, such as &quot;all albums from 2017&quot;).<br/>
     /// 
     /// <remarks>
     /// They can be organized in (optionally nesting) folders.<br/>
-    /// Retrieving a playlist, or its items, will trigger a refresh of its metadata. <br/>
+    /// Retrieving a playlist, or its items, will trigger a refresh of its metadata.<br/>
     /// This may cause the duration and number of items to change.<br/>
     /// 
     /// </remarks>
@@ -146,10 +146,10 @@ namespace LukeHagar.PlexAPI.SDK
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.14.7";
+        private const string _sdkVersion = "0.14.9";
         private const string _sdkGenVersion = "2.566.5";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.14.7 2.566.5 0.0.3 LukeHagar.PlexAPI.SDK";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.14.9 2.566.5 0.0.3 LukeHagar.PlexAPI.SDK";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<LukeHagar.PlexAPI.SDK.Models.Components.Security>? _securitySource;

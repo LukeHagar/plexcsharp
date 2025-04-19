@@ -16,7 +16,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     {
 
         /// <summary>
-        /// Whether or not to include details for a section (types, filters, and sorts). <br/>
+        /// Whether or not to include details for a section (types, filters, and sorts).<br/>
         /// 
         /// <remarks>
         /// Only exists for backwards compatibility, media providers other than the server libraries have it on always.<br/>

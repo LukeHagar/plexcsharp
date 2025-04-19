@@ -12,11 +12,11 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using LukeHagar.PlexAPI.SDK.Utils;
     
     /// <summary>
-    /// Force overwriting of duplicate playlists.  <br/>
+    /// Force overwriting of duplicate playlists.<br/>
     /// 
     /// <remarks>
-    /// By default, a playlist file uploaded with the same path will overwrite the existing playlist. <br/>
-    /// The `force` argument is used to disable overwriting.  <br/>
+    /// By default, a playlist file uploaded with the same path will overwrite the existing playlist.<br/>
+    /// The `force` argument is used to disable overwriting.<br/>
     /// If the `force` argument is set to 0, a new playlist will be created suffixed with the date and time that the duplicate was uploaded.<br/>
     /// 
     /// </remarks>
