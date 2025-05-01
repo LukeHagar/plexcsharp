@@ -19,7 +19,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Unique identifier for the writer.
         /// </summary>
         [JsonProperty("id")]
-        public long Id { get; set; } = default!;
+        public int Id { get; set; } = default!;
 
         /// <summary>
         /// The filter string used to query this writer.

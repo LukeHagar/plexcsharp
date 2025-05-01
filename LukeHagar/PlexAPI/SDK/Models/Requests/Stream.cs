@@ -9,6 +9,7 @@
 #nullable enable
 namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
+    using LukeHagar.PlexAPI.SDK.Models.Requests;
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     
@@ -22,10 +23,23 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public long Id { get; set; } = default!;
 
         /// <summary>
-        /// Stream type (1=video, 2=audio, 3=subtitle).
+        /// Stream type:<br/>
+        /// 
+        /// <remarks>
+        ///   - 1 = video<br/>
+        ///   - 2 = audio<br/>
+        ///   - 3 = subtitle<br/>
+        /// 
+        /// </remarks>
         /// </summary>
         [JsonProperty("streamType")]
-        public int StreamType { get; set; } = default!;
+        public StreamType StreamType { get; set; } = default!;
+
+        /// <summary>
+        /// Format of the stream (e.g., srt).
+        /// </summary>
+        [JsonProperty("format")]
+        public string? Format { get; set; }
 
         /// <summary>
         /// Indicates if this stream is default.
@@ -43,7 +57,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Index of the stream.
         /// </summary>
         [JsonProperty("index")]
-        public int Index { get; set; } = default!;
+        public int? Index { get; set; }
 
         /// <summary>
         /// Bitrate of the stream.
@@ -185,6 +199,12 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// </summary>
         [JsonProperty("frameRate")]
         public float? FrameRate { get; set; }
+
+        /// <summary>
+        /// Key to access this stream part.
+        /// </summary>
+        [JsonProperty("key")]
+        public string? Key { get; set; }
 
         /// <summary>
         /// Height of the video stream.

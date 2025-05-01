@@ -13,25 +13,27 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using Newtonsoft.Json;
     
     /// <summary>
-    /// The filter query string for similar items.
+    /// The thumbnail for the chapter
     /// </summary>
-    public class GetMediaMetaDataGenre
+    public class Chapter
     {
 
         [JsonProperty("id")]
         public long Id { get; set; } = default!;
 
-        /// <summary>
-        /// The genre name of this media-item<br/>
-        /// 
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// </summary>
-        [JsonProperty("tag")]
-        public string Tag { get; set; } = default!;
-
         [JsonProperty("filter")]
         public string Filter { get; set; } = default!;
+
+        [JsonProperty("index")]
+        public long Index { get; set; } = default!;
+
+        [JsonProperty("startTimeOffset")]
+        public long StartTimeOffset { get; set; } = default!;
+
+        [JsonProperty("endTimeOffset")]
+        public long EndTimeOffset { get; set; } = default!;
+
+        [JsonProperty("thumb")]
+        public string Thumb { get; set; } = default!;
     }
 }

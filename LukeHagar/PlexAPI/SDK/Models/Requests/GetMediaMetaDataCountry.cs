@@ -12,25 +12,22 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     
+    /// <summary>
+    /// The filter query string for country media items.
+    /// </summary>
     public class GetMediaMetaDataCountry
     {
 
-        /// <summary>
-        /// The unique country identifier.
-        /// </summary>
         [JsonProperty("id")]
         public int Id { get; set; } = default!;
 
         /// <summary>
-        /// The filter string for the country.
-        /// </summary>
-        [JsonProperty("filter")]
-        public string Filter { get; set; } = default!;
-
-        /// <summary>
-        /// The country name.
+        /// The country of origin of this media item
         /// </summary>
         [JsonProperty("tag")]
         public string Tag { get; set; } = default!;
+
+        [JsonProperty("filter")]
+        public string? Filter { get; set; }
     }
 }

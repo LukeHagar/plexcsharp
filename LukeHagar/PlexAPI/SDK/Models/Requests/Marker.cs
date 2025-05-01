@@ -9,29 +9,35 @@
 #nullable enable
 namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
+    using LukeHagar.PlexAPI.SDK.Models.Requests;
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     
     /// <summary>
-    /// The filter query string for similar items.
+    /// The final status of the marker
     /// </summary>
-    public class GetMediaMetaDataGenre
+    public class Marker
     {
 
         [JsonProperty("id")]
         public long Id { get; set; } = default!;
 
-        /// <summary>
-        /// The genre name of this media-item<br/>
-        /// 
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// </summary>
-        [JsonProperty("tag")]
-        public string Tag { get; set; } = default!;
+        [JsonProperty("type")]
+        public string Type { get; set; } = default!;
 
-        [JsonProperty("filter")]
-        public string Filter { get; set; } = default!;
+        [JsonProperty("startTimeOffset")]
+        public long StartTimeOffset { get; set; } = default!;
+
+        [JsonProperty("endTimeOffset")]
+        public long EndTimeOffset { get; set; } = default!;
+
+        [JsonProperty("final")]
+        public bool? Final { get; set; }
+
+        /// <summary>
+        /// Attributes associated with the marker.
+        /// </summary>
+        [JsonProperty("Attributes")]
+        public Attributes? Attributes { get; set; }
     }
 }

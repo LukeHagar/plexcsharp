@@ -15,27 +15,15 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     public class GetMediaMetaDataUltraBlurColors
     {
 
-        /// <summary>
-        /// The top-left color value.
-        /// </summary>
         [JsonProperty("topLeft")]
         public string TopLeft { get; set; } = default!;
 
-        /// <summary>
-        /// The top-right color value.
-        /// </summary>
         [JsonProperty("topRight")]
         public string TopRight { get; set; } = default!;
 
-        /// <summary>
-        /// The bottom-right color value.
-        /// </summary>
         [JsonProperty("bottomRight")]
         public string BottomRight { get; set; } = default!;
 
-        /// <summary>
-        /// The bottom-left color value.
-        /// </summary>
         [JsonProperty("bottomLeft")]
         public string BottomLeft { get; set; } = default!;
     }

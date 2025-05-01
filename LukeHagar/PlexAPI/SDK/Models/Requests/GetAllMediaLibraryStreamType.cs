@@ -10,28 +10,22 @@
 namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
     using LukeHagar.PlexAPI.SDK.Utils;
-    using Newtonsoft.Json;
     
     /// <summary>
-    /// The filter query string for similar items.
+    /// Stream type:<br/>
+    /// 
+    /// <remarks>
+    ///   - 1 = video<br/>
+    ///   - 2 = audio<br/>
+    ///   - 3 = subtitle<br/>
+    /// 
+    /// </remarks>
     /// </summary>
-    public class GetMediaMetaDataGenre
+    public enum GetAllMediaLibraryStreamType
     {
-
-        [JsonProperty("id")]
-        public long Id { get; set; } = default!;
-
-        /// <summary>
-        /// The genre name of this media-item<br/>
-        /// 
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// </summary>
-        [JsonProperty("tag")]
-        public string Tag { get; set; } = default!;
-
-        [JsonProperty("filter")]
-        public string Filter { get; set; } = default!;
+        Video = 1,
+        Audio = 2,
+        Subtitle = 3,
     }
+
 }

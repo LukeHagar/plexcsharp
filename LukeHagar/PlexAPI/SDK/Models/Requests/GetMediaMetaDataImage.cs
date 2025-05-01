@@ -9,27 +9,19 @@
 #nullable enable
 namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
+    using LukeHagar.PlexAPI.SDK.Models.Requests;
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     
     public class GetMediaMetaDataImage
     {
 
-        /// <summary>
-        /// Alternate text for the image.
-        /// </summary>
         [JsonProperty("alt")]
         public string Alt { get; set; } = default!;
 
-        /// <summary>
-        /// The type of image (e.g., coverPoster, background, clearLogo).
-        /// </summary>
         [JsonProperty("type")]
-        public string Type { get; set; } = default!;
+        public GetMediaMetaDataLibraryType Type { get; set; } = default!;
 
-        /// <summary>
-        /// The URL of the image.
-        /// </summary>
         [JsonProperty("url")]
         public string Url { get; set; } = default!;
     }
