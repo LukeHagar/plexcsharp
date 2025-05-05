@@ -130,8 +130,11 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         [JsonProperty("contentChangedAt")]
         public long ContentChangedAt { get; set; } = default!;
 
+        /// <summary>
+        /// The Plex library visibility setting
+        /// </summary>
         [JsonProperty("hidden")]
-        public Hidden? Hidden { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.Hidden.Disable;
+        public Hidden? Hidden { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.Hidden.Visible;
 
         [JsonProperty("Location")]
         public List<GetAllLibrariesLocation> Location { get; set; } = default!;

@@ -12,12 +12,13 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using LukeHagar.PlexAPI.SDK.Utils;
     
     /// <summary>
-    /// UNKNOWN
+    /// The Plex library visibility setting
     /// </summary>
     public enum Hidden
     {
-        Disable = 0,
-        Enable = 1,
+        Visible = 0,
+        ExcludeHomeScreen = 1,
+        ExcludeHomeScreenAndGlobalSearch = 2,
     }
 
 }

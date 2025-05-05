@@ -1,11 +1,12 @@
 # Hidden
 
-UNKNOWN
+The Plex library visibility setting
 
 
 ## Values
 
-| Name      | Value     |
-| --------- | --------- |
-| `Disable` | 0         |
-| `Enable`  | 1         |
+| Name                               | Value                              |
+| ---------------------------------- | ---------------------------------- |
+| `Visible`                          | 0                                  |
+| `ExcludeHomeScreen`                | 1                                  |
+| `ExcludeHomeScreenAndGlobalSearch` | 2                                  |
