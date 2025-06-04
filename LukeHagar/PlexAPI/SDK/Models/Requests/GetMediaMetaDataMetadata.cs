@@ -367,6 +367,9 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         [JsonProperty("librarySectionKey")]
         public string LibrarySectionKey { get; set; } = default!;
 
+        [JsonProperty("Guid")]
+        public List<GetMediaMetaDataGuids>? Guids { get; set; }
+
         [JsonProperty("Media")]
         public List<GetMediaMetaDataMedia>? Media { get; set; }
 
@@ -387,9 +390,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
 
         [JsonProperty("Role")]
         public List<GetMediaMetaDataRole>? Role { get; set; }
-
-        [JsonProperty("Guid")]
-        public List<GetMediaMetaDataGuids>? Guids { get; set; }
 
         [JsonProperty("Rating")]
         public List<Ratings>? Ratings { get; set; }

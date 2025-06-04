@@ -18,11 +18,14 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     public class Rating
     {
 
+        /// <summary>
+        /// The URL for the rating image, for example from IMDb.
+        /// </summary>
         [JsonProperty("image")]
         public string Image { get; set; } = default!;
 
         [JsonProperty("value")]
-        public double Value { get; set; } = default!;
+        public float Value { get; set; } = default!;
 
         [JsonProperty("type")]
         public string Type { get; set; } = default!;

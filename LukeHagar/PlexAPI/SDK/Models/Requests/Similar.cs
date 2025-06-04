@@ -19,7 +19,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     {
 
         [JsonProperty("id")]
-        public long Id { get; set; } = default!;
+        public int Id { get; set; } = default!;
 
         [JsonProperty("filter")]
         public string Filter { get; set; } = default!;

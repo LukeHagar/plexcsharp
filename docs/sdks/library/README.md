@@ -14,7 +14,7 @@ API Calls interacting with Plex Media Server Libraries
 * [GetLibraryDetails](#getlibrarydetails) - Get Library Details
 * [DeleteLibrary](#deletelibrary) - Delete Library Section
 * [GetLibraryItems](#getlibraryitems) - Get Library Items
-* [GetAllMediaLibrary](#getallmedialibrary) - Get all media of library
+* [GetLibrarySectionsAll](#getlibrarysectionsall) - Get Library section media by tag ALL
 * [GetRefreshLibraryMetadata](#getrefreshlibrarymetadata) - Refresh Metadata Of The Library
 * [GetSearchLibrary](#getsearchlibrary) - Search Library
 * [GetGenresLibrary](#getgenreslibrary) - Get Genres of library media
@@ -41,10 +41,7 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
-var res = await sdk.Library.GetFileHashAsync(
-    url: "file://C:\Image.png&type=13",
-    type: 4462.17D
-);
+var res = await sdk.Library.GetFileHashAsync(url: "file://C:\Image.png&type=13");
 
 // handle response
 ```
@@ -101,6 +98,7 @@ GetRecentlyAddedLibraryRequest req = new GetRecentlyAddedLibraryRequest() {
     },
     SectionID = 2,
     Type = QueryParamType.TvShow,
+    IncludeMeta = QueryParamIncludeMeta.Enable,
 };
 
 var res = await sdk.Library.GetRecentlyAddedLibraryAsync(req);
@@ -310,9 +308,11 @@ using LukeHagar.PlexAPI.SDK.Models.Requests;
 var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 GetLibraryItemsRequest req = new GetLibraryItemsRequest() {
-    Tag = Tag.Edition,
+    Tag = Tag.Newest,
+    IncludeGuids = IncludeGuids.Enable,
     Type = GetLibraryItemsQueryParamType.TvShow,
     SectionKey = 9518,
+    IncludeMeta = GetLibraryItemsQueryParamIncludeMeta.Enable,
 };
 
 var res = await sdk.Library.GetLibraryItemsAsync(req);
@@ -338,7 +338,7 @@ var res = await sdk.Library.GetLibraryItemsAsync(req);
 | LukeHagar.PlexAPI.SDK.Models.Errors.GetLibraryItemsUnauthorized | 401                                                             | application/json                                                |
 | LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                | 4XX, 5XX                                                        | \*/\*                                                           |
 
-## GetAllMediaLibrary
+## GetLibrarySectionsAll
 
 Retrieves a list of all general media data for this library.
 
@@ -352,33 +352,38 @@ using LukeHagar.PlexAPI.SDK.Models.Requests;
 
 var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
-GetAllMediaLibraryRequest req = new GetAllMediaLibraryRequest() {
+GetLibrarySectionsAllRequest req = new GetLibrarySectionsAllRequest() {
     SectionKey = 9518,
-    Type = GetAllMediaLibraryQueryParamType.TvShow,
+    Type = GetLibrarySectionsAllQueryParamType.TvShow,
+    IncludeMeta = GetLibrarySectionsAllQueryParamIncludeMeta.Enable,
+    IncludeGuids = QueryParamIncludeGuids.Enable,
+    IncludeAdvanced = IncludeAdvanced.Enable,
+    IncludeCollections = QueryParamIncludeCollections.Enable,
+    IncludeExternalMedia = QueryParamIncludeExternalMedia.Enable,
 };
 
-var res = await sdk.Library.GetAllMediaLibraryAsync(req);
+var res = await sdk.Library.GetLibrarySectionsAllAsync(req);
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
-| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `request`                                                                       | [GetAllMediaLibraryRequest](../../Models/Requests/GetAllMediaLibraryRequest.md) | :heavy_check_mark:                                                              | The request object to use for the request.                                      |
+| Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `request`                                                                             | [GetLibrarySectionsAllRequest](../../Models/Requests/GetLibrarySectionsAllRequest.md) | :heavy_check_mark:                                                                    | The request object to use for the request.                                            |
 
 ### Response
 
-**[GetAllMediaLibraryResponse](../../Models/Requests/GetAllMediaLibraryResponse.md)**
+**[GetLibrarySectionsAllResponse](../../Models/Requests/GetLibrarySectionsAllResponse.md)**
 
 ### Errors
 
-| Error Type                                                         | Status Code                                                        | Content Type                                                       |
-| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetAllMediaLibraryBadRequest   | 400                                                                | application/json                                                   |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetAllMediaLibraryUnauthorized | 401                                                                | application/json                                                   |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                   | 4XX, 5XX                                                           | \*/\*                                                              |
+| Error Type                                                            | Status Code                                                           | Content Type                                                          |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetLibrarySectionsAllBadRequest   | 400                                                                   | application/json                                                      |
+| LukeHagar.PlexAPI.SDK.Models.Errors.GetLibrarySectionsAllUnauthorized | 401                                                                   | application/json                                                      |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                      | 4XX, 5XX                                                              | \*/\*                                                                 |
 
 ## GetRefreshLibraryMetadata
 
@@ -396,7 +401,7 @@ var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Library.GetRefreshLibraryMetadataAsync(
     sectionKey: 9518,
-    force: Force.One
+    force: Force.Zero
 );
 
 // handle response
@@ -623,6 +628,8 @@ GetSearchAllLibrariesRequest req = new GetSearchAllLibrariesRequest() {
     SearchTypes = new List<SearchTypes>() {
         SearchTypes.People,
     },
+    IncludeCollections = GetSearchAllLibrariesQueryParamIncludeCollections.Enable,
+    IncludeExternalMedia = GetSearchAllLibrariesQueryParamIncludeExternalMedia.Enable,
 };
 
 var res = await sdk.Library.GetSearchAllLibrariesAsync(req);
@@ -650,7 +657,8 @@ var res = await sdk.Library.GetSearchAllLibrariesAsync(req);
 
 ## GetMediaMetaData
 
-This endpoint will return all the (meta)data of a library item specified with by the ratingKey.
+This endpoint will return all the (meta)data of one or more library items specified by the ratingKey.
+Multiple rating keys can be provided as a comma-separated list (e.g., "21119,21617").
 
 
 ### Example Usage
@@ -663,7 +671,7 @@ using LukeHagar.PlexAPI.SDK.Models.Requests;
 var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 GetMediaMetaDataRequest req = new GetMediaMetaDataRequest() {
-    RatingKey = 9518,
+    RatingKey = "21119,21617",
     IncludeConcerts = true,
     IncludeExtras = true,
     IncludeOnDeck = true,
@@ -744,14 +752,12 @@ Uploads an image to use as the background artwork for a library item, either fro
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
-using System;
 
 var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Library.PostMediaArtsAsync(
     ratingKey: 2268,
-    url: "https://api.mediux.pro/assets/fcfdc487-dd07-4993-a0c1-0a3015362e5b",
-    requestBody: System.Text.Encoding.UTF8.GetBytes("0xee51EFC6De")
+    url: "https://api.mediux.pro/assets/fcfdc487-dd07-4993-a0c1-0a3015362e5b"
 );
 
 // handle response
@@ -817,14 +823,12 @@ Uploads a poster to a library item, either from a local file or a remote URL
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
-using System;
 
 var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Library.PostMediaPosterAsync(
     ratingKey: 2268,
-    url: "https://api.mediux.pro/assets/fcfdc487-dd07-4993-a0c1-0a3015362e5b",
-    requestBody: System.Text.Encoding.UTF8.GetBytes("0x7C3d45ad4B")
+    url: "https://api.mediux.pro/assets/fcfdc487-dd07-4993-a0c1-0a3015362e5b"
 );
 
 // handle response
@@ -862,8 +866,8 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Library.GetMetadataChildrenAsync(
-    ratingKey: 1539.14D,
-    includeElements: "<value>"
+    ratingKey: 2403.67D,
+    includeElements: "Stream"
 );
 
 // handle response
@@ -904,7 +908,7 @@ var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Library.GetTopWatchedContentAsync(
     type: GetTopWatchedContentQueryParamType.TvShow,
-    includeGuids: 1
+    includeGuids: GetTopWatchedContentQueryParamIncludeGuids.Enable
 );
 
 // handle response
@@ -915,7 +919,7 @@ var res = await sdk.Library.GetTopWatchedContentAsync(
 | Parameter                                                                                                                                                                                    | Type                                                                                                                                                                                         | Required                                                                                                                                                                                     | Description                                                                                                                                                                                  | Example                                                                                                                                                                                      |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Type`                                                                                                                                                                                       | [GetTopWatchedContentQueryParamType](../../Models/Requests/GetTopWatchedContentQueryParamType.md)                                                                                            | :heavy_check_mark:                                                                                                                                                                           | The type of media to retrieve or filter by.<br/>1 = movie<br/>2 = show<br/>3 = season<br/>4 = episode<br/>E.g. A movie library will not return anything with type 3 as there are no seasons for movie libraries<br/> | 2                                                                                                                                                                                            |
-| `IncludeGuids`                                                                                                                                                                               | *long*                                                                                                                                                                                       | :heavy_minus_sign:                                                                                                                                                                           | Adds the Guids object to the response<br/>                                                                                                                                                   | 1                                                                                                                                                                                            |
+| `IncludeGuids`                                                                                                                                                                               | [GetTopWatchedContentQueryParamIncludeGuids](../../Models/Requests/GetTopWatchedContentQueryParamIncludeGuids.md)                                                                            | :heavy_minus_sign:                                                                                                                                                                           | Adds the Guid object to the response<br/>                                                                                                                                                    | 1                                                                                                                                                                                            |
 
 ### Response
 

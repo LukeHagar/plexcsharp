@@ -16,10 +16,15 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     {
 
         /// <summary>
-        /// Unique identifier for the actor or role.
+        /// The unique identifier for the role.<br/>
+        /// 
+        /// <remarks>
+        /// NOTE: This is different for each Plex server and is not globally unique.<br/>
+        /// 
+        /// </remarks>
         /// </summary>
         [JsonProperty("id")]
-        public long Id { get; set; } = default!;
+        public int Id { get; set; } = default!;
 
         /// <summary>
         /// The display tag for the actor (typically the actor&apos;s name).
@@ -40,13 +45,18 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public string Filter { get; set; } = default!;
 
         /// <summary>
-        /// A unique key associated with the actor&apos;s tag, used for internal identification.
+        /// A 24-character hexadecimal unique key associated with the actor&apos;s tag, used for internal identification.<br/>
+        /// 
+        /// <remarks>
+        /// NOTE: This is globally unique across all Plex Servers.<br/>
+        /// 
+        /// </remarks>
         /// </summary>
         [JsonProperty("tagKey")]
-        public string? TagKey { get; set; }
+        public string TagKey { get; set; } = default!;
 
         /// <summary>
-        /// The URL of the thumbnail image for the actor.
+        /// The absolute URL of the thumbnail image for the actor.
         /// </summary>
         [JsonProperty("thumb")]
         public string? Thumb { get; set; }

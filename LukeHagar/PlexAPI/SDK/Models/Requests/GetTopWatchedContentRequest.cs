@@ -16,16 +16,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     {
 
         /// <summary>
-        /// Adds the Guids object to the response<br/>
-        /// 
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=includeGuids")]
-        public long? IncludeGuids { get; set; }
-
-        /// <summary>
         /// The type of media to retrieve or filter by.<br/>
         /// 
         /// <remarks>
@@ -39,5 +29,15 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=type")]
         public GetTopWatchedContentQueryParamType Type { get; set; } = default!;
+
+        /// <summary>
+        /// Adds the Guid object to the response<br/>
+        /// 
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=includeGuids")]
+        public GetTopWatchedContentQueryParamIncludeGuids? IncludeGuids { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.GetTopWatchedContentQueryParamIncludeGuids.Disable;
     }
 }

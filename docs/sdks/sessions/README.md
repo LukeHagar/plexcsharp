@@ -56,7 +56,7 @@ using LukeHagar.PlexAPI.SDK.Models.Requests;
 var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Sessions.GetSessionHistoryAsync(
-    sort: "<value>",
+    sort: "viewedAt:desc",
     accountId: 1,
     filter: new QueryParamFilter() {},
     librarySectionID: 12

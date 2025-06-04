@@ -15,10 +15,10 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     {
 
         /// <summary>
-        /// the id of the library item to return the children of.
+        /// The id(s) of the library item(s) to return metadata for. Can be a single ID or comma-separated list of IDs.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=ratingKey")]
-        public long RatingKey { get; set; } = default!;
+        public string RatingKey { get; set; } = default!;
 
         /// <summary>
         /// Include concerts data if set to true.

@@ -18,6 +18,14 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     public class Country
     {
 
+        /// <summary>
+        /// The unique identifier for the country.<br/>
+        /// 
+        /// <remarks>
+        /// NOTE: This is different for each Plex server and is not globally unique.<br/>
+        /// 
+        /// </remarks>
+        /// </summary>
         [JsonProperty("id")]
         public int Id { get; set; } = default!;
 
@@ -28,6 +36,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public string Tag { get; set; } = default!;
 
         [JsonProperty("filter")]
-        public string? Filter { get; set; }
+        public string Filter { get; set; } = default!;
     }
 }

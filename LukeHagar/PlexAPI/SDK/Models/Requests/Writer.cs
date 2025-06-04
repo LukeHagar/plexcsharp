@@ -34,9 +34,15 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public string Tag { get; set; } = default!;
 
         /// <summary>
-        /// A unique key associated with the writers tag, used for internal identification.
+        /// A 24-character hexadecimal unique key associated with the writer’s tag, used for internal identification.
         /// </summary>
         [JsonProperty("tagKey")]
         public string? TagKey { get; set; }
+
+        /// <summary>
+        /// The absolute URL of the thumbnail image for the writer.
+        /// </summary>
+        [JsonProperty("thumb")]
+        public string? Thumb { get; set; }
     }
 }

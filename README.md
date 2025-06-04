@@ -82,7 +82,7 @@ var res = await sdk.Server.GetServerCapabilitiesAsync();
 * [GetLibraryDetails](docs/sdks/library/README.md#getlibrarydetails) - Get Library Details
 * [DeleteLibrary](docs/sdks/library/README.md#deletelibrary) - Delete Library Section
 * [GetLibraryItems](docs/sdks/library/README.md#getlibraryitems) - Get Library Items
-* [GetAllMediaLibrary](docs/sdks/library/README.md#getallmedialibrary) - Get all media of library
+* [GetLibrarySectionsAll](docs/sdks/library/README.md#getlibrarysectionsall) - Get Library section media by tag ALL
 * [GetRefreshLibraryMetadata](docs/sdks/library/README.md#getrefreshlibrarymetadata) - Refresh Metadata Of The Library
 * [GetSearchLibrary](docs/sdks/library/README.md#getsearchlibrary) - Search Library
 * [GetGenresLibrary](docs/sdks/library/README.md#getgenreslibrary) - Get Genres of library media
@@ -192,7 +192,7 @@ var res = await sdk.Server.GetServerCapabilitiesAsync();
 
 ### Server Variables
 
-The default server `https://10.10.10.47:32400` contains variables and is set to `https://10.10.10.47:32400` by default. To override default values, the following parameters are available when initializing the SDK client instance:
+The default server `{protocol}://{ip}:{port}` contains variables and is set to `https://10.10.10.47:32400` by default. To override default values, the following parameters are available when initializing the SDK client instance:
 
 | Variable   | Parameter                                               | Supported Values           | Default         | Description                                    |
 | ---------- | ------------------------------------------------------- | -------------------------- | --------------- | ---------------------------------------------- |
@@ -208,8 +208,8 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     protocol: "https",
-    ip: "e0c3:bcc0:6bac:dccc:c4ec:34b1:ca98:4cb9",
-    port: "40311",
+    ip: "4982:bc2a:b4f8:efb5:2394:5bc3:ab4f:0e6d",
+    port: "44765",
     accessToken: "<YOUR_API_KEY_HERE>"
 );
 

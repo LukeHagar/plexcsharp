@@ -37,8 +37,7 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Search.PerformSearchAsync(
-    query: "dylan",
-    sectionId: 9372.7D,
+    query: "arnold",
     limit: 5D
 );
 
@@ -83,7 +82,6 @@ var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Search.PerformVoiceSearchAsync(
     query: "dead+poop",
-    sectionId: 4094.8D,
     limit: 5D
 );
 

@@ -18,8 +18,16 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     public class Genre
     {
 
+        /// <summary>
+        /// The unique identifier for the genre.<br/>
+        /// 
+        /// <remarks>
+        /// NOTE: This is different for each Plex server and is not globally unique.<br/>
+        /// 
+        /// </remarks>
+        /// </summary>
         [JsonProperty("id")]
-        public long Id { get; set; } = default!;
+        public int Id { get; set; } = default!;
 
         [JsonProperty("filter")]
         public string Filter { get; set; } = default!;

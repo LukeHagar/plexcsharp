@@ -21,14 +21,10 @@ Get Global Hubs filtered by the parameters provided.
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
-using LukeHagar.PlexAPI.SDK.Models.Requests;
 
 var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
-var res = await sdk.Hubs.GetGlobalHubsAsync(
-    count: 1262.49D,
-    onlyTransient: OnlyTransient.One
-);
+var res = await sdk.Hubs.GetGlobalHubsAsync();
 
 // handle response
 ```
@@ -67,9 +63,10 @@ using LukeHagar.PlexAPI.SDK.Models.Requests;
 var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 GetRecentlyAddedRequest req = new GetRecentlyAddedRequest() {
-    ContentDirectoryID = 470161,
+    ContentDirectoryID = 39486,
     SectionID = 2,
     Type = LukeHagar.PlexAPI.SDK.Models.Requests.Type.TvShow,
+    IncludeMeta = IncludeMeta.Enable,
 };
 
 var res = await sdk.Hubs.GetRecentlyAddedAsync(req);
@@ -103,15 +100,10 @@ This endpoint will return a list of library specific hubs
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
-using LukeHagar.PlexAPI.SDK.Models.Requests;
 
 var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
-var res = await sdk.Hubs.GetLibraryHubsAsync(
-    sectionId: 6728.76D,
-    count: 639.24D,
-    onlyTransient: QueryParamOnlyTransient.One
-);
+var res = await sdk.Hubs.GetLibraryHubsAsync(sectionId: 492.74D);
 
 // handle response
 ```

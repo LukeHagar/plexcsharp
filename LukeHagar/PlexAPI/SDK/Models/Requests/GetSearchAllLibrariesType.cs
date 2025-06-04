@@ -14,7 +14,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using System;
     
     /// <summary>
-    /// The type of media content<br/>
+    /// The type of media content in the Plex library. This can represent videos, music, or photos.<br/>
     /// 
     /// <remarks>
     /// 
@@ -34,6 +34,14 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         Artist,
         [JsonProperty("album")]
         Album,
+        [JsonProperty("track")]
+        Track,
+        [JsonProperty("photoalbum")]
+        PhotoAlbum,
+        [JsonProperty("photo")]
+        Photo,
+        [JsonProperty("collection")]
+        Collection,
     }
 
     public static class GetSearchAllLibrariesTypeExtension

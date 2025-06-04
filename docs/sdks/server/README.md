@@ -207,10 +207,9 @@ var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 GetResizedPhotoRequest req = new GetResizedPhotoRequest() {
     Width = 110D,
     Height = 165D,
-    Opacity = 100,
-    Blur = 20D,
+    Blur = 0D,
     MinSize = MinSize.Zero,
-    Upscale = Upscale.One,
+    Upscale = Upscale.Zero,
     Url = "/library/metadata/49564/thumb/1654258204",
 };
 

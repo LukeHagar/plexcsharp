@@ -34,13 +34,13 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public string Filter { get; set; } = default!;
 
         /// <summary>
-        /// A unique key associated with the director&apos;s tag, used for internal identification.
+        /// A unique 24-character hexadecimal key associated with the director&apos;s tag, used for internal identification.
         /// </summary>
         [JsonProperty("tagKey")]
-        public string? TagKey { get; set; }
+        public string TagKey { get; set; } = default!;
 
         /// <summary>
-        /// The URL of the thumbnail image for the director.
+        /// The absolute URL of the thumbnail image for the director.
         /// </summary>
         [JsonProperty("thumb")]
         public string? Thumb { get; set; }

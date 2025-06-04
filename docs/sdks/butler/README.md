@@ -125,7 +125,7 @@ using LukeHagar.PlexAPI.SDK.Models.Requests;
 
 var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
-var res = await sdk.Butler.StartTaskAsync(taskName: TaskName.CleanOldBundles);
+var res = await sdk.Butler.StartTaskAsync(taskName: TaskName.RefreshPeriodicMetadata);
 
 // handle response
 ```
@@ -162,7 +162,7 @@ using LukeHagar.PlexAPI.SDK.Models.Requests;
 
 var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
-var res = await sdk.Butler.StopTaskAsync(taskName: PathParamTaskName.BackupDatabase);
+var res = await sdk.Butler.StopTaskAsync(taskName: PathParamTaskName.CleanOldCacheFiles);
 
 // handle response
 ```

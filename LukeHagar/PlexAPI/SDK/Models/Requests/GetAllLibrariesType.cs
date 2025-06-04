@@ -30,6 +30,14 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         Artist,
         [JsonProperty("album")]
         Album,
+        [JsonProperty("track")]
+        Track,
+        [JsonProperty("photoalbum")]
+        PhotoAlbum,
+        [JsonProperty("photo")]
+        Photo,
+        [JsonProperty("collection")]
+        Collection,
     }
 
     public static class GetAllLibrariesTypeExtension

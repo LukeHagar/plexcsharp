@@ -39,9 +39,9 @@ var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 CreatePlaylistRequest req = new CreatePlaylistRequest() {
     Title = "<value>",
-    Type = CreatePlaylistQueryParamType.Photo,
+    Type = CreatePlaylistQueryParamType.Audio,
     Smart = Smart.One,
-    Uri = "https://hoarse-testing.info/",
+    Uri = "https://short-term-disconnection.name/",
 };
 
 var res = await sdk.Playlists.CreatePlaylistAsync(req);
@@ -76,14 +76,10 @@ Get All Playlists given the specified filters.
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
-using LukeHagar.PlexAPI.SDK.Models.Requests;
 
 var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
-var res = await sdk.Playlists.GetPlaylistsAsync(
-    playlistType: PlaylistType.Audio,
-    smart: QueryParamSmart.Zero
-);
+var res = await sdk.Playlists.GetPlaylistsAsync();
 
 // handle response
 ```
@@ -121,7 +117,7 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
-var res = await sdk.Playlists.GetPlaylistAsync(playlistID: 4109.48D);
+var res = await sdk.Playlists.GetPlaylistAsync(playlistID: 8419.53D);
 
 // handle response
 ```
@@ -157,7 +153,7 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
-var res = await sdk.Playlists.DeletePlaylistAsync(playlistID: 216.22D);
+var res = await sdk.Playlists.DeletePlaylistAsync(playlistID: 3432.93D);
 
 // handle response
 ```
@@ -193,11 +189,7 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
-var res = await sdk.Playlists.UpdatePlaylistAsync(
-    playlistID: 3915D,
-    title: "<value>",
-    summary: "<value>"
-);
+var res = await sdk.Playlists.UpdatePlaylistAsync(playlistID: 1579.66D);
 
 // handle response
 ```
@@ -240,7 +232,7 @@ using LukeHagar.PlexAPI.SDK.Models.Requests;
 var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Playlists.GetPlaylistContentsAsync(
-    playlistID: 5004.46D,
+    playlistID: 5535.42D,
     type: GetPlaylistContentsQueryParamType.TvShow
 );
 
@@ -279,7 +271,7 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
-var res = await sdk.Playlists.ClearPlaylistContentsAsync(playlistID: 1893.18D);
+var res = await sdk.Playlists.ClearPlaylistContentsAsync(playlistID: 4137.37D);
 
 // handle response
 ```
@@ -317,7 +309,7 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Playlists.AddPlaylistContentsAsync(
-    playlistID: 8502.01D,
+    playlistID: 7013.44D,
     uri: "server://12345/com.plexapp.plugins.library/library/metadata/1",
     playQueueID: 123D
 );
@@ -361,7 +353,7 @@ var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 var res = await sdk.Playlists.UploadPlaylistAsync(
     path: "/home/barkley/playlist.m3u",
-    force: QueryParamForce.Zero,
+    force: QueryParamForce.One,
     sectionID: 1
 );
 

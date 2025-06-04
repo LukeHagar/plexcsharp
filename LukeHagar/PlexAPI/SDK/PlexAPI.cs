@@ -255,41 +255,6 @@ namespace LukeHagar.PlexAPI.SDK
         public IUsers Users { get; }
     }
 
-    public class SDKConfig
-    {
-        /// <summary>
-        /// List of server URLs available to the SDK.
-        /// </summary>
-        public static readonly string[] ServerList = {
-            "https://10.10.10.47:32400",
-        };
-
-        public string ServerUrl = "";
-        public int ServerIndex = 0;
-        public List<Dictionary<string, string>> ServerDefaults = new List<Dictionary<string, string>>();
-        public SDKHooks Hooks = new SDKHooks();
-        public RetryConfig? RetryConfig = null;
-
-        public string GetTemplatedServerUrl()
-        {
-            if (!String.IsNullOrEmpty(this.ServerUrl))
-            {
-                return Utilities.TemplateUrl(Utilities.RemoveSuffix(this.ServerUrl, "/"), new Dictionary<string, string>());
-            }
-            return Utilities.TemplateUrl(SDKConfig.ServerList[this.ServerIndex], this.ServerDefaults[this.ServerIndex]);
-        }
-
-        public ISpeakeasyHttpClient InitHooks(ISpeakeasyHttpClient client)
-        {
-            string preHooksUrl = GetTemplatedServerUrl();
-            var (postHooksUrl, postHooksClient) = this.Hooks.SDKInit(preHooksUrl, client);
-            if (preHooksUrl != postHooksUrl)
-            {
-                this.ServerUrl = postHooksUrl;
-            }
-            return postHooksClient;
-        }
-    }
 
     /// <summary>
     /// Plex-API: An Open API Spec for interacting with Plex.tv and Plex Media Server
@@ -327,14 +292,9 @@ namespace LukeHagar.PlexAPI.SDK
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.14.11";
-        private const string _sdkGenVersion = "2.597.9";
+        private const string _sdkVersion = "0.15.0";
+        private const string _sdkGenVersion = "2.620.2";
         private const string _openapiDocVersion = "0.0.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.14.11 2.597.9 0.0.3 LukeHagar.PlexAPI.SDK";
-        private string _serverUrl = "";
-        private int _serverIndex = 0;
-        private ISpeakeasyHttpClient _client;
-        private Func<LukeHagar.PlexAPI.SDK.Models.Components.Security>? _securitySource;
         public IServer Server { get; private set; }
         public IMedia Media { get; private set; }
         public IVideo Video { get; private set; }
@@ -353,6 +313,46 @@ namespace LukeHagar.PlexAPI.SDK
         public IUpdater Updater { get; private set; }
         public IUsers Users { get; private set; }
 
+        public PlexAPI(SDKConfig config)
+        {
+            SDKConfiguration = config;
+            InitHooks();
+
+            Server = new Server(SDKConfiguration);
+
+            Media = new Media(SDKConfiguration);
+
+            Video = new Video(SDKConfiguration);
+
+            Activities = new Activities(SDKConfiguration);
+
+            Butler = new Butler(SDKConfiguration);
+
+            Plex = new Plex(SDKConfiguration);
+
+            Hubs = new Hubs(SDKConfiguration);
+
+            Search = new Search(SDKConfiguration);
+
+            Library = new Library(SDKConfiguration);
+
+            Watchlist = new Watchlist(SDKConfiguration);
+
+            Log = new Log(SDKConfiguration);
+
+            Playlists = new Playlists(SDKConfiguration);
+
+            Authentication = new Authentication(SDKConfiguration);
+
+            Statistics = new Statistics(SDKConfiguration);
+
+            Sessions = new Sessions(SDKConfiguration);
+
+            Updater = new Updater(SDKConfiguration);
+
+            Users = new Users(SDKConfiguration);
+        }
+
         public PlexAPI(string? accessToken = null, Func<string>? accessTokenSource = null, int? serverIndex = null, ServerProtocol? protocol = null, string?  ip = null, string?  port = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null, RetryConfig? retryConfig = null)
         {
             if (serverIndex != null)
@@ -361,7 +361,6 @@ namespace LukeHagar.PlexAPI.SDK
                 {
                     throw new Exception($"Invalid server index {serverIndex.Value}");
                 }
-                _serverIndex = serverIndex.Value;
             }
 
             if (serverUrl != null)
@@ -370,19 +369,8 @@ namespace LukeHagar.PlexAPI.SDK
                 {
                     serverUrl = Utilities.TemplateUrl(serverUrl, urlParams);
                 }
-                _serverUrl = serverUrl;
             }
-            List<Dictionary<string, string>> serverDefaults = new List<Dictionary<string, string>>()
-            {
-                new Dictionary<string, string>()
-                {
-                    {"protocol", protocol == null ? "https" : ServerProtocolExtension.Value(protocol.Value)},
-                    {"ip", ip == null ? "10.10.10.47" : ip},
-                    {"port", port == null ? "32400" : port},
-                },
-            };
-
-            _client = client ?? new SpeakeasyHttpClient();
+            Func<LukeHagar.PlexAPI.SDK.Models.Components.Security>? _securitySource = null;
 
             if(accessTokenSource != null)
             {
@@ -393,66 +381,154 @@ namespace LukeHagar.PlexAPI.SDK
                 _securitySource = () => new LukeHagar.PlexAPI.SDK.Models.Components.Security() { AccessToken = accessToken };
             }
 
-            SDKConfiguration = new SDKConfig()
+            SDKConfiguration = new SDKConfig(client)
             {
-                ServerDefaults = serverDefaults,
-                ServerIndex = _serverIndex,
-                ServerUrl = _serverUrl,
+                ServerIndex = serverIndex == null ? 0 : serverIndex.Value,
+                ServerUrl = serverUrl == null ? "" : serverUrl,
+                SecuritySource = _securitySource,
                 RetryConfig = retryConfig
             };
 
-            _client = SDKConfiguration.InitHooks(_client);
+            if (protocol != null)
+            {
+                SDKConfiguration.SetServerVariable("protocol", ServerProtocolExtension.Value(protocol.Value));
+            }
 
+            if (ip != null)
+            {
+                SDKConfiguration.SetServerVariable("ip", ip);
+            }
 
-            Server = new Server(_client, _securitySource, _serverUrl, SDKConfiguration);
+            if (port != null)
+            {
+                SDKConfiguration.SetServerVariable("port", port);
+            }
 
+            InitHooks();
 
-            Media = new Media(_client, _securitySource, _serverUrl, SDKConfiguration);
+            Server = new Server(SDKConfiguration);
 
+            Media = new Media(SDKConfiguration);
 
-            Video = new Video(_client, _securitySource, _serverUrl, SDKConfiguration);
+            Video = new Video(SDKConfiguration);
 
+            Activities = new Activities(SDKConfiguration);
 
-            Activities = new Activities(_client, _securitySource, _serverUrl, SDKConfiguration);
+            Butler = new Butler(SDKConfiguration);
 
+            Plex = new Plex(SDKConfiguration);
 
-            Butler = new Butler(_client, _securitySource, _serverUrl, SDKConfiguration);
+            Hubs = new Hubs(SDKConfiguration);
 
+            Search = new Search(SDKConfiguration);
 
-            Plex = new Plex(_client, _securitySource, _serverUrl, SDKConfiguration);
+            Library = new Library(SDKConfiguration);
 
+            Watchlist = new Watchlist(SDKConfiguration);
 
-            Hubs = new Hubs(_client, _securitySource, _serverUrl, SDKConfiguration);
+            Log = new Log(SDKConfiguration);
 
+            Playlists = new Playlists(SDKConfiguration);
 
-            Search = new Search(_client, _securitySource, _serverUrl, SDKConfiguration);
+            Authentication = new Authentication(SDKConfiguration);
 
+            Statistics = new Statistics(SDKConfiguration);
 
-            Library = new Library(_client, _securitySource, _serverUrl, SDKConfiguration);
+            Sessions = new Sessions(SDKConfiguration);
 
+            Updater = new Updater(SDKConfiguration);
 
-            Watchlist = new Watchlist(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
-            Log = new Log(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
-            Playlists = new Playlists(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
-            Authentication = new Authentication(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
-            Statistics = new Statistics(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
-            Sessions = new Sessions(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
-            Updater = new Updater(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
-            Users = new Users(_client, _securitySource, _serverUrl, SDKConfiguration);
+            Users = new Users(SDKConfiguration);
         }
+
+        private void InitHooks()
+        {
+            string preHooksUrl = SDKConfiguration.GetTemplatedServerUrl();
+            var (postHooksUrl, postHooksClient) = SDKConfiguration.Hooks.SDKInit(preHooksUrl, SDKConfiguration.Client);
+            var config = SDKConfiguration;
+            if (preHooksUrl != postHooksUrl)
+            {
+                config.ServerUrl = postHooksUrl;
+            }
+            config.Client = postHooksClient;
+            SDKConfiguration = config;
+        }
+
+        public class SDKBuilder
+        {
+            private SDKConfig _sdkConfig = new SDKConfig(client: new SpeakeasyHttpClient());
+
+            public SDKBuilder() { }
+
+            public SDKBuilder WithServerIndex(int serverIndex)
+            {
+                if (serverIndex < 0 || serverIndex >= SDKConfig.ServerList.Length)
+                {
+                    throw new Exception($"Invalid server index {serverIndex}");
+                }
+                _sdkConfig.ServerIndex = serverIndex;
+                return this;
+            }
+
+            public SDKBuilder WithProtocol(ServerProtocol protocol)
+            {
+                _sdkConfig.SetServerVariable("protocol", ServerProtocolExtension.Value(protocol));
+                return this;
+            }
+
+            public SDKBuilder WithIp(string ip)
+            {
+                _sdkConfig.SetServerVariable("ip", ip);
+                return this;
+            }
+
+            public SDKBuilder WithPort(string port)
+            {
+                _sdkConfig.SetServerVariable("port", port);
+                return this;
+            }
+
+            public SDKBuilder WithServerUrl(string serverUrl, Dictionary<string, string>? serverVariables = null)
+            {
+                if (serverVariables != null)
+                {
+                    serverUrl = Utilities.TemplateUrl(serverUrl, serverVariables);
+                }
+                _sdkConfig.ServerUrl = serverUrl;
+                return this;
+            }
+
+            public SDKBuilder WithAccessTokenSource(Func<string> accessTokenSource)
+            {
+                _sdkConfig.SecuritySource = () => new LukeHagar.PlexAPI.SDK.Models.Components.Security() { AccessToken = accessTokenSource() };
+                return this;
+            }
+
+            public SDKBuilder WithAccessToken(string accessToken)
+            {
+                _sdkConfig.SecuritySource = () => new LukeHagar.PlexAPI.SDK.Models.Components.Security() { AccessToken = accessToken };
+                return this;
+            }
+
+            public SDKBuilder WithClient(ISpeakeasyHttpClient client)
+            {
+                _sdkConfig.Client = client;
+                return this;
+            }
+
+            public SDKBuilder WithRetryConfig(RetryConfig retryConfig)
+            {
+                _sdkConfig.RetryConfig = retryConfig;
+                return this;
+            }
+
+            public PlexAPI Build()
+            {
+              return new PlexAPI(_sdkConfig);
+            }
+
+        }
+
+        public static SDKBuilder Builder() => new SDKBuilder();
     }
 }

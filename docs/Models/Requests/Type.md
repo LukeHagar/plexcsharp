@@ -11,12 +11,14 @@ E.g. A movie library will not return anything with type 3 as there are no season
 
 ## Values
 
-| Name      | Value     |
-| --------- | --------- |
-| `Movie`   | 1         |
-| `TvShow`  | 2         |
-| `Season`  | 3         |
-| `Episode` | 4         |
-| `Audio`   | 8         |
-| `Album`   | 9         |
-| `Track`   | 10        |
+| Name         | Value        |
+| ------------ | ------------ |
+| `Movie`      | 1            |
+| `TvShow`     | 2            |
+| `Season`     | 3            |
+| `Episode`    | 4            |
+| `Artist`     | 5            |
+| `Album`      | 6            |
+| `Track`      | 7            |
+| `PhotoAlbum` | 8            |
+| `Photo`      | 9            |

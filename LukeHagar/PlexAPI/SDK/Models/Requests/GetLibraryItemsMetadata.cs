@@ -51,7 +51,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public string? LibrarySectionKey { get; set; }
 
         /// <summary>
-        /// The type of media content<br/>
+        /// The type of media content in the Plex library. This can represent videos, music, or photos.<br/>
         /// 
         /// <remarks>
         /// 

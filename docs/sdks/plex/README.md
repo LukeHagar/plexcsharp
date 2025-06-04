@@ -250,7 +250,7 @@ using LukeHagar.PlexAPI.SDK.Models.Requests;
 var sdk = new PlexAPI();
 
 GetTokenByPinIdRequest req = new GetTokenByPinIdRequest() {
-    PinID = 408895,
+    PinID = 232248,
     ClientID = "3381b62b-9ab7-4e37-827b-203e9809eb58",
     ClientName = "Plex for Roku",
     DeviceNickname = "Roku 3",

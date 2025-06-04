@@ -24,7 +24,7 @@ using LukeHagar.PlexAPI.SDK.Models.Requests;
 var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
 GetWatchListRequest req = new GetWatchListRequest() {
-    Filter = Filter.Available,
+    Filter = Filter.Released,
     XPlexToken = "CV5xoxjTpFKUzBTShsaf",
 };
 

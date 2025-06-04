@@ -121,8 +121,8 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 
 var sdk = new PlexAPI(
     protocol: "https",
-    ip: "e0c3:bcc0:6bac:dccc:c4ec:34b1:ca98:4cb9",
-    port: "40311",
+    ip: "4982:bc2a:b4f8:efb5:2394:5bc3:ab4f:0e6d",
+    port: "44765",
     accessToken: "<YOUR_API_KEY_HERE>"
 );
 

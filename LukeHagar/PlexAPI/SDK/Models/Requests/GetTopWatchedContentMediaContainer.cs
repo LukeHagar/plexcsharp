@@ -17,20 +17,35 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     public class GetTopWatchedContentMediaContainer
     {
 
+        /// <summary>
+        /// Number of media items returned in this response.
+        /// </summary>
         [JsonProperty("size")]
-        public int? Size { get; set; }
+        public int Size { get; set; } = default!;
 
+        /// <summary>
+        /// Indicates whether syncing is allowed.
+        /// </summary>
         [JsonProperty("allowSync")]
-        public bool? AllowSync { get; set; }
+        public bool AllowSync { get; set; } = default!;
 
+        /// <summary>
+        /// An plugin identifier for the media container.
+        /// </summary>
         [JsonProperty("identifier")]
-        public string? Identifier { get; set; }
+        public string Identifier { get; set; } = default!;
 
+        /// <summary>
+        /// The prefix used for media tag resource paths.
+        /// </summary>
         [JsonProperty("mediaTagPrefix")]
-        public string? MediaTagPrefix { get; set; }
+        public string MediaTagPrefix { get; set; } = default!;
 
+        /// <summary>
+        /// The version number for media tags.
+        /// </summary>
         [JsonProperty("mediaTagVersion")]
-        public int? MediaTagVersion { get; set; }
+        public long MediaTagVersion { get; set; } = default!;
 
         [JsonProperty("Metadata")]
         public List<GetTopWatchedContentMetadata>? Metadata { get; set; }

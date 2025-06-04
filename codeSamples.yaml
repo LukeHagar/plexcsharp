@@ -187,7 +187,7 @@ actions:
 
             var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
-            var res = await sdk.Butler.StopTaskAsync(taskName: PathParamTaskName.BackupDatabase);
+            var res = await sdk.Butler.StopTaskAsync(taskName: PathParamTaskName.CleanOldCacheFiles);
 
             // handle response
   - target: $["paths"]["/butler/{taskName}"]["post"]
@@ -202,7 +202,7 @@ actions:
 
             var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
-            var res = await sdk.Butler.StartTaskAsync(taskName: TaskName.CleanOldBundles);
+            var res = await sdk.Butler.StartTaskAsync(taskName: TaskName.RefreshPeriodicMetadata);
 
             // handle response
   - target: $["paths"]["/clients"]["get"]
@@ -296,14 +296,10 @@ actions:
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
-            using LukeHagar.PlexAPI.SDK.Models.Requests;
 
             var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
-            var res = await sdk.Hubs.GetGlobalHubsAsync(
-                count: 1262.49D,
-                onlyTransient: OnlyTransient.One
-            );
+            var res = await sdk.Hubs.GetGlobalHubsAsync();
 
             // handle response
   - target: $["paths"]["/hubs/home/recentlyAdded"]["get"]
@@ -319,9 +315,10 @@ actions:
             var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
             GetRecentlyAddedRequest req = new GetRecentlyAddedRequest() {
-                ContentDirectoryID = 470161,
+                ContentDirectoryID = 39486,
                 SectionID = 2,
                 Type = LukeHagar.PlexAPI.SDK.Models.Requests.Type.TvShow,
+                IncludeMeta = IncludeMeta.Enable,
             };
 
             var res = await sdk.Hubs.GetRecentlyAddedAsync(req);
@@ -339,8 +336,7 @@ actions:
             var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
             var res = await sdk.Search.PerformSearchAsync(
-                query: "dylan",
-                sectionId: 9372.7D,
+                query: "arnold",
                 limit: 5D
             );
 
@@ -358,7 +354,6 @@ actions:
 
             var res = await sdk.Search.PerformVoiceSearchAsync(
                 query: "dead+poop",
-                sectionId: 4094.8D,
                 limit: 5D
             );
 
@@ -371,15 +366,10 @@ actions:
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
-            using LukeHagar.PlexAPI.SDK.Models.Requests;
 
             var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
-            var res = await sdk.Hubs.GetLibraryHubsAsync(
-                sectionId: 6728.76D,
-                count: 639.24D,
-                onlyTransient: QueryParamOnlyTransient.One
-            );
+            var res = await sdk.Hubs.GetLibraryHubsAsync(sectionId: 492.74D);
 
             // handle response
   - target: $["paths"]["/identity"]["get"]
@@ -409,7 +399,7 @@ actions:
 
             var res = await sdk.Library.GetTopWatchedContentAsync(
                 type: GetTopWatchedContentQueryParamType.TvShow,
-                includeGuids: 1
+                includeGuids: GetTopWatchedContentQueryParamIncludeGuids.Enable
             );
 
             // handle response
@@ -424,10 +414,7 @@ actions:
 
             var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
-            var res = await sdk.Library.GetFileHashAsync(
-                url: "file://C:\Image.png&type=13",
-                type: 4462.17D
-            );
+            var res = await sdk.Library.GetFileHashAsync(url: "file://C:\Image.png&type=13");
 
             // handle response
   - target: $["paths"]["/library/metadata/{ratingKey}"]["get"]
@@ -443,7 +430,7 @@ actions:
             var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
             GetMediaMetaDataRequest req = new GetMediaMetaDataRequest() {
-                RatingKey = 9518,
+                RatingKey = "21119,21617",
                 IncludeConcerts = true,
                 IncludeExtras = true,
                 IncludeOnDeck = true,
@@ -484,14 +471,12 @@ actions:
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
-            using System;
 
             var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
             var res = await sdk.Library.PostMediaArtsAsync(
                 ratingKey: 2268,
-                url: "https://api.mediux.pro/assets/fcfdc487-dd07-4993-a0c1-0a3015362e5b",
-                requestBody: System.Text.Encoding.UTF8.GetBytes("0xee51EFC6De")
+                url: "https://api.mediux.pro/assets/fcfdc487-dd07-4993-a0c1-0a3015362e5b"
             );
 
             // handle response
@@ -531,8 +516,8 @@ actions:
             var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
             var res = await sdk.Library.GetMetadataChildrenAsync(
-                ratingKey: 1539.14D,
-                includeElements: "<value>"
+                ratingKey: 2403.67D,
+                includeElements: "Stream"
             );
 
             // handle response
@@ -558,14 +543,12 @@ actions:
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
-            using System;
 
             var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
             var res = await sdk.Library.PostMediaPosterAsync(
                 ratingKey: 2268,
-                url: "https://api.mediux.pro/assets/fcfdc487-dd07-4993-a0c1-0a3015362e5b",
-                requestBody: System.Text.Encoding.UTF8.GetBytes("0x7C3d45ad4B")
+                url: "https://api.mediux.pro/assets/fcfdc487-dd07-4993-a0c1-0a3015362e5b"
             );
 
             // handle response
@@ -624,6 +607,7 @@ actions:
                 },
                 SectionID = 2,
                 Type = QueryParamType.TvShow,
+                IncludeMeta = QueryParamIncludeMeta.Enable,
             };
 
             var res = await sdk.Library.GetRecentlyAddedLibraryAsync(req);
@@ -648,6 +632,8 @@ actions:
                 SearchTypes = new List<SearchTypes>() {
                     SearchTypes.People,
                 },
+                IncludeCollections = GetSearchAllLibrariesQueryParamIncludeCollections.Enable,
+                IncludeExternalMedia = GetSearchAllLibrariesQueryParamIncludeExternalMedia.Enable,
             };
 
             var res = await sdk.Library.GetSearchAllLibrariesAsync(req);
@@ -680,7 +666,7 @@ actions:
             var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
             GetWatchListRequest req = new GetWatchListRequest() {
-                Filter = Filter.Available,
+                Filter = Filter.Released,
                 XPlexToken = "CV5xoxjTpFKUzBTShsaf",
             };
 
@@ -749,12 +735,17 @@ actions:
 
             var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
-            GetAllMediaLibraryRequest req = new GetAllMediaLibraryRequest() {
+            GetLibrarySectionsAllRequest req = new GetLibrarySectionsAllRequest() {
                 SectionKey = 9518,
-                Type = GetAllMediaLibraryQueryParamType.TvShow,
+                Type = GetLibrarySectionsAllQueryParamType.TvShow,
+                IncludeMeta = GetLibrarySectionsAllQueryParamIncludeMeta.Enable,
+                IncludeGuids = QueryParamIncludeGuids.Enable,
+                IncludeAdvanced = IncludeAdvanced.Enable,
+                IncludeCollections = QueryParamIncludeCollections.Enable,
+                IncludeExternalMedia = QueryParamIncludeExternalMedia.Enable,
             };
 
-            var res = await sdk.Library.GetAllMediaLibraryAsync(req);
+            var res = await sdk.Library.GetLibrarySectionsAllAsync(req);
 
             // handle response
   - target: $["paths"]["/library/sections/{sectionKey}/country"]["get"]
@@ -807,7 +798,7 @@ actions:
 
             var res = await sdk.Library.GetRefreshLibraryMetadataAsync(
                 sectionKey: 9518,
-                force: Force.One
+                force: Force.Zero
             );
 
             // handle response
@@ -842,9 +833,11 @@ actions:
             var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
             GetLibraryItemsRequest req = new GetLibraryItemsRequest() {
-                Tag = Tag.Edition,
+                Tag = Tag.Newest,
+                IncludeGuids = IncludeGuids.Enable,
                 Type = GetLibraryItemsQueryParamType.TvShow,
                 SectionKey = 9518,
+                IncludeMeta = GetLibraryItemsQueryParamIncludeMeta.Enable,
             };
 
             var res = await sdk.Library.GetLibraryItemsAsync(req);
@@ -944,10 +937,9 @@ actions:
             GetResizedPhotoRequest req = new GetResizedPhotoRequest() {
                 Width = 110D,
                 Height = 165D,
-                Opacity = 100,
-                Blur = 20D,
+                Blur = 0D,
                 MinSize = MinSize.Zero,
-                Upscale = Upscale.One,
+                Upscale = Upscale.Zero,
                 Url = "/library/metadata/49564/thumb/1654258204",
             };
 
@@ -988,7 +980,7 @@ actions:
             var sdk = new PlexAPI();
 
             GetTokenByPinIdRequest req = new GetTokenByPinIdRequest() {
-                PinID = 408895,
+                PinID = 232248,
                 ClientID = "3381b62b-9ab7-4e37-827b-203e9809eb58",
                 ClientName = "Plex for Roku",
                 DeviceNickname = "Roku 3",
@@ -1007,14 +999,10 @@ actions:
           source: |-
             using LukeHagar.PlexAPI.SDK;
             using LukeHagar.PlexAPI.SDK.Models.Components;
-            using LukeHagar.PlexAPI.SDK.Models.Requests;
 
             var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
-            var res = await sdk.Playlists.GetPlaylistsAsync(
-                playlistType: PlaylistType.Audio,
-                smart: QueryParamSmart.Zero
-            );
+            var res = await sdk.Playlists.GetPlaylistsAsync();
 
             // handle response
   - target: $["paths"]["/playlists"]["post"]
@@ -1031,9 +1019,9 @@ actions:
 
             CreatePlaylistRequest req = new CreatePlaylistRequest() {
                 Title = "<value>",
-                Type = CreatePlaylistQueryParamType.Photo,
+                Type = CreatePlaylistQueryParamType.Audio,
                 Smart = Smart.One,
-                Uri = "https://hoarse-testing.info/",
+                Uri = "https://short-term-disconnection.name/",
             };
 
             var res = await sdk.Playlists.CreatePlaylistAsync(req);
@@ -1053,7 +1041,7 @@ actions:
 
             var res = await sdk.Playlists.UploadPlaylistAsync(
                 path: "/home/barkley/playlist.m3u",
-                force: QueryParamForce.Zero,
+                force: QueryParamForce.One,
                 sectionID: 1
             );
 
@@ -1069,7 +1057,7 @@ actions:
 
             var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
-            var res = await sdk.Playlists.DeletePlaylistAsync(playlistID: 216.22D);
+            var res = await sdk.Playlists.DeletePlaylistAsync(playlistID: 3432.93D);
 
             // handle response
   - target: $["paths"]["/playlists/{playlistID}"]["get"]
@@ -1083,7 +1071,7 @@ actions:
 
             var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
-            var res = await sdk.Playlists.GetPlaylistAsync(playlistID: 4109.48D);
+            var res = await sdk.Playlists.GetPlaylistAsync(playlistID: 8419.53D);
 
             // handle response
   - target: $["paths"]["/playlists/{playlistID}"]["put"]
@@ -1097,11 +1085,7 @@ actions:
 
             var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
-            var res = await sdk.Playlists.UpdatePlaylistAsync(
-                playlistID: 3915D,
-                title: "<value>",
-                summary: "<value>"
-            );
+            var res = await sdk.Playlists.UpdatePlaylistAsync(playlistID: 1579.66D);
 
             // handle response
   - target: $["paths"]["/playlists/{playlistID}/items"]["delete"]
@@ -1115,7 +1099,7 @@ actions:
 
             var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
-            var res = await sdk.Playlists.ClearPlaylistContentsAsync(playlistID: 1893.18D);
+            var res = await sdk.Playlists.ClearPlaylistContentsAsync(playlistID: 4137.37D);
 
             // handle response
   - target: $["paths"]["/playlists/{playlistID}/items"]["get"]
@@ -1131,7 +1115,7 @@ actions:
             var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
             var res = await sdk.Playlists.GetPlaylistContentsAsync(
-                playlistID: 5004.46D,
+                playlistID: 5535.42D,
                 type: GetPlaylistContentsQueryParamType.TvShow
             );
 
@@ -1148,7 +1132,7 @@ actions:
             var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
             var res = await sdk.Playlists.AddPlaylistContentsAsync(
-                playlistID: 8502.01D,
+                playlistID: 7013.44D,
                 uri: "server://12345/com.plexapp.plugins.library/library/metadata/1",
                 playQueueID: 123D
             );
@@ -1303,7 +1287,7 @@ actions:
             var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
 
             var res = await sdk.Sessions.GetSessionHistoryAsync(
-                sort: "<value>",
+                sort: "viewedAt:desc",
                 accountId: 1,
                 filter: new QueryParamFilter() {},
                 librarySectionID: 12

@@ -391,6 +391,9 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         [JsonProperty("UltraBlurColors")]
         public UltraBlurColors? UltraBlurColors { get; set; }
 
+        [JsonProperty("Guid")]
+        public List<Guids>? Guids { get; set; }
+
         [JsonProperty("Media")]
         public List<Models.Requests.Media>? Media { get; set; }
 
@@ -420,9 +423,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
 
         [JsonProperty("Location")]
         public List<Location>? Location { get; set; }
-
-        [JsonProperty("Guid")]
-        public List<Guids>? Guids { get; set; }
 
         [JsonProperty("Collection")]
         public List<Collection>? Collection { get; set; }

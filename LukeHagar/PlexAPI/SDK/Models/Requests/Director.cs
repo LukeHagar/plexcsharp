@@ -16,9 +16,33 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     {
 
         /// <summary>
+        /// Unique identifier for the director.
+        /// </summary>
+        [JsonProperty("id")]
+        public int Id { get; set; } = default!;
+
+        /// <summary>
+        /// The filter string used to query this director.
+        /// </summary>
+        [JsonProperty("filter")]
+        public string Filter { get; set; } = default!;
+
+        /// <summary>
         /// The role of Director
         /// </summary>
         [JsonProperty("tag")]
         public string Tag { get; set; } = default!;
+
+        /// <summary>
+        /// A unique 24-character hexadecimal key associated with the director&apos;s tag, used for internal identification.
+        /// </summary>
+        [JsonProperty("tagKey")]
+        public string TagKey { get; set; } = default!;
+
+        /// <summary>
+        /// The absolute URL of the thumbnail image for the director.
+        /// </summary>
+        [JsonProperty("thumb")]
+        public string? Thumb { get; set; }
     }
 }

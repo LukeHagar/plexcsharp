@@ -34,13 +34,13 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public string Filter { get; set; } = default!;
 
         /// <summary>
-        /// The URL of the thumbnail image for the writer.
+        /// The absolute URL of the thumbnail image for the writer.
         /// </summary>
         [JsonProperty("thumb")]
         public string? Thumb { get; set; }
 
         /// <summary>
-        /// A unique key associated with the writers tag, used for internal identification.
+        /// A 24-character hexadecimal unique key associated with the writer’s tag, used for internal identification.
         /// </summary>
         [JsonProperty("tagKey")]
         public string? TagKey { get; set; }

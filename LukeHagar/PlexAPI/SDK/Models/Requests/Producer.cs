@@ -34,13 +34,17 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public string Tag { get; set; } = default!;
 
         /// <summary>
-        /// A unique key associated with the producer&apos;s tag, used for internal identification.
+        /// A 24-character hexadecimal unique key associated with the producer&apos;s tag, used for internal identification.<br/>
+        /// 
+        /// <remarks>
+        /// 
+        /// </remarks>
         /// </summary>
         [JsonProperty("tagKey")]
-        public string? TagKey { get; set; }
+        public string TagKey { get; set; } = default!;
 
         /// <summary>
-        /// The URL of the thumbnail image for the actor.
+        /// The absolute URL of the thumbnail image for the producer.
         /// </summary>
         [JsonProperty("thumb")]
         public string? Thumb { get; set; }
