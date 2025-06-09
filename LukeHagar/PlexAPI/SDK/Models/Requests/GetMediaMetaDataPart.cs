@@ -40,7 +40,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Key to access this part.
         /// </summary>
         [JsonProperty("key")]
-        public string Key { get; set; } = default!;
+        public string? Key { get; set; }
 
         [JsonProperty("indexes")]
         public string? Indexes { get; set; }
@@ -55,13 +55,13 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// File path for the part.
         /// </summary>
         [JsonProperty("file")]
-        public string File { get; set; } = default!;
+        public string? File { get; set; }
 
         /// <summary>
         /// File size in bytes.
         /// </summary>
         [JsonProperty("size")]
-        public long Size { get; set; } = default!;
+        public long? Size { get; set; }
 
         [JsonProperty("packetLength")]
         public int? PacketLength { get; set; }
@@ -88,7 +88,11 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public bool? Has64bitOffsets { get; set; }
 
         /// <summary>
-        /// Has this media been optimized for streaming. NOTE: This can be 0, 1, false or true
+        /// Has this media been optimized for streaming. NOTE: This can be 0, 1, false or true<br/>
+        /// 
+        /// <remarks>
+        /// 
+        /// </remarks>
         /// </summary>
         [JsonProperty("optimizedForStreaming")]
         public GetMediaMetaDataLibraryOptimizedForStreaming? OptimizedForStreaming { get; set; }
@@ -96,9 +100,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         [JsonProperty("hasThumbnail")]
         public GetMediaMetaDataHasThumbnail? HasThumbnail { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.GetMediaMetaDataHasThumbnail.False;
 
-        /// <summary>
-        /// An array of streams for this part.
-        /// </summary>
         [JsonProperty("Stream")]
         public List<GetMediaMetaDataStream>? Stream { get; set; }
     }

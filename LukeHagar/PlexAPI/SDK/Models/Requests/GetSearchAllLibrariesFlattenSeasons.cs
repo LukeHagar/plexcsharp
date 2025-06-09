@@ -14,7 +14,11 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using System;
     
     /// <summary>
-    /// Setting that indicates if seasons are set to hidden for the show. (-1 = Library default, 0 = Hide, 1 = Show).
+    /// Setting that indicates if seasons are set to hidden for the show. (-1 = Library default, 0 = Hide, 1 = Show).<br/>
+    /// 
+    /// <remarks>
+    /// 
+    /// </remarks>
     /// </summary>
     public enum GetSearchAllLibrariesFlattenSeasons
     {

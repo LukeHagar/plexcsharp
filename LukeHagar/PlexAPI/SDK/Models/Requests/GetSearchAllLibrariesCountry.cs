@@ -15,7 +15,21 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     public class GetSearchAllLibrariesCountry
     {
 
+        /// <summary>
+        /// The unique identifier for the country.<br/>
+        /// 
+        /// <remarks>
+        /// NOTE: This is different for each Plex server and is not globally unique.<br/>
+        /// 
+        /// </remarks>
+        /// </summary>
+        [JsonProperty("id")]
+        public int Id { get; set; } = default!;
+
+        /// <summary>
+        /// The country of origin of this media item
+        /// </summary>
         [JsonProperty("tag")]
-        public string? Tag { get; set; }
+        public string Tag { get; set; } = default!;
     }
 }

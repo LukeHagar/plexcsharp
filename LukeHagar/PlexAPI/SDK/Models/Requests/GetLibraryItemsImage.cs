@@ -20,7 +20,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public string Alt { get; set; } = default!;
 
         [JsonProperty("type")]
-        public GetLibraryItemsLibraryResponse200Type Type { get; set; } = default!;
+        public GetLibraryItemsLibraryResponseType Type { get; set; } = default!;
 
         [JsonProperty("url")]
         public string Url { get; set; } = default!;

@@ -15,7 +15,22 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     public class GetSearchAllLibrariesWriter
     {
 
+        /// <summary>
+        /// Unique identifier for the writer.
+        /// </summary>
+        [JsonProperty("id")]
+        public int Id { get; set; } = default!;
+
+        /// <summary>
+        /// The role of Writer
+        /// </summary>
         [JsonProperty("tag")]
-        public string? Tag { get; set; }
+        public string Tag { get; set; } = default!;
+
+        /// <summary>
+        /// The absolute URL of the thumbnail image for the writer.
+        /// </summary>
+        [JsonProperty("thumb")]
+        public string? Thumb { get; set; }
     }
 }

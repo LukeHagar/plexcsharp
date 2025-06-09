@@ -164,7 +164,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// The original release date of the media item.
         /// </summary>
         [JsonProperty("originallyAvailableAt")]
-        public LocalDate OriginallyAvailableAt { get; set; } = default!;
+        public LocalDate? OriginallyAvailableAt { get; set; }
 
         [JsonProperty("addedAt")]
         public long AddedAt { get; set; } = default!;
@@ -353,19 +353,19 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// The identifier for the library section.
         /// </summary>
         [JsonProperty("librarySectionID")]
-        public long LibrarySectionID { get; set; } = default!;
+        public long? LibrarySectionID { get; set; }
 
         /// <summary>
         /// The title of the library section.
         /// </summary>
         [JsonProperty("librarySectionTitle")]
-        public string LibrarySectionTitle { get; set; } = default!;
+        public string? LibrarySectionTitle { get; set; }
 
         /// <summary>
         /// The key corresponding to the library section.
         /// </summary>
         [JsonProperty("librarySectionKey")]
-        public string LibrarySectionKey { get; set; } = default!;
+        public string? LibrarySectionKey { get; set; }
 
         [JsonProperty("Guid")]
         public List<GetMediaMetaDataGuids>? Guids { get; set; }
@@ -392,7 +392,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public List<GetMediaMetaDataRole>? Role { get; set; }
 
         [JsonProperty("Rating")]
-        public List<Ratings>? Ratings { get; set; }
+        public List<GetMediaMetaDataRatings>? Ratings { get; set; }
 
         [JsonProperty("Similar")]
         public List<GetMediaMetaDataSimilar>? Similar { get; set; }
@@ -401,12 +401,12 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public List<GetMediaMetaDataLocation>? Location { get; set; }
 
         [JsonProperty("Chapter")]
-        public List<Chapter>? Chapter { get; set; }
+        public List<GetMediaMetaDataChapter>? Chapter { get; set; }
 
         [JsonProperty("Marker")]
-        public List<Marker>? Marker { get; set; }
+        public List<GetMediaMetaDataMarker>? Marker { get; set; }
 
         [JsonProperty("Extras")]
-        public Extras? Extras { get; set; }
+        public GetMediaMetaDataExtras? Extras { get; set; }
     }
 }

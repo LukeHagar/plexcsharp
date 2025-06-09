@@ -39,13 +39,13 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// The unique identifier for the library section.
         /// </summary>
         [JsonProperty("librarySectionID")]
-        public long LibrarySectionID { get; set; } = default!;
+        public long? LibrarySectionID { get; set; }
 
         /// <summary>
         /// The title of the library section.
         /// </summary>
         [JsonProperty("librarySectionTitle")]
-        public string LibrarySectionTitle { get; set; } = default!;
+        public string? LibrarySectionTitle { get; set; }
 
         /// <summary>
         /// The universally unique identifier for the library section.

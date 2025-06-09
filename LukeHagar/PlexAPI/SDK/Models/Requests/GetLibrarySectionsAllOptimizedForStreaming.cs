@@ -24,7 +24,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         private GetLibrarySectionsAllOptimizedForStreamingType(string value) { Value = value; }
 
         public string Value { get; private set; }
-        public static GetLibrarySectionsAllOptimizedForStreamingType OptimizedForStreaming1 { get { return new GetLibrarySectionsAllOptimizedForStreamingType("optimizedForStreaming_1"); } }
+        public static GetLibrarySectionsAllOptimizedForStreamingType GetLibrarySectionsAllOptimizedForStreaming1 { get { return new GetLibrarySectionsAllOptimizedForStreamingType("get-library-sections-all_optimizedForStreaming_1"); } }
         
         public static GetLibrarySectionsAllOptimizedForStreamingType Boolean { get { return new GetLibrarySectionsAllOptimizedForStreamingType("boolean"); } }
         
@@ -34,7 +34,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public static implicit operator String(GetLibrarySectionsAllOptimizedForStreamingType v) { return v.Value; }
         public static GetLibrarySectionsAllOptimizedForStreamingType FromString(string v) {
             switch(v) {
-                case "optimizedForStreaming_1": return OptimizedForStreaming1;
+                case "get-library-sections-all_optimizedForStreaming_1": return GetLibrarySectionsAllOptimizedForStreaming1;
                 case "boolean": return Boolean;
                 case "null": return Null;
                 default: throw new ArgumentException("Invalid value for GetLibrarySectionsAllOptimizedForStreamingType");
@@ -66,7 +66,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         }
 
         [SpeakeasyMetadata("form:explode=true")]
-        public OptimizedForStreaming1? OptimizedForStreaming1 { get; set; }
+        public GetLibrarySectionsAllOptimizedForStreaming1? GetLibrarySectionsAllOptimizedForStreaming1 { get; set; }
 
         [SpeakeasyMetadata("form:explode=true")]
         public bool? Boolean { get; set; }
@@ -74,11 +74,11 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public GetLibrarySectionsAllOptimizedForStreamingType Type { get; set; }
 
 
-        public static GetLibrarySectionsAllOptimizedForStreaming CreateOptimizedForStreaming1(OptimizedForStreaming1 optimizedForStreaming1) {
-            GetLibrarySectionsAllOptimizedForStreamingType typ = GetLibrarySectionsAllOptimizedForStreamingType.OptimizedForStreaming1;
+        public static GetLibrarySectionsAllOptimizedForStreaming CreateGetLibrarySectionsAllOptimizedForStreaming1(GetLibrarySectionsAllOptimizedForStreaming1 getLibrarySectionsAllOptimizedForStreaming1) {
+            GetLibrarySectionsAllOptimizedForStreamingType typ = GetLibrarySectionsAllOptimizedForStreamingType.GetLibrarySectionsAllOptimizedForStreaming1;
 
             GetLibrarySectionsAllOptimizedForStreaming res = new GetLibrarySectionsAllOptimizedForStreaming(typ);
-            res.OptimizedForStreaming1 = optimizedForStreaming1;
+            res.GetLibrarySectionsAllOptimizedForStreaming1 = getLibrarySectionsAllOptimizedForStreaming1;
             return res;
         }
 
@@ -114,14 +114,14 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
 
                 try
                 {
-                    return new GetLibrarySectionsAllOptimizedForStreaming(GetLibrarySectionsAllOptimizedForStreamingType.OptimizedForStreaming1)
+                    return new GetLibrarySectionsAllOptimizedForStreaming(GetLibrarySectionsAllOptimizedForStreamingType.GetLibrarySectionsAllOptimizedForStreaming1)
                     {
-                        OptimizedForStreaming1 = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<OptimizedForStreaming1>(json)
+                        GetLibrarySectionsAllOptimizedForStreaming1 = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<GetLibrarySectionsAllOptimizedForStreaming1>(json)
                     };
                 }
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
-                    fallbackCandidates.Add((typeof(OptimizedForStreaming1), new GetLibrarySectionsAllOptimizedForStreaming(GetLibrarySectionsAllOptimizedForStreamingType.OptimizedForStreaming1), "OptimizedForStreaming1"));
+                    fallbackCandidates.Add((typeof(GetLibrarySectionsAllOptimizedForStreaming1), new GetLibrarySectionsAllOptimizedForStreaming(GetLibrarySectionsAllOptimizedForStreamingType.GetLibrarySectionsAllOptimizedForStreaming1), "GetLibrarySectionsAllOptimizedForStreaming1"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
@@ -180,9 +180,9 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
                     writer.WriteRawValue("null");
                     return;
                 }
-                if (res.OptimizedForStreaming1 != null)
+                if (res.GetLibrarySectionsAllOptimizedForStreaming1 != null)
                 {
-                    writer.WriteRawValue(Utilities.SerializeJSON(res.OptimizedForStreaming1));
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.GetLibrarySectionsAllOptimizedForStreaming1));
                     return;
                 }
                 if (res.Boolean != null)

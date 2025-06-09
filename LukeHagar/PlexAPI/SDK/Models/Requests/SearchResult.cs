@@ -16,10 +16,16 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     public class SearchResult
     {
 
+        /// <summary>
+        /// The score of the search result, typically a float value between 0 and 1.
+        /// </summary>
         [JsonProperty("score")]
         public float Score { get; set; } = default!;
 
+        [JsonProperty("Directory")]
+        public GetSearchAllLibrariesDirectory? Directory { get; set; }
+
         [JsonProperty("Metadata")]
-        public GetSearchAllLibrariesMetadata Metadata { get; set; } = default!;
+        public GetSearchAllLibrariesMetadata? Metadata { get; set; }
     }
 }

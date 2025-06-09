@@ -82,7 +82,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public string? VideoResolution { get; set; }
 
         /// <summary>
-        /// File container type.
+        /// Container format of the media.
         /// </summary>
         [JsonProperty("container")]
         public string? Container { get; set; }
@@ -121,12 +121,17 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         [JsonProperty("optimizedForStreaming")]
         public GetMediaMetaDataOptimizedForStreaming? OptimizedForStreaming { get; set; }
 
+        /// <summary>
+        /// Indicates whether the media has 64-bit offsets.<br/>
+        /// 
+        /// <remarks>
+        /// This is relevant for media files that may require larger offsets than what 32-bit integers can provide.<br/>
+        /// 
+        /// </remarks>
+        /// </summary>
         [JsonProperty("has64bitOffsets")]
         public bool? Has64bitOffsets { get; set; }
 
-        /// <summary>
-        /// An array of parts for this media item.
-        /// </summary>
         [JsonProperty("Part")]
         public List<GetMediaMetaDataPart>? Part { get; set; }
     }

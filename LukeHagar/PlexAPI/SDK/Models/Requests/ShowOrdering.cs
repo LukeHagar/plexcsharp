@@ -17,11 +17,12 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     /// Setting that indicates the episode ordering for the show.<br/>
     /// 
     /// <remarks>
-    /// None = Library default,<br/>
-    /// tmdbAiring = The Movie Database (Aired),<br/>
-    /// aired = TheTVDB (Aired),<br/>
-    /// dvd = TheTVDB (DVD),<br/>
-    /// absolute = TheTVDB (Absolute)).<br/>
+    /// Options:<br/>
+    ///   - None = Library default<br/>
+    ///   - tmdbAiring = The Movie Database (Aired)<br/>
+    ///   - aired = TheTVDB (Aired)<br/>
+    ///   - dvd = TheTVDB (DVD)<br/>
+    ///   - absolute = TheTVDB (Absolute)<br/>
     /// 
     /// </remarks>
     /// </summary>

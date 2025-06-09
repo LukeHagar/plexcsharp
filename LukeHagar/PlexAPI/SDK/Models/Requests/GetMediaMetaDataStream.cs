@@ -9,7 +9,6 @@
 #nullable enable
 namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
-    using LukeHagar.PlexAPI.SDK.Models.Requests;
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     
@@ -26,14 +25,14 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Stream type:<br/>
         /// 
         /// <remarks>
-        ///   - 1 = video<br/>
-        ///   - 2 = audio<br/>
-        ///   - 3 = subtitle<br/>
+        ///   - VIDEO = 1<br/>
+        ///   - AUDIO = 2<br/>
+        ///   - SUBTITLE = 3<br/>
         /// 
         /// </remarks>
         /// </summary>
         [JsonProperty("streamType")]
-        public GetMediaMetaDataStreamType StreamType { get; set; } = default!;
+        public long StreamType { get; } = 1;
 
         /// <summary>
         /// Format of the stream (e.g., srt).
@@ -51,7 +50,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Codec used by the stream.
         /// </summary>
         [JsonProperty("codec")]
-        public string Codec { get; set; } = default!;
+        public string? Codec { get; set; }
 
         /// <summary>
         /// Index of the stream.
@@ -255,13 +254,13 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Display title for the stream.
         /// </summary>
         [JsonProperty("displayTitle")]
-        public string DisplayTitle { get; set; } = default!;
+        public string? DisplayTitle { get; set; }
 
         /// <summary>
         /// Extended display title for the stream.
         /// </summary>
         [JsonProperty("extendedDisplayTitle")]
-        public string ExtendedDisplayTitle { get; set; } = default!;
+        public string? ExtendedDisplayTitle { get; set; }
 
         /// <summary>
         /// Indicates if this stream is selected (applicable for audio streams).

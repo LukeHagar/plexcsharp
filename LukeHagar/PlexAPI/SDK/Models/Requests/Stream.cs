@@ -9,7 +9,6 @@
 #nullable enable
 namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
-    using LukeHagar.PlexAPI.SDK.Models.Requests;
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     
@@ -26,14 +25,14 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Stream type:<br/>
         /// 
         /// <remarks>
-        ///   - 1 = video<br/>
-        ///   - 2 = audio<br/>
-        ///   - 3 = subtitle<br/>
+        ///   - VIDEO = 1<br/>
+        ///   - AUDIO = 2<br/>
+        ///   - SUBTITLE = 3<br/>
         /// 
         /// </remarks>
         /// </summary>
         [JsonProperty("streamType")]
-        public StreamType StreamType { get; set; } = default!;
+        public long StreamType { get; } = 1;
 
         /// <summary>
         /// Format of the stream (e.g., srt).

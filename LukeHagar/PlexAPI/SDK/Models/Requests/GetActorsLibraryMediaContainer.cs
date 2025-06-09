@@ -87,7 +87,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Identifier for the view mode.
         /// </summary>
         [JsonProperty("viewMode")]
-        public string ViewMode { get; set; } = default!;
+        public string? ViewMode { get; set; }
 
         /// <summary>
         /// An array of actor entries for media items.

@@ -17,9 +17,10 @@ generation:
     oAuth2ClientCredentialsEnabled: true
     oAuth2PasswordEnabled: false
 csharp:
-  version: 0.15.0
+  version: 0.15.1
   additionalDependencies: []
   author: LukeHagar
+  baseErrorName: PlexAPIError
   clientServerStatusCodesAsErrors: true
   defaultErrorName: SDKException
   disableNamespacePascalCasingApr2024: true

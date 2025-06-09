@@ -17,8 +17,53 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     public class GetSearchAllLibrariesMediaContainer
     {
 
+        /// <summary>
+        /// Number of media items returned in this response.
+        /// </summary>
         [JsonProperty("size")]
-        public double Size { get; set; } = default!;
+        public int Size { get; set; } = default!;
+
+        /// <summary>
+        /// Indicates whether syncing is allowed.
+        /// </summary>
+        [JsonProperty("allowSync")]
+        public bool AllowSync { get; set; } = default!;
+
+        /// <summary>
+        /// An plugin identifier for the media container.
+        /// </summary>
+        [JsonProperty("identifier")]
+        public string Identifier { get; set; } = default!;
+
+        /// <summary>
+        /// The unique identifier for the library section.
+        /// </summary>
+        [JsonProperty("librarySectionID")]
+        public long? LibrarySectionID { get; set; }
+
+        /// <summary>
+        /// The title of the library section.
+        /// </summary>
+        [JsonProperty("librarySectionTitle")]
+        public string? LibrarySectionTitle { get; set; }
+
+        /// <summary>
+        /// The universally unique identifier for the library section.
+        /// </summary>
+        [JsonProperty("librarySectionUUID")]
+        public string? LibrarySectionUUID { get; set; }
+
+        /// <summary>
+        /// The prefix used for media tag resource paths.
+        /// </summary>
+        [JsonProperty("mediaTagPrefix")]
+        public string MediaTagPrefix { get; set; } = default!;
+
+        /// <summary>
+        /// The version number for media tags.
+        /// </summary>
+        [JsonProperty("mediaTagVersion")]
+        public long MediaTagVersion { get; set; } = default!;
 
         [JsonProperty("SearchResult")]
         public List<SearchResult> SearchResult { get; set; } = default!;

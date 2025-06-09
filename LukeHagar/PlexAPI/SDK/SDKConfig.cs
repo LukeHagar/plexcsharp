@@ -52,7 +52,7 @@ namespace LukeHagar.PlexAPI.SDK
                     {"port", "32400"},
                 },
             };
-            UserAgent = "speakeasy-sdk/csharp 0.15.0 2.620.2 0.0.3 LukeHagar.PlexAPI.SDK";
+            UserAgent = "speakeasy-sdk/csharp 0.15.1 2.623.0 0.0.3 LukeHagar.PlexAPI.SDK";
             SecuritySource = null;
             Hooks = new SDKHooks();
             RetryConfig = null;

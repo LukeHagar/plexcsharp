@@ -9,58 +9,94 @@
 #nullable enable
 namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
+    using LukeHagar.PlexAPI.SDK.Models.Components;
     using LukeHagar.PlexAPI.SDK.Models.Requests;
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
-    using System.Collections.Generic;
     
     public class GetSearchAllLibrariesPart
     {
 
+        /// <summary>
+        /// Indicates if the part is accessible.
+        /// </summary>
+        [JsonProperty("accessible")]
+        public bool? Accessible { get; set; }
+
+        /// <summary>
+        /// Indicates if the part exists.
+        /// </summary>
+        [JsonProperty("exists")]
+        public bool? Exists { get; set; }
+
+        /// <summary>
+        /// Unique part identifier.
+        /// </summary>
         [JsonProperty("id")]
-        public int Id { get; set; } = default!;
+        public long Id { get; set; } = default!;
 
+        /// <summary>
+        /// Key to access this part.
+        /// </summary>
         [JsonProperty("key")]
-        public string Key { get; set; } = default!;
+        public string? Key { get; set; }
 
+        [JsonProperty("indexes")]
+        public string? Indexes { get; set; }
+
+        /// <summary>
+        /// Duration of the part in milliseconds.
+        /// </summary>
         [JsonProperty("duration")]
         public int? Duration { get; set; }
 
+        /// <summary>
+        /// File path for the part.
+        /// </summary>
         [JsonProperty("file")]
-        public string File { get; set; } = default!;
-
-        [JsonProperty("size")]
-        public long Size { get; set; } = default!;
+        public string? File { get; set; }
 
         /// <summary>
-        /// The container format of the media file.<br/>
-        /// 
-        /// <remarks>
-        /// 
-        /// </remarks>
+        /// File size in bytes.
+        /// </summary>
+        [JsonProperty("size")]
+        public long? Size { get; set; }
+
+        [JsonProperty("packetLength")]
+        public int? PacketLength { get; set; }
+
+        /// <summary>
+        /// Container format of the part.
         /// </summary>
         [JsonProperty("container")]
-        public string Container { get; set; } = default!;
+        public string? Container { get; set; }
 
+        /// <summary>
+        /// Video profile for the part.
+        /// </summary>
+        [JsonProperty("videoProfile")]
+        public string? VideoProfile { get; set; }
+
+        /// <summary>
+        /// The audio profile used for the media (e.g., DTS, Dolby Digital, etc.).
+        /// </summary>
         [JsonProperty("audioProfile")]
         public string? AudioProfile { get; set; }
 
         [JsonProperty("has64bitOffsets")]
         public bool? Has64bitOffsets { get; set; }
 
+        /// <summary>
+        /// Has this media been optimized for streaming. NOTE: This can be 0, 1, false or true<br/>
+        /// 
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// </summary>
         [JsonProperty("optimizedForStreaming")]
-        public bool? OptimizedForStreaming { get; set; }
-
-        [JsonProperty("videoProfile")]
-        public string? VideoProfile { get; set; }
-
-        [JsonProperty("indexes")]
-        public string? Indexes { get; set; }
+        public GetSearchAllLibrariesLibraryOptimizedForStreaming? OptimizedForStreaming { get; set; }
 
         [JsonProperty("hasThumbnail")]
         public GetSearchAllLibrariesHasThumbnail? HasThumbnail { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.GetSearchAllLibrariesHasThumbnail.False;
-
-        [JsonProperty("Stream")]
-        public List<GetSearchAllLibrariesStream>? Stream { get; set; }
     }
 }

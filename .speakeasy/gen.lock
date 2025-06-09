@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 5a8dbcbc-e0ee-41f0-9d84-b8b50567d1e9
 management:
-  docChecksum: b2624bb972abebc11eff6d460c59de68
+  docChecksum: 77bdddd188d0778dc73b7f7906e1677c
   docVersion: 0.0.3
-  speakeasyVersion: 1.555.2
-  generationVersion: 2.620.2
-  releaseVersion: 0.15.0
-  configChecksum: 71515a94a0f2e543a0c76480036249a6
+  speakeasyVersion: 1.557.0
+  generationVersion: 2.623.0
+  releaseVersion: 0.15.1
+  configChecksum: 0d77f3a7a510b4818fc2819df5d3ceae
   repoURL: https://github.com/LukeHagar/plexcsharp.git
   repoSubDirectory: .
   published: true
@@ -407,9 +407,7 @@ generatedFiles:
   - LukeHagar/PlexAPI/SDK/Models/Requests/Director.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/Directory.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/Download.cs
-  - LukeHagar/PlexAPI/SDK/Models/Requests/EnableCreditsMarkerGeneration.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/EnablePaperTrailResponse.cs
-  - LukeHagar/PlexAPI/SDK/Models/Requests/EpisodeSort.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/Extras.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/Feature.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/Field.cs
@@ -505,17 +503,11 @@ generatedFiles:
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsFieldType.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsFilter.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsGenre.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsGuids.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsHasThumbnail.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsImage.cs
-  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsLibraryActiveDirection.cs
-  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsLibraryDefaultDirection.cs
-  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsLibraryField.cs
-  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsLibraryFieldType.cs
-  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsLibraryFilter.cs
-  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsLibraryOperator.cs
-  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsLibraryResponse200Type.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsLibraryOptimizedForStreaming.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsLibraryResponseType.cs
-  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsLibrarySort.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsLibraryType.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsLocation.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsMedia.cs
@@ -524,15 +516,17 @@ generatedFiles:
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsMetadata.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsOperator.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsOptimizedForStreaming.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsOptimizedForStreaming1.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsPart.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsProducer.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsQueryParamIncludeMeta.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsQueryParamType.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsResponse.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsResponseBody.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsRole.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsSimilar.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsSort.cs
-  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsStream.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsType.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsUltraBlurColors.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibraryItemsWriter.cs
@@ -558,6 +552,7 @@ generatedFiles:
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibrarySectionsAllOperator.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibrarySectionsAllOptimizedForStreaming.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibrarySectionsAllOptimizedForStreaming1.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibrarySectionsAllOptimizedForStreamingLibrary1.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibrarySectionsAllPart.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibrarySectionsAllQueryParamIncludeMeta.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibrarySectionsAllQueryParamType.cs
@@ -567,7 +562,6 @@ generatedFiles:
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibrarySectionsAllRole.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibrarySectionsAllSort.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibrarySectionsAllStream.cs
-  - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibrarySectionsAllStreamType.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibrarySectionsAllType.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibrarySectionsAllUltraBlurColors.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetLibrarySectionsAllWriter.cs
@@ -576,8 +570,11 @@ generatedFiles:
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetMediaArtsRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetMediaArtsResponse.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetMediaArtsResponseBody.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetMediaMetaDataAttributes.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetMediaMetaDataChapter.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetMediaMetaDataCountry.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetMediaMetaDataDirector.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetMediaMetaDataExtras.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetMediaMetaDataGenre.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetMediaMetaDataGuids.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetMediaMetaDataHasThumbnail.cs
@@ -585,6 +582,7 @@ generatedFiles:
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetMediaMetaDataLibraryOptimizedForStreaming.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetMediaMetaDataLibraryType.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetMediaMetaDataLocation.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetMediaMetaDataMarker.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetMediaMetaDataMedia.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetMediaMetaDataMediaContainer.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetMediaMetaDataMetadata.cs
@@ -593,13 +591,13 @@ generatedFiles:
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetMediaMetaDataOptimizedForStreamingLibrary1.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetMediaMetaDataPart.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetMediaMetaDataProducer.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetMediaMetaDataRatings.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetMediaMetaDataRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetMediaMetaDataResponse.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetMediaMetaDataResponseBody.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetMediaMetaDataRole.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetMediaMetaDataSimilar.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetMediaMetaDataStream.cs
-  - LukeHagar/PlexAPI/SDK/Models/Requests/GetMediaMetaDataStreamType.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetMediaMetaDataType.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetMediaMetaDataUltraBlurColors.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetMediaMetaDataWriter.cs
@@ -687,23 +685,23 @@ generatedFiles:
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetResourcesStatisticsRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetResourcesStatisticsResponse.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetResourcesStatisticsResponseBody.cs
-  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchAllLibrariesCollection.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchAllLibrariesCountry.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchAllLibrariesDirector.cs
-  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchAllLibrariesEnableCreditsMarkerGeneration.cs
-  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchAllLibrariesEpisodeSort.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchAllLibrariesDirectory.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchAllLibrariesFlattenSeasons.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchAllLibrariesGenre.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchAllLibrariesGuids.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchAllLibrariesHasThumbnail.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchAllLibrariesImage.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchAllLibrariesLibraryOptimizedForStreaming.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchAllLibrariesLibraryType.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchAllLibrariesLocation.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchAllLibrariesMedia.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchAllLibrariesMediaContainer.cs
-  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchAllLibrariesMediaGuid.cs
-  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchAllLibrariesMetaDataRating.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchAllLibrariesMetadata.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchAllLibrariesOptimizedForStreaming.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchAllLibrariesOptimizedForStreaming1.cs
+  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchAllLibrariesOptimizedForStreamingLibrary1.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchAllLibrariesPart.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchAllLibrariesQueryParamIncludeCollections.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchAllLibrariesQueryParamIncludeExternalMedia.cs
@@ -712,7 +710,6 @@ generatedFiles:
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchAllLibrariesResponseBody.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchAllLibrariesRole.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchAllLibrariesShowOrdering.cs
-  - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchAllLibrariesStream.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchAllLibrariesType.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchAllLibrariesUltraBlurColors.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/GetSearchAllLibrariesWriter.cs
@@ -845,11 +842,9 @@ generatedFiles:
   - LukeHagar/PlexAPI/SDK/Models/Requests/Marker.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/Media.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/MediaContainer.cs
-  - LukeHagar/PlexAPI/SDK/Models/Requests/MediaGuid.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/MediaProvider.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/MediaReviewsVisibility.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/Meta.cs
-  - LukeHagar/PlexAPI/SDK/Models/Requests/MetaDataRating.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/Metadata.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/MinSize.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/MyPlex.cs
@@ -942,7 +937,6 @@ generatedFiles:
   - LukeHagar/PlexAPI/SDK/Models/Requests/StopTranscodeSessionRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/StopTranscodeSessionResponse.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/Stream.cs
-  - LukeHagar/PlexAPI/SDK/Models/Requests/StreamType.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/Subscription.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/Tag.cs
   - LukeHagar/PlexAPI/SDK/Models/Requests/TaskName.cs
@@ -1355,9 +1349,7 @@ generatedFiles:
   - docs/Models/Requests/Director.md
   - docs/Models/Requests/Directory.md
   - docs/Models/Requests/Download.md
-  - docs/Models/Requests/EnableCreditsMarkerGeneration.md
   - docs/Models/Requests/EnablePaperTrailResponse.md
-  - docs/Models/Requests/EpisodeSort.md
   - docs/Models/Requests/Extras.md
   - docs/Models/Requests/Feature.md
   - docs/Models/Requests/Field.md
@@ -1453,17 +1445,11 @@ generatedFiles:
   - docs/Models/Requests/GetLibraryItemsFieldType.md
   - docs/Models/Requests/GetLibraryItemsFilter.md
   - docs/Models/Requests/GetLibraryItemsGenre.md
+  - docs/Models/Requests/GetLibraryItemsGuids.md
   - docs/Models/Requests/GetLibraryItemsHasThumbnail.md
   - docs/Models/Requests/GetLibraryItemsImage.md
-  - docs/Models/Requests/GetLibraryItemsLibraryActiveDirection.md
-  - docs/Models/Requests/GetLibraryItemsLibraryDefaultDirection.md
-  - docs/Models/Requests/GetLibraryItemsLibraryField.md
-  - docs/Models/Requests/GetLibraryItemsLibraryFieldType.md
-  - docs/Models/Requests/GetLibraryItemsLibraryFilter.md
-  - docs/Models/Requests/GetLibraryItemsLibraryOperator.md
-  - docs/Models/Requests/GetLibraryItemsLibraryResponse200Type.md
+  - docs/Models/Requests/GetLibraryItemsLibraryOptimizedForStreaming.md
   - docs/Models/Requests/GetLibraryItemsLibraryResponseType.md
-  - docs/Models/Requests/GetLibraryItemsLibrarySort.md
   - docs/Models/Requests/GetLibraryItemsLibraryType.md
   - docs/Models/Requests/GetLibraryItemsLocation.md
   - docs/Models/Requests/GetLibraryItemsMedia.md
@@ -1472,15 +1458,17 @@ generatedFiles:
   - docs/Models/Requests/GetLibraryItemsMetadata.md
   - docs/Models/Requests/GetLibraryItemsOperator.md
   - docs/Models/Requests/GetLibraryItemsOptimizedForStreaming.md
+  - docs/Models/Requests/GetLibraryItemsOptimizedForStreaming1.md
   - docs/Models/Requests/GetLibraryItemsPart.md
+  - docs/Models/Requests/GetLibraryItemsProducer.md
   - docs/Models/Requests/GetLibraryItemsQueryParamIncludeMeta.md
   - docs/Models/Requests/GetLibraryItemsQueryParamType.md
   - docs/Models/Requests/GetLibraryItemsRequest.md
   - docs/Models/Requests/GetLibraryItemsResponse.md
   - docs/Models/Requests/GetLibraryItemsResponseBody.md
   - docs/Models/Requests/GetLibraryItemsRole.md
+  - docs/Models/Requests/GetLibraryItemsSimilar.md
   - docs/Models/Requests/GetLibraryItemsSort.md
-  - docs/Models/Requests/GetLibraryItemsStream.md
   - docs/Models/Requests/GetLibraryItemsType.md
   - docs/Models/Requests/GetLibraryItemsUltraBlurColors.md
   - docs/Models/Requests/GetLibraryItemsWriter.md
@@ -1506,6 +1494,7 @@ generatedFiles:
   - docs/Models/Requests/GetLibrarySectionsAllOperator.md
   - docs/Models/Requests/GetLibrarySectionsAllOptimizedForStreaming.md
   - docs/Models/Requests/GetLibrarySectionsAllOptimizedForStreaming1.md
+  - docs/Models/Requests/GetLibrarySectionsAllOptimizedForStreamingLibrary1.md
   - docs/Models/Requests/GetLibrarySectionsAllPart.md
   - docs/Models/Requests/GetLibrarySectionsAllQueryParamIncludeMeta.md
   - docs/Models/Requests/GetLibrarySectionsAllQueryParamType.md
@@ -1515,7 +1504,6 @@ generatedFiles:
   - docs/Models/Requests/GetLibrarySectionsAllRole.md
   - docs/Models/Requests/GetLibrarySectionsAllSort.md
   - docs/Models/Requests/GetLibrarySectionsAllStream.md
-  - docs/Models/Requests/GetLibrarySectionsAllStreamType.md
   - docs/Models/Requests/GetLibrarySectionsAllType.md
   - docs/Models/Requests/GetLibrarySectionsAllUltraBlurColors.md
   - docs/Models/Requests/GetLibrarySectionsAllWriter.md
@@ -1524,8 +1512,11 @@ generatedFiles:
   - docs/Models/Requests/GetMediaArtsRequest.md
   - docs/Models/Requests/GetMediaArtsResponse.md
   - docs/Models/Requests/GetMediaArtsResponseBody.md
+  - docs/Models/Requests/GetMediaMetaDataAttributes.md
+  - docs/Models/Requests/GetMediaMetaDataChapter.md
   - docs/Models/Requests/GetMediaMetaDataCountry.md
   - docs/Models/Requests/GetMediaMetaDataDirector.md
+  - docs/Models/Requests/GetMediaMetaDataExtras.md
   - docs/Models/Requests/GetMediaMetaDataGenre.md
   - docs/Models/Requests/GetMediaMetaDataGuids.md
   - docs/Models/Requests/GetMediaMetaDataHasThumbnail.md
@@ -1533,6 +1524,7 @@ generatedFiles:
   - docs/Models/Requests/GetMediaMetaDataLibraryOptimizedForStreaming.md
   - docs/Models/Requests/GetMediaMetaDataLibraryType.md
   - docs/Models/Requests/GetMediaMetaDataLocation.md
+  - docs/Models/Requests/GetMediaMetaDataMarker.md
   - docs/Models/Requests/GetMediaMetaDataMedia.md
   - docs/Models/Requests/GetMediaMetaDataMediaContainer.md
   - docs/Models/Requests/GetMediaMetaDataMetadata.md
@@ -1541,13 +1533,13 @@ generatedFiles:
   - docs/Models/Requests/GetMediaMetaDataOptimizedForStreamingLibrary1.md
   - docs/Models/Requests/GetMediaMetaDataPart.md
   - docs/Models/Requests/GetMediaMetaDataProducer.md
+  - docs/Models/Requests/GetMediaMetaDataRatings.md
   - docs/Models/Requests/GetMediaMetaDataRequest.md
   - docs/Models/Requests/GetMediaMetaDataResponse.md
   - docs/Models/Requests/GetMediaMetaDataResponseBody.md
   - docs/Models/Requests/GetMediaMetaDataRole.md
   - docs/Models/Requests/GetMediaMetaDataSimilar.md
   - docs/Models/Requests/GetMediaMetaDataStream.md
-  - docs/Models/Requests/GetMediaMetaDataStreamType.md
   - docs/Models/Requests/GetMediaMetaDataType.md
   - docs/Models/Requests/GetMediaMetaDataUltraBlurColors.md
   - docs/Models/Requests/GetMediaMetaDataWriter.md
@@ -1635,23 +1627,23 @@ generatedFiles:
   - docs/Models/Requests/GetResourcesStatisticsRequest.md
   - docs/Models/Requests/GetResourcesStatisticsResponse.md
   - docs/Models/Requests/GetResourcesStatisticsResponseBody.md
-  - docs/Models/Requests/GetSearchAllLibrariesCollection.md
   - docs/Models/Requests/GetSearchAllLibrariesCountry.md
   - docs/Models/Requests/GetSearchAllLibrariesDirector.md
-  - docs/Models/Requests/GetSearchAllLibrariesEnableCreditsMarkerGeneration.md
-  - docs/Models/Requests/GetSearchAllLibrariesEpisodeSort.md
+  - docs/Models/Requests/GetSearchAllLibrariesDirectory.md
   - docs/Models/Requests/GetSearchAllLibrariesFlattenSeasons.md
   - docs/Models/Requests/GetSearchAllLibrariesGenre.md
+  - docs/Models/Requests/GetSearchAllLibrariesGuids.md
   - docs/Models/Requests/GetSearchAllLibrariesHasThumbnail.md
   - docs/Models/Requests/GetSearchAllLibrariesImage.md
+  - docs/Models/Requests/GetSearchAllLibrariesLibraryOptimizedForStreaming.md
   - docs/Models/Requests/GetSearchAllLibrariesLibraryType.md
   - docs/Models/Requests/GetSearchAllLibrariesLocation.md
   - docs/Models/Requests/GetSearchAllLibrariesMedia.md
   - docs/Models/Requests/GetSearchAllLibrariesMediaContainer.md
-  - docs/Models/Requests/GetSearchAllLibrariesMediaGuid.md
-  - docs/Models/Requests/GetSearchAllLibrariesMetaDataRating.md
   - docs/Models/Requests/GetSearchAllLibrariesMetadata.md
   - docs/Models/Requests/GetSearchAllLibrariesOptimizedForStreaming.md
+  - docs/Models/Requests/GetSearchAllLibrariesOptimizedForStreaming1.md
+  - docs/Models/Requests/GetSearchAllLibrariesOptimizedForStreamingLibrary1.md
   - docs/Models/Requests/GetSearchAllLibrariesPart.md
   - docs/Models/Requests/GetSearchAllLibrariesQueryParamIncludeCollections.md
   - docs/Models/Requests/GetSearchAllLibrariesQueryParamIncludeExternalMedia.md
@@ -1660,7 +1652,6 @@ generatedFiles:
   - docs/Models/Requests/GetSearchAllLibrariesResponseBody.md
   - docs/Models/Requests/GetSearchAllLibrariesRole.md
   - docs/Models/Requests/GetSearchAllLibrariesShowOrdering.md
-  - docs/Models/Requests/GetSearchAllLibrariesStream.md
   - docs/Models/Requests/GetSearchAllLibrariesType.md
   - docs/Models/Requests/GetSearchAllLibrariesUltraBlurColors.md
   - docs/Models/Requests/GetSearchAllLibrariesWriter.md
@@ -1793,11 +1784,9 @@ generatedFiles:
   - docs/Models/Requests/Marker.md
   - docs/Models/Requests/Media.md
   - docs/Models/Requests/MediaContainer.md
-  - docs/Models/Requests/MediaGuid.md
   - docs/Models/Requests/MediaProvider.md
   - docs/Models/Requests/MediaReviewsVisibility.md
   - docs/Models/Requests/Meta.md
-  - docs/Models/Requests/MetaDataRating.md
   - docs/Models/Requests/Metadata.md
   - docs/Models/Requests/MinSize.md
   - docs/Models/Requests/MyPlex.md
@@ -1890,7 +1879,6 @@ generatedFiles:
   - docs/Models/Requests/StopTranscodeSessionRequest.md
   - docs/Models/Requests/StopTranscodeSessionResponse.md
   - docs/Models/Requests/Stream.md
-  - docs/Models/Requests/StreamType.md
   - docs/Models/Requests/Subscription.md
   - docs/Models/Requests/Tag.md
   - docs/Models/Requests/TaskName.md
@@ -2420,7 +2408,7 @@ examples:
           X-Plex-Container-Size: 50
       responses:
         "200":
-          application/json: {"MediaContainer": {"Type": [{"key": "/library/sections/2/all?type=2", "type": "filter", "subtype": "clip", "title": "TV Shows", "active": false, "Filter": [{"filter": "genre", "filterType": "string", "key": "/library/sections/2/genre?type=2", "title": "Genre", "type": "filter", "advanced": true}], "Sort": [{"default": "asc", "active": false, "activeDirection": "asc", "defaultDirection": "asc", "descKey": "titleSort:desc", "firstCharacterKey": "/library/sections/2/firstCharacter", "key": "titleSort", "title": "Title"}], "Field": [{"key": "show.title", "title": "Show Title", "type": "string", "subType": "rating"}]}], "FieldType": [{"type": "tag", "Operator": [{"key": "=", "title": "is"}]}], "size": 70, "totalSize": 170, "offset": 0, "content": "secondary", "allowSync": true, "nocache": true, "art": "/:/resources/movie-fanart.jpg", "identifier": "com.plexapp.plugins.library", "librarySectionID": 1, "librarySectionTitle": "Movies", "librarySectionUUID": "322a231a-b7f7-49f5-920f-14c61199cd30", "mediaTagPrefix": "/system/bundle/media/flags/", "mediaTagVersion": 1701731894, "thumb": "/:/resources/movie.png", "title1": "Movies", "title2": "Recently Released", "viewGroup": "movie", "viewMode": 65592, "mixedParents": true, "Metadata": [{"ratingKey": "58683", "key": "/library/metadata/58683", "guid": "plex://movie/5d7768ba96b655001fdc0408", "studio": "20th Century Studios", "skipChildren": false, "librarySectionID": 1, "librarySectionTitle": "Movies", "librarySectionKey": "/library/sections/1", "type": "movie", "title": "Avatar: The Way of Water", "slug": "4-for-texas", "contentRating": "PG-13", "summary": "Jake Sully lives with his newfound family formed on the extrasolar moon Pandora. Once a familiar threat returns to finish what was previously started, Jake must work with Neytiri and the army of the Na'vi race to protect their home.", "rating": 7.6, "audienceRating": 9.2, "year": 2022, "seasonCount": 2022, "tagline": "Return to Pandora.", "flattenSeasons": "1", "episodeSort": "0", "enableCreditsMarkerGeneration": "-1", "showOrdering": "absolute", "thumb": "/library/metadata/58683/thumb/1703239236", "art": "/library/metadata/58683/art/1703239236", "banner": "/library/metadata/58683/banner/1703239236", "duration": 11558112, "originallyAvailableAt": "2022-12-14T00:00:00Z", "addedAt": 1556281940, "updatedAt": 1556281940, "audienceRatingImage": "rottentomatoes://image.rating.upright", "chapterSource": "media", "primaryExtraKey": "/library/metadata/58684", "ratingImage": "rottentomatoes://image.rating.ripe", "grandparentRatingKey": "66", "grandparentGuid": "plex://show/5d9c081b170e24001f2a7be4", "grandparentKey": "/library/metadata/66", "grandparentTitle": "Caprica", "grandparentThumb": "/library/metadata/66/thumb/1705716261", "parentSlug": "alice-in-borderland-2020", "grandparentSlug": "alice-in-borderland-2020", "grandparentArt": "/library/metadata/66/art/1705716261", "grandparentTheme": "/library/metadata/66/theme/1705716261", "Media": [{"id": 119534, "duration": 11558112, "bitrate": 25025, "width": 3840, "height": 2072, "aspectRatio": 1.85, "audioProfile": "dts", "audioChannels": 6, "audioCodec": "eac3", "videoCodec": "hevc", "videoResolution": "4k", "container": "mkv", "videoFrameRate": "24p", "videoProfile": "main 10", "hasVoiceActivity": false, "optimizedForStreaming": 1, "has64bitOffsets": false, "Part": [{"id": 119542, "key": "/library/parts/119542/1680457526/file.mkv", "duration": 11558112, "file": "/movies/Avatar The Way of Water (2022)/Avatar.The.Way.of.Water.2022.2160p.WEB-DL.DDP5.1.Atmos.DV.HDR10.HEVC-CMRG.mkv", "size": 36158371307, "container": "mkv", "audioProfile": "dts", "has64bitOffsets": false, "optimizedForStreaming": false, "videoProfile": "main 10", "indexes": "sd", "hasThumbnail": "1", "Stream": [{"id": 272796, "streamType": 1, "default": true, "selected": true, "codec": "h264", "index": 0, "bitrate": 6273, "colorPrimaries": "bt709", "colorRange": "tv", "colorSpace": "bt709", "colorTrc": "bt709", "bitDepth": 8, "chromaLocation": "left", "streamIdentifier": "2", "chromaSubsampling": "4:2:0", "codedHeight": 1088, "codedWidth": 1920, "frameRate": 29.97, "hasScalingMatrix": false, "hearingImpaired": false, "closedCaptions": false, "embeddedInVideo": "1", "height": 1080, "level": 40, "profile": "main", "refFrames": 4, "scanType": "progressive", "width": 1920, "displayTitle": "1080p (H.264)", "extendedDisplayTitle": "1080p (H.264)", "channels": 2, "language": "English", "languageTag": "en", "languageCode": "eng", "audioChannelLayout": "stereo", "samplingRate": 48000, "title": "English", "canAutoSync": false}]}]}], "Genre": [{"tag": "Adventure"}], "Country": [{"tag": "United States of America"}], "Director": [{"tag": "James Cameron"}], "Writer": [{"tag": "James Cameron"}], "Collection": [{"tag": "Working NL Subs"}], "Role": [{"id": 294129, "filter": "actor=294129", "thumb": "https://metadata-static.plex.tv/2/people/27b85844536c39f3f9ac943aaad46608.jpg", "tag": "Mike Smith", "tagKey": "668e7e7b22bcad9064350c91", "role": "Self"}], "Location": [{"path": "/TV Shows/House"}], "Guid": [{"id": "imdb://tt13015952"}], "UltraBlurColors": {"topLeft": "11333b", "topRight": "0a232d", "bottomRight": "73958", "bottomLeft": "1f5066"}, "Rating": [{"image": "themoviedb://image.rating", "value": 3, "type": "audience"}], "Image": [{"alt": "Episode 1", "type": "background", "url": "/library/metadata/45521/thumb/1644710589"}], "titleSort": "Whale", "viewCount": 1, "lastViewedAt": 1682752242, "originalTitle": "映画 ブラッククローバー 魔法帝の剣", "viewOffset": 5222500, "skipCount": 1, "index": 1, "theme": "/library/metadata/1/theme/1705636920", "leafCount": 14, "viewedLeafCount": 0, "childCount": 1, "hasPremiumExtras": "1", "hasPremiumPrimaryExtra": "1", "parentRatingKey": "66", "parentGuid": "plex://show/5d9c081b170e24001f2a7be4", "parentStudio": "UCP", "parentKey": "/library/metadata/66", "parentTitle": "Caprica", "parentIndex": 1, "parentYear": 2010, "parentThumb": "/library/metadata/66/thumb/1705716261", "parentTheme": "/library/metadata/66/theme/1705716261"}], "Meta": {"Type": [{"key": "/library/sections/2/all?type=2", "type": "show", "title": "TV Shows", "active": false, "Filter": [{"filter": "genre", "filterType": "string", "key": "/library/sections/2/genre?type=2", "title": "Genre", "type": "filter"}], "Sort": [{"default": "asc", "active": false, "activeDirection": "asc", "defaultDirection": "asc", "descKey": "titleSort:desc", "firstCharacterKey": "/library/sections/2/firstCharacter", "key": "titleSort", "title": "Title"}], "Field": [{"key": "show.title", "title": "Show Title", "type": "string", "subType": "rating"}]}], "FieldType": [{"type": "tag", "Operator": []}]}}}
+          application/json: {"MediaContainer": {"size": 50, "totalSize": 50, "offset": 0, "content": "secondary", "allowSync": false, "nocache": true, "art": "/:/resources/show-fanart.jpg", "identifier": "com.plexapp.plugins.library", "librarySectionID": 2, "librarySectionTitle": "TV Series", "librarySectionUUID": "e69655a2-ef48-4aba-bb19-0cc34d1e7d36", "mediaTagPrefix": "/system/bundle/media/flags/", "mediaTagVersion": 1734362201, "thumb": "/:/resources/show.png", "title1": "TV Series", "title2": "By Starring Actor", "viewGroup": "secondary", "viewMode": "131131", "mixedParents": true, "Metadata": [{"ratingKey": "58683", "key": "/library/metadata/58683", "guid": "plex://movie/5d7768ba96b655001fdc0408", "slug": "4-for-texas", "studio": "20th Century Studios", "type": "movie", "title": "Avatar: The Way of Water", "banner": "/library/metadata/58683/banner/1703239236", "titleSort": "Whale", "contentRating": "PG-13", "summary": "Jake Sully lives with his newfound family formed on the extrasolar moon Pandora. Once a familiar threat returns to finish what was previously started, Jake must work with Neytiri and the army of the Na'vi race to protect their home.", "rating": 7.6, "audienceRating": 9.2, "year": 2022, "tagline": "Return to Pandora.", "thumb": "/library/metadata/58683/thumb/1703239236", "art": "/library/metadata/58683/art/1703239236", "theme": "/library/metadata/1/theme/1705636920", "index": 1, "leafCount": 14, "viewedLeafCount": 0, "childCount": 1, "seasonCount": 2022, "duration": 11558112, "originallyAvailableAt": "2022-12-14T00:00:00Z", "addedAt": 1556281940, "updatedAt": 1556281940, "audienceRatingImage": "rottentomatoes://image.rating.upright", "chapterSource": "media", "primaryExtraKey": "/library/metadata/58684", "originalTitle": "映画 ブラッククローバー 魔法帝の剣", "parentRatingKey": "66", "grandparentRatingKey": "66", "parentGuid": "plex://show/5d9c081b170e24001f2a7be4", "grandparentGuid": "plex://show/5d9c081b170e24001f2a7be4", "grandparentSlug": "alice-in-borderland-2020", "grandparentKey": "/library/metadata/66", "parentKey": "/library/metadata/66", "grandparentTitle": "Caprica", "grandparentThumb": "/library/metadata/66/thumb/1705716261", "grandparentTheme": "/library/metadata/66/theme/1705716261", "grandparentArt": "/library/metadata/66/art/1705716261", "parentTitle": "Caprica", "parentIndex": 1, "parentThumb": "/library/metadata/66/thumb/1705716261", "ratingImage": "rottentomatoes://image.rating.ripe", "viewCount": 1, "viewOffset": 5222500, "skipCount": 1, "lastViewedAt": 1682752242, "Image": [{"alt": "Episode 1", "type": "background", "url": "/library/metadata/45521/thumb/1644710589"}], "UltraBlurColors": {"topLeft": "11333b", "topRight": "0a232d", "bottomRight": "73958", "bottomLeft": "1f5066"}, "Guid": [{"id": "imdb://tt13015952"}], "librarySectionID": 1, "librarySectionTitle": "Movies", "librarySectionKey": "/library/sections/1", "showOrdering": "absolute", "flattenSeasons": "1", "skipChildren": false, "Media": [{"id": 119534, "duration": 11558112, "bitrate": 25025, "width": 3840, "height": 2072, "aspectRatio": 1.85, "audioChannels": 6, "audioCodec": "eac3", "videoCodec": "hevc", "videoResolution": "4k", "container": "mkv", "videoFrameRate": "24p", "videoProfile": "main 10", "hasVoiceActivity": false, "audioProfile": "dts", "optimizedForStreaming": 1, "has64bitOffsets": false, "Part": [{"id": 119542, "key": "/library/parts/119542/1680457526/file.mkv", "indexes": "sd", "duration": 11558112, "file": "/movies/Avatar The Way of Water (2022)/Avatar.The.Way.of.Water.2022.2160p.WEB-DL.DDP5.1.Atmos.DV.HDR10.HEVC-CMRG.mkv", "size": 36158371307, "container": "mkv", "videoProfile": "main 10", "audioProfile": "dts", "has64bitOffsets": false, "optimizedForStreaming": false, "hasThumbnail": "1"}]}], "Genre": [{"id": 259, "tag": "Adventure"}], "Country": [{"id": 259, "tag": "United States of America"}], "Director": [{"id": 126522, "tag": "James Cameron"}], "Writer": [{"id": 126522, "tag": "James Cameron"}], "Collection": [{"tag": "Working NL Subs"}], "Role": [{"id": 294129, "tag": "Mike Smith", "role": "Self", "thumb": "https://metadata-static.plex.tv/2/people/27b85844536c39f3f9ac943aaad46608.jpg"}], "Rating": [{"image": "themoviedb://image.rating", "value": 3, "type": "audience"}], "Location": [{"path": "/TV Shows/House"}]}], "Meta": {"Type": [{"key": "/library/sections/2/all?type=2", "type": "show", "title": "TV Shows", "active": false, "Filter": [{"filter": "genre", "filterType": "string", "key": "/library/sections/2/genre?type=2", "title": "Genre", "type": "filter"}], "Sort": [{"default": "asc", "active": false, "activeDirection": "asc", "defaultDirection": "asc", "descKey": "titleSort:desc", "firstCharacterKey": "/library/sections/2/firstCharacter", "key": "titleSort", "title": "Title"}], "Field": [{"key": "show.title", "title": "Show Title", "type": "string", "subType": "rating"}]}], "FieldType": [{"type": "tag", "Operator": []}]}}}
         "400":
           application/json: {"errors": [{"code": 1000, "message": "X-Plex-Client-Identifier is missing", "status": 400}]}
         "401":
@@ -2526,7 +2514,7 @@ examples:
           X-Plex-Client-Identifier: "3381b62b-9ab7-4e37-827b-203e9809eb58"
       responses:
         "200":
-          application/json: {"MediaContainer": {"size": 5709.89, "SearchResult": []}}
+          application/json: {"MediaContainer": {"size": 50, "allowSync": false, "identifier": "com.plexapp.plugins.library", "librarySectionID": 2, "librarySectionTitle": "TV Series", "librarySectionUUID": "e69655a2-ef48-4aba-bb19-0cc34d1e7d36", "mediaTagPrefix": "/system/bundle/media/flags/", "mediaTagVersion": 1734362201, "SearchResult": []}}
         "400":
           application/json: {"errors": [{"code": 1000, "message": "X-Plex-Client-Identifier is missing", "status": 400}]}
         "401":

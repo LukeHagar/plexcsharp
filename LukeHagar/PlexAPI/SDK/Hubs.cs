@@ -73,8 +73,8 @@ namespace LukeHagar.PlexAPI.SDK
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.15.0";
-        private const string _sdkGenVersion = "2.620.2";
+        private const string _sdkVersion = "0.15.1";
+        private const string _sdkGenVersion = "2.623.0";
         private const string _openapiDocVersion = "0.0.3";
 
         public Hubs(SDKConfig config)

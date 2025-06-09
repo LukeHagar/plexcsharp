@@ -14,81 +14,128 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using Newtonsoft.Json;
     using System.Collections.Generic;
     
-    /// <summary>
-    /// The Meta object is only included in the response if the `includeMeta` parameter is set to `1`.<br/>
-    /// 
-    /// <remarks>
-    /// 
-    /// </remarks>
-    /// </summary>
     public class GetLibraryItemsMediaContainer
     {
 
-        [JsonProperty("Type")]
-        public List<GetLibraryItemsType>? Type { get; set; }
-
-        [JsonProperty("FieldType")]
-        public List<GetLibraryItemsFieldType>? FieldType { get; set; }
-
+        /// <summary>
+        /// Number of media items returned in this response.
+        /// </summary>
         [JsonProperty("size")]
         public int Size { get; set; } = default!;
 
+        /// <summary>
+        /// Total number of media items in the library.
+        /// </summary>
         [JsonProperty("totalSize")]
         public int TotalSize { get; set; } = default!;
 
+        /// <summary>
+        /// Offset value for pagination.
+        /// </summary>
         [JsonProperty("offset")]
-        public int Offset { get; set; } = default!;
+        public long Offset { get; set; } = default!;
 
+        /// <summary>
+        /// The content type or mode.
+        /// </summary>
         [JsonProperty("content")]
         public string Content { get; set; } = default!;
 
+        /// <summary>
+        /// Indicates whether syncing is allowed.
+        /// </summary>
         [JsonProperty("allowSync")]
         public bool AllowSync { get; set; } = default!;
 
+        /// <summary>
+        /// Specifies whether caching is disabled.
+        /// </summary>
         [JsonProperty("nocache")]
-        public bool? Nocache { get; set; }
+        public bool Nocache { get; set; } = default!;
 
+        /// <summary>
+        /// URL for the background artwork of the media container.
+        /// </summary>
         [JsonProperty("art")]
         public string Art { get; set; } = default!;
 
+        /// <summary>
+        /// An plugin identifier for the media container.
+        /// </summary>
         [JsonProperty("identifier")]
         public string Identifier { get; set; } = default!;
 
+        /// <summary>
+        /// The unique identifier for the library section.
+        /// </summary>
         [JsonProperty("librarySectionID")]
-        public long LibrarySectionID { get; set; } = default!;
+        public long? LibrarySectionID { get; set; }
 
+        /// <summary>
+        /// The title of the library section.
+        /// </summary>
         [JsonProperty("librarySectionTitle")]
-        public string LibrarySectionTitle { get; set; } = default!;
+        public string? LibrarySectionTitle { get; set; }
 
+        /// <summary>
+        /// The universally unique identifier for the library section.
+        /// </summary>
         [JsonProperty("librarySectionUUID")]
-        public string LibrarySectionUUID { get; set; } = default!;
+        public string? LibrarySectionUUID { get; set; }
 
+        /// <summary>
+        /// The prefix used for media tag resource paths.
+        /// </summary>
         [JsonProperty("mediaTagPrefix")]
         public string MediaTagPrefix { get; set; } = default!;
 
+        /// <summary>
+        /// The version number for media tags.
+        /// </summary>
         [JsonProperty("mediaTagVersion")]
-        public int MediaTagVersion { get; set; } = default!;
+        public long MediaTagVersion { get; set; } = default!;
 
+        /// <summary>
+        /// URL for the thumbnail image of the media container.
+        /// </summary>
         [JsonProperty("thumb")]
         public string Thumb { get; set; } = default!;
 
+        /// <summary>
+        /// The primary title of the media container.
+        /// </summary>
         [JsonProperty("title1")]
         public string Title1 { get; set; } = default!;
 
+        /// <summary>
+        /// The secondary title of the media container.
+        /// </summary>
         [JsonProperty("title2")]
         public string Title2 { get; set; } = default!;
 
+        /// <summary>
+        /// Identifier for the view group layout.
+        /// </summary>
         [JsonProperty("viewGroup")]
         public string ViewGroup { get; set; } = default!;
 
+        /// <summary>
+        /// Identifier for the view mode.
+        /// </summary>
         [JsonProperty("viewMode")]
-        public int? ViewMode { get; set; }
+        public string? ViewMode { get; set; }
 
+        /// <summary>
+        /// Indicates if the media container has mixed parents.
+        /// </summary>
         [JsonProperty("mixedParents")]
         public bool? MixedParents { get; set; }
 
+        /// <summary>
+        /// An array of metadata items.
+        /// </summary>
         [JsonProperty("Metadata")]
-        public List<GetLibraryItemsMetadata>? Metadata { get; set; }
+        public List<GetLibraryItemsMetadata> Metadata { get; set; } = default!;
 
         /// <summary>
         /// The Meta object is only included in the response if the `includeMeta` parameter is set to `1`.<br/>

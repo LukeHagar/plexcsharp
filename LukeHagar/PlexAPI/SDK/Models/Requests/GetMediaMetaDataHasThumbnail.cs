@@ -14,7 +14,11 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using System;
     
     /// <summary>
-    /// Indicates if the part has a thumbnail.
+    /// Indicates if the part has a thumbnail.<br/>
+    /// 
+    /// <remarks>
+    /// 
+    /// </remarks>
     /// </summary>
     public enum GetMediaMetaDataHasThumbnail
     {

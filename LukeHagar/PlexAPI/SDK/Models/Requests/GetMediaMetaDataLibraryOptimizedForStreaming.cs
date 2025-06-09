@@ -57,7 +57,11 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
 
 
     /// <summary>
-    /// Has this media been optimized for streaming. NOTE: This can be 0, 1, false or true
+    /// Has this media been optimized for streaming. NOTE: This can be 0, 1, false or true<br/>
+    /// 
+    /// <remarks>
+    /// 
+    /// </remarks>
     /// </summary>
     [JsonConverter(typeof(GetMediaMetaDataLibraryOptimizedForStreaming.GetMediaMetaDataLibraryOptimizedForStreamingConverter))]
     public class GetMediaMetaDataLibraryOptimizedForStreaming {

@@ -164,7 +164,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// The original release date of the media item.
         /// </summary>
         [JsonProperty("originallyAvailableAt")]
-        public LocalDate OriginallyAvailableAt { get; set; } = default!;
+        public LocalDate? OriginallyAvailableAt { get; set; }
 
         [JsonProperty("addedAt")]
         public long AddedAt { get; set; } = default!;

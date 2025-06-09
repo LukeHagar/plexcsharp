@@ -12,10 +12,13 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     
+    /// <summary>
+    /// The folder path for the media item.
+    /// </summary>
     public class GetLibraryItemsLocation
     {
 
         [JsonProperty("path")]
-        public string? Path { get; set; }
+        public string Path { get; set; } = default!;
     }
 }

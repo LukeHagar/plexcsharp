@@ -13,6 +13,13 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using Newtonsoft.Json;
     using System;
     
+    /// <summary>
+    /// Indicates if the part has a thumbnail.<br/>
+    /// 
+    /// <remarks>
+    /// 
+    /// </remarks>
+    /// </summary>
     public enum GetLibraryItemsHasThumbnail
     {
         [JsonProperty("0")]

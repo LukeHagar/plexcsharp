@@ -15,7 +15,25 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     public class GetSearchAllLibrariesGenre
     {
 
+        /// <summary>
+        /// The unique identifier for the genre.<br/>
+        /// 
+        /// <remarks>
+        /// NOTE: This is different for each Plex server and is not globally unique.<br/>
+        /// 
+        /// </remarks>
+        /// </summary>
+        [JsonProperty("id")]
+        public int Id { get; set; } = default!;
+
+        /// <summary>
+        /// The genre name of this media-item<br/>
+        /// 
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// </summary>
         [JsonProperty("tag")]
-        public string? Tag { get; set; }
+        public string Tag { get; set; } = default!;
     }
 }
