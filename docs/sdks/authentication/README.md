@@ -20,6 +20,7 @@ This endpoint provides the caller with a temporary token with the same access le
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getTransientToken" method="get" path="/security/token" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -62,6 +63,7 @@ Note: requires Plex Media Server >= 1.15.4.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getSourceConnectionInformation" method="get" path="/security/resources" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -97,6 +99,7 @@ Get the User data from the provided X-Plex-Token
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getTokenDetails" method="get" path="/user" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -132,6 +135,7 @@ Sign in user with username and password and return user data with Plex authentic
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="post-users-sign-in-data" method="post" path="/users/signin" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Requests;

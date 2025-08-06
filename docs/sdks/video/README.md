@@ -17,6 +17,7 @@ Get the timeline for a media item
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getTimeline" method="get" path="/:/timeline" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -66,6 +67,7 @@ Begin a Universal Transcode Session
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="startUniversalTranscode" method="get" path="/video/:/transcode/universal/start.mpd" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;

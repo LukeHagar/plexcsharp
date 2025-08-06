@@ -12,50 +12,68 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     using System;
-    
-    public enum GetMediaMetaDataLibraryType
-    {
-        [JsonProperty("coverPoster")]
-        CoverPoster,
-        [JsonProperty("background")]
-        Background,
-        [JsonProperty("snapshot")]
-        Snapshot,
-        [JsonProperty("clearLogo")]
-        ClearLogo,
-    }
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
-    public static class GetMediaMetaDataLibraryTypeExtension
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class GetMediaMetaDataLibraryType : IEquatable<GetMediaMetaDataLibraryType>
     {
-        public static string Value(this GetMediaMetaDataLibraryType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
+        public static readonly GetMediaMetaDataLibraryType CoverPoster = new GetMediaMetaDataLibraryType("coverPoster");
+        public static readonly GetMediaMetaDataLibraryType Background = new GetMediaMetaDataLibraryType("background");
+        public static readonly GetMediaMetaDataLibraryType Snapshot = new GetMediaMetaDataLibraryType("snapshot");
+        public static readonly GetMediaMetaDataLibraryType ClearLogo = new GetMediaMetaDataLibraryType("clearLogo");
 
-        public static GetMediaMetaDataLibraryType ToEnum(this string value)
-        {
-            foreach(var field in typeof(GetMediaMetaDataLibraryType).GetFields())
+        private static readonly Dictionary <string, GetMediaMetaDataLibraryType> _knownValues =
+            new Dictionary <string, GetMediaMetaDataLibraryType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["coverPoster"] = CoverPoster,
+                ["background"] = Background,
+                ["snapshot"] = Snapshot,
+                ["clearLogo"] = ClearLogo
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, GetMediaMetaDataLibraryType> _values =
+            new ConcurrentDictionary<string, GetMediaMetaDataLibraryType>(_knownValues);
 
-                    if (enumVal is GetMediaMetaDataLibraryType)
-                    {
-                        return (GetMediaMetaDataLibraryType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum GetMediaMetaDataLibraryType");
+        private GetMediaMetaDataLibraryType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
+
+        public string Value { get; }
+
+        public static GetMediaMetaDataLibraryType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new GetMediaMetaDataLibraryType(value));
+        }
+
+        public static implicit operator GetMediaMetaDataLibraryType(string value) => Of(value);
+        public static implicit operator string(GetMediaMetaDataLibraryType getmediametadatalibrarytype) => getmediametadatalibrarytype.Value;
+
+        public static GetMediaMetaDataLibraryType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as GetMediaMetaDataLibraryType);
+
+        public bool Equals(GetMediaMetaDataLibraryType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
     }
 
 }

@@ -30,6 +30,7 @@ Create a new playlist. By default the playlist is blank. To create a playlist al
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="createPlaylist" method="post" path="/playlists" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -73,6 +74,7 @@ Get All Playlists given the specified filters.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getPlaylists" method="get" path="/playlists" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -111,6 +113,7 @@ Smart playlist details contain the `content` attribute. This is the content URI 
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getPlaylist" method="get" path="/playlists/{playlistID}" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -147,6 +150,7 @@ This endpoint will delete a playlist
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="deletePlaylist" method="delete" path="/playlists/{playlistID}" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -183,6 +187,7 @@ From PMS version 1.9.1 clients can also edit playlist metadata using this endpoi
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="updatePlaylist" method="put" path="/playlists/{playlistID}" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -224,6 +229,7 @@ Note that for dumb playlists, items have a `playlistItemID` attribute which is u
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getPlaylistContents" method="get" path="/playlists/{playlistID}/items" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -265,6 +271,7 @@ Clears a playlist, only works with dumb playlists. Returns the playlist.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="clearPlaylistContents" method="delete" path="/playlists/{playlistID}/items" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -302,6 +309,7 @@ With a smart playlist, passing a new `uri` parameter replaces the rules for the 
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="addPlaylistContents" method="put" path="/playlists/{playlistID}/items" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -344,6 +352,7 @@ Imports m3u playlists by passing a path on the server to scan for m3u-formatted 
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="uploadPlaylist" method="post" path="/playlists/upload" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;

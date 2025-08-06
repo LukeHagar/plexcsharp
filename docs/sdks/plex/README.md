@@ -22,6 +22,7 @@ Get Companions Data
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getCompanionsData" method="get" path="/companions" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -57,6 +58,7 @@ Get friends of provided auth token.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getUserFriends" method="get" path="/friends" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -92,6 +94,7 @@ Returns the geolocation and locale data of the caller
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getGeoData" method="get" path="/geoip" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 
@@ -126,6 +129,7 @@ Retrieves the home data for the authenticated user, including details like home 
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getHomeData" method="get" path="/home" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -155,6 +159,7 @@ Get Plex server access tokens and server connections
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="get-server-resources" method="get" path="/resources" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -200,6 +205,7 @@ Retrieve a Pin ID from Plex.tv to use for authentication flows
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getPin" method="post" path="/pins" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Requests;
@@ -243,6 +249,7 @@ Retrieve an Access Token from Plex.tv after the Pin has been authenticated
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getTokenByPinId" method="get" path="/pins/{pinID}" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Requests;

@@ -12,52 +12,70 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     using System;
-    
-    public enum SearchTypes
-    {
-        [JsonProperty("movies")]
-        Movies,
-        [JsonProperty("music")]
-        Music,
-        [JsonProperty("otherVideos")]
-        OtherVideos,
-        [JsonProperty("people")]
-        People,
-        [JsonProperty("tv")]
-        Tv,
-    }
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
-    public static class SearchTypesExtension
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class SearchTypes : IEquatable<SearchTypes>
     {
-        public static string Value(this SearchTypes value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
+        public static readonly SearchTypes Movies = new SearchTypes("movies");
+        public static readonly SearchTypes Music = new SearchTypes("music");
+        public static readonly SearchTypes OtherVideos = new SearchTypes("otherVideos");
+        public static readonly SearchTypes People = new SearchTypes("people");
+        public static readonly SearchTypes Tv = new SearchTypes("tv");
 
-        public static SearchTypes ToEnum(this string value)
-        {
-            foreach(var field in typeof(SearchTypes).GetFields())
+        private static readonly Dictionary <string, SearchTypes> _knownValues =
+            new Dictionary <string, SearchTypes> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["movies"] = Movies,
+                ["music"] = Music,
+                ["otherVideos"] = OtherVideos,
+                ["people"] = People,
+                ["tv"] = Tv
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, SearchTypes> _values =
+            new ConcurrentDictionary<string, SearchTypes>(_knownValues);
 
-                    if (enumVal is SearchTypes)
-                    {
-                        return (SearchTypes)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum SearchTypes");
+        private SearchTypes(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
+
+        public string Value { get; }
+
+        public static SearchTypes Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new SearchTypes(value));
+        }
+
+        public static implicit operator SearchTypes(string value) => Of(value);
+        public static implicit operator string(SearchTypes searchtypes) => searchtypes.Value;
+
+        public static SearchTypes[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as SearchTypes);
+
+        public bool Equals(SearchTypes? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
     }
 
 }

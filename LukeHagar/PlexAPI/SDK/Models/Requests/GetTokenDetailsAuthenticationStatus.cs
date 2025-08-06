@@ -12,49 +12,67 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// String representation of subscriptionActive
     /// </summary>
-    public enum GetTokenDetailsAuthenticationStatus
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class GetTokenDetailsAuthenticationStatus : IEquatable<GetTokenDetailsAuthenticationStatus>
     {
-        [JsonProperty("Inactive")]
-        Inactive,
-        [JsonProperty("Active")]
-        Active,
-    }
+        public static readonly GetTokenDetailsAuthenticationStatus Inactive = new GetTokenDetailsAuthenticationStatus("Inactive");
+        public static readonly GetTokenDetailsAuthenticationStatus Active = new GetTokenDetailsAuthenticationStatus("Active");
 
-    public static class GetTokenDetailsAuthenticationStatusExtension
-    {
-        public static string Value(this GetTokenDetailsAuthenticationStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static GetTokenDetailsAuthenticationStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(GetTokenDetailsAuthenticationStatus).GetFields())
+        private static readonly Dictionary <string, GetTokenDetailsAuthenticationStatus> _knownValues =
+            new Dictionary <string, GetTokenDetailsAuthenticationStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["Inactive"] = Inactive,
+                ["Active"] = Active
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, GetTokenDetailsAuthenticationStatus> _values =
+            new ConcurrentDictionary<string, GetTokenDetailsAuthenticationStatus>(_knownValues);
 
-                    if (enumVal is GetTokenDetailsAuthenticationStatus)
-                    {
-                        return (GetTokenDetailsAuthenticationStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum GetTokenDetailsAuthenticationStatus");
+        private GetTokenDetailsAuthenticationStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
+
+        public string Value { get; }
+
+        public static GetTokenDetailsAuthenticationStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new GetTokenDetailsAuthenticationStatus(value));
+        }
+
+        public static implicit operator GetTokenDetailsAuthenticationStatus(string value) => Of(value);
+        public static implicit operator string(GetTokenDetailsAuthenticationStatus gettokendetailsauthenticationstatus) => gettokendetailsauthenticationstatus.Value;
+
+        public static GetTokenDetailsAuthenticationStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as GetTokenDetailsAuthenticationStatus);
+
+        public bool Equals(GetTokenDetailsAuthenticationStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
     }
 
 }

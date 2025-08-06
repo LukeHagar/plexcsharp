@@ -12,51 +12,69 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// type of playlist to create
     /// </summary>
-    public enum CreatePlaylistQueryParamType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class CreatePlaylistQueryParamType : IEquatable<CreatePlaylistQueryParamType>
     {
-        [JsonProperty("audio")]
-        Audio,
-        [JsonProperty("video")]
-        Video,
-        [JsonProperty("photo")]
-        Photo,
-    }
+        public static readonly CreatePlaylistQueryParamType Audio = new CreatePlaylistQueryParamType("audio");
+        public static readonly CreatePlaylistQueryParamType Video = new CreatePlaylistQueryParamType("video");
+        public static readonly CreatePlaylistQueryParamType Photo = new CreatePlaylistQueryParamType("photo");
 
-    public static class CreatePlaylistQueryParamTypeExtension
-    {
-        public static string Value(this CreatePlaylistQueryParamType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static CreatePlaylistQueryParamType ToEnum(this string value)
-        {
-            foreach(var field in typeof(CreatePlaylistQueryParamType).GetFields())
+        private static readonly Dictionary <string, CreatePlaylistQueryParamType> _knownValues =
+            new Dictionary <string, CreatePlaylistQueryParamType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["audio"] = Audio,
+                ["video"] = Video,
+                ["photo"] = Photo
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, CreatePlaylistQueryParamType> _values =
+            new ConcurrentDictionary<string, CreatePlaylistQueryParamType>(_knownValues);
 
-                    if (enumVal is CreatePlaylistQueryParamType)
-                    {
-                        return (CreatePlaylistQueryParamType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum CreatePlaylistQueryParamType");
+        private CreatePlaylistQueryParamType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
+
+        public string Value { get; }
+
+        public static CreatePlaylistQueryParamType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new CreatePlaylistQueryParamType(value));
+        }
+
+        public static implicit operator CreatePlaylistQueryParamType(string value) => Of(value);
+        public static implicit operator string(CreatePlaylistQueryParamType createplaylistqueryparamtype) => createplaylistqueryparamtype.Value;
+
+        public static CreatePlaylistQueryParamType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as CreatePlaylistQueryParamType);
+
+        public bool Equals(CreatePlaylistQueryParamType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
     }
 
 }

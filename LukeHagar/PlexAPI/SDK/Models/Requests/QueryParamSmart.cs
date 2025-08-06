@@ -10,14 +10,68 @@
 namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
     using LukeHagar.PlexAPI.SDK.Utils;
-    
+    using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// type of playlists to return (default is all).
     /// </summary>
-    public enum QueryParamSmart
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class QueryParamSmart : IEquatable<QueryParamSmart>
     {
-        Zero = 0,
-        One = 1,
+        public static readonly QueryParamSmart Zero = new QueryParamSmart(0);
+        public static readonly QueryParamSmart One = new QueryParamSmart(1);
+
+        private static readonly Dictionary <long, QueryParamSmart> _knownValues =
+            new Dictionary <long, QueryParamSmart> ()
+            {
+                [0] = Zero,
+                [1] = One
+            };
+
+        private static readonly ConcurrentDictionary<long, QueryParamSmart> _values =
+            new ConcurrentDictionary<long, QueryParamSmart>(_knownValues);
+
+        private QueryParamSmart(long value)
+        {
+            Value = value;
+        }
+
+        public long Value { get; }
+
+        public static QueryParamSmart Of(long value)
+        {
+            return _values.GetOrAdd(value, _ => new QueryParamSmart(value));
+        }
+
+        public static implicit operator QueryParamSmart(long value) => Of(value);
+        public static implicit operator long(QueryParamSmart queryparamsmart) => queryparamsmart.Value;
+
+        public static QueryParamSmart[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as QueryParamSmart);
+
+        public bool Equals(QueryParamSmart? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
     }
 
 }

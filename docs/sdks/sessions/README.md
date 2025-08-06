@@ -19,6 +19,7 @@ This will retrieve the "Now Playing" Information of the PMS.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getSessions" method="get" path="/status/sessions" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -48,6 +49,7 @@ This will Retrieve a listing of all history views.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getSessionHistory" method="get" path="/status/sessions/history/all" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -92,6 +94,7 @@ Get Transcode Sessions
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getTranscodeSessions" method="get" path="/transcode/sessions" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -121,6 +124,7 @@ Stop a Transcode Session
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="stopTranscodeSession" method="delete" path="/transcode/sessions/{sessionKey}" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;

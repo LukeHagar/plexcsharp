@@ -12,7 +12,10 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The type of media content in the Plex library. This can represent videos, music, or photos.<br/>
     /// 
@@ -20,61 +23,76 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     /// 
     /// </remarks>
     /// </summary>
-    public enum GetMediaMetaDataType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class GetMediaMetaDataType : IEquatable<GetMediaMetaDataType>
     {
-        [JsonProperty("movie")]
-        Movie,
-        [JsonProperty("show")]
-        TvShow,
-        [JsonProperty("season")]
-        Season,
-        [JsonProperty("episode")]
-        Episode,
-        [JsonProperty("artist")]
-        Artist,
-        [JsonProperty("album")]
-        Album,
-        [JsonProperty("track")]
-        Track,
-        [JsonProperty("photoalbum")]
-        PhotoAlbum,
-        [JsonProperty("photo")]
-        Photo,
-        [JsonProperty("collection")]
-        Collection,
-    }
+        public static readonly GetMediaMetaDataType Movie = new GetMediaMetaDataType("movie");
+        public static readonly GetMediaMetaDataType TvShow = new GetMediaMetaDataType("show");
+        public static readonly GetMediaMetaDataType Season = new GetMediaMetaDataType("season");
+        public static readonly GetMediaMetaDataType Episode = new GetMediaMetaDataType("episode");
+        public static readonly GetMediaMetaDataType Artist = new GetMediaMetaDataType("artist");
+        public static readonly GetMediaMetaDataType Album = new GetMediaMetaDataType("album");
+        public static readonly GetMediaMetaDataType Track = new GetMediaMetaDataType("track");
+        public static readonly GetMediaMetaDataType PhotoAlbum = new GetMediaMetaDataType("photoalbum");
+        public static readonly GetMediaMetaDataType Photo = new GetMediaMetaDataType("photo");
+        public static readonly GetMediaMetaDataType Collection = new GetMediaMetaDataType("collection");
 
-    public static class GetMediaMetaDataTypeExtension
-    {
-        public static string Value(this GetMediaMetaDataType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static GetMediaMetaDataType ToEnum(this string value)
-        {
-            foreach(var field in typeof(GetMediaMetaDataType).GetFields())
+        private static readonly Dictionary <string, GetMediaMetaDataType> _knownValues =
+            new Dictionary <string, GetMediaMetaDataType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["movie"] = Movie,
+                ["show"] = TvShow,
+                ["season"] = Season,
+                ["episode"] = Episode,
+                ["artist"] = Artist,
+                ["album"] = Album,
+                ["track"] = Track,
+                ["photoalbum"] = PhotoAlbum,
+                ["photo"] = Photo,
+                ["collection"] = Collection
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, GetMediaMetaDataType> _values =
+            new ConcurrentDictionary<string, GetMediaMetaDataType>(_knownValues);
 
-                    if (enumVal is GetMediaMetaDataType)
-                    {
-                        return (GetMediaMetaDataType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum GetMediaMetaDataType");
+        private GetMediaMetaDataType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
+
+        public string Value { get; }
+
+        public static GetMediaMetaDataType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new GetMediaMetaDataType(value));
+        }
+
+        public static implicit operator GetMediaMetaDataType(string value) => Of(value);
+        public static implicit operator string(GetMediaMetaDataType getmediametadatatype) => getmediametadatatype.Value;
+
+        public static GetMediaMetaDataType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as GetMediaMetaDataType);
+
+        public bool Equals(GetMediaMetaDataType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
     }
 
 }

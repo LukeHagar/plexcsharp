@@ -17,7 +17,9 @@ namespace LukeHagar.PlexAPI.SDK
     using LukeHagar.PlexAPI.SDK.Utils.Retries;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Threading.Tasks;
@@ -94,8 +96,8 @@ namespace LukeHagar.PlexAPI.SDK
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.15.1";
-        private const string _sdkGenVersion = "2.623.0";
+        private const string _sdkVersion = "0.16.0";
+        private const string _sdkGenVersion = "2.674.1";
         private const string _openapiDocVersion = "0.0.3";
 
         public Log(SDKConfig config)

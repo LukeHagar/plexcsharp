@@ -12,73 +12,91 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// the name of the task to be started.
     /// </summary>
-    public enum TaskName
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class TaskName : IEquatable<TaskName>
     {
-        [JsonProperty("BackupDatabase")]
-        BackupDatabase,
-        [JsonProperty("BuildGracenoteCollections")]
-        BuildGracenoteCollections,
-        [JsonProperty("CheckForUpdates")]
-        CheckForUpdates,
-        [JsonProperty("CleanOldBundles")]
-        CleanOldBundles,
-        [JsonProperty("CleanOldCacheFiles")]
-        CleanOldCacheFiles,
-        [JsonProperty("DeepMediaAnalysis")]
-        DeepMediaAnalysis,
-        [JsonProperty("GenerateAutoTags")]
-        GenerateAutoTags,
-        [JsonProperty("GenerateChapterThumbs")]
-        GenerateChapterThumbs,
-        [JsonProperty("GenerateMediaIndexFiles")]
-        GenerateMediaIndexFiles,
-        [JsonProperty("OptimizeDatabase")]
-        OptimizeDatabase,
-        [JsonProperty("RefreshLibraries")]
-        RefreshLibraries,
-        [JsonProperty("RefreshLocalMedia")]
-        RefreshLocalMedia,
-        [JsonProperty("RefreshPeriodicMetadata")]
-        RefreshPeriodicMetadata,
-        [JsonProperty("UpgradeMediaAnalysis")]
-        UpgradeMediaAnalysis,
-    }
+        public static readonly TaskName BackupDatabase = new TaskName("BackupDatabase");
+        public static readonly TaskName BuildGracenoteCollections = new TaskName("BuildGracenoteCollections");
+        public static readonly TaskName CheckForUpdates = new TaskName("CheckForUpdates");
+        public static readonly TaskName CleanOldBundles = new TaskName("CleanOldBundles");
+        public static readonly TaskName CleanOldCacheFiles = new TaskName("CleanOldCacheFiles");
+        public static readonly TaskName DeepMediaAnalysis = new TaskName("DeepMediaAnalysis");
+        public static readonly TaskName GenerateAutoTags = new TaskName("GenerateAutoTags");
+        public static readonly TaskName GenerateChapterThumbs = new TaskName("GenerateChapterThumbs");
+        public static readonly TaskName GenerateMediaIndexFiles = new TaskName("GenerateMediaIndexFiles");
+        public static readonly TaskName OptimizeDatabase = new TaskName("OptimizeDatabase");
+        public static readonly TaskName RefreshLibraries = new TaskName("RefreshLibraries");
+        public static readonly TaskName RefreshLocalMedia = new TaskName("RefreshLocalMedia");
+        public static readonly TaskName RefreshPeriodicMetadata = new TaskName("RefreshPeriodicMetadata");
+        public static readonly TaskName UpgradeMediaAnalysis = new TaskName("UpgradeMediaAnalysis");
 
-    public static class TaskNameExtension
-    {
-        public static string Value(this TaskName value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static TaskName ToEnum(this string value)
-        {
-            foreach(var field in typeof(TaskName).GetFields())
+        private static readonly Dictionary <string, TaskName> _knownValues =
+            new Dictionary <string, TaskName> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["BackupDatabase"] = BackupDatabase,
+                ["BuildGracenoteCollections"] = BuildGracenoteCollections,
+                ["CheckForUpdates"] = CheckForUpdates,
+                ["CleanOldBundles"] = CleanOldBundles,
+                ["CleanOldCacheFiles"] = CleanOldCacheFiles,
+                ["DeepMediaAnalysis"] = DeepMediaAnalysis,
+                ["GenerateAutoTags"] = GenerateAutoTags,
+                ["GenerateChapterThumbs"] = GenerateChapterThumbs,
+                ["GenerateMediaIndexFiles"] = GenerateMediaIndexFiles,
+                ["OptimizeDatabase"] = OptimizeDatabase,
+                ["RefreshLibraries"] = RefreshLibraries,
+                ["RefreshLocalMedia"] = RefreshLocalMedia,
+                ["RefreshPeriodicMetadata"] = RefreshPeriodicMetadata,
+                ["UpgradeMediaAnalysis"] = UpgradeMediaAnalysis
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, TaskName> _values =
+            new ConcurrentDictionary<string, TaskName>(_knownValues);
 
-                    if (enumVal is TaskName)
-                    {
-                        return (TaskName)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum TaskName");
+        private TaskName(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
+
+        public string Value { get; }
+
+        public static TaskName Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new TaskName(value));
+        }
+
+        public static implicit operator TaskName(string value) => Of(value);
+        public static implicit operator string(TaskName taskname) => taskname.Value;
+
+        public static TaskName[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as TaskName);
+
+        public bool Equals(TaskName? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
     }
 
 }

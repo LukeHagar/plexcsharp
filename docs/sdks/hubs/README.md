@@ -18,6 +18,7 @@ Get Global Hubs filtered by the parameters provided.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getGlobalHubs" method="get" path="/hubs" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -55,6 +56,7 @@ This endpoint will return the recently added content.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="get-recently-added" method="get" path="/hubs/home/recentlyAdded" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -97,6 +99,7 @@ This endpoint will return a list of library specific hubs
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getLibraryHubs" method="get" path="/hubs/sections/{sectionId}" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;

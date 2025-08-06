@@ -10,7 +10,12 @@
 namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
     using LukeHagar.PlexAPI.SDK.Utils;
-    
+    using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The type of media to retrieve or filter by.<br/>
     /// 
@@ -23,17 +28,73 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     /// 
     /// </remarks>
     /// </summary>
-    public enum GetTopWatchedContentQueryParamType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class GetTopWatchedContentQueryParamType : IEquatable<GetTopWatchedContentQueryParamType>
     {
-        Movie = 1,
-        TvShow = 2,
-        Season = 3,
-        Episode = 4,
-        Artist = 5,
-        Album = 6,
-        Track = 7,
-        PhotoAlbum = 8,
-        Photo = 9,
+        public static readonly GetTopWatchedContentQueryParamType Movie = new GetTopWatchedContentQueryParamType(1);
+        public static readonly GetTopWatchedContentQueryParamType TvShow = new GetTopWatchedContentQueryParamType(2);
+        public static readonly GetTopWatchedContentQueryParamType Season = new GetTopWatchedContentQueryParamType(3);
+        public static readonly GetTopWatchedContentQueryParamType Episode = new GetTopWatchedContentQueryParamType(4);
+        public static readonly GetTopWatchedContentQueryParamType Artist = new GetTopWatchedContentQueryParamType(5);
+        public static readonly GetTopWatchedContentQueryParamType Album = new GetTopWatchedContentQueryParamType(6);
+        public static readonly GetTopWatchedContentQueryParamType Track = new GetTopWatchedContentQueryParamType(7);
+        public static readonly GetTopWatchedContentQueryParamType PhotoAlbum = new GetTopWatchedContentQueryParamType(8);
+        public static readonly GetTopWatchedContentQueryParamType Photo = new GetTopWatchedContentQueryParamType(9);
+
+        private static readonly Dictionary <long, GetTopWatchedContentQueryParamType> _knownValues =
+            new Dictionary <long, GetTopWatchedContentQueryParamType> ()
+            {
+                [1] = Movie,
+                [2] = TvShow,
+                [3] = Season,
+                [4] = Episode,
+                [5] = Artist,
+                [6] = Album,
+                [7] = Track,
+                [8] = PhotoAlbum,
+                [9] = Photo
+            };
+
+        private static readonly ConcurrentDictionary<long, GetTopWatchedContentQueryParamType> _values =
+            new ConcurrentDictionary<long, GetTopWatchedContentQueryParamType>(_knownValues);
+
+        private GetTopWatchedContentQueryParamType(long value)
+        {
+            Value = value;
+        }
+
+        public long Value { get; }
+
+        public static GetTopWatchedContentQueryParamType Of(long value)
+        {
+            return _values.GetOrAdd(value, _ => new GetTopWatchedContentQueryParamType(value));
+        }
+
+        public static implicit operator GetTopWatchedContentQueryParamType(long value) => Of(value);
+        public static implicit operator long(GetTopWatchedContentQueryParamType gettopwatchedcontentqueryparamtype) => gettopwatchedcontentqueryparamtype.Value;
+
+        public static GetTopWatchedContentQueryParamType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as GetTopWatchedContentQueryParamType);
+
+        public bool Equals(GetTopWatchedContentQueryParamType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
     }
 
 }

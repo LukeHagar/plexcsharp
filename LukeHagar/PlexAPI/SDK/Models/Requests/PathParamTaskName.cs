@@ -12,73 +12,91 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The name of the task to be started.
     /// </summary>
-    public enum PathParamTaskName
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class PathParamTaskName : IEquatable<PathParamTaskName>
     {
-        [JsonProperty("BackupDatabase")]
-        BackupDatabase,
-        [JsonProperty("BuildGracenoteCollections")]
-        BuildGracenoteCollections,
-        [JsonProperty("CheckForUpdates")]
-        CheckForUpdates,
-        [JsonProperty("CleanOldBundles")]
-        CleanOldBundles,
-        [JsonProperty("CleanOldCacheFiles")]
-        CleanOldCacheFiles,
-        [JsonProperty("DeepMediaAnalysis")]
-        DeepMediaAnalysis,
-        [JsonProperty("GenerateAutoTags")]
-        GenerateAutoTags,
-        [JsonProperty("GenerateChapterThumbs")]
-        GenerateChapterThumbs,
-        [JsonProperty("GenerateMediaIndexFiles")]
-        GenerateMediaIndexFiles,
-        [JsonProperty("OptimizeDatabase")]
-        OptimizeDatabase,
-        [JsonProperty("RefreshLibraries")]
-        RefreshLibraries,
-        [JsonProperty("RefreshLocalMedia")]
-        RefreshLocalMedia,
-        [JsonProperty("RefreshPeriodicMetadata")]
-        RefreshPeriodicMetadata,
-        [JsonProperty("UpgradeMediaAnalysis")]
-        UpgradeMediaAnalysis,
-    }
+        public static readonly PathParamTaskName BackupDatabase = new PathParamTaskName("BackupDatabase");
+        public static readonly PathParamTaskName BuildGracenoteCollections = new PathParamTaskName("BuildGracenoteCollections");
+        public static readonly PathParamTaskName CheckForUpdates = new PathParamTaskName("CheckForUpdates");
+        public static readonly PathParamTaskName CleanOldBundles = new PathParamTaskName("CleanOldBundles");
+        public static readonly PathParamTaskName CleanOldCacheFiles = new PathParamTaskName("CleanOldCacheFiles");
+        public static readonly PathParamTaskName DeepMediaAnalysis = new PathParamTaskName("DeepMediaAnalysis");
+        public static readonly PathParamTaskName GenerateAutoTags = new PathParamTaskName("GenerateAutoTags");
+        public static readonly PathParamTaskName GenerateChapterThumbs = new PathParamTaskName("GenerateChapterThumbs");
+        public static readonly PathParamTaskName GenerateMediaIndexFiles = new PathParamTaskName("GenerateMediaIndexFiles");
+        public static readonly PathParamTaskName OptimizeDatabase = new PathParamTaskName("OptimizeDatabase");
+        public static readonly PathParamTaskName RefreshLibraries = new PathParamTaskName("RefreshLibraries");
+        public static readonly PathParamTaskName RefreshLocalMedia = new PathParamTaskName("RefreshLocalMedia");
+        public static readonly PathParamTaskName RefreshPeriodicMetadata = new PathParamTaskName("RefreshPeriodicMetadata");
+        public static readonly PathParamTaskName UpgradeMediaAnalysis = new PathParamTaskName("UpgradeMediaAnalysis");
 
-    public static class PathParamTaskNameExtension
-    {
-        public static string Value(this PathParamTaskName value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static PathParamTaskName ToEnum(this string value)
-        {
-            foreach(var field in typeof(PathParamTaskName).GetFields())
+        private static readonly Dictionary <string, PathParamTaskName> _knownValues =
+            new Dictionary <string, PathParamTaskName> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["BackupDatabase"] = BackupDatabase,
+                ["BuildGracenoteCollections"] = BuildGracenoteCollections,
+                ["CheckForUpdates"] = CheckForUpdates,
+                ["CleanOldBundles"] = CleanOldBundles,
+                ["CleanOldCacheFiles"] = CleanOldCacheFiles,
+                ["DeepMediaAnalysis"] = DeepMediaAnalysis,
+                ["GenerateAutoTags"] = GenerateAutoTags,
+                ["GenerateChapterThumbs"] = GenerateChapterThumbs,
+                ["GenerateMediaIndexFiles"] = GenerateMediaIndexFiles,
+                ["OptimizeDatabase"] = OptimizeDatabase,
+                ["RefreshLibraries"] = RefreshLibraries,
+                ["RefreshLocalMedia"] = RefreshLocalMedia,
+                ["RefreshPeriodicMetadata"] = RefreshPeriodicMetadata,
+                ["UpgradeMediaAnalysis"] = UpgradeMediaAnalysis
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, PathParamTaskName> _values =
+            new ConcurrentDictionary<string, PathParamTaskName>(_knownValues);
 
-                    if (enumVal is PathParamTaskName)
-                    {
-                        return (PathParamTaskName)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum PathParamTaskName");
+        private PathParamTaskName(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
+
+        public string Value { get; }
+
+        public static PathParamTaskName Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new PathParamTaskName(value));
+        }
+
+        public static implicit operator PathParamTaskName(string value) => Of(value);
+        public static implicit operator string(PathParamTaskName pathparamtaskname) => pathparamtaskname.Value;
+
+        public static PathParamTaskName[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as PathParamTaskName);
+
+        public bool Equals(PathParamTaskName? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
     }
 
 }

@@ -19,6 +19,7 @@ Querying status of updates
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getUpdateStatus" method="get" path="/updater/status" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -48,6 +49,7 @@ Checking for updates
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="checkForUpdates" method="put" path="/updater/check" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -85,6 +87,7 @@ Note that these two parameters are effectively mutually exclusive. The `tonight`
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="applyUpdates" method="put" path="/updater/apply" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;

@@ -12,77 +12,95 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// A key representing a specific tag within the section.
     /// </summary>
-    public enum Tag
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class Tag : IEquatable<Tag>
     {
-        [JsonProperty("unwatched")]
-        Unwatched,
-        [JsonProperty("newest")]
-        Newest,
-        [JsonProperty("recentlyAdded")]
-        RecentlyAdded,
-        [JsonProperty("recentlyViewed")]
-        RecentlyViewed,
-        [JsonProperty("onDeck")]
-        OnDeck,
-        [JsonProperty("collection")]
-        Collection,
-        [JsonProperty("edition")]
-        Edition,
-        [JsonProperty("year")]
-        Year,
-        [JsonProperty("decade")]
-        Decade,
-        [JsonProperty("director")]
-        Director,
-        [JsonProperty("contentRating")]
-        ContentRating,
-        [JsonProperty("rating")]
-        Rating,
-        [JsonProperty("resolution")]
-        Resolution,
-        [JsonProperty("firstCharacter")]
-        FirstCharacter,
-        [JsonProperty("folder")]
-        Folder,
-        [JsonProperty("albums")]
-        Albums,
-    }
+        public static readonly Tag Unwatched = new Tag("unwatched");
+        public static readonly Tag Newest = new Tag("newest");
+        public static readonly Tag RecentlyAdded = new Tag("recentlyAdded");
+        public static readonly Tag RecentlyViewed = new Tag("recentlyViewed");
+        public static readonly Tag OnDeck = new Tag("onDeck");
+        public static readonly Tag Collection = new Tag("collection");
+        public static readonly Tag Edition = new Tag("edition");
+        public static readonly Tag Year = new Tag("year");
+        public static readonly Tag Decade = new Tag("decade");
+        public static readonly Tag Director = new Tag("director");
+        public static readonly Tag ContentRating = new Tag("contentRating");
+        public static readonly Tag Rating = new Tag("rating");
+        public static readonly Tag Resolution = new Tag("resolution");
+        public static readonly Tag FirstCharacter = new Tag("firstCharacter");
+        public static readonly Tag Folder = new Tag("folder");
+        public static readonly Tag Albums = new Tag("albums");
 
-    public static class TagExtension
-    {
-        public static string Value(this Tag value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static Tag ToEnum(this string value)
-        {
-            foreach(var field in typeof(Tag).GetFields())
+        private static readonly Dictionary <string, Tag> _knownValues =
+            new Dictionary <string, Tag> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["unwatched"] = Unwatched,
+                ["newest"] = Newest,
+                ["recentlyAdded"] = RecentlyAdded,
+                ["recentlyViewed"] = RecentlyViewed,
+                ["onDeck"] = OnDeck,
+                ["collection"] = Collection,
+                ["edition"] = Edition,
+                ["year"] = Year,
+                ["decade"] = Decade,
+                ["director"] = Director,
+                ["contentRating"] = ContentRating,
+                ["rating"] = Rating,
+                ["resolution"] = Resolution,
+                ["firstCharacter"] = FirstCharacter,
+                ["folder"] = Folder,
+                ["albums"] = Albums
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, Tag> _values =
+            new ConcurrentDictionary<string, Tag>(_knownValues);
 
-                    if (enumVal is Tag)
-                    {
-                        return (Tag)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum Tag");
+        private Tag(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
+
+        public string Value { get; }
+
+        public static Tag Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new Tag(value));
+        }
+
+        public static implicit operator Tag(string value) => Of(value);
+        public static implicit operator string(Tag tag) => tag.Value;
+
+        public static Tag[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as Tag);
+
+        public bool Equals(Tag? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
     }
 
 }

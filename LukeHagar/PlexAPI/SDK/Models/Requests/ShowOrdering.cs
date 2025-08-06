@@ -12,7 +12,10 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Setting that indicates the episode ordering for the show.<br/>
     /// 
@@ -26,51 +29,66 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     /// 
     /// </remarks>
     /// </summary>
-    public enum ShowOrdering
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class ShowOrdering : IEquatable<ShowOrdering>
     {
-        [JsonProperty("None")]
-        None,
-        [JsonProperty("tmdbAiring")]
-        TmdbAiring,
-        [JsonProperty("aired")]
-        TvdbAired,
-        [JsonProperty("dvd")]
-        TvdbDvd,
-        [JsonProperty("absolute")]
-        TvdbAbsolute,
-    }
+        public static readonly ShowOrdering None = new ShowOrdering("None");
+        public static readonly ShowOrdering TmdbAiring = new ShowOrdering("tmdbAiring");
+        public static readonly ShowOrdering TvdbAired = new ShowOrdering("aired");
+        public static readonly ShowOrdering TvdbDvd = new ShowOrdering("dvd");
+        public static readonly ShowOrdering TvdbAbsolute = new ShowOrdering("absolute");
 
-    public static class ShowOrderingExtension
-    {
-        public static string Value(this ShowOrdering value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static ShowOrdering ToEnum(this string value)
-        {
-            foreach(var field in typeof(ShowOrdering).GetFields())
+        private static readonly Dictionary <string, ShowOrdering> _knownValues =
+            new Dictionary <string, ShowOrdering> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["None"] = None,
+                ["tmdbAiring"] = TmdbAiring,
+                ["aired"] = TvdbAired,
+                ["dvd"] = TvdbDvd,
+                ["absolute"] = TvdbAbsolute
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, ShowOrdering> _values =
+            new ConcurrentDictionary<string, ShowOrdering>(_knownValues);
 
-                    if (enumVal is ShowOrdering)
-                    {
-                        return (ShowOrdering)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum ShowOrdering");
+        private ShowOrdering(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
+
+        public string Value { get; }
+
+        public static ShowOrdering Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new ShowOrdering(value));
+        }
+
+        public static implicit operator ShowOrdering(string value) => Of(value);
+        public static implicit operator string(ShowOrdering showordering) => showordering.Value;
+
+        public static ShowOrdering[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as ShowOrdering);
+
+        public bool Equals(ShowOrdering? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
     }
 
 }

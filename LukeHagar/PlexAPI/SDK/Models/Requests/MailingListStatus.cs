@@ -12,49 +12,67 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Your current mailing list status (active or unsubscribed)
     /// </summary>
-    public enum MailingListStatus
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class MailingListStatus : IEquatable<MailingListStatus>
     {
-        [JsonProperty("active")]
-        Active,
-        [JsonProperty("unsubscribed")]
-        Unsubscribed,
-    }
+        public static readonly MailingListStatus Active = new MailingListStatus("active");
+        public static readonly MailingListStatus Unsubscribed = new MailingListStatus("unsubscribed");
 
-    public static class MailingListStatusExtension
-    {
-        public static string Value(this MailingListStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static MailingListStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(MailingListStatus).GetFields())
+        private static readonly Dictionary <string, MailingListStatus> _knownValues =
+            new Dictionary <string, MailingListStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["active"] = Active,
+                ["unsubscribed"] = Unsubscribed
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, MailingListStatus> _values =
+            new ConcurrentDictionary<string, MailingListStatus>(_knownValues);
 
-                    if (enumVal is MailingListStatus)
-                    {
-                        return (MailingListStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum MailingListStatus");
+        private MailingListStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
+
+        public string Value { get; }
+
+        public static MailingListStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new MailingListStatus(value));
+        }
+
+        public static implicit operator MailingListStatus(string value) => Of(value);
+        public static implicit operator string(MailingListStatus mailingliststatus) => mailingliststatus.Value;
+
+        public static MailingListStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as MailingListStatus);
+
+        public bool Equals(MailingListStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
     }
 
 }

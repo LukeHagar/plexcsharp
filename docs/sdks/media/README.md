@@ -20,6 +20,7 @@ This will mark the provided media key as Played.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="markPlayed" method="get" path="/:/scrobble" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -55,6 +56,7 @@ This will mark the provided media key as Unplayed.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="markUnplayed" method="get" path="/:/unscrobble" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -91,6 +93,7 @@ This API command can be used to update the play progress of a media item.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="updatePlayProgress" method="post" path="/:/progress" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -132,6 +135,7 @@ Gets the banner image of the media item
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="get-banner-image" method="get" path="/library/metadata/{ratingKey}/banner" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -177,6 +181,7 @@ Gets the thumbnail image of the media item
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="get-thumb-image" method="get" path="/library/metadata/{ratingKey}/thumb" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;

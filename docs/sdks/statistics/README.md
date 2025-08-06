@@ -18,6 +18,7 @@ This will return the media statistics for the server
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getStatistics" method="get" path="/statistics/media" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -53,6 +54,7 @@ This will return the resources for the server
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getResourcesStatistics" method="get" path="/statistics/resources" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -88,6 +90,7 @@ This will return the bandwidth statistics for the server
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getBandwidthStatistics" method="get" path="/statistics/bandwidth" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;

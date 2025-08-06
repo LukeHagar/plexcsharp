@@ -10,7 +10,12 @@
 namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
     using LukeHagar.PlexAPI.SDK.Utils;
-    
+    using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The type of media to retrieve or filter by.<br/>
     /// 
@@ -23,17 +28,73 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     /// 
     /// </remarks>
     /// </summary>
-    public enum GetCountriesLibraryQueryParamType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class GetCountriesLibraryQueryParamType : IEquatable<GetCountriesLibraryQueryParamType>
     {
-        Movie = 1,
-        TvShow = 2,
-        Season = 3,
-        Episode = 4,
-        Artist = 5,
-        Album = 6,
-        Track = 7,
-        PhotoAlbum = 8,
-        Photo = 9,
+        public static readonly GetCountriesLibraryQueryParamType Movie = new GetCountriesLibraryQueryParamType(1);
+        public static readonly GetCountriesLibraryQueryParamType TvShow = new GetCountriesLibraryQueryParamType(2);
+        public static readonly GetCountriesLibraryQueryParamType Season = new GetCountriesLibraryQueryParamType(3);
+        public static readonly GetCountriesLibraryQueryParamType Episode = new GetCountriesLibraryQueryParamType(4);
+        public static readonly GetCountriesLibraryQueryParamType Artist = new GetCountriesLibraryQueryParamType(5);
+        public static readonly GetCountriesLibraryQueryParamType Album = new GetCountriesLibraryQueryParamType(6);
+        public static readonly GetCountriesLibraryQueryParamType Track = new GetCountriesLibraryQueryParamType(7);
+        public static readonly GetCountriesLibraryQueryParamType PhotoAlbum = new GetCountriesLibraryQueryParamType(8);
+        public static readonly GetCountriesLibraryQueryParamType Photo = new GetCountriesLibraryQueryParamType(9);
+
+        private static readonly Dictionary <long, GetCountriesLibraryQueryParamType> _knownValues =
+            new Dictionary <long, GetCountriesLibraryQueryParamType> ()
+            {
+                [1] = Movie,
+                [2] = TvShow,
+                [3] = Season,
+                [4] = Episode,
+                [5] = Artist,
+                [6] = Album,
+                [7] = Track,
+                [8] = PhotoAlbum,
+                [9] = Photo
+            };
+
+        private static readonly ConcurrentDictionary<long, GetCountriesLibraryQueryParamType> _values =
+            new ConcurrentDictionary<long, GetCountriesLibraryQueryParamType>(_knownValues);
+
+        private GetCountriesLibraryQueryParamType(long value)
+        {
+            Value = value;
+        }
+
+        public long Value { get; }
+
+        public static GetCountriesLibraryQueryParamType Of(long value)
+        {
+            return _values.GetOrAdd(value, _ => new GetCountriesLibraryQueryParamType(value));
+        }
+
+        public static implicit operator GetCountriesLibraryQueryParamType(long value) => Of(value);
+        public static implicit operator long(GetCountriesLibraryQueryParamType getcountrieslibraryqueryparamtype) => getcountrieslibraryqueryparamtype.Value;
+
+        public static GetCountriesLibraryQueryParamType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as GetCountriesLibraryQueryParamType);
+
+        public bool Equals(GetCountriesLibraryQueryParamType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
     }
 
 }

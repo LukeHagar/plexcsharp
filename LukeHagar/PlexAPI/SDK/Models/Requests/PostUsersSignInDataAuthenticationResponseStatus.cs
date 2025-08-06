@@ -12,49 +12,67 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// String representation of subscriptionActive
     /// </summary>
-    public enum PostUsersSignInDataAuthenticationResponseStatus
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class PostUsersSignInDataAuthenticationResponseStatus : IEquatable<PostUsersSignInDataAuthenticationResponseStatus>
     {
-        [JsonProperty("Inactive")]
-        Inactive,
-        [JsonProperty("Active")]
-        Active,
-    }
+        public static readonly PostUsersSignInDataAuthenticationResponseStatus Inactive = new PostUsersSignInDataAuthenticationResponseStatus("Inactive");
+        public static readonly PostUsersSignInDataAuthenticationResponseStatus Active = new PostUsersSignInDataAuthenticationResponseStatus("Active");
 
-    public static class PostUsersSignInDataAuthenticationResponseStatusExtension
-    {
-        public static string Value(this PostUsersSignInDataAuthenticationResponseStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static PostUsersSignInDataAuthenticationResponseStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(PostUsersSignInDataAuthenticationResponseStatus).GetFields())
+        private static readonly Dictionary <string, PostUsersSignInDataAuthenticationResponseStatus> _knownValues =
+            new Dictionary <string, PostUsersSignInDataAuthenticationResponseStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["Inactive"] = Inactive,
+                ["Active"] = Active
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, PostUsersSignInDataAuthenticationResponseStatus> _values =
+            new ConcurrentDictionary<string, PostUsersSignInDataAuthenticationResponseStatus>(_knownValues);
 
-                    if (enumVal is PostUsersSignInDataAuthenticationResponseStatus)
-                    {
-                        return (PostUsersSignInDataAuthenticationResponseStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum PostUsersSignInDataAuthenticationResponseStatus");
+        private PostUsersSignInDataAuthenticationResponseStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
+
+        public string Value { get; }
+
+        public static PostUsersSignInDataAuthenticationResponseStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new PostUsersSignInDataAuthenticationResponseStatus(value));
+        }
+
+        public static implicit operator PostUsersSignInDataAuthenticationResponseStatus(string value) => Of(value);
+        public static implicit operator string(PostUsersSignInDataAuthenticationResponseStatus postuserssignindataauthenticationresponsestatus) => postuserssignindataauthenticationresponsestatus.Value;
+
+        public static PostUsersSignInDataAuthenticationResponseStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as PostUsersSignInDataAuthenticationResponseStatus);
+
+        public bool Equals(PostUsersSignInDataAuthenticationResponseStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
     }
 
 }

@@ -16,8 +16,12 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: true
     oAuth2PasswordEnabled: false
+  tests:
+    generateTests: true
+    generateNewTests: false
+    skipResponseBodyAssertions: false
 csharp:
-  version: 0.15.1
+  version: 0.16.0
   additionalDependencies: []
   author: LukeHagar
   baseErrorName: PlexAPIError

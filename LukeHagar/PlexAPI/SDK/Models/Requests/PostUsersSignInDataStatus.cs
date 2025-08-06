@@ -12,46 +12,64 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     using System;
-    
-    public enum PostUsersSignInDataStatus
-    {
-        [JsonProperty("online")]
-        Online,
-        [JsonProperty("offline")]
-        Offline,
-    }
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
-    public static class PostUsersSignInDataStatusExtension
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class PostUsersSignInDataStatus : IEquatable<PostUsersSignInDataStatus>
     {
-        public static string Value(this PostUsersSignInDataStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
+        public static readonly PostUsersSignInDataStatus Online = new PostUsersSignInDataStatus("online");
+        public static readonly PostUsersSignInDataStatus Offline = new PostUsersSignInDataStatus("offline");
 
-        public static PostUsersSignInDataStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(PostUsersSignInDataStatus).GetFields())
+        private static readonly Dictionary <string, PostUsersSignInDataStatus> _knownValues =
+            new Dictionary <string, PostUsersSignInDataStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["online"] = Online,
+                ["offline"] = Offline
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, PostUsersSignInDataStatus> _values =
+            new ConcurrentDictionary<string, PostUsersSignInDataStatus>(_knownValues);
 
-                    if (enumVal is PostUsersSignInDataStatus)
-                    {
-                        return (PostUsersSignInDataStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum PostUsersSignInDataStatus");
+        private PostUsersSignInDataStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
+
+        public string Value { get; }
+
+        public static PostUsersSignInDataStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new PostUsersSignInDataStatus(value));
+        }
+
+        public static implicit operator PostUsersSignInDataStatus(string value) => Of(value);
+        public static implicit operator string(PostUsersSignInDataStatus postuserssignindatastatus) => postuserssignindatastatus.Value;
+
+        public static PostUsersSignInDataStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as PostUsersSignInDataStatus);
+
+        public bool Equals(PostUsersSignInDataStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
     }
 
 }

@@ -12,7 +12,10 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The type of library to filter. Can be &quot;movie&quot; or &quot;show&quot;, or all if not present.<br/>
     /// 
@@ -20,45 +23,60 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     /// 
     /// </remarks>
     /// </summary>
-    public enum Libtype
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class Libtype : IEquatable<Libtype>
     {
-        [JsonProperty("movie")]
-        Movie,
-        [JsonProperty("show")]
-        Show,
-    }
+        public static readonly Libtype Movie = new Libtype("movie");
+        public static readonly Libtype Show = new Libtype("show");
 
-    public static class LibtypeExtension
-    {
-        public static string Value(this Libtype value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static Libtype ToEnum(this string value)
-        {
-            foreach(var field in typeof(Libtype).GetFields())
+        private static readonly Dictionary <string, Libtype> _knownValues =
+            new Dictionary <string, Libtype> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["movie"] = Movie,
+                ["show"] = Show
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, Libtype> _values =
+            new ConcurrentDictionary<string, Libtype>(_knownValues);
 
-                    if (enumVal is Libtype)
-                    {
-                        return (Libtype)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum Libtype");
+        private Libtype(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
+
+        public string Value { get; }
+
+        public static Libtype Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new Libtype(value));
+        }
+
+        public static implicit operator Libtype(string value) => Of(value);
+        public static implicit operator string(Libtype libtype) => libtype.Value;
+
+        public static Libtype[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as Libtype);
+
+        public bool Equals(Libtype? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
     }
 
 }

@@ -10,7 +10,12 @@
 namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
     using LukeHagar.PlexAPI.SDK.Utils;
-    
+    using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The type of media to retrieve or filter by.<br/>
     /// 
@@ -23,17 +28,73 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     /// 
     /// </remarks>
     /// </summary>
-    public enum Type
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class Type : IEquatable<Type>
     {
-        Movie = 1,
-        TvShow = 2,
-        Season = 3,
-        Episode = 4,
-        Artist = 5,
-        Album = 6,
-        Track = 7,
-        PhotoAlbum = 8,
-        Photo = 9,
+        public static readonly Type Movie = new Type(1);
+        public static readonly Type TvShow = new Type(2);
+        public static readonly Type Season = new Type(3);
+        public static readonly Type Episode = new Type(4);
+        public static readonly Type Artist = new Type(5);
+        public static readonly Type Album = new Type(6);
+        public static readonly Type Track = new Type(7);
+        public static readonly Type PhotoAlbum = new Type(8);
+        public static readonly Type Photo = new Type(9);
+
+        private static readonly Dictionary <long, Type> _knownValues =
+            new Dictionary <long, Type> ()
+            {
+                [1] = Movie,
+                [2] = TvShow,
+                [3] = Season,
+                [4] = Episode,
+                [5] = Artist,
+                [6] = Album,
+                [7] = Track,
+                [8] = PhotoAlbum,
+                [9] = Photo
+            };
+
+        private static readonly ConcurrentDictionary<long, Type> _values =
+            new ConcurrentDictionary<long, Type>(_knownValues);
+
+        private Type(long value)
+        {
+            Value = value;
+        }
+
+        public long Value { get; }
+
+        public static Type Of(long value)
+        {
+            return _values.GetOrAdd(value, _ => new Type(value));
+        }
+
+        public static implicit operator Type(long value) => Of(value);
+        public static implicit operator long(Type type) => type.Value;
+
+        public static Type[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as Type);
+
+        public bool Equals(Type? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
     }
 
 }

@@ -10,7 +10,12 @@
 namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
     using LukeHagar.PlexAPI.SDK.Utils;
-    
+    using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The type of media to retrieve or filter by.<br/>
     /// 
@@ -23,17 +28,73 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     /// 
     /// </remarks>
     /// </summary>
-    public enum GetLibrarySectionsAllQueryParamType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class GetLibrarySectionsAllQueryParamType : IEquatable<GetLibrarySectionsAllQueryParamType>
     {
-        Movie = 1,
-        TvShow = 2,
-        Season = 3,
-        Episode = 4,
-        Artist = 5,
-        Album = 6,
-        Track = 7,
-        PhotoAlbum = 8,
-        Photo = 9,
+        public static readonly GetLibrarySectionsAllQueryParamType Movie = new GetLibrarySectionsAllQueryParamType(1);
+        public static readonly GetLibrarySectionsAllQueryParamType TvShow = new GetLibrarySectionsAllQueryParamType(2);
+        public static readonly GetLibrarySectionsAllQueryParamType Season = new GetLibrarySectionsAllQueryParamType(3);
+        public static readonly GetLibrarySectionsAllQueryParamType Episode = new GetLibrarySectionsAllQueryParamType(4);
+        public static readonly GetLibrarySectionsAllQueryParamType Artist = new GetLibrarySectionsAllQueryParamType(5);
+        public static readonly GetLibrarySectionsAllQueryParamType Album = new GetLibrarySectionsAllQueryParamType(6);
+        public static readonly GetLibrarySectionsAllQueryParamType Track = new GetLibrarySectionsAllQueryParamType(7);
+        public static readonly GetLibrarySectionsAllQueryParamType PhotoAlbum = new GetLibrarySectionsAllQueryParamType(8);
+        public static readonly GetLibrarySectionsAllQueryParamType Photo = new GetLibrarySectionsAllQueryParamType(9);
+
+        private static readonly Dictionary <long, GetLibrarySectionsAllQueryParamType> _knownValues =
+            new Dictionary <long, GetLibrarySectionsAllQueryParamType> ()
+            {
+                [1] = Movie,
+                [2] = TvShow,
+                [3] = Season,
+                [4] = Episode,
+                [5] = Artist,
+                [6] = Album,
+                [7] = Track,
+                [8] = PhotoAlbum,
+                [9] = Photo
+            };
+
+        private static readonly ConcurrentDictionary<long, GetLibrarySectionsAllQueryParamType> _values =
+            new ConcurrentDictionary<long, GetLibrarySectionsAllQueryParamType>(_knownValues);
+
+        private GetLibrarySectionsAllQueryParamType(long value)
+        {
+            Value = value;
+        }
+
+        public long Value { get; }
+
+        public static GetLibrarySectionsAllQueryParamType Of(long value)
+        {
+            return _values.GetOrAdd(value, _ => new GetLibrarySectionsAllQueryParamType(value));
+        }
+
+        public static implicit operator GetLibrarySectionsAllQueryParamType(long value) => Of(value);
+        public static implicit operator long(GetLibrarySectionsAllQueryParamType getlibrarysectionsallqueryparamtype) => getlibrarysectionsallqueryparamtype.Value;
+
+        public static GetLibrarySectionsAllQueryParamType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as GetLibrarySectionsAllQueryParamType);
+
+        public bool Equals(GetLibrarySectionsAllQueryParamType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
     }
 
 }

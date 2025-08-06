@@ -12,49 +12,67 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Your current mailing list status (active or unsubscribed)
     /// </summary>
-    public enum PostUsersSignInDataMailingListStatus
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class PostUsersSignInDataMailingListStatus : IEquatable<PostUsersSignInDataMailingListStatus>
     {
-        [JsonProperty("active")]
-        Active,
-        [JsonProperty("unsubscribed")]
-        Unsubscribed,
-    }
+        public static readonly PostUsersSignInDataMailingListStatus Active = new PostUsersSignInDataMailingListStatus("active");
+        public static readonly PostUsersSignInDataMailingListStatus Unsubscribed = new PostUsersSignInDataMailingListStatus("unsubscribed");
 
-    public static class PostUsersSignInDataMailingListStatusExtension
-    {
-        public static string Value(this PostUsersSignInDataMailingListStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static PostUsersSignInDataMailingListStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(PostUsersSignInDataMailingListStatus).GetFields())
+        private static readonly Dictionary <string, PostUsersSignInDataMailingListStatus> _knownValues =
+            new Dictionary <string, PostUsersSignInDataMailingListStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["active"] = Active,
+                ["unsubscribed"] = Unsubscribed
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, PostUsersSignInDataMailingListStatus> _values =
+            new ConcurrentDictionary<string, PostUsersSignInDataMailingListStatus>(_knownValues);
 
-                    if (enumVal is PostUsersSignInDataMailingListStatus)
-                    {
-                        return (PostUsersSignInDataMailingListStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum PostUsersSignInDataMailingListStatus");
+        private PostUsersSignInDataMailingListStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
+
+        public string Value { get; }
+
+        public static PostUsersSignInDataMailingListStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new PostUsersSignInDataMailingListStatus(value));
+        }
+
+        public static implicit operator PostUsersSignInDataMailingListStatus(string value) => Of(value);
+        public static implicit operator string(PostUsersSignInDataMailingListStatus postuserssignindatamailingliststatus) => postuserssignindatamailingliststatus.Value;
+
+        public static PostUsersSignInDataMailingListStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as PostUsersSignInDataMailingListStatus);
+
+        public bool Equals(PostUsersSignInDataMailingListStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
     }
 
 }

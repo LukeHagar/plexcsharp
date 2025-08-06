@@ -10,7 +10,12 @@
 namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
     using LukeHagar.PlexAPI.SDK.Utils;
-    
+    using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The type of media to retrieve or filter by.<br/>
     /// 
@@ -23,17 +28,73 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     /// 
     /// </remarks>
     /// </summary>
-    public enum GetPlaylistContentsQueryParamType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class GetPlaylistContentsQueryParamType : IEquatable<GetPlaylistContentsQueryParamType>
     {
-        Movie = 1,
-        TvShow = 2,
-        Season = 3,
-        Episode = 4,
-        Artist = 5,
-        Album = 6,
-        Track = 7,
-        PhotoAlbum = 8,
-        Photo = 9,
+        public static readonly GetPlaylistContentsQueryParamType Movie = new GetPlaylistContentsQueryParamType(1);
+        public static readonly GetPlaylistContentsQueryParamType TvShow = new GetPlaylistContentsQueryParamType(2);
+        public static readonly GetPlaylistContentsQueryParamType Season = new GetPlaylistContentsQueryParamType(3);
+        public static readonly GetPlaylistContentsQueryParamType Episode = new GetPlaylistContentsQueryParamType(4);
+        public static readonly GetPlaylistContentsQueryParamType Artist = new GetPlaylistContentsQueryParamType(5);
+        public static readonly GetPlaylistContentsQueryParamType Album = new GetPlaylistContentsQueryParamType(6);
+        public static readonly GetPlaylistContentsQueryParamType Track = new GetPlaylistContentsQueryParamType(7);
+        public static readonly GetPlaylistContentsQueryParamType PhotoAlbum = new GetPlaylistContentsQueryParamType(8);
+        public static readonly GetPlaylistContentsQueryParamType Photo = new GetPlaylistContentsQueryParamType(9);
+
+        private static readonly Dictionary <long, GetPlaylistContentsQueryParamType> _knownValues =
+            new Dictionary <long, GetPlaylistContentsQueryParamType> ()
+            {
+                [1] = Movie,
+                [2] = TvShow,
+                [3] = Season,
+                [4] = Episode,
+                [5] = Artist,
+                [6] = Album,
+                [7] = Track,
+                [8] = PhotoAlbum,
+                [9] = Photo
+            };
+
+        private static readonly ConcurrentDictionary<long, GetPlaylistContentsQueryParamType> _values =
+            new ConcurrentDictionary<long, GetPlaylistContentsQueryParamType>(_knownValues);
+
+        private GetPlaylistContentsQueryParamType(long value)
+        {
+            Value = value;
+        }
+
+        public long Value { get; }
+
+        public static GetPlaylistContentsQueryParamType Of(long value)
+        {
+            return _values.GetOrAdd(value, _ => new GetPlaylistContentsQueryParamType(value));
+        }
+
+        public static implicit operator GetPlaylistContentsQueryParamType(long value) => Of(value);
+        public static implicit operator long(GetPlaylistContentsQueryParamType getplaylistcontentsqueryparamtype) => getplaylistcontentsqueryparamtype.Value;
+
+        public static GetPlaylistContentsQueryParamType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as GetPlaylistContentsQueryParamType);
+
+        public bool Equals(GetPlaylistContentsQueryParamType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
     }
 
 }

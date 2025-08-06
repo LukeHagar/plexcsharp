@@ -35,6 +35,7 @@ This resource returns hash values for local files
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getFileHash" method="get" path="/library/hashes" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -72,6 +73,7 @@ This endpoint will return the recently added content.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="get-recently-added-library" method="get" path="/library/recentlyAdded" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -136,6 +138,7 @@ This allows a client to provide a rich interface around the media (e.g. allow so
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="get-all-libraries" method="get" path="/library/sections" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -204,6 +207,7 @@ Each type in the library comes with a set of filters and sorts, aiding in buildi
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="get-library-details" method="get" path="/library/sections/{sectionKey}" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -244,6 +248,7 @@ Delete a library using a specific section id
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="deleteLibrary" method="delete" path="/library/sections/{sectionKey}" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -300,6 +305,7 @@ Fetches details from a specific section of the library identified by a section k
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="get-library-items" method="get" path="/library/sections/{sectionKey}/{tag}" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -345,6 +351,7 @@ Retrieves a list of all general media data for this library.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="get-library-sections-all" method="get" path="/library/sections/{sectionKey}/all" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -392,6 +399,7 @@ This endpoint Refreshes all the Metadata of the library.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="get-refresh-library-metadata" method="get" path="/library/sections/{sectionKey}/refresh" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -450,6 +458,7 @@ Each type in the library comes with a set of filters and sorts, aiding in buildi
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="get-search-library" method="get" path="/library/sections/{sectionKey}/search" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -491,6 +500,7 @@ Retrieves a list of all the genres that are found for the media in this library.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="get-genres-library" method="get" path="/library/sections/{sectionKey}/genre" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -532,6 +542,7 @@ Retrieves a list of all the countries that are found for the media in this libra
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="get-countries-library" method="get" path="/library/sections/{sectionKey}/country" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -573,6 +584,7 @@ Retrieves a list of all the actors that are found for the media in this library.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="get-actors-library" method="get" path="/library/sections/{sectionKey}/actor" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -614,6 +626,7 @@ Search the provided query across all library sections, or a single section, and 
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="get-search-all-libraries" method="get" path="/library/search" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -663,6 +676,7 @@ Multiple rating keys can be provided as a comma-separated list (e.g., "21119,216
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="get-media-meta-data" method="get" path="/library/metadata/{ratingKey}" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -716,6 +730,7 @@ Returns the background artwork for a library item.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="get-media-arts" method="get" path="/library/metadata/{ratingKey}/arts" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -749,6 +764,7 @@ Uploads an image to use as the background artwork for a library item, either fro
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="post-media-arts" method="post" path="/library/metadata/{ratingKey}/arts" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -787,6 +803,7 @@ Returns the available posters for a library item.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="get-media-posters" method="get" path="/library/metadata/{ratingKey}/posters" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -820,6 +837,7 @@ Uploads a poster to a library item, either from a local file or a remote URL
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="post-media-poster" method="post" path="/library/metadata/{ratingKey}/posters" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -859,6 +877,7 @@ This endpoint will return the children of of a library item specified with the r
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getMetadataChildren" method="get" path="/library/metadata/{ratingKey}/children" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -899,6 +918,7 @@ This endpoint will return the top watched content from libraries of a certain ty
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getTopWatchedContent" method="get" path="/library/all/top" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;

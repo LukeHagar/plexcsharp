@@ -12,7 +12,10 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Setting that indicates the episode ordering for the show.<br/>
     /// 
@@ -26,51 +29,66 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     /// 
     /// </remarks>
     /// </summary>
-    public enum GetSearchAllLibrariesShowOrdering
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class GetSearchAllLibrariesShowOrdering : IEquatable<GetSearchAllLibrariesShowOrdering>
     {
-        [JsonProperty("None")]
-        None,
-        [JsonProperty("tmdbAiring")]
-        TmdbAiring,
-        [JsonProperty("aired")]
-        TvdbAired,
-        [JsonProperty("dvd")]
-        TvdbDvd,
-        [JsonProperty("absolute")]
-        TvdbAbsolute,
-    }
+        public static readonly GetSearchAllLibrariesShowOrdering None = new GetSearchAllLibrariesShowOrdering("None");
+        public static readonly GetSearchAllLibrariesShowOrdering TmdbAiring = new GetSearchAllLibrariesShowOrdering("tmdbAiring");
+        public static readonly GetSearchAllLibrariesShowOrdering TvdbAired = new GetSearchAllLibrariesShowOrdering("aired");
+        public static readonly GetSearchAllLibrariesShowOrdering TvdbDvd = new GetSearchAllLibrariesShowOrdering("dvd");
+        public static readonly GetSearchAllLibrariesShowOrdering TvdbAbsolute = new GetSearchAllLibrariesShowOrdering("absolute");
 
-    public static class GetSearchAllLibrariesShowOrderingExtension
-    {
-        public static string Value(this GetSearchAllLibrariesShowOrdering value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static GetSearchAllLibrariesShowOrdering ToEnum(this string value)
-        {
-            foreach(var field in typeof(GetSearchAllLibrariesShowOrdering).GetFields())
+        private static readonly Dictionary <string, GetSearchAllLibrariesShowOrdering> _knownValues =
+            new Dictionary <string, GetSearchAllLibrariesShowOrdering> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["None"] = None,
+                ["tmdbAiring"] = TmdbAiring,
+                ["aired"] = TvdbAired,
+                ["dvd"] = TvdbDvd,
+                ["absolute"] = TvdbAbsolute
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, GetSearchAllLibrariesShowOrdering> _values =
+            new ConcurrentDictionary<string, GetSearchAllLibrariesShowOrdering>(_knownValues);
 
-                    if (enumVal is GetSearchAllLibrariesShowOrdering)
-                    {
-                        return (GetSearchAllLibrariesShowOrdering)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum GetSearchAllLibrariesShowOrdering");
+        private GetSearchAllLibrariesShowOrdering(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
+
+        public string Value { get; }
+
+        public static GetSearchAllLibrariesShowOrdering Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new GetSearchAllLibrariesShowOrdering(value));
+        }
+
+        public static implicit operator GetSearchAllLibrariesShowOrdering(string value) => Of(value);
+        public static implicit operator string(GetSearchAllLibrariesShowOrdering getsearchalllibrariesshowordering) => getsearchalllibrariesshowordering.Value;
+
+        public static GetSearchAllLibrariesShowOrdering[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as GetSearchAllLibrariesShowOrdering);
+
+        public bool Equals(GetSearchAllLibrariesShowOrdering? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
     }
 
 }

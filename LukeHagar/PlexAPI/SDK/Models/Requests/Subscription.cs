@@ -12,7 +12,10 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using LukeHagar.PlexAPI.SDK.Models.Requests;
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
     
     /// <summary>
     /// If the account’s Plex Pass subscription is active

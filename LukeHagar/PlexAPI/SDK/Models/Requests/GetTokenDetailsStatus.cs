@@ -12,46 +12,64 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     using System;
-    
-    public enum GetTokenDetailsStatus
-    {
-        [JsonProperty("online")]
-        Online,
-        [JsonProperty("offline")]
-        Offline,
-    }
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
-    public static class GetTokenDetailsStatusExtension
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class GetTokenDetailsStatus : IEquatable<GetTokenDetailsStatus>
     {
-        public static string Value(this GetTokenDetailsStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
+        public static readonly GetTokenDetailsStatus Online = new GetTokenDetailsStatus("online");
+        public static readonly GetTokenDetailsStatus Offline = new GetTokenDetailsStatus("offline");
 
-        public static GetTokenDetailsStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(GetTokenDetailsStatus).GetFields())
+        private static readonly Dictionary <string, GetTokenDetailsStatus> _knownValues =
+            new Dictionary <string, GetTokenDetailsStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["online"] = Online,
+                ["offline"] = Offline
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, GetTokenDetailsStatus> _values =
+            new ConcurrentDictionary<string, GetTokenDetailsStatus>(_knownValues);
 
-                    if (enumVal is GetTokenDetailsStatus)
-                    {
-                        return (GetTokenDetailsStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum GetTokenDetailsStatus");
+        private GetTokenDetailsStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
+
+        public string Value { get; }
+
+        public static GetTokenDetailsStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new GetTokenDetailsStatus(value));
+        }
+
+        public static implicit operator GetTokenDetailsStatus(string value) => Of(value);
+        public static implicit operator string(GetTokenDetailsStatus gettokendetailsstatus) => gettokendetailsstatus.Value;
+
+        public static GetTokenDetailsStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as GetTokenDetailsStatus);
+
+        public bool Equals(GetTokenDetailsStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
     }
 
 }

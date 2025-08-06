@@ -12,51 +12,69 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Filter
     /// </summary>
-    public enum Filter
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class Filter : IEquatable<Filter>
     {
-        [JsonProperty("all")]
-        All,
-        [JsonProperty("available")]
-        Available,
-        [JsonProperty("released")]
-        Released,
-    }
+        public static readonly Filter All = new Filter("all");
+        public static readonly Filter Available = new Filter("available");
+        public static readonly Filter Released = new Filter("released");
 
-    public static class FilterExtension
-    {
-        public static string Value(this Filter value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static Filter ToEnum(this string value)
-        {
-            foreach(var field in typeof(Filter).GetFields())
+        private static readonly Dictionary <string, Filter> _knownValues =
+            new Dictionary <string, Filter> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["all"] = All,
+                ["available"] = Available,
+                ["released"] = Released
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, Filter> _values =
+            new ConcurrentDictionary<string, Filter>(_knownValues);
 
-                    if (enumVal is Filter)
-                    {
-                        return (Filter)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum Filter");
+        private Filter(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
+
+        public string Value { get; }
+
+        public static Filter Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new Filter(value));
+        }
+
+        public static implicit operator Filter(string value) => Of(value);
+        public static implicit operator string(Filter filter) => filter.Value;
+
+        public static Filter[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as Filter);
+
+        public bool Equals(Filter? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
     }
 
 }

@@ -12,7 +12,10 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Setting that indicates if seasons are set to hidden for the show. (-1 = Library default, 0 = Hide, 1 = Show).<br/>
     /// 
@@ -20,47 +23,62 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     /// 
     /// </remarks>
     /// </summary>
-    public enum FlattenSeasons
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class FlattenSeasons : IEquatable<FlattenSeasons>
     {
-        [JsonProperty("-1")]
-        LibraryDefault,
-        [JsonProperty("0")]
-        Hide,
-        [JsonProperty("1")]
-        Show,
-    }
+        public static readonly FlattenSeasons LibraryDefault = new FlattenSeasons("-1");
+        public static readonly FlattenSeasons Hide = new FlattenSeasons("0");
+        public static readonly FlattenSeasons Show = new FlattenSeasons("1");
 
-    public static class FlattenSeasonsExtension
-    {
-        public static string Value(this FlattenSeasons value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static FlattenSeasons ToEnum(this string value)
-        {
-            foreach(var field in typeof(FlattenSeasons).GetFields())
+        private static readonly Dictionary <string, FlattenSeasons> _knownValues =
+            new Dictionary <string, FlattenSeasons> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["-1"] = LibraryDefault,
+                ["0"] = Hide,
+                ["1"] = Show
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, FlattenSeasons> _values =
+            new ConcurrentDictionary<string, FlattenSeasons>(_knownValues);
 
-                    if (enumVal is FlattenSeasons)
-                    {
-                        return (FlattenSeasons)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum FlattenSeasons");
+        private FlattenSeasons(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
+
+        public string Value { get; }
+
+        public static FlattenSeasons Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new FlattenSeasons(value));
+        }
+
+        public static implicit operator FlattenSeasons(string value) => Of(value);
+        public static implicit operator string(FlattenSeasons flattenseasons) => flattenseasons.Value;
+
+        public static FlattenSeasons[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as FlattenSeasons);
+
+        public bool Equals(FlattenSeasons? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
     }
 
 }

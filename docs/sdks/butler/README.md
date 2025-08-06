@@ -20,6 +20,7 @@ Returns a list of butler tasks
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getButlerTasks" method="get" path="/butler" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -54,6 +55,7 @@ This endpoint will attempt to start all Butler tasks that are enabled in the set
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="startAllTasks" method="post" path="/butler" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -84,6 +86,7 @@ This endpoint will stop all currently running tasks and remove any scheduled tas
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="stopAllTasks" method="delete" path="/butler" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -118,6 +121,7 @@ This endpoint will attempt to start a single Butler task that is enabled in the 
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="startTask" method="post" path="/butler/{taskName}" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -155,6 +159,7 @@ This endpoint will stop a currently running task by name, or remove it from the 
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="stopTask" method="delete" path="/butler/{taskName}" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;

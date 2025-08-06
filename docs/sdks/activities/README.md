@@ -23,6 +23,7 @@ Get Server Activities
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getServerActivities" method="get" path="/activities" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -52,6 +53,7 @@ Cancel Server Activities
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="cancelServerActivities" method="delete" path="/activities/{activityUUID}" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;

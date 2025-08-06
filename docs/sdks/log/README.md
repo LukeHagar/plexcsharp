@@ -19,6 +19,7 @@ This endpoint will write a single-line log message, including a level and source
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="logLine" method="get" path="/log" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -82,6 +83,7 @@ Ensure each parameter is properly URL-encoded to avoid interpretation issues.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="logMultiLine" method="post" path="/log" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -122,6 +124,7 @@ This endpoint will enable all Plex Media Serverlogs to be sent to the Papertrail
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="enablePaperTrail" method="get" path="/log/networked" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;

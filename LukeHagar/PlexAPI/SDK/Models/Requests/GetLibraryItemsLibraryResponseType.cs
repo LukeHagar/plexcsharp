@@ -12,50 +12,68 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     using System;
-    
-    public enum GetLibraryItemsLibraryResponseType
-    {
-        [JsonProperty("coverPoster")]
-        CoverPoster,
-        [JsonProperty("background")]
-        Background,
-        [JsonProperty("snapshot")]
-        Snapshot,
-        [JsonProperty("clearLogo")]
-        ClearLogo,
-    }
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
-    public static class GetLibraryItemsLibraryResponseTypeExtension
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class GetLibraryItemsLibraryResponseType : IEquatable<GetLibraryItemsLibraryResponseType>
     {
-        public static string Value(this GetLibraryItemsLibraryResponseType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
+        public static readonly GetLibraryItemsLibraryResponseType CoverPoster = new GetLibraryItemsLibraryResponseType("coverPoster");
+        public static readonly GetLibraryItemsLibraryResponseType Background = new GetLibraryItemsLibraryResponseType("background");
+        public static readonly GetLibraryItemsLibraryResponseType Snapshot = new GetLibraryItemsLibraryResponseType("snapshot");
+        public static readonly GetLibraryItemsLibraryResponseType ClearLogo = new GetLibraryItemsLibraryResponseType("clearLogo");
 
-        public static GetLibraryItemsLibraryResponseType ToEnum(this string value)
-        {
-            foreach(var field in typeof(GetLibraryItemsLibraryResponseType).GetFields())
+        private static readonly Dictionary <string, GetLibraryItemsLibraryResponseType> _knownValues =
+            new Dictionary <string, GetLibraryItemsLibraryResponseType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["coverPoster"] = CoverPoster,
+                ["background"] = Background,
+                ["snapshot"] = Snapshot,
+                ["clearLogo"] = ClearLogo
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, GetLibraryItemsLibraryResponseType> _values =
+            new ConcurrentDictionary<string, GetLibraryItemsLibraryResponseType>(_knownValues);
 
-                    if (enumVal is GetLibraryItemsLibraryResponseType)
-                    {
-                        return (GetLibraryItemsLibraryResponseType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum GetLibraryItemsLibraryResponseType");
+        private GetLibraryItemsLibraryResponseType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
+
+        public string Value { get; }
+
+        public static GetLibraryItemsLibraryResponseType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new GetLibraryItemsLibraryResponseType(value));
+        }
+
+        public static implicit operator GetLibraryItemsLibraryResponseType(string value) => Of(value);
+        public static implicit operator string(GetLibraryItemsLibraryResponseType getlibraryitemslibraryresponsetype) => getlibraryitemslibraryresponsetype.Value;
+
+        public static GetLibraryItemsLibraryResponseType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as GetLibraryItemsLibraryResponseType);
+
+        public bool Equals(GetLibraryItemsLibraryResponseType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
     }
 
 }

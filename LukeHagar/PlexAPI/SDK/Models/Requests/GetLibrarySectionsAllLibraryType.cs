@@ -12,7 +12,10 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The type of media content in the Plex library. This can represent videos, music, or photos.<br/>
     /// 
@@ -20,61 +23,76 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     /// 
     /// </remarks>
     /// </summary>
-    public enum GetLibrarySectionsAllLibraryType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class GetLibrarySectionsAllLibraryType : IEquatable<GetLibrarySectionsAllLibraryType>
     {
-        [JsonProperty("movie")]
-        Movie,
-        [JsonProperty("show")]
-        TvShow,
-        [JsonProperty("season")]
-        Season,
-        [JsonProperty("episode")]
-        Episode,
-        [JsonProperty("artist")]
-        Artist,
-        [JsonProperty("album")]
-        Album,
-        [JsonProperty("track")]
-        Track,
-        [JsonProperty("photoalbum")]
-        PhotoAlbum,
-        [JsonProperty("photo")]
-        Photo,
-        [JsonProperty("collection")]
-        Collection,
-    }
+        public static readonly GetLibrarySectionsAllLibraryType Movie = new GetLibrarySectionsAllLibraryType("movie");
+        public static readonly GetLibrarySectionsAllLibraryType TvShow = new GetLibrarySectionsAllLibraryType("show");
+        public static readonly GetLibrarySectionsAllLibraryType Season = new GetLibrarySectionsAllLibraryType("season");
+        public static readonly GetLibrarySectionsAllLibraryType Episode = new GetLibrarySectionsAllLibraryType("episode");
+        public static readonly GetLibrarySectionsAllLibraryType Artist = new GetLibrarySectionsAllLibraryType("artist");
+        public static readonly GetLibrarySectionsAllLibraryType Album = new GetLibrarySectionsAllLibraryType("album");
+        public static readonly GetLibrarySectionsAllLibraryType Track = new GetLibrarySectionsAllLibraryType("track");
+        public static readonly GetLibrarySectionsAllLibraryType PhotoAlbum = new GetLibrarySectionsAllLibraryType("photoalbum");
+        public static readonly GetLibrarySectionsAllLibraryType Photo = new GetLibrarySectionsAllLibraryType("photo");
+        public static readonly GetLibrarySectionsAllLibraryType Collection = new GetLibrarySectionsAllLibraryType("collection");
 
-    public static class GetLibrarySectionsAllLibraryTypeExtension
-    {
-        public static string Value(this GetLibrarySectionsAllLibraryType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static GetLibrarySectionsAllLibraryType ToEnum(this string value)
-        {
-            foreach(var field in typeof(GetLibrarySectionsAllLibraryType).GetFields())
+        private static readonly Dictionary <string, GetLibrarySectionsAllLibraryType> _knownValues =
+            new Dictionary <string, GetLibrarySectionsAllLibraryType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["movie"] = Movie,
+                ["show"] = TvShow,
+                ["season"] = Season,
+                ["episode"] = Episode,
+                ["artist"] = Artist,
+                ["album"] = Album,
+                ["track"] = Track,
+                ["photoalbum"] = PhotoAlbum,
+                ["photo"] = Photo,
+                ["collection"] = Collection
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, GetLibrarySectionsAllLibraryType> _values =
+            new ConcurrentDictionary<string, GetLibrarySectionsAllLibraryType>(_knownValues);
 
-                    if (enumVal is GetLibrarySectionsAllLibraryType)
-                    {
-                        return (GetLibrarySectionsAllLibraryType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum GetLibrarySectionsAllLibraryType");
+        private GetLibrarySectionsAllLibraryType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
+
+        public string Value { get; }
+
+        public static GetLibrarySectionsAllLibraryType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new GetLibrarySectionsAllLibraryType(value));
+        }
+
+        public static implicit operator GetLibrarySectionsAllLibraryType(string value) => Of(value);
+        public static implicit operator string(GetLibrarySectionsAllLibraryType getlibrarysectionsalllibrarytype) => getlibrarysectionsalllibrarytype.Value;
+
+        public static GetLibrarySectionsAllLibraryType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as GetLibrarySectionsAllLibraryType);
+
+        public bool Equals(GetLibrarySectionsAllLibraryType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
     }
 
 }

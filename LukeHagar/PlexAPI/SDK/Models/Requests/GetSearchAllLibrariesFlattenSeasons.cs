@@ -12,7 +12,10 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Setting that indicates if seasons are set to hidden for the show. (-1 = Library default, 0 = Hide, 1 = Show).<br/>
     /// 
@@ -20,47 +23,62 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     /// 
     /// </remarks>
     /// </summary>
-    public enum GetSearchAllLibrariesFlattenSeasons
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class GetSearchAllLibrariesFlattenSeasons : IEquatable<GetSearchAllLibrariesFlattenSeasons>
     {
-        [JsonProperty("-1")]
-        LibraryDefault,
-        [JsonProperty("0")]
-        Hide,
-        [JsonProperty("1")]
-        Show,
-    }
+        public static readonly GetSearchAllLibrariesFlattenSeasons LibraryDefault = new GetSearchAllLibrariesFlattenSeasons("-1");
+        public static readonly GetSearchAllLibrariesFlattenSeasons Hide = new GetSearchAllLibrariesFlattenSeasons("0");
+        public static readonly GetSearchAllLibrariesFlattenSeasons Show = new GetSearchAllLibrariesFlattenSeasons("1");
 
-    public static class GetSearchAllLibrariesFlattenSeasonsExtension
-    {
-        public static string Value(this GetSearchAllLibrariesFlattenSeasons value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static GetSearchAllLibrariesFlattenSeasons ToEnum(this string value)
-        {
-            foreach(var field in typeof(GetSearchAllLibrariesFlattenSeasons).GetFields())
+        private static readonly Dictionary <string, GetSearchAllLibrariesFlattenSeasons> _knownValues =
+            new Dictionary <string, GetSearchAllLibrariesFlattenSeasons> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["-1"] = LibraryDefault,
+                ["0"] = Hide,
+                ["1"] = Show
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, GetSearchAllLibrariesFlattenSeasons> _values =
+            new ConcurrentDictionary<string, GetSearchAllLibrariesFlattenSeasons>(_knownValues);
 
-                    if (enumVal is GetSearchAllLibrariesFlattenSeasons)
-                    {
-                        return (GetSearchAllLibrariesFlattenSeasons)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum GetSearchAllLibrariesFlattenSeasons");
+        private GetSearchAllLibrariesFlattenSeasons(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
+
+        public string Value { get; }
+
+        public static GetSearchAllLibrariesFlattenSeasons Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new GetSearchAllLibrariesFlattenSeasons(value));
+        }
+
+        public static implicit operator GetSearchAllLibrariesFlattenSeasons(string value) => Of(value);
+        public static implicit operator string(GetSearchAllLibrariesFlattenSeasons getsearchalllibrariesflattenseasons) => getsearchalllibrariesflattenseasons.Value;
+
+        public static GetSearchAllLibrariesFlattenSeasons[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as GetSearchAllLibrariesFlattenSeasons);
+
+        public bool Equals(GetSearchAllLibrariesFlattenSeasons? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
     }
 
 }

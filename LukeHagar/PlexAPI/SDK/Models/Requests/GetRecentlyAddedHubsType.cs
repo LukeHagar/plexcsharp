@@ -12,7 +12,10 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The type of media content in the Plex library. This can represent videos, music, or photos.<br/>
     /// 
@@ -20,61 +23,76 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     /// 
     /// </remarks>
     /// </summary>
-    public enum GetRecentlyAddedHubsType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class GetRecentlyAddedHubsType : IEquatable<GetRecentlyAddedHubsType>
     {
-        [JsonProperty("movie")]
-        Movie,
-        [JsonProperty("show")]
-        TvShow,
-        [JsonProperty("season")]
-        Season,
-        [JsonProperty("episode")]
-        Episode,
-        [JsonProperty("artist")]
-        Artist,
-        [JsonProperty("album")]
-        Album,
-        [JsonProperty("track")]
-        Track,
-        [JsonProperty("photoalbum")]
-        PhotoAlbum,
-        [JsonProperty("photo")]
-        Photo,
-        [JsonProperty("collection")]
-        Collection,
-    }
+        public static readonly GetRecentlyAddedHubsType Movie = new GetRecentlyAddedHubsType("movie");
+        public static readonly GetRecentlyAddedHubsType TvShow = new GetRecentlyAddedHubsType("show");
+        public static readonly GetRecentlyAddedHubsType Season = new GetRecentlyAddedHubsType("season");
+        public static readonly GetRecentlyAddedHubsType Episode = new GetRecentlyAddedHubsType("episode");
+        public static readonly GetRecentlyAddedHubsType Artist = new GetRecentlyAddedHubsType("artist");
+        public static readonly GetRecentlyAddedHubsType Album = new GetRecentlyAddedHubsType("album");
+        public static readonly GetRecentlyAddedHubsType Track = new GetRecentlyAddedHubsType("track");
+        public static readonly GetRecentlyAddedHubsType PhotoAlbum = new GetRecentlyAddedHubsType("photoalbum");
+        public static readonly GetRecentlyAddedHubsType Photo = new GetRecentlyAddedHubsType("photo");
+        public static readonly GetRecentlyAddedHubsType Collection = new GetRecentlyAddedHubsType("collection");
 
-    public static class GetRecentlyAddedHubsTypeExtension
-    {
-        public static string Value(this GetRecentlyAddedHubsType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static GetRecentlyAddedHubsType ToEnum(this string value)
-        {
-            foreach(var field in typeof(GetRecentlyAddedHubsType).GetFields())
+        private static readonly Dictionary <string, GetRecentlyAddedHubsType> _knownValues =
+            new Dictionary <string, GetRecentlyAddedHubsType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["movie"] = Movie,
+                ["show"] = TvShow,
+                ["season"] = Season,
+                ["episode"] = Episode,
+                ["artist"] = Artist,
+                ["album"] = Album,
+                ["track"] = Track,
+                ["photoalbum"] = PhotoAlbum,
+                ["photo"] = Photo,
+                ["collection"] = Collection
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, GetRecentlyAddedHubsType> _values =
+            new ConcurrentDictionary<string, GetRecentlyAddedHubsType>(_knownValues);
 
-                    if (enumVal is GetRecentlyAddedHubsType)
-                    {
-                        return (GetRecentlyAddedHubsType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum GetRecentlyAddedHubsType");
+        private GetRecentlyAddedHubsType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
+
+        public string Value { get; }
+
+        public static GetRecentlyAddedHubsType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new GetRecentlyAddedHubsType(value));
+        }
+
+        public static implicit operator GetRecentlyAddedHubsType(string value) => Of(value);
+        public static implicit operator string(GetRecentlyAddedHubsType getrecentlyaddedhubstype) => getrecentlyaddedhubstype.Value;
+
+        public static GetRecentlyAddedHubsType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as GetRecentlyAddedHubsType);
+
+        public bool Equals(GetRecentlyAddedHubsType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
     }
 
 }

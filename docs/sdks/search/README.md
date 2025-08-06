@@ -30,6 +30,7 @@ This request is intended to be very fast, and called as the user types.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="performSearch" method="get" path="/hubs/search" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -74,6 +75,7 @@ Results, as well as their containing per-type hubs, contain a `distance` attribu
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="performVoiceSearch" method="get" path="/hubs/search/voice" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -114,6 +116,7 @@ This will search the database for the string provided.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getSearchResults" method="get" path="/search" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;

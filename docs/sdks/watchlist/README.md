@@ -16,6 +16,7 @@ Get User Watchlist
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="get-watch-list" method="get" path="/library/sections/watchlist/{filter}" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;

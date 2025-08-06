@@ -24,6 +24,7 @@ Get Server Capabilities
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getServerCapabilities" method="get" path="/" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -53,6 +54,7 @@ Get Server Preferences
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getServerPreferences" method="get" path="/:/prefs" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -82,6 +84,7 @@ Get Available Clients
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getAvailableClients" method="get" path="/clients" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -111,6 +114,7 @@ Get Devices
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getDevices" method="get" path="/devices" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -140,6 +144,7 @@ This request is useful to determine if the server is online or offline
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="get-server-identity" method="get" path="/identity" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 
@@ -167,6 +172,7 @@ Returns MyPlex Account Information
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getMyPlexAccount" method="get" path="/myplex/account" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -197,6 +203,7 @@ Plex's Photo transcoder is used throughout the service to serve images at specif
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getResizedPhoto" method="get" path="/photo/:/transcode" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -242,6 +249,7 @@ Retrieves media providers and their features from the Plex server.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="get-media-providers" method="get" path="/media/providers" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -277,6 +285,7 @@ Get Server List
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="getServerList" method="get" path="/servers" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;

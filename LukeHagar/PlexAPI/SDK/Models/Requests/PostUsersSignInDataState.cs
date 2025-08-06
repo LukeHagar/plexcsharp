@@ -12,44 +12,62 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     using System;
-    
-    public enum PostUsersSignInDataState
-    {
-        [JsonProperty("ended")]
-        Ended,
-    }
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
-    public static class PostUsersSignInDataStateExtension
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class PostUsersSignInDataState : IEquatable<PostUsersSignInDataState>
     {
-        public static string Value(this PostUsersSignInDataState value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
+        public static readonly PostUsersSignInDataState Ended = new PostUsersSignInDataState("ended");
 
-        public static PostUsersSignInDataState ToEnum(this string value)
-        {
-            foreach(var field in typeof(PostUsersSignInDataState).GetFields())
+        private static readonly Dictionary <string, PostUsersSignInDataState> _knownValues =
+            new Dictionary <string, PostUsersSignInDataState> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["ended"] = Ended
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, PostUsersSignInDataState> _values =
+            new ConcurrentDictionary<string, PostUsersSignInDataState>(_knownValues);
 
-                    if (enumVal is PostUsersSignInDataState)
-                    {
-                        return (PostUsersSignInDataState)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum PostUsersSignInDataState");
+        private PostUsersSignInDataState(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
+
+        public string Value { get; }
+
+        public static PostUsersSignInDataState Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new PostUsersSignInDataState(value));
+        }
+
+        public static implicit operator PostUsersSignInDataState(string value) => Of(value);
+        public static implicit operator string(PostUsersSignInDataState postuserssignindatastate) => postuserssignindatastate.Value;
+
+        public static PostUsersSignInDataState[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as PostUsersSignInDataState);
+
+        public bool Equals(PostUsersSignInDataState? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
     }
 
 }

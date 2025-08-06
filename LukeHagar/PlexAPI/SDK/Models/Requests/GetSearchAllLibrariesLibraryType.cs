@@ -12,50 +12,68 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     using System;
-    
-    public enum GetSearchAllLibrariesLibraryType
-    {
-        [JsonProperty("coverPoster")]
-        CoverPoster,
-        [JsonProperty("background")]
-        Background,
-        [JsonProperty("snapshot")]
-        Snapshot,
-        [JsonProperty("clearLogo")]
-        ClearLogo,
-    }
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
-    public static class GetSearchAllLibrariesLibraryTypeExtension
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class GetSearchAllLibrariesLibraryType : IEquatable<GetSearchAllLibrariesLibraryType>
     {
-        public static string Value(this GetSearchAllLibrariesLibraryType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
+        public static readonly GetSearchAllLibrariesLibraryType CoverPoster = new GetSearchAllLibrariesLibraryType("coverPoster");
+        public static readonly GetSearchAllLibrariesLibraryType Background = new GetSearchAllLibrariesLibraryType("background");
+        public static readonly GetSearchAllLibrariesLibraryType Snapshot = new GetSearchAllLibrariesLibraryType("snapshot");
+        public static readonly GetSearchAllLibrariesLibraryType ClearLogo = new GetSearchAllLibrariesLibraryType("clearLogo");
 
-        public static GetSearchAllLibrariesLibraryType ToEnum(this string value)
-        {
-            foreach(var field in typeof(GetSearchAllLibrariesLibraryType).GetFields())
+        private static readonly Dictionary <string, GetSearchAllLibrariesLibraryType> _knownValues =
+            new Dictionary <string, GetSearchAllLibrariesLibraryType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["coverPoster"] = CoverPoster,
+                ["background"] = Background,
+                ["snapshot"] = Snapshot,
+                ["clearLogo"] = ClearLogo
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, GetSearchAllLibrariesLibraryType> _values =
+            new ConcurrentDictionary<string, GetSearchAllLibrariesLibraryType>(_knownValues);
 
-                    if (enumVal is GetSearchAllLibrariesLibraryType)
-                    {
-                        return (GetSearchAllLibrariesLibraryType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum GetSearchAllLibrariesLibraryType");
+        private GetSearchAllLibrariesLibraryType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
+
+        public string Value { get; }
+
+        public static GetSearchAllLibrariesLibraryType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new GetSearchAllLibrariesLibraryType(value));
+        }
+
+        public static implicit operator GetSearchAllLibrariesLibraryType(string value) => Of(value);
+        public static implicit operator string(GetSearchAllLibrariesLibraryType getsearchalllibrarieslibrarytype) => getsearchalllibrarieslibrarytype.Value;
+
+        public static GetSearchAllLibrariesLibraryType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as GetSearchAllLibrariesLibraryType);
+
+        public bool Equals(GetSearchAllLibrariesLibraryType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
     }
 
 }
