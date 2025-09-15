@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 5a8dbcbc-e0ee-41f0-9d84-b8b50567d1e9
 management:
-  docChecksum: 77bdddd188d0778dc73b7f7906e1677c
+  docChecksum: addaf2dfdac23cef2e234b64492b9c90
   docVersion: 0.0.3
-  speakeasyVersion: 1.598.3
-  generationVersion: 2.674.3
-  releaseVersion: 0.16.1
-  configChecksum: 641f6f04797332d3e0349120f669df14
+  speakeasyVersion: 1.615.2
+  generationVersion: 2.698.4
+  releaseVersion: 0.17.0
+  configChecksum: 7f0dd0408cb0f26d25de26ed646400b6
   repoURL: https://github.com/LukeHagar/plexcsharp.git
   repoSubDirectory: .
   published: true
@@ -14,12 +14,12 @@ features:
   csharp:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.0.1
-    core: 3.11.2
+    core: 3.12.2
     deprecations: 2.81.2
     enums: 2.82.0
-    errors: 0.2.1
+    errors: 1.0.0
     flattening: 2.81.3
-    globalSecurity: 2.83.7
+    globalSecurity: 2.83.8
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.4
@@ -28,7 +28,7 @@ features:
     methodServerURLs: 2.82.1
     nameOverrides: 2.81.2
     nullables: 0.1.1
-    openEnums: 0.1.0
+    openEnums: 0.1.1
     responseFormat: 0.0.4
     sdkHooks: 0.2.0
     unions: 0.2.2
@@ -317,10 +317,12 @@ generatedFiles:
   - LukeHagar/PlexAPI/SDK/Models/Errors/PerformVoiceSearchErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/PerformVoiceSearchSearchErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/PerformVoiceSearchUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/PlexAPIError.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/PostUsersSignInDataAuthenticationErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/PostUsersSignInDataBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/PostUsersSignInDataErrors.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/PostUsersSignInDataUnauthorized.cs
+  - LukeHagar/PlexAPI/SDK/Models/Errors/ResponseValidationException.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/SDKException.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/StartAllTasksBadRequest.cs
   - LukeHagar/PlexAPI/SDK/Models/Errors/StartAllTasksButlerErrors.cs

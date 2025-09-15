@@ -15,7 +15,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Linq;
-
+    
     /// <summary>
     /// Current friend request status
     /// </summary>

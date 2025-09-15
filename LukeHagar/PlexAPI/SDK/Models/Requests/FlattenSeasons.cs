@@ -15,7 +15,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Linq;
-
+    
     /// <summary>
     /// Setting that indicates if seasons are set to hidden for the show. (-1 = Library default, 0 = Hide, 1 = Show).<br/>
     /// 

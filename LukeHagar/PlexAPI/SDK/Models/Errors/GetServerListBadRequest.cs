@@ -15,13 +15,9 @@ namespace LukeHagar.PlexAPI.SDK.Models.Errors
     using System;
     using System.Collections.Generic;
     using System.Net.Http;
-    
-    /// <summary>
-    /// Bad Request - A parameter was not specified, or was specified incorrectly.
-    /// </summary>
-    public class GetServerListBadRequest : Exception
-    {
 
+    public class GetServerListBadRequestPayload
+    {
         [JsonProperty("errors")]
         public List<GetServerListErrors>? Errors { get; set; }
 
@@ -31,4 +27,32 @@ namespace LukeHagar.PlexAPI.SDK.Models.Errors
         [JsonProperty("-")]
         public HttpResponseMessage? RawResponse { get; set; }
     }
+
+    /// <summary>
+    /// Bad Request - A parameter was not specified, or was specified incorrectly.
+    /// </summary>
+    public class GetServerListBadRequest : PlexAPIError
+    {
+        /// <summary>
+        ///  The original data that was passed to this exception.
+        /// </summary>
+        public GetServerListBadRequestPayload Payload { get; }
+
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use GetServerListBadRequest.Payload.Errors instead.")]
+        public List<GetServerListErrors>? Errors { get; set; }
+
+        public GetServerListBadRequest(
+            GetServerListBadRequestPayload payload,
+            HttpResponseMessage rawResponse,
+            string body
+        ): base("API error occurred", rawResponse, body)
+        {
+           Payload = payload;
+
+           #pragma warning disable CS0618
+           Errors = payload.Errors;
+           #pragma warning restore CS0618
+        }
+    }
+
 }

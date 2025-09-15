@@ -17,17 +17,17 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class OptimizedForStreamingType
     {
         private OptimizedForStreamingType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static OptimizedForStreamingType One { get { return new OptimizedForStreamingType("1"); } }
-        
+
         public static OptimizedForStreamingType Boolean { get { return new OptimizedForStreamingType("boolean"); } }
-        
+
         public static OptimizedForStreamingType Null { get { return new OptimizedForStreamingType("null"); } }
 
         public override string ToString() { return Value; }
@@ -60,8 +60,10 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     /// Has this media been optimized for streaming. NOTE: This can be 0, 1, false or true
     /// </summary>
     [JsonConverter(typeof(OptimizedForStreaming.OptimizedForStreamingConverter))]
-    public class OptimizedForStreaming {
-        public OptimizedForStreaming(OptimizedForStreamingType type) {
+    public class OptimizedForStreaming
+    {
+        public OptimizedForStreaming(OptimizedForStreamingType type)
+        {
             Type = type;
         }
 
@@ -72,17 +74,16 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public bool? Boolean { get; set; }
 
         public OptimizedForStreamingType Type { get; set; }
-
-
-        public static OptimizedForStreaming CreateOne(One one) {
+        public static OptimizedForStreaming CreateOne(One one)
+        {
             OptimizedForStreamingType typ = OptimizedForStreamingType.One;
 
             OptimizedForStreaming res = new OptimizedForStreaming(typ);
             res.One = one;
             return res;
         }
-
-        public static OptimizedForStreaming CreateBoolean(bool boolean) {
+        public static OptimizedForStreaming CreateBoolean(bool boolean)
+        {
             OptimizedForStreamingType typ = OptimizedForStreamingType.Boolean;
 
             OptimizedForStreaming res = new OptimizedForStreaming(typ);
@@ -90,7 +91,8 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
             return res;
         }
 
-        public static OptimizedForStreaming CreateNull() {
+        public static OptimizedForStreaming CreateNull()
+        {
             OptimizedForStreamingType typ = OptimizedForStreamingType.Null;
             return new OptimizedForStreaming(typ);
         }
@@ -174,23 +176,25 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 OptimizedForStreaming res = (OptimizedForStreaming)value;
                 if (OptimizedForStreamingType.FromString(res.Type).Equals(OptimizedForStreamingType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.One != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.One));
                     return;
                 }
+
                 if (res.Boolean != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Boolean));
                     return;
                 }
-
             }
 
         }

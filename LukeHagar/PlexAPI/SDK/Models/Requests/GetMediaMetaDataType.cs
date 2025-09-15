@@ -15,7 +15,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Linq;
-
+    
     /// <summary>
     /// The type of media content in the Plex library. This can represent videos, music, or photos.<br/>
     /// 

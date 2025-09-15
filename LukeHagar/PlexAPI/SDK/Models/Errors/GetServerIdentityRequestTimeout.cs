@@ -13,19 +13,14 @@ namespace LukeHagar.PlexAPI.SDK.Models.Errors
     using Newtonsoft.Json;
     using System;
     using System.Net.Http;
-    
-    /// <summary>
-    /// Request Timeout
-    /// </summary>
-    public class GetServerIdentityRequestTimeout : Exception
-    {
 
+    public class GetServerIdentityRequestTimeoutPayload
+    {
         [JsonProperty("code")]
         public int? Code { get; set; }
 
         [JsonProperty("message")]
-        private string? _message { get; set; }
-        public override string Message { get {return _message ?? "";} }
+        public string? Message { get; set; }
 
         /// <summary>
         /// Raw HTTP response; suitable for custom response parsing
@@ -33,4 +28,47 @@ namespace LukeHagar.PlexAPI.SDK.Models.Errors
         [JsonProperty("-")]
         public HttpResponseMessage? RawResponse { get; set; }
     }
+
+    /// <summary>
+    /// Request Timeout
+    /// </summary>
+    public class GetServerIdentityRequestTimeout : PlexAPIError
+    {
+        /// <summary>
+        ///  The original data that was passed to this exception.
+        /// </summary>
+        public GetServerIdentityRequestTimeoutPayload Payload { get; }
+
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use GetServerIdentityRequestTimeout.Payload.Code instead.")]
+        public int? Code { get; set; }
+
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use GetServerIdentityRequestTimeout.Payload.Message instead.")]
+        private string? _message { get; set; }
+
+        private static string ErrorMessage(GetServerIdentityRequestTimeoutPayload payload, string body)
+        {
+            string? message = payload.Message;
+            if (!string.IsNullOrEmpty(message))
+            {
+                return message;
+            }
+
+            return "API error occurred";
+        }
+
+        public GetServerIdentityRequestTimeout(
+            GetServerIdentityRequestTimeoutPayload payload,
+            HttpResponseMessage rawResponse,
+            string body
+        ): base(ErrorMessage(payload, body), rawResponse, body)
+        {
+           Payload = payload;
+
+           #pragma warning disable CS0618
+           Code = payload.Code;
+           _message = payload.Message;
+           #pragma warning restore CS0618
+        }
+    }
+
 }

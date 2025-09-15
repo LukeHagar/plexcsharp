@@ -17,17 +17,17 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class GetRecentlyAddedOptimizedForStreamingType
     {
         private GetRecentlyAddedOptimizedForStreamingType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static GetRecentlyAddedOptimizedForStreamingType GetRecentlyAddedOptimizedForStreaming1 { get { return new GetRecentlyAddedOptimizedForStreamingType("get-recently-added_optimizedForStreaming_1"); } }
-        
+
         public static GetRecentlyAddedOptimizedForStreamingType Boolean { get { return new GetRecentlyAddedOptimizedForStreamingType("boolean"); } }
-        
+
         public static GetRecentlyAddedOptimizedForStreamingType Null { get { return new GetRecentlyAddedOptimizedForStreamingType("null"); } }
 
         public override string ToString() { return Value; }
@@ -60,8 +60,10 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     /// Has this media been optimized for streaming. NOTE: This can be 0, 1, false or true
     /// </summary>
     [JsonConverter(typeof(GetRecentlyAddedOptimizedForStreaming.GetRecentlyAddedOptimizedForStreamingConverter))]
-    public class GetRecentlyAddedOptimizedForStreaming {
-        public GetRecentlyAddedOptimizedForStreaming(GetRecentlyAddedOptimizedForStreamingType type) {
+    public class GetRecentlyAddedOptimizedForStreaming
+    {
+        public GetRecentlyAddedOptimizedForStreaming(GetRecentlyAddedOptimizedForStreamingType type)
+        {
             Type = type;
         }
 
@@ -72,17 +74,16 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public bool? Boolean { get; set; }
 
         public GetRecentlyAddedOptimizedForStreamingType Type { get; set; }
-
-
-        public static GetRecentlyAddedOptimizedForStreaming CreateGetRecentlyAddedOptimizedForStreaming1(GetRecentlyAddedOptimizedForStreaming1 getRecentlyAddedOptimizedForStreaming1) {
+        public static GetRecentlyAddedOptimizedForStreaming CreateGetRecentlyAddedOptimizedForStreaming1(GetRecentlyAddedOptimizedForStreaming1 getRecentlyAddedOptimizedForStreaming1)
+        {
             GetRecentlyAddedOptimizedForStreamingType typ = GetRecentlyAddedOptimizedForStreamingType.GetRecentlyAddedOptimizedForStreaming1;
 
             GetRecentlyAddedOptimizedForStreaming res = new GetRecentlyAddedOptimizedForStreaming(typ);
             res.GetRecentlyAddedOptimizedForStreaming1 = getRecentlyAddedOptimizedForStreaming1;
             return res;
         }
-
-        public static GetRecentlyAddedOptimizedForStreaming CreateBoolean(bool boolean) {
+        public static GetRecentlyAddedOptimizedForStreaming CreateBoolean(bool boolean)
+        {
             GetRecentlyAddedOptimizedForStreamingType typ = GetRecentlyAddedOptimizedForStreamingType.Boolean;
 
             GetRecentlyAddedOptimizedForStreaming res = new GetRecentlyAddedOptimizedForStreaming(typ);
@@ -90,7 +91,8 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
             return res;
         }
 
-        public static GetRecentlyAddedOptimizedForStreaming CreateNull() {
+        public static GetRecentlyAddedOptimizedForStreaming CreateNull()
+        {
             GetRecentlyAddedOptimizedForStreamingType typ = GetRecentlyAddedOptimizedForStreamingType.Null;
             return new GetRecentlyAddedOptimizedForStreaming(typ);
         }
@@ -174,23 +176,25 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 GetRecentlyAddedOptimizedForStreaming res = (GetRecentlyAddedOptimizedForStreaming)value;
                 if (GetRecentlyAddedOptimizedForStreamingType.FromString(res.Type).Equals(GetRecentlyAddedOptimizedForStreamingType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.GetRecentlyAddedOptimizedForStreaming1 != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.GetRecentlyAddedOptimizedForStreaming1));
                     return;
                 }
+
                 if (res.Boolean != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Boolean));
                     return;
                 }
-
             }
 
         }

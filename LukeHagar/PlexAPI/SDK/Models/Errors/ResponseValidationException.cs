@@ -13,15 +13,17 @@ namespace LukeHagar.PlexAPI.SDK.Models.Errors
     using System;
     using System.Net.Http;
 
-    public class SDKException : PlexAPIError
+    /// <summary>
+    /// Raised if the response data could not be deserialized into the expected model.
+    /// </summary>
+    public class ResponseValidationException : PlexAPIError
     {
-        /// <summary>
-        /// Default API exception.
-        /// </summary>
-        public SDKException(
+
+        public ResponseValidationException(
             string message,
             HttpResponseMessage rawResponse,
-            string body
-        ): base(message, rawResponse, body) {}
+            string body,
+            Exception innerException
+        ): base(message, rawResponse, body, innerException) {}
     }
 }

@@ -17,17 +17,17 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class GetLibraryItemsOptimizedForStreamingType
     {
         private GetLibraryItemsOptimizedForStreamingType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static GetLibraryItemsOptimizedForStreamingType OptimizedForStreaming1 { get { return new GetLibraryItemsOptimizedForStreamingType("optimizedForStreaming_1"); } }
-        
+
         public static GetLibraryItemsOptimizedForStreamingType Boolean { get { return new GetLibraryItemsOptimizedForStreamingType("boolean"); } }
-        
+
         public static GetLibraryItemsOptimizedForStreamingType Null { get { return new GetLibraryItemsOptimizedForStreamingType("null"); } }
 
         public override string ToString() { return Value; }
@@ -60,8 +60,10 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     /// Has this media been optimized for streaming. NOTE: This can be 0, 1, false or true
     /// </summary>
     [JsonConverter(typeof(GetLibraryItemsOptimizedForStreaming.GetLibraryItemsOptimizedForStreamingConverter))]
-    public class GetLibraryItemsOptimizedForStreaming {
-        public GetLibraryItemsOptimizedForStreaming(GetLibraryItemsOptimizedForStreamingType type) {
+    public class GetLibraryItemsOptimizedForStreaming
+    {
+        public GetLibraryItemsOptimizedForStreaming(GetLibraryItemsOptimizedForStreamingType type)
+        {
             Type = type;
         }
 
@@ -72,17 +74,16 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public bool? Boolean { get; set; }
 
         public GetLibraryItemsOptimizedForStreamingType Type { get; set; }
-
-
-        public static GetLibraryItemsOptimizedForStreaming CreateOptimizedForStreaming1(OptimizedForStreaming1 optimizedForStreaming1) {
+        public static GetLibraryItemsOptimizedForStreaming CreateOptimizedForStreaming1(OptimizedForStreaming1 optimizedForStreaming1)
+        {
             GetLibraryItemsOptimizedForStreamingType typ = GetLibraryItemsOptimizedForStreamingType.OptimizedForStreaming1;
 
             GetLibraryItemsOptimizedForStreaming res = new GetLibraryItemsOptimizedForStreaming(typ);
             res.OptimizedForStreaming1 = optimizedForStreaming1;
             return res;
         }
-
-        public static GetLibraryItemsOptimizedForStreaming CreateBoolean(bool boolean) {
+        public static GetLibraryItemsOptimizedForStreaming CreateBoolean(bool boolean)
+        {
             GetLibraryItemsOptimizedForStreamingType typ = GetLibraryItemsOptimizedForStreamingType.Boolean;
 
             GetLibraryItemsOptimizedForStreaming res = new GetLibraryItemsOptimizedForStreaming(typ);
@@ -90,7 +91,8 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
             return res;
         }
 
-        public static GetLibraryItemsOptimizedForStreaming CreateNull() {
+        public static GetLibraryItemsOptimizedForStreaming CreateNull()
+        {
             GetLibraryItemsOptimizedForStreamingType typ = GetLibraryItemsOptimizedForStreamingType.Null;
             return new GetLibraryItemsOptimizedForStreaming(typ);
         }
@@ -174,23 +176,25 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 GetLibraryItemsOptimizedForStreaming res = (GetLibraryItemsOptimizedForStreaming)value;
                 if (GetLibraryItemsOptimizedForStreamingType.FromString(res.Type).Equals(GetLibraryItemsOptimizedForStreamingType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.OptimizedForStreaming1 != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.OptimizedForStreaming1));
                     return;
                 }
+
                 if (res.Boolean != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Boolean));
                     return;
                 }
-
             }
 
         }

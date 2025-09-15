@@ -17,17 +17,17 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class GetLibrarySectionsAllLibraryOptimizedForStreamingType
     {
         private GetLibrarySectionsAllLibraryOptimizedForStreamingType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static GetLibrarySectionsAllLibraryOptimizedForStreamingType GetLibrarySectionsAllOptimizedForStreamingLibrary1 { get { return new GetLibrarySectionsAllLibraryOptimizedForStreamingType("get-library-sections-all_optimizedForStreaming_Library_1"); } }
-        
+
         public static GetLibrarySectionsAllLibraryOptimizedForStreamingType Boolean { get { return new GetLibrarySectionsAllLibraryOptimizedForStreamingType("boolean"); } }
-        
+
         public static GetLibrarySectionsAllLibraryOptimizedForStreamingType Null { get { return new GetLibrarySectionsAllLibraryOptimizedForStreamingType("null"); } }
 
         public override string ToString() { return Value; }
@@ -60,8 +60,10 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     /// Has this media been optimized for streaming. NOTE: This can be 0, 1, false or true
     /// </summary>
     [JsonConverter(typeof(GetLibrarySectionsAllLibraryOptimizedForStreaming.GetLibrarySectionsAllLibraryOptimizedForStreamingConverter))]
-    public class GetLibrarySectionsAllLibraryOptimizedForStreaming {
-        public GetLibrarySectionsAllLibraryOptimizedForStreaming(GetLibrarySectionsAllLibraryOptimizedForStreamingType type) {
+    public class GetLibrarySectionsAllLibraryOptimizedForStreaming
+    {
+        public GetLibrarySectionsAllLibraryOptimizedForStreaming(GetLibrarySectionsAllLibraryOptimizedForStreamingType type)
+        {
             Type = type;
         }
 
@@ -72,17 +74,16 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public bool? Boolean { get; set; }
 
         public GetLibrarySectionsAllLibraryOptimizedForStreamingType Type { get; set; }
-
-
-        public static GetLibrarySectionsAllLibraryOptimizedForStreaming CreateGetLibrarySectionsAllOptimizedForStreamingLibrary1(GetLibrarySectionsAllOptimizedForStreamingLibrary1 getLibrarySectionsAllOptimizedForStreamingLibrary1) {
+        public static GetLibrarySectionsAllLibraryOptimizedForStreaming CreateGetLibrarySectionsAllOptimizedForStreamingLibrary1(GetLibrarySectionsAllOptimizedForStreamingLibrary1 getLibrarySectionsAllOptimizedForStreamingLibrary1)
+        {
             GetLibrarySectionsAllLibraryOptimizedForStreamingType typ = GetLibrarySectionsAllLibraryOptimizedForStreamingType.GetLibrarySectionsAllOptimizedForStreamingLibrary1;
 
             GetLibrarySectionsAllLibraryOptimizedForStreaming res = new GetLibrarySectionsAllLibraryOptimizedForStreaming(typ);
             res.GetLibrarySectionsAllOptimizedForStreamingLibrary1 = getLibrarySectionsAllOptimizedForStreamingLibrary1;
             return res;
         }
-
-        public static GetLibrarySectionsAllLibraryOptimizedForStreaming CreateBoolean(bool boolean) {
+        public static GetLibrarySectionsAllLibraryOptimizedForStreaming CreateBoolean(bool boolean)
+        {
             GetLibrarySectionsAllLibraryOptimizedForStreamingType typ = GetLibrarySectionsAllLibraryOptimizedForStreamingType.Boolean;
 
             GetLibrarySectionsAllLibraryOptimizedForStreaming res = new GetLibrarySectionsAllLibraryOptimizedForStreaming(typ);
@@ -90,7 +91,8 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
             return res;
         }
 
-        public static GetLibrarySectionsAllLibraryOptimizedForStreaming CreateNull() {
+        public static GetLibrarySectionsAllLibraryOptimizedForStreaming CreateNull()
+        {
             GetLibrarySectionsAllLibraryOptimizedForStreamingType typ = GetLibrarySectionsAllLibraryOptimizedForStreamingType.Null;
             return new GetLibrarySectionsAllLibraryOptimizedForStreaming(typ);
         }
@@ -174,23 +176,25 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 GetLibrarySectionsAllLibraryOptimizedForStreaming res = (GetLibrarySectionsAllLibraryOptimizedForStreaming)value;
                 if (GetLibrarySectionsAllLibraryOptimizedForStreamingType.FromString(res.Type).Equals(GetLibrarySectionsAllLibraryOptimizedForStreamingType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.GetLibrarySectionsAllOptimizedForStreamingLibrary1 != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.GetLibrarySectionsAllOptimizedForStreamingLibrary1));
                     return;
                 }
+
                 if (res.Boolean != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Boolean));
                     return;
                 }
-
             }
 
         }

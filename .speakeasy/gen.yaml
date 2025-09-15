@@ -16,12 +16,13 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: true
     oAuth2PasswordEnabled: false
+    hoistGlobalSecurity: true
   tests:
     generateTests: true
     generateNewTests: false
     skipResponseBodyAssertions: false
 csharp:
-  version: 0.16.1
+  version: 0.17.0
   additionalDependencies: []
   author: LukeHagar
   baseErrorName: PlexAPIError
@@ -32,6 +33,7 @@ csharp:
   enableSourceLink: true
   flattenGlobalSecurity: true
   flatteningOrder: ""
+  httpClientPrefix: Speakeasy
   imports:
     option: openapi
     paths:

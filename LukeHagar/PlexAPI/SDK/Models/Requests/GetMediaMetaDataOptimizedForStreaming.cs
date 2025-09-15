@@ -17,17 +17,17 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class GetMediaMetaDataOptimizedForStreamingType
     {
         private GetMediaMetaDataOptimizedForStreamingType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static GetMediaMetaDataOptimizedForStreamingType GetMediaMetaDataOptimizedForStreaming1 { get { return new GetMediaMetaDataOptimizedForStreamingType("get-media-meta-data_optimizedForStreaming_1"); } }
-        
+
         public static GetMediaMetaDataOptimizedForStreamingType Boolean { get { return new GetMediaMetaDataOptimizedForStreamingType("boolean"); } }
-        
+
         public static GetMediaMetaDataOptimizedForStreamingType Null { get { return new GetMediaMetaDataOptimizedForStreamingType("null"); } }
 
         public override string ToString() { return Value; }
@@ -60,8 +60,10 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     /// Has this media been optimized for streaming. NOTE: This can be 0, 1, false or true
     /// </summary>
     [JsonConverter(typeof(GetMediaMetaDataOptimizedForStreaming.GetMediaMetaDataOptimizedForStreamingConverter))]
-    public class GetMediaMetaDataOptimizedForStreaming {
-        public GetMediaMetaDataOptimizedForStreaming(GetMediaMetaDataOptimizedForStreamingType type) {
+    public class GetMediaMetaDataOptimizedForStreaming
+    {
+        public GetMediaMetaDataOptimizedForStreaming(GetMediaMetaDataOptimizedForStreamingType type)
+        {
             Type = type;
         }
 
@@ -72,17 +74,16 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public bool? Boolean { get; set; }
 
         public GetMediaMetaDataOptimizedForStreamingType Type { get; set; }
-
-
-        public static GetMediaMetaDataOptimizedForStreaming CreateGetMediaMetaDataOptimizedForStreaming1(GetMediaMetaDataOptimizedForStreaming1 getMediaMetaDataOptimizedForStreaming1) {
+        public static GetMediaMetaDataOptimizedForStreaming CreateGetMediaMetaDataOptimizedForStreaming1(GetMediaMetaDataOptimizedForStreaming1 getMediaMetaDataOptimizedForStreaming1)
+        {
             GetMediaMetaDataOptimizedForStreamingType typ = GetMediaMetaDataOptimizedForStreamingType.GetMediaMetaDataOptimizedForStreaming1;
 
             GetMediaMetaDataOptimizedForStreaming res = new GetMediaMetaDataOptimizedForStreaming(typ);
             res.GetMediaMetaDataOptimizedForStreaming1 = getMediaMetaDataOptimizedForStreaming1;
             return res;
         }
-
-        public static GetMediaMetaDataOptimizedForStreaming CreateBoolean(bool boolean) {
+        public static GetMediaMetaDataOptimizedForStreaming CreateBoolean(bool boolean)
+        {
             GetMediaMetaDataOptimizedForStreamingType typ = GetMediaMetaDataOptimizedForStreamingType.Boolean;
 
             GetMediaMetaDataOptimizedForStreaming res = new GetMediaMetaDataOptimizedForStreaming(typ);
@@ -90,7 +91,8 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
             return res;
         }
 
-        public static GetMediaMetaDataOptimizedForStreaming CreateNull() {
+        public static GetMediaMetaDataOptimizedForStreaming CreateNull()
+        {
             GetMediaMetaDataOptimizedForStreamingType typ = GetMediaMetaDataOptimizedForStreamingType.Null;
             return new GetMediaMetaDataOptimizedForStreaming(typ);
         }
@@ -174,23 +176,25 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 GetMediaMetaDataOptimizedForStreaming res = (GetMediaMetaDataOptimizedForStreaming)value;
                 if (GetMediaMetaDataOptimizedForStreamingType.FromString(res.Type).Equals(GetMediaMetaDataOptimizedForStreamingType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.GetMediaMetaDataOptimizedForStreaming1 != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.GetMediaMetaDataOptimizedForStreaming1));
                     return;
                 }
+
                 if (res.Boolean != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Boolean));
                     return;
                 }
-
             }
 
         }

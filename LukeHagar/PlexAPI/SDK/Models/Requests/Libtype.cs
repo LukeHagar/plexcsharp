@@ -15,7 +15,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Linq;
-
+    
     /// <summary>
     /// The type of library to filter. Can be &quot;movie&quot; or &quot;show&quot;, or all if not present.<br/>
     /// 
