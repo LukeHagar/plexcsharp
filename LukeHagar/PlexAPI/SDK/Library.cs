@@ -297,7 +297,7 @@ namespace LukeHagar.PlexAPI.SDK
         /// 
         /// </remarks>
         /// </summary>
-        Task<GetMetadataChildrenResponse> GetMetadataChildrenAsync(double ratingKey, string? includeElements = null);
+        Task<GetMetadataChildrenResponse> GetMetadataChildrenAsync(long ratingKey, string? includeElements = null);
 
         /// <summary>
         /// Get Top Watched Content
@@ -2485,7 +2485,7 @@ namespace LukeHagar.PlexAPI.SDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<GetMetadataChildrenResponse> GetMetadataChildrenAsync(double ratingKey, string? includeElements = null)
+        public async Task<GetMetadataChildrenResponse> GetMetadataChildrenAsync(long ratingKey, string? includeElements = null)
         {
             var request = new GetMetadataChildrenRequest()
             {
