@@ -24,7 +24,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// The rating key of the media item
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=ratingKey")]
-        public double RatingKey { get; set; } = default!;
+        public long RatingKey { get; set; } = default!;
 
         /// <summary>
         /// The key of the media item to get the timeline for

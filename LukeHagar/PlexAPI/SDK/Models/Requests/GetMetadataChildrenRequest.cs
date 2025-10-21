@@ -18,7 +18,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// the id of the library item to return the children of.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=ratingKey")]
-        public double RatingKey { get; set; } = default!;
+        public long RatingKey { get; set; } = default!;
 
         /// <summary>
         /// Adds additional elements to the response. Supported types are (Stream)<br/>
