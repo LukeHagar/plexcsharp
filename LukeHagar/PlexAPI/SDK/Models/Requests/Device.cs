@@ -9,25 +9,24 @@
 #nullable enable
 namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
+    using LukeHagar.PlexAPI.SDK.Models.Requests;
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
+    using System.Collections.Generic;
     
     public class Device
     {
 
-        [JsonProperty("id")]
-        public double? Id { get; set; }
-
-        [JsonProperty("name")]
-        public string? Name { get; set; }
-
-        [JsonProperty("platform")]
-        public string? Platform { get; set; }
+        [JsonProperty("accessToken")]
+        public string? AccessToken { get; set; }
 
         [JsonProperty("clientIdentifier")]
         public string? ClientIdentifier { get; set; }
 
-        [JsonProperty("createdAt")]
-        public double? CreatedAt { get; set; }
+        [JsonProperty("Connection")]
+        public List<Connection>? Connection { get; set; }
+
+        [JsonProperty("name")]
+        public string? Name { get; set; }
     }
 }

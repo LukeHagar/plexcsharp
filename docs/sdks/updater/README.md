@@ -9,81 +9,13 @@ Updates to the status can be observed via the Event API.
 
 ### Available Operations
 
-* [GetUpdateStatus](#getupdatestatus) - Querying status of updates
-* [CheckForUpdates](#checkforupdates) - Checking for updates
-* [ApplyUpdates](#applyupdates) - Apply Updates
-
-## GetUpdateStatus
-
-Querying status of updates
-
-### Example Usage
-
-<!-- UsageSnippet language="csharp" operationID="getUpdateStatus" method="get" path="/updater/status" -->
-```csharp
-using LukeHagar.PlexAPI.SDK;
-using LukeHagar.PlexAPI.SDK.Models.Components;
-
-var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
-
-var res = await sdk.Updater.GetUpdateStatusAsync();
-
-// handle response
-```
-
-### Response
-
-**[GetUpdateStatusResponse](../../Models/Requests/GetUpdateStatusResponse.md)**
-
-### Errors
-
-| Error Type                                                      | Status Code                                                     | Content Type                                                    |
-| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetUpdateStatusBadRequest   | 400                                                             | application/json                                                |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetUpdateStatusUnauthorized | 401                                                             | application/json                                                |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                | 4XX, 5XX                                                        | \*/\*                                                           |
-
-## CheckForUpdates
-
-Checking for updates
-
-### Example Usage
-
-<!-- UsageSnippet language="csharp" operationID="checkForUpdates" method="put" path="/updater/check" -->
-```csharp
-using LukeHagar.PlexAPI.SDK;
-using LukeHagar.PlexAPI.SDK.Models.Components;
-using LukeHagar.PlexAPI.SDK.Models.Requests;
-
-var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
-
-var res = await sdk.Updater.CheckForUpdatesAsync(download: Download.One);
-
-// handle response
-```
-
-### Parameters
-
-| Parameter                                                   | Type                                                        | Required                                                    | Description                                                 | Example                                                     |
-| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
-| `Download`                                                  | [Download](../../Models/Requests/Download.md)               | :heavy_minus_sign:                                          | Indicate that you want to start download any updates found. | 1                                                           |
-
-### Response
-
-**[CheckForUpdatesResponse](../../Models/Requests/CheckForUpdatesResponse.md)**
-
-### Errors
-
-| Error Type                                                      | Status Code                                                     | Content Type                                                    |
-| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.CheckForUpdatesBadRequest   | 400                                                             | application/json                                                |
-| LukeHagar.PlexAPI.SDK.Models.Errors.CheckForUpdatesUnauthorized | 401                                                             | application/json                                                |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                | 4XX, 5XX                                                        | \*/\*                                                           |
+* [ApplyUpdates](#applyupdates) - Applying updates
+* [CheckUpdates](#checkupdates) - Checking for updates
+* [GetUpdatesStatus](#getupdatesstatus) - Querying status of updates
 
 ## ApplyUpdates
 
-Note that these two parameters are effectively mutually exclusive. The `tonight` parameter takes precedence and `skip` will be ignored if `tonight` is also passed
-
+Apply any downloaded updates.  Note that the two parameters `tonight` and `skip` are effectively mutually exclusive. The `tonight` parameter takes precedence and `skip` will be ignored if `tonight` is also passed.
 
 ### Example Usage
 
@@ -93,22 +25,36 @@ using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
 using LukeHagar.PlexAPI.SDK.Models.Requests;
 
-var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
-
-var res = await sdk.Updater.ApplyUpdatesAsync(
-    tonight: Tonight.One,
-    skip: Skip.One
+var sdk = new PlexAPI(
+    accepts: LukeHagar.PlexAPI.SDK.Models.Components.Accepts.ApplicationXml,
+    clientIdentifier: "abc123",
+    product: "Plex for Roku",
+    version: "2.4.1",
+    platform: "Roku",
+    platformVersion: "4.3 build 1057",
+    device: "Roku 3",
+    model: "4200X",
+    deviceVendor: "Roku",
+    deviceName: "Living Room TV",
+    marketplace: "googlePlay",
+    token: "<YOUR_API_KEY_HERE>"
 );
+
+ApplyUpdatesRequest req = new ApplyUpdatesRequest() {
+    Tonight = BoolInt.One,
+    Skip = BoolInt.One,
+};
+
+var res = await sdk.Updater.ApplyUpdatesAsync(req);
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                                                                                                                                                | Type                                                                                                                                                     | Required                                                                                                                                                 | Description                                                                                                                                              | Example                                                                                                                                                  |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Tonight`                                                                                                                                                | [Tonight](../../Models/Requests/Tonight.md)                                                                                                              | :heavy_minus_sign:                                                                                                                                       | Indicate that you want the update to run during the next Butler execution. Omitting this or setting it to false indicates that the update should install | 1                                                                                                                                                        |
-| `Skip`                                                                                                                                                   | [Skip](../../Models/Requests/Skip.md)                                                                                                                    | :heavy_minus_sign:                                                                                                                                       | Indicate that the latest version should be marked as skipped. The [Release] entry for this version will have the `state` set to `skipped`.               | 1                                                                                                                                                        |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `request`                                                           | [ApplyUpdatesRequest](../../Models/Requests/ApplyUpdatesRequest.md) | :heavy_check_mark:                                                  | The request object to use for the request.                          |
 
 ### Response
 
@@ -116,8 +62,86 @@ var res = await sdk.Updater.ApplyUpdatesAsync(
 
 ### Errors
 
-| Error Type                                                   | Status Code                                                  | Content Type                                                 |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| LukeHagar.PlexAPI.SDK.Models.Errors.ApplyUpdatesBadRequest   | 400                                                          | application/json                                             |
-| LukeHagar.PlexAPI.SDK.Models.Errors.ApplyUpdatesUnauthorized | 401                                                          | application/json                                             |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException             | 4XX, 5XX                                                     | \*/\*                                                        |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException | 4XX, 5XX                                         | \*/\*                                            |
+
+## CheckUpdates
+
+Perform an update check and potentially download
+
+### Example Usage
+
+<!-- UsageSnippet language="csharp" operationID="checkUpdates" method="put" path="/updater/check" -->
+```csharp
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Components;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+
+var sdk = new PlexAPI(
+    accepts: LukeHagar.PlexAPI.SDK.Models.Components.Accepts.ApplicationXml,
+    clientIdentifier: "abc123",
+    product: "Plex for Roku",
+    version: "2.4.1",
+    platform: "Roku",
+    platformVersion: "4.3 build 1057",
+    device: "Roku 3",
+    model: "4200X",
+    deviceVendor: "Roku",
+    deviceName: "Living Room TV",
+    marketplace: "googlePlay",
+    token: "<YOUR_API_KEY_HERE>"
+);
+
+CheckUpdatesRequest req = new CheckUpdatesRequest() {
+    Download = BoolInt.One,
+};
+
+var res = await sdk.Updater.CheckUpdatesAsync(req);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `request`                                                           | [CheckUpdatesRequest](../../Models/Requests/CheckUpdatesRequest.md) | :heavy_check_mark:                                                  | The request object to use for the request.                          |
+
+### Response
+
+**[CheckUpdatesResponse](../../Models/Requests/CheckUpdatesResponse.md)**
+
+### Errors
+
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException | 4XX, 5XX                                         | \*/\*                                            |
+
+## GetUpdatesStatus
+
+Get the status of updating the server
+
+### Example Usage
+
+<!-- UsageSnippet language="csharp" operationID="getUpdatesStatus" method="get" path="/updater/status" -->
+```csharp
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Components;
+
+var sdk = new PlexAPI(token: "<YOUR_API_KEY_HERE>");
+
+var res = await sdk.Updater.GetUpdatesStatusAsync();
+
+// handle response
+```
+
+### Response
+
+**[GetUpdatesStatusResponse](../../Models/Requests/GetUpdatesStatusResponse.md)**
+
+### Errors
+
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException | 4XX, 5XX                                         | \*/\*                                            |

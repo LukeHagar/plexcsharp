@@ -9,9 +9,10 @@
 #nullable enable
 namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
-    using LukeHagar.PlexAPI.SDK.Models.Requests;
+    using LukeHagar.PlexAPI.SDK.Models.Components;
     using LukeHagar.PlexAPI.SDK.Utils;
     using System;
+    using System.Collections.Generic;
     using System.Net.Http;
     
     public class GetSessionsResponse
@@ -33,8 +34,10 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public HttpResponseMessage RawResponse { get; set; } = default!;
 
         /// <summary>
-        /// List of Active Plex Sessions
+        /// OK
         /// </summary>
-        public GetSessionsResponseBody? Object { get; set; }
+        public MediaContainerWithMetadata? MediaContainerWithMetadata { get; set; }
+
+        public Dictionary<string, List<string>> Headers { get; set; } = default!;
     }
 }

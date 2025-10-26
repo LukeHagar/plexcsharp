@@ -9,22 +9,88 @@
 #nullable enable
 namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
-    using LukeHagar.PlexAPI.SDK.Models.Requests;
+    using LukeHagar.PlexAPI.SDK.Models.Components;
     using LukeHagar.PlexAPI.SDK.Utils;
     
     public class ApplyUpdatesRequest
     {
 
         /// <summary>
-        /// Indicate that you want the update to run during the next Butler execution. Omitting this or setting it to false indicates that the update should install
+        /// Indicates the client accepts the indicated media types
         /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=tonight")]
-        public Tonight? Tonight { get; set; }
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=accepts")]
+        public Accepts? Accepts { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.Accepts.ApplicationXml;
 
         /// <summary>
-        /// Indicate that the latest version should be marked as skipped. The [Release] entry for this version will have the `state` set to `skipped`.
+        /// An opaque identifier unique to the client
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Client-Identifier")]
+        public string? ClientIdentifier { get; set; }
+
+        /// <summary>
+        /// The name of the client product
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Product")]
+        public string? Product { get; set; }
+
+        /// <summary>
+        /// The version of the client application
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Version")]
+        public string? Version { get; set; }
+
+        /// <summary>
+        /// The platform of the client
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Platform")]
+        public string? Platform { get; set; }
+
+        /// <summary>
+        /// The version of the platform
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Platform-Version")]
+        public string? PlatformVersion { get; set; }
+
+        /// <summary>
+        /// A relatively friendly name for the client device
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Device")]
+        public string? Device { get; set; }
+
+        /// <summary>
+        /// A potentially less friendly identifier for the device model
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Model")]
+        public string? Model { get; set; }
+
+        /// <summary>
+        /// The device vendor
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Device-Vendor")]
+        public string? DeviceVendor { get; set; }
+
+        /// <summary>
+        /// A friendly name for the client
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Device-Name")]
+        public string? DeviceName { get; set; }
+
+        /// <summary>
+        /// The marketplace on which the client application is distributed
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Marketplace")]
+        public string? Marketplace { get; set; }
+
+        /// <summary>
+        /// Indicate that you want the update to run during the next Butler execution. Omitting this or setting it to false indicates that the update should install immediately.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=tonight")]
+        public BoolInt? Tonight { get; set; }
+
+        /// <summary>
+        /// Indicate that the latest version should be marked as skipped. The &lt;Release&gt; entry for this version will have the `state` set to `skipped`.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=skip")]
-        public Skip? Skip { get; set; }
+        public BoolInt? Skip { get; set; }
     }
 }

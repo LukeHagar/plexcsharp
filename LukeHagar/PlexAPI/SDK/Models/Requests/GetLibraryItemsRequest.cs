@@ -9,91 +9,82 @@
 #nullable enable
 namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
-    using LukeHagar.PlexAPI.SDK.Models.Requests;
+    using LukeHagar.PlexAPI.SDK.Models.Components;
     using LukeHagar.PlexAPI.SDK.Utils;
-    using Newtonsoft.Json;
-    using System;
-    using System.Collections.Concurrent;
-    using System.Collections.Generic;
-    using System.Linq;
     
     public class GetLibraryItemsRequest
     {
 
         /// <summary>
-        /// A key representing a specific tag within the section.
+        /// Indicates the client accepts the indicated media types
         /// </summary>
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=tag")]
-        public Tag Tag { get; set; } = default!;
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=accepts")]
+        public Accepts? Accepts { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.Accepts.ApplicationXml;
 
         /// <summary>
-        /// Adds the Guids object to the response<br/>
-        /// 
-        /// <remarks>
-        /// 
-        /// </remarks>
+        /// An opaque identifier unique to the client
         /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=includeGuids")]
-        public IncludeGuids? IncludeGuids { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeGuids.Disable;
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Client-Identifier")]
+        public string? ClientIdentifier { get; set; }
 
         /// <summary>
-        /// The type of media to retrieve or filter by.<br/>
-        /// 
-        /// <remarks>
-        /// 1 = movie<br/>
-        /// 2 = show<br/>
-        /// 3 = season<br/>
-        /// 4 = episode<br/>
-        /// E.g. A movie library will not return anything with type 3 as there are no seasons for movie libraries<br/>
-        /// 
-        /// </remarks>
+        /// The name of the client product
         /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=type")]
-        public GetLibraryItemsQueryParamType Type { get; set; } = default!;
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Product")]
+        public string? Product { get; set; }
 
         /// <summary>
-        /// The unique key of the Plex library. <br/>
-        /// 
-        /// <remarks>
-        /// Note: This is unique in the context of the Plex server.<br/>
-        /// 
-        /// </remarks>
+        /// The version of the client application
         /// </summary>
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=sectionKey")]
-        public int SectionKey { get; set; } = default!;
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Version")]
+        public string? Version { get; set; }
 
         /// <summary>
-        /// Adds the Meta object to the response<br/>
-        /// 
-        /// <remarks>
-        /// 
-        /// </remarks>
+        /// The platform of the client
         /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=includeMeta")]
-        public GetLibraryItemsQueryParamIncludeMeta? IncludeMeta { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.GetLibraryItemsQueryParamIncludeMeta.Disable;
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Platform")]
+        public string? Platform { get; set; }
 
         /// <summary>
-        /// The index of the first item to return. If not specified, the first item will be returned.<br/>
-        /// 
-        /// <remarks>
-        /// If the number of items exceeds the limit, the response will be paginated.<br/>
-        /// By default this is 0<br/>
-        /// 
-        /// </remarks>
+        /// The version of the platform
         /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=X-Plex-Container-Start")]
-        public int? XPlexContainerStart { get; set; } = 0;
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Platform-Version")]
+        public string? PlatformVersion { get; set; }
 
         /// <summary>
-        /// The number of items to return. If not specified, all items will be returned.<br/>
-        /// 
-        /// <remarks>
-        /// If the number of items exceeds the limit, the response will be paginated.<br/>
-        /// By default this is 50<br/>
-        /// 
-        /// </remarks>
+        /// A relatively friendly name for the client device
         /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=X-Plex-Container-Size")]
-        public int? XPlexContainerSize { get; set; } = 50;
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Device")]
+        public string? Device { get; set; }
+
+        /// <summary>
+        /// A potentially less friendly identifier for the device model
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Model")]
+        public string? Model { get; set; }
+
+        /// <summary>
+        /// The device vendor
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Device-Vendor")]
+        public string? DeviceVendor { get; set; }
+
+        /// <summary>
+        /// A friendly name for the client
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Device-Name")]
+        public string? DeviceName { get; set; }
+
+        /// <summary>
+        /// The marketplace on which the client application is distributed
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Marketplace")]
+        public string? Marketplace { get; set; }
+
+        /// <summary>
+        /// This is a complex query built of several parameters.  See <a href="#section/API-Info/Media-Queries">API Info section</a> for information on building media queries
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=mediaQuery")]
+        public MediaQuery? MediaQuery { get; set; }
     }
 }

@@ -9,28 +9,61 @@
 #nullable enable
 namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
+    using LukeHagar.PlexAPI.SDK.Models.Requests;
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     
     public class Release
     {
 
-        [JsonProperty("key")]
-        public string? Key { get; set; }
-
-        [JsonProperty("version")]
-        public string? Version { get; set; }
-
+        /// <summary>
+        /// A list of what has been added in this version
+        /// </summary>
         [JsonProperty("added")]
         public string? Added { get; set; }
 
-        [JsonProperty("fixed")]
-        public string? Fixed { get; set; }
-
+        /// <summary>
+        /// The URL of where this update is available
+        /// </summary>
         [JsonProperty("downloadURL")]
         public string? DownloadURL { get; set; }
 
+        /// <summary>
+        /// A list of what has been fixed in this version
+        /// </summary>
+        [JsonProperty("fixed")]
+        public string? Fixed { get; set; }
+
+        /// <summary>
+        /// The URL key of the update
+        /// </summary>
+        [JsonProperty("key")]
+        public string? Key { get; set; }
+
+        /// <summary>
+        /// The status of this update.<br/>
+        /// 
+        /// <remarks>
+        /// <br/>
+        /// - available - This release is available<br/>
+        /// - downloading - This release is downloading<br/>
+        /// - downloaded - This release has been downloaded<br/>
+        /// - installing - This release is installing<br/>
+        /// - tonight - This release will be installed tonight<br/>
+        /// - skipped - This release has been skipped<br/>
+        /// - error - This release has an error<br/>
+        /// - notify - This release is only notifying it is available (typically because it cannot be installed on this setup)<br/>
+        /// - done - This release is complete<br/>
+        /// 
+        /// </remarks>
+        /// </summary>
         [JsonProperty("state")]
-        public string? State { get; set; }
+        public GetUpdatesStatusState? State { get; set; }
+
+        /// <summary>
+        /// The version available
+        /// </summary>
+        [JsonProperty("version")]
+        public string? Version { get; set; }
     }
 }

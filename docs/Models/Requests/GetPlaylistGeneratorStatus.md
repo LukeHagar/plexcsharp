@@ -1,0 +1,12 @@
+# GetPlaylistGeneratorStatus
+
+
+## Fields
+
+| Field                                                                           | Type                                                                            | Required                                                                        | Description                                                                     |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `ItemsCompleteCount`                                                            | *long*                                                                          | :heavy_minus_sign:                                                              | N/A                                                                             |
+| `ItemsCount`                                                                    | *long*                                                                          | :heavy_minus_sign:                                                              | N/A                                                                             |
+| `ItemsSuccessfulCount`                                                          | *long*                                                                          | :heavy_minus_sign:                                                              | N/A                                                                             |
+| `State`                                                                         | [GetPlaylistGeneratorState](../../Models/Requests/GetPlaylistGeneratorState.md) | :heavy_minus_sign:                                                              | N/A                                                                             |
+| `TotalSize`                                                                     | *long*                                                                          | :heavy_minus_sign:                                                              | N/A                                                                             |

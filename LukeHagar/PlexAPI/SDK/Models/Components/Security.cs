@@ -15,6 +15,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Components
     {
 
         [SpeakeasyMetadata("security:scheme=true,type=apiKey,subType=header,name=X-Plex-Token")]
-        public string? AccessToken { get; set; }
+        public string? Token { get; set; }
     }
 }

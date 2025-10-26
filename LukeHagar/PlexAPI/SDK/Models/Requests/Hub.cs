@@ -12,42 +12,66 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using LukeHagar.PlexAPI.SDK.Models.Requests;
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
-    using System.Collections.Generic;
     
     public class Hub
     {
 
-        [JsonProperty("hubKey")]
-        public string? HubKey { get; set; }
+        /// <summary>
+        /// Whether this hub is visible on the home screen<br/>
+        /// 
+        /// <remarks>
+        ///   - all: Visible to all users<br/>
+        ///   - none: Visible to no users<br/>
+        ///   - admin: Visible to only admin users<br/>
+        ///   - shared: Visible to shared users<br/>
+        /// 
+        /// </remarks>
+        /// </summary>
+        [JsonProperty("homeVisibility")]
+        public Models.Requests.HomeVisibility? HomeVisibility { get; set; }
 
-        [JsonProperty("key")]
-        public string? Key { get; set; }
+        /// <summary>
+        /// The identifier for this hub
+        /// </summary>
+        [JsonProperty("identifier")]
+        public string? Identifier { get; set; }
 
+        /// <summary>
+        /// Whether this hub is visible to admin user home
+        /// </summary>
+        [JsonProperty("promotedToOwnHome")]
+        public bool? PromotedToOwnHome { get; set; }
+
+        /// <summary>
+        /// Whether this hub is promoted to all for recommendations
+        /// </summary>
+        [JsonProperty("promotedToRecommended")]
+        public bool? PromotedToRecommended { get; set; }
+
+        /// <summary>
+        /// Whether this hub is visible to shared user&apos;s home
+        /// </summary>
+        [JsonProperty("promotedToSharedHome")]
+        public bool? PromotedToSharedHome { get; set; }
+
+        /// <summary>
+        /// The visibility of this hub in recommendations:<br/>
+        /// 
+        /// <remarks>
+        ///   - all: Visible to all users<br/>
+        ///   - none: Visible to no users<br/>
+        ///   - admin: Visible to only admin users<br/>
+        ///   - shared: Visible to shared users<br/>
+        /// 
+        /// </remarks>
+        /// </summary>
+        [JsonProperty("recommendationsVisibility")]
+        public Models.Requests.RecommendationsVisibility? RecommendationsVisibility { get; set; }
+
+        /// <summary>
+        /// The title of this hub
+        /// </summary>
         [JsonProperty("title")]
         public string? Title { get; set; }
-
-        [JsonProperty("type")]
-        public string? Type { get; set; }
-
-        [JsonProperty("hubIdentifier")]
-        public string? HubIdentifier { get; set; }
-
-        [JsonProperty("context")]
-        public string? Context { get; set; }
-
-        [JsonProperty("size")]
-        public int? Size { get; set; }
-
-        [JsonProperty("more")]
-        public bool? More { get; set; }
-
-        [JsonProperty("style")]
-        public string? Style { get; set; }
-
-        [JsonProperty("promoted")]
-        public bool? Promoted { get; set; }
-
-        [JsonProperty("Metadata")]
-        public List<GetGlobalHubsMetadata>? Metadata { get; set; }
     }
 }

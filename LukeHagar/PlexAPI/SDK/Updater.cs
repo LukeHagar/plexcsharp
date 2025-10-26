@@ -34,32 +34,31 @@ namespace LukeHagar.PlexAPI.SDK
     {
 
         /// <summary>
-        /// Querying status of updates
+        /// Applying updates
         /// 
         /// <remarks>
-        /// Querying status of updates
+        /// Apply any downloaded updates.  Note that the two parameters `tonight` and `skip` are effectively mutually exclusive. The `tonight` parameter takes precedence and `skip` will be ignored if `tonight` is also passed.
         /// </remarks>
         /// </summary>
-        Task<GetUpdateStatusResponse> GetUpdateStatusAsync();
+        Task<ApplyUpdatesResponse> ApplyUpdatesAsync(ApplyUpdatesRequest? request = null);
 
         /// <summary>
         /// Checking for updates
         /// 
         /// <remarks>
-        /// Checking for updates
+        /// Perform an update check and potentially download
         /// </remarks>
         /// </summary>
-        Task<CheckForUpdatesResponse> CheckForUpdatesAsync(Download? download = null);
+        Task<CheckUpdatesResponse> CheckUpdatesAsync(CheckUpdatesRequest? request = null);
 
         /// <summary>
-        /// Apply Updates
+        /// Querying status of updates
         /// 
         /// <remarks>
-        /// Note that these two parameters are effectively mutually exclusive. The `tonight` parameter takes precedence and `skip` will be ignored if `tonight` is also passed<br/>
-        /// 
+        /// Get the status of updating the server
         /// </remarks>
         /// </summary>
-        Task<ApplyUpdatesResponse> ApplyUpdatesAsync(Tonight? tonight = null, Skip? skip = null);
+        Task<GetUpdatesStatusResponse> GetUpdatesStatusAsync();
     }
 
     /// <summary>
@@ -74,281 +73,42 @@ namespace LukeHagar.PlexAPI.SDK
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.17.0";
-        private const string _sdkGenVersion = "2.698.4";
-        private const string _openapiDocVersion = "0.0.3";
+        private const string _sdkVersion = "0.18.0";
+        private const string _sdkGenVersion = "2.730.5";
+        private const string _openapiDocVersion = "1.1.1";
 
         public Updater(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        public async Task<GetUpdateStatusResponse> GetUpdateStatusAsync()
+        public async Task<ApplyUpdatesResponse> ApplyUpdatesAsync(ApplyUpdatesRequest? request = null)
         {
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
-            var urlString = baseUrl + "/updater/status";
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
-            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (SDKConfiguration.SecuritySource != null)
-            {
-                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
-            }
-
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "getUpdateStatus", new List<string> {  }, SDKConfiguration.SecuritySource);
-
-            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
-
-            HttpResponseMessage httpResponse;
-            try
-            {
-                httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
-                int _statusCode = (int)httpResponse.StatusCode;
-
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
-                {
-                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
-                    if (_httpResponse != null)
-                    {
-                        httpResponse = _httpResponse;
-                    }
-                }
-            }
-            catch (Exception error)
-            {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
-                if (_httpResponse != null)
-                {
-                    httpResponse = _httpResponse;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode == 200)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    GetUpdateStatusResponseBody obj;
-                    try
-                    {
-                        obj = ResponseBodyDeserializer.DeserializeNotNull<GetUpdateStatusResponseBody>(httpResponseBody, NullValueHandling.Ignore);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into GetUpdateStatusResponseBody.", httpResponse, httpResponseBody, ex);
-                    }
-
-                    var response = new GetUpdateStatusResponse()
-                    {
-                        StatusCode = responseStatusCode,
-                        ContentType = contentType,
-                        RawResponse = httpResponse
-                    };
-                    response.Object = obj;
-                    return response;
-                }
-
-                throw new Models.Errors.SDKException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode == 400)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    GetUpdateStatusBadRequestPayload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<GetUpdateStatusBadRequestPayload>(httpResponseBody, NullValueHandling.Ignore);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into GetUpdateStatusBadRequestPayload.", httpResponse, httpResponseBody, ex);
-                    }
-
-                    payload.RawResponse = httpResponse;
-                    throw new GetUpdateStatusBadRequest(payload, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.SDKException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode == 401)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    GetUpdateStatusUnauthorizedPayload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<GetUpdateStatusUnauthorizedPayload>(httpResponseBody, NullValueHandling.Ignore);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into GetUpdateStatusUnauthorizedPayload.", httpResponse, httpResponseBody, ex);
-                    }
-
-                    payload.RawResponse = httpResponse;
-                    throw new GetUpdateStatusUnauthorized(payload, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.SDKException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode >= 400 && responseStatusCode < 500)
-            {
-                throw new Models.Errors.SDKException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode >= 500 && responseStatusCode < 600)
-            {
-                throw new Models.Errors.SDKException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-
-            throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-        }
-
-        public async Task<CheckForUpdatesResponse> CheckForUpdatesAsync(Download? download = null)
-        {
-            var request = new CheckForUpdatesRequest()
-            {
-                Download = download,
-            };
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/updater/check", request);
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Put, urlString);
-            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (SDKConfiguration.SecuritySource != null)
-            {
-                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
-            }
-
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "checkForUpdates", new List<string> {  }, SDKConfiguration.SecuritySource);
-
-            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
-
-            HttpResponseMessage httpResponse;
-            try
-            {
-                httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
-                int _statusCode = (int)httpResponse.StatusCode;
-
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
-                {
-                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
-                    if (_httpResponse != null)
-                    {
-                        httpResponse = _httpResponse;
-                    }
-                }
-            }
-            catch (Exception error)
-            {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
-                if (_httpResponse != null)
-                {
-                    httpResponse = _httpResponse;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode == 200)
-            {
-                return new CheckForUpdatesResponse()
-                {
-                    StatusCode = responseStatusCode,
-                    ContentType = contentType,
-                    RawResponse = httpResponse
-                };
-            }
-            else if(responseStatusCode == 400)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    CheckForUpdatesBadRequestPayload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<CheckForUpdatesBadRequestPayload>(httpResponseBody, NullValueHandling.Include);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into CheckForUpdatesBadRequestPayload.", httpResponse, httpResponseBody, ex);
-                    }
-
-                    payload.RawResponse = httpResponse;
-                    throw new CheckForUpdatesBadRequest(payload, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.SDKException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode == 401)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    CheckForUpdatesUnauthorizedPayload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<CheckForUpdatesUnauthorizedPayload>(httpResponseBody, NullValueHandling.Include);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into CheckForUpdatesUnauthorizedPayload.", httpResponse, httpResponseBody, ex);
-                    }
-
-                    payload.RawResponse = httpResponse;
-                    throw new CheckForUpdatesUnauthorized(payload, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.SDKException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode >= 400 && responseStatusCode < 500)
-            {
-                throw new Models.Errors.SDKException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode >= 500 && responseStatusCode < 600)
-            {
-                throw new Models.Errors.SDKException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-
-            throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-        }
-
-        public async Task<ApplyUpdatesResponse> ApplyUpdatesAsync(Tonight? tonight = null, Skip? skip = null)
-        {
-            var request = new ApplyUpdatesRequest()
-            {
-                Tonight = tonight,
-                Skip = skip,
-            };
+            request.Accepts ??= SDKConfiguration.Accepts;
+            request.ClientIdentifier ??= SDKConfiguration.ClientIdentifier;
+            request.Product ??= SDKConfiguration.Product;
+            request.Version ??= SDKConfiguration.Version;
+            request.Platform ??= SDKConfiguration.Platform;
+            request.PlatformVersion ??= SDKConfiguration.PlatformVersion;
+            request.Device ??= SDKConfiguration.Device;
+            request.Model ??= SDKConfiguration.Model;
+            request.DeviceVendor ??= SDKConfiguration.DeviceVendor;
+            request.DeviceName ??= SDKConfiguration.DeviceName;
+            request.Marketplace ??= SDKConfiguration.Marketplace;
+            
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/updater/apply", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Put, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
+            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
             if (SDKConfiguration.SecuritySource != null)
             {
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "applyUpdates", new List<string> {  }, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "applyUpdates", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -358,7 +118,7 @@ namespace LukeHagar.PlexAPI.SDK
                 httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode == 400 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -393,44 +153,174 @@ namespace LukeHagar.PlexAPI.SDK
                     RawResponse = httpResponse
                 };
             }
-            else if(responseStatusCode == 400)
+            else if(responseStatusCode == 400 || responseStatusCode >= 400 && responseStatusCode < 500)
             {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    ApplyUpdatesBadRequestPayload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<ApplyUpdatesBadRequestPayload>(httpResponseBody, NullValueHandling.Include);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into ApplyUpdatesBadRequestPayload.", httpResponse, httpResponseBody, ex);
-                    }
-
-                    payload.RawResponse = httpResponse;
-                    throw new ApplyUpdatesBadRequest(payload, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.SDKException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+                throw new Models.Errors.SDKException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
-            else if(responseStatusCode == 401)
+            else if(responseStatusCode == 500 || responseStatusCode >= 500 && responseStatusCode < 600)
+            {
+                throw new Models.Errors.SDKException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+
+            throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+        }
+
+        public async Task<CheckUpdatesResponse> CheckUpdatesAsync(CheckUpdatesRequest? request = null)
+        {
+            request.Accepts ??= SDKConfiguration.Accepts;
+            request.ClientIdentifier ??= SDKConfiguration.ClientIdentifier;
+            request.Product ??= SDKConfiguration.Product;
+            request.Version ??= SDKConfiguration.Version;
+            request.Platform ??= SDKConfiguration.Platform;
+            request.PlatformVersion ??= SDKConfiguration.PlatformVersion;
+            request.Device ??= SDKConfiguration.Device;
+            request.Model ??= SDKConfiguration.Model;
+            request.DeviceVendor ??= SDKConfiguration.DeviceVendor;
+            request.DeviceName ??= SDKConfiguration.DeviceName;
+            request.Marketplace ??= SDKConfiguration.Marketplace;
+            
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+            var urlString = URLBuilder.Build(baseUrl, "/updater/check", request);
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Put, urlString);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
+            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            if (SDKConfiguration.SecuritySource != null)
+            {
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "checkUpdates", null, SDKConfiguration.SecuritySource);
+
+            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+
+            HttpResponseMessage httpResponse;
+            try
+            {
+                httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
+                int _statusCode = (int)httpResponse.StatusCode;
+
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                {
+                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
+                    if (_httpResponse != null)
+                    {
+                        httpResponse = _httpResponse;
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                if (_httpResponse != null)
+                {
+                    httpResponse = _httpResponse;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            int responseStatusCode = (int)httpResponse.StatusCode;
+            if(responseStatusCode == 200)
+            {
+                return new CheckUpdatesResponse()
+                {
+                    StatusCode = responseStatusCode,
+                    ContentType = contentType,
+                    RawResponse = httpResponse
+                };
+            }
+            else if(responseStatusCode >= 400 && responseStatusCode < 500)
+            {
+                throw new Models.Errors.SDKException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode >= 500 && responseStatusCode < 600)
+            {
+                throw new Models.Errors.SDKException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+
+            throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+        }
+
+        public async Task<GetUpdatesStatusResponse> GetUpdatesStatusAsync()
+        {
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+
+            var urlString = baseUrl + "/updater/status";
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
+
+            if (SDKConfiguration.SecuritySource != null)
+            {
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "getUpdatesStatus", null, SDKConfiguration.SecuritySource);
+
+            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+
+            HttpResponseMessage httpResponse;
+            try
+            {
+                httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
+                int _statusCode = (int)httpResponse.StatusCode;
+
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                {
+                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
+                    if (_httpResponse != null)
+                    {
+                        httpResponse = _httpResponse;
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                if (_httpResponse != null)
+                {
+                    httpResponse = _httpResponse;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            int responseStatusCode = (int)httpResponse.StatusCode;
+            if(responseStatusCode == 200)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    ApplyUpdatesUnauthorizedPayload payload;
+                    GetUpdatesStatusResponseBody obj;
                     try
                     {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<ApplyUpdatesUnauthorizedPayload>(httpResponseBody, NullValueHandling.Include);
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<GetUpdatesStatusResponseBody>(httpResponseBody, NullValueHandling.Ignore);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into ApplyUpdatesUnauthorizedPayload.", httpResponse, httpResponseBody, ex);
+                        throw new ResponseValidationException("Failed to deserialize response body into GetUpdatesStatusResponseBody.", httpResponse, httpResponseBody, ex);
                     }
 
-                    payload.RawResponse = httpResponse;
-                    throw new ApplyUpdatesUnauthorized(payload, httpResponse, httpResponseBody);
+                    var response = new GetUpdatesStatusResponse()
+                    {
+                        StatusCode = responseStatusCode,
+                        ContentType = contentType,
+                        RawResponse = httpResponse
+                    };
+                    response.Object = obj;
+                    return response;
                 }
 
                 throw new Models.Errors.SDKException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
@@ -439,7 +329,7 @@ namespace LukeHagar.PlexAPI.SDK
             {
                 throw new Models.Errors.SDKException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
-            else if(responseStatusCode == 500 || responseStatusCode >= 500 && responseStatusCode < 600)
+            else if(responseStatusCode >= 500 && responseStatusCode < 600)
             {
                 throw new Models.Errors.SDKException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }

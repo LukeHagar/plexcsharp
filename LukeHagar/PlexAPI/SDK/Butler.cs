@@ -17,102 +17,160 @@ namespace LukeHagar.PlexAPI.SDK
     using LukeHagar.PlexAPI.SDK.Utils.Retries;
     using Newtonsoft.Json;
     using System;
-    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Butler is the task manager of the Plex Media Server Ecosystem.<br/>
-    /// 
-    /// <remarks>
-    /// 
-    /// </remarks>
+    /// The butler is responsible for running periodic tasks.  Some tasks run daily, others every few days, and some weekly.  These includes database maintenance, metadata updating, thumbnail generation, media analysis, and other tasks.
     /// </summary>
     public interface IButler
     {
 
         /// <summary>
-        /// Get Butler tasks
+        /// Stop all Butler tasks
         /// 
         /// <remarks>
-        /// Returns a list of butler tasks
+        /// This endpoint will stop all currently running tasks and remove any scheduled tasks from the queue.
         /// </remarks>
         /// </summary>
-        Task<GetButlerTasksResponse> GetButlerTasksAsync();
+        Task<StopTasksResponse> StopTasksAsync();
+
+        /// <summary>
+        /// Get all Butler tasks
+        /// 
+        /// <remarks>
+        /// Get the list of butler tasks and their scheduling<br/>
+        /// 
+        /// </remarks>
+        /// </summary>
+        Task<GetTasksResponse> GetTasksAsync();
 
         /// <summary>
         /// Start all Butler tasks
         /// 
         /// <remarks>
         /// This endpoint will attempt to start all Butler tasks that are enabled in the settings. Butler tasks normally run automatically during a time window configured on the server&apos;s Settings page but can be manually started using this endpoint. Tasks will run with the following criteria:<br/>
-        /// 1. Any tasks not scheduled to run on the current day will be skipped.<br/>
-        /// 2. If a task is configured to run at a random time during the configured window and we are outside that window, the task will start immediately.<br/>
-        /// 3. If a task is configured to run at a random time during the configured window and we are within that window, the task will be scheduled at a random time within the window.<br/>
-        /// 4. If we are outside the configured window, the task will start immediately.<br/>
+        /// <br/>
+        ///   1. Any tasks not scheduled to run on the current day will be skipped.<br/>
+        ///   2. If a task is configured to run at a random time during the configured window and we are outside that window, the task will start immediately.<br/>
+        ///   3. If a task is configured to run at a random time during the configured window and we are within that window, the task will be scheduled at a random time within the window.<br/>
+        ///   4. If we are outside the configured window, the task will start immediately.<br/>
         /// 
         /// </remarks>
         /// </summary>
-        Task<StartAllTasksResponse> StartAllTasksAsync();
-
-        /// <summary>
-        /// Stop all Butler tasks
-        /// 
-        /// <remarks>
-        /// This endpoint will stop all currently running tasks and remove any scheduled tasks from the queue.<br/>
-        /// 
-        /// </remarks>
-        /// </summary>
-        Task<StopAllTasksResponse> StopAllTasksAsync();
-
-        /// <summary>
-        /// Start a single Butler task
-        /// 
-        /// <remarks>
-        /// This endpoint will attempt to start a single Butler task that is enabled in the settings. Butler tasks normally run automatically during a time window configured on the server&apos;s Settings page but can be manually started using this endpoint. Tasks will run with the following criteria:<br/>
-        /// 1. Any tasks not scheduled to run on the current day will be skipped.<br/>
-        /// 2. If a task is configured to run at a random time during the configured window and we are outside that window, the task will start immediately.<br/>
-        /// 3. If a task is configured to run at a random time during the configured window and we are within that window, the task will be scheduled at a random time within the window.<br/>
-        /// 4. If we are outside the configured window, the task will start immediately.<br/>
-        /// 
-        /// </remarks>
-        /// </summary>
-        Task<StartTaskResponse> StartTaskAsync(TaskName taskName);
+        Task<StartTasksResponse> StartTasksAsync();
 
         /// <summary>
         /// Stop a single Butler task
         /// 
         /// <remarks>
-        /// This endpoint will stop a currently running task by name, or remove it from the list of scheduled tasks if it exists. See the section above for a list of task names for this endpoint.<br/>
+        /// This endpoint will stop a currently running task by name, or remove it from the list of scheduled tasks if it exists<br/>
         /// 
         /// </remarks>
         /// </summary>
-        Task<StopTaskResponse> StopTaskAsync(PathParamTaskName taskName);
+        Task<StopTaskResponse> StopTaskAsync(StopTaskRequest request);
+
+        /// <summary>
+        /// Start a single Butler task
+        /// 
+        /// <remarks>
+        /// This endpoint will attempt to start a specific Butler task by name.<br/>
+        /// 
+        /// </remarks>
+        /// </summary>
+        Task<StartTaskResponse> StartTaskAsync(StartTaskRequest request);
     }
 
     /// <summary>
-    /// Butler is the task manager of the Plex Media Server Ecosystem.<br/>
-    /// 
-    /// <remarks>
-    /// 
-    /// </remarks>
+    /// The butler is responsible for running periodic tasks.  Some tasks run daily, others every few days, and some weekly.  These includes database maintenance, metadata updating, thumbnail generation, media analysis, and other tasks.
     /// </summary>
     public class Butler: IButler
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.17.0";
-        private const string _sdkGenVersion = "2.698.4";
-        private const string _openapiDocVersion = "0.0.3";
+        private const string _sdkVersion = "0.18.0";
+        private const string _sdkGenVersion = "2.730.5";
+        private const string _openapiDocVersion = "1.1.1";
 
         public Butler(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        public async Task<GetButlerTasksResponse> GetButlerTasksAsync()
+        public async Task<StopTasksResponse> StopTasksAsync()
+        {
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+
+            var urlString = baseUrl + "/butler";
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
+
+            if (SDKConfiguration.SecuritySource != null)
+            {
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "stopTasks", null, SDKConfiguration.SecuritySource);
+
+            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+
+            HttpResponseMessage httpResponse;
+            try
+            {
+                httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
+                int _statusCode = (int)httpResponse.StatusCode;
+
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                {
+                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
+                    if (_httpResponse != null)
+                    {
+                        httpResponse = _httpResponse;
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                if (_httpResponse != null)
+                {
+                    httpResponse = _httpResponse;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            int responseStatusCode = (int)httpResponse.StatusCode;
+            if(responseStatusCode == 200)
+            {
+                return new StopTasksResponse()
+                {
+                    StatusCode = responseStatusCode,
+                    ContentType = contentType,
+                    RawResponse = httpResponse
+                };
+            }
+            else if(responseStatusCode >= 400 && responseStatusCode < 500)
+            {
+                throw new Models.Errors.SDKException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode >= 500 && responseStatusCode < 600)
+            {
+                throw new Models.Errors.SDKException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+
+            throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+        }
+
+        public async Task<GetTasksResponse> GetTasksAsync()
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
 
@@ -126,7 +184,7 @@ namespace LukeHagar.PlexAPI.SDK
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "getButlerTasks", new List<string> {  }, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "getTasks", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -136,7 +194,7 @@ namespace LukeHagar.PlexAPI.SDK
                 httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -167,17 +225,17 @@ namespace LukeHagar.PlexAPI.SDK
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    GetButlerTasksResponseBody obj;
+                    GetTasksResponseBody obj;
                     try
                     {
-                        obj = ResponseBodyDeserializer.DeserializeNotNull<GetButlerTasksResponseBody>(httpResponseBody, NullValueHandling.Ignore);
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<GetTasksResponseBody>(httpResponseBody, NullValueHandling.Ignore);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into GetButlerTasksResponseBody.", httpResponse, httpResponseBody, ex);
+                        throw new ResponseValidationException("Failed to deserialize response body into GetTasksResponseBody.", httpResponse, httpResponseBody, ex);
                     }
 
-                    var response = new GetButlerTasksResponse()
+                    var response = new GetTasksResponse()
                     {
                         StatusCode = responseStatusCode,
                         ContentType = contentType,
@@ -189,48 +247,6 @@ namespace LukeHagar.PlexAPI.SDK
 
                 throw new Models.Errors.SDKException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
-            else if(responseStatusCode == 400)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    GetButlerTasksBadRequestPayload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<GetButlerTasksBadRequestPayload>(httpResponseBody, NullValueHandling.Ignore);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into GetButlerTasksBadRequestPayload.", httpResponse, httpResponseBody, ex);
-                    }
-
-                    payload.RawResponse = httpResponse;
-                    throw new GetButlerTasksBadRequest(payload, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.SDKException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode == 401)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    GetButlerTasksUnauthorizedPayload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<GetButlerTasksUnauthorizedPayload>(httpResponseBody, NullValueHandling.Ignore);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into GetButlerTasksUnauthorizedPayload.", httpResponse, httpResponseBody, ex);
-                    }
-
-                    payload.RawResponse = httpResponse;
-                    throw new GetButlerTasksUnauthorized(payload, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.SDKException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
             else if(responseStatusCode >= 400 && responseStatusCode < 500)
             {
                 throw new Models.Errors.SDKException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
@@ -243,7 +259,7 @@ namespace LukeHagar.PlexAPI.SDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<StartAllTasksResponse> StartAllTasksAsync()
+        public async Task<StartTasksResponse> StartTasksAsync()
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
 
@@ -257,7 +273,7 @@ namespace LukeHagar.PlexAPI.SDK
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "startAllTasks", new List<string> {  }, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "startTasks", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -267,7 +283,7 @@ namespace LukeHagar.PlexAPI.SDK
                 httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -295,54 +311,12 @@ namespace LukeHagar.PlexAPI.SDK
             int responseStatusCode = (int)httpResponse.StatusCode;
             if(responseStatusCode == 200)
             {
-                return new StartAllTasksResponse()
+                return new StartTasksResponse()
                 {
                     StatusCode = responseStatusCode,
                     ContentType = contentType,
                     RawResponse = httpResponse
                 };
-            }
-            else if(responseStatusCode == 400)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    StartAllTasksBadRequestPayload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<StartAllTasksBadRequestPayload>(httpResponseBody, NullValueHandling.Ignore);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into StartAllTasksBadRequestPayload.", httpResponse, httpResponseBody, ex);
-                    }
-
-                    payload.RawResponse = httpResponse;
-                    throw new StartAllTasksBadRequest(payload, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.SDKException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode == 401)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    StartAllTasksUnauthorizedPayload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<StartAllTasksUnauthorizedPayload>(httpResponseBody, NullValueHandling.Ignore);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into StartAllTasksUnauthorizedPayload.", httpResponse, httpResponseBody, ex);
-                    }
-
-                    payload.RawResponse = httpResponse;
-                    throw new StartAllTasksUnauthorized(payload, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.SDKException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode >= 400 && responseStatusCode < 500)
             {
@@ -356,21 +330,37 @@ namespace LukeHagar.PlexAPI.SDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<StopAllTasksResponse> StopAllTasksAsync()
+        public async Task<StopTaskResponse> StopTaskAsync(StopTaskRequest request)
         {
+            if (request == null)
+            {
+                request = new StopTaskRequest();
+            }
+            request.Accepts ??= SDKConfiguration.Accepts;
+            request.ClientIdentifier ??= SDKConfiguration.ClientIdentifier;
+            request.Product ??= SDKConfiguration.Product;
+            request.Version ??= SDKConfiguration.Version;
+            request.Platform ??= SDKConfiguration.Platform;
+            request.PlatformVersion ??= SDKConfiguration.PlatformVersion;
+            request.Device ??= SDKConfiguration.Device;
+            request.Model ??= SDKConfiguration.Model;
+            request.DeviceVendor ??= SDKConfiguration.DeviceVendor;
+            request.DeviceName ??= SDKConfiguration.DeviceName;
+            request.Marketplace ??= SDKConfiguration.Marketplace;
+            
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
-            var urlString = baseUrl + "/butler";
+            var urlString = URLBuilder.Build(baseUrl, "/butler/{task}", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
+            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
             if (SDKConfiguration.SecuritySource != null)
             {
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "stopAllTasks", new List<string> {  }, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "stopTask", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -380,239 +370,7 @@ namespace LukeHagar.PlexAPI.SDK
                 httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
-                {
-                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
-                    if (_httpResponse != null)
-                    {
-                        httpResponse = _httpResponse;
-                    }
-                }
-            }
-            catch (Exception error)
-            {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
-                if (_httpResponse != null)
-                {
-                    httpResponse = _httpResponse;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode == 200)
-            {
-                return new StopAllTasksResponse()
-                {
-                    StatusCode = responseStatusCode,
-                    ContentType = contentType,
-                    RawResponse = httpResponse
-                };
-            }
-            else if(responseStatusCode == 400)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    StopAllTasksBadRequestPayload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<StopAllTasksBadRequestPayload>(httpResponseBody, NullValueHandling.Ignore);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into StopAllTasksBadRequestPayload.", httpResponse, httpResponseBody, ex);
-                    }
-
-                    payload.RawResponse = httpResponse;
-                    throw new StopAllTasksBadRequest(payload, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.SDKException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode == 401)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    StopAllTasksUnauthorizedPayload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<StopAllTasksUnauthorizedPayload>(httpResponseBody, NullValueHandling.Ignore);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into StopAllTasksUnauthorizedPayload.", httpResponse, httpResponseBody, ex);
-                    }
-
-                    payload.RawResponse = httpResponse;
-                    throw new StopAllTasksUnauthorized(payload, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.SDKException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode >= 400 && responseStatusCode < 500)
-            {
-                throw new Models.Errors.SDKException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode >= 500 && responseStatusCode < 600)
-            {
-                throw new Models.Errors.SDKException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-
-            throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-        }
-
-        public async Task<StartTaskResponse> StartTaskAsync(TaskName taskName)
-        {
-            var request = new StartTaskRequest()
-            {
-                TaskName = taskName,
-            };
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/butler/{taskName}", request);
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
-            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (SDKConfiguration.SecuritySource != null)
-            {
-                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
-            }
-
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "startTask", new List<string> {  }, SDKConfiguration.SecuritySource);
-
-            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
-
-            HttpResponseMessage httpResponse;
-            try
-            {
-                httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
-                int _statusCode = (int)httpResponse.StatusCode;
-
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
-                {
-                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
-                    if (_httpResponse != null)
-                    {
-                        httpResponse = _httpResponse;
-                    }
-                }
-            }
-            catch (Exception error)
-            {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
-                if (_httpResponse != null)
-                {
-                    httpResponse = _httpResponse;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            int responseStatusCode = (int)httpResponse.StatusCode;
-            if(new List<int>{200, 202}.Contains(responseStatusCode))
-            {
-                return new StartTaskResponse()
-                {
-                    StatusCode = responseStatusCode,
-                    ContentType = contentType,
-                    RawResponse = httpResponse
-                };
-            }
-            else if(responseStatusCode == 400)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    StartTaskBadRequestPayload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<StartTaskBadRequestPayload>(httpResponseBody, NullValueHandling.Ignore);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into StartTaskBadRequestPayload.", httpResponse, httpResponseBody, ex);
-                    }
-
-                    payload.RawResponse = httpResponse;
-                    throw new StartTaskBadRequest(payload, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.SDKException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode == 401)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    StartTaskUnauthorizedPayload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<StartTaskUnauthorizedPayload>(httpResponseBody, NullValueHandling.Ignore);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into StartTaskUnauthorizedPayload.", httpResponse, httpResponseBody, ex);
-                    }
-
-                    payload.RawResponse = httpResponse;
-                    throw new StartTaskUnauthorized(payload, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.SDKException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode >= 400 && responseStatusCode < 500)
-            {
-                throw new Models.Errors.SDKException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode >= 500 && responseStatusCode < 600)
-            {
-                throw new Models.Errors.SDKException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-
-            throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-        }
-
-        public async Task<StopTaskResponse> StopTaskAsync(PathParamTaskName taskName)
-        {
-            var request = new StopTaskRequest()
-            {
-                TaskName = taskName,
-            };
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/butler/{taskName}", request);
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
-            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (SDKConfiguration.SecuritySource != null)
-            {
-                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
-            }
-
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "stopTask", new List<string> {  }, SDKConfiguration.SecuritySource);
-
-            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
-
-            HttpResponseMessage httpResponse;
-            try
-            {
-                httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
-                int _statusCode = (int)httpResponse.StatusCode;
-
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 404 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode == 404 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -647,47 +405,92 @@ namespace LukeHagar.PlexAPI.SDK
                     RawResponse = httpResponse
                 };
             }
-            else if(responseStatusCode == 400)
+            else if(responseStatusCode == 404 || responseStatusCode >= 400 && responseStatusCode < 500)
             {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    StopTaskBadRequestPayload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<StopTaskBadRequestPayload>(httpResponseBody, NullValueHandling.Ignore);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into StopTaskBadRequestPayload.", httpResponse, httpResponseBody, ex);
-                    }
-
-                    payload.RawResponse = httpResponse;
-                    throw new StopTaskBadRequest(payload, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.SDKException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+                throw new Models.Errors.SDKException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
-            else if(responseStatusCode == 401)
+            else if(responseStatusCode >= 500 && responseStatusCode < 600)
             {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                throw new Models.Errors.SDKException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+
+            throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+        }
+
+        public async Task<StartTaskResponse> StartTaskAsync(StartTaskRequest request)
+        {
+            if (request == null)
+            {
+                request = new StartTaskRequest();
+            }
+            request.Accepts ??= SDKConfiguration.Accepts;
+            request.ClientIdentifier ??= SDKConfiguration.ClientIdentifier;
+            request.Product ??= SDKConfiguration.Product;
+            request.Version ??= SDKConfiguration.Version;
+            request.Platform ??= SDKConfiguration.Platform;
+            request.PlatformVersion ??= SDKConfiguration.PlatformVersion;
+            request.Device ??= SDKConfiguration.Device;
+            request.Model ??= SDKConfiguration.Model;
+            request.DeviceVendor ??= SDKConfiguration.DeviceVendor;
+            request.DeviceName ??= SDKConfiguration.DeviceName;
+            request.Marketplace ??= SDKConfiguration.Marketplace;
+            
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+            var urlString = URLBuilder.Build(baseUrl, "/butler/{task}", request);
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
+            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            if (SDKConfiguration.SecuritySource != null)
+            {
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "startTask", null, SDKConfiguration.SecuritySource);
+
+            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+
+            HttpResponseMessage httpResponse;
+            try
+            {
+                httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
+                int _statusCode = (int)httpResponse.StatusCode;
+
+                if (_statusCode == 404 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    StopTaskUnauthorizedPayload payload;
-                    try
+                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
+                    if (_httpResponse != null)
                     {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<StopTaskUnauthorizedPayload>(httpResponseBody, NullValueHandling.Ignore);
+                        httpResponse = _httpResponse;
                     }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into StopTaskUnauthorizedPayload.", httpResponse, httpResponseBody, ex);
-                    }
-
-                    payload.RawResponse = httpResponse;
-                    throw new StopTaskUnauthorized(payload, httpResponse, httpResponseBody);
                 }
+            }
+            catch (Exception error)
+            {
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                if (_httpResponse != null)
+                {
+                    httpResponse = _httpResponse;
+                }
+                else
+                {
+                    throw;
+                }
+            }
 
-                throw new Models.Errors.SDKException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            int responseStatusCode = (int)httpResponse.StatusCode;
+            if(new List<int>{200, 202}.Contains(responseStatusCode))
+            {
+                return new StartTaskResponse()
+                {
+                    StatusCode = responseStatusCode,
+                    ContentType = contentType,
+                    RawResponse = httpResponse
+                };
             }
             else if(responseStatusCode == 404 || responseStatusCode >= 400 && responseStatusCode < 500)
             {

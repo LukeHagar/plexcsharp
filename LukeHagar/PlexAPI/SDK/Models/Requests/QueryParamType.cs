@@ -12,89 +12,47 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     using System;
-    using System.Collections.Concurrent;
-    using System.Collections.Generic;
-    using System.Linq;
     
     /// <summary>
-    /// The type of media to retrieve or filter by.<br/>
-    /// 
-    /// <remarks>
-    /// 1 = movie<br/>
-    /// 2 = show<br/>
-    /// 3 = season<br/>
-    /// 4 = episode<br/>
-    /// E.g. A movie library will not return anything with type 3 as there are no seasons for movie libraries<br/>
-    /// 
-    /// </remarks>
+    /// The value `delegation` is the only supported `type` parameter.
     /// </summary>
-    [JsonConverter(typeof(OpenEnumConverter))]
-    public class QueryParamType : IEquatable<QueryParamType>
+    public enum QueryParamType
     {
-        public static readonly QueryParamType Movie = new QueryParamType(1);
-        public static readonly QueryParamType TvShow = new QueryParamType(2);
-        public static readonly QueryParamType Season = new QueryParamType(3);
-        public static readonly QueryParamType Episode = new QueryParamType(4);
-        public static readonly QueryParamType Artist = new QueryParamType(5);
-        public static readonly QueryParamType Album = new QueryParamType(6);
-        public static readonly QueryParamType Track = new QueryParamType(7);
-        public static readonly QueryParamType PhotoAlbum = new QueryParamType(8);
-        public static readonly QueryParamType Photo = new QueryParamType(9);
+        [JsonProperty("delegation")]
+        Delegation,
+    }
 
-        private static readonly Dictionary <long, QueryParamType> _knownValues =
-            new Dictionary <long, QueryParamType> ()
+    public static class QueryParamTypeExtension
+    {
+        public static string Value(this QueryParamType value)
+        {
+            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
+        }
+
+        public static QueryParamType ToEnum(this string value)
+        {
+            foreach(var field in typeof(QueryParamType).GetFields())
             {
-                [1] = Movie,
-                [2] = TvShow,
-                [3] = Season,
-                [4] = Episode,
-                [5] = Artist,
-                [6] = Album,
-                [7] = Track,
-                [8] = PhotoAlbum,
-                [9] = Photo
-            };
+                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
+                if (attributes.Length == 0)
+                {
+                    continue;
+                }
 
-        private static readonly ConcurrentDictionary<long, QueryParamType> _values =
-            new ConcurrentDictionary<long, QueryParamType>(_knownValues);
+                var attribute = attributes[0] as JsonPropertyAttribute;
+                if (attribute != null && attribute.PropertyName == value)
+                {
+                    var enumVal = field.GetValue(null);
 
-        private QueryParamType(long value)
-        {
-            Value = value;
+                    if (enumVal is QueryParamType)
+                    {
+                        return (QueryParamType)enumVal;
+                    }
+                }
+            }
+
+            throw new Exception($"Unknown value {value} for enum QueryParamType");
         }
-
-        public long Value { get; }
-
-        public static QueryParamType Of(long value)
-        {
-            return _values.GetOrAdd(value, _ => new QueryParamType(value));
-        }
-
-        public static implicit operator QueryParamType(long value) => Of(value);
-        public static implicit operator long(QueryParamType queryparamtype) => queryparamtype.Value;
-
-        public static QueryParamType[] Values()
-        {
-            return _values.Values.ToArray();
-        }
-
-        public override string ToString() => Value.ToString();
-
-        public bool IsKnown()
-        {
-            return _knownValues.ContainsKey(Value);
-        }
-
-        public override bool Equals(object? obj) => Equals(obj as QueryParamType);
-
-        public bool Equals(QueryParamType? other)
-        {
-            if (ReferenceEquals(this, other)) return true;
-            if (other is null) return false;
-            return string.Equals(Value, other.Value);
-        }
-
-        public override int GetHashCode() => Value.GetHashCode();
     }
 
 }

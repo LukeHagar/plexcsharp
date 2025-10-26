@@ -10,83 +10,26 @@
 namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
     using LukeHagar.PlexAPI.SDK.Utils;
-    using Newtonsoft.Json;
-    using System;
-    using System.Collections.Concurrent;
-    using System.Collections.Generic;
-    using System.Linq;
     
     /// <summary>
     /// An integer log level to write to the PMS log with.<br/>
     /// 
     /// <remarks>
-    /// 0: Error<br/>
-    /// 1: Warning<br/>
-    /// 2: Info<br/>
-    /// 3: Debug<br/>
-    /// 4: Verbose<br/>
+    ///   - 0: Error<br/>
+    ///   - 1: Warning<br/>
+    ///   - 2: Info<br/>
+    ///   - 3: Debug<br/>
+    ///   - 4: Verbose<br/>
     /// 
     /// </remarks>
     /// </summary>
-    [JsonConverter(typeof(OpenEnumConverter))]
-    public class Level : IEquatable<Level>
+    public enum Level
     {
-        public static readonly Level Zero = new Level(0);
-        public static readonly Level One = new Level(1);
-        public static readonly Level Two = new Level(2);
-        public static readonly Level Three = new Level(3);
-        public static readonly Level Four = new Level(4);
-
-        private static readonly Dictionary <long, Level> _knownValues =
-            new Dictionary <long, Level> ()
-            {
-                [0] = Zero,
-                [1] = One,
-                [2] = Two,
-                [3] = Three,
-                [4] = Four
-            };
-
-        private static readonly ConcurrentDictionary<long, Level> _values =
-            new ConcurrentDictionary<long, Level>(_knownValues);
-
-        private Level(long value)
-        {
-            Value = value;
-        }
-
-        public long Value { get; }
-
-        public static Level Of(long value)
-        {
-            return _values.GetOrAdd(value, _ => new Level(value));
-        }
-
-        public static implicit operator Level(long value) => Of(value);
-        public static implicit operator long(Level level) => level.Value;
-
-        public static Level[] Values()
-        {
-            return _values.Values.ToArray();
-        }
-
-        public override string ToString() => Value.ToString();
-
-        public bool IsKnown()
-        {
-            return _knownValues.ContainsKey(Value);
-        }
-
-        public override bool Equals(object? obj) => Equals(obj as Level);
-
-        public bool Equals(Level? other)
-        {
-            if (ReferenceEquals(this, other)) return true;
-            if (other is null) return false;
-            return string.Equals(Value, other.Value);
-        }
-
-        public override int GetHashCode() => Value.GetHashCode();
+        Zero = 0,
+        One = 1,
+        Two = 2,
+        Three = 3,
+        Four = 4,
     }
 
 }

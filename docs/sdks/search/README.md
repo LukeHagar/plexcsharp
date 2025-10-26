@@ -3,16 +3,16 @@
 
 ## Overview
 
-API Calls that perform search operations with Plex Media Server
-
+The search feature within a media provider
 
 ### Available Operations
 
-* [PerformSearch](#performsearch) - Perform a search
-* [PerformVoiceSearch](#performvoicesearch) - Perform a voice search
-* [GetSearchResults](#getsearchresults) - Get Search Results
+* [SearchHubs](#searchhubs) - Search Hub
+* [VoiceSearchHubs](#voicesearchhubs) - Voice Search Hub
 
-## PerformSearch
+## SearchHubs
+
+Perform a search and get the result as hubs
 
 This endpoint performs a search across all library sections, or a single section, and returns matches as hubs, split up by type. It performs spell checking, looks for partial matches, and orders the hubs based on quality of results. In addition, based on matches, it will return other related matches (e.g. for a genre match, it may return movies in that genre, or for an actor match, movies with that actor).
 
@@ -30,118 +30,106 @@ This request is intended to be very fast, and called as the user types.
 
 ### Example Usage
 
-<!-- UsageSnippet language="csharp" operationID="performSearch" method="get" path="/hubs/search" -->
+<!-- UsageSnippet language="csharp" operationID="searchHubs" method="get" path="/hubs/search" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
 
-var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
-
-var res = await sdk.Search.PerformSearchAsync(
-    query: "arnold",
-    limit: 5D
+var sdk = new PlexAPI(
+    accepts: LukeHagar.PlexAPI.SDK.Models.Components.Accepts.ApplicationXml,
+    clientIdentifier: "abc123",
+    product: "Plex for Roku",
+    version: "2.4.1",
+    platform: "Roku",
+    platformVersion: "4.3 build 1057",
+    device: "Roku 3",
+    model: "4200X",
+    deviceVendor: "Roku",
+    deviceName: "Living Room TV",
+    marketplace: "googlePlay",
+    token: "<YOUR_API_KEY_HERE>"
 );
+
+SearchHubsRequest req = new SearchHubsRequest() {
+    Query = "<value>",
+    SectionId = 1,
+};
+
+var res = await sdk.Search.SearchHubsAsync(req);
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           | Example                                                                               |
-| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `Query`                                                                               | *string*                                                                              | :heavy_check_mark:                                                                    | The query term                                                                        | arnold                                                                                |
-| `SectionId`                                                                           | *double*                                                                              | :heavy_minus_sign:                                                                    | This gives context to the search, and can result in re-ordering of search result hubs |                                                                                       |
-| `Limit`                                                                               | *double*                                                                              | :heavy_minus_sign:                                                                    | The number of items to return per hub                                                 | 5                                                                                     |
+| Parameter                                                       | Type                                                            | Required                                                        | Description                                                     |
+| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
+| `request`                                                       | [SearchHubsRequest](../../Models/Requests/SearchHubsRequest.md) | :heavy_check_mark:                                              | The request object to use for the request.                      |
 
 ### Response
 
-**[PerformSearchResponse](../../Models/Requests/PerformSearchResponse.md)**
+**[SearchHubsResponse](../../Models/Requests/SearchHubsResponse.md)**
 
 ### Errors
 
-| Error Type                                                    | Status Code                                                   | Content Type                                                  |
-| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.PerformSearchBadRequest   | 400                                                           | application/json                                              |
-| LukeHagar.PlexAPI.SDK.Models.Errors.PerformSearchUnauthorized | 401                                                           | application/json                                              |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException              | 4XX, 5XX                                                      | \*/\*                                                         |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException | 4XX, 5XX                                         | \*/\*                                            |
 
-## PerformVoiceSearch
+## VoiceSearchHubs
 
-This endpoint performs a search specifically tailored towards voice or other imprecise input which may work badly with the substring and spell-checking heuristics used by the `/hubs/search` endpoint. 
-It uses a [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance) heuristic to search titles, and as such is much slower than the other search endpoint. 
-Whenever possible, clients should limit the search to the appropriate type. 
+Perform a search tailored to voice input and get the result as hubs
+
+This endpoint performs a search specifically tailored towards voice or other imprecise input which may work badly with the substring and spell-checking heuristics used by the `/hubs/search` endpoint. It uses a [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance) heuristic to search titles, and as such is much slower than the other search endpoint. Whenever possible, clients should limit the search to the appropriate type.
+
 Results, as well as their containing per-type hubs, contain a `distance` attribute which can be used to judge result quality.
 
 
 ### Example Usage
 
-<!-- UsageSnippet language="csharp" operationID="performVoiceSearch" method="get" path="/hubs/search/voice" -->
+<!-- UsageSnippet language="csharp" operationID="voiceSearchHubs" method="get" path="/hubs/search/voice" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
 
-var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
-
-var res = await sdk.Search.PerformVoiceSearchAsync(
-    query: "dead+poop",
-    limit: 5D
+var sdk = new PlexAPI(
+    accepts: LukeHagar.PlexAPI.SDK.Models.Components.Accepts.ApplicationXml,
+    clientIdentifier: "abc123",
+    product: "Plex for Roku",
+    version: "2.4.1",
+    platform: "Roku",
+    platformVersion: "4.3 build 1057",
+    device: "Roku 3",
+    model: "4200X",
+    deviceVendor: "Roku",
+    deviceName: "Living Room TV",
+    marketplace: "googlePlay",
+    token: "<YOUR_API_KEY_HERE>"
 );
 
-// handle response
-```
+VoiceSearchHubsRequest req = new VoiceSearchHubsRequest() {
+    Query = "<value>",
+};
 
-### Parameters
-
-| Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           | Example                                                                               |
-| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `Query`                                                                               | *string*                                                                              | :heavy_check_mark:                                                                    | The query term                                                                        | dead+poop                                                                             |
-| `SectionId`                                                                           | *double*                                                                              | :heavy_minus_sign:                                                                    | This gives context to the search, and can result in re-ordering of search result hubs |                                                                                       |
-| `Limit`                                                                               | *double*                                                                              | :heavy_minus_sign:                                                                    | The number of items to return per hub                                                 | 5                                                                                     |
-
-### Response
-
-**[PerformVoiceSearchResponse](../../Models/Requests/PerformVoiceSearchResponse.md)**
-
-### Errors
-
-| Error Type                                                         | Status Code                                                        | Content Type                                                       |
-| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| LukeHagar.PlexAPI.SDK.Models.Errors.PerformVoiceSearchBadRequest   | 400                                                                | application/json                                                   |
-| LukeHagar.PlexAPI.SDK.Models.Errors.PerformVoiceSearchUnauthorized | 401                                                                | application/json                                                   |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                   | 4XX, 5XX                                                           | \*/\*                                                              |
-
-## GetSearchResults
-
-This will search the database for the string provided.
-
-### Example Usage
-
-<!-- UsageSnippet language="csharp" operationID="getSearchResults" method="get" path="/search" -->
-```csharp
-using LukeHagar.PlexAPI.SDK;
-using LukeHagar.PlexAPI.SDK.Models.Components;
-
-var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
-
-var res = await sdk.Search.GetSearchResultsAsync(query: "110");
+var res = await sdk.Search.VoiceSearchHubsAsync(req);
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                      | Type                           | Required                       | Description                    | Example                        |
-| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-| `Query`                        | *string*                       | :heavy_check_mark:             | The search query string to use | 110                            |
+| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `request`                                                                 | [VoiceSearchHubsRequest](../../Models/Requests/VoiceSearchHubsRequest.md) | :heavy_check_mark:                                                        | The request object to use for the request.                                |
 
 ### Response
 
-**[GetSearchResultsResponse](../../Models/Requests/GetSearchResultsResponse.md)**
+**[VoiceSearchHubsResponse](../../Models/Requests/VoiceSearchHubsResponse.md)**
 
 ### Errors
 
-| Error Type                                                       | Status Code                                                      | Content Type                                                     |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetSearchResultsBadRequest   | 400                                                              | application/json                                                 |
-| LukeHagar.PlexAPI.SDK.Models.Errors.GetSearchResultsUnauthorized | 401                                                              | application/json                                                 |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                 | 4XX, 5XX                                                         | \*/\*                                                            |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException | 4XX, 5XX                                         | \*/\*                                            |

@@ -23,13 +23,26 @@ namespace LukeHagar.PlexAPI.SDK
         /// List of server URLs available to the SDK.
         /// </summary>
         public static readonly string[] ServerList = {
-            "{protocol}://{ip}:{port}",
+            "https://{IP-description}.{identifier}.plex.direct:{port}",
+            "{protocol}://{host}:{port}",
+            "https://{full_server_url}",
         };
 
         public ISpeakeasyHttpClient Client;
         public string ServerUrl;
         public int ServerIndex;
         public List<Dictionary<string, string>> ServerVariables;
+        public Accepts? Accepts;
+        public string? ClientIdentifier;
+        public string? Product;
+        public string? Version;
+        public string? Platform;
+        public string? PlatformVersion;
+        public string? Device;
+        public string? Model;
+        public string? DeviceVendor;
+        public string? DeviceName;
+        public string? Marketplace;
         public string UserAgent;
         public Func<LukeHagar.PlexAPI.SDK.Models.Components.Security>? SecuritySource;
         public SDKHooks Hooks;
@@ -47,12 +60,33 @@ namespace LukeHagar.PlexAPI.SDK
             {
                 new Dictionary<string, string>()
                 {
-                    {"protocol", "https"},
-                    {"ip", "10.10.10.47"},
+                    {"identifier", "0123456789abcdef0123456789abcdef"},
+                    {"IP-description", "1-2-3-4"},
                     {"port", "32400"},
                 },
+                new Dictionary<string, string>()
+                {
+                    {"protocol", "http"},
+                    {"host", "localhost"},
+                    {"port", "32400"},
+                },
+                new Dictionary<string, string>()
+                {
+                    {"full_server_url", "http://localhost:32400"},
+                },
             };
-            UserAgent = "speakeasy-sdk/csharp 0.17.0 2.698.4 0.0.3 LukeHagar.PlexAPI.SDK";
+            Accepts = null;
+            ClientIdentifier = null;
+            Product = null;
+            Version = null;
+            Platform = null;
+            PlatformVersion = null;
+            Device = null;
+            Model = null;
+            DeviceVendor = null;
+            DeviceName = null;
+            Marketplace = null;
+            UserAgent = "speakeasy-sdk/csharp 0.18.0 2.730.5 1.1.1 LukeHagar.PlexAPI.SDK";
             SecuritySource = null;
             Hooks = new SDKHooks();
             RetryConfig = null;

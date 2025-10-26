@@ -9,44 +9,88 @@
 #nullable enable
 namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
-    using LukeHagar.PlexAPI.SDK.Models.Requests;
+    using LukeHagar.PlexAPI.SDK.Models.Components;
     using LukeHagar.PlexAPI.SDK.Utils;
     
     public class UploadPlaylistRequest
     {
 
         /// <summary>
-        /// absolute path to a directory on the server where m3u files are stored, or the absolute path to a playlist file on the server.<br/>
-        /// 
-        /// <remarks>
-        /// If the `path` argument is a directory, that path will be scanned for playlist files to be processed.<br/>
-        /// Each file in that directory creates a separate playlist, with a name based on the filename of the file that created it.<br/>
-        /// The GUID of each playlist is based on the filename.<br/>
-        /// If the `path` argument is a file, that file will be used to create a new playlist, with the name based on the filename of the file that created it.<br/>
-        /// The GUID of each playlist is based on the filename.<br/>
-        /// 
-        /// </remarks>
+        /// Indicates the client accepts the indicated media types
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=accepts")]
+        public Accepts? Accepts { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.Accepts.ApplicationXml;
+
+        /// <summary>
+        /// An opaque identifier unique to the client
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Client-Identifier")]
+        public string? ClientIdentifier { get; set; }
+
+        /// <summary>
+        /// The name of the client product
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Product")]
+        public string? Product { get; set; }
+
+        /// <summary>
+        /// The version of the client application
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Version")]
+        public string? Version { get; set; }
+
+        /// <summary>
+        /// The platform of the client
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Platform")]
+        public string? Platform { get; set; }
+
+        /// <summary>
+        /// The version of the platform
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Platform-Version")]
+        public string? PlatformVersion { get; set; }
+
+        /// <summary>
+        /// A relatively friendly name for the client device
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Device")]
+        public string? Device { get; set; }
+
+        /// <summary>
+        /// A potentially less friendly identifier for the device model
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Model")]
+        public string? Model { get; set; }
+
+        /// <summary>
+        /// The device vendor
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Device-Vendor")]
+        public string? DeviceVendor { get; set; }
+
+        /// <summary>
+        /// A friendly name for the client
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Device-Name")]
+        public string? DeviceName { get; set; }
+
+        /// <summary>
+        /// The marketplace on which the client application is distributed
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Marketplace")]
+        public string? Marketplace { get; set; }
+
+        /// <summary>
+        /// Absolute path to a directory on the server where m3u files are stored, or the absolute path to a playlist file on the server. If the `path` argument is a directory, that path will be scanned for playlist files to be processed. Each file in that directory creates a separate playlist, with a name based on the filename of the file that created it. The GUID of each playlist is based on the filename. If the `path` argument is a file, that file will be used to create a new playlist, with the name based on the filename of the file that created it. The GUID of each playlist is based on the filename.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=path")]
-        public string Path { get; set; } = default!;
+        public string? Path { get; set; }
 
         /// <summary>
-        /// Force overwriting of duplicate playlists.<br/>
-        /// 
-        /// <remarks>
-        /// By default, a playlist file uploaded with the same path will overwrite the existing playlist.<br/>
-        /// The `force` argument is used to disable overwriting.<br/>
-        /// If the `force` argument is set to 0, a new playlist will be created suffixed with the date and time that the duplicate was uploaded.<br/>
-        /// 
-        /// </remarks>
+        /// Force overwriting of duplicate playlists. By default, a playlist file uploaded with the same path will overwrite the existing playlist. The `force` argument is used to disable overwriting. If the `force` argument is set to 0, a new playlist will be created suffixed with the date and time that the duplicate was uploaded.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=force")]
-        public QueryParamForce Force { get; set; } = default!;
-
-        /// <summary>
-        /// Possibly the section ID to upload the playlist to, we are not certain.
-        /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=sectionID")]
-        public long SectionID { get; set; } = 1;
+        public BoolInt? Force { get; set; }
     }
 }

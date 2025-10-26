@@ -12,13 +12,44 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using LukeHagar.PlexAPI.SDK.Models.Requests;
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
-    using System.Collections.Generic;
     
+    /// <summary>
+    /// `MediaContainer` is the root element of most Plex API responses. It serves as a generic container for various types of content (Metadata, Hubs, Directories, etc.) and includes pagination information (offset, size, totalSize) when applicable.<br/>
+    /// 
+    /// <remarks>
+    /// Common attributes: - identifier: Unique identifier for this container - size: Number of items in this response page - totalSize: Total number of items available (for pagination) - offset: Starting index of this page (for pagination)<br/>
+    /// The container often &quot;hoists&quot; common attributes from its children. For example, if all tracks in a container share the same album title, the `parentTitle` attribute may appear on the MediaContainer rather than being repeated on each track.<br/>
+    /// 
+    /// </remarks>
+    /// </summary>
     public class MediaContainer
     {
 
+        [JsonProperty("identifier")]
+        public string? Identifier { get; set; }
+
+        /// <summary>
+        /// The offset of where this container page starts among the total objects available. Also provided in the `X-Plex-Container-Start` header.<br/>
+        /// 
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// </summary>
+        [JsonProperty("offset")]
+        public long? Offset { get; set; }
+
         [JsonProperty("size")]
-        public double? Size { get; set; }
+        public long? Size { get; set; }
+
+        /// <summary>
+        /// The total size of objects available. Also provided in the `X-Plex-Container-Total-Size` header.<br/>
+        /// 
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// </summary>
+        [JsonProperty("totalSize")]
+        public long? TotalSize { get; set; }
 
         [JsonProperty("allowCameraUpload")]
         public bool? AllowCameraUpload { get; set; }
@@ -66,10 +97,10 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public bool? ItemClusters { get; set; }
 
         [JsonProperty("livetv")]
-        public double? Livetv { get; set; }
+        public long? Livetv { get; set; }
 
         [JsonProperty("machineIdentifier")]
-        public string? MachineIdentifier { get; set; }
+        public object? MachineIdentifier { get; set; }
 
         [JsonProperty("mediaProviders")]
         public bool? MediaProviders { get; set; }
@@ -78,16 +109,16 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public bool? Multiuser { get; set; }
 
         [JsonProperty("musicAnalysis")]
-        public double? MusicAnalysis { get; set; }
+        public long? MusicAnalysis { get; set; }
 
         [JsonProperty("myPlex")]
         public bool? MyPlex { get; set; }
 
         [JsonProperty("myPlexMappingState")]
-        public string? MyPlexMappingState { get; set; }
+        public object? MyPlexMappingState { get; set; }
 
         [JsonProperty("myPlexSigninState")]
-        public string? MyPlexSigninState { get; set; }
+        public object? MyPlexSigninState { get; set; }
 
         [JsonProperty("myPlexSubscription")]
         public bool? MyPlexSubscription { get; set; }
@@ -96,13 +127,13 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public string? MyPlexUsername { get; set; }
 
         [JsonProperty("offlineTranscode")]
-        public double? OfflineTranscode { get; set; }
+        public object? OfflineTranscode { get; set; }
 
+        /// <summary>
+        /// A comma-separated list of features which are enabled for the server owner
+        /// </summary>
         [JsonProperty("ownerFeatures")]
         public string? OwnerFeatures { get; set; }
-
-        [JsonProperty("photoAutoTag")]
-        public bool? PhotoAutoTag { get; set; }
 
         [JsonProperty("platform")]
         public string? Platform { get; set; }
@@ -120,16 +151,16 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public bool? ReadOnlyLibraries { get; set; }
 
         [JsonProperty("streamingBrainABRVersion")]
-        public double? StreamingBrainABRVersion { get; set; }
+        public long? StreamingBrainABRVersion { get; set; }
 
         [JsonProperty("streamingBrainVersion")]
-        public double? StreamingBrainVersion { get; set; }
+        public long? StreamingBrainVersion { get; set; }
 
         [JsonProperty("sync")]
         public bool? Sync { get; set; }
 
         [JsonProperty("transcoderActiveVideoSessions")]
-        public double? TranscoderActiveVideoSessions { get; set; }
+        public long? TranscoderActiveVideoSessions { get; set; }
 
         [JsonProperty("transcoderAudio")]
         public bool? TranscoderAudio { get; set; }
@@ -146,17 +177,23 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         [JsonProperty("transcoderVideo")]
         public bool? TranscoderVideo { get; set; }
 
+        /// <summary>
+        /// The suggested video quality bitrates to present to the user
+        /// </summary>
         [JsonProperty("transcoderVideoBitrates")]
-        public string? TranscoderVideoBitrates { get; set; }
+        public object? TranscoderVideoBitrates { get; set; }
 
         [JsonProperty("transcoderVideoQualities")]
         public string? TranscoderVideoQualities { get; set; }
 
+        /// <summary>
+        /// The suggested video resolutions to the above quality bitrates
+        /// </summary>
         [JsonProperty("transcoderVideoResolutions")]
-        public string? TranscoderVideoResolutions { get; set; }
+        public object? TranscoderVideoResolutions { get; set; }
 
         [JsonProperty("updatedAt")]
-        public double? UpdatedAt { get; set; }
+        public long? UpdatedAt { get; set; }
 
         [JsonProperty("updater")]
         public bool? Updater { get; set; }
@@ -167,7 +204,22 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         [JsonProperty("voiceSearch")]
         public bool? VoiceSearch { get; set; }
 
-        [JsonProperty("Directory")]
-        public List<Directory>? Directory { get; set; }
+        /// <summary>
+        /// A list of media times and bandwidths when trascoding is using with auto adjustment of bandwidth
+        /// </summary>
+        [JsonProperty("Bandwidths")]
+        public Bandwidths? Bandwidths { get; set; }
+
+        /// <summary>
+        /// A code describing why the session was terminated by the server.
+        /// </summary>
+        [JsonProperty("terminationCode")]
+        public long? TerminationCode { get; set; }
+
+        /// <summary>
+        /// A user friendly and localized text describing why the session was terminated by the server.
+        /// </summary>
+        [JsonProperty("terminationText")]
+        public string? TerminationText { get; set; }
     }
 }

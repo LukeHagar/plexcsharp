@@ -9,6 +9,7 @@
 #nullable enable
 namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
+    using LukeHagar.PlexAPI.SDK.Models.Requests;
     using LukeHagar.PlexAPI.SDK.Utils;
     using System;
     using System.Net.Http;
@@ -30,5 +31,10 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Raw HTTP response; suitable for custom response parsing
         /// </summary>
         public HttpResponseMessage RawResponse { get; set; } = default!;
+
+        /// <summary>
+        /// OK
+        /// </summary>
+        public GetTransientTokenResponseBody? Object { get; set; }
     }
 }

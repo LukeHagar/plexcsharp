@@ -14,7 +14,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using System;
     
     /// <summary>
-    /// `all` - This is the only supported `scope` parameter.
+    /// The value `all` is the only supported `scope` parameter.
     /// </summary>
     public enum Scope
     {

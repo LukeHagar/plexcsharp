@@ -9,7 +9,7 @@
 #nullable enable
 namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
-    using LukeHagar.PlexAPI.SDK.Models.Requests;
+    using LukeHagar.PlexAPI.SDK.Models.Components;
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
@@ -17,25 +17,13 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     public class Feature
     {
 
+        [JsonProperty("Directory")]
+        public List<Models.Components.Directory>? Directory { get; set; }
+
         [JsonProperty("key")]
         public string? Key { get; set; }
 
         [JsonProperty("type")]
-        public string Type { get; set; } = default!;
-
-        [JsonProperty("flavor")]
-        public string? Flavor { get; set; }
-
-        [JsonProperty("scrobbleKey")]
-        public string? ScrobbleKey { get; set; }
-
-        [JsonProperty("unscrobbleKey")]
-        public string? UnscrobbleKey { get; set; }
-
-        [JsonProperty("Directory")]
-        public List<GetMediaProvidersDirectory>? Directory { get; set; }
-
-        [JsonProperty("Action")]
-        public List<Action>? Action { get; set; }
+        public string? Type { get; set; }
     }
 }

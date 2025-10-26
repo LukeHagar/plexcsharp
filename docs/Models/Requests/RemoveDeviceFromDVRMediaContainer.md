@@ -1,0 +1,9 @@
+# RemoveDeviceFromDVRMediaContainer
+
+
+## Fields
+
+| Field                                                                                                   | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `MediaContainer`                                                                                        | [RemoveDeviceFromDVRDVRsMediaContainer](../../Models/Requests/RemoveDeviceFromDVRDVRsMediaContainer.md) | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |
+| `Dvr`                                                                                                   | List<[RemoveDeviceFromDVRDVR](../../Models/Requests/RemoveDeviceFromDVRDVR.md)>                         | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |

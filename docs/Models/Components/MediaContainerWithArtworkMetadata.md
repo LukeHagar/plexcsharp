@@ -1,0 +1,11 @@
+# MediaContainerWithArtworkMetadata
+
+
+## Fields
+
+| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `Title`                                                                                   | *string*                                                                                  | :heavy_minus_sign:                                                                        | The title of the item                                                                     |
+| `Type`                                                                                    | [MediaContainerWithArtworkType](../../Models/Components/MediaContainerWithArtworkType.md) | :heavy_minus_sign:                                                                        | N/A                                                                                       |
+| `Key`                                                                                     | *string*                                                                                  | :heavy_minus_sign:                                                                        | The path to the artwork                                                                   |
+| `AdditionalProperties`                                                                    | Dictionary<String, *object*>                                                              | :heavy_minus_sign:                                                                        | N/A                                                                                       |

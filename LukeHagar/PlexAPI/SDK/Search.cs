@@ -23,19 +23,17 @@ namespace LukeHagar.PlexAPI.SDK
     using System.Threading.Tasks;
 
     /// <summary>
-    /// API Calls that perform search operations with Plex Media Server<br/>
-    /// 
-    /// <remarks>
-    /// 
-    /// </remarks>
+    /// The search feature within a media provider
     /// </summary>
     public interface ISearch
     {
 
         /// <summary>
-        /// Perform a search
+        /// Search Hub
         /// 
         /// <remarks>
+        /// Perform a search and get the result as hubs<br/>
+        /// <br/>
         /// This endpoint performs a search across all library sections, or a single section, and returns matches as hubs, split up by type. It performs spell checking, looks for partial matches, and orders the hubs based on quality of results. In addition, based on matches, it will return other related matches (e.g. for a genre match, it may return movies in that genre, or for an actor match, movies with that actor).<br/>
         /// <br/>
         /// In the response&apos;s items, the following extra attributes are returned to further describe or disambiguate the result:<br/>
@@ -51,71 +49,70 @@ namespace LukeHagar.PlexAPI.SDK
         /// 
         /// </remarks>
         /// </summary>
-        Task<PerformSearchResponse> PerformSearchAsync(string query, double? sectionId = null, double? limit = 3D);
+        Task<SearchHubsResponse> SearchHubsAsync(SearchHubsRequest request);
 
         /// <summary>
-        /// Perform a voice search
+        /// Voice Search Hub
         /// 
         /// <remarks>
-        /// This endpoint performs a search specifically tailored towards voice or other imprecise input which may work badly with the substring and spell-checking heuristics used by the `/hubs/search` endpoint. <br/>
-        /// It uses a <a href="https://en.wikipedia.org/wiki/Levenshtein_distance">Levenshtein distance</a> heuristic to search titles, and as such is much slower than the other search endpoint. <br/>
-        /// Whenever possible, clients should limit the search to the appropriate type. <br/>
+        /// Perform a search tailored to voice input and get the result as hubs<br/>
+        /// <br/>
+        /// This endpoint performs a search specifically tailored towards voice or other imprecise input which may work badly with the substring and spell-checking heuristics used by the `/hubs/search` endpoint. It uses a <a href="https://en.wikipedia.org/wiki/Levenshtein_distance">Levenshtein distance</a> heuristic to search titles, and as such is much slower than the other search endpoint. Whenever possible, clients should limit the search to the appropriate type.<br/>
+        /// <br/>
         /// Results, as well as their containing per-type hubs, contain a `distance` attribute which can be used to judge result quality.<br/>
         /// 
         /// </remarks>
         /// </summary>
-        Task<PerformVoiceSearchResponse> PerformVoiceSearchAsync(string query, double? sectionId = null, double? limit = 3D);
-
-        /// <summary>
-        /// Get Search Results
-        /// 
-        /// <remarks>
-        /// This will search the database for the string provided.
-        /// </remarks>
-        /// </summary>
-        Task<GetSearchResultsResponse> GetSearchResultsAsync(string query);
+        Task<VoiceSearchHubsResponse> VoiceSearchHubsAsync(VoiceSearchHubsRequest request);
     }
 
     /// <summary>
-    /// API Calls that perform search operations with Plex Media Server<br/>
-    /// 
-    /// <remarks>
-    /// 
-    /// </remarks>
+    /// The search feature within a media provider
     /// </summary>
     public class Search: ISearch
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.17.0";
-        private const string _sdkGenVersion = "2.698.4";
-        private const string _openapiDocVersion = "0.0.3";
+        private const string _sdkVersion = "0.18.0";
+        private const string _sdkGenVersion = "2.730.5";
+        private const string _openapiDocVersion = "1.1.1";
 
         public Search(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        public async Task<PerformSearchResponse> PerformSearchAsync(string query, double? sectionId = null, double? limit = 3D)
+        public async Task<SearchHubsResponse> SearchHubsAsync(SearchHubsRequest request)
         {
-            var request = new PerformSearchRequest()
+            if (request == null)
             {
-                Query = query,
-                SectionId = sectionId,
-                Limit = limit,
-            };
+                request = new SearchHubsRequest();
+            }
+            request.Accepts ??= SDKConfiguration.Accepts;
+            request.ClientIdentifier ??= SDKConfiguration.ClientIdentifier;
+            request.Product ??= SDKConfiguration.Product;
+            request.Version ??= SDKConfiguration.Version;
+            request.Platform ??= SDKConfiguration.Platform;
+            request.PlatformVersion ??= SDKConfiguration.PlatformVersion;
+            request.Device ??= SDKConfiguration.Device;
+            request.Model ??= SDKConfiguration.Model;
+            request.DeviceVendor ??= SDKConfiguration.DeviceVendor;
+            request.DeviceName ??= SDKConfiguration.DeviceName;
+            request.Marketplace ??= SDKConfiguration.Marketplace;
+            
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/hubs/search", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
+            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
             if (SDKConfiguration.SecuritySource != null)
             {
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "performSearch", new List<string> {  }, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "searchHubs", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -125,241 +122,7 @@ namespace LukeHagar.PlexAPI.SDK
                 httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
-                {
-                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
-                    if (_httpResponse != null)
-                    {
-                        httpResponse = _httpResponse;
-                    }
-                }
-            }
-            catch (Exception error)
-            {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
-                if (_httpResponse != null)
-                {
-                    httpResponse = _httpResponse;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode == 200)
-            {
-                return new PerformSearchResponse()
-                {
-                    StatusCode = responseStatusCode,
-                    ContentType = contentType,
-                    RawResponse = httpResponse
-                };
-            }
-            else if(responseStatusCode == 400)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    PerformSearchBadRequestPayload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<PerformSearchBadRequestPayload>(httpResponseBody, NullValueHandling.Ignore);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into PerformSearchBadRequestPayload.", httpResponse, httpResponseBody, ex);
-                    }
-
-                    payload.RawResponse = httpResponse;
-                    throw new PerformSearchBadRequest(payload, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.SDKException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode == 401)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    PerformSearchUnauthorizedPayload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<PerformSearchUnauthorizedPayload>(httpResponseBody, NullValueHandling.Ignore);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into PerformSearchUnauthorizedPayload.", httpResponse, httpResponseBody, ex);
-                    }
-
-                    payload.RawResponse = httpResponse;
-                    throw new PerformSearchUnauthorized(payload, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.SDKException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode >= 400 && responseStatusCode < 500)
-            {
-                throw new Models.Errors.SDKException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode >= 500 && responseStatusCode < 600)
-            {
-                throw new Models.Errors.SDKException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-
-            throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-        }
-
-        public async Task<PerformVoiceSearchResponse> PerformVoiceSearchAsync(string query, double? sectionId = null, double? limit = 3D)
-        {
-            var request = new PerformVoiceSearchRequest()
-            {
-                Query = query,
-                SectionId = sectionId,
-                Limit = limit,
-            };
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/hubs/search/voice", request);
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
-            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (SDKConfiguration.SecuritySource != null)
-            {
-                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
-            }
-
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "performVoiceSearch", new List<string> {  }, SDKConfiguration.SecuritySource);
-
-            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
-
-            HttpResponseMessage httpResponse;
-            try
-            {
-                httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
-                int _statusCode = (int)httpResponse.StatusCode;
-
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
-                {
-                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
-                    if (_httpResponse != null)
-                    {
-                        httpResponse = _httpResponse;
-                    }
-                }
-            }
-            catch (Exception error)
-            {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
-                if (_httpResponse != null)
-                {
-                    httpResponse = _httpResponse;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode == 200)
-            {
-                return new PerformVoiceSearchResponse()
-                {
-                    StatusCode = responseStatusCode,
-                    ContentType = contentType,
-                    RawResponse = httpResponse
-                };
-            }
-            else if(responseStatusCode == 400)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    PerformVoiceSearchBadRequestPayload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<PerformVoiceSearchBadRequestPayload>(httpResponseBody, NullValueHandling.Ignore);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into PerformVoiceSearchBadRequestPayload.", httpResponse, httpResponseBody, ex);
-                    }
-
-                    payload.RawResponse = httpResponse;
-                    throw new PerformVoiceSearchBadRequest(payload, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.SDKException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode == 401)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    PerformVoiceSearchUnauthorizedPayload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<PerformVoiceSearchUnauthorizedPayload>(httpResponseBody, NullValueHandling.Ignore);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into PerformVoiceSearchUnauthorizedPayload.", httpResponse, httpResponseBody, ex);
-                    }
-
-                    payload.RawResponse = httpResponse;
-                    throw new PerformVoiceSearchUnauthorized(payload, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.SDKException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode >= 400 && responseStatusCode < 500)
-            {
-                throw new Models.Errors.SDKException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode >= 500 && responseStatusCode < 600)
-            {
-                throw new Models.Errors.SDKException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-
-            throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-        }
-
-        public async Task<GetSearchResultsResponse> GetSearchResultsAsync(string query)
-        {
-            var request = new GetSearchResultsRequest()
-            {
-                Query = query,
-            };
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/search", request);
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
-            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (SDKConfiguration.SecuritySource != null)
-            {
-                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
-            }
-
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "getSearchResults", new List<string> {  }, SDKConfiguration.SecuritySource);
-
-            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
-
-            HttpResponseMessage httpResponse;
-            try
-            {
-                httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
-                int _statusCode = (int)httpResponse.StatusCode;
-
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode == 400 || _statusCode == 404 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -390,17 +153,17 @@ namespace LukeHagar.PlexAPI.SDK
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    GetSearchResultsResponseBody obj;
+                    SearchHubsResponseBody obj;
                     try
                     {
-                        obj = ResponseBodyDeserializer.DeserializeNotNull<GetSearchResultsResponseBody>(httpResponseBody, NullValueHandling.Ignore);
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<SearchHubsResponseBody>(httpResponseBody, NullValueHandling.Ignore);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into GetSearchResultsResponseBody.", httpResponse, httpResponseBody, ex);
+                        throw new ResponseValidationException("Failed to deserialize response body into SearchHubsResponseBody.", httpResponse, httpResponseBody, ex);
                     }
 
-                    var response = new GetSearchResultsResponse()
+                    var response = new SearchHubsResponse()
                     {
                         StatusCode = responseStatusCode,
                         ContentType = contentType,
@@ -412,49 +175,112 @@ namespace LukeHagar.PlexAPI.SDK
 
                 throw new Models.Errors.SDKException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
-            else if(responseStatusCode == 400)
+            else if(responseStatusCode == 400 || responseStatusCode == 404 || responseStatusCode >= 400 && responseStatusCode < 500)
+            {
+                throw new Models.Errors.SDKException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode >= 500 && responseStatusCode < 600)
+            {
+                throw new Models.Errors.SDKException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+
+            throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+        }
+
+        public async Task<VoiceSearchHubsResponse> VoiceSearchHubsAsync(VoiceSearchHubsRequest request)
+        {
+            if (request == null)
+            {
+                request = new VoiceSearchHubsRequest();
+            }
+            request.Accepts ??= SDKConfiguration.Accepts;
+            request.ClientIdentifier ??= SDKConfiguration.ClientIdentifier;
+            request.Product ??= SDKConfiguration.Product;
+            request.Version ??= SDKConfiguration.Version;
+            request.Platform ??= SDKConfiguration.Platform;
+            request.PlatformVersion ??= SDKConfiguration.PlatformVersion;
+            request.Device ??= SDKConfiguration.Device;
+            request.Model ??= SDKConfiguration.Model;
+            request.DeviceVendor ??= SDKConfiguration.DeviceVendor;
+            request.DeviceName ??= SDKConfiguration.DeviceName;
+            request.Marketplace ??= SDKConfiguration.Marketplace;
+            
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+            var urlString = URLBuilder.Build(baseUrl, "/hubs/search/voice", request);
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
+            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            if (SDKConfiguration.SecuritySource != null)
+            {
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "voiceSearchHubs", null, SDKConfiguration.SecuritySource);
+
+            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+
+            HttpResponseMessage httpResponse;
+            try
+            {
+                httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
+                int _statusCode = (int)httpResponse.StatusCode;
+
+                if (_statusCode == 400 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                {
+                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
+                    if (_httpResponse != null)
+                    {
+                        httpResponse = _httpResponse;
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                if (_httpResponse != null)
+                {
+                    httpResponse = _httpResponse;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            int responseStatusCode = (int)httpResponse.StatusCode;
+            if(responseStatusCode == 200)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    GetSearchResultsBadRequestPayload payload;
+                    VoiceSearchHubsResponseBody obj;
                     try
                     {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<GetSearchResultsBadRequestPayload>(httpResponseBody, NullValueHandling.Ignore);
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<VoiceSearchHubsResponseBody>(httpResponseBody, NullValueHandling.Ignore);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into GetSearchResultsBadRequestPayload.", httpResponse, httpResponseBody, ex);
+                        throw new ResponseValidationException("Failed to deserialize response body into VoiceSearchHubsResponseBody.", httpResponse, httpResponseBody, ex);
                     }
 
-                    payload.RawResponse = httpResponse;
-                    throw new GetSearchResultsBadRequest(payload, httpResponse, httpResponseBody);
+                    var response = new VoiceSearchHubsResponse()
+                    {
+                        StatusCode = responseStatusCode,
+                        ContentType = contentType,
+                        RawResponse = httpResponse
+                    };
+                    response.Object = obj;
+                    return response;
                 }
 
                 throw new Models.Errors.SDKException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
-            else if(responseStatusCode == 401)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    GetSearchResultsUnauthorizedPayload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<GetSearchResultsUnauthorizedPayload>(httpResponseBody, NullValueHandling.Ignore);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into GetSearchResultsUnauthorizedPayload.", httpResponse, httpResponseBody, ex);
-                    }
-
-                    payload.RawResponse = httpResponse;
-                    throw new GetSearchResultsUnauthorized(payload, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.SDKException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode >= 400 && responseStatusCode < 500)
+            else if(responseStatusCode == 400 || responseStatusCode >= 400 && responseStatusCode < 500)
             {
                 throw new Models.Errors.SDKException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }

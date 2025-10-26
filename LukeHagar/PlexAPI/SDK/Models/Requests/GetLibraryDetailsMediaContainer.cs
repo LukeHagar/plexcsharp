@@ -9,7 +9,7 @@
 #nullable enable
 namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
-    using LukeHagar.PlexAPI.SDK.Models.Requests;
+    using LukeHagar.PlexAPI.SDK.Models.Components;
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
@@ -17,8 +17,17 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     public class GetLibraryDetailsMediaContainer
     {
 
-        [JsonProperty("size")]
-        public int? Size { get; set; }
+        /// <summary>
+        /// The flavors of directory found here:<br/>
+        /// 
+        /// <remarks>
+        ///   - Primary: (e.g. all, On Deck) These are still used in some clients to provide &quot;shortcuts&quot; to subsets of media. However, with the exception of On Deck, all of them can be created by media queries, and the desire is to allow these to be customized by users.<br/>
+        ///   - Secondary: These are marked with `&quot;secondary&quot;: true` and were used by old clients to provide nested menus allowing for primative (but structured) navigation.<br/>
+        ///   - Special: There is a By Folder entry which allows browsing the media by the underlying filesystem structure, and there&apos;s a completely obsolete entry marked `&quot;search&quot;: true` which used to be used to allow clients to build search dialogs on the fly.
+        /// </remarks>
+        /// </summary>
+        [JsonProperty("content")]
+        public string? Content { get; set; }
 
         [JsonProperty("allowSync")]
         public bool? AllowSync { get; set; }
@@ -26,20 +35,26 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         [JsonProperty("art")]
         public string? Art { get; set; }
 
-        [JsonProperty("content")]
-        public string? Content { get; set; }
+        [JsonProperty("Directory")]
+        public List<Models.Components.Metadata>? Directory { get; set; }
 
         [JsonProperty("identifier")]
         public string? Identifier { get; set; }
 
         [JsonProperty("librarySectionID")]
-        public int? LibrarySectionID { get; set; }
+        public long? LibrarySectionID { get; set; }
 
         [JsonProperty("mediaTagPrefix")]
         public string? MediaTagPrefix { get; set; }
 
         [JsonProperty("mediaTagVersion")]
-        public int? MediaTagVersion { get; set; }
+        public long? MediaTagVersion { get; set; }
+
+        [JsonProperty("size")]
+        public long? Size { get; set; }
+
+        [JsonProperty("sortAsc")]
+        public bool? SortAsc { get; set; }
 
         [JsonProperty("thumb")]
         public string? Thumb { get; set; }
@@ -51,15 +66,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public string? ViewGroup { get; set; }
 
         [JsonProperty("viewMode")]
-        public int? ViewMode { get; set; }
-
-        [JsonProperty("Directory")]
-        public List<GetLibraryDetailsDirectory>? Directory { get; set; }
-
-        [JsonProperty("Type")]
-        public List<GetLibraryDetailsType>? Type { get; set; }
-
-        [JsonProperty("FieldType")]
-        public List<GetLibraryDetailsFieldType>? FieldType { get; set; }
+        public long? ViewMode { get; set; }
     }
 }

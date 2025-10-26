@@ -9,7 +9,7 @@
 #nullable enable
 namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
-    using LukeHagar.PlexAPI.SDK.Models.Requests;
+    using LukeHagar.PlexAPI.SDK.Models.Components;
     using LukeHagar.PlexAPI.SDK.Utils;
     using System;
     using System.Net.Http;
@@ -33,8 +33,8 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public HttpResponseMessage RawResponse { get; set; } = default!;
 
         /// <summary>
-        /// The playlist
+        /// OK
         /// </summary>
-        public GetPlaylistResponseBody? Object { get; set; }
+        public MediaContainerWithPlaylistMetadata? MediaContainerWithPlaylistMetadata { get; set; }
     }
 }

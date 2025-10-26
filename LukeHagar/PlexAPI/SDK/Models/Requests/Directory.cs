@@ -15,13 +15,37 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     public class Directory
     {
 
-        [JsonProperty("count")]
-        public double? Count { get; set; }
+        /// <summary>
+        /// The filter string to view metadata wit this tag
+        /// </summary>
+        [JsonProperty("filter")]
+        public string? Filter { get; set; }
 
-        [JsonProperty("key")]
-        public string? Key { get; set; }
+        [JsonProperty("id")]
+        public long? Id { get; set; }
 
-        [JsonProperty("title")]
-        public string? Title { get; set; }
+        /// <summary>
+        /// The name of the tag
+        /// </summary>
+        [JsonProperty("tag")]
+        public string? Tag { get; set; }
+
+        /// <summary>
+        /// The key of this tag.  This is a universal key across all PMS instances and plex.tv services
+        /// </summary>
+        [JsonProperty("tagKey")]
+        public string? TagKey { get; set; }
+
+        /// <summary>
+        /// The type of the tag
+        /// </summary>
+        [JsonProperty("tagType")]
+        public long? TagType { get; set; }
+
+        /// <summary>
+        /// The URL to a thumbnail for this tag
+        /// </summary>
+        [JsonProperty("thumb")]
+        public string? Thumb { get; set; }
     }
 }

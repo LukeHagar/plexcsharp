@@ -9,45 +9,88 @@
 #nullable enable
 namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
-    using LukeHagar.PlexAPI.SDK.Models.Requests;
+    using LukeHagar.PlexAPI.SDK.Models.Components;
     using LukeHagar.PlexAPI.SDK.Utils;
-    using Newtonsoft.Json;
-    using System;
-    using System.Collections.Concurrent;
-    using System.Collections.Generic;
-    using System.Linq;
     
     public class CreatePlaylistRequest
     {
 
         /// <summary>
-        /// name of the playlist
+        /// Indicates the client accepts the indicated media types
         /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=title")]
-        public string Title { get; set; } = default!;
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=accepts")]
+        public Accepts? Accepts { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.Accepts.ApplicationXml;
 
         /// <summary>
-        /// type of playlist to create
+        /// An opaque identifier unique to the client
         /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=type")]
-        public CreatePlaylistQueryParamType Type { get; set; } = default!;
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Client-Identifier")]
+        public string? ClientIdentifier { get; set; }
 
         /// <summary>
-        /// whether the playlist is smart or not
+        /// The name of the client product
         /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=smart")]
-        public Smart Smart { get; set; } = default!;
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Product")]
+        public string? Product { get; set; }
 
         /// <summary>
-        /// the content URI for the playlist
+        /// The version of the client application
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Version")]
+        public string? Version { get; set; }
+
+        /// <summary>
+        /// The platform of the client
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Platform")]
+        public string? Platform { get; set; }
+
+        /// <summary>
+        /// The version of the platform
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Platform-Version")]
+        public string? PlatformVersion { get; set; }
+
+        /// <summary>
+        /// A relatively friendly name for the client device
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Device")]
+        public string? Device { get; set; }
+
+        /// <summary>
+        /// A potentially less friendly identifier for the device model
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Model")]
+        public string? Model { get; set; }
+
+        /// <summary>
+        /// The device vendor
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Device-Vendor")]
+        public string? DeviceVendor { get; set; }
+
+        /// <summary>
+        /// A friendly name for the client
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Device-Name")]
+        public string? DeviceName { get; set; }
+
+        /// <summary>
+        /// The marketplace on which the client application is distributed
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Marketplace")]
+        public string? Marketplace { get; set; }
+
+        /// <summary>
+        /// The content URI for what we&apos;re playing (e.g. `library://...`).
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=uri")]
-        public string Uri { get; set; } = default!;
+        public string? Uri { get; set; }
 
         /// <summary>
-        /// the play queue to copy to a playlist
+        /// To create a playlist from an existing play queue.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=playQueueID")]
-        public double? PlayQueueID { get; set; }
+        public long? PlayQueueID { get; set; }
     }
 }

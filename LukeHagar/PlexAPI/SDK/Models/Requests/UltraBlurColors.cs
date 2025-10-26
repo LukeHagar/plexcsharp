@@ -15,16 +15,28 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     public class UltraBlurColors
     {
 
-        [JsonProperty("topLeft")]
-        public string TopLeft { get; set; } = default!;
-
-        [JsonProperty("topRight")]
-        public string TopRight { get; set; } = default!;
-
-        [JsonProperty("bottomRight")]
-        public string BottomRight { get; set; } = default!;
-
+        /// <summary>
+        /// The color (hex) for the bottom left quadrant.
+        /// </summary>
         [JsonProperty("bottomLeft")]
-        public string BottomLeft { get; set; } = default!;
+        public string? BottomLeft { get; set; }
+
+        /// <summary>
+        /// The color (hex) for the bottom right quadrant.
+        /// </summary>
+        [JsonProperty("bottomRight")]
+        public string? BottomRight { get; set; }
+
+        /// <summary>
+        /// The color (hex) for the top left quadrant.
+        /// </summary>
+        [JsonProperty("topLeft")]
+        public string? TopLeft { get; set; }
+
+        /// <summary>
+        /// The color (hex) for the top right quadrant.
+        /// </summary>
+        [JsonProperty("topRight")]
+        public string? TopRight { get; set; }
     }
 }

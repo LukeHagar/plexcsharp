@@ -17,12 +17,14 @@ generation:
     oAuth2ClientCredentialsEnabled: true
     oAuth2PasswordEnabled: false
     hoistGlobalSecurity: true
+  schemas:
+    allOfMergeStrategy: shallowMerge
   tests:
     generateTests: true
     generateNewTests: false
     skipResponseBodyAssertions: false
 csharp:
-  version: 0.17.0
+  version: 0.18.0
   additionalDependencies: []
   author: LukeHagar
   baseErrorName: PlexAPIError
@@ -30,6 +32,7 @@ csharp:
   defaultErrorName: SDKException
   disableNamespacePascalCasingApr2024: true
   dotnetVersion: net8.0
+  enableCancellationToken: false
   enableSourceLink: true
   flattenGlobalSecurity: true
   flatteningOrder: ""
@@ -51,3 +54,4 @@ csharp:
   packageTags: Plex Media Server SDK
   responseFormat: envelope
   sourceDirectory: ""
+  useNodatime: true

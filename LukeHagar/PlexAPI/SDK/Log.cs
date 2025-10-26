@@ -15,215 +15,70 @@ namespace LukeHagar.PlexAPI.SDK
     using LukeHagar.PlexAPI.SDK.Models.Requests;
     using LukeHagar.PlexAPI.SDK.Utils;
     using LukeHagar.PlexAPI.SDK.Utils.Retries;
-    using Newtonsoft.Json;
     using System;
-    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Submit logs to the Log Handler for Plex Media Server<br/>
-    /// 
-    /// <remarks>
-    /// 
-    /// </remarks>
+    /// Logging mechanism to allow clients to log to the server
     /// </summary>
     public interface ILog
     {
 
         /// <summary>
-        /// Logging a single line message.
+        /// Logging a multi-line message to the Plex Media Server log
+        /// 
+        /// <remarks>
+        /// This endpoint will write multiple lines to the main Plex Media Server log in a single request. It takes a set of query strings as would normally sent to the above PUT endpoint as a linefeed-separated block of POST data. The parameters for each query string match as above.<br/>
+        /// 
+        /// </remarks>
+        /// </summary>
+        Task<WriteLogResponse> WriteLogAsync(byte[] request);
+
+        /// <summary>
+        /// Logging a single-line message to the Plex Media Server log
         /// 
         /// <remarks>
         /// This endpoint will write a single-line log message, including a level and source to the main Plex Media Server log.<br/>
+        /// <br/>
+        /// Note: This endpoint responds to all HTTP verbs **except POST** but PUT is preferred<br/>
         /// 
         /// </remarks>
         /// </summary>
-        Task<LogLineResponse> LogLineAsync(Level level, string message, string source);
-
-        /// <summary>
-        /// Logging a multi-line message
-        /// 
-        /// <remarks>
-        /// This endpoint allows for the batch addition of log entries to the main Plex Media Server log.<br/>
-        /// It accepts a text/plain request body, where each line represents a distinct log entry.<br/>
-        /// Each log entry consists of URL-encoded key-value pairs, specifying log attributes such as &apos;level&apos;, &apos;message&apos;, and &apos;source&apos;.<br/>
-        /// <br/>
-        /// Log entries are separated by a newline character (`\n`).<br/>
-        /// Each entry&apos;s parameters should be URL-encoded to ensure accurate parsing and handling of special characters.<br/>
-        /// This method is efficient for logging multiple entries in a single API call, reducing the overhead of multiple individual requests.<br/>
-        /// <br/>
-        /// The &apos;level&apos; parameter specifies the log entry&apos;s severity or importance, with the following integer values:<br/>
-        /// - `0`: Error - Critical issues that require immediate attention.<br/>
-        /// - `1`: Warning - Important events that are not critical but may indicate potential issues.<br/>
-        /// - `2`: Info - General informational messages about system operation.<br/>
-        /// - `3`: Debug - Detailed information useful for debugging purposes.<br/>
-        /// - `4`: Verbose - Highly detailed diagnostic information for in-depth analysis.<br/>
-        /// <br/>
-        /// The &apos;message&apos; parameter contains the log text, and &apos;source&apos; identifies the log message&apos;s origin (e.g., an application name or module).<br/>
-        /// <br/>
-        /// Example of a single log entry format:<br/>
-        /// `level=4&amp;message=Sample%20log%20entry&amp;source=applicationName`<br/>
-        /// <br/>
-        /// Ensure each parameter is properly URL-encoded to avoid interpretation issues.<br/>
-        /// 
-        /// </remarks>
-        /// </summary>
-        Task<LogMultiLineResponse> LogMultiLineAsync(string request);
+        Task<WriteMessageResponse> WriteMessageAsync(WriteMessageRequest? request = null);
 
         /// <summary>
         /// Enabling Papertrail
         /// 
         /// <remarks>
-        /// This endpoint will enable all Plex Media Serverlogs to be sent to the Papertrail networked logging site for a period of time.<br/>
+        /// This endpoint will enable all Plex Media Server logs to be sent to the Papertrail networked logging site for a period of time<br/>
+        /// <br/>
+        /// Note: This endpoint responds to all HTTP verbs but POST is preferred<br/>
         /// 
         /// </remarks>
         /// </summary>
-        Task<EnablePaperTrailResponse> EnablePaperTrailAsync();
+        Task<EnablePapertrailResponse> EnablePapertrailAsync(EnablePapertrailRequest? request = null);
     }
 
     /// <summary>
-    /// Submit logs to the Log Handler for Plex Media Server<br/>
-    /// 
-    /// <remarks>
-    /// 
-    /// </remarks>
+    /// Logging mechanism to allow clients to log to the server
     /// </summary>
     public class Log: ILog
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.17.0";
-        private const string _sdkGenVersion = "2.698.4";
-        private const string _openapiDocVersion = "0.0.3";
+        private const string _sdkVersion = "0.18.0";
+        private const string _sdkGenVersion = "2.730.5";
+        private const string _openapiDocVersion = "1.1.1";
 
         public Log(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        public async Task<LogLineResponse> LogLineAsync(Level level, string message, string source)
-        {
-            var request = new LogLineRequest()
-            {
-                Level = level,
-                Message = message,
-                Source = source,
-            };
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/log", request);
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
-            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (SDKConfiguration.SecuritySource != null)
-            {
-                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
-            }
-
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "logLine", new List<string> {  }, SDKConfiguration.SecuritySource);
-
-            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
-
-            HttpResponseMessage httpResponse;
-            try
-            {
-                httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
-                int _statusCode = (int)httpResponse.StatusCode;
-
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
-                {
-                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
-                    if (_httpResponse != null)
-                    {
-                        httpResponse = _httpResponse;
-                    }
-                }
-            }
-            catch (Exception error)
-            {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
-                if (_httpResponse != null)
-                {
-                    httpResponse = _httpResponse;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode == 200)
-            {
-                return new LogLineResponse()
-                {
-                    StatusCode = responseStatusCode,
-                    ContentType = contentType,
-                    RawResponse = httpResponse
-                };
-            }
-            else if(responseStatusCode == 400)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    LogLineBadRequestPayload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<LogLineBadRequestPayload>(httpResponseBody, NullValueHandling.Ignore);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into LogLineBadRequestPayload.", httpResponse, httpResponseBody, ex);
-                    }
-
-                    payload.RawResponse = httpResponse;
-                    throw new LogLineBadRequest(payload, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.SDKException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode == 401)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    LogLineUnauthorizedPayload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<LogLineUnauthorizedPayload>(httpResponseBody, NullValueHandling.Ignore);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into LogLineUnauthorizedPayload.", httpResponse, httpResponseBody, ex);
-                    }
-
-                    payload.RawResponse = httpResponse;
-                    throw new LogLineUnauthorized(payload, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.SDKException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode >= 400 && responseStatusCode < 500)
-            {
-                throw new Models.Errors.SDKException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode >= 500 && responseStatusCode < 600)
-            {
-                throw new Models.Errors.SDKException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-
-            throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-        }
-
-        public async Task<LogMultiLineResponse> LogMultiLineAsync(string request)
+        public async Task<WriteLogResponse> WriteLogAsync(byte[] request)
         {
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
 
@@ -232,7 +87,7 @@ namespace LukeHagar.PlexAPI.SDK
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
 
-            var serializedBody = RequestBodySerializer.Serialize(request, "Request", "string", false, false);
+            var serializedBody = RequestBodySerializer.Serialize(request, "Request", "raw", false, false);
             if (serializedBody != null)
             {
                 httpRequest.Content = serializedBody;
@@ -243,7 +98,7 @@ namespace LukeHagar.PlexAPI.SDK
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "logMultiLine", new List<string> {  }, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "writeLog", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -253,7 +108,7 @@ namespace LukeHagar.PlexAPI.SDK
                 httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode == 400 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -281,54 +136,95 @@ namespace LukeHagar.PlexAPI.SDK
             int responseStatusCode = (int)httpResponse.StatusCode;
             if(responseStatusCode == 200)
             {
-                return new LogMultiLineResponse()
+                return new WriteLogResponse()
                 {
                     StatusCode = responseStatusCode,
                     ContentType = contentType,
                     RawResponse = httpResponse
                 };
             }
-            else if(responseStatusCode == 400)
+            else if(responseStatusCode == 400 || responseStatusCode >= 400 && responseStatusCode < 500)
             {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    LogMultiLineBadRequestPayload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<LogMultiLineBadRequestPayload>(httpResponseBody, NullValueHandling.Ignore);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into LogMultiLineBadRequestPayload.", httpResponse, httpResponseBody, ex);
-                    }
-
-                    payload.RawResponse = httpResponse;
-                    throw new LogMultiLineBadRequest(payload, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.SDKException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+                throw new Models.Errors.SDKException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
-            else if(responseStatusCode == 401)
+            else if(responseStatusCode >= 500 && responseStatusCode < 600)
             {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                throw new Models.Errors.SDKException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+
+            throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+        }
+
+        public async Task<WriteMessageResponse> WriteMessageAsync(WriteMessageRequest? request = null)
+        {
+            request.Accepts ??= SDKConfiguration.Accepts;
+            request.ClientIdentifier ??= SDKConfiguration.ClientIdentifier;
+            request.Product ??= SDKConfiguration.Product;
+            request.Version ??= SDKConfiguration.Version;
+            request.Platform ??= SDKConfiguration.Platform;
+            request.PlatformVersion ??= SDKConfiguration.PlatformVersion;
+            request.Device ??= SDKConfiguration.Device;
+            request.Model ??= SDKConfiguration.Model;
+            request.DeviceVendor ??= SDKConfiguration.DeviceVendor;
+            request.DeviceName ??= SDKConfiguration.DeviceName;
+            request.Marketplace ??= SDKConfiguration.Marketplace;
+            
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+            var urlString = URLBuilder.Build(baseUrl, "/log", request);
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Put, urlString);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
+            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            if (SDKConfiguration.SecuritySource != null)
+            {
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "writeMessage", null, SDKConfiguration.SecuritySource);
+
+            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+
+            HttpResponseMessage httpResponse;
+            try
+            {
+                httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
+                int _statusCode = (int)httpResponse.StatusCode;
+
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    LogMultiLineUnauthorizedPayload payload;
-                    try
+                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
+                    if (_httpResponse != null)
                     {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<LogMultiLineUnauthorizedPayload>(httpResponseBody, NullValueHandling.Ignore);
+                        httpResponse = _httpResponse;
                     }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into LogMultiLineUnauthorizedPayload.", httpResponse, httpResponseBody, ex);
-                    }
-
-                    payload.RawResponse = httpResponse;
-                    throw new LogMultiLineUnauthorized(payload, httpResponse, httpResponseBody);
                 }
+            }
+            catch (Exception error)
+            {
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                if (_httpResponse != null)
+                {
+                    httpResponse = _httpResponse;
+                }
+                else
+                {
+                    throw;
+                }
+            }
 
-                throw new Models.Errors.SDKException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            int responseStatusCode = (int)httpResponse.StatusCode;
+            if(responseStatusCode == 200)
+            {
+                return new WriteMessageResponse()
+                {
+                    StatusCode = responseStatusCode,
+                    ContentType = contentType,
+                    RawResponse = httpResponse
+                };
             }
             else if(responseStatusCode >= 400 && responseStatusCode < 500)
             {
@@ -342,21 +238,33 @@ namespace LukeHagar.PlexAPI.SDK
             throw new Models.Errors.SDKException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<EnablePaperTrailResponse> EnablePaperTrailAsync()
+        public async Task<EnablePapertrailResponse> EnablePapertrailAsync(EnablePapertrailRequest? request = null)
         {
+            request.Accepts ??= SDKConfiguration.Accepts;
+            request.ClientIdentifier ??= SDKConfiguration.ClientIdentifier;
+            request.Product ??= SDKConfiguration.Product;
+            request.Version ??= SDKConfiguration.Version;
+            request.Platform ??= SDKConfiguration.Platform;
+            request.PlatformVersion ??= SDKConfiguration.PlatformVersion;
+            request.Device ??= SDKConfiguration.Device;
+            request.Model ??= SDKConfiguration.Model;
+            request.DeviceVendor ??= SDKConfiguration.DeviceVendor;
+            request.DeviceName ??= SDKConfiguration.DeviceName;
+            request.Marketplace ??= SDKConfiguration.Marketplace;
+            
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+            var urlString = URLBuilder.Build(baseUrl, "/log/networked", request);
 
-            var urlString = baseUrl + "/log/networked";
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
+            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
+            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
             if (SDKConfiguration.SecuritySource != null)
             {
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "enablePaperTrail", new List<string> {  }, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "enablePapertrail", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -366,7 +274,7 @@ namespace LukeHagar.PlexAPI.SDK
                 httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode == 403 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -394,54 +302,12 @@ namespace LukeHagar.PlexAPI.SDK
             int responseStatusCode = (int)httpResponse.StatusCode;
             if(responseStatusCode == 200)
             {
-                return new EnablePaperTrailResponse()
+                return new EnablePapertrailResponse()
                 {
                     StatusCode = responseStatusCode,
                     ContentType = contentType,
                     RawResponse = httpResponse
                 };
-            }
-            else if(responseStatusCode == 400)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    EnablePaperTrailBadRequestPayload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<EnablePaperTrailBadRequestPayload>(httpResponseBody, NullValueHandling.Ignore);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into EnablePaperTrailBadRequestPayload.", httpResponse, httpResponseBody, ex);
-                    }
-
-                    payload.RawResponse = httpResponse;
-                    throw new EnablePaperTrailBadRequest(payload, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.SDKException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode == 401)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    EnablePaperTrailUnauthorizedPayload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<EnablePaperTrailUnauthorizedPayload>(httpResponseBody, NullValueHandling.Ignore);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into EnablePaperTrailUnauthorizedPayload.", httpResponse, httpResponseBody, ex);
-                    }
-
-                    payload.RawResponse = httpResponse;
-                    throw new EnablePaperTrailUnauthorized(payload, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.SDKException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
             else if(responseStatusCode == 403 || responseStatusCode >= 400 && responseStatusCode < 500)
             {

@@ -14,14 +14,20 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using System;
     
     /// <summary>
-    /// The protocol used for the connection (http, https, etc)
+    /// Indicates the network streaming protocol to be used for the transcode session: * &apos;http&apos; - include the file in the http response such as MKV streaming * &apos;hls&apos; - hls stream (RFC 8216) * &apos;dash&apos; - dash stream (ISO/IEC 23009-1:2022)<br/>
+    /// 
+    /// <remarks>
+    /// 
+    /// </remarks>
     /// </summary>
     public enum Protocol
     {
         [JsonProperty("http")]
         Http,
-        [JsonProperty("https")]
-        Https,
+        [JsonProperty("hls")]
+        Hls,
+        [JsonProperty("dash")]
+        Dash,
     }
 
     public static class ProtocolExtension

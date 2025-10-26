@@ -15,22 +15,40 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     public class ButlerTask
     {
 
-        [JsonProperty("name")]
-        public string? Name { get; set; }
+        /// <summary>
+        /// A user-friendly description of the task
+        /// </summary>
+        [JsonProperty("description")]
+        public string? Description { get; set; }
 
-        [JsonProperty("interval")]
-        public double? Interval { get; set; }
-
-        [JsonProperty("scheduleRandomized")]
-        public bool? ScheduleRandomized { get; set; }
-
+        /// <summary>
+        /// Whether this task is enabled or not
+        /// </summary>
         [JsonProperty("enabled")]
         public bool? Enabled { get; set; }
 
+        /// <summary>
+        /// The interval (in days) of when this task is run.  A value of 1 is run every day, 7 is every week, etc.
+        /// </summary>
+        [JsonProperty("interval")]
+        public long? Interval { get; set; }
+
+        /// <summary>
+        /// The name of the task
+        /// </summary>
+        [JsonProperty("name")]
+        public string? Name { get; set; }
+
+        /// <summary>
+        /// Indicates whether the timing of the task is randomized within the butler interval
+        /// </summary>
+        [JsonProperty("scheduleRandomized")]
+        public bool? ScheduleRandomized { get; set; }
+
+        /// <summary>
+        /// A user-friendly title of the task
+        /// </summary>
         [JsonProperty("title")]
         public string? Title { get; set; }
-
-        [JsonProperty("description")]
-        public string? Description { get; set; }
     }
 }

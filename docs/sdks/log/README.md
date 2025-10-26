@@ -3,98 +3,32 @@
 
 ## Overview
 
-Submit logs to the Log Handler for Plex Media Server
-
+Logging mechanism to allow clients to log to the server
 
 ### Available Operations
 
-* [LogLine](#logline) - Logging a single line message.
-* [LogMultiLine](#logmultiline) - Logging a multi-line message
-* [EnablePaperTrail](#enablepapertrail) - Enabling Papertrail
+* [WriteLog](#writelog) - Logging a multi-line message to the Plex Media Server log
+* [WriteMessage](#writemessage) - Logging a single-line message to the Plex Media Server log
+* [EnablePapertrail](#enablepapertrail) - Enabling Papertrail
 
-## LogLine
+## WriteLog
 
-This endpoint will write a single-line log message, including a level and source to the main Plex Media Server log.
-
-
-### Example Usage
-
-<!-- UsageSnippet language="csharp" operationID="logLine" method="get" path="/log" -->
-```csharp
-using LukeHagar.PlexAPI.SDK;
-using LukeHagar.PlexAPI.SDK.Models.Components;
-using LukeHagar.PlexAPI.SDK.Models.Requests;
-
-var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
-
-var res = await sdk.Log.LogLineAsync(
-    level: Level.Three,
-    message: "Test log message",
-    source: "Postman"
-);
-
-// handle response
-```
-
-### Parameters
-
-| Parameter                                                                                           | Type                                                                                                | Required                                                                                            | Description                                                                                         | Example                                                                                             |
-| --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| `Level`                                                                                             | [Level](../../Models/Requests/Level.md)                                                             | :heavy_check_mark:                                                                                  | An integer log level to write to the PMS log with.<br/>0: Error<br/>1: Warning<br/>2: Info<br/>3: Debug<br/>4: Verbose<br/> |                                                                                                     |
-| `Message`                                                                                           | *string*                                                                                            | :heavy_check_mark:                                                                                  | The text of the message to write to the log.                                                        | Test log message                                                                                    |
-| `Source`                                                                                            | *string*                                                                                            | :heavy_check_mark:                                                                                  | a string indicating the source of the message.                                                      | Postman                                                                                             |
-
-### Response
-
-**[LogLineResponse](../../Models/Requests/LogLineResponse.md)**
-
-### Errors
-
-| Error Type                                              | Status Code                                             | Content Type                                            |
-| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.LogLineBadRequest   | 400                                                     | application/json                                        |
-| LukeHagar.PlexAPI.SDK.Models.Errors.LogLineUnauthorized | 401                                                     | application/json                                        |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException        | 4XX, 5XX                                                | \*/\*                                                   |
-
-## LogMultiLine
-
-This endpoint allows for the batch addition of log entries to the main Plex Media Server log.
-It accepts a text/plain request body, where each line represents a distinct log entry.
-Each log entry consists of URL-encoded key-value pairs, specifying log attributes such as 'level', 'message', and 'source'.
-
-Log entries are separated by a newline character (`\n`).
-Each entry's parameters should be URL-encoded to ensure accurate parsing and handling of special characters.
-This method is efficient for logging multiple entries in a single API call, reducing the overhead of multiple individual requests.
-
-The 'level' parameter specifies the log entry's severity or importance, with the following integer values:
-- `0`: Error - Critical issues that require immediate attention.
-- `1`: Warning - Important events that are not critical but may indicate potential issues.
-- `2`: Info - General informational messages about system operation.
-- `3`: Debug - Detailed information useful for debugging purposes.
-- `4`: Verbose - Highly detailed diagnostic information for in-depth analysis.
-
-The 'message' parameter contains the log text, and 'source' identifies the log message's origin (e.g., an application name or module).
-
-Example of a single log entry format:
-`level=4&message=Sample%20log%20entry&source=applicationName`
-
-Ensure each parameter is properly URL-encoded to avoid interpretation issues.
+This endpoint will write multiple lines to the main Plex Media Server log in a single request. It takes a set of query strings as would normally sent to the above PUT endpoint as a linefeed-separated block of POST data. The parameters for each query string match as above.
 
 
 ### Example Usage
 
-<!-- UsageSnippet language="csharp" operationID="logMultiLine" method="post" path="/log" -->
+<!-- UsageSnippet language="csharp" operationID="writeLog" method="post" path="/log" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
+using System;
 
-var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
+var sdk = new PlexAPI(token: "<YOUR_API_KEY_HERE>");
 
-string req = @"level=4&message=Test%20message%201&source=postman
-level=3&message=Test%20message%202&source=postman
-level=1&message=Test%20message%203&source=postman";
+byte[] req = System.Text.Encoding.UTF8.GetBytes("0x0Ce2fFcEBF");
 
-var res = await sdk.Log.LogMultiLineAsync(req);
+var res = await sdk.Log.WriteLogAsync(req);
 
 // handle response
 ```
@@ -103,47 +37,120 @@ var res = await sdk.Log.LogMultiLineAsync(req);
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | *string*                                   | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | *byte[]*                                   | :heavy_check_mark:                         | The request object to use for the request. |
 
 ### Response
 
-**[LogMultiLineResponse](../../Models/Requests/LogMultiLineResponse.md)**
+**[WriteLogResponse](../../Models/Requests/WriteLogResponse.md)**
 
 ### Errors
 
-| Error Type                                                   | Status Code                                                  | Content Type                                                 |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| LukeHagar.PlexAPI.SDK.Models.Errors.LogMultiLineBadRequest   | 400                                                          | application/json                                             |
-| LukeHagar.PlexAPI.SDK.Models.Errors.LogMultiLineUnauthorized | 401                                                          | application/json                                             |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException             | 4XX, 5XX                                                     | \*/\*                                                        |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException | 4XX, 5XX                                         | \*/\*                                            |
 
-## EnablePaperTrail
+## WriteMessage
 
-This endpoint will enable all Plex Media Serverlogs to be sent to the Papertrail networked logging site for a period of time.
+This endpoint will write a single-line log message, including a level and source to the main Plex Media Server log.
+
+Note: This endpoint responds to all HTTP verbs **except POST** but PUT is preferred
 
 
 ### Example Usage
 
-<!-- UsageSnippet language="csharp" operationID="enablePaperTrail" method="get" path="/log/networked" -->
+<!-- UsageSnippet language="csharp" operationID="writeMessage" method="put" path="/log" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
 
-var sdk = new PlexAPI(accessToken: "<YOUR_API_KEY_HERE>");
+var sdk = new PlexAPI(
+    accepts: LukeHagar.PlexAPI.SDK.Models.Components.Accepts.ApplicationXml,
+    clientIdentifier: "abc123",
+    product: "Plex for Roku",
+    version: "2.4.1",
+    platform: "Roku",
+    platformVersion: "4.3 build 1057",
+    device: "Roku 3",
+    model: "4200X",
+    deviceVendor: "Roku",
+    deviceName: "Living Room TV",
+    marketplace: "googlePlay",
+    token: "<YOUR_API_KEY_HERE>"
+);
 
-var res = await sdk.Log.EnablePaperTrailAsync();
+WriteMessageRequest req = new WriteMessageRequest() {};
+
+var res = await sdk.Log.WriteMessageAsync(req);
 
 // handle response
 ```
 
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `request`                                                           | [WriteMessageRequest](../../Models/Requests/WriteMessageRequest.md) | :heavy_check_mark:                                                  | The request object to use for the request.                          |
+
 ### Response
 
-**[EnablePaperTrailResponse](../../Models/Requests/EnablePaperTrailResponse.md)**
+**[WriteMessageResponse](../../Models/Requests/WriteMessageResponse.md)**
 
 ### Errors
 
-| Error Type                                                       | Status Code                                                      | Content Type                                                     |
-| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
-| LukeHagar.PlexAPI.SDK.Models.Errors.EnablePaperTrailBadRequest   | 400                                                              | application/json                                                 |
-| LukeHagar.PlexAPI.SDK.Models.Errors.EnablePaperTrailUnauthorized | 401                                                              | application/json                                                 |
-| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException                 | 4XX, 5XX                                                         | \*/\*                                                            |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException | 4XX, 5XX                                         | \*/\*                                            |
+
+## EnablePapertrail
+
+This endpoint will enable all Plex Media Server logs to be sent to the Papertrail networked logging site for a period of time
+
+Note: This endpoint responds to all HTTP verbs but POST is preferred
+
+
+### Example Usage
+
+<!-- UsageSnippet language="csharp" operationID="enablePapertrail" method="post" path="/log/networked" -->
+```csharp
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Components;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+
+var sdk = new PlexAPI(
+    accepts: LukeHagar.PlexAPI.SDK.Models.Components.Accepts.ApplicationXml,
+    clientIdentifier: "abc123",
+    product: "Plex for Roku",
+    version: "2.4.1",
+    platform: "Roku",
+    platformVersion: "4.3 build 1057",
+    device: "Roku 3",
+    model: "4200X",
+    deviceVendor: "Roku",
+    deviceName: "Living Room TV",
+    marketplace: "googlePlay",
+    token: "<YOUR_API_KEY_HERE>"
+);
+
+EnablePapertrailRequest req = new EnablePapertrailRequest() {};
+
+var res = await sdk.Log.EnablePapertrailAsync(req);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `request`                                                                   | [EnablePapertrailRequest](../../Models/Requests/EnablePapertrailRequest.md) | :heavy_check_mark:                                                          | The request object to use for the request.                                  |
+
+### Response
+
+**[EnablePapertrailResponse](../../Models/Requests/EnablePapertrailResponse.md)**
+
+### Errors
+
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| LukeHagar.PlexAPI.SDK.Models.Errors.SDKException | 4XX, 5XX                                         | \*/\*                                            |

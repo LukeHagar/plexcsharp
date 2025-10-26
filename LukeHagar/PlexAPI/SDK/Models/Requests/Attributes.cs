@@ -10,24 +10,11 @@
 namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
     using LukeHagar.PlexAPI.SDK.Utils;
-    using Newtonsoft.Json;
     
     /// <summary>
-    /// Attributes associated with the marker.
+    /// The attributes to assign to this marker
     /// </summary>
     public class Attributes
     {
-
-        /// <summary>
-        /// The identifier for the attributes.
-        /// </summary>
-        [JsonProperty("id")]
-        public long Id { get; set; } = default!;
-
-        /// <summary>
-        /// The version number of the marker attributes.
-        /// </summary>
-        [JsonProperty("version")]
-        public long? Version { get; set; }
     }
 }

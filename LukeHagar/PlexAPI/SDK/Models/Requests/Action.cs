@@ -11,14 +11,52 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
+    using System;
     
-    public class Action
+    /// <summary>
+    /// The action to perform for this item on this optimizer queue
+    /// </summary>
+    public enum Action
     {
-
-        [JsonProperty("id")]
-        public string Id { get; set; } = default!;
-
-        [JsonProperty("key")]
-        public string Key { get; set; } = default!;
+        [JsonProperty("reprocess")]
+        Reprocess,
+        [JsonProperty("disable")]
+        Disable,
+        [JsonProperty("enable")]
+        Enable,
     }
+
+    public static class ActionExtension
+    {
+        public static string Value(this Action value)
+        {
+            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
+        }
+
+        public static Action ToEnum(this string value)
+        {
+            foreach(var field in typeof(Action).GetFields())
+            {
+                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
+                if (attributes.Length == 0)
+                {
+                    continue;
+                }
+
+                var attribute = attributes[0] as JsonPropertyAttribute;
+                if (attribute != null && attribute.PropertyName == value)
+                {
+                    var enumVal = field.GetValue(null);
+
+                    if (enumVal is Action)
+                    {
+                        return (Action)enumVal;
+                    }
+                }
+            }
+
+            throw new Exception($"Unknown value {value} for enum Action");
+        }
+    }
+
 }

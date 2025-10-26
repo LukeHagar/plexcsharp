@@ -14,7 +14,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using Newtonsoft.Json;
     
     /// <summary>
-    /// The details of the library
+    /// OK
     /// </summary>
     public class GetLibraryDetailsResponseBody
     {

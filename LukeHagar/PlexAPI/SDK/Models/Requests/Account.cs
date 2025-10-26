@@ -15,28 +15,10 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     public class Account
     {
 
+        [JsonProperty("globalViewCount")]
+        public long? GlobalViewCount { get; set; }
+
         [JsonProperty("id")]
-        public int? Id { get; set; }
-
-        [JsonProperty("key")]
-        public string? Key { get; set; }
-
-        [JsonProperty("name")]
-        public string? Name { get; set; }
-
-        [JsonProperty("defaultAudioLanguage")]
-        public string? DefaultAudioLanguage { get; set; }
-
-        [JsonProperty("autoSelectAudio")]
-        public bool? AutoSelectAudio { get; set; }
-
-        [JsonProperty("defaultSubtitleLanguage")]
-        public string? DefaultSubtitleLanguage { get; set; }
-
-        [JsonProperty("subtitleMode")]
-        public int? SubtitleMode { get; set; }
-
-        [JsonProperty("thumb")]
-        public string? Thumb { get; set; }
+        public long? Id { get; set; }
     }
 }

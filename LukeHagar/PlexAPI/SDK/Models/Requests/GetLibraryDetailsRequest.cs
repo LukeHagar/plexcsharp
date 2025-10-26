@@ -9,32 +9,88 @@
 #nullable enable
 namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
-    using LukeHagar.PlexAPI.SDK.Models.Requests;
+    using LukeHagar.PlexAPI.SDK.Models.Components;
     using LukeHagar.PlexAPI.SDK.Utils;
     
     public class GetLibraryDetailsRequest
     {
 
         /// <summary>
-        /// Whether or not to include details for a section (types, filters, and sorts).<br/>
-        /// 
-        /// <remarks>
-        /// Only exists for backwards compatibility, media providers other than the server libraries have it on always.<br/>
-        /// 
-        /// </remarks>
+        /// Indicates the client accepts the indicated media types
         /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=includeDetails")]
-        public IncludeDetails? IncludeDetails { get; set; } = LukeHagar.PlexAPI.SDK.Models.Requests.IncludeDetails.Zero;
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=accepts")]
+        public Accepts? Accepts { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.Accepts.ApplicationXml;
 
         /// <summary>
-        /// The unique key of the Plex library. <br/>
-        /// 
-        /// <remarks>
-        /// Note: This is unique in the context of the Plex server.<br/>
-        /// 
-        /// </remarks>
+        /// An opaque identifier unique to the client
         /// </summary>
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=sectionKey")]
-        public int SectionKey { get; set; } = default!;
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Client-Identifier")]
+        public string? ClientIdentifier { get; set; }
+
+        /// <summary>
+        /// The name of the client product
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Product")]
+        public string? Product { get; set; }
+
+        /// <summary>
+        /// The version of the client application
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Version")]
+        public string? Version { get; set; }
+
+        /// <summary>
+        /// The platform of the client
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Platform")]
+        public string? Platform { get; set; }
+
+        /// <summary>
+        /// The version of the platform
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Platform-Version")]
+        public string? PlatformVersion { get; set; }
+
+        /// <summary>
+        /// A relatively friendly name for the client device
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Device")]
+        public string? Device { get; set; }
+
+        /// <summary>
+        /// A potentially less friendly identifier for the device model
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Model")]
+        public string? Model { get; set; }
+
+        /// <summary>
+        /// The device vendor
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Device-Vendor")]
+        public string? DeviceVendor { get; set; }
+
+        /// <summary>
+        /// A friendly name for the client
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Device-Name")]
+        public string? DeviceName { get; set; }
+
+        /// <summary>
+        /// The marketplace on which the client application is distributed
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Plex-Marketplace")]
+        public string? Marketplace { get; set; }
+
+        /// <summary>
+        /// The section identifier
+        /// </summary>
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=sectionId")]
+        public string SectionId { get; set; } = default!;
+
+        /// <summary>
+        /// Whether or not to include details for a section (types, filters, and sorts). Only exists for backwards compatibility, media providers other than the server libraries have it on always.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=includeDetails")]
+        public BoolInt? IncludeDetails { get; set; }
     }
 }

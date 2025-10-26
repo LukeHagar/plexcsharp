@@ -9,33 +9,53 @@
 #nullable enable
 namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
+    using LukeHagar.PlexAPI.SDK.Models.Requests;
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     
-    /// <summary>
-    /// The filter query string for country media items.
-    /// </summary>
     public class Country
     {
 
         /// <summary>
-        /// The unique identifier for the country.<br/>
+        /// Three letter code
+        /// </summary>
+        [JsonProperty("code")]
+        public string? Code { get; set; }
+
+        [JsonProperty("example")]
+        public string? Example { get; set; }
+
+        /// <summary>
+        /// - `0`: The country is divided into regions, and following the key will lead to a list of regions.<br/>
         /// 
         /// <remarks>
-        /// NOTE: This is different for each Plex server and is not globally unique.<br/>
+        /// - `1`: The county is divided by postal codes, and an example code is returned in `example`.<br/>
+        /// - `2`: The country has a single postal code, returned in `example`.<br/>
         /// 
         /// </remarks>
         /// </summary>
-        [JsonProperty("id")]
-        public int Id { get; set; } = default!;
+        [JsonProperty("flavor")]
+        public Flavor? Flavor { get; set; }
+
+        [JsonProperty("key")]
+        public string? Key { get; set; }
 
         /// <summary>
-        /// The country of origin of this media item
+        /// Three letter language code
         /// </summary>
-        [JsonProperty("tag")]
-        public string Tag { get; set; } = default!;
+        [JsonProperty("language")]
+        public string? Language { get; set; }
 
-        [JsonProperty("filter")]
-        public string Filter { get; set; } = default!;
+        /// <summary>
+        /// The title of the language
+        /// </summary>
+        [JsonProperty("languageTitle")]
+        public string? LanguageTitle { get; set; }
+
+        [JsonProperty("title")]
+        public string? Title { get; set; }
+
+        [JsonProperty("type")]
+        public string? Type { get; set; }
     }
 }

@@ -33,7 +33,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public HttpResponseMessage RawResponse { get; set; } = default!;
 
         /// <summary>
-        /// The details of the library
+        /// OK
         /// </summary>
         public GetLibraryDetailsResponseBody? Object { get; set; }
     }
