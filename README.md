@@ -449,10 +449,10 @@ using LukeHagar.PlexAPI.SDK.Models.Components;
 using LukeHagar.PlexAPI.SDK.Models.Requests;
 
 var sdk = new PlexAPI(
-    serverIndex: 1,
-    protocol: "<value>",
-    host: "electric-excess.name",
-    port: "36393",
+    serverIndex: 0,
+    identifier: "0123456789abcdef0123456789abcdef",
+    ipDescription: "1-2-3-4",
+    port: "32400",
     accepts: LukeHagar.PlexAPI.SDK.Models.Components.Accepts.ApplicationXml,
     clientIdentifier: "abc123",
     product: "Plex for Roku",
