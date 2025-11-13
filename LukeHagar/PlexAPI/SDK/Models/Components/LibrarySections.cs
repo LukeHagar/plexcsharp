@@ -16,10 +16,10 @@ namespace LukeHagar.PlexAPI.SDK.Models.Components
     /// <summary>
     /// OK
     /// </summary>
-    public class RequestHandlerSlashGetResponses200
+    public class LibrarySections
     {
 
         [JsonProperty("MediaContainer")]
-        public RequestHandlerSlashGetResponses200MediaContainer? MediaContainer { get; set; }
+        public LibrarySectionsMediaContainer? MediaContainer { get; set; }
     }
 }

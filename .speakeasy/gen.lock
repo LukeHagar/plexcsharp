@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 5a8dbcbc-e0ee-41f0-9d84-b8b50567d1e9
 management:
-  docChecksum: 00ad23b8fb2b1d75045b419bb162f542
+  docChecksum: e95c0e17d3e268dcd18d26ac8d0bfc98
   docVersion: 1.1.1
-  speakeasyVersion: 1.650.0
-  generationVersion: 2.743.2
-  releaseVersion: 0.19.0
-  configChecksum: 79bf6314e0310a9e89df346fe4346c09
+  speakeasyVersion: 1.656.1
+  generationVersion: 2.753.1
+  releaseVersion: 0.19.1
+  configChecksum: 139189a56ca089830925fe696c81e477
   repoURL: https://github.com/LukeHagar/plexcsharp.git
   repoSubDirectory: .
   published: true
@@ -15,7 +15,7 @@ features:
     additionalDependencies: 0.1.0
     additionalProperties: 0.0.1
     constsAndDefaults: 0.0.1
-    core: 3.15.3
+    core: 3.15.4
     examples: 2.81.6
     globalSecurity: 2.83.8
     globalSecurityCallbacks: 0.1.0
@@ -84,6 +84,9 @@ generatedFiles:
   - LukeHagar/PlexAPI/SDK/Models/Components/Items.cs
   - LukeHagar/PlexAPI/SDK/Models/Components/LibrarySection.cs
   - LukeHagar/PlexAPI/SDK/Models/Components/LibrarySectionLocation.cs
+  - LukeHagar/PlexAPI/SDK/Models/Components/LibrarySections.cs
+  - LukeHagar/PlexAPI/SDK/Models/Components/LibrarySectionsDirectory.cs
+  - LukeHagar/PlexAPI/SDK/Models/Components/LibrarySectionsMediaContainer.cs
   - LukeHagar/PlexAPI/SDK/Models/Components/Lineup.cs
   - LukeHagar/PlexAPI/SDK/Models/Components/LineupType.cs
   - LukeHagar/PlexAPI/SDK/Models/Components/Location.cs
@@ -135,9 +138,6 @@ generatedFiles:
   - LukeHagar/PlexAPI/SDK/Models/Components/PostResponses200Type.cs
   - LukeHagar/PlexAPI/SDK/Models/Components/Protocol.cs
   - LukeHagar/PlexAPI/SDK/Models/Components/RecommendationsVisibility.cs
-  - LukeHagar/PlexAPI/SDK/Models/Components/RequestHandlerSlashGetResponses200.cs
-  - LukeHagar/PlexAPI/SDK/Models/Components/RequestHandlerSlashGetResponses200Directory.cs
-  - LukeHagar/PlexAPI/SDK/Models/Components/RequestHandlerSlashGetResponses200MediaContainer.cs
   - LukeHagar/PlexAPI/SDK/Models/Components/Security.cs
   - LukeHagar/PlexAPI/SDK/Models/Components/Session.cs
   - LukeHagar/PlexAPI/SDK/Models/Components/SessionLocation.cs
@@ -912,6 +912,9 @@ generatedFiles:
   - docs/Models/Components/Items.md
   - docs/Models/Components/LibrarySection.md
   - docs/Models/Components/LibrarySectionLocation.md
+  - docs/Models/Components/LibrarySections.md
+  - docs/Models/Components/LibrarySectionsDirectory.md
+  - docs/Models/Components/LibrarySectionsMediaContainer.md
   - docs/Models/Components/Lineup.md
   - docs/Models/Components/LineupType.md
   - docs/Models/Components/Location.md
@@ -963,9 +966,6 @@ generatedFiles:
   - docs/Models/Components/PostResponses200Type.md
   - docs/Models/Components/Protocol.md
   - docs/Models/Components/RecommendationsVisibility.md
-  - docs/Models/Components/RequestHandlerSlashGetResponses200.md
-  - docs/Models/Components/RequestHandlerSlashGetResponses200Directory.md
-  - docs/Models/Components/RequestHandlerSlashGetResponses200MediaContainer.md
   - docs/Models/Components/Security.md
   - docs/Models/Components/Session.md
   - docs/Models/Components/SessionLocation.md

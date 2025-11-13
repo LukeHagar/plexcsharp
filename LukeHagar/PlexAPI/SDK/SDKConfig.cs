@@ -86,7 +86,7 @@ namespace LukeHagar.PlexAPI.SDK
             DeviceVendor = null;
             DeviceName = null;
             Marketplace = null;
-            UserAgent = "speakeasy-sdk/csharp 0.19.0 2.743.2 1.1.1 LukeHagar.PlexAPI.SDK";
+            UserAgent = "speakeasy-sdk/csharp 0.19.1 2.753.1 1.1.1 LukeHagar.PlexAPI.SDK";
             SecuritySource = null;
             Hooks = new SDKHooks();
             RetryConfig = null;

@@ -526,8 +526,8 @@ namespace LukeHagar.PlexAPI.SDK
         /// Get autocompletions for search
         /// 
         /// <remarks>
-        /// The field to autocomplete on is specified by the {field}.query parameter. For example `genre.query` or `title.query`.<br/>
-        /// Returns a set of items from the filtered items whose {field} starts with {field}.query.  In the results, a {field}.queryRange will be present to express the range of the match
+        /// The field to autocomplete on is specified by the `{field}.query` parameter. For example `genre.query` or `title.query`.<br/>
+        /// Returns a set of items from the filtered items whose `{field}` starts with `{field}.query`.  In the results, a `{field}.queryRange` will be present to express the range of the match
         /// </remarks>
         /// </summary>
         Task<AutocompleteResponse> AutocompleteAsync(AutocompleteRequest request);
@@ -807,8 +807,8 @@ namespace LukeHagar.PlexAPI.SDK
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.19.0";
-        private const string _sdkGenVersion = "2.743.2";
+        private const string _sdkVersion = "0.19.1";
+        private const string _sdkGenVersion = "2.753.1";
         private const string _openapiDocVersion = "1.1.1";
 
         public Library(SDKConfig config)
@@ -1694,14 +1694,14 @@ namespace LukeHagar.PlexAPI.SDK
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    RequestHandlerSlashGetResponses200 obj;
+                    LibrarySections obj;
                     try
                     {
-                        obj = ResponseBodyDeserializer.DeserializeNotNull<RequestHandlerSlashGetResponses200>(httpResponseBody, NullValueHandling.Ignore);
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<LibrarySections>(httpResponseBody, NullValueHandling.Ignore);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into RequestHandlerSlashGetResponses200.", httpResponse, httpResponseBody, ex);
+                        throw new ResponseValidationException("Failed to deserialize response body into LibrarySections.", httpResponse, httpResponseBody, ex);
                     }
 
                     var response = new StopAllRefreshesResponse()
@@ -1710,7 +1710,7 @@ namespace LukeHagar.PlexAPI.SDK
                         ContentType = contentType,
                         RawResponse = httpResponse
                     };
-                    response.RequestHandlerSlashGetResponses200 = obj;
+                    response.LibrarySections = obj;
                     return response;
                 }
 
@@ -1799,14 +1799,14 @@ namespace LukeHagar.PlexAPI.SDK
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    RequestHandlerSlashGetResponses200 obj;
+                    LibrarySections obj;
                     try
                     {
-                        obj = ResponseBodyDeserializer.DeserializeNotNull<RequestHandlerSlashGetResponses200>(httpResponseBody, NullValueHandling.Ignore);
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<LibrarySections>(httpResponseBody, NullValueHandling.Ignore);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into RequestHandlerSlashGetResponses200.", httpResponse, httpResponseBody, ex);
+                        throw new ResponseValidationException("Failed to deserialize response body into LibrarySections.", httpResponse, httpResponseBody, ex);
                     }
 
                     var response = new GetSectionsPrefsResponse()
@@ -1815,7 +1815,7 @@ namespace LukeHagar.PlexAPI.SDK
                         ContentType = contentType,
                         RawResponse = httpResponse
                     };
-                    response.RequestHandlerSlashGetResponses200 = obj;
+                    response.LibrarySections = obj;
                     return response;
                 }
 

@@ -35,6 +35,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// <summary>
         /// OK
         /// </summary>
-        public RequestHandlerSlashGetResponses200? RequestHandlerSlashGetResponses200 { get; set; }
+        public LibrarySections? LibrarySections { get; set; }
     }
 }

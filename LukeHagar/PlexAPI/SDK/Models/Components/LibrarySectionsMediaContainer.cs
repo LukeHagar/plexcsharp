@@ -23,7 +23,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Components
     /// 
     /// </remarks>
     /// </summary>
-    public class RequestHandlerSlashGetResponses200MediaContainer
+    public class LibrarySectionsMediaContainer
     {
 
         [JsonProperty("identifier")]
@@ -206,6 +206,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Components
         public bool? VoiceSearch { get; set; }
 
         [JsonProperty("Directory")]
-        public List<RequestHandlerSlashGetResponses200Directory>? Directory { get; set; }
+        public List<LibrarySectionsDirectory>? Directory { get; set; }
     }
 }
