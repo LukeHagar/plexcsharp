@@ -111,6 +111,7 @@ var sdk = new PlexAPI(
 
 VoiceSearchHubsRequest req = new VoiceSearchHubsRequest() {
     Query = "<value>",
+    Type = MediaType.TvShow,
 };
 
 var res = await sdk.Search.VoiceSearchHubsAsync(req);

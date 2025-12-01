@@ -24,38 +24,53 @@ namespace LukeHagar.PlexAPI.SDK.Models.Components
     public class MediaContainerWithDecisionPart
     {
 
+        /// <summary>
+        /// Indicates if the part is accessible.
+        /// </summary>
+        [JsonProperty("accessible")]
+        public bool? Accessible { get; set; }
+
         [JsonProperty("audioProfile")]
-        public object? AudioProfile { get; set; }
+        public string? AudioProfile { get; set; }
 
         /// <summary>
         /// The container of the media file, such as `mp4` or `mkv`
         /// </summary>
         [JsonProperty("container")]
-        public object? Container { get; set; }
+        public string? Container { get; set; }
 
         /// <summary>
         /// The duration of the media item, in milliseconds
         /// </summary>
         [JsonProperty("duration")]
-        public long? Duration { get; set; }
+        public int? Duration { get; set; }
+
+        /// <summary>
+        /// Indicates if the part exists.
+        /// </summary>
+        [JsonProperty("exists")]
+        public bool? Exists { get; set; }
 
         /// <summary>
         /// The local file path at which the part is stored on the server
         /// </summary>
         [JsonProperty("file")]
-        public object? File { get; set; }
+        public string? File { get; set; }
 
         [JsonProperty("has64bitOffsets")]
         public bool? Has64bitOffsets { get; set; }
 
         [JsonProperty("id")]
-        public long? Id { get; set; }
+        public long Id { get; set; } = default!;
+
+        [JsonProperty("indexes")]
+        public string? Indexes { get; set; }
 
         /// <summary>
         /// The key from which the media can be streamed
         /// </summary>
         [JsonProperty("key")]
-        public object? Key { get; set; }
+        public string Key { get; set; } = default!;
 
         [JsonProperty("optimizedForStreaming")]
         public bool? OptimizedForStreaming { get; set; }
@@ -70,7 +85,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Components
         public List<MediaContainerWithDecisionStream>? Stream { get; set; }
 
         [JsonProperty("videoProfile")]
-        public object? VideoProfile { get; set; }
+        public string? VideoProfile { get; set; }
 
         [JsonProperty("decision")]
         public Decision? Decision { get; set; }

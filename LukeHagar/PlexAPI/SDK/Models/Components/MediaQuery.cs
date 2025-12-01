@@ -9,9 +9,65 @@
 #nullable enable
 namespace LukeHagar.PlexAPI.SDK.Models.Components
 {
+    using LukeHagar.PlexAPI.SDK.Models.Components;
     using LukeHagar.PlexAPI.SDK.Utils;
     
+    /// <summary>
+    /// A querystring-based filtering language used to select subsets of media. When provided as an object, properties are serialized as a querystring using form style with explode.<br/>
+    /// 
+    /// <remarks>
+    /// <br/>
+    /// Only the defined properties below are allowed. The object serializes to a querystring format like: `type=4&amp;sourceType=2&amp;sort=duration:desc,index`<br/>
+    /// 
+    /// </remarks>
+    /// </summary>
     public class MediaQuery
     {
+
+        /// <summary>
+        /// The type of media to retrieve or filter by.<br/>
+        /// 
+        /// <remarks>
+        /// <br/>
+        /// 1 = movie<br/>
+        /// 2 = show<br/>
+        /// 3 = season<br/>
+        /// 4 = episode<br/>
+        /// 5 = artist<br/>
+        /// 6 = album<br/>
+        /// 7 = track<br/>
+        /// 8 = photo_album<br/>
+        /// 9 = photo<br/>
+        /// <br/>
+        /// E.g. A movie library will not return anything with type 3 as there are no seasons for movie libraries<br/>
+        /// 
+        /// </remarks>
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=type")]
+        public MediaType? Type { get; set; }
+
+        /// <summary>
+        /// Change the default level to which fields refer (used with type for hierarchical queries)
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=sourceType")]
+        public long? SourceType { get; set; }
+
+        /// <summary>
+        /// Field(s) to sort by, with optional modifiers. Use comma to separate multiple fields, and :desc or :nullsLast for modifiers (e.g., &quot;duration:desc,index&quot;)
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=sort")]
+        public string? Sort { get; set; }
+
+        /// <summary>
+        /// Field to group results by (similar to SQL GROUP BY)
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=group")]
+        public string? Group { get; set; }
+
+        /// <summary>
+        /// Maximum number of results to return
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=limit")]
+        public long? Limit { get; set; }
     }
 }

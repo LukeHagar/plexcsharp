@@ -97,18 +97,18 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Whether this hub should be displayed in recommended
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=promotedToRecommended")]
-        public BoolInt? PromotedToRecommended { get; set; }
+        public BoolInt? PromotedToRecommended { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
 
         /// <summary>
         /// Whether this hub should be displayed in admin&apos;s home
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=promotedToOwnHome")]
-        public BoolInt? PromotedToOwnHome { get; set; }
+        public BoolInt? PromotedToOwnHome { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
 
         /// <summary>
         /// Whether this hub should be displayed in shared user&apos;s home
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=promotedToSharedHome")]
-        public BoolInt? PromotedToSharedHome { get; set; }
+        public BoolInt? PromotedToSharedHome { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
     }
 }

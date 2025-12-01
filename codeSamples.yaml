@@ -237,9 +237,9 @@ actions:
                 PlayQueueItemID = "123",
                 Time = 0,
                 Duration = 10000,
-                Continuing = BoolInt.One,
+                Continuing = BoolInt.True,
                 Updated = 14200000,
-                Offline = BoolInt.One,
+                Offline = BoolInt.True,
                 TimeToFirstFrame = 1000,
                 TimeStalled = 1000,
                 Bandwidth = 100,
@@ -400,7 +400,7 @@ actions:
             var res = await sdk.Butler.StartTasksAsync();
 
             // handle response
-  - target: $["paths"]["/butler/{task}"]["delete"]
+  - target: $["paths"]["/butler/{butlerTask}"]["delete"]
     update:
       x-codeSamples:
         - lang: csharp
@@ -426,13 +426,13 @@ actions:
             );
 
             StopTaskRequest req = new StopTaskRequest() {
-                Task = Task.CleanOldBundles,
+                ButlerTask = ButlerTask.CleanOldBundles,
             };
 
             var res = await sdk.Butler.StopTaskAsync(req);
 
             // handle response
-  - target: $["paths"]["/butler/{task}"]["post"]
+  - target: $["paths"]["/butler/{butlerTask}"]["post"]
     update:
       x-codeSamples:
         - lang: csharp
@@ -458,7 +458,7 @@ actions:
             );
 
             StartTaskRequest req = new StartTaskRequest() {
-                Task = PathParamTask.RefreshLocalMedia,
+                ButlerTask = PathParamButlerTask.RefreshLocalMedia,
             };
 
             var res = await sdk.Butler.StartTaskAsync(req);
@@ -545,13 +545,13 @@ actions:
                 AdvancedSubtitles = LukeHagar.PlexAPI.SDK.Models.Components.AdvancedSubtitles.Burn,
                 AudioBoost = 50,
                 AudioChannelCount = 5,
-                AutoAdjustQuality = BoolInt.One,
-                AutoAdjustSubtitle = BoolInt.One,
-                DirectPlay = BoolInt.One,
-                DirectStream = BoolInt.One,
-                DirectStreamAudio = BoolInt.One,
-                DisableResolutionRotation = BoolInt.One,
-                HasMDE = BoolInt.One,
+                AutoAdjustQuality = BoolInt.True,
+                AutoAdjustSubtitle = BoolInt.True,
+                DirectPlay = BoolInt.True,
+                DirectStream = BoolInt.True,
+                DirectStreamAudio = BoolInt.True,
+                DisableResolutionRotation = BoolInt.True,
+                HasMDE = BoolInt.True,
                 Location = LukeHagar.PlexAPI.SDK.Models.Components.Location.Wan,
                 MediaBufferSize = 102400,
                 MediaIndex = 0,
@@ -810,7 +810,7 @@ actions:
             );
 
             GetAllHubsRequest req = new GetAllHubsRequest() {
-                OnlyTransient = BoolInt.One,
+                OnlyTransient = BoolInt.True,
             };
 
             var res = await sdk.Hubs.GetAllHubsAsync(req);
@@ -910,7 +910,7 @@ actions:
 
             GetMetadataHubsRequest req = new GetMetadataHubsRequest() {
                 MetadataId = 605482,
-                OnlyTransient = BoolInt.One,
+                OnlyTransient = BoolInt.True,
             };
 
             var res = await sdk.Hubs.GetMetadataHubsAsync(req);
@@ -943,7 +943,7 @@ actions:
 
             GetPostplayHubsRequest req = new GetPostplayHubsRequest() {
                 MetadataId = 441419,
-                OnlyTransient = BoolInt.One,
+                OnlyTransient = BoolInt.True,
             };
 
             var res = await sdk.Hubs.GetPostplayHubsAsync(req);
@@ -976,7 +976,7 @@ actions:
 
             GetRelatedHubsRequest req = new GetRelatedHubsRequest() {
                 MetadataId = 8858,
-                OnlyTransient = BoolInt.One,
+                OnlyTransient = BoolInt.True,
             };
 
             var res = await sdk.Hubs.GetRelatedHubsAsync(req);
@@ -1072,6 +1072,7 @@ actions:
 
             VoiceSearchHubsRequest req = new VoiceSearchHubsRequest() {
                 Query = "<value>",
+                Type = MediaType.TvShow,
             };
 
             var res = await sdk.Search.VoiceSearchHubsAsync(req);
@@ -1104,7 +1105,7 @@ actions:
 
             GetSectionHubsRequest req = new GetSectionHubsRequest() {
                 SectionId = 336924,
-                OnlyTransient = BoolInt.One,
+                OnlyTransient = BoolInt.True,
             };
 
             var res = await sdk.Hubs.GetSectionHubsAsync(req);
@@ -1202,9 +1203,9 @@ actions:
             CreateCustomHubRequest req = new CreateCustomHubRequest() {
                 SectionId = 869922,
                 MetadataItemId = 703843,
-                PromotedToRecommended = BoolInt.One,
-                PromotedToOwnHome = BoolInt.One,
-                PromotedToSharedHome = BoolInt.One,
+                PromotedToRecommended = BoolInt.True,
+                PromotedToOwnHome = BoolInt.True,
+                PromotedToSharedHome = BoolInt.True,
             };
 
             var res = await sdk.Hubs.CreateCustomHubAsync(req);
@@ -1304,9 +1305,9 @@ actions:
             UpdateHubVisibilityRequest req = new UpdateHubVisibilityRequest() {
                 SectionId = 341650,
                 Identifier = "<value>",
-                PromotedToRecommended = BoolInt.One,
-                PromotedToOwnHome = BoolInt.One,
-                PromotedToSharedHome = BoolInt.One,
+                PromotedToRecommended = BoolInt.True,
+                PromotedToOwnHome = BoolInt.True,
+                PromotedToSharedHome = BoolInt.True,
             };
 
             var res = await sdk.Hubs.UpdateHubVisibilityAsync(req);
@@ -1350,7 +1351,13 @@ actions:
                 token: "<YOUR_API_KEY_HERE>"
             );
 
-            GetLibraryItemsRequest req = new GetLibraryItemsRequest() {};
+            GetLibraryItemsRequest req = new GetLibraryItemsRequest() {
+                MediaQuery = new MediaQuery() {
+                    Type = MediaType.Episode,
+                    SourceType = 2,
+                    Sort = "duration:desc,index",
+                },
+            };
 
             var res = await sdk.Library.GetLibraryItemsAsync(req);
 
@@ -1410,6 +1417,7 @@ actions:
 
             CreateCollectionRequest req = new CreateCollectionRequest() {
                 SectionId = "<id>",
+                Type = MediaType.TvShow,
             };
 
             var res = await sdk.Collections.CreateCollectionAsync(req);
@@ -1607,8 +1615,8 @@ actions:
             IngestTransientItemRequest req = new IngestTransientItemRequest() {
                 Url = "file:///storage%2Femulated%2F0%2FArcher-S01E01.mkv",
                 VirtualFilePath = "/Avatar.mkv",
-                ComputeHashes = BoolInt.One,
-                IngestNonMatches = BoolInt.One,
+                ComputeHashes = BoolInt.True,
+                IngestNonMatches = BoolInt.True,
             };
 
             var res = await sdk.Library.IngestTransientItemAsync(req);
@@ -1640,9 +1648,10 @@ actions:
             );
 
             GetLibraryMatchesRequest req = new GetLibraryMatchesRequest() {
-                IncludeFullMetadata = BoolInt.One,
-                IncludeAncestorMetadata = BoolInt.One,
-                IncludeAlternateMetadataSources = BoolInt.One,
+                Type = MediaType.TvShow,
+                IncludeFullMetadata = BoolInt.True,
+                IncludeAncestorMetadata = BoolInt.True,
+                IncludeAlternateMetadataSources = BoolInt.True,
             };
 
             var res = await sdk.Library.GetLibraryMatchesAsync(req);
@@ -1708,7 +1717,7 @@ actions:
 
             GetAugmentationStatusRequest req = new GetAugmentationStatusRequest() {
                 AugmentationId = "<id>",
-                Wait = BoolInt.One,
+                Wait = BoolInt.True,
             };
 
             var res = await sdk.Library.GetAugmentationStatusAsync(req);
@@ -1741,7 +1750,7 @@ actions:
 
             DeleteMetadataItemRequest req = new DeleteMetadataItemRequest() {
                 Ids = "<value>",
-                Proxy = BoolInt.One,
+                Proxy = BoolInt.True,
             };
 
             var res = await sdk.Library.DeleteMetadataItemAsync(req);
@@ -1775,14 +1784,14 @@ actions:
 
             GetMetadataItemRequest req = new GetMetadataItemRequest() {
                 Ids = new List<string>() {},
-                AsyncCheckFiles = BoolInt.One,
-                AsyncRefreshLocalMediaAgent = BoolInt.One,
-                AsyncRefreshAnalysis = BoolInt.One,
-                CheckFiles = BoolInt.One,
-                SkipRefresh = BoolInt.One,
-                CheckFileAvailability = BoolInt.One,
-                AsyncAugmentMetadata = BoolInt.One,
-                AugmentCount = BoolInt.One,
+                AsyncCheckFiles = BoolInt.True,
+                AsyncRefreshLocalMediaAgent = BoolInt.True,
+                AsyncRefreshAnalysis = BoolInt.True,
+                CheckFiles = BoolInt.True,
+                SkipRefresh = BoolInt.True,
+                CheckFileAvailability = BoolInt.True,
+                AsyncAugmentMetadata = BoolInt.True,
+                AugmentCount = BoolInt.True,
             };
 
             var res = await sdk.Content.GetMetadataItemAsync(req);
@@ -1947,7 +1956,7 @@ actions:
 
             GenerateThumbsRequest req = new GenerateThumbsRequest() {
                 Ids = "<value>",
-                Force = BoolInt.One,
+                Force = BoolInt.True,
             };
 
             var res = await sdk.Library.GenerateThumbsAsync(req);
@@ -1980,8 +1989,8 @@ actions:
 
             DetectCreditsRequest req = new DetectCreditsRequest() {
                 Ids = "<value>",
-                Force = BoolInt.One,
-                Manual = BoolInt.One,
+                Force = BoolInt.True,
+                Manual = BoolInt.True,
             };
 
             var res = await sdk.Library.DetectCreditsAsync(req);
@@ -2111,7 +2120,7 @@ actions:
 
             StartBifGenerationRequest req = new StartBifGenerationRequest() {
                 Ids = "<value>",
-                Force = BoolInt.One,
+                Force = BoolInt.True,
             };
 
             var res = await sdk.Library.StartBifGenerationAsync(req);
@@ -2144,7 +2153,7 @@ actions:
 
             DetectIntrosRequest req = new DetectIntrosRequest() {
                 Ids = "<value>",
-                Force = BoolInt.One,
+                Force = BoolInt.True,
             };
 
             var res = await sdk.Library.DetectIntrosAsync(req);
@@ -2313,7 +2322,7 @@ actions:
 
             ListMatchesRequest req = new ListMatchesRequest() {
                 Ids = "<value>",
-                Manual = BoolInt.One,
+                Manual = BoolInt.True,
             };
 
             var res = await sdk.Library.ListMatchesAsync(req);
@@ -2347,7 +2356,7 @@ actions:
             DeleteMediaItemRequest req = new DeleteMediaItemRequest() {
                 Ids = "<value>",
                 MediaItem = "<value>",
-                Proxy = BoolInt.One,
+                Proxy = BoolInt.True,
             };
 
             var res = await sdk.Library.DeleteMediaItemAsync(req);
@@ -2476,7 +2485,7 @@ actions:
 
             RefreshItemsMetadataRequest req = new RefreshItemsMetadataRequest() {
                 Ids = "<value>",
-                MarkUpdated = BoolInt.One,
+                MarkUpdated = BoolInt.True,
             };
 
             var res = await sdk.Library.RefreshItemsMetadataAsync(req);
@@ -2605,8 +2614,8 @@ actions:
 
             AddSubtitlesRequest req = new AddSubtitlesRequest() {
                 Ids = "<value>",
-                Forced = BoolInt.One,
-                HearingImpaired = BoolInt.One,
+                Forced = BoolInt.True,
+                HearingImpaired = BoolInt.True,
             };
 
             var res = await sdk.Library.AddSubtitlesAsync(req);
@@ -2735,8 +2744,8 @@ actions:
 
             DetectVoiceActivityRequest req = new DetectVoiceActivityRequest() {
                 Ids = "<value>",
-                Force = BoolInt.One,
-                Manual = BoolInt.One,
+                Force = BoolInt.True,
+                Manual = BoolInt.True,
             };
 
             var res = await sdk.Library.DetectVoiceActivityAsync(req);
@@ -2868,7 +2877,7 @@ actions:
             );
 
             OptimizeDatabaseRequest req = new OptimizeDatabaseRequest() {
-                Async = BoolInt.One,
+                Async = BoolInt.True,
             };
 
             var res = await sdk.Library.OptimizeDatabaseAsync(req);
@@ -2901,7 +2910,7 @@ actions:
 
             SetStreamSelectionRequest req = new SetStreamSelectionRequest() {
                 PartId = 360489,
-                AllParts = BoolInt.One,
+                AllParts = BoolInt.True,
             };
 
             var res = await sdk.Library.SetStreamSelectionAsync(req);
@@ -3003,7 +3012,7 @@ actions:
                 PartId = 877105,
                 Changestamp = 970622,
                 Filename = "example.file",
-                Download = BoolInt.One,
+                Download = BoolInt.True,
             };
 
             var res = await sdk.Library.GetMediaPartAsync(req);
@@ -3159,8 +3168,8 @@ actions:
                     "O:\fatboy\Media\My Music",
                 },
                 Prefs = new QueryParamPrefs() {},
-                Relative = BoolInt.One,
-                ImportFromiTunes = BoolInt.One,
+                Relative = BoolInt.True,
+                ImportFromiTunes = BoolInt.True,
             };
 
             var res = await sdk.Library.AddSectionAsync(req);
@@ -3269,7 +3278,7 @@ actions:
 
             DeleteLibrarySectionRequest req = new DeleteLibrarySectionRequest() {
                 SectionId = "<id>",
-                Async = BoolInt.One,
+                Async = BoolInt.True,
             };
 
             var res = await sdk.Library.DeleteLibrarySectionAsync(req);
@@ -3302,7 +3311,7 @@ actions:
 
             GetLibraryDetailsRequest req = new GetLibraryDetailsRequest() {
                 SectionId = "<id>",
-                IncludeDetails = BoolInt.One,
+                IncludeDetails = BoolInt.True,
             };
 
             var res = await sdk.Library.GetLibraryDetailsAsync(req);
@@ -3405,6 +3414,13 @@ actions:
             );
 
             ListContentRequest req = new ListContentRequest() {
+                MediaQuery = new MediaQuery() {
+                    Type = MediaType.Episode,
+                    SourceType = 2,
+                    Sort = "duration:desc,index",
+                },
+                IncludeMeta = BoolInt.True,
+                IncludeGuids = BoolInt.True,
                 SectionId = "<id>",
             };
 
@@ -3438,7 +3454,7 @@ actions:
 
             UpdateItemsRequest req = new UpdateItemsRequest() {
                 SectionId = "<id>",
-                FieldLocked = BoolInt.One,
+                FieldLocked = BoolInt.True,
             };
 
             var res = await sdk.Library.UpdateItemsAsync(req);
@@ -3567,6 +3583,11 @@ actions:
 
             AutocompleteRequest req = new AutocompleteRequest() {
                 SectionId = 942007,
+                MediaQuery = new MediaQuery() {
+                    Type = MediaType.Episode,
+                    SourceType = 2,
+                    Sort = "duration:desc,index",
+                },
             };
 
             var res = await sdk.Library.AutocompleteAsync(req);
@@ -3696,6 +3717,11 @@ actions:
 
             GetCollectionsRequest req = new GetCollectionsRequest() {
                 SectionId = 348838,
+                MediaQuery = new MediaQuery() {
+                    Type = MediaType.Episode,
+                    SourceType = 2,
+                    Sort = "duration:desc,index",
+                },
             };
 
             var res = await sdk.Library.GetCollectionsAsync(req);
@@ -3728,6 +3754,11 @@ actions:
 
             GetCommonRequest req = new GetCommonRequest() {
                 SectionId = 298154,
+                MediaQuery = new MediaQuery() {
+                    Type = MediaType.Episode,
+                    SourceType = 2,
+                    Sort = "duration:desc,index",
+                },
             };
 
             var res = await sdk.Library.GetCommonAsync(req);
@@ -3761,6 +3792,11 @@ actions:
             GetSectionImageRequest req = new GetSectionImageRequest() {
                 SectionId = 925611,
                 UpdatedAt = 117413,
+                MediaQuery = new MediaQuery() {
+                    Type = MediaType.Episode,
+                    SourceType = 2,
+                    Sort = "duration:desc,index",
+                },
             };
 
             var res = await sdk.Library.GetSectionImageAsync(req);
@@ -3891,6 +3927,11 @@ actions:
 
             GetFirstCharactersRequest req = new GetFirstCharactersRequest() {
                 SectionId = 3947,
+                MediaQuery = new MediaQuery() {
+                    Type = MediaType.Episode,
+                    SourceType = 2,
+                    Sort = "duration:desc,index",
+                },
             };
 
             var res = await sdk.Library.GetFirstCharactersAsync(req);
@@ -4182,7 +4223,7 @@ actions:
 
             RefreshSectionRequest req = new RefreshSectionRequest() {
                 SectionId = 450300,
-                Force = BoolInt.One,
+                Force = BoolInt.True,
             };
 
             var res = await sdk.Library.RefreshSectionAsync(req);
@@ -4281,7 +4322,7 @@ actions:
             GetStreamRequest req = new GetStreamRequest() {
                 StreamId = 314506,
                 Ext = "<value>",
-                AutoAdjustSubtitle = BoolInt.One,
+                AutoAdjustSubtitle = BoolInt.True,
             };
 
             var res = await sdk.Library.GetStreamAsync(req);
@@ -4409,7 +4450,9 @@ actions:
                 token: "<YOUR_API_KEY_HERE>"
             );
 
-            GetTagsRequest req = new GetTagsRequest() {};
+            GetTagsRequest req = new GetTagsRequest() {
+                Type = MediaType.TvShow,
+            };
 
             var res = await sdk.Library.GetTagsAsync(req);
 
@@ -5477,7 +5520,7 @@ actions:
 
             ModifyDeviceRequest req = new ModifyDeviceRequest() {
                 DeviceId = 879135,
-                Enabled = BoolInt.One,
+                Enabled = BoolInt.True,
             };
 
             var res = await sdk.Devices.ModifyDeviceAsync(req);
@@ -5846,8 +5889,8 @@ actions:
             );
 
             GetAllSubscriptionsRequest req = new GetAllSubscriptionsRequest() {
-                IncludeGrabs = BoolInt.One,
-                IncludeStorage = BoolInt.One,
+                IncludeGrabs = BoolInt.True,
+                IncludeStorage = BoolInt.True,
             };
 
             var res = await sdk.Subscriptions.GetAllSubscriptionsAsync(req);
@@ -6009,8 +6052,8 @@ actions:
 
             GetSubscriptionRequest req = new GetSubscriptionRequest() {
                 SubscriptionId = 186713,
-                IncludeGrabs = BoolInt.One,
-                IncludeStorage = BoolInt.One,
+                IncludeGrabs = BoolInt.True,
+                IncludeStorage = BoolInt.True,
             };
 
             var res = await sdk.Subscriptions.GetSubscriptionAsync(req);
@@ -6109,9 +6152,9 @@ actions:
             TranscodeImageRequest req = new TranscodeImageRequest() {
                 Url = "/library/metadata/265/thumb/1715112705",
                 Background = "#ff5522",
-                Upscale = BoolInt.One,
-                MinSize = BoolInt.One,
-                Rotate = BoolInt.One,
+                Upscale = BoolInt.True,
+                MinSize = BoolInt.True,
+                Rotate = BoolInt.True,
                 BlendColor = "#ff5522",
             };
 
@@ -6145,11 +6188,11 @@ actions:
 
             CreatePlayQueueRequest req = new CreatePlayQueueRequest() {
                 Type = LukeHagar.PlexAPI.SDK.Models.Requests.Type.Audio,
-                Shuffle = BoolInt.One,
-                Repeat = BoolInt.One,
-                Continuous = BoolInt.One,
-                Recursive = BoolInt.One,
-                OnDeck = BoolInt.One,
+                Shuffle = BoolInt.True,
+                Repeat = BoolInt.True,
+                Continuous = BoolInt.True,
+                Recursive = BoolInt.True,
+                OnDeck = BoolInt.True,
             };
 
             var res = await sdk.PlayQueue.CreatePlayQueueAsync(req);
@@ -6182,9 +6225,9 @@ actions:
 
             GetPlayQueueRequest req = new GetPlayQueueRequest() {
                 PlayQueueId = 210646,
-                Own = BoolInt.One,
-                IncludeBefore = BoolInt.One,
-                IncludeAfter = BoolInt.One,
+                Own = BoolInt.True,
+                IncludeBefore = BoolInt.True,
+                IncludeAfter = BoolInt.True,
             };
 
             var res = await sdk.PlayQueue.GetPlayQueueAsync(req);
@@ -6217,7 +6260,7 @@ actions:
 
             AddToPlayQueueRequest req = new AddToPlayQueueRequest() {
                 PlayQueueId = 919248,
-                Next = BoolInt.One,
+                Next = BoolInt.True,
             };
 
             var res = await sdk.PlayQueue.AddToPlayQueueAsync(req);
@@ -6504,7 +6547,7 @@ actions:
 
             UploadPlaylistRequest req = new UploadPlaylistRequest() {
                 Path = "/home/barkley/playlist.m3u",
-                Force = BoolInt.One,
+                Force = BoolInt.True,
             };
 
             var res = await sdk.LibraryPlaylists.UploadPlaylistAsync(req);
@@ -6901,6 +6944,31 @@ actions:
             var res = await sdk.LibraryPlaylists.MovePlaylistItemAsync(req);
 
             // handle response
+  - target: $["paths"]["/resources"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: PlexCSharp
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+
+            var sdk = new PlexAPI(
+                accepts: LukeHagar.PlexAPI.SDK.Models.Components.Accepts.ApplicationXml,
+                clientIdentifier: "abc123",
+                token: "<YOUR_API_KEY_HERE>"
+            );
+
+            GetServerResourcesRequest req = new GetServerResourcesRequest() {
+                IncludeHttps = IncludeHttps.True,
+                IncludeRelay = IncludeRelay.True,
+                IncludeIPv6 = IncludeIPv6.True,
+            };
+
+            var res = await sdk.Plex.GetServerResourcesAsync(req);
+
+            // handle response
   - target: $["paths"]["/security/resources"]["get"]
     update:
       x-codeSamples:
@@ -6928,7 +6996,7 @@ actions:
 
             GetSourceConnectionInformationRequest req = new GetSourceConnectionInformationRequest() {
                 Source = "<value>",
-                Refresh = BoolInt.One,
+                Refresh = BoolInt.True,
             };
 
             var res = await sdk.General.GetSourceConnectionInformationAsync(req);
@@ -7031,7 +7099,7 @@ actions:
                 BottomLeft = "1c425d",
                 Width = 1920,
                 Height = 1080,
-                Noise = BoolInt.One,
+                Noise = BoolInt.True,
             };
 
             var res = await sdk.UltraBlur.GetImageAsync(req);
@@ -7245,8 +7313,8 @@ actions:
             );
 
             ApplyUpdatesRequest req = new ApplyUpdatesRequest() {
-                Tonight = BoolInt.One,
-                Skip = BoolInt.One,
+                Tonight = BoolInt.True,
+                Skip = BoolInt.True,
             };
 
             var res = await sdk.Updater.ApplyUpdatesAsync(req);
@@ -7278,7 +7346,7 @@ actions:
             );
 
             CheckUpdatesRequest req = new CheckUpdatesRequest() {
-                Download = BoolInt.One,
+                Download = BoolInt.True,
             };
 
             var res = await sdk.Updater.CheckUpdatesAsync(req);
@@ -7296,6 +7364,100 @@ actions:
             var sdk = new PlexAPI(token: "<YOUR_API_KEY_HERE>");
 
             var res = await sdk.Updater.GetUpdatesStatusAsync();
+
+            // handle response
+  - target: $["paths"]["/user"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: PlexCSharp
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+
+            var sdk = new PlexAPI(
+                accepts: LukeHagar.PlexAPI.SDK.Models.Components.Accepts.ApplicationXml,
+                clientIdentifier: "abc123",
+                product: "Plex for Roku",
+                version: "2.4.1",
+                platform: "Roku",
+                platformVersion: "4.3 build 1057",
+                device: "Roku 3",
+                model: "4200X",
+                deviceVendor: "Roku",
+                deviceName: "Living Room TV",
+                marketplace: "googlePlay",
+                token: "<YOUR_API_KEY_HERE>"
+            );
+
+            GetTokenDetailsRequest req = new GetTokenDetailsRequest() {};
+
+            var res = await sdk.Authentication.GetTokenDetailsAsync(req);
+
+            // handle response
+  - target: $["paths"]["/users"]["get"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: PlexCSharp
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Components;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+
+            var sdk = new PlexAPI(
+                accepts: LukeHagar.PlexAPI.SDK.Models.Components.Accepts.ApplicationXml,
+                clientIdentifier: "abc123",
+                product: "Plex for Roku",
+                version: "2.4.1",
+                platform: "Roku",
+                platformVersion: "4.3 build 1057",
+                device: "Roku 3",
+                model: "4200X",
+                deviceVendor: "Roku",
+                deviceName: "Living Room TV",
+                marketplace: "googlePlay",
+                token: "<YOUR_API_KEY_HERE>"
+            );
+
+            GetUsersRequest req = new GetUsersRequest() {};
+
+            var res = await sdk.Users.GetUsersAsync(req);
+
+            // handle response
+  - target: $["paths"]["/users/signin"]["post"]
+    update:
+      x-codeSamples:
+        - lang: csharp
+          label: PlexCSharp
+          source: |-
+            using LukeHagar.PlexAPI.SDK;
+            using LukeHagar.PlexAPI.SDK.Models.Requests;
+
+            var sdk = new PlexAPI(
+                accepts: LukeHagar.PlexAPI.SDK.Models.Components.Accepts.ApplicationXml,
+                clientIdentifier: "abc123",
+                product: "Plex for Roku",
+                version: "2.4.1",
+                platform: "Roku",
+                platformVersion: "4.3 build 1057",
+                device: "Roku 3",
+                model: "4200X",
+                deviceVendor: "Roku",
+                deviceName: "Living Room TV",
+                marketplace: "googlePlay"
+            );
+
+            PostUsersSignInDataRequest req = new PostUsersSignInDataRequest() {
+                RequestBody = new PostUsersSignInDataRequestBody() {
+                    Login = "username@email.com",
+                    Password = "password123",
+                    VerificationCode = "123456",
+                },
+            };
+
+            var res = await sdk.Authentication.PostUsersSignInDataAsync(req);
 
             // handle response
   - target: $["paths"]["/{transcodeType}/:/transcode/universal/decision"]["get"]
@@ -7328,13 +7490,13 @@ actions:
                 AdvancedSubtitles = LukeHagar.PlexAPI.SDK.Models.Components.AdvancedSubtitles.Burn,
                 AudioBoost = 50,
                 AudioChannelCount = 5,
-                AutoAdjustQuality = BoolInt.One,
-                AutoAdjustSubtitle = BoolInt.One,
-                DirectPlay = BoolInt.One,
-                DirectStream = BoolInt.One,
-                DirectStreamAudio = BoolInt.One,
-                DisableResolutionRotation = BoolInt.One,
-                HasMDE = BoolInt.One,
+                AutoAdjustQuality = BoolInt.True,
+                AutoAdjustSubtitle = BoolInt.True,
+                DirectPlay = BoolInt.True,
+                DirectStream = BoolInt.True,
+                DirectStreamAudio = BoolInt.True,
+                DisableResolutionRotation = BoolInt.True,
+                HasMDE = BoolInt.True,
                 Location = LukeHagar.PlexAPI.SDK.Models.Requests.Location.Wan,
                 MediaBufferSize = 102400,
                 MediaIndex = 0,
@@ -7420,13 +7582,13 @@ actions:
                 AdvancedSubtitles = LukeHagar.PlexAPI.SDK.Models.Components.AdvancedSubtitles.Burn,
                 AudioBoost = 50,
                 AudioChannelCount = 5,
-                AutoAdjustQuality = BoolInt.One,
-                AutoAdjustSubtitle = BoolInt.One,
-                DirectPlay = BoolInt.One,
-                DirectStream = BoolInt.One,
-                DirectStreamAudio = BoolInt.One,
-                DisableResolutionRotation = BoolInt.One,
-                HasMDE = BoolInt.One,
+                AutoAdjustQuality = BoolInt.True,
+                AutoAdjustSubtitle = BoolInt.True,
+                DirectPlay = BoolInt.True,
+                DirectStream = BoolInt.True,
+                DirectStreamAudio = BoolInt.True,
+                DisableResolutionRotation = BoolInt.True,
+                HasMDE = BoolInt.True,
                 Location = StartTranscodeSessionQueryParamLocation.Wan,
                 MediaBufferSize = 102400,
                 MediaIndex = 0,
@@ -7479,13 +7641,13 @@ actions:
                 AdvancedSubtitles = LukeHagar.PlexAPI.SDK.Models.Components.AdvancedSubtitles.Burn,
                 AudioBoost = 50,
                 AudioChannelCount = 5,
-                AutoAdjustQuality = BoolInt.One,
-                AutoAdjustSubtitle = BoolInt.One,
-                DirectPlay = BoolInt.One,
-                DirectStream = BoolInt.One,
-                DirectStreamAudio = BoolInt.One,
-                DisableResolutionRotation = BoolInt.One,
-                HasMDE = BoolInt.One,
+                AutoAdjustQuality = BoolInt.True,
+                AutoAdjustSubtitle = BoolInt.True,
+                DirectPlay = BoolInt.True,
+                DirectStream = BoolInt.True,
+                DirectStreamAudio = BoolInt.True,
+                DisableResolutionRotation = BoolInt.True,
+                HasMDE = BoolInt.True,
                 Location = QueryParamLocation.Wan,
                 MediaBufferSize = 102400,
                 MediaIndex = 0,

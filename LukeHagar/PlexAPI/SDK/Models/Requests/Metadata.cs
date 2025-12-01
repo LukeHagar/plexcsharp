@@ -10,8 +10,10 @@
 namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
     using LukeHagar.PlexAPI.SDK.Models.Components;
+    using LukeHagar.PlexAPI.SDK.Models.Requests;
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
+    using NodaTime;
     using System.Collections.Generic;
     
     /// <summary>
@@ -44,49 +46,49 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// The user playing the content
         /// </summary>
         [JsonProperty("User")]
-        public User? User { get; set; }
+        public Models.Components.User? User { get; set; }
 
         /// <summary>
         /// The title of the item (e.g. “300” or “The Simpsons”)
         /// </summary>
         [JsonProperty("title")]
-        public object? Title { get; set; }
+        public string Title { get; set; } = default!;
 
         /// <summary>
         /// The type of the video item, such as `movie`, `episode`, or `clip`.
         /// </summary>
         [JsonProperty("type")]
-        public object? Type { get; set; }
+        public string Type { get; set; } = default!;
 
         /// <summary>
         /// When present, contains the disc number for a track on multi-disc albums.
         /// </summary>
         [JsonProperty("absoluteIndex")]
-        public long? AbsoluteIndex { get; set; }
+        public int? AbsoluteIndex { get; set; }
 
         /// <summary>
         /// In units of seconds since the epoch, returns the time at which the item was added to the library.
         /// </summary>
         [JsonProperty("addedAt")]
-        public long? AddedAt { get; set; }
+        public long AddedAt { get; set; } = default!;
 
         /// <summary>
         /// When present, the URL for the background artwork for the item.
         /// </summary>
         [JsonProperty("art")]
-        public object? Art { get; set; }
+        public string? Art { get; set; }
 
         /// <summary>
         /// Some rating systems separate reviewer ratings from audience ratings
         /// </summary>
         [JsonProperty("audienceRating")]
-        public double? AudienceRating { get; set; }
+        public float? AudienceRating { get; set; }
 
         /// <summary>
         /// A URI representing the image to be shown with the audience rating (e.g. rottentomatoes://image.rating.spilled).
         /// </summary>
         [JsonProperty("audienceRatingImage")]
-        public object? AudienceRatingImage { get; set; }
+        public string? AudienceRatingImage { get; set; }
 
         [JsonProperty("Autotag")]
         public List<Tag>? Autotag { get; set; }
@@ -95,25 +97,31 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// When present, the URL for a banner graphic for the item.
         /// </summary>
         [JsonProperty("banner")]
-        public object? Banner { get; set; }
+        public string? Banner { get; set; }
 
         /// <summary>
         /// When present, indicates the source for the chapters in the media file. Can be media (the chapters were embedded in the media itself), agent (a metadata agent computed them), or mixed (a combination of the two).
         /// </summary>
         [JsonProperty("chapterSource")]
-        public object? ChapterSource { get; set; }
+        public string? ChapterSource { get; set; }
+
+        /// <summary>
+        /// The number of child items associated with this media item.
+        /// </summary>
+        [JsonProperty("childCount")]
+        public int? ChildCount { get; set; }
 
         /// <summary>
         /// When present, the URL for a composite image for descendent items (e.g. photo albums or playlists).
         /// </summary>
         [JsonProperty("composite")]
-        public object? Composite { get; set; }
+        public string? Composite { get; set; }
 
         /// <summary>
         /// If known, the content rating (e.g. MPAA) for an item.
         /// </summary>
         [JsonProperty("contentRating")]
-        public object? ContentRating { get; set; }
+        public string? ContentRating { get; set; }
 
         [JsonProperty("Country")]
         public List<Tag>? Country { get; set; }
@@ -125,7 +133,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// When present, the duration for the item, in units of milliseconds.
         /// </summary>
         [JsonProperty("duration")]
-        public long? Duration { get; set; }
+        public int? Duration { get; set; }
 
         /// <summary>
         /// Typically only seen in metadata at a library&apos;s top level
@@ -141,6 +149,12 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// </summary>
         [JsonProperty("grandparentArt")]
         public string? GrandparentArt { get; set; }
+
+        /// <summary>
+        /// The GUID of the grandparent media item.
+        /// </summary>
+        [JsonProperty("grandparentGuid")]
+        public string? GrandparentGuid { get; set; }
 
         /// <summary>
         /// The `hero` of the grandparent
@@ -178,14 +192,20 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         [JsonProperty("grandparentTitle")]
         public string? GrandparentTitle { get; set; }
 
+        /// <summary>
+        /// The globally unique identifier for the media item.
+        /// </summary>
+        [JsonProperty("guid")]
+        public string? Guid { get; set; }
+
         [JsonProperty("Guid")]
-        public List<Tag>? Guid { get; set; }
+        public List<Models.Requests.Guids>? Guids { get; set; }
 
         /// <summary>
         /// When present, the URL for a hero image for the item.
         /// </summary>
         [JsonProperty("hero")]
-        public object? Hero { get; set; }
+        public string? Hero { get; set; }
 
         [JsonProperty("Image")]
         public List<Image>? Image { get; set; }
@@ -194,17 +214,14 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// When present, this represents the episode number for episodes, season number for seasons, or track number for audio tracks.
         /// </summary>
         [JsonProperty("index")]
-        public long? Index { get; set; }
+        public int? Index { get; set; }
 
         /// <summary>
         /// The key at which the item&apos;s details can be fetched.  In many cases a metadata item may be passed without all the details (such as in a hub) and this key corresponds to the endpoint to fetch additional details.
         /// </summary>
         [JsonProperty("key")]
-        public object? Key { get; set; }
+        public string Key { get; set; } = default!;
 
-        /// <summary>
-        /// When a user has watched or listened to an item, this contains a timestamp (epoch seconds) for that last consumption time.
-        /// </summary>
         [JsonProperty("lastViewedAt")]
         public long? LastViewedAt { get; set; }
 
@@ -212,7 +229,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// For shows and seasons, contains the number of total episodes.
         /// </summary>
         [JsonProperty("leafCount")]
-        public long? LeafCount { get; set; }
+        public int? LeafCount { get; set; }
 
         [JsonProperty("Media")]
         public List<Media>? Media { get; set; }
@@ -221,13 +238,19 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// When present, in the format YYYY-MM-DD [HH:MM:SS] (the hours/minutes/seconds part is not always present). The air date, or a higher resolution release date for an item, depending on type. For example, episodes usually have air date like 1979-08-10 (we don&apos;t use epoch seconds because media existed prior to 1970). In some cases, recorded over-the-air content has higher resolution air date which includes a time component. Albums and movies may have day-resolution release dates as well.
         /// </summary>
         [JsonProperty("originallyAvailableAt")]
-        public object? OriginallyAvailableAt { get; set; }
+        public LocalDate? OriginallyAvailableAt { get; set; }
 
         /// <summary>
         /// When present, used to indicate an item&apos;s original title, e.g. a movie&apos;s foreign title.
         /// </summary>
         [JsonProperty("originalTitle")]
-        public object? OriginalTitle { get; set; }
+        public string? OriginalTitle { get; set; }
+
+        /// <summary>
+        /// The GUID of the parent media item.
+        /// </summary>
+        [JsonProperty("parentGuid")]
+        public string? ParentGuid { get; set; }
 
         /// <summary>
         /// The `hero` of the parent
@@ -239,7 +262,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// The `index` of the parent
         /// </summary>
         [JsonProperty("parentIndex")]
-        public long? ParentIndex { get; set; }
+        public int? ParentIndex { get; set; }
 
         /// <summary>
         /// The `key` of the parent
@@ -269,7 +292,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Indicates that the item has a primary extra; for a movie, this is a trailer, and for a music track it is a music video. The URL points to the metadata details endpoint for the item.
         /// </summary>
         [JsonProperty("primaryExtraKey")]
-        public object? PrimaryExtraKey { get; set; }
+        public string? PrimaryExtraKey { get; set; }
 
         /// <summary>
         /// Prompt to give the user for this directory (such as `Search Movies`)
@@ -281,7 +304,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// When present, the rating for the item. The exact meaning and representation depends on where the rating was sourced from.
         /// </summary>
         [JsonProperty("rating")]
-        public double? Rating { get; set; }
+        public float? Rating { get; set; }
 
         [JsonProperty("Rating")]
         public List<Tag>? RatingArray { get; set; }
@@ -290,19 +313,19 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Number of ratings under this metadata
         /// </summary>
         [JsonProperty("ratingCount")]
-        public long? RatingCount { get; set; }
+        public int? RatingCount { get; set; }
 
         /// <summary>
         /// When present, indicates an image to be shown with the rating. This is passed back as a small set of defined URI values, e.g. rottentomatoes://image.rating.rotten.
         /// </summary>
         [JsonProperty("ratingImage")]
-        public object? RatingImage { get; set; }
+        public string? RatingImage { get; set; }
 
         /// <summary>
         /// This is the opaque string to be passed into timeline, scrobble, and rating endpoints to identify them.  While it often appears to be numeric, this is not guaranteed.
         /// </summary>
         [JsonProperty("ratingKey")]
-        public object? RatingKey { get; set; }
+        public string? RatingKey { get; set; }
 
         [JsonProperty("Role")]
         public List<Tag>? Role { get; set; }
@@ -341,43 +364,43 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// When present, the studio or label which produced an item (e.g. movie studio for movies, record label for albums).
         /// </summary>
         [JsonProperty("studio")]
-        public object? Studio { get; set; }
+        public string? Studio { get; set; }
 
         /// <summary>
         /// The subtype of the video item, such as `photo` when the video item is in a photo library
         /// </summary>
         [JsonProperty("subtype")]
-        public object? Subtype { get; set; }
+        public string? Subtype { get; set; }
 
         /// <summary>
         /// When present, the extended textual information about the item (e.g. movie plot, artist biography, album review).
         /// </summary>
         [JsonProperty("summary")]
-        public object? Summary { get; set; }
+        public string? Summary { get; set; }
 
         /// <summary>
         /// When present, a pithy one-liner about the item (usually only seen for movies).
         /// </summary>
         [JsonProperty("tagline")]
-        public object? Tagline { get; set; }
+        public string? Tagline { get; set; }
 
         /// <summary>
         /// When present, the URL for theme music for the item (usually only for TV shows).
         /// </summary>
         [JsonProperty("theme")]
-        public object? Theme { get; set; }
+        public string? Theme { get; set; }
 
         /// <summary>
         /// When present, the URL for the poster or thumbnail for the item. When available for types like movie, it will be the poster graphic, but fall-back to the extracted media thumbnail.
         /// </summary>
         [JsonProperty("thumb")]
-        public object? Thumb { get; set; }
+        public string? Thumb { get; set; }
 
         /// <summary>
         /// Whene present, this is the string used for sorting the item. It&apos;s usually the title with any leading articles removed (e.g. “Simpsons”).
         /// </summary>
         [JsonProperty("titleSort")]
-        public object? TitleSort { get; set; }
+        public string? TitleSort { get; set; }
 
         /// <summary>
         /// In units of seconds since the epoch, returns the time at which the item was last changed (e.g. had its metadata updated).
@@ -389,25 +412,25 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// When the user has rated an item, this contains the user rating
         /// </summary>
         [JsonProperty("userRating")]
-        public double? UserRating { get; set; }
+        public float? UserRating { get; set; }
 
         /// <summary>
         /// When a users has completed watched or listened to an item, this attribute contains the number of consumptions.
         /// </summary>
         [JsonProperty("viewCount")]
-        public long? ViewCount { get; set; }
+        public int? ViewCount { get; set; }
 
         /// <summary>
         /// For shows and seasons, contains the number of viewed episodes.
         /// </summary>
         [JsonProperty("viewedLeafCount")]
-        public long? ViewedLeafCount { get; set; }
+        public int? ViewedLeafCount { get; set; }
 
         /// <summary>
         /// When a user is in the process of viewing or listening to this item, this attribute contains the current offset, in units of milliseconds.
         /// </summary>
         [JsonProperty("viewOffset")]
-        public long? ViewOffset { get; set; }
+        public int? ViewOffset { get; set; }
 
         [JsonProperty("Writer")]
         public List<Tag>? Writer { get; set; }
@@ -416,7 +439,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// When present, the year associated with the item&apos;s release (e.g. release year for a movie).
         /// </summary>
         [JsonProperty("year")]
-        public long? Year { get; set; }
+        public int? Year { get; set; }
 
         [JsonProperty("additionalProperties")]
         public Dictionary<string, object>? AdditionalProperties { get; set; }

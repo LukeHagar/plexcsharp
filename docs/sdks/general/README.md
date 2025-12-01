@@ -118,7 +118,7 @@ var sdk = new PlexAPI(
 
 GetSourceConnectionInformationRequest req = new GetSourceConnectionInformationRequest() {
     Source = "server://client-identifier",
-    Refresh = BoolInt.One,
+    Refresh = BoolInt.True,
 };
 
 var res = await sdk.General.GetSourceConnectionInformationAsync(req);

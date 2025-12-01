@@ -151,10 +151,11 @@ namespace LukeHagar.PlexAPI.SDK
     public class DVRs: IDVRs
     {
         public SDKConfig SDKConfiguration { get; private set; }
-        private const string _language = "csharp";
-        private const string _sdkVersion = "0.19.1";
-        private const string _sdkGenVersion = "2.753.1";
-        private const string _openapiDocVersion = "1.1.1";
+
+        private const string _language = Constants.Language;
+        private const string _sdkVersion = Constants.SdkVersion;
+        private const string _sdkGenVersion = Constants.SdkGenVersion;
+        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
 
         public DVRs(SDKConfig config)
         {
@@ -265,7 +266,7 @@ namespace LukeHagar.PlexAPI.SDK
             request.Marketplace ??= SDKConfiguration.Marketplace;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/livetv/dvrs", request);
+            var urlString = URLBuilder.Build(baseUrl, "/livetv/dvrs", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -370,7 +371,7 @@ namespace LukeHagar.PlexAPI.SDK
             request.Marketplace ??= SDKConfiguration.Marketplace;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/livetv/dvrs/{dvrId}", request);
+            var urlString = URLBuilder.Build(baseUrl, "/livetv/dvrs/{dvrId}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -457,7 +458,7 @@ namespace LukeHagar.PlexAPI.SDK
             request.Marketplace ??= SDKConfiguration.Marketplace;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/livetv/dvrs/{dvrId}", request);
+            var urlString = URLBuilder.Build(baseUrl, "/livetv/dvrs/{dvrId}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -562,7 +563,7 @@ namespace LukeHagar.PlexAPI.SDK
             request.Marketplace ??= SDKConfiguration.Marketplace;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/livetv/dvrs/{dvrId}/lineups", request);
+            var urlString = URLBuilder.Build(baseUrl, "/livetv/dvrs/{dvrId}/lineups", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -667,7 +668,7 @@ namespace LukeHagar.PlexAPI.SDK
             request.Marketplace ??= SDKConfiguration.Marketplace;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/livetv/dvrs/{dvrId}/lineups", request);
+            var urlString = URLBuilder.Build(baseUrl, "/livetv/dvrs/{dvrId}/lineups", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Put, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -772,7 +773,7 @@ namespace LukeHagar.PlexAPI.SDK
             request.Marketplace ??= SDKConfiguration.Marketplace;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/livetv/dvrs/{dvrId}/prefs", request);
+            var urlString = URLBuilder.Build(baseUrl, "/livetv/dvrs/{dvrId}/prefs", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Put, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -877,7 +878,7 @@ namespace LukeHagar.PlexAPI.SDK
             request.Marketplace ??= SDKConfiguration.Marketplace;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/livetv/dvrs/{dvrId}/reloadGuide", request);
+            var urlString = URLBuilder.Build(baseUrl, "/livetv/dvrs/{dvrId}/reloadGuide", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -964,7 +965,7 @@ namespace LukeHagar.PlexAPI.SDK
             request.Marketplace ??= SDKConfiguration.Marketplace;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/livetv/dvrs/{dvrId}/reloadGuide", request);
+            var urlString = URLBuilder.Build(baseUrl, "/livetv/dvrs/{dvrId}/reloadGuide", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -1051,7 +1052,7 @@ namespace LukeHagar.PlexAPI.SDK
             request.Marketplace ??= SDKConfiguration.Marketplace;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/livetv/dvrs/{dvrId}/channels/{channel}/tune", request);
+            var urlString = URLBuilder.Build(baseUrl, "/livetv/dvrs/{dvrId}/channels/{channel}/tune", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -1156,7 +1157,7 @@ namespace LukeHagar.PlexAPI.SDK
             request.Marketplace ??= SDKConfiguration.Marketplace;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/livetv/dvrs/{dvrId}/devices/{deviceId}", request);
+            var urlString = URLBuilder.Build(baseUrl, "/livetv/dvrs/{dvrId}/devices/{deviceId}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -1261,7 +1262,7 @@ namespace LukeHagar.PlexAPI.SDK
             request.Marketplace ??= SDKConfiguration.Marketplace;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/livetv/dvrs/{dvrId}/devices/{deviceId}", request);
+            var urlString = URLBuilder.Build(baseUrl, "/livetv/dvrs/{dvrId}/devices/{deviceId}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Put, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);

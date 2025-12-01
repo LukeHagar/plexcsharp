@@ -91,6 +91,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Force refresh
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=refresh")]
-        public BoolInt? Refresh { get; set; }
+        public BoolInt? Refresh { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
     }
 }

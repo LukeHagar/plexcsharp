@@ -122,7 +122,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// When state is `stopped`, a flag indicating whether or not the client is going to continue playing anothe item.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=continuing")]
-        public BoolInt? Continuing { get; set; }
+        public BoolInt? Continuing { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
 
         /// <summary>
         /// Used when a sync client comes online and is syncing media timelines, holds the time at which the playback state was last updated.
@@ -134,7 +134,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Also used by sync clients, used to indicate that a timeline is being synced from being offline, as opposed to being &quot;live&quot;.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=offline")]
-        public BoolInt? Offline { get; set; }
+        public BoolInt? Offline { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
 
         /// <summary>
         /// Time in seconds till first frame is displayed.  Sent only on the first playing timeline request.

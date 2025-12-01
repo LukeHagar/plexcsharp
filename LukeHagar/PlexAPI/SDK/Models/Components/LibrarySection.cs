@@ -17,11 +17,21 @@ namespace LukeHagar.PlexAPI.SDK.Models.Components
     public class LibrarySection
     {
 
+        /// <summary>
+        /// The title of the library
+        /// </summary>
         [JsonProperty("title")]
         public string? Title { get; set; }
 
+        /// <summary>
+        /// The type of media content in the Plex library. This can represent videos, music, or photos.<br/>
+        /// 
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// </summary>
         [JsonProperty("type")]
-        public string? Type { get; set; }
+        public MediaTypeString Type { get; set; } = default!;
 
         [JsonProperty("agent")]
         public string? Agent { get; set; }
@@ -60,7 +70,13 @@ namespace LukeHagar.PlexAPI.SDK.Models.Components
         public string? Key { get; set; }
 
         [JsonProperty("language")]
-        public string? Language { get; set; }
+        public string Language { get; set; } = default!;
+
+        /// <summary>
+        /// The universally unique identifier for the library.
+        /// </summary>
+        [JsonProperty("uuid")]
+        public string Uuid { get; set; } = default!;
 
         [JsonProperty("Location")]
         public List<LibrarySectionLocation>? Location { get; set; }

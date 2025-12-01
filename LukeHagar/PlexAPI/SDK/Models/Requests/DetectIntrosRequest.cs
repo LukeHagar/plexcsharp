@@ -88,7 +88,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Indicate whether detection should be re-run
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=force")]
-        public BoolInt? Force { get; set; }
+        public BoolInt? Force { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
 
         /// <summary>
         /// The threshold for determining if content is an intro or not

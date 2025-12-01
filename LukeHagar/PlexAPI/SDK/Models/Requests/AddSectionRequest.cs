@@ -135,12 +135,12 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// If set, paths are relative to `Media Upload` path
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=relative")]
-        public BoolInt? Relative { get; set; }
+        public BoolInt? Relative { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
 
         /// <summary>
         /// If set, import media from iTunes.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=importFromiTunes")]
-        public BoolInt? ImportFromiTunes { get; set; }
+        public BoolInt? ImportFromiTunes { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
     }
 }

@@ -96,7 +96,7 @@ GetImageRequest req = new GetImageRequest() {
     BottomLeft = "1c425d",
     Width = 1920,
     Height = 1080,
-    Noise = BoolInt.One,
+    Noise = BoolInt.True,
 };
 
 var res = await sdk.UltraBlur.GetImageAsync(req);

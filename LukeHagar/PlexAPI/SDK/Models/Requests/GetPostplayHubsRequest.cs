@@ -97,6 +97,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Only return hubs which are &quot;transient&quot;, meaning those which are prone to changing after media playback or addition (e.g. On Deck, or Recently Added)
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=onlyTransient")]
-        public BoolInt? OnlyTransient { get; set; }
+        public BoolInt? OnlyTransient { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
     }
 }

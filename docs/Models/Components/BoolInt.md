@@ -3,7 +3,7 @@
 
 ## Values
 
-| Name   | Value  |
-| ------ | ------ |
-| `Zero` | 0      |
-| `One`  | 1      |
+| Name    | Value   |
+| ------- | ------- |
+| `False` | 0       |
+| `True`  | 1       |

@@ -32,13 +32,13 @@ StartTranscodeSessionRequest req = new StartTranscodeSessionRequest() {
     AdvancedSubtitles = LukeHagar.PlexAPI.SDK.Models.Components.AdvancedSubtitles.Burn,
     AudioBoost = 50,
     AudioChannelCount = 5,
-    AutoAdjustQuality = BoolInt.One,
-    AutoAdjustSubtitle = BoolInt.One,
-    DirectPlay = BoolInt.One,
-    DirectStream = BoolInt.One,
-    DirectStreamAudio = BoolInt.One,
-    DisableResolutionRotation = BoolInt.One,
-    HasMDE = BoolInt.One,
+    AutoAdjustQuality = BoolInt.True,
+    AutoAdjustSubtitle = BoolInt.True,
+    DirectPlay = BoolInt.True,
+    DirectStream = BoolInt.True,
+    DirectStreamAudio = BoolInt.True,
+    DisableResolutionRotation = BoolInt.True,
+    HasMDE = BoolInt.True,
     Location = StartTranscodeSessionQueryParamLocation.Wan,
     MediaBufferSize = 102400,
     MediaIndex = 0,
@@ -118,6 +118,8 @@ var res = await sdk.General.GetServerInfoAsync(req);
 | `RawResponse` | *HttpResponseMessage* | HTTP response object  |
 | `Body`        | *string*              | HTTP response body    |
 
+Some exceptions in this SDK include an additional `Payload` field, which will contain deserialized custom error data when present. Possible exceptions are listed in the [Error Classes](#error-classes) section.
+
 ### Example
 
 ```csharp
@@ -125,6 +127,7 @@ using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
 using LukeHagar.PlexAPI.SDK.Models.Errors;
 using LukeHagar.PlexAPI.SDK.Models.Requests;
+using System.Collections.Generic;
 
 var sdk = new PlexAPI(
     accepts: LukeHagar.PlexAPI.SDK.Models.Components.Accepts.ApplicationXml,
@@ -143,9 +146,9 @@ var sdk = new PlexAPI(
 
 try
 {
-    GetServerInfoRequest req = new GetServerInfoRequest() {};
+    GetTokenDetailsRequest req = new GetTokenDetailsRequest() {};
 
-    var res = await sdk.General.GetServerInfoAsync(req);
+    var res = await sdk.Authentication.GetTokenDetailsAsync(req);
 
     // handle response
 }
@@ -160,6 +163,20 @@ catch (PlexAPIError ex)  // all SDK exceptions inherit from PlexAPIError
     int statusCode = ex.StatusCode;
     string? contentType = ex.ContentType;
     var responseBody = ex.Body;
+
+    if (ex is GetTokenDetailsBadRequest) // different exceptions may be thrown depending on the method
+    {
+        // Check error data fields
+        GetTokenDetailsBadRequestPayload payload = ex.Payload;
+        List<Errors> Errors = payload.Errors;
+        HttpResponseMessage RawResponse = payload.RawResponse;
+    }
+
+    // An underlying cause may be provided
+    if (ex.InnerException != null)
+    {
+        Exception cause = ex.InnerException;
+    }
 }
 catch (System.Net.Http.HttpRequestException ex)
 {
@@ -172,13 +189,22 @@ catch (System.Net.Http.HttpRequestException ex)
 **Primary exception:**
 * [`PlexAPIError`](./LukeHagar/PlexAPI/SDK/Models/Errors/PlexAPIError.cs): The base class for HTTP error responses.
 
-<details><summary>Less common exceptions (2)</summary>
+<details><summary>Less common exceptions (9)</summary>
 
 * [`System.Net.Http.HttpRequestException`](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httprequestexception): Network connectivity error. For more details about the underlying cause, inspect the `ex.InnerException`.
 
 * Inheriting from [`PlexAPIError`](./LukeHagar/PlexAPI/SDK/Models/Errors/PlexAPIError.cs):
+  * [`GetTokenDetailsBadRequest`](./LukeHagar/PlexAPI/SDK/Models/Errors/GetTokenDetailsBadRequest.cs): Bad Request - A parameter was not specified, or was specified incorrectly. Status code `400`. Applicable to 1 of 240 methods.*
+  * [`PostUsersSignInDataBadRequest`](./LukeHagar/PlexAPI/SDK/Models/Errors/PostUsersSignInDataBadRequest.cs): Bad Request - A parameter was not specified, or was specified incorrectly. Status code `400`. Applicable to 1 of 240 methods.*
+  * [`GetUsersBadRequest`](./LukeHagar/PlexAPI/SDK/Models/Errors/GetUsersBadRequest.cs): Bad Request - A parameter was not specified, or was specified incorrectly. Status code `400`. Applicable to 1 of 240 methods.*
+  * [`GetTokenDetailsUnauthorized`](./LukeHagar/PlexAPI/SDK/Models/Errors/GetTokenDetailsUnauthorized.cs): Unauthorized - Returned if the X-Plex-Token is missing from the header or query. Status code `401`. Applicable to 1 of 240 methods.*
+  * [`PostUsersSignInDataUnauthorized`](./LukeHagar/PlexAPI/SDK/Models/Errors/PostUsersSignInDataUnauthorized.cs): Unauthorized - Returned if the X-Plex-Token is missing from the header or query. Status code `401`. Applicable to 1 of 240 methods.*
+  * [`GetUsersUnauthorized`](./LukeHagar/PlexAPI/SDK/Models/Errors/GetUsersUnauthorized.cs): Unauthorized - Returned if the X-Plex-Token is missing from the header or query. Status code `401`. Applicable to 1 of 240 methods.*
+  * [`GetServerResourcesUnauthorized`](./LukeHagar/PlexAPI/SDK/Models/Errors/GetServerResourcesUnauthorized.cs): Unauthorized - Returned if the X-Plex-Token is missing from the header or query. Status code `401`. Applicable to 1 of 240 methods.*
   * [`ResponseValidationError`](./LukeHagar/PlexAPI/SDK/Models/Errors/ResponseValidationError.cs): Thrown when the response data could not be deserialized into the expected type.
 </details>
+
+\* Refer to the [relevant documentation](#available-resources-and-operations) to determine whether an exception applies to a specific operation.
 <!-- End Error Handling [errors] -->
 
 <!-- Start Server Selection [server] -->
@@ -265,6 +291,39 @@ var sdk = new PlexAPI(
 GetServerInfoRequest req = new GetServerInfoRequest() {};
 
 var res = await sdk.General.GetServerInfoAsync(req);
+
+// handle response
+```
+
+### Override Server URL Per-Operation
+
+The server URL can also be overridden on a per-operation basis, provided a server list was specified for the operation. For example:
+```csharp
+using LukeHagar.PlexAPI.SDK;
+using LukeHagar.PlexAPI.SDK.Models.Components;
+using LukeHagar.PlexAPI.SDK.Models.Requests;
+
+var sdk = new PlexAPI(
+    accepts: LukeHagar.PlexAPI.SDK.Models.Components.Accepts.ApplicationXml,
+    clientIdentifier: "abc123",
+    product: "Plex for Roku",
+    version: "2.4.1",
+    platform: "Roku",
+    platformVersion: "4.3 build 1057",
+    device: "Roku 3",
+    model: "4200X",
+    deviceVendor: "Roku",
+    deviceName: "Living Room TV",
+    marketplace: "googlePlay",
+    token: "<YOUR_API_KEY_HERE>"
+);
+
+GetTokenDetailsRequest req = new GetTokenDetailsRequest() {};
+
+var res = await sdk.Authentication.GetTokenDetailsAsync(
+    request: req,
+    serverUrl: "https://plex.tv/api/v2"
+);
 
 // handle response
 ```

@@ -233,6 +233,9 @@ namespace LukeHagar.PlexAPI.SDK
         /// </remarks>
         /// </summary>
         public IUpdater Updater { get; }
+        public IAuthentication Authentication { get; }
+        public IUsers Users { get; }
+        public IPlex Plex { get; }
 
         /// <summary>
         /// The actual content of the media provider
@@ -250,10 +253,10 @@ namespace LukeHagar.PlexAPI.SDK
     {
         public SDKConfig SDKConfiguration { get; private set; }
 
-        private const string _language = "csharp";
-        private const string _sdkVersion = "0.19.1";
-        private const string _sdkGenVersion = "2.753.1";
-        private const string _openapiDocVersion = "1.1.1";
+        private const string _language = Constants.Language;
+        private const string _sdkVersion = Constants.SdkVersion;
+        private const string _sdkGenVersion = Constants.SdkGenVersion;
+        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
         public IGeneral General { get; private set; }
         public IEvents Events { get; private set; }
         public IPreferences Preferences { get; private set; }
@@ -280,6 +283,9 @@ namespace LukeHagar.PlexAPI.SDK
         public IUltraBlur UltraBlur { get; private set; }
         public IStatus Status { get; private set; }
         public IUpdater Updater { get; private set; }
+        public IAuthentication Authentication { get; private set; }
+        public IUsers Users { get; private set; }
+        public IPlex Plex { get; private set; }
         public IContent Content { get; private set; }
         public ILibraryCollections LibraryCollections { get; private set; }
 
@@ -339,6 +345,12 @@ namespace LukeHagar.PlexAPI.SDK
             Status = new Status(SDKConfiguration);
 
             Updater = new Updater(SDKConfiguration);
+
+            Authentication = new Authentication(SDKConfiguration);
+
+            Users = new Users(SDKConfiguration);
+
+            Plex = new Plex(SDKConfiguration);
 
             Content = new Content(SDKConfiguration);
 
@@ -503,6 +515,12 @@ namespace LukeHagar.PlexAPI.SDK
             Status = new Status(SDKConfiguration);
 
             Updater = new Updater(SDKConfiguration);
+
+            Authentication = new Authentication(SDKConfiguration);
+
+            Users = new Users(SDKConfiguration);
+
+            Plex = new Plex(SDKConfiguration);
 
             Content = new Content(SDKConfiguration);
 

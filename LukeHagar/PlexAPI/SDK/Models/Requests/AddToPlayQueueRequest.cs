@@ -103,6 +103,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Play this item next (defaults to 0 - queueing at the end of manually queued items).
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=next")]
-        public BoolInt? Next { get; set; }
+        public BoolInt? Next { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
     }
 }

@@ -103,6 +103,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Whether this is a file download
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=download")]
-        public BoolInt? Download { get; set; }
+        public BoolInt? Download { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
     }
 }

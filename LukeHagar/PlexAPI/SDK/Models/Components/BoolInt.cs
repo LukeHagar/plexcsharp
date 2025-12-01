@@ -13,8 +13,8 @@ namespace LukeHagar.PlexAPI.SDK.Models.Components
     
     public enum BoolInt
     {
-        Zero = 0,
-        One = 1,
+        False = 0,
+        True = 1,
     }
 
 }

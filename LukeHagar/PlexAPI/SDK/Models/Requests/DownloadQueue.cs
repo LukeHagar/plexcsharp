@@ -35,6 +35,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// </remarks>
         /// </summary>
         [JsonProperty("status")]
-        public Models.Requests.Status? Status { get; set; }
+        public CreateDownloadQueueStatus? Status { get; set; }
     }
 }

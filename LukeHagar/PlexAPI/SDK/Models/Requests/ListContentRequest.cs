@@ -82,10 +82,73 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public string? Marketplace { get; set; }
 
         /// <summary>
-        /// This is a complex query built of several parameters.  See <a href="#section/API-Info/Media-Queries">API Info section</a> for information on building media queries
+        /// The index of the first item to return. If not specified, the first item will be returned.<br/>
+        /// 
+        /// <remarks>
+        /// If the number of items exceeds the limit, the response will be paginated.<br/>
+        /// By default this is 0<br/>
+        /// 
+        /// </remarks>
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=X-Plex-Container-Start")]
+        public int? XPlexContainerStart { get; set; } = 0;
+
+        /// <summary>
+        /// The number of items to return. If not specified, all items will be returned.<br/>
+        /// 
+        /// <remarks>
+        /// If the number of items exceeds the limit, the response will be paginated.<br/>
+        /// By default this is 50<br/>
+        /// 
+        /// </remarks>
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=X-Plex-Container-Size")]
+        public int? XPlexContainerSize { get; set; } = 50;
+
+        /// <summary>
+        /// A querystring-based filtering language used to select subsets of media. Can be provided as an object with typed properties for type safety, or as a string for complex queries with operators and boolean logic.<br/>
+        /// 
+        /// <remarks>
+        /// <br/>
+        /// The query supports:<br/>
+        /// - Fields: integer, boolean, tag, string, date, language<br/>
+        /// - Operators: =, !=, ==, !==, &lt;=, &gt;=, &gt;&gt;=, &lt;&lt;= (varies by field type)<br/>
+        /// - Boolean operators: &amp; (AND), , (OR), push/pop (parentheses), or=1 (explicit OR)<br/>
+        /// - Sorting: sort parameter with :desc, :nullsLast modifiers<br/>
+        /// - Grouping: group parameter<br/>
+        /// - Limits: limit parameter<br/>
+        /// <br/>
+        /// Examples:<br/>
+        /// - Object format: `{type: 4, sourceType: 2, title: &quot;24&quot;}` → `type=4&amp;sourceType=2&amp;title=24`<br/>
+        /// - String format: `type=4&amp;sourceType=2&amp;title==24` - type = 4 AND sourceType = 2 AND title = &quot;24&quot;<br/>
+        /// - Complex: `push=1&amp;index=1&amp;or=1&amp;rating=2&amp;pop=1&amp;duration=10` - (index = 1 OR rating = 2) AND duration = 10<br/>
+        /// <br/>
+        /// See <a href="#section/API-Info/Media-Queries">API Info section</a> for detailed information on building media queries.<br/>
+        /// 
+        /// </remarks>
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=mediaQuery")]
         public MediaQuery? MediaQuery { get; set; }
+
+        /// <summary>
+        /// Adds the Meta object to the response<br/>
+        /// 
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=includeMeta")]
+        public BoolInt? IncludeMeta { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
+
+        /// <summary>
+        /// Adds the Guid object to the response<br/>
+        /// 
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=includeGuids")]
+        public BoolInt? IncludeGuids { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
 
         /// <summary>
         /// The id of the section

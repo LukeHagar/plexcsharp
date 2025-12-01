@@ -91,6 +91,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Whether to enable the device
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=enabled")]
-        public BoolInt? Enabled { get; set; }
+        public BoolInt? Enabled { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
     }
 }

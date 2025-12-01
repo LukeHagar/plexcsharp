@@ -18,6 +18,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     {
 
         [JsonProperty("ButlerTask")]
-        public List<ButlerTask>? ButlerTask { get; set; }
+        public List<GetTasksButlerTask>? ButlerTask { get; set; }
     }
 }

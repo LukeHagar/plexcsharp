@@ -82,19 +82,35 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public string? Marketplace { get; set; }
 
         /// <summary>
-        /// The metadata type to filter by
+        /// The type of media to retrieve or filter by.<br/>
+        /// 
+        /// <remarks>
+        /// <br/>
+        /// 1 = movie<br/>
+        /// 2 = show<br/>
+        /// 3 = season<br/>
+        /// 4 = episode<br/>
+        /// 5 = artist<br/>
+        /// 6 = album<br/>
+        /// 7 = track<br/>
+        /// 8 = photo_album<br/>
+        /// 9 = photo<br/>
+        /// <br/>
+        /// E.g. A movie library will not return anything with type 3 as there are no seasons for movie libraries<br/>
+        /// 
+        /// </remarks>
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=type")]
-        public long? Type { get; set; }
+        public MediaType? Type { get; set; }
 
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=includeFullMetadata")]
-        public BoolInt? IncludeFullMetadata { get; set; }
+        public BoolInt? IncludeFullMetadata { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
 
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=includeAncestorMetadata")]
-        public BoolInt? IncludeAncestorMetadata { get; set; }
+        public BoolInt? IncludeAncestorMetadata { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
 
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=includeAlternateMetadataSources")]
-        public BoolInt? IncludeAlternateMetadataSources { get; set; }
+        public BoolInt? IncludeAlternateMetadataSources { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
 
         /// <summary>
         /// Used for movies, shows, artists, albums, and tracks.  Allowed for various URI schemes, to be defined.

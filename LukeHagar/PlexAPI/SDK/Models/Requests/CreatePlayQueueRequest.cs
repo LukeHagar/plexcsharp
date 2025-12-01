@@ -110,19 +110,19 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Whether to shuffle the playlist, defaults to 0.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=shuffle")]
-        public BoolInt? Shuffle { get; set; }
+        public BoolInt? Shuffle { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
 
         /// <summary>
         /// If the PQ is bigger than the window, fill any empty space with wraparound items, defaults to 0.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=repeat")]
-        public BoolInt? Repeat { get; set; }
+        public BoolInt? Repeat { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
 
         /// <summary>
         /// Whether to create a continuous play queue (e.g. from an episode), defaults to 0.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=continuous")]
-        public BoolInt? Continuous { get; set; }
+        public BoolInt? Continuous { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
 
         /// <summary>
         /// Number of trailers to prepend a movie with not including the pre-roll. If omitted the pre-roll will not be returned in the play queue. When resuming a movie `extrasPrefixCount` should be omitted as a parameter instead of passing 0.
@@ -134,12 +134,12 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Only applies to queues of type photo, whether to retrieve all descendent photos from an album or section, defaults to 1.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=recursive")]
-        public BoolInt? Recursive { get; set; }
+        public BoolInt? Recursive { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
 
         /// <summary>
         /// Only applies to queues of type show or seasons, whether to return a queue that is started on the On Deck episode if one exists. Otherwise begins the play queue on the beginning of the show or season.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=onDeck")]
-        public BoolInt? OnDeck { get; set; }
+        public BoolInt? OnDeck { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
     }
 }

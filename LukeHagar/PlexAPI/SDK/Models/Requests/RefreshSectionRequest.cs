@@ -91,7 +91,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Whether the update of metadata and items should be performed even if modification dates indicate the items have not change
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=force")]
-        public BoolInt? Force { get; set; }
+        public BoolInt? Force { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
 
         /// <summary>
         /// Restrict refresh to the specified path

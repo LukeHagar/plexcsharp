@@ -12,64 +12,64 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
     
-    /// <summary>
-    /// The state of this queue<br/>
-    /// 
-    /// <remarks>
-    ///   - deciding: At least one item is still being decided<br/>
-    ///   - waiting: At least one item is waiting for transcode and none are currently transcoding<br/>
-    ///   - processing: At least one item is being transcoded<br/>
-    ///   - done: All items are available (or potentially expired)<br/>
-    ///   - error: At least one item has encountered an error<br/>
-    /// 
-    /// </remarks>
-    /// </summary>
-    public enum Status
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class Status : IEquatable<Status>
     {
-        [JsonProperty("deciding")]
-        Deciding,
-        [JsonProperty("waiting")]
-        Waiting,
-        [JsonProperty("processing")]
-        Processing,
-        [JsonProperty("done")]
-        Done,
-        [JsonProperty("error")]
-        Error,
-    }
+        public static readonly Status Online = new Status("online");
+        public static readonly Status Offline = new Status("offline");
 
-    public static class StatusExtension
-    {
-        public static string Value(this Status value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static Status ToEnum(this string value)
-        {
-            foreach(var field in typeof(Status).GetFields())
+        private static readonly Dictionary <string, Status> _knownValues =
+            new Dictionary <string, Status> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["online"] = Online,
+                ["offline"] = Offline
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, Status> _values =
+            new ConcurrentDictionary<string, Status>(_knownValues);
 
-                    if (enumVal is Status)
-                    {
-                        return (Status)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum Status");
+        private Status(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
+
+        public string Value { get; }
+
+        public static Status Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new Status(value));
+        }
+
+        public static implicit operator Status(string value) => Of(value);
+        public static implicit operator string(Status status) => status.Value;
+
+        public static Status[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as Status);
+
+        public bool Equals(Status? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
     }
 
 }

@@ -25,7 +25,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 csharp:
-  version: 0.19.1
+  version: 0.20.0
   additionalDependencies: []
   author: LukeHagar
   baseErrorName: PlexAPIError
@@ -47,9 +47,11 @@ csharp:
       shared: Models/Components
       webhooks: Models/Webhooks
   includeDebugSymbols: true
+  inferUnionDiscriminators: false
   inputModelSuffix: input
   maxMethodParams: 4
   methodArguments: infer-optional-args
+  multipartArrayFormat: legacy
   outputModelSuffix: output
   packageName: LukeHagar.PlexAPI.SDK
   packageTags: Plex Media Server SDK

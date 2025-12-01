@@ -88,12 +88,12 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Indicates whether the active grabs should be included as well
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=includeGrabs")]
-        public BoolInt? IncludeGrabs { get; set; }
+        public BoolInt? IncludeGrabs { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
 
         /// <summary>
         /// Compute the storage of recorded items desired by this subscription
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=includeStorage")]
-        public BoolInt? IncludeStorage { get; set; }
+        public BoolInt? IncludeStorage { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
     }
 }

@@ -103,14 +103,14 @@ var sdk = new PlexAPI(
 
 GetMetadataItemRequest req = new GetMetadataItemRequest() {
     Ids = new List<string>() {},
-    AsyncCheckFiles = BoolInt.One,
-    AsyncRefreshLocalMediaAgent = BoolInt.One,
-    AsyncRefreshAnalysis = BoolInt.One,
-    CheckFiles = BoolInt.One,
-    SkipRefresh = BoolInt.One,
-    CheckFileAvailability = BoolInt.One,
-    AsyncAugmentMetadata = BoolInt.One,
-    AugmentCount = BoolInt.One,
+    AsyncCheckFiles = BoolInt.True,
+    AsyncRefreshLocalMediaAgent = BoolInt.True,
+    AsyncRefreshAnalysis = BoolInt.True,
+    CheckFiles = BoolInt.True,
+    SkipRefresh = BoolInt.True,
+    CheckFileAvailability = BoolInt.True,
+    AsyncAugmentMetadata = BoolInt.True,
+    AugmentCount = BoolInt.True,
 };
 
 var res = await sdk.Content.GetMetadataItemAsync(req);
@@ -214,6 +214,13 @@ var sdk = new PlexAPI(
 );
 
 ListContentRequest req = new ListContentRequest() {
+    MediaQuery = new MediaQuery() {
+        Type = MediaType.Episode,
+        SourceType = 2,
+        Sort = "duration:desc,index",
+    },
+    IncludeMeta = BoolInt.True,
+    IncludeGuids = BoolInt.True,
     SectionId = "<id>",
 };
 

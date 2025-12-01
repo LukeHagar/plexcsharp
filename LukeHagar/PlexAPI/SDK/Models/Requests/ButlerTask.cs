@@ -11,44 +11,90 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
 {
     using LukeHagar.PlexAPI.SDK.Utils;
     using Newtonsoft.Json;
+    using System;
     
-    public class ButlerTask
+    /// <summary>
+    /// The task name
+    /// </summary>
+    public enum ButlerTask
     {
-
-        /// <summary>
-        /// A user-friendly description of the task
-        /// </summary>
-        [JsonProperty("description")]
-        public string? Description { get; set; }
-
-        /// <summary>
-        /// Whether this task is enabled or not
-        /// </summary>
-        [JsonProperty("enabled")]
-        public bool? Enabled { get; set; }
-
-        /// <summary>
-        /// The interval (in days) of when this task is run.  A value of 1 is run every day, 7 is every week, etc.
-        /// </summary>
-        [JsonProperty("interval")]
-        public long? Interval { get; set; }
-
-        /// <summary>
-        /// The name of the task
-        /// </summary>
-        [JsonProperty("name")]
-        public string? Name { get; set; }
-
-        /// <summary>
-        /// Indicates whether the timing of the task is randomized within the butler interval
-        /// </summary>
-        [JsonProperty("scheduleRandomized")]
-        public bool? ScheduleRandomized { get; set; }
-
-        /// <summary>
-        /// A user-friendly title of the task
-        /// </summary>
-        [JsonProperty("title")]
-        public string? Title { get; set; }
+        [JsonProperty("AutomaticUpdates")]
+        AutomaticUpdates,
+        [JsonProperty("BackupDatabase")]
+        BackupDatabase,
+        [JsonProperty("ButlerTaskGenerateAdMarkers")]
+        ButlerTaskGenerateAdMarkers,
+        [JsonProperty("ButlerTaskGenerateCreditsMarkers")]
+        ButlerTaskGenerateCreditsMarkers,
+        [JsonProperty("ButlerTaskGenerateIntroMarkers")]
+        ButlerTaskGenerateIntroMarkers,
+        [JsonProperty("ButlerTaskGenerateVoiceActivity")]
+        ButlerTaskGenerateVoiceActivity,
+        [JsonProperty("CleanOldBundles")]
+        CleanOldBundles,
+        [JsonProperty("CleanOldCacheFiles")]
+        CleanOldCacheFiles,
+        [JsonProperty("DeepMediaAnalysis")]
+        DeepMediaAnalysis,
+        [JsonProperty("GarbageCollectBlobs")]
+        GarbageCollectBlobs,
+        [JsonProperty("GarbageCollectLibraryMedia")]
+        GarbageCollectLibraryMedia,
+        [JsonProperty("GenerateBlurHashes")]
+        GenerateBlurHashes,
+        [JsonProperty("GenerateChapterThumbs")]
+        GenerateChapterThumbs,
+        [JsonProperty("GenerateMediaIndexFiles")]
+        GenerateMediaIndexFiles,
+        [JsonProperty("LoudnessAnalysis")]
+        LoudnessAnalysis,
+        [JsonProperty("MusicAnalysis")]
+        MusicAnalysis,
+        [JsonProperty("OptimizeDatabase")]
+        OptimizeDatabase,
+        [JsonProperty("RefreshEpgGuides")]
+        RefreshEpgGuides,
+        [JsonProperty("RefreshLibraries")]
+        RefreshLibraries,
+        [JsonProperty("RefreshLocalMedia")]
+        RefreshLocalMedia,
+        [JsonProperty("RefreshPeriodicMetadata")]
+        RefreshPeriodicMetadata,
+        [JsonProperty("UpgradeMediaAnalysis")]
+        UpgradeMediaAnalysis,
     }
+
+    public static class ButlerTaskExtension
+    {
+        public static string Value(this ButlerTask value)
+        {
+            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
+        }
+
+        public static ButlerTask ToEnum(this string value)
+        {
+            foreach(var field in typeof(ButlerTask).GetFields())
+            {
+                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
+                if (attributes.Length == 0)
+                {
+                    continue;
+                }
+
+                var attribute = attributes[0] as JsonPropertyAttribute;
+                if (attribute != null && attribute.PropertyName == value)
+                {
+                    var enumVal = field.GetValue(null);
+
+                    if (enumVal is ButlerTask)
+                    {
+                        return (ButlerTask)enumVal;
+                    }
+                }
+            }
+
+            throw new Exception($"Unknown value {value} for enum ButlerTask");
+        }
+    }
+
 }

@@ -25,25 +25,25 @@ namespace LukeHagar.PlexAPI.SDK.Models.Components
     {
 
         [JsonProperty("aspectRatio")]
-        public double? AspectRatio { get; set; }
+        public float? AspectRatio { get; set; }
 
         [JsonProperty("audioChannels")]
-        public long? AudioChannels { get; set; }
+        public int? AudioChannels { get; set; }
 
         [JsonProperty("audioCodec")]
-        public object? AudioCodec { get; set; }
+        public string? AudioCodec { get; set; }
 
         [JsonProperty("audioProfile")]
-        public object? AudioProfile { get; set; }
+        public string? AudioProfile { get; set; }
 
         [JsonProperty("bitrate")]
-        public long? Bitrate { get; set; }
+        public int? Bitrate { get; set; }
 
         [JsonProperty("container")]
-        public object? Container { get; set; }
+        public string? Container { get; set; }
 
         [JsonProperty("duration")]
-        public long? Duration { get; set; }
+        public int? Duration { get; set; }
 
         [JsonProperty("has64bitOffsets")]
         public bool? Has64bitOffsets { get; set; }
@@ -52,10 +52,10 @@ namespace LukeHagar.PlexAPI.SDK.Models.Components
         public bool? HasVoiceActivity { get; set; }
 
         [JsonProperty("height")]
-        public long? Height { get; set; }
+        public int? Height { get; set; }
 
         [JsonProperty("id")]
-        public long? Id { get; set; }
+        public long Id { get; set; } = default!;
 
         [JsonProperty("optimizedForStreaming")]
         public bool? OptimizedForStreaming { get; set; }
@@ -64,19 +64,19 @@ namespace LukeHagar.PlexAPI.SDK.Models.Components
         public List<Part>? Part { get; set; }
 
         [JsonProperty("videoCodec")]
-        public object? VideoCodec { get; set; }
+        public string? VideoCodec { get; set; }
 
         [JsonProperty("videoFrameRate")]
-        public object? VideoFrameRate { get; set; }
+        public string? VideoFrameRate { get; set; }
 
         [JsonProperty("videoProfile")]
-        public object? VideoProfile { get; set; }
+        public string? VideoProfile { get; set; }
 
         [JsonProperty("videoResolution")]
-        public object? VideoResolution { get; set; }
+        public string? VideoResolution { get; set; }
 
         [JsonProperty("width")]
-        public long? Width { get; set; }
+        public int? Width { get; set; }
 
         [JsonProperty("additionalProperties")]
         public Dictionary<string, object>? AdditionalProperties { get; set; }

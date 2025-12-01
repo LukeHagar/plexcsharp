@@ -106,7 +106,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Set the specified field to locked (or unlocked if set to 0)
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=field.locked")]
-        public BoolInt? FieldLocked { get; set; }
+        public BoolInt? FieldLocked { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
 
         /// <summary>
         /// This field is treated specially by albums or artists and may be used for implicit reparenting.

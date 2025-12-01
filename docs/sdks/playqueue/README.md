@@ -52,11 +52,11 @@ var sdk = new PlexAPI(
 
 CreatePlayQueueRequest req = new CreatePlayQueueRequest() {
     Type = LukeHagar.PlexAPI.SDK.Models.Requests.Type.Audio,
-    Shuffle = BoolInt.One,
-    Repeat = BoolInt.One,
-    Continuous = BoolInt.One,
-    Recursive = BoolInt.One,
-    OnDeck = BoolInt.One,
+    Shuffle = BoolInt.True,
+    Repeat = BoolInt.True,
+    Continuous = BoolInt.True,
+    Recursive = BoolInt.True,
+    OnDeck = BoolInt.True,
 };
 
 var res = await sdk.PlayQueue.CreatePlayQueueAsync(req);
@@ -109,9 +109,9 @@ var sdk = new PlexAPI(
 
 GetPlayQueueRequest req = new GetPlayQueueRequest() {
     PlayQueueId = 210646,
-    Own = BoolInt.One,
-    IncludeBefore = BoolInt.One,
-    IncludeAfter = BoolInt.One,
+    Own = BoolInt.True,
+    IncludeBefore = BoolInt.True,
+    IncludeAfter = BoolInt.True,
 };
 
 var res = await sdk.PlayQueue.GetPlayQueueAsync(req);
@@ -164,7 +164,7 @@ var sdk = new PlexAPI(
 
 AddToPlayQueueRequest req = new AddToPlayQueueRequest() {
     PlayQueueId = 919248,
-    Next = BoolInt.One,
+    Next = BoolInt.True,
 };
 
 var res = await sdk.PlayQueue.AddToPlayQueueAsync(req);

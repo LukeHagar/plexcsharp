@@ -41,8 +41,8 @@ var sdk = new PlexAPI(
 );
 
 ApplyUpdatesRequest req = new ApplyUpdatesRequest() {
-    Tonight = BoolInt.One,
-    Skip = BoolInt.One,
+    Tonight = BoolInt.True,
+    Skip = BoolInt.True,
 };
 
 var res = await sdk.Updater.ApplyUpdatesAsync(req);
@@ -94,7 +94,7 @@ var sdk = new PlexAPI(
 );
 
 CheckUpdatesRequest req = new CheckUpdatesRequest() {
-    Download = BoolInt.One,
+    Download = BoolInt.True,
 };
 
 var res = await sdk.Updater.CheckUpdatesAsync(req);

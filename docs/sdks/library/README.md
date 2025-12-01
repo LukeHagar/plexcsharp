@@ -114,7 +114,13 @@ var sdk = new PlexAPI(
     token: "<YOUR_API_KEY_HERE>"
 );
 
-GetLibraryItemsRequest req = new GetLibraryItemsRequest() {};
+GetLibraryItemsRequest req = new GetLibraryItemsRequest() {
+    MediaQuery = new MediaQuery() {
+        Type = MediaType.Episode,
+        SourceType = 2,
+        Sort = "duration:desc,index",
+    },
+};
 
 var res = await sdk.Library.GetLibraryItemsAsync(req);
 
@@ -224,8 +230,8 @@ var sdk = new PlexAPI(
 IngestTransientItemRequest req = new IngestTransientItemRequest() {
     Url = "file:///storage%2Femulated%2F0%2FArcher-S01E01.mkv",
     VirtualFilePath = "/Avatar.mkv",
-    ComputeHashes = BoolInt.One,
-    IngestNonMatches = BoolInt.One,
+    ComputeHashes = BoolInt.True,
+    IngestNonMatches = BoolInt.True,
 };
 
 var res = await sdk.Library.IngestTransientItemAsync(req);
@@ -281,9 +287,10 @@ var sdk = new PlexAPI(
 );
 
 GetLibraryMatchesRequest req = new GetLibraryMatchesRequest() {
-    IncludeFullMetadata = BoolInt.One,
-    IncludeAncestorMetadata = BoolInt.One,
-    IncludeAlternateMetadataSources = BoolInt.One,
+    Type = MediaType.TvShow,
+    IncludeFullMetadata = BoolInt.True,
+    IncludeAncestorMetadata = BoolInt.True,
+    IncludeAlternateMetadataSources = BoolInt.True,
 };
 
 var res = await sdk.Library.GetLibraryMatchesAsync(req);
@@ -335,7 +342,7 @@ var sdk = new PlexAPI(
 );
 
 OptimizeDatabaseRequest req = new OptimizeDatabaseRequest() {
-    Async = BoolInt.One,
+    Async = BoolInt.True,
 };
 
 var res = await sdk.Library.OptimizeDatabaseAsync(req);
@@ -485,8 +492,8 @@ AddSectionRequest req = new AddSectionRequest() {
         "O:\fatboy\Media\My Music",
     },
     Prefs = new QueryParamPrefs() {},
-    Relative = BoolInt.One,
-    ImportFromiTunes = BoolInt.One,
+    Relative = BoolInt.True,
+    ImportFromiTunes = BoolInt.True,
 };
 
 var res = await sdk.Library.AddSectionAsync(req);
@@ -667,7 +674,9 @@ var sdk = new PlexAPI(
     token: "<YOUR_API_KEY_HERE>"
 );
 
-GetTagsRequest req = new GetTagsRequest() {};
+GetTagsRequest req = new GetTagsRequest() {
+    Type = MediaType.TvShow,
+};
 
 var res = await sdk.Library.GetTagsAsync(req);
 
@@ -719,7 +728,7 @@ var sdk = new PlexAPI(
 
 DeleteMetadataItemRequest req = new DeleteMetadataItemRequest() {
     Ids = "<value>",
-    Proxy = BoolInt.One,
+    Proxy = BoolInt.True,
 };
 
 var res = await sdk.Library.DeleteMetadataItemAsync(req);
@@ -984,7 +993,7 @@ var sdk = new PlexAPI(
 
 GenerateThumbsRequest req = new GenerateThumbsRequest() {
     Ids = "<value>",
-    Force = BoolInt.One,
+    Force = BoolInt.True,
 };
 
 var res = await sdk.Library.GenerateThumbsAsync(req);
@@ -1037,8 +1046,8 @@ var sdk = new PlexAPI(
 
 DetectCreditsRequest req = new DetectCreditsRequest() {
     Ids = "<value>",
-    Force = BoolInt.One,
-    Manual = BoolInt.One,
+    Force = BoolInt.True,
+    Manual = BoolInt.True,
 };
 
 var res = await sdk.Library.DetectCreditsAsync(req);
@@ -1248,7 +1257,7 @@ var sdk = new PlexAPI(
 
 StartBifGenerationRequest req = new StartBifGenerationRequest() {
     Ids = "<value>",
-    Force = BoolInt.One,
+    Force = BoolInt.True,
 };
 
 var res = await sdk.Library.StartBifGenerationAsync(req);
@@ -1301,7 +1310,7 @@ var sdk = new PlexAPI(
 
 DetectIntrosRequest req = new DetectIntrosRequest() {
     Ids = "<value>",
-    Force = BoolInt.One,
+    Force = BoolInt.True,
 };
 
 var res = await sdk.Library.DetectIntrosAsync(req);
@@ -1461,7 +1470,7 @@ var sdk = new PlexAPI(
 
 ListMatchesRequest req = new ListMatchesRequest() {
     Ids = "<value>",
-    Manual = BoolInt.One,
+    Manual = BoolInt.True,
 };
 
 var res = await sdk.Library.ListMatchesAsync(req);
@@ -1670,7 +1679,7 @@ var sdk = new PlexAPI(
 
 RefreshItemsMetadataRequest req = new RefreshItemsMetadataRequest() {
     Ids = "<value>",
-    MarkUpdated = BoolInt.One,
+    MarkUpdated = BoolInt.True,
 };
 
 var res = await sdk.Library.RefreshItemsMetadataAsync(req);
@@ -1879,8 +1888,8 @@ var sdk = new PlexAPI(
 
 AddSubtitlesRequest req = new AddSubtitlesRequest() {
     Ids = "<value>",
-    Forced = BoolInt.One,
-    HearingImpaired = BoolInt.One,
+    Forced = BoolInt.True,
+    HearingImpaired = BoolInt.True,
 };
 
 var res = await sdk.Library.AddSubtitlesAsync(req);
@@ -2089,8 +2098,8 @@ var sdk = new PlexAPI(
 
 DetectVoiceActivityRequest req = new DetectVoiceActivityRequest() {
     Ids = "<value>",
-    Force = BoolInt.One,
-    Manual = BoolInt.One,
+    Force = BoolInt.True,
+    Manual = BoolInt.True,
 };
 
 var res = await sdk.Library.DetectVoiceActivityAsync(req);
@@ -2143,7 +2152,7 @@ var sdk = new PlexAPI(
 
 GetAugmentationStatusRequest req = new GetAugmentationStatusRequest() {
     AugmentationId = "<id>",
-    Wait = BoolInt.One,
+    Wait = BoolInt.True,
 };
 
 var res = await sdk.Library.GetAugmentationStatusAsync(req);
@@ -2196,7 +2205,7 @@ var sdk = new PlexAPI(
 
 SetStreamSelectionRequest req = new SetStreamSelectionRequest() {
     PartId = 360489,
-    AllParts = BoolInt.One,
+    AllParts = BoolInt.True,
 };
 
 var res = await sdk.Library.SetStreamSelectionAsync(req);
@@ -2353,7 +2362,7 @@ var sdk = new PlexAPI(
 
 DeleteLibrarySectionRequest req = new DeleteLibrarySectionRequest() {
     SectionId = "<id>",
-    Async = BoolInt.One,
+    Async = BoolInt.True,
 };
 
 var res = await sdk.Library.DeleteLibrarySectionAsync(req);
@@ -2406,7 +2415,7 @@ var sdk = new PlexAPI(
 
 GetLibraryDetailsRequest req = new GetLibraryDetailsRequest() {
     SectionId = "<id>",
-    IncludeDetails = BoolInt.One,
+    IncludeDetails = BoolInt.True,
 };
 
 var res = await sdk.Library.GetLibraryDetailsAsync(req);
@@ -2562,7 +2571,7 @@ var sdk = new PlexAPI(
 
 UpdateItemsRequest req = new UpdateItemsRequest() {
     SectionId = "<id>",
-    FieldLocked = BoolInt.One,
+    FieldLocked = BoolInt.True,
 };
 
 var res = await sdk.Library.UpdateItemsAsync(req);
@@ -2668,6 +2677,11 @@ var sdk = new PlexAPI(
 
 AutocompleteRequest req = new AutocompleteRequest() {
     SectionId = 942007,
+    MediaQuery = new MediaQuery() {
+        Type = MediaType.Episode,
+        SourceType = 2,
+        Sort = "duration:desc,index",
+    },
 };
 
 var res = await sdk.Library.AutocompleteAsync(req);
@@ -2720,6 +2734,11 @@ var sdk = new PlexAPI(
 
 GetCollectionsRequest req = new GetCollectionsRequest() {
     SectionId = 348838,
+    MediaQuery = new MediaQuery() {
+        Type = MediaType.Episode,
+        SourceType = 2,
+        Sort = "duration:desc,index",
+    },
 };
 
 var res = await sdk.Library.GetCollectionsAsync(req);
@@ -2773,6 +2792,11 @@ var sdk = new PlexAPI(
 
 GetCommonRequest req = new GetCommonRequest() {
     SectionId = 298154,
+    MediaQuery = new MediaQuery() {
+        Type = MediaType.Episode,
+        SourceType = 2,
+        Sort = "duration:desc,index",
+    },
 };
 
 var res = await sdk.Library.GetCommonAsync(req);
@@ -2929,6 +2953,11 @@ var sdk = new PlexAPI(
 
 GetFirstCharactersRequest req = new GetFirstCharactersRequest() {
     SectionId = 3947,
+    MediaQuery = new MediaQuery() {
+        Type = MediaType.Episode,
+        SourceType = 2,
+        Sort = "duration:desc,index",
+    },
 };
 
 var res = await sdk.Library.GetFirstCharactersAsync(req);
@@ -3242,7 +3271,7 @@ var sdk = new PlexAPI(
 
 RefreshSectionRequest req = new RefreshSectionRequest() {
     SectionId = 450300,
-    Force = BoolInt.One,
+    Force = BoolInt.True,
 };
 
 var res = await sdk.Library.RefreshSectionAsync(req);
@@ -3722,7 +3751,7 @@ var sdk = new PlexAPI(
 DeleteMediaItemRequest req = new DeleteMediaItemRequest() {
     Ids = "<value>",
     MediaItem = "<value>",
-    Proxy = BoolInt.One,
+    Proxy = BoolInt.True,
 };
 
 var res = await sdk.Library.DeleteMediaItemAsync(req);
@@ -3882,6 +3911,11 @@ var sdk = new PlexAPI(
 GetSectionImageRequest req = new GetSectionImageRequest() {
     SectionId = 925611,
     UpdatedAt = 117413,
+    MediaQuery = new MediaQuery() {
+        Type = MediaType.Episode,
+        SourceType = 2,
+        Sort = "duration:desc,index",
+    },
 };
 
 var res = await sdk.Library.GetSectionImageAsync(req);
@@ -3988,7 +4022,7 @@ var sdk = new PlexAPI(
 GetStreamRequest req = new GetStreamRequest() {
     StreamId = 314506,
     Ext = "<value>",
-    AutoAdjustSubtitle = BoolInt.One,
+    AutoAdjustSubtitle = BoolInt.True,
 };
 
 var res = await sdk.Library.GetStreamAsync(req);
@@ -4153,7 +4187,7 @@ GetMediaPartRequest req = new GetMediaPartRequest() {
     PartId = 877105,
     Changestamp = 970622,
     Filename = "example.file",
-    Download = BoolInt.One,
+    Download = BoolInt.True,
 };
 
 var res = await sdk.Library.GetMediaPartAsync(req);

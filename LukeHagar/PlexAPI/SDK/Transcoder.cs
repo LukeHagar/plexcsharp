@@ -80,10 +80,11 @@ namespace LukeHagar.PlexAPI.SDK
     public class Transcoder: ITranscoder
     {
         public SDKConfig SDKConfiguration { get; private set; }
-        private const string _language = "csharp";
-        private const string _sdkVersion = "0.19.1";
-        private const string _sdkGenVersion = "2.753.1";
-        private const string _openapiDocVersion = "1.1.1";
+
+        private const string _language = Constants.Language;
+        private const string _sdkVersion = Constants.SdkVersion;
+        private const string _sdkGenVersion = Constants.SdkGenVersion;
+        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
 
         public Transcoder(SDKConfig config)
         {
@@ -105,7 +106,7 @@ namespace LukeHagar.PlexAPI.SDK
             request.Marketplace ??= SDKConfiguration.Marketplace;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/photo/:/transcode", request);
+            var urlString = URLBuilder.Build(baseUrl, "/photo/:/transcode", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -221,7 +222,7 @@ namespace LukeHagar.PlexAPI.SDK
             request.Marketplace ??= SDKConfiguration.Marketplace;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/{transcodeType}/:/transcode/universal/decision", request);
+            var urlString = URLBuilder.Build(baseUrl, "/{transcodeType}/:/transcode/universal/decision", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -326,7 +327,7 @@ namespace LukeHagar.PlexAPI.SDK
             request.Marketplace ??= SDKConfiguration.Marketplace;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/{transcodeType}/:/transcode/universal/fallback", request);
+            var urlString = URLBuilder.Build(baseUrl, "/{transcodeType}/:/transcode/universal/fallback", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -413,7 +414,7 @@ namespace LukeHagar.PlexAPI.SDK
             request.Marketplace ??= SDKConfiguration.Marketplace;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/{transcodeType}/:/transcode/universal/subtitles", request);
+            var urlString = URLBuilder.Build(baseUrl, "/{transcodeType}/:/transcode/universal/subtitles", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -500,7 +501,7 @@ namespace LukeHagar.PlexAPI.SDK
             request.Marketplace ??= SDKConfiguration.Marketplace;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/{transcodeType}/:/transcode/universal/start.{extension}", request);
+            var urlString = URLBuilder.Build(baseUrl, "/{transcodeType}/:/transcode/universal/start.{extension}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);

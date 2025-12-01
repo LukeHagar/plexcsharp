@@ -122,19 +122,19 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Indicates if image should be upscaled to the desired width/height.  Defaults to false
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=upscale")]
-        public BoolInt? Upscale { get; set; }
+        public BoolInt? Upscale { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
 
         /// <summary>
         /// Indicates if image should be scaled to fit the smaller dimension.  By default (false) the image is scaled to fit within the width/height specified but if this parameter is true, it will allow overflowing one dimension to fit the other.  Essentially it is making the width/height minimum sizes of the image or sizing the image to fill the entire width/height even if it overflows one dimension.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=minSize")]
-        public BoolInt? MinSize { get; set; }
+        public BoolInt? MinSize { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
 
         /// <summary>
         /// Obey the rotation values specified in EXIF data.  Defaults to true.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=rotate")]
-        public BoolInt? Rotate { get; set; }
+        public BoolInt? Rotate { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
 
         /// <summary>
         /// Apply a blur to the image, Defaults to 0 (none)

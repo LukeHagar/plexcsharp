@@ -120,43 +120,43 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Indicates the client supports ABR.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=autoAdjustQuality")]
-        public BoolInt? AutoAdjustQuality { get; set; }
+        public BoolInt? AutoAdjustQuality { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
 
         /// <summary>
         /// Indicates if the server should adjust subtitles based on Voice Activity Data.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=autoAdjustSubtitle")]
-        public BoolInt? AutoAdjustSubtitle { get; set; }
+        public BoolInt? AutoAdjustSubtitle { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
 
         /// <summary>
         /// Indicates the client supports direct playing the indicated content.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=directPlay")]
-        public BoolInt? DirectPlay { get; set; }
+        public BoolInt? DirectPlay { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
 
         /// <summary>
         /// Indicates the client supports direct streaming the video of the indicated content.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=directStream")]
-        public BoolInt? DirectStream { get; set; }
+        public BoolInt? DirectStream { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
 
         /// <summary>
         /// Indicates the client supports direct streaming the audio of the indicated content.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=directStreamAudio")]
-        public BoolInt? DirectStreamAudio { get; set; }
+        public BoolInt? DirectStreamAudio { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
 
         /// <summary>
         /// Indicates if resolution should be adjusted for orientation.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=disableResolutionRotation")]
-        public BoolInt? DisableResolutionRotation { get; set; }
+        public BoolInt? DisableResolutionRotation { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
 
         /// <summary>
         /// Ignore client profiles when determining if direct play is possible. Only has an effect when directPlay=1 and both mediaIndex and partIndex are specified and neither are -1
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=hasMDE")]
-        public BoolInt? HasMDE { get; set; }
+        public BoolInt? HasMDE { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
 
         /// <summary>
         /// Network type of the client, can be used to help determine target bitrate.

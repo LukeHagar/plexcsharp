@@ -103,6 +103,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Perform the same for all parts of this media selecting similar streams in each
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=allParts")]
-        public BoolInt? AllParts { get; set; }
+        public BoolInt? AllParts { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
     }
 }

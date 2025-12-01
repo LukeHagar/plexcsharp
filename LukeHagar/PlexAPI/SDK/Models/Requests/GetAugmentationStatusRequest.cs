@@ -91,6 +91,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Wait for augmentation completion before returning
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=wait")]
-        public BoolInt? Wait { get; set; }
+        public BoolInt? Wait { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
     }
 }

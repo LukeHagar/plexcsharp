@@ -50,7 +50,7 @@ var sdk = new PlexAPI(
 );
 
 GetAllHubsRequest req = new GetAllHubsRequest() {
-    OnlyTransient = BoolInt.One,
+    OnlyTransient = BoolInt.True,
 };
 
 var res = await sdk.Hubs.GetAllHubsAsync(req);
@@ -260,7 +260,7 @@ var sdk = new PlexAPI(
 
 GetMetadataHubsRequest req = new GetMetadataHubsRequest() {
     MetadataId = 605482,
-    OnlyTransient = BoolInt.One,
+    OnlyTransient = BoolInt.True,
 };
 
 var res = await sdk.Hubs.GetMetadataHubsAsync(req);
@@ -313,7 +313,7 @@ var sdk = new PlexAPI(
 
 GetPostplayHubsRequest req = new GetPostplayHubsRequest() {
     MetadataId = 441419,
-    OnlyTransient = BoolInt.One,
+    OnlyTransient = BoolInt.True,
 };
 
 var res = await sdk.Hubs.GetPostplayHubsAsync(req);
@@ -366,7 +366,7 @@ var sdk = new PlexAPI(
 
 GetRelatedHubsRequest req = new GetRelatedHubsRequest() {
     MetadataId = 8858,
-    OnlyTransient = BoolInt.One,
+    OnlyTransient = BoolInt.True,
 };
 
 var res = await sdk.Hubs.GetRelatedHubsAsync(req);
@@ -419,7 +419,7 @@ var sdk = new PlexAPI(
 
 GetSectionHubsRequest req = new GetSectionHubsRequest() {
     SectionId = 336924,
-    OnlyTransient = BoolInt.One,
+    OnlyTransient = BoolInt.True,
 };
 
 var res = await sdk.Hubs.GetSectionHubsAsync(req);
@@ -577,9 +577,9 @@ var sdk = new PlexAPI(
 CreateCustomHubRequest req = new CreateCustomHubRequest() {
     SectionId = 869922,
     MetadataItemId = 703843,
-    PromotedToRecommended = BoolInt.One,
-    PromotedToOwnHome = BoolInt.One,
-    PromotedToSharedHome = BoolInt.One,
+    PromotedToRecommended = BoolInt.True,
+    PromotedToOwnHome = BoolInt.True,
+    PromotedToSharedHome = BoolInt.True,
 };
 
 var res = await sdk.Hubs.CreateCustomHubAsync(req);
@@ -739,9 +739,9 @@ var sdk = new PlexAPI(
 UpdateHubVisibilityRequest req = new UpdateHubVisibilityRequest() {
     SectionId = 341650,
     Identifier = "<value>",
-    PromotedToRecommended = BoolInt.One,
-    PromotedToOwnHome = BoolInt.One,
-    PromotedToSharedHome = BoolInt.One,
+    PromotedToRecommended = BoolInt.True,
+    PromotedToOwnHome = BoolInt.True,
+    PromotedToSharedHome = BoolInt.True,
 };
 
 var res = await sdk.Hubs.UpdateHubVisibilityAsync(req);

@@ -109,6 +109,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Whether the server should attempt to automatically adjust the subtitle timestamps to match the media
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=autoAdjustSubtitle")]
-        public BoolInt? AutoAdjustSubtitle { get; set; }
+        public BoolInt? AutoAdjustSubtitle { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
     }
 }

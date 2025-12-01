@@ -88,12 +88,12 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Indicate whether detection should be re-run
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=force")]
-        public BoolInt? Force { get; set; }
+        public BoolInt? Force { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
 
         /// <summary>
         /// Indicate whether detection is manually run
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=manual")]
-        public BoolInt? Manual { get; set; }
+        public BoolInt? Manual { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
     }
 }

@@ -85,12 +85,12 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Indicate that you want the update to run during the next Butler execution. Omitting this or setting it to false indicates that the update should install immediately.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=tonight")]
-        public BoolInt? Tonight { get; set; }
+        public BoolInt? Tonight { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
 
         /// <summary>
         /// Indicate that the latest version should be marked as skipped. The &lt;Release&gt; entry for this version will have the `state` set to `skipped`.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=skip")]
-        public BoolInt? Skip { get; set; }
+        public BoolInt? Skip { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
     }
 }

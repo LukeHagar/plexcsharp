@@ -101,7 +101,7 @@ var sdk = new PlexAPI(
 
 UploadPlaylistRequest req = new UploadPlaylistRequest() {
     Path = "/home/barkley/playlist.m3u",
-    Force = BoolInt.One,
+    Force = BoolInt.True,
 };
 
 var res = await sdk.LibraryPlaylists.UploadPlaylistAsync(req);

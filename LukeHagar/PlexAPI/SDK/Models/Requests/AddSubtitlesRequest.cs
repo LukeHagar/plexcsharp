@@ -103,9 +103,9 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public string? Format { get; set; }
 
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=forced")]
-        public BoolInt? Forced { get; set; }
+        public BoolInt? Forced { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
 
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=hearingImpaired")]
-        public BoolInt? HearingImpaired { get; set; }
+        public BoolInt? HearingImpaired { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
     }
 }

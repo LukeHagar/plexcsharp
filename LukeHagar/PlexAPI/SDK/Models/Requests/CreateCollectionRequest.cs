@@ -106,9 +106,25 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public string? Uri { get; set; }
 
         /// <summary>
-        /// The metadata type to filter by
+        /// The type of media to retrieve or filter by.<br/>
+        /// 
+        /// <remarks>
+        /// <br/>
+        /// 1 = movie<br/>
+        /// 2 = show<br/>
+        /// 3 = season<br/>
+        /// 4 = episode<br/>
+        /// 5 = artist<br/>
+        /// 6 = album<br/>
+        /// 7 = track<br/>
+        /// 8 = photo_album<br/>
+        /// 9 = photo<br/>
+        /// <br/>
+        /// E.g. A movie library will not return anything with type 3 as there are no seasons for movie libraries<br/>
+        /// 
+        /// </remarks>
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=type")]
-        public long? Type { get; set; }
+        public MediaType? Type { get; set; }
     }
 }

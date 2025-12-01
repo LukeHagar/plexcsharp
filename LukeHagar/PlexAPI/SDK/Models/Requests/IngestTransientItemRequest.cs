@@ -97,12 +97,12 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Whether or not to compute Plex and OpenSubtitle hashes for the file. Defaults to 0.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=computeHashes")]
-        public BoolInt? ComputeHashes { get; set; }
+        public BoolInt? ComputeHashes { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
 
         /// <summary>
         /// Whether or not non matching media should be stored. Defaults to 0.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=ingestNonMatches")]
-        public BoolInt? IngestNonMatches { get; set; }
+        public BoolInt? IngestNonMatches { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
     }
 }

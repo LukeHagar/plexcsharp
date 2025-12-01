@@ -100,6 +100,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public long? Year { get; set; }
 
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=manual")]
-        public BoolInt? Manual { get; set; }
+        public BoolInt? Manual { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
     }
 }

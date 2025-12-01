@@ -47,8 +47,8 @@ var sdk = new PlexAPI(
 );
 
 GetAllSubscriptionsRequest req = new GetAllSubscriptionsRequest() {
-    IncludeGrabs = BoolInt.One,
-    IncludeStorage = BoolInt.One,
+    IncludeGrabs = BoolInt.True,
+    IncludeStorage = BoolInt.True,
 };
 
 var res = await sdk.Subscriptions.GetAllSubscriptionsAsync(req);
@@ -371,8 +371,8 @@ var sdk = new PlexAPI(
 
 GetSubscriptionRequest req = new GetSubscriptionRequest() {
     SubscriptionId = 186713,
-    IncludeGrabs = BoolInt.One,
-    IncludeStorage = BoolInt.One,
+    IncludeGrabs = BoolInt.True,
+    IncludeStorage = BoolInt.True,
 };
 
 var res = await sdk.Subscriptions.GetSubscriptionAsync(req);

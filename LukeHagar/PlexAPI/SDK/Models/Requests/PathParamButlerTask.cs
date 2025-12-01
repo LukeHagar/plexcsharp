@@ -16,7 +16,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
     /// <summary>
     /// The task name
     /// </summary>
-    public enum Task
+    public enum PathParamButlerTask
     {
         [JsonProperty("AutomaticUpdates")]
         AutomaticUpdates,
@@ -64,16 +64,16 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         UpgradeMediaAnalysis,
     }
 
-    public static class TaskExtension
+    public static class PathParamButlerTaskExtension
     {
-        public static string Value(this Task value)
+        public static string Value(this PathParamButlerTask value)
         {
             return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
         }
 
-        public static Task ToEnum(this string value)
+        public static PathParamButlerTask ToEnum(this string value)
         {
-            foreach(var field in typeof(Task).GetFields())
+            foreach(var field in typeof(PathParamButlerTask).GetFields())
             {
                 var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
                 if (attributes.Length == 0)
@@ -86,14 +86,14 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
                 {
                     var enumVal = field.GetValue(null);
 
-                    if (enumVal is Task)
+                    if (enumVal is PathParamButlerTask)
                     {
-                        return (Task)enumVal;
+                        return (PathParamButlerTask)enumVal;
                     }
                 }
             }
 
-            throw new Exception($"Unknown value {value} for enum Task");
+            throw new Exception($"Unknown value {value} for enum PathParamButlerTask");
         }
     }
 

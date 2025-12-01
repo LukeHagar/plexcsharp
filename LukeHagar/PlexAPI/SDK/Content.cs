@@ -152,10 +152,11 @@ namespace LukeHagar.PlexAPI.SDK
     public class Content: IContent
     {
         public SDKConfig SDKConfiguration { get; private set; }
-        private const string _language = "csharp";
-        private const string _sdkVersion = "0.19.1";
-        private const string _sdkGenVersion = "2.753.1";
-        private const string _openapiDocVersion = "1.1.1";
+
+        private const string _language = Constants.Language;
+        private const string _sdkVersion = Constants.SdkVersion;
+        private const string _sdkGenVersion = Constants.SdkGenVersion;
+        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
 
         public Content(SDKConfig config)
         {
@@ -181,7 +182,7 @@ namespace LukeHagar.PlexAPI.SDK
             request.Marketplace ??= SDKConfiguration.Marketplace;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/library/collections/{collectionId}/items", request);
+            var urlString = URLBuilder.Build(baseUrl, "/library/collections/{collectionId}/items", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -286,7 +287,7 @@ namespace LukeHagar.PlexAPI.SDK
             request.Marketplace ??= SDKConfiguration.Marketplace;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/library/metadata/{ids}", request);
+            var urlString = URLBuilder.Build(baseUrl, "/library/metadata/{ids}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -391,7 +392,7 @@ namespace LukeHagar.PlexAPI.SDK
             request.Marketplace ??= SDKConfiguration.Marketplace;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/library/sections/{sectionId}/albums", request);
+            var urlString = URLBuilder.Build(baseUrl, "/library/sections/{sectionId}/albums", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -496,7 +497,7 @@ namespace LukeHagar.PlexAPI.SDK
             request.Marketplace ??= SDKConfiguration.Marketplace;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/library/sections/{sectionId}/all", request);
+            var urlString = URLBuilder.Build(baseUrl, "/library/sections/{sectionId}/all", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -601,7 +602,7 @@ namespace LukeHagar.PlexAPI.SDK
             request.Marketplace ??= SDKConfiguration.Marketplace;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/library/sections/{sectionId}/allLeaves", request);
+            var urlString = URLBuilder.Build(baseUrl, "/library/sections/{sectionId}/allLeaves", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -706,7 +707,7 @@ namespace LukeHagar.PlexAPI.SDK
             request.Marketplace ??= SDKConfiguration.Marketplace;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/library/sections/{sectionId}/arts", request);
+            var urlString = URLBuilder.Build(baseUrl, "/library/sections/{sectionId}/arts", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -811,7 +812,7 @@ namespace LukeHagar.PlexAPI.SDK
             request.Marketplace ??= SDKConfiguration.Marketplace;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/library/sections/{sectionId}/categories", request);
+            var urlString = URLBuilder.Build(baseUrl, "/library/sections/{sectionId}/categories", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -916,7 +917,7 @@ namespace LukeHagar.PlexAPI.SDK
             request.Marketplace ??= SDKConfiguration.Marketplace;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/library/sections/{sectionId}/cluster", request);
+            var urlString = URLBuilder.Build(baseUrl, "/library/sections/{sectionId}/cluster", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -1021,7 +1022,7 @@ namespace LukeHagar.PlexAPI.SDK
             request.Marketplace ??= SDKConfiguration.Marketplace;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/library/sections/{sectionId}/computePath", request);
+            var urlString = URLBuilder.Build(baseUrl, "/library/sections/{sectionId}/computePath", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -1126,7 +1127,7 @@ namespace LukeHagar.PlexAPI.SDK
             request.Marketplace ??= SDKConfiguration.Marketplace;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/library/sections/{sectionId}/location", request);
+            var urlString = URLBuilder.Build(baseUrl, "/library/sections/{sectionId}/location", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -1231,7 +1232,7 @@ namespace LukeHagar.PlexAPI.SDK
             request.Marketplace ??= SDKConfiguration.Marketplace;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/library/sections/{sectionId}/moment", request);
+            var urlString = URLBuilder.Build(baseUrl, "/library/sections/{sectionId}/moment", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -1336,7 +1337,7 @@ namespace LukeHagar.PlexAPI.SDK
             request.Marketplace ??= SDKConfiguration.Marketplace;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/library/sections/{sectionId}/nearest", request);
+            var urlString = URLBuilder.Build(baseUrl, "/library/sections/{sectionId}/nearest", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -1441,7 +1442,7 @@ namespace LukeHagar.PlexAPI.SDK
             request.Marketplace ??= SDKConfiguration.Marketplace;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/library/collections/{collectionId}/composite/{updatedAt}", request);
+            var urlString = URLBuilder.Build(baseUrl, "/library/collections/{collectionId}/composite/{updatedAt}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);

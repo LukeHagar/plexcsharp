@@ -91,7 +91,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// If the server should transfer ownership to the requesting client (used in remote control scenarios).
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=own")]
-        public BoolInt? Own { get; set; }
+        public BoolInt? Own { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
 
         /// <summary>
         /// The play queue item ID for the center of the window - this doesn&apos;t change the current selected item.
@@ -109,12 +109,12 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Whether to include the items before the center (if 0, center is not included either), defaults to 1.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=includeBefore")]
-        public BoolInt? IncludeBefore { get; set; }
+        public BoolInt? IncludeBefore { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
 
         /// <summary>
         /// Whether to include the items after the center (if 0, center is not included either), defaults to 1.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=includeAfter")]
-        public BoolInt? IncludeAfter { get; set; }
+        public BoolInt? IncludeAfter { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
     }
 }

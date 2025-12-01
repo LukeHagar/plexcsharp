@@ -88,6 +88,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Whether proxy items, such as media optimized versions, should also be deleted.  Defaults to false.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=proxy")]
-        public BoolInt? Proxy { get; set; }
+        public BoolInt? Proxy { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
     }
 }

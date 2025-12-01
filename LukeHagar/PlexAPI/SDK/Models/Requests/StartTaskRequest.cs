@@ -85,7 +85,7 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// <summary>
         /// The task name
         /// </summary>
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=task")]
-        public PathParamTask Task { get; set; } = default!;
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=butlerTask")]
+        public PathParamButlerTask ButlerTask { get; set; } = default!;
     }
 }

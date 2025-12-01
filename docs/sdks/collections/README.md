@@ -38,6 +38,7 @@ var sdk = new PlexAPI(
 
 CreateCollectionRequest req = new CreateCollectionRequest() {
     SectionId = "<id>",
+    Type = MediaType.TvShow,
 };
 
 var res = await sdk.Collections.CreateCollectionAsync(req);

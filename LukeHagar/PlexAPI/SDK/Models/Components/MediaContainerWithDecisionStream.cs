@@ -24,113 +24,306 @@ namespace LukeHagar.PlexAPI.SDK.Models.Components
     public class MediaContainerWithDecisionStream
     {
 
+        /// <summary>
+        /// Indicates if this stream is default.
+        /// </summary>
         [JsonProperty("default")]
         public bool? Default { get; set; }
 
+        /// <summary>
+        /// Audio channel layout.
+        /// </summary>
         [JsonProperty("audioChannelLayout")]
-        public object? AudioChannelLayout { get; set; }
-
-        [JsonProperty("bitDepth")]
-        public long? BitDepth { get; set; }
-
-        [JsonProperty("bitrate")]
-        public long? Bitrate { get; set; }
+        public string? AudioChannelLayout { get; set; }
 
         /// <summary>
-        /// For subtitle streams only. If `true` then the server can attempt to automatically sync the subtitle timestamps with the video.
+        /// Number of audio channels (for audio streams).
+        /// </summary>
+        [JsonProperty("channels")]
+        public int? Channels { get; set; }
+
+        /// <summary>
+        /// Bit depth of the video stream.
+        /// </summary>
+        [JsonProperty("bitDepth")]
+        public int? BitDepth { get; set; }
+
+        /// <summary>
+        /// Dolby Vision BL compatibility ID.
+        /// </summary>
+        [JsonProperty("DOVIBLCompatID")]
+        public int? DOVIBLCompatID { get; set; }
+
+        /// <summary>
+        /// Indicates if Dolby Vision BL is present.
+        /// </summary>
+        [JsonProperty("DOVIBLPresent")]
+        public bool? DOVIBLPresent { get; set; }
+
+        /// <summary>
+        /// Indicates if Dolby Vision EL is present.
+        /// </summary>
+        [JsonProperty("DOVIELPresent")]
+        public bool? DOVIELPresent { get; set; }
+
+        /// <summary>
+        /// Dolby Vision level.
+        /// </summary>
+        [JsonProperty("DOVILevel")]
+        public int? DOVILevel { get; set; }
+
+        /// <summary>
+        /// Indicates if Dolby Vision is present.
+        /// </summary>
+        [JsonProperty("DOVIPresent")]
+        public bool? DOVIPresent { get; set; }
+
+        /// <summary>
+        /// Dolby Vision profile.
+        /// </summary>
+        [JsonProperty("DOVIProfile")]
+        public int? DOVIProfile { get; set; }
+
+        /// <summary>
+        /// Indicates if Dolby Vision RPU is present.
+        /// </summary>
+        [JsonProperty("DOVIRPUPresent")]
+        public bool? DOVIRPUPresent { get; set; }
+
+        /// <summary>
+        /// Dolby Vision version.
+        /// </summary>
+        [JsonProperty("DOVIVersion")]
+        public string? DOVIVersion { get; set; }
+
+        /// <summary>
+        /// Bitrate of the stream.
+        /// </summary>
+        [JsonProperty("bitrate")]
+        public int? Bitrate { get; set; }
+
+        /// <summary>
+        /// Indicates if the stream can auto-sync.
         /// </summary>
         [JsonProperty("canAutoSync")]
         public bool? CanAutoSync { get; set; }
 
+        /// <summary>
+        /// Chroma sample location.
+        /// </summary>
         [JsonProperty("chromaLocation")]
-        public object? ChromaLocation { get; set; }
-
-        [JsonProperty("chromaSubsampling")]
-        public object? ChromaSubsampling { get; set; }
+        public string? ChromaLocation { get; set; }
 
         /// <summary>
-        /// The codec of the stream, such as `h264` or `aac`
+        /// Chroma subsampling format.
+        /// </summary>
+        [JsonProperty("chromaSubsampling")]
+        public string? ChromaSubsampling { get; set; }
+
+        /// <summary>
+        /// Coded video height.
+        /// </summary>
+        [JsonProperty("codedHeight")]
+        public int? CodedHeight { get; set; }
+
+        /// <summary>
+        /// Coded video width.
+        /// </summary>
+        [JsonProperty("codedWidth")]
+        public int? CodedWidth { get; set; }
+
+        [JsonProperty("closedCaptions")]
+        public bool? ClosedCaptions { get; set; }
+
+        /// <summary>
+        /// Codec used by the stream.
         /// </summary>
         [JsonProperty("codec")]
-        public object? Codec { get; set; }
-
-        [JsonProperty("colorPrimaries")]
-        public object? ColorPrimaries { get; set; }
-
-        [JsonProperty("colorRange")]
-        public object? ColorRange { get; set; }
-
-        [JsonProperty("colorSpace")]
-        public object? ColorSpace { get; set; }
-
-        [JsonProperty("colorTrc")]
-        public object? ColorTrc { get; set; }
+        public string Codec { get; set; } = default!;
 
         /// <summary>
-        /// A friendly name for the stream, often comprised of the language and codec information
+        /// Color primaries used.
+        /// </summary>
+        [JsonProperty("colorPrimaries")]
+        public string? ColorPrimaries { get; set; }
+
+        /// <summary>
+        /// Color range (e.g., tv).
+        /// </summary>
+        [JsonProperty("colorRange")]
+        public string? ColorRange { get; set; }
+
+        /// <summary>
+        /// Color space.
+        /// </summary>
+        [JsonProperty("colorSpace")]
+        public string? ColorSpace { get; set; }
+
+        /// <summary>
+        /// Color transfer characteristics.
+        /// </summary>
+        [JsonProperty("colorTrc")]
+        public string? ColorTrc { get; set; }
+
+        /// <summary>
+        /// Display title for the stream.
         /// </summary>
         [JsonProperty("displayTitle")]
-        public object? DisplayTitle { get; set; }
+        public string DisplayTitle { get; set; } = default!;
 
+        /// <summary>
+        /// Extended display title for the stream.
+        /// </summary>
+        [JsonProperty("extendedDisplayTitle")]
+        public string? ExtendedDisplayTitle { get; set; }
+
+        /// <summary>
+        /// Frame rate of the stream.
+        /// </summary>
         [JsonProperty("frameRate")]
-        public double? FrameRate { get; set; }
+        public float? FrameRate { get; set; }
 
         [JsonProperty("hasScalingMatrix")]
-        public object? HasScalingMatrix { get; set; }
-
-        [JsonProperty("height")]
-        public long? Height { get; set; }
-
-        [JsonProperty("id")]
-        public long? Id { get; set; }
+        public bool? HasScalingMatrix { get; set; }
 
         /// <summary>
-        /// If the stream is part of the `Part` and not an external resource, the index of the stream within that part
+        /// Height of the video stream.
+        /// </summary>
+        [JsonProperty("height")]
+        public int? Height { get; set; }
+
+        /// <summary>
+        /// Unique stream identifier.
+        /// </summary>
+        [JsonProperty("id")]
+        public int Id { get; set; } = default!;
+
+        /// <summary>
+        /// Index of the stream.
         /// </summary>
         [JsonProperty("index")]
-        public long? Index { get; set; }
+        public int? Index { get; set; }
 
         /// <summary>
-        /// If the stream is independently streamable, the key from which it can be streamed
+        /// Key to access this stream part.
         /// </summary>
         [JsonProperty("key")]
-        public object? Key { get; set; }
-
-        [JsonProperty("language")]
-        public object? Language { get; set; }
+        public string Key { get; set; } = default!;
 
         /// <summary>
-        /// The three character language code for the stream contents
+        /// Language of the stream.
+        /// </summary>
+        [JsonProperty("language")]
+        public string? Language { get; set; }
+
+        /// <summary>
+        /// ISO language code.
         /// </summary>
         [JsonProperty("languageCode")]
-        public object? LanguageCode { get; set; }
+        public string? LanguageCode { get; set; }
 
+        /// <summary>
+        /// Language tag (e.g., en).
+        /// </summary>
+        [JsonProperty("languageTag")]
+        public string? LanguageTag { get; set; }
+
+        /// <summary>
+        /// Format of the stream (e.g., srt).
+        /// </summary>
+        [JsonProperty("format")]
+        public string? Format { get; set; }
+
+        /// <summary>
+        /// Indicates whether header compression is enabled.
+        /// </summary>
+        [JsonProperty("headerCompression")]
+        public bool? HeaderCompression { get; set; }
+
+        /// <summary>
+        /// Video level.
+        /// </summary>
         [JsonProperty("level")]
-        public long? Level { get; set; }
+        public int? Level { get; set; }
 
+        /// <summary>
+        /// Indicates if this is the original stream.
+        /// </summary>
+        [JsonProperty("original")]
+        public bool? Original { get; set; }
+
+        /// <summary>
+        /// Video profile.
+        /// </summary>
         [JsonProperty("profile")]
-        public object? Profile { get; set; }
+        public string? Profile { get; set; }
 
+        /// <summary>
+        /// Number of reference frames.
+        /// </summary>
         [JsonProperty("refFrames")]
-        public long? RefFrames { get; set; }
+        public int? RefFrames { get; set; }
 
+        /// <summary>
+        /// Sampling rate for the audio stream.
+        /// </summary>
         [JsonProperty("samplingRate")]
-        public long? SamplingRate { get; set; }
+        public int? SamplingRate { get; set; }
 
+        [JsonProperty("scanType")]
+        public string? ScanType { get; set; }
+
+        [JsonProperty("embeddedInVideo")]
+        public string? EmbeddedInVideo { get; set; }
+
+        /// <summary>
+        /// Indicates if this stream is selected (applicable for audio streams).
+        /// </summary>
         [JsonProperty("selected")]
         public bool? Selected { get; set; }
 
-        [JsonProperty("streamIdentifier")]
-        public long? StreamIdentifier { get; set; }
+        [JsonProperty("forced")]
+        public bool? Forced { get; set; }
 
         /// <summary>
-        /// A number indicating the type of the stream. `1` for video, `2` for audio, `3` for subtitles, `4` for lyrics
+        /// Indicates if the stream is for the hearing impaired.
+        /// </summary>
+        [JsonProperty("hearingImpaired")]
+        public bool? HearingImpaired { get; set; }
+
+        /// <summary>
+        /// Indicates if the stream is a dub.
+        /// </summary>
+        [JsonProperty("dub")]
+        public bool? Dub { get; set; }
+
+        /// <summary>
+        /// Optional title for the stream (e.g., language variant).
+        /// </summary>
+        [JsonProperty("title")]
+        public string? Title { get; set; }
+
+        [JsonProperty("streamIdentifier")]
+        public int? StreamIdentifier { get; set; }
+
+        /// <summary>
+        /// Stream type:<br/>
+        /// 
+        /// <remarks>
+        ///   - VIDEO = 1<br/>
+        ///   - AUDIO = 2<br/>
+        ///   - SUBTITLE = 3<br/>
+        /// 
+        /// </remarks>
         /// </summary>
         [JsonProperty("streamType")]
-        public long? StreamType { get; set; }
+        public long StreamType { get; } = 1;
 
+        /// <summary>
+        /// Width of the video stream.
+        /// </summary>
         [JsonProperty("width")]
-        public long? Width { get; set; }
+        public int? Width { get; set; }
 
         [JsonProperty("decision")]
         public MediaContainerWithDecisionDecision? Decision { get; set; }

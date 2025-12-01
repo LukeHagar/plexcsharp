@@ -348,7 +348,7 @@ var sdk = new PlexAPI(
 
 ModifyDeviceRequest req = new ModifyDeviceRequest() {
     DeviceId = 879135,
-    Enabled = BoolInt.One,
+    Enabled = BoolInt.True,
 };
 
 var res = await sdk.Devices.ModifyDeviceAsync(req);

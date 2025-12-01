@@ -85,6 +85,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// If set, don&apos;t wait for completion but return an activity
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=async")]
-        public BoolInt? Async { get; set; }
+        public BoolInt? Async { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
     }
 }

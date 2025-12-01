@@ -35,11 +35,14 @@ namespace LukeHagar.PlexAPI.SDK.Models.Components
         /// A filter parameter that can be used to query for more content that matches this tag value.
         /// </summary>
         [JsonProperty("filter")]
-        public object? Filter { get; set; }
+        public string? Filter { get; set; }
 
         [JsonProperty("id")]
-        public long? Id { get; set; }
+        public int? Id { get; set; }
 
+        /// <summary>
+        /// The rating key (Media ID) of this media item. Note: Although this is always an integer, it is represented as a string in the API.
+        /// </summary>
         [JsonProperty("ratingKey")]
         public string? RatingKey { get; set; }
 
@@ -47,24 +50,24 @@ namespace LukeHagar.PlexAPI.SDK.Models.Components
         /// The role this actor played
         /// </summary>
         [JsonProperty("role")]
-        public object? Role { get; set; }
+        public string? Role { get; set; }
 
         /// <summary>
         /// The value of the tag (the name)
         /// </summary>
         [JsonProperty("tag")]
-        public object? TagValue { get; set; }
+        public string TagValue { get; set; } = default!;
 
         /// <summary>
         /// Plex identifier for this tag which can be used to fetch additional information from plex.tv
         /// </summary>
         [JsonProperty("tagKey")]
-        public object? TagKey { get; set; }
+        public string? TagKey { get; set; }
 
         [JsonProperty("tagType")]
-        public long? TagType { get; set; }
+        public int? TagType { get; set; }
 
         [JsonProperty("thumb")]
-        public object? Thumb { get; set; }
+        public string? Thumb { get; set; }
     }
 }

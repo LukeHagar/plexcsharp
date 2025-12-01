@@ -88,6 +88,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public string? Agent { get; set; }
 
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=markUpdated")]
-        public BoolInt? MarkUpdated { get; set; }
+        public BoolInt? MarkUpdated { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
     }
 }

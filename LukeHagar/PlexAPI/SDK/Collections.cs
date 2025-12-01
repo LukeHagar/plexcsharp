@@ -44,10 +44,11 @@ namespace LukeHagar.PlexAPI.SDK
     public class Collections: ICollections
     {
         public SDKConfig SDKConfiguration { get; private set; }
-        private const string _language = "csharp";
-        private const string _sdkVersion = "0.19.1";
-        private const string _sdkGenVersion = "2.753.1";
-        private const string _openapiDocVersion = "1.1.1";
+
+        private const string _language = Constants.Language;
+        private const string _sdkVersion = Constants.SdkVersion;
+        private const string _sdkGenVersion = Constants.SdkGenVersion;
+        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
 
         public Collections(SDKConfig config)
         {
@@ -73,7 +74,7 @@ namespace LukeHagar.PlexAPI.SDK
             request.Marketplace ??= SDKConfiguration.Marketplace;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/library/collections", request);
+            var urlString = URLBuilder.Build(baseUrl, "/library/collections", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);

@@ -111,7 +111,7 @@ This endpoint will stop a currently running task by name, or remove it from the 
 
 ### Example Usage
 
-<!-- UsageSnippet language="csharp" operationID="stopTask" method="delete" path="/butler/{task}" -->
+<!-- UsageSnippet language="csharp" operationID="stopTask" method="delete" path="/butler/{butlerTask}" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -133,7 +133,7 @@ var sdk = new PlexAPI(
 );
 
 StopTaskRequest req = new StopTaskRequest() {
-    Task = Task.CleanOldBundles,
+    ButlerTask = ButlerTask.CleanOldBundles,
 };
 
 var res = await sdk.Butler.StopTaskAsync(req);
@@ -164,7 +164,7 @@ This endpoint will attempt to start a specific Butler task by name.
 
 ### Example Usage
 
-<!-- UsageSnippet language="csharp" operationID="startTask" method="post" path="/butler/{task}" -->
+<!-- UsageSnippet language="csharp" operationID="startTask" method="post" path="/butler/{butlerTask}" -->
 ```csharp
 using LukeHagar.PlexAPI.SDK;
 using LukeHagar.PlexAPI.SDK.Models.Components;
@@ -186,7 +186,7 @@ var sdk = new PlexAPI(
 );
 
 StartTaskRequest req = new StartTaskRequest() {
-    Task = PathParamTask.RefreshLocalMedia,
+    ButlerTask = PathParamButlerTask.RefreshLocalMedia,
 };
 
 var res = await sdk.Butler.StartTaskAsync(req);

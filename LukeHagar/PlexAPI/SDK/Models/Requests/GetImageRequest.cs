@@ -121,6 +121,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Whether to add noise to the ouput image. Noise can reduce color banding with the gradients. Image sizes with noise will be larger.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=noise")]
-        public BoolInt? Noise { get; set; }
+        public BoolInt? Noise { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
     }
 }

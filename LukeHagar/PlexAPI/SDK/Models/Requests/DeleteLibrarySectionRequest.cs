@@ -91,6 +91,6 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// If set, response will return an activity with the actual deletion process.  Otherwise request will return when deletion is complete
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=async")]
-        public BoolInt? Async { get; set; }
+        public BoolInt? Async { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
     }
 }

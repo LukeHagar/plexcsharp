@@ -85,9 +85,9 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         public string Ids { get; set; } = default!;
 
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=force")]
-        public BoolInt? Force { get; set; }
+        public BoolInt? Force { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
 
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=manual")]
-        public BoolInt? Manual { get; set; }
+        public BoolInt? Manual { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
     }
 }

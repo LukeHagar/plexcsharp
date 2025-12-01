@@ -89,48 +89,48 @@ namespace LukeHagar.PlexAPI.SDK.Models.Requests
         /// Determines if file check should be performed asynchronously.  An activity is created to indicate progress.  Default is false.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=asyncCheckFiles")]
-        public BoolInt? AsyncCheckFiles { get; set; }
+        public BoolInt? AsyncCheckFiles { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
 
         /// <summary>
         /// Determines if local media agent refresh should be performed asynchronously.  An activity is created to indicate progress.  Default is false.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=asyncRefreshLocalMediaAgent")]
-        public BoolInt? AsyncRefreshLocalMediaAgent { get; set; }
+        public BoolInt? AsyncRefreshLocalMediaAgent { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
 
         /// <summary>
         /// Determines if analysis refresh should be performed asynchronously.  An activity is created to indicate progress.  Default is false.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=asyncRefreshAnalysis")]
-        public BoolInt? AsyncRefreshAnalysis { get; set; }
+        public BoolInt? AsyncRefreshAnalysis { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
 
         /// <summary>
         /// Determines if file check should be performed synchronously.  Specifying `asyncCheckFiles` will cause this option to be ignored.  Default is false.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=checkFiles")]
-        public BoolInt? CheckFiles { get; set; }
+        public BoolInt? CheckFiles { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
 
         /// <summary>
         /// Determines if synchronous local media agent and analysis refresh should be skipped.  Specifying async versions will cause synchronous versions to be skipped.  Default is false.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=skipRefresh")]
-        public BoolInt? SkipRefresh { get; set; }
+        public BoolInt? SkipRefresh { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
 
         /// <summary>
         /// Determines if file existence check should be performed synchronously.  Specifying `checkFiles` will imply this option.  Default is false.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=checkFileAvailability")]
-        public BoolInt? CheckFileAvailability { get; set; }
+        public BoolInt? CheckFileAvailability { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
 
         /// <summary>
         /// Add metadata augmentations.  An activity is created to indicate progress.  Option will be ignored if specified by non-admin or if multiple metadata items are requested.  Default is false.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=asyncAugmentMetadata")]
-        public BoolInt? AsyncAugmentMetadata { get; set; }
+        public BoolInt? AsyncAugmentMetadata { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
 
         /// <summary>
         /// Number of augmentations to add.  Requires `asyncAugmentMetadata` to be specified.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=augmentCount")]
-        public BoolInt? AugmentCount { get; set; }
+        public BoolInt? AugmentCount { get; set; } = LukeHagar.PlexAPI.SDK.Models.Components.BoolInt.False;
     }
 }
