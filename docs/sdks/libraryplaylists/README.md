@@ -1,5 +1,4 @@
 # LibraryPlaylists
-(*LibraryPlaylists*)
 
 ## Overview
 

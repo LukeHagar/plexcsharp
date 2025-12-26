@@ -22,12 +22,12 @@ namespace LukeHagar.PlexAPI.SDK.Utils
         /// <summary>
         /// The version of the SDK.
         /// </summary>
-        public const string SdkVersion = "0.20.0";
+        public const string SdkVersion = "0.20.1";
 
         /// <summary>
         /// The version of the SDK generator used to create this SDK.
         /// </summary>
-        public const string SdkGenVersion = "2.767.2";
+        public const string SdkGenVersion = "2.788.7";
 
         /// <summary>
         /// The version of the OpenAPI document used to generate this SDK.

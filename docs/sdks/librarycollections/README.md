@@ -1,5 +1,4 @@
 # LibraryCollections
-(*LibraryCollections*)
 
 ## Overview
 

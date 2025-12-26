@@ -1,5 +1,4 @@
 # Library
-(*Library*)
 
 ## Overview
 

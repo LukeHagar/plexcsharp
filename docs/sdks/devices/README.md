@@ -1,5 +1,4 @@
 # Devices
-(*Devices*)
 
 ## Overview
 

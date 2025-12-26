@@ -1,5 +1,4 @@
 # Events
-(*Events*)
 
 ## Overview
 

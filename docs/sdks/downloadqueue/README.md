@@ -1,5 +1,4 @@
 # DownloadQueue
-(*DownloadQueue*)
 
 ## Overview
 

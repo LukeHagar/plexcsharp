@@ -20,6 +20,8 @@ namespace LukeHagar.PlexAPI.SDK.Models.Components
     {
         [JsonProperty("background")]
         Background,
+        [JsonProperty("backgroundSquare")]
+        BackgroundSquare,
         [JsonProperty("banner")]
         Banner,
         [JsonProperty("clearLogo")]

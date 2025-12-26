@@ -1,5 +1,4 @@
 # Timeline
-(*Timeline*)
 
 ## Overview
 

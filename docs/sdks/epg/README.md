@@ -1,5 +1,4 @@
 # Epg
-(*Epg*)
 
 ## Overview
 

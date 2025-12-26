@@ -1,5 +1,4 @@
 # Provider
-(*Provider*)
 
 ## Overview
 

@@ -1,5 +1,4 @@
 # Status
-(*Status*)
 
 ## Overview
 

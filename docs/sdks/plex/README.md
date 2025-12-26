@@ -1,5 +1,4 @@
 # Plex
-(*Plex*)
 
 ## Overview
 

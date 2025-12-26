@@ -1,5 +1,4 @@
 # Authentication
-(*Authentication*)
 
 ## Overview
 

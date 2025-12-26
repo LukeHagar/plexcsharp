@@ -1,5 +1,4 @@
 # UltraBlur
-(*UltraBlur*)
 
 ## Overview
 

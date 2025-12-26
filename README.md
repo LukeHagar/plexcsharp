@@ -332,12 +332,6 @@ var res = await sdk.Transcoder.StartTranscodeSessionAsync(req);
 * [WriteMessage](docs/sdks/log/README.md#writemessage) - Logging a single-line message to the Plex Media Server log
 * [EnablePapertrail](docs/sdks/log/README.md#enablepapertrail) - Enabling Papertrail
 
-### [Playlist](docs/sdks/playlist/README.md)
-
-* [ListPlaylists](docs/sdks/playlist/README.md#listplaylists) - List playlists
-* [GetPlaylist](docs/sdks/playlist/README.md#getplaylist) - Retrieve Playlist
-* [GetPlaylistItems](docs/sdks/playlist/README.md#getplaylistitems) - Retrieve Playlist Contents
-
 ### [PlayQueue](docs/sdks/playqueue/README.md)
 
 * [CreatePlayQueue](docs/sdks/playqueue/README.md#createplayqueue) - Create a play queue
@@ -349,6 +343,12 @@ var res = await sdk.Transcoder.StartTranscodeSessionAsync(req);
 * [Unshuffle](docs/sdks/playqueue/README.md#unshuffle) - Unshuffle a play queue
 * [DeletePlayQueueItem](docs/sdks/playqueue/README.md#deleteplayqueueitem) - Delete an item from a play queue
 * [MovePlayQueueItem](docs/sdks/playqueue/README.md#moveplayqueueitem) - Move an item in a play queue
+
+### [Playlist](docs/sdks/playlist/README.md)
+
+* [ListPlaylists](docs/sdks/playlist/README.md#listplaylists) - List playlists
+* [GetPlaylist](docs/sdks/playlist/README.md#getplaylist) - Retrieve Playlist
+* [GetPlaylistItems](docs/sdks/playlist/README.md#getplaylistitems) - Retrieve Playlist Contents
 
 ### [Plex](docs/sdks/plex/README.md)
 

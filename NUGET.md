@@ -189,7 +189,7 @@ catch (System.Net.Http.HttpRequestException ex)
 **Primary exception:**
 * [`PlexAPIError`](./LukeHagar/PlexAPI/SDK/Models/Errors/PlexAPIError.cs): The base class for HTTP error responses.
 
-<details><summary>Less common exceptions (9)</summary>
+**Less common exceptions (9)**
 
 * [`System.Net.Http.HttpRequestException`](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httprequestexception): Network connectivity error. For more details about the underlying cause, inspect the `ex.InnerException`.
 
@@ -202,7 +202,6 @@ catch (System.Net.Http.HttpRequestException ex)
   * [`GetUsersUnauthorized`](./LukeHagar/PlexAPI/SDK/Models/Errors/GetUsersUnauthorized.cs): Unauthorized - Returned if the X-Plex-Token is missing from the header or query. Status code `401`. Applicable to 1 of 240 methods.*
   * [`GetServerResourcesUnauthorized`](./LukeHagar/PlexAPI/SDK/Models/Errors/GetServerResourcesUnauthorized.cs): Unauthorized - Returned if the X-Plex-Token is missing from the header or query. Status code `401`. Applicable to 1 of 240 methods.*
   * [`ResponseValidationError`](./LukeHagar/PlexAPI/SDK/Models/Errors/ResponseValidationError.cs): Thrown when the response data could not be deserialized into the expected type.
-</details>
 
 \* Refer to the [relevant documentation](#available-resources-and-operations) to determine whether an exception applies to a specific operation.
 <!-- End Error Handling [errors] -->
@@ -393,8 +392,7 @@ var customHttpClient = new CustomHttpClient();
 var sdk = new PlexAPI(client: customHttpClient);
 ```
 
-<details>
-<summary>You can also provide a completely custom HTTP client with your own configuration:</summary>
+**You can also provide a completely custom HTTP client with your own configuration:**
 
 ```csharp
 using LukeHagar.PlexAPI.SDK.Utils;
@@ -436,10 +434,8 @@ var sdk = PlexAPI.Builder()
     .WithClient(new AdvancedHttpClient())
     .Build();
 ```
-</details>
 
-<details>
-<summary>For simple debugging, you can enable request/response logging by implementing a custom client:</summary>
+**For simple debugging, you can enable request/response logging by implementing a custom client:**
 
 ```csharp
 public class LoggingHttpClient : ISpeakeasyHttpClient
@@ -469,7 +465,6 @@ public class LoggingHttpClient : ISpeakeasyHttpClient
 
 var sdk = new PlexAPI(client: new LoggingHttpClient());
 ```
-</details>
 
 The SDK also provides built-in hook support through the `SDKConfiguration.Hooks` system, which automatically handles
 `BeforeRequestAsync`, `AfterSuccessAsync`, and `AfterErrorAsync` hooks for advanced request lifecycle management.
